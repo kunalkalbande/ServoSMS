@@ -1,0 +1,4 @@
+3/7/2014 11:21:19 AM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+3/7/2014 11:21:21 AM ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+3/7/2014 11:21:27 AM ==> Form:Salesreport.aspx,Class:PetrolPumpClass.cs,Method: page_load, userid  admin
+3/7/2014 11:22:32 AM ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin

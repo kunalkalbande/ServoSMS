@@ -1,0 +1,159 @@
+01-06-2017 11:57:28 ==> Form:Homepage.aspx,Method:Page_Load,   EXCEPTION Object reference not set to an instance of an object.  userid  
+01-06-2017 11:57:54 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+01-06-2017 11:57:56 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+01-06-2017 11:58:24 ==> Form:LeaveReport.aspx,Method:btnShow_Click LeaveReport Viewed  userid admin
+01-06-2017 11:59:23 ==> Form:LeaveReport.aspx,Method:btnShow_Click LeaveReport Viewed  userid admin
+01-06-2017 12:00:58 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:05 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:15 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:16 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:21 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:28 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:38 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:42 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:01:56 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:02:02 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   EXCEPTION  Ambiguous column name 'pack_type'.  userid  admin
+01-06-2017 12:02:07 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:04:54 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:05:05 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:05:08 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:05:10 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:05:14 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 12:07:27 ==> Form:User_Profile.aspx,Method:brnUpdate_Click.  User  ID1001 Updated.  User: admin
+01-06-2017 12:07:37 ==> Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:Drop_SelectedIndexChanged(). EXCEPTION: Index was outside the bounds of the array..   userid admin
+01-06-2017 12:07:43 ==> Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:btnupdate_click  admin
+01-06-2017 12:07:43 ==> Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:saveImage() Organisation Details Updated.  userid admin
+01-06-2017 12:07:51 ==> Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:Drop_SelectedIndexChanged(). EXCEPTION: Index was outside the bounds of the array..   userid admin
+01-06-2017 12:08:53 ==> Form:customerledgerUpdation.aspx,Method:update() Updated Balance is 1234 Cr. Customer Name & Category is 3 A Technologies:Gwalior(Bazzar)
+01-06-2017 12:08:53 ==> Form:customerledgerUpdation.aspx,Method:update() Updated Balance is 1234 Dr. Customer Name & Category is A One Spair Sales:Gwalior(Bazzar)
+01-06-2017 12:08:53 ==> Form:customerledgerUpdation.aspx,Method:update() Updated Balance is  Cr. Customer Name & Category is A Pandey Tractor Parts:Panihar(Bazzar)
+01-06-2017 12:09:15 ==> Form:stockledgerUpdation.aspx,Method:update() Updated Stock is 1234 Product Name & Pack is 2T SUPREME 300X.040
+01-06-2017 12:09:26 ==> Form:ModuleManage.aspx,Class:InventoryClass.cs,Method:btnUpdate_Click,  Exception : The conversion of a varchar data type to a smalldatetime data type resulted in an out-of-range value.
+The statement has been terminated.    User_ID: admin
+01-06-2017 12:09:28 ==> Form:ModuleManage.aspx,Class:InventoryClass.cs,Method:btnUpdate_Click,  Exception : The conversion of a varchar data type to a smalldatetime data type resulted in an out-of-range value.
+The statement has been terminated.    User_ID: admin
+01-06-2017 12:09:36 ==> Form:ModuleManage.aspx,Class:InventoryClass.cs,Method:btnUpdate_Click,  Exception : The conversion of a varchar data type to a smalldatetime data type resulted in an out-of-range value.
+The statement has been terminated.    User_ID: admin
+01-06-2017 12:10:04 ==> Form:SetDiscount.aspx,Method:GetDiscount() ,  EXCEPTIONCashDisLtr   admin
+01-06-2017 12:10:06 ==> Form:SetDiscount.aspx,Method:GetDiscount() ,  EXCEPTIONCashDisLtr   admin
+01-06-2017 12:10:14 ==> Form:SetDiscount.aspx,Method:GetDiscount() ,  EXCEPTIONCashDisLtr   admin
+01-06-2017 12:10:21 ==> Form:ModuleManage.aspx,Class:InventoryClass.cs,Method:btnUpdate_Click,  Exception : The conversion of a varchar data type to a smalldatetime data type resulted in an out-of-range value.
+The statement has been terminated.    User_ID: admin
+01-06-2017 12:10:29 ==> Form:SetDiscount.aspx,Method:GetDiscount() ,  EXCEPTIONCashDisLtr   admin
+01-06-2017 12:12:06 ==> Form:Ledger Creation,Method:btnSave_Click New Ledger of name 1123 Saved.  User: admin
+01-06-2017 12:12:25 ==> Form:BeatMasterEntery.aspx ,Method:pageload  admin
+01-06-2017 12:12:28 ==> Form:BeatMasterEntery.aspx ,Method:pageload  admin
+01-06-2017 12:12:28 ==> Form:BeatMasterEntery.aspx,Method: btnSave_Click  Beatno  1146 city  Qwe   state  Qwe CountryQwe IS SAVED   userid  admin
+01-06-2017 12:12:28 ==> Form:BeatMasterEntery.aspx,Method: btnSave_Click  Beatno  1146 city  Qwe   state  Qwe CountryQwe'DropBeatNo' has a SelectedIndex which is invalid because it does not exist in the list of items.
+Parameter name: value userid  admin
+01-06-2017 12:12:56 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  QWE Cust id  2979Cust Type    Bazzar  Cust Address  QWE Cust City Akoda Cust State  Bhind Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:13:01 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  QWE Cust id  2979Cust Type    Bazzar  Cust Address  QWE Cust City Amol Cust State  Shivpuri Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:13:04 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  QWE Cust id  2979Cust Type    Bazzar  Cust Address  QWE Cust City Amol Cust State  Shivpuri Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:13:05 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  QWE Cust id  2979Cust Type    Bazzar  Cust Address  QWE Cust City Amol Cust State  Shivpuri Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:13:05 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  QWE Cust id  2979Cust Type    Bazzar  Cust Address  QWE Cust City Amol Cust State  Shivpuri Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:13:33 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  QWE Cust id  2979Cust Type    Ibp r/o  Cust Address  QWE Cust City Akoda Cust State  Bhind Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:14:28 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  KUNAL KALBANDE Cust id  2979Cust Type    Essar ro  Cust Address  PUNE Cust City Amayan Cust State  Ashoknagar Cust Cuntry Mp Opening Balance  123  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:15:19 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Essar ro  Cust Address  asd Cust City Alampur Cust State  Bhind Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:15:26 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Essar ro  Cust Address  asd Cust City Alampur Cust State  Bhind Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:15:46 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Essar ro  Cust Address  asd Cust City Alampur Cust State  Bhind Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:15:51 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Essar ro  Cust Address  asd Cust City Alampur Cust State  Bhind Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:15:51 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Essar ro  Cust Address  asd Cust City Alampur Cust State  Bhind Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:15:55 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Essar ro  Cust Address  asd Cust City Alampur Cust State  Bhind Cust Cuntry Qwe Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:16:29 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Ksk-1  Cust Address  asd Cust City Aron Cust State  Guna Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:19:09 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Ksk-1  Cust Address  asd Cust City Aron Cust State  Guna Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:19:19 ==> Form:Customer_Entry.aspx,Class:PartiesClass.cs: Method:btnUpdate_Click  Cust Name  aa Cust id  2979Cust Type    Ksk-1  Cust Address  asd Cust City Aron Cust State  Guna Cust Cuntry Mp Opening Balance  123213  EXCEPTION Index was outside the bounds of the array.  User Type admin
+01-06-2017 12:19:56 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:19:58 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:20:00 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:20:03 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:20:05 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:20:07 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:20:09 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+01-06-2017 12:20:09 ==> Form:CustomerMapping.aspx,Method:btnSubmit_Click,  Update Customer Mapping,  User  admin
+01-06-2017 12:20:20 ==> Form:CustomerMechanicEntry.aspx,Method:Page_Load, userid  admin
+01-06-2017 12:20:33 ==> Form:CustomerMechanicEntry.aspx,Method:btnAdd, userid  admin
+01-06-2017 12:20:41 ==> Form:CustomerMechanicEntry.aspx,Method:btnAdd, userid  admin
+01-06-2017 12:21:01 ==> Form:CustomerMechanicEntry.aspx,Method:Page_Load, userid  admin
+01-06-2017 12:21:07 ==> Form:CustomerType.aspx,Method:Page_Load, userid  admin
+01-06-2017 12:21:16 ==> Form:CustomerType.aspx,Method:btnAdd, userid  admin
+01-06-2017 12:21:25 ==> Form:CustomerType.aspx,Method:btnAdd, userid  admin
+01-06-2017 12:24:36 ==> Form:CustomerUpdation.aspx,Method:update().   EXCEPTION Internal connection fatal error. Error state: 15, Token : 41
+01-06-2017 12:28:31 ==> Form:MarketCustEntry.aspx,Method:pageload, Userid=admin
+01-06-2017 12:28:48 ==> Form:MarketCustEntry.aspx,Method:btnAdd, Userid= admin
+01-06-2017 12:29:18 ==> Form:Vender_Entry.aspx, Method:btnUpdate_Click    Supplier_ID 1004   Supplier Type   Misc. supplier City Alampur  IS SAVED    user  admin
+01-06-2017 12:30:46 ==> Form:CustomerUpdation.aspx,Method:update().   EXCEPTION Invalid attempt to call Read when reader is closed.
+01-06-2017 12:32:10 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged  Payment Recipt Viewed   userid admin
+01-06-2017 12:32:17 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged admin
+01-06-2017 12:32:17 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged  Payment Recipt Viewed   userid admin
+01-06-2017 12:32:17 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged admin
+01-06-2017 12:32:17 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged  Payment Recipt Viewed   userid admin
+01-06-2017 12:32:24 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged admin
+01-06-2017 12:32:24 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged  Payment Recipt Viewed   userid admin
+01-06-2017 12:32:30 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged admin
+01-06-2017 12:32:30 ==> Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:DropCustName_SelectedIndexChanged  Payment Recipt Viewed   userid admin
+01-06-2017 12:33:38 ==> Form:SalesInvoice.aspx,Method : FetchData()  EXCEPTION :  Index was outside the bounds of the array.   admin
+01-06-2017 12:33:54 ==> Form:OrderCollection.aspx,Method:save_updateInvoice(),Class:InventoryClass  Order No.25 ,for Customer Name  A One Spair Sales  Under Salesman Select and NetAmount    is Saved   EXCEPTION  Cannot insert the value NULL into column 'Under_SalesMan', table 'Servosms.dbo.Order_Col_Master'; column does not allow nulls. INSERT fails.
+The statement has been terminated. userid       admin
+01-06-2017 12:34:26 ==> Form:SalesInvoice.aspx,Method:pageload.   EXCEPTION: Index was outside the bounds of the array.  User_ID: admin
+01-06-2017 12:34:28 ==>  Form : SalesInvoise.aspx ,Method : save_updateInvoice() ,Class:InventoryClass  Sales Invoise for  Invoice No. ,for Customer Name    Under Salesman  and NetAmount    is Saved   EXCEPTION  Input string was not in a correct format. userid       admin
+01-06-2017 12:34:48 ==> Form:SalesInvoice.aspx,Method:pageload.   EXCEPTION: Index was outside the bounds of the array.  User_ID: admin
+01-06-2017 12:34:54 ==> Form:PurchaseReturn.aspx,Method:btnSaved_Click,Class:PartiesClass.cs,Method :dropInvoiceNo_SelectedIndexChanged  EXCEPTION  Index was outside the bounds of the array.  userid admin
+01-06-2017 12:35:07 ==> Form:PurchaseReturn.aspx,Method:btnSaved_Click,Class:PartiesClass.cs,Method :dropInvoiceNo_SelectedIndexChanged  EXCEPTION  Index was outside the bounds of the array.  userid admin
+01-06-2017 12:35:15 ==> Form:SalesReturn.aspx,Method:page_load  EXCEPTION: Index was outside the bounds of the array.  User: admin
+01-06-2017 12:35:23 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+01-06-2017 12:35:24 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+01-06-2017 12:40:22 ==> Form:StockAdjustment.aspx,Method:Save()  EXCEPTION: Cannot insert the value NULL into column 'OutProd_ID', table 'Servosms.dbo.Stock_Adjustment'; column does not allow nulls. INSERT fails.
+Cannot insert the value NULL into column 'ProductId', table 'Servosms.dbo.stock_master'; column does not allow nulls. INSERT fails.
+Cannot insert the value NULL into column 'ProductId', table 'Servosms.dbo.stock_master'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated..  UserID: admin
+01-06-2017 12:40:22 ==> Form:StockAdjustment.aspx,Method:btnPrint_Click  Stock Adjustment with ID 1309 saved. UserID: admin
+01-06-2017 12:40:22 ==> Form:StockAdjustment.aspx,Method:makingReport()  EXCEPTION: Access to the path 'C:\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\StockAdjustment.txt' is denied..  UserID: admin
+01-06-2017 12:40:55 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1013 Saved. userid :admin
+01-06-2017 12:40:55 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1018 Saved. userid :admin
+01-06-2017 12:40:55 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1029 Saved. userid :admin
+01-06-2017 12:40:55 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1035 Saved. userid :admin
+01-06-2017 12:40:55 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1037 Saved. userid :admin
+01-06-2017 12:41:32 ==> Form:Employee_Entry.aspx,Class:Employeee.cs,Methd: btnUpdate_Click   Employee ID 1038   Employee Name  kunal arvind kalbande city   Amayan Salary  123 Designation Driver IS SAVED   userid admin    admin
+01-06-2017 12:41:48 ==> Form:Employee_Update.aspx,Method:Page_Load() EmployeeID.   EXCEPTIONIndex was outside the bounds of the array. userid  admin
+01-06-2017 12:41:50 ==> Form:Employee_Update.aspx,Method:btnUpdate_ClickEmployeeID   1038 IS UPDATED   userid admin
+01-06-2017 12:42:29 ==> Form:Leave_Register.aspx,Method:btnApply_Click  empname  :  is saved    EXCEPTION  Index was outside the bounds of the array.  userid:   admin
+01-06-2017 12:42:34 ==> Form:Leave_Register.aspx,Method:btnApply_Click  empname  :  is saved    EXCEPTION  Index was outside the bounds of the array.  userid:   admin
+01-06-2017 12:43:06 ==> Form : SelesPersionAssignment.aspx,Method : btnIn_ClickObject reference not set to an instance of an object.  EXCEPTION  admin
+01-06-2017 12:43:09 ==> Form : SelesPersionAssignment.aspx,Method : btnIn_ClickObject reference not set to an instance of an object.  EXCEPTION  admin
+01-06-2017 12:43:20 ==> Form:Salary_statement.aspx,Method:btnShow_ClickUserid  admin
+01-06-2017 12:43:28 ==> Form:Routeedit.aspx,Method:Button1_Click  New Route Name  qwe saved   userid admin
+01-06-2017 12:43:33 ==> Form:Vehicle_logbook.aspx,Method:btnSave_Click  EXCEPTION  Input string was not in a correct format.   userid admin
+01-06-2017 12:43:34 ==> Form:Vehicle_logbook.aspx,Method:btnSave_Click  EXCEPTION  Input string was not in a correct format.   userid admin
+01-06-2017 12:43:35 ==> Form:Vehicle_logbook.aspx,Method:btnSave_Click  EXCEPTION  Input string was not in a correct format.   userid admin
+01-06-2017 12:44:00 ==> Form:Vehicle_logbook.aspx,Method:btnSave_Click  EXCEPTION  Input string was not in a correct format.   userid admin
+01-06-2017 12:44:10 ==> Form:Vehicle_logbook.aspx,Method:btnSave_Click  EXCEPTION  Input string was not in a correct format.   userid admin
+01-06-2017 12:44:16 ==> Form:vehicle_logbook.aspx,Method:printadmin
+01-06-2017 12:44:57 ==> Form:Vehicle_EntryForm.aspx,Method:btn_Save  Vehicle entry for vehicle Name  Q Saved   userid admin
+01-06-2017 12:45:29 ==> Form:PriceList.aspx,Class:PetrolPumpClass.cs,Method:Button1_Click    Price List Report Viewed    userid  admin
+01-06-2017 12:45:36 ==> Form:districtWiseReport.aspx,Method:Page_Load,  User: admin
+01-06-2017 12:45:57 ==> Form:ProductWiseSales.aspx,Method:cmdrpt_Click
+01-06-2017 12:46:07 ==> Form:vehicle Dialy Log Report.aspx,Method:pageload  EXCEPTION  Index was outside the bounds of the array.  admin
+01-06-2017 12:46:13 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+01-06-2017 12:46:14 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+01-06-2017 12:46:46 ==> Form:MechanicReport.aspx,Method:Page_Load, userid  admin
+01-06-2017 12:46:47 ==> Form:MechanicReport.aspx,Method:btnView, userid  admin
+01-06-2017 12:47:00 ==> Form:MechanicReport.aspx,Method:btnView, userid  admin
+01-06-2017 13:44:46 ==> Form:schemediscountEntry.aspx,Method:pageloadObject reference not set to an instance of an object.  EXCEPTION  
+01-06-2017 13:44:56 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+01-06-2017 13:44:57 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+01-06-2017 13:46:28 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+01-06-2017 13:46:29 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+01-06-2017 13:46:48 ==> Form:Leave_Register.aspx,Method:btnApply_Click  empname  :  is saved    EXCEPTION  Index was outside the bounds of the array.  userid:   admin
+01-06-2017 13:46:52 ==> Form:Leave_Register.aspx,Method:btnApply_Click  empname  :  is saved    EXCEPTION  Index was outside the bounds of the array.  userid:   admin
+01-06-2017 13:52:54 ==> Form:Leave_Register.aspx,Method:btnApply_Click  empname  :  is saved    EXCEPTION  Index was outside the bounds of the array.  userid:   admin
+01-06-2017 15:21:19 ==> Form:SaleBook.aspx,Method:page_load  EXCEPTION Object reference not set to an instance of an object. userid 
+01-06-2017 15:21:32 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+01-06-2017 15:21:33 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+01-06-2017 15:22:20 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 15:22:26 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 15:22:30 ==> Form:SaleBook.aspx,Method:btnShow_Click  Sale Book Report   Viewed   userid  admin
+01-06-2017 15:22:35 ==> Form:SaleBook.aspx,Method:makingReport().  EXCEPTION Access to the path 'C:\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesBookReport.txt' is denied. userid admin
+01-06-2017 15:22:37 ==> Form:SaleBook.aspx,Method:BtnPrint_Click, Sales Book Report Printed  EXCEPTION  No connection could be made because the target machine actively refused it 127.0.0.1:62000  userid  admin
+01-06-2017 15:23:07 ==> Form:BalanceSheet.aspx,Method:BtnPrint_Click.  EXCEPTION: Access to the path 'C:\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\BalanceSheet.txt' is denied.  User: admin

@@ -1,0 +1,32 @@
+31-05-2017 11:36:27 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Select and  Login User   
+31-05-2017 11:37:15 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:37:19 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:37:29 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:38:16 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:40:11 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:41:38 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:41:39 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+31-05-2017 11:42:44 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:42:45 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+31-05-2017 11:44:09 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 11:44:11 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+31-05-2017 11:58:33 ==> Form:User_Profile.aspx,Method:brnUpdate_Click. New User With ID 1002 Created.  User: admin
+31-05-2017 12:13:55 ==> Form:User_Profile.aspx,Method:Page_load  EXCEPTION: Object reference not set to an instance of an object.    
+31-05-2017 12:14:44 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 12:14:46 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+31-05-2017 12:14:51 ==> Form:BeatMasterEntery.aspx ,Method:pageload  admin
+31-05-2017 12:14:51 ==> Form:BeatMasterEntery.aspx ,Method:pageload  admin
+31-05-2017 12:15:01 ==> Form:BeatMasterEntery.aspx ,Method:pageload  admin
+31-05-2017 12:15:01 ==> Form:BeatMasterEntery.aspx,Method: btnSave_Click  Beatno  1014 city  Pune   state  Maharashtra CountryMaharashtra IS SAVED   userid  admin
+31-05-2017 12:15:01 ==> Form:BeatMasterEntery.aspx,Method: btnSave_Click  Beatno  1014 city  Pune   state  Maharashtra CountryMaharashtra'DropBeatNo' has a SelectedIndex which is invalid because it does not exist in the list of items.
+Parameter name: value userid  admin
+31-05-2017 12:16:20 ==> Form:BeatMasterEntery.aspx ,Method:pageload  admin
+31-05-2017 12:34:30 ==> Form:User_Profile.aspx,Method:brnUpdate_Click. New User With ID 1003 Created.  User: admin
+31-05-2017 12:45:06 ==> Form:User_Profile.aspx,Method:brnUpdate_Click.  User  ID1002 Updated.  User: admin
+31-05-2017 12:51:40 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 12:53:08 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+31-05-2017 12:53:24 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 12:53:40 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+31-05-2017 13:25:50 ==> Form:Roles.aspx,Method:Page_Load  EXCEPTION  Object reference not set to an instance of an object. userid   
+31-05-2017 13:26:39 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+31-05-2017 13:26:40 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin

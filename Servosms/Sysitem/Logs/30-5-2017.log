@@ -1,0 +1,27 @@
+5/30/2017 3:15:53 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Select and  Login User   admin
+5/30/2017 3:16:02 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+5/30/2017 3:16:04 PM ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+5/30/2017 3:19:52 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Select and  Login User   admin
+5/30/2017 3:19:58 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+5/30/2017 3:19:59 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator  EXCEPTION   System.Data.SqlClient.SqlException: A transport-level error has occurred when sending the request to the server. (provider: Shared Memory Provider, error: 0 - No process is on the other end of the pipe.)
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj)
+   at System.Data.SqlClient.TdsParserStateObject.WriteSni()
+   at System.Data.SqlClient.TdsParserStateObject.WritePacket(Byte flushMode)
+   at System.Data.SqlClient.TdsParserStateObject.ExecuteFlush()
+   at System.Data.SqlClient.TdsParser.TdsExecuteSQLBatch(String text, Int32 timeout, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Servosms.Sysitem.Classes.PetrolPumpClass.GetRecordSet(String Sql) in c:\Inetpub\wwwroot\Servosms\App_Code\Sysitem\Classes\PetrolPumpClass.cs:line 326
+   at Servosms.Module.LoginHome.login.btnSign_ServerClick(Object sender, ImageClickEventArgs e) in c:\Inetpub\wwwroot\Servosms\LoginHome\login.aspx.cs:line 141  and  Login User   admin
+5/30/2017 3:20:03 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+5/30/2017 3:20:04 PM ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+5/30/2017 3:38:56 PM ==> Form:SalesInvoice.aspx,Method:pageload.   EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User_ID: 
+5/30/2017 4:40:56 PM ==> Form:Homepage.aspx,Method:Page_Load,   EXCEPTION Object reference not set to an instance of an object.  userid  
+5/30/2017 4:41:10 PM ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+5/30/2017 4:41:13 PM ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin

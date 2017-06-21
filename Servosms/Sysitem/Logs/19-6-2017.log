@@ -1,0 +1,184 @@
+19-06-2017 12:17:48 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:17:50 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 12:20:54 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:21:08 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 12:21:29 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:21:30 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 12:21:35 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:21:37 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:21:40 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:21:41 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 12:24:06 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 12:24:09 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 14:04:58 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 14:05:54 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 14:08:54 ==> Form:BackupRestore.aspx,Method:btnRestore_Click   EXCEPTION:  Cannot open backup device 'C:\fakepath\Servosms.bak'. Operating system error 3(The system cannot find the path specified.).
+RESTORE DATABASE is terminating abnormally. userid  admin
+19-06-2017 14:09:51 ==> Form:Ledger Creation,Method:getGroup() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:09:52 ==> Form:Ledger Creation,Method:getParties() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:10:17 ==> Form:Ledger Creation,Method:btnEdit1_Click Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:10:18 ==> Form:Ledger Creation,Method:btnEdit1_Click Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:11:31 ==> Form:User_Profile.aspx,Method:Page_load EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.    admin
+19-06-2017 14:11:50 ==> Form:User_Profile.aspx,Method:Page_load EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.    admin
+19-06-2017 14:11:50 ==> Form:User_Profile.aspx,Method:Page_load EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.    admin
+19-06-2017 14:11:51 ==> Form:User_Profile.aspx,Method:Page_load EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.    admin
+19-06-2017 14:12:06 ==> Form:User_Profile.aspx,Method:btnEdit_Click EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  admin
+19-06-2017 14:12:26 ==> Form:Ledger Creation,Method:getSubGroup() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:12:26 ==> Form:Ledger Creation,Method:getGroup() Exception: Object reference not set to an instance of an object.  User: admin
+19-06-2017 14:12:26 ==> Form:Ledger Creation,Method:getParties() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:12:49 ==> Form:Ledger Creation,Method:btnSave_Click Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 14:12:49 ==> Form:User_Profile.aspx,Method:Page_load EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.    admin
+19-06-2017 14:12:54 ==> Form:Payment,Method:fillCombo() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 15:18:59 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 15:19:00 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 15:19:14 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   qwe
+19-06-2017 15:19:27 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 15:19:28 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 15:22:24 ==> Form:User_Profile.aspx,Method:brnUpdate_Click. New User With ID 1003 Created.  User: admin
+19-06-2017 15:22:35 ==> Form:Roles.aspx,Method:btnUpdate_Click   Role Name test mn Created   admin
+19-06-2017 15:22:43 ==> Form:User_Profile.aspx,Method:brnUpdate_Click. New User With ID 1004 Created.  User: admin
+19-06-2017 15:23:07 ==> Form:User_Profile.aspx,Method:brnUpdate_Click. New User With ID 1005 Created.  User: admin
+19-06-2017 15:23:22 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 15:23:29 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   kunalk
+19-06-2017 15:23:30 ==> Form:Homepage.aspx,Method:Page_Load,  userid  kunalk
+19-06-2017 15:26:47 ==> Form:Price_Updation.aspx,Method:update().   EXCEPTION The conversion of a varchar data type to a smalldatetime data type resulted in an out-of-range value.
+The conversion of a varchar data type to a smalldatetime data type resulted in an out-of-range value.
+The statement has been terminated.
+The statement has been terminated.  User_ID : kunalk
+19-06-2017 15:27:37 ==> Form:Homepage.aspx,Method:Page_Load,  userid  kunalk
+19-06-2017 15:27:39 ==> Form:BeatMasterEntery.aspx ,Method:pageload  kunalk
+19-06-2017 15:27:52 ==> Form:Homepage.aspx,Method:Page_Load,  userid  kunalk
+19-06-2017 15:28:03 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 15:28:04 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 15:28:35 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1013 Saved. userid :admin
+19-06-2017 15:28:35 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1018 Saved. userid :admin
+19-06-2017 15:28:35 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1029 Saved. userid :admin
+19-06-2017 15:28:35 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1035 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1037 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1027 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1023 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1007 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1019 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1022 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1021 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1011 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1012 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1028 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1024 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1025 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1026 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1030 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1005 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1006 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1001 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1003 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1017 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1033 Saved. userid :admin
+19-06-2017 15:30:32 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID 1036 Saved. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:32:06 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:03 ==> Form:Attendance_Register.aspx.cs,Method:attan(). Attendance of employee ID  Updated. userid :admin
+19-06-2017 15:33:16 ==> Form:BalanceSheet.aspx,Method:BtnPrint_Click.  EXCEPTION: Access to the path 'C:\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\BalanceSheet.txt' is denied.  User: admin
+19-06-2017 15:33:22 ==> Form:BalanceSheet.aspx,Method:BtnPrint_Click.  EXCEPTION: Access to the path 'C:\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\BalanceSheet.txt' is denied.  User: admin
+19-06-2017 15:33:25 ==> Form:LeaveReport.aspx,Class:PetrolPumpClass.cs,Method:btnExcel_Click    Leave Report Convert Into Excel Format, userid  admin
+19-06-2017 15:33:33 ==> Form:LeaveReport.aspx,Class:PetrolPumpClass.cs,Method:btnExcel_Click    Leave Report Convert Into Excel Format, userid  admin
+19-06-2017 15:33:39 ==> Form:BalanceSheet.aspx,Method:BtnPrint_Click.  EXCEPTION: Access to the path 'C:\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\BalanceSheet.txt' is denied.  User: admin
+19-06-2017 15:35:37 ==> Form:Employee_Update.aspx,Method:Page_Load() EmployeeID.   EXCEPTIONIndex was outside the bounds of the array. userid  admin
+19-06-2017 15:35:42 ==> Form:Employee_Update.aspx,Method:btnUpdate_ClickEmployeeID   1021 IS UPDATED   userid admin
+19-06-2017 15:36:02 ==> Form:LeaveReport.aspx,Method:btnShow_Click LeaveReport Viewed   EXCEPTION The conversion of a varchar data type to a datetime data type resulted in an out-of-range value. userid  admin
+19-06-2017 15:36:09 ==> Form:LeaveReport.aspx,Method:btnShow_Click LeaveReport Viewed   EXCEPTION The conversion of a varchar data type to a datetime data type resulted in an out-of-range value. userid  admin
+19-06-2017 16:27:26 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 16:27:27 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 16:37:34 ==> Form:BackupRestore.aspx,Method:btnRestore_Click   EXCEPTION:  Cannot open backup device 'C:\fakepath\Servosms.bak'. Operating system error 3(The system cannot find the path specified.).
+RESTORE DATABASE is terminating abnormally. userid  admin
+19-06-2017 16:37:57 ==> Form:Ledger Creation,Method:getGroup() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 16:37:57 ==> Form:Ledger Creation,Method:getParties() Exception: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User: admin
+19-06-2017 16:37:57 ==> Form:User_Profile.aspx,Method:Page_load EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.    admin
+19-06-2017 16:38:19 ==> Form:OrderCollection.aspx,Method:pageload.   EXCEPTION: Cannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  User_ID: admin
+19-06-2017 16:38:48 ==> Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:page_loadCannot open database "ServoSMS" requested by the login. The login failed.
+Login failed for user 'sa'.  EXCEPTION  
+19-06-2017 16:45:08 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 16:45:09 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
+19-06-2017 16:45:42 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+19-06-2017 16:45:45 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+19-06-2017 16:45:49 ==> Form:CustomerMapping.aspx,Method:PageLoad,     User  admin
+19-06-2017 16:56:10 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:14 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:15 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:16 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:16 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:16 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:17 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 16:56:17 ==> Form:Payment,Method:btnSave_click Exception: String was not recognized as a valid DateTime.  User: admin
+19-06-2017 17:00:57 ==> Form:StockAdjustment.aspx,Method:print EXCEPTION No connection could be made because the target machine actively refused it 127.0.0.1:62000  userid  admin
+19-06-2017 17:51:26 ==> Form:Login.aspx,Method: btnSign_Click, Login Type Administrator and  Login User   admin
+19-06-2017 17:51:31 ==> Form:Homepage.aspx,Method:Page_Load,  userid  admin
