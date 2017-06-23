@@ -114,12 +114,11 @@
 							</tr>
 							<tr>
 								<td align="center" colSpan="3">&nbsp;
-									<asp:button id="btnAdd" runat="server" Text="Add" Height="24px" Width="60px" BackColor="#CE4848"
-										BorderColor="#CE4848" ForeColor="white" onclick="btnAdd_Click"></asp:button>
+									<asp:button id="btnAdd" runat="server" Text="Add" Height="24px" Width="60px" onclick="btnAdd_Click"></asp:button>
 									<asp:button id="btnEdit" runat="server" Text="Edit" Height="24px" Width="60px" CausesValidation="False"
-										BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" onclick="btnEdit_Click"></asp:button>
+										 onclick="btnEdit_Click"></asp:button>
 									<asp:button id="btnDelete" runat="server" Text="Delete" Height="24" Width="60px" CausesValidation="False"
-										Enabled="False" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" onclick="btnDelete_Click"></asp:button>
+										Enabled="False" onclick="btnDelete_Click"></asp:button>
 								</td>
 							</tr>
 						</table>

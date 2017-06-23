@@ -71,8 +71,7 @@
 								<TD><asp:label id="Label1" runat="server" Width="64px">Company ID</asp:label></TD>
 								<TD><asp:label id="LblCompanyID" Width="72px" Runat="server" ForeColor="Blue"></asp:label><asp:dropdownlist id="Drop" runat="server" Width="104px" Visible="False" AutoPostBack="True" CssClass="DropDownlist" onselectedindexchanged="Drop_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
-									</asp:dropdownlist><asp:button id="Button1" runat="server" Text="..." CausesValidation="False" BorderColor="#CE4848"
-										BackColor="#CE4848" Height="20px" onclick="Button1_Click"></asp:button></TD>
+									</asp:dropdownlist><asp:button id="Button1" runat="server" Text="..." CausesValidation="False" Height="20px" onclick="Button1_Click"></asp:button></TD>
 								<TD colspan="2" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT color="#ff0000">Fields 
 										Marked as (*) Are Mandatory</FONT></TD>
 							</TR>
@@ -206,8 +205,8 @@
 								<TD align="right" colSpan="4">
 									<HR width="100.09%" color="#000099" SIZE="1">
 									&nbsp;
-									<asp:button id="btnUpdate" runat="server" Width="90px" ForeColor="white" Text="Save Profile"
-										BorderColor="#CE4848" BackColor="#CE4848" onclick="btnUpdate_Click"></asp:button></TD>
+									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Save Profile"
+										 onclick="btnUpdate_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></td>

@@ -416,7 +416,7 @@ function calcTotal()
 									<TD><asp:dropdownlist id="DropDownID" runat="server" Width="69px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropDownID_SelectedIndexChanged">
 											<asp:ListItem Value="Select">Select</asp:ListItem>
 										</asp:dropdownlist><INPUT class="dropdownlist" id="txtVouchID" style="WIDTH: 55px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
-											disabled size="6" name="txtVouchID" runat="server"><asp:button id="btnEdit1" runat="server" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848"
+											disabled size="6" name="txtVouchID" runat="server"><asp:button id="btnEdit1" runat="server" 
 											ToolTip="click here for Edit" CausesValidation="False" Text="..." onclick="btnEdit1_Click"></asp:button><INPUT id="txtID" style="WIDTH: 9px; HEIGHT: 22px" type="hidden" size="1" name="txtID"
 											runat="server"></TD>
 									<TD align="center">Voucher Date <FONT color="#ff0000">*</FONT>
@@ -605,11 +605,11 @@ function calcTotal()
 											</b>&nbsp;
 											<asp:textbox onkeypress="CheckLength(this);" id="txtNarration" runat="server" Width="320px" CssClass="dropdownlist"
 												BorderStyle="Groove" Height="60" TextMode="MultiLine" MaxLength="10"></asp:textbox></FONT></TD>
-									<td align="right" colSpan="3"><asp:button id="btnAdd" runat="server" Width="75px" ForeColor="White" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Save" onclick="btnAdd_Click"></asp:button><asp:button id="btnEdit" runat="server" Width="75px" ForeColor="White" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Edit" onclick="btnEdit_Click"></asp:button><asp:button id="btnDelete" runat="server" Width="75px" ForeColor="White" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Delete" onclick="btnDelete_Click"></asp:button><asp:button id="btnPrint" runat="server" Width="75px" ForeColor="White" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Print" onclick="btnPrint_Click"></asp:button></td>
+									<td align="right" colSpan="3"><asp:button id="btnAdd" runat="server" Width="75px" 
+											  Text="Save" onclick="btnAdd_Click"></asp:button><asp:button id="btnEdit" runat="server" Width="75px" 
+											  Text="Edit" onclick="btnEdit_Click"></asp:button><asp:button id="btnDelete" runat="server" Width="75px" 
+											  Text="Delete" onclick="btnDelete_Click"></asp:button><asp:button id="btnPrint" runat="server" Width="75px" 
+											  Text="Print" onclick="btnPrint_Click"></asp:button></td>
 								</tr>
 							</TBODY>
 						</TABLE>

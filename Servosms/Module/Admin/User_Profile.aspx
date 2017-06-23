@@ -57,7 +57,7 @@
 									</asp:dropdownlist>
 									<asp:label id="lblUserID" Runat="server" ForeColor="Blue" Width="100px"></asp:label>
 									<asp:button id="btnEdit" runat="server" Width="25px" Text="..." ToolTip="Click For Edit" CausesValidation="False"
-										ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnEdit_Click"></asp:button></TD>
+										 onclick="btnEdit_Click"></asp:button></TD>
 							</TR>
 							<TR>
 								<TD>Login Name&nbsp;
@@ -109,10 +109,9 @@
 							</TR>
 							<TR>
 								<TD align="right" colSpan="4">
-									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Save Profile" ForeColor="white"
-										BackColor="#CE4848" BorderColor="#CE4848" onclick="btnUpdate_Click"></asp:button>
+									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Save Profile" onclick="btnUpdate_Click"></asp:button>
 									<asp:button id="btnDelete" runat="server" Width="80px" Text="Delete" CausesValidation="False"
-										ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnDelete_Click"></asp:button></TD>
+										 onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:ValidationSummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:ValidationSummary>

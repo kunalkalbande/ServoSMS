@@ -378,8 +378,8 @@ function SetFocus(t,e)
 										ControlToValidate="DropSavID">*</asp:requiredfieldvalidator>&nbsp;&nbsp;
 									<asp:textbox id="lblSAV_ID" runat="server" CssClass="dropdownlist" BorderStyle="None" ForeColor="Blue"
 										Width="50"></asp:textbox><asp:dropdownlist id="DropSavID" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="100px"
-										AutoPostBack="True" onselectedindexchanged="DropSavID_SelectedIndexChanged"></asp:dropdownlist><asp:button id="btnEdit" Runat="server" ForeColor="White" Width="20" Text="..." Height="20"
-										CausesValidation="False" BorderColor="#CE4848" BackColor="#CE4848" onclick="btnEdit_Click"></asp:button></TD>
+										AutoPostBack="True" onselectedindexchanged="DropSavID_SelectedIndexChanged"></asp:dropdownlist><asp:button id="btnEdit" Runat="server"  Width="20" Text="..." Height="20"
+										CausesValidation="False" onclick="btnEdit_Click"></asp:button></TD>
 								<td style="HEIGHT: 23px" align="right">Date&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox id="txtDate" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="103px"
 										ReadOnly="True"></asp:textbox>&nbsp;&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A>&nbsp;</td>
@@ -601,9 +601,9 @@ function SetFocus(t,e)
 										MaxLength="99"></asp:textbox></TD>
 							</TR>
 							<TR>
-								<TD align="center" colSpan="2"><asp:button id="btnPrint" runat="server" ForeColor="White" Width="75px" Text="Save" BorderColor="#CE4848"
-										BackColor="#CE4848" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" ForeColor="White" Width="75px" Text="Print" BorderColor="#CE4848"
-										BackColor="#CE4848" onclick="Button1_Click"></asp:button></TD>
+								<TD align="center" colSpan="2"><asp:button id="btnPrint" runat="server"  Width="75px" Text="Save" 
+										 onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server"  Width="75px" Text="Print" 
+										 onclick="Button1_Click"></asp:button></TD>
 							</TR>
 						</table>
 						<IFRAME id="gToday:contrast:agenda.js" style="Z-INDEX: 101; LEFT: -500px; VISIBILITY: visible; POSITION: absolute; TOP: 0px"

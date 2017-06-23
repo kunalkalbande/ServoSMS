@@ -997,8 +997,8 @@ function MoveFocus(t,drop,e)
 														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="None" ReadOnly="True"
-														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" ForeColor="White" BorderColor="#CE4848"
-														BackColor="#CE4848" CausesValidation="False" Text="..." ToolTip="Click For Edit" onclick="btnEdit_Click"></asp:button></TD>
+														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" 
+														 CausesValidation="False" Text="..." ToolTip="Click For Edit" onclick="btnEdit_Click"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Order&nbsp;Date</TD>
@@ -1620,10 +1620,10 @@ function MoveFocus(t,drop,e)
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
-								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" ForeColor="White" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" ForeColor="White" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Print" onclick="Button1_Click"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" ForeColor="White"
-										BorderColor="#CE4848" BackColor="#CE4848" CausesValidation="False" Text="Delete" onclick="btnDelete_Click"></asp:button></TD>
+								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" 
+										Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
+										Text="Print" onclick="Button1_Click"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
+										CausesValidation="False" Text="Delete" onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></td>

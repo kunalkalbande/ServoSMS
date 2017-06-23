@@ -88,8 +88,8 @@
 							</TR>
 							<TR>
 								<TD align="right" colSpan="2">
-									<asp:button id="btnApply" runat="server" Width="80px" Text="Apply" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnApply_Click"></asp:button>
+									<asp:button id="btnApply" runat="server" Width="80px" Text="Apply" 
+										 onclick="btnApply_Click"></asp:button>
 								</TD>
 							</TR>
 						</TABLE>

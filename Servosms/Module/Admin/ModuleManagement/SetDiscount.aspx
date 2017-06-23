@@ -443,7 +443,7 @@
 							</asp:Panel>
 							<TR>
 								<TD align="right" colSpan="4"><asp:button id="btnUpdate" runat="server" Text="Submit" Width="70px" CausesValidation="true"
-										BackColor="#CE4848" BorderColor="#CE4848" ForeColor="White" onclick="btnUpdate_Click"></asp:button></TD>
+									onclick="btnUpdate_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></td>

@@ -162,8 +162,7 @@
 										ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator></TD>
 								<TD colSpan="2"><asp:textbox id="txtEMail" runat="server" Width="268px" BorderStyle="Groove" MaxLength="49" CssClass="DropDownList"></asp:textbox></TD>
 								<TD align="right">
-									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Save Profile" ForeColor="white"
-										BackColor="#CE4848" BorderColor="#CE4848" onclick="btnUpdate_Click"></asp:button>
+									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Save Profile" onclick="btnUpdate_Click"></asp:button>
 								</TD>
 							</TR>
 						</TABLE>

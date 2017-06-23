@@ -53,7 +53,7 @@
 <asp:ListItem Value="Select" Selected="True">Select</asp:ListItem>
 										</asp:dropdownlist>
 										<asp:Label id="txtcustid" runat="server" ForeColor="blue" CssClass="FontStyle" Width="100px">Label</asp:Label><asp:button id="btnselect" runat="server" Width="20px" ToolTip="Click here to edit" Text="..."
-											BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" Height="20px" onclick="btnselect_Click"></asp:button></FONT></TD>
+											 Height="20px" onclick="btnselect_Click"></asp:button></FONT></TD>
 							</TR>
 							<TR>
 								<TD colSpan="1">&nbsp;&nbsp;Customer&nbsp;&nbsp;Name :</TD>
@@ -270,12 +270,9 @@
 							</TR>
 							<TR>
 								<TD align="center" colSpan="7">
-									<asp:button id="btnadd" runat="server" Width="60px" Text="Add" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="btnadd_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="btnedit" runat="server" Width="60px" Text="Edit" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="btnedit_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="btnDelete" runat="server" Text="Delete" Enabled="False" BackColor="#CE4848"
-										BorderColor="#CE4848" ForeColor="white" Width="60px" onclick="btnDelete_Click"></asp:button></TD>
+									<asp:button id="btnadd" runat="server" Width="60px" Text="Add" onclick="btnadd_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:button id="btnedit" runat="server" Width="60px" Text="Edit" onclick="btnedit_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:button id="btnDelete" runat="server" Text="Delete" Enabled="False" Width="60px" onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" Height="81px" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

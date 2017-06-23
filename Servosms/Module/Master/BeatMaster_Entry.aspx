@@ -77,11 +77,9 @@
 							<TR>
 								<TD align="center" colSpan="2">
 									<HR width="100%" color="#000099" SIZE="1">
-									<asp:button id="btnSave" runat="server" Width="60px" CausesValidation="true" Text="Add" ForeColor="White"
-										BackColor="#CE4848" BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>&nbsp;<asp:button id="btnEdit" runat="server" Width="60px" CausesValidation="False" Text="Edit" ForeColor="White"
-										BackColor="#CE4848" BorderColor="#CE4848" onclick="btnEdit_Click"></asp:button><asp:button id="Edit1" runat="server" Width="61px" Text="Edit" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="Edit1_Click"></asp:button>&nbsp;<asp:button id="btnDelete" runat="server" Width="60px" CausesValidation="False" Text="Delete"
-										ForeColor="White" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnDelete_Click"></asp:button></TD>
+									<asp:button id="btnSave" runat="server" Width="60px" CausesValidation="true" Text="Add" onclick="btnSave_Click"></asp:button>&nbsp;<asp:button id="btnEdit" runat="server" Width="60px" CausesValidation="False" Text="Edit" 
+										 onclick="btnEdit_Click"></asp:button><asp:button id="Edit1" runat="server" Width="61px" Text="Edit" onclick="Edit1_Click"></asp:button>&nbsp;<asp:button id="btnDelete" runat="server" Width="60px" CausesValidation="False" Text="Delete"
+										 onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></td>

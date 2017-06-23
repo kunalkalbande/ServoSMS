@@ -54,8 +54,7 @@
 					<td width="60%"><asp:checkbox id="chkCustBal" Text="Customer Balance Updation" Runat="server"></asp:checkbox></td>
 				</tr>
 				<tr>
-					<td align="center" colSpan="2"><asp:button id="btnUpdate" runat="server" Text="Update Management" ForeColor="White" BorderColor="#CE4848"
-							BackColor="#CE4848" onclick="btnUpdate_Click"></asp:button></td>
+					<td align="center" colSpan="2"><asp:button id="btnUpdate" runat="server" Text="Update Management" onclick="btnUpdate_Click"></asp:button></td>
 				</tr>
 			</table>
 			<uc1:footer id="Footer1" runat="server"></uc1:footer></form>

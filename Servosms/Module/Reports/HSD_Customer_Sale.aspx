@@ -108,8 +108,8 @@
 						<table valign=top align=center>
 							<tr>
 								<td colspan=6 valign=top align=center>
-									<P align="center"><FONT size="5" color="#00ffff"><input id=file1 type=file name="file1" style="BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove" size=70 onchange="NewCheck1(this);">&nbsp;<asp:button id="btnShow" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-							Text="Read Excel File" Width="100px" onclick="btnShow_Click"></asp:button>&nbsp;</font></p></td></tr>
+									<P align="center"><FONT size="5" color="#00ffff"><input id=file1 type=file name="file1" style="BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove" size=70 onchange="NewCheck1(this);">&nbsp;<asp:button id="btnShow" runat="server" 
+							Text="Read Excel File" Width="120px" onclick="btnShow_Click"></asp:button>&nbsp;</font></p></td></tr>
 				<TR>
 				<TD colspan=5 vAlign=top align="center">&nbsp;Period Name&nbsp;<asp:TextBox ID=txtName Runat=server Width=200 BorderStyle=Groove></asp:TextBox>&nbsp;<asp:DropDownList ID=dropName Runat=server AutoPostBack=True CssClass="dropdownlist" Visible=False onselectedindexchanged="dropName_SelectedIndexChanged"><asp:ListItem Value="Select">Select</asp:ListItem></asp:DropDownList>
 					&nbsp;Date From&nbsp;
@@ -118,13 +118,13 @@
 						align="absbottom" border="0"></A>&nbsp;Date To&nbsp;
 						<asp:textbox id="txtDateTo" runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist"
 						ReadOnly="True">&nbsp;</asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
-						align="absbottom" border="0"></A>&nbsp;&nbsp;<asp:button id="btnSave" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-							Text="Submit" Width="75px" onclick="btnSave_Click"></asp:button>&nbsp;<asp:button id="btnEdit" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+						align="absbottom" border="0"></A>&nbsp;&nbsp;<asp:button id="btnSave" runat="server" 
+							Text="Submit" Width="75px" onclick="btnSave_Click"></asp:button>&nbsp;<asp:button id="btnEdit" runat="server" 
 							Text="Edit" Width="75px" onclick="btnEdit_Click"></asp:button></TD>
 				</TR>
 				<tr>
-					<td colspan=5 vAlign="top" align="center" height="20"><asp:button id="btnPrint" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-							Text="Print" Width="75px" Visible=False onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+					<td colspan=5 vAlign="top" align="center" height="20"><asp:button id="btnPrint" runat="server" 
+							Text="Print" Width="75px" Visible=False onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" 
 							Text="Excel" Width="75px" Visible=False onclick="btnExcel_Click"></asp:button>&nbsp;</td></tr>
 				<%
 				if(flage==1)

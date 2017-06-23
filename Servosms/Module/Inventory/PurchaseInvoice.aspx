@@ -1137,8 +1137,8 @@
 											<TD><asp:textbox id="lblInvoiceNo" runat="server" Width="63px" ForeColor="Blue" ReadOnly="True" BorderStyle="None"
 													CssClass="fontstyle" Height="16px"></asp:textbox><asp:dropdownlist id="DropInvoiceNo" runat="server" Width="114px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropInvoiceNo_SelectedIndexChanged">
 													<asp:ListItem Value="Select">Select</asp:ListItem>
-												</asp:dropdownlist><asp:button id="BtnEdit" tabIndex="200" runat="server" ForeColor="White" Text="..." ToolTip="Edit Existing Record "
-													CausesValidation="False" BackColor="#CE4848" BorderColor="#CE4848" onclick="BtnEdit_Click"></asp:button></TD>
+												</asp:dropdownlist><asp:button id="BtnEdit" tabIndex="200" runat="server" Text="..." ToolTip="Edit Existing Record "
+													CausesValidation="False"  onclick="BtnEdit_Click"></asp:button></TD>
 										</TR>
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Invoice Date</TD>
@@ -1850,11 +1850,11 @@
 								<!--TD>Entry Date &amp; Time&nbsp;&nbsp;&nbsp;
 								</TD>
 								<TD style="WIDTH: 211px"><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
-								<TD align="right" colSpan="4"><asp:button id="btnSave" runat="server" Width="75px" ForeColor="White" Text="Save" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" ForeColor="White" Text="Print" CausesValidation="False"
-										BackColor="#CE4848" BorderColor="#CE4848" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec()" id="btnDelete" runat="server" Width="75px" ForeColor="White"
-										Text="Delete" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnDelete_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPreview" runat="server" Width="75px" ForeColor="White" Text="Preview" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnPreview_Click"></asp:button></TD>
+								<TD align="right" colSpan="4"><asp:button id="btnSave" runat="server" Width="75px" Text="Save" 
+										 onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px"  Text="Print" CausesValidation="False"
+										 onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec()" Text="Delete"  id="btnDelete" runat="server" Width="75px" 
+										  onclick="btnDelete_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPreview" runat="server" Width="75px"  Text="Preview"
+										 onclick="btnPreview_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 					</td>

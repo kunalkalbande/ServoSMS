@@ -183,7 +183,7 @@ bbnisys Technologies.
 							
 							<tr><td bgcolor=#fff7e7><font color=#8c4510><input type=hidden name=Total_cust value=<%=Prod_No%>></font></td></tr>
 							<tr><td colspan=4 align=right bgcolor=#fff7e7><font color=#8c4510><input type=hidden name=n1 onclick="Validate();"></font>
-							<asp:Button ID=Btnsubmit1 Text=submit Runat=server OnClick="update" Width=80 OnLoad="Page_Load" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<asp:Button ID=Btnsubmit1 Text=submit Runat=server OnClick="update" Width=80 OnLoad="Page_Load" ></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<td  align=right bgcolor=#fff7e7><font color=#8c4510>Select All</font></td><td align=center bgcolor=#fff7e7><input type=checkbox name=chkSelectAll onclick="selectAll();"></td></tr>
 							
 							

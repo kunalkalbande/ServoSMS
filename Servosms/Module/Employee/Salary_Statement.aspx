@@ -105,10 +105,10 @@
 							</TR>
 							<tr>
 								<td></td>
-								<TD colSpan="3"><asp:button id="btnShow" runat="server" Width="70px" Text="Show" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="White" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="70px" Text="Print" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="White" onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="70px" Text="Excel" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="White" onclick="btnExcel_Click"></asp:button></TD>
+								<TD colSpan="3"><asp:button id="btnShow" runat="server" Width="70px" Text="Show" 
+										onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="70px" Text="Print" 
+										onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="70px" Text="Excel" 
+										onclick="btnExcel_Click"></asp:button></TD>
 							</tr>
 						</TABLE>
 						<asp:datagrid id="GridMachineReport" style="TOP: 50px" runat="server" BorderStyle="None" BorderColor="#DEBA84"

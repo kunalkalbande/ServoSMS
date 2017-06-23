@@ -89,9 +89,7 @@
 						<P align="center"><FONT size="5" color="#00ffff"><br>
 								<br>
 								<INPUT id="ff1" style="BORDER-TOP-STYLE: groove;BORDER-RIGHT-STYLE: groove;BORDER-LEFT-STYLE: groove;BORDER-BOTTOM-STYLE: groove"
-									type="file" onchange="Check(this);" size="70" name="ff1">&nbsp;<asp:button id="btnRestore" runat="server" Width="90px" ForeColor="white" BorderColor="#CE4848"
-									BackColor="#CE4848" Text="Restore" onclick="btnRestore_Click"></asp:button>&nbsp;<asp:button id="btnBackup" runat="server" Width="90px" ForeColor="white" BorderColor="#CE4848"
-									BackColor="#CE4848" Text="Backup" onclick="btnBackup_Click"></asp:button></FONT></P>
+									type="file" onchange="Check(this);" size="70" name="ff1">&nbsp;<asp:button id="btnRestore" runat="server" Width="90px"  Text="Restore" onclick="btnRestore_Click"></asp:button>&nbsp;<asp:button id="btnBackup" runat="server" Width="90px"  Text="Backup" onclick="btnBackup_Click"></asp:button></FONT></P>
 						<br>
 						<br>
 						<P align="left"><FONT size="5"><FONT color="black" size="2"><STRONG>&nbsp;&nbsp;&nbsp;<U>Remark:</U></STRONG>

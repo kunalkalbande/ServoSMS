@@ -155,10 +155,8 @@
 								<td><asp:textbox id="txtDateTo" runat="server" ReadOnly="True" Width="110px" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></td>
-								<td colSpan="4"><asp:button id="btnview" runat="server" Width="60px" ForeColor="white" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="View" onclick="btnview_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="60px" ForeColor="white" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Print" onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" ForeColor="white" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Excel" onclick="btnExcel_Click"></asp:button></td>
+								<td colSpan="4"><asp:button id="btnview" runat="server" Width="60px"  Text="View" onclick="btnview_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="60px"  Text="Print" onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" 
+										Text="Excel" onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 							<tr vAlign="top">
 								<td align="center">Search By</td>
@@ -171,8 +169,9 @@
 										<asp:ListItem Value="SSR">SSR</asp:ListItem>
 										<asp:ListItem Value="District">District</asp:ListItem>
 										<asp:ListItem Value="Customer Type">Customer Type</asp:ListItem>
-									</asp:dropdownlist>&nbsp;&nbsp;Option</td>
-								<td colSpan="2"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
+									</asp:dropdownlist>&nbsp;&nbsp;</td>
+                                <td align="center">Option</td>
+								<td  colSpan="2"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 										onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnview)"
 										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 180px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"

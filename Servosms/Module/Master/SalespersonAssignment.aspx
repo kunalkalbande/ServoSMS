@@ -41,19 +41,19 @@
 									<TD><asp:listbox id="Listbeat" runat="server" Width="350px" Height="160px" SelectionMode="Multiple"
 											Font-Size="8pt"></asp:listbox></TD>
 									<TD>
-										<P><asp:button id="btnIn" runat="server" Width="50px" Font-Bold="True" ForeColor="White" BorderColor="#CE4848"
-												BackColor="#CE4848" CausesValidation="False" Text=">" onclick="btnIn_Click"></asp:button></P>
-										<P dir="ltr" align="justify"><asp:button id="btnout" runat="server" Width="50px" Font-Bold="True" ForeColor="White" BorderColor="#CE4848"
-												BackColor="#CE4848" CausesValidation="False" Text="<" onclick="btnout_Click"></asp:button></P>
-										<P><asp:button id="btn1" runat="server" Width="50px" Height="25px" Font-Bold="True" ForeColor="White"
-												BorderColor="#CE4848" BackColor="#CE4848" CausesValidation="False" Text=">>" onclick="btn1_Click"></asp:button></P>
+										<P><asp:button id="btnIn" runat="server" Width="50px" Font-Bold="True" 
+												 CausesValidation="False" Text=">" onclick="btnIn_Click"></asp:button></P>
+										<P dir="ltr" align="justify"><asp:button id="btnout" runat="server" Width="50px" Font-Bold="True" 
+												 CausesValidation="False" Text="<" onclick="btnout_Click"></asp:button></P>
+										<P><asp:button id="btn1" runat="server" Width="50px" Height="25px" Font-Bold="True" 
+												 CausesValidation="False" Text=">>" onclick="btn1_Click"></asp:button></P>
 									</TD>
 									<TD><asp:listbox id="Listassibeat" runat="server" CssClass="Dropdownlist" Width="350px" Height="160px"
 											SelectionMode="Multiple"></asp:listbox></TD>
 								</TR>
 								<TR>
-									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="75px" ForeColor="White" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Submit" onclick="btnSubmit_Click"></asp:button></TD>
+									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="75px" 
+											 Text="Submit" onclick="btnSubmit_Click"></asp:button></TD>
 								</TR>
 								<TR>
 									<TD colSpan="3"><asp:validationsummary id="vsShiftAssignment" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></TD>

@@ -1563,8 +1563,8 @@
 							</TR>
 							<TR>
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
-								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" ForeColor="White" Text="Print" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="Button1_Click"></asp:button></TD>
+								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px"  Text="Print" 
+										 onclick="Button1_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

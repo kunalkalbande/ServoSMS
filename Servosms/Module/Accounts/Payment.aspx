@@ -87,7 +87,7 @@
 											style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 300px; HEIGHT: 0px" multiple name="DropProdName"></select></div>
 								</td>
 								<td><asp:button id="btnEdit1" runat="server" Width="20px" CausesValidation="False" Text="..." ToolTip="Click here for edit"
-										BackColor="#CE4848" BorderColor="#CE4848" ForeColor="White" Height="20px" onclick="btnEdit1_Click"></asp:button></td>
+										 Height="20px" onclick="btnEdit1_Click"></asp:button></td>
 							</TR>
 							<tr>
 								<td>Date</td>
@@ -131,11 +131,11 @@
 							</TR>
 							<TR>
 								<td></td>
-								<TD align="left" colSpan="3"><asp:button id="btnSave" runat="server" Width="75px" Text="Save" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="White" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="75px" Text="Edit" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="White" onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnDelete" runat="server" Width="75px" Text="Delete" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="White" onclick="btnDelete_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" Text="Print" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="White" onclick="btnPrint_Click"></asp:button></TD>
+								<TD align="left" colSpan="3"><asp:button id="btnSave" runat="server" Width="75px" Text="Save" 
+										 onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="75px" Text="Edit" 
+										 onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnDelete" runat="server" Width="75px" Text="Delete" 
+										 onclick="btnDelete_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" Text="Print" 
+										 onclick="btnPrint_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></TD>

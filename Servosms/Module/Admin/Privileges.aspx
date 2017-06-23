@@ -1357,9 +1357,9 @@
 									</TD>
 								</TR>
 								<TR>
-									<TD align="center"><asp:button id="btnAllocate" runat="server" ForeColor="white" Text="Allocate Privileges" BackColor="#CE4848"
-											BorderColor="#CE4848" onclick="btnAllocate_Click"></asp:button><asp:button id="btnSave" runat="server" Width="80px" ForeColor="white" Text="Save" BackColor="#CE4848"
-											BorderColor="#CE4848" onclick="btnSave_Click"></asp:button></TD>
+									<TD align="center"><asp:button id="btnAllocate" runat="server" Text="Allocate Privileges" onclick="btnAllocate_Click"></asp:button>
+                                                       <asp:button id="btnSave" runat="server" Width="80px" Text="Save" onclick="btnSave_Click"></asp:button>
+								    </TD>
 								</TR>
 							</TABLE>
 						</td>

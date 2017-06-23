@@ -237,8 +237,8 @@ function CheckReceipt(t)
 				</TR>
 				<TR>
 					<TD></TD>
-					<TD colSpan="3">The sum of Rupees&nbsp;&nbsp;<asp:textbox id="lblAmountinWords" Width="50px" Runat="server" CssClass="dropdownlist" ForeColor="#0000C0"
-							BorderStyle="None" ReadOnly="True"></asp:textbox>&nbsp;in&nbsp;Full / 
+					<TD colSpan="3">The sum of Rupees&nbsp;&nbsp;<asp:textbox id="lblAmountinWords" Width="80" Runat="server" CssClass="dropdownlist" ForeColor="#0000C0"
+							BorderStyle="Groove" ReadOnly="True"></asp:textbox>&nbsp;in&nbsp;Full / 
 						Part&nbsp;&nbsp;payment against Bill details given on account of your supply.</TD>
 					<TD style="HEIGHT: 20px"></TD>
 				</TR>
@@ -345,7 +345,7 @@ function CheckReceipt(t)
 											<TD height="17">&nbsp;</TD>
 										</TR>
 										<TR>
-											<TD align="right">&nbsp;&nbsp;&nbsp;<asp:textbox id="txtCr" runat="server" Width="31px" CssClass="FontStyle" BorderStyle="Groove"
+											<TD align="right">&nbsp;&nbsp;&nbsp;<asp:textbox id="txtCr" runat="server" Width="96px" CssClass="FontStyle" BorderStyle="Groove"
 													ReadOnly="True"></asp:textbox><asp:textbox id="txtFinalDues" runat="server" Width="96px" CssClass="FontStyle" BorderStyle="Groove"
 													ReadOnly="True"></asp:textbox></TD>
 										</TR>
@@ -364,13 +364,13 @@ function CheckReceipt(t)
 										ReadOnly="True"></asp:textbox></TD>
 								<TD align="right"><asp:textbox id="Textbox1" runat="server" Width="50%" CssClass="FontStyle" BorderStyle="Groove"
 										ReadOnly="True"></asp:textbox></TD>
-								<TD align="right"><asp:textbox id="Textbox3" runat="server" Width="31px" CssClass="FontStyle" BorderStyle="Groove"
+								<TD align="right"><asp:textbox id="Textbox3" runat="server" Width="96px" CssClass="FontStyle" BorderStyle="Groove"
 										ReadOnly="True"></asp:textbox><asp:textbox id="Textbox2" runat="server" Width="96px" CssClass="DropDownList" BorderStyle="Groove"
 										ReadOnly="True"></asp:textbox></TD>
 							</TR>
 							<tr>
 								<td align="center">Narration</td>
-								<td colSpan="3"><asp:textbox id="txtNar" Width="100%" Runat="server" CssClass="FontStyle" Height="40" BorderStyle="Groove"
+								<td colSpan="3"><asp:textbox id="txtNar" Width="30%" Runat="server" CssClass="FontStyle" Height="20" BorderStyle="Groove"
 										MaxLength="149"></asp:textbox></td>
 							</tr>
 						</TABLE>
@@ -379,11 +379,10 @@ function CheckReceipt(t)
 				</tr>
 				<TR>
 					<TD></TD>
-					<TD align="right" colSpan="3"><asp:button id="btnSave" runat="server" Width="70px" ForeColor="White" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="70px" ForeColor="White" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="Edit" CausesValidation="False" onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="70px" ForeColor="White" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnDel" runat="server" Width="70px" ForeColor="White" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="Delete" onclick="btnDel_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+					<TD align="right" colSpan="3"><asp:button id="btnSave" runat="server" Width="70px" Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="70px" 
+							 Text="Edit" CausesValidation="False" onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="70px" 
+							 Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnDel" runat="server" Width="70px" 
+							 Text="Delete" onclick="btnDel_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 					<TD></TD>
 				</TR>
 				<TR>

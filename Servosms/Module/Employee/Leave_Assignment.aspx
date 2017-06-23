@@ -124,7 +124,7 @@
 					</td>
 				</tr>
 				<TR>
-					<td align=center><asp:Button ID=Btnsave Runat=server Text=Submit OnClick="save1" BackColor=#CE4848 BorderColor=#CE4848 ForeColor=white Width=80></asp:Button></td>
+					<td align=center><asp:Button ID=Btnsave Runat=server Text=Submit OnClick="save1" Width=80></asp:Button></td>
 				</TR>
 			</table><uc1:Footer id="Footer1" runat="server"></uc1:Footer>
 		</form>

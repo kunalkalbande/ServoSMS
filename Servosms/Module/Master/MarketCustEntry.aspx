@@ -51,8 +51,8 @@
 							<TBODY>
 								<tr>
 									<td colSpan="1">&nbsp;MC ID</td>
-									<td colSpan="7"><asp:Label id="txtid" runat="server" ForeColor=blue>Label</asp:Label><asp:dropdownlist id="dropid" runat="server" Width="80" AutoPostBack="True" Visible="False" CssClass="dropdownlist" onselectedindexchanged="dropid_SelectedIndexChanged"></asp:dropdownlist><asp:button id="btnselect" runat="server" Text="select" BackColor="#CE4848" BorderColor="#CE4848"
-											ForeColor="white" onclick="btnselect_Click"></asp:button>
+									<td colSpan="7"><asp:Label id="txtid" runat="server" ForeColor=blue>Label</asp:Label><asp:dropdownlist id="dropid" runat="server" Width="80" AutoPostBack="True" Visible="False" CssClass="dropdownlist" onselectedindexchanged="dropid_SelectedIndexChanged"></asp:dropdownlist><asp:button id="btnselect" runat="server" Text="select" 
+											    onclick="btnselect_Click"></asp:button>
 									</td>
 								</tr>
 								<tr>
@@ -134,10 +134,10 @@
 					<td colspan="2"></td>
 				</tr>
 				<tr>
-					<td align="center" colSpan="8"><asp:button id="btnadd" runat="server" Width="76px" Text="Add" Height="24px" BackColor="#CE4848"
-							BorderColor="#CE4848" ForeColor="white" onclick="btnadd_Click"></asp:button><asp:button id="btnedit" runat="server" Width="76px" Text="Edit" Height="24px" BackColor="#CE4848"
-							BorderColor="#CE4848" ForeColor="white" onclick="btnedit_Click"></asp:button><asp:button id="btndelete" runat="server" Width="76" Text="Delete" Height="24" BackColor="#CE4848"
-							BorderColor="#CE4848" ForeColor="white" onclick="btndelete_Click"></asp:button></td>
+					<td align="center" colSpan="8"><asp:button id="btnadd" runat="server" Width="76px" Text="Add" Height="24px" 
+							  onclick="btnadd_Click"></asp:button><asp:button id="btnedit" runat="server" Width="76px" Text="Edit" Height="24px" 
+							  onclick="btnedit_Click"></asp:button><asp:button id="btndelete" runat="server" Width="76" Text="Delete" Height="24" 
+							  onclick="btndelete_Click"></asp:button></td>
 				</tr>
 			</table></TD></TR></TBODY></TABLE>
 			<uc1:footer id="Footer1" runat="server"></uc1:footer></form>

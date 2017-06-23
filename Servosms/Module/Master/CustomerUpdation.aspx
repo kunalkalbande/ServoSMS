@@ -159,8 +159,7 @@ bbnisys Technologies.
 								style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 170px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropValue)" multiple name="DropProdName"
 								type="select-one"></select></div>
 					</td>
-					<td width="50%"><asp:button id="txtview" runat="server" Width="60px" Text="View" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" Height="24" onclick="txtview_Click"></asp:button></td>
+					<td width="50%"><asp:button id="txtview" runat="server" Width="60px" Text="View"  Height="24" onclick="txtview_Click"></asp:button></td>
 				</tr>
 				<%
 				if(chkPriv)
