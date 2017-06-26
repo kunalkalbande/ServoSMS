@@ -206,9 +206,9 @@ namespace Servosms.Module.Master
 		{
 			int dd,mm,yy;
 			string [] strarr = new string[3];
-			strarr=str.Split(new char[]{'/'},str.Length);
-			dd=Int32.Parse(strarr[1]);
-			mm=Int32.Parse(strarr[0]);
+			strarr=str.Split(new char[]{'-'},str.Length);
+			dd=Int32.Parse(strarr[0]);
+			mm=Int32.Parse(strarr[1]);
 			yy=Int32.Parse(strarr[2]);
 			DateTime dt=new DateTime(yy,mm,dd);
 			return(dt);

@@ -481,25 +481,7 @@
 			}
 		
 			/****************Comment following code date on 09.07.09 by vikas***********************/
-			/*if(arrType[1] != "")
-			{
-				var mainarr1 = new Array()
-				var hidarr1  = arrType[1]
-				if(arrType[1] == "Loose Oil" || arrType[1] == "Loose oil")
-				{
-					totol+=f1.txtQty<%=k%>.value*f1.txtsch<%=k%>.value
-					total_fleetoe+=f1.txtQty<%=k%>.value*f1.txtfoe<%=k%>.value
-					totolSP+=f1.txtQty<%=k%>.value*f1.txtTempschSP<%=k%>.value
-				}
-				else
-				{
-					mainarr1 = hidarr1.split("X")
-					if(document.Form1.tmpSchType<%=k%>.value=="%")
-						totol+=(document.Form1.txtAmount<%=k%>.value*f1.txtsch<%=k%>.value)/100
-					else
-						totol+=mainarr1[0]* mainarr1[1]*f1.txtQty<%=k%>.value*f1.txtsch<%=k%>.value
-				}
-			}*/
+			
 			/****************change in following code date on 09.07.09 by vikas***********************/
 			if(arrType[2] != "")
 			{
@@ -550,23 +532,7 @@
 			arrType[2]=""
 		}
 		/****************Coment following code date on 09.07.09 by vikas***********************/
-		/*if(arrType[1] != "")
-		{
-			var mainarr1 = new Array()
-			var hidarr1  = arrType[1]
-			
-			if(arrType[1] == "Loose Oil" || arrType[1] == "Loose oil")
-			{
-				qtyfoe+=f1.txtQty<%=k%>.value
-				qt+=f1.txtQty<%=k%>.value*f1.txtfoe<%=k%>.value
-			}
-			else
-			{
-				mainarr1 = hidarr1.split("X")				
-				qtyfoe+=mainarr1[0]* mainarr1[1]*f1.txtQty<%=k%>.value
-				qt+=mainarr1[0]* mainarr1[1]*f1.txtQty<%=k%>.value*f1.txtfoe<%=k%>.value
-			}
-		}*/
+		
 		/************************** add by vikas sharma 09.07.09 ***********************************/
 		if(arrType[2] != "")
 		{

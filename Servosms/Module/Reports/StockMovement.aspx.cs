@@ -654,7 +654,7 @@ namespace Servosms.Module.Reports
 			{
 				while(rdr.Read())
 				{
-					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@strtodate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
 					//dbobj.ExecProc(OprType.Insert,"sp_tempstockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
 					count++;
 				}
@@ -1102,7 +1102,7 @@ namespace Servosms.Module.Reports
 				object op=null;
 				while(rdr.Read())
 					//dbobj.ExecProc(OprType.Insert,"sp_tempstockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
-					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@strtodate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
 				rdr.Close();
 				if(RadSM.Checked)
 				{
@@ -1379,7 +1379,7 @@ namespace Servosms.Module.Reports
 			object op=null;
 			while(rdr.Read())
 				//dbobj.ExecProc(OprType.Insert,"sp_tempstockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
-				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@strtodate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
 			rdr.Close();
 			
 			if(RadSM.Checked)

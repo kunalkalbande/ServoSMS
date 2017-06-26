@@ -308,7 +308,7 @@ namespace Servosms.Module.Reports
 			// Calls the sp_stockmovement for each product and create one stkmv temp. table.
 			dbobj.SelectQuery(sql,ref rdr);
 			while(rdr.Read())
-				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@strtodate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
 			rdr.Close();
 			dbobj.SelectQuery("select * from stkmv",ref rdr);
 			if(rdr.HasRows)

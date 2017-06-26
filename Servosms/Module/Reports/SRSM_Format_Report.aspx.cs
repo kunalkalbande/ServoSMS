@@ -517,7 +517,7 @@ namespace Servosms.Module.Reports
 			{
 				while(rdr.Read())
 				{
-					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(GenUtil.str2MMDDYYYY(datefrom.ToString()),true).Date.ToShortDateString(),"@todate",getdate(GenUtil.str2MMDDYYYY(dateto.ToString()),true).Date.ToShortDateString());
+					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(GenUtil.str2MMDDYYYY(datefrom.ToString()),true).Date.ToShortDateString(),"@strtodate",getdate(GenUtil.str2MMDDYYYY(dateto.ToString()),true).Date.ToShortDateString());
 					count++;
 				}
 				rdr.Close();

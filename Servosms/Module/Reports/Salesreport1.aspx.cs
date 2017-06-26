@@ -152,8 +152,8 @@ namespace Servosms.Module.Reports
 				string cust_name="";
 				string s1="";
 				string s2="";
-				s1=txtDateTo.Text;
-				s2=txtDateFrom.Text;
+				s1=Request.Form["txtDateTo"].ToString();
+				s2= Request.Form["txtDateFrom"].ToString();
 				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
 				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);

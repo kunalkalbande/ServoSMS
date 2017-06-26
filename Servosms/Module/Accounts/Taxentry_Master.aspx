@@ -321,8 +321,8 @@ document.all.item('chkall').checked=false
 											</TD>
 										</TR>
 									</TABLE>
-									<asp:button id="btnAdd" accessKey="a" runat="server" Width="70px" Text="Add" ForeColor="White"
-										BorderColor="#CE4848" BackColor="#CE4848" onclick="Button2_Click"></asp:button><asp:button id="btnEdit" accessKey="e" runat="server" Width="70px" Text="Edit" ForeColor="White"
+									<asp:button id="btnAdd" accessKey="a" runat="server" Width="70px" Text="Add"
+									onclick="Button2_Click"></asp:button><asp:button id="btnEdit" accessKey="e" runat="server" Width="70px" Text="Edit" ForeColor="White"
 										BorderColor="#CE4848" BackColor="#CE4848" onclick="Button1_Click"></asp:button><asp:button id="btnDelete" accessKey="e" runat="server" Width="70px" Text="Delete" ForeColor="White"
 										BorderColor="#CE4848" BackColor="#CE4848" onclick="Button3_Click"></asp:button></TD>
 							</TR>

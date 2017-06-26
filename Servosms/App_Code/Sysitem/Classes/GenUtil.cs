@@ -97,8 +97,8 @@ namespace Servosms.Sysitem.Classes
 		{
 			if(!str.Trim().Equals(""))  
 			{
-				string[] strTokens = str.Split(new char[] {'/'},str.Length);
-				return strTokens[1] + "/" + strTokens[0] + "/" + strTokens[2];
+				string[] strTokens = str.IndexOf("-") > 0 ? str.Split(new char[] { '-' }, str.Length) : str.Split(new char[] { '/' }, str.Length);
+                return strTokens[0] + "/" + strTokens[1] + "/" + strTokens[2];
 			}
 			else
 				return "";
@@ -108,7 +108,7 @@ namespace Servosms.Sysitem.Classes
 		{
 			if(!str.Trim().Equals(""))  
 			{
-				string[] strTokens = str.Split(new char[] {'/'},str.Length);
+				string[] strTokens = str.Split(new char[] {'-'},str.Length);
 				/**********Add by vikas ******************/
 				string s=strTokens[1];
 				if(int.Parse(strTokens[1].ToString())<10)
@@ -117,7 +117,7 @@ namespace Servosms.Sysitem.Classes
 				}
 				s=strTokens[1];
 				/***********End*****************/
-				return strTokens[1] + "/" + strTokens[0] + "/" + strTokens[2];
+				return strTokens[0] + "/" + strTokens[1] + "/" + strTokens[2];
 			}
 			else
 				return "";
@@ -130,7 +130,8 @@ namespace Servosms.Sysitem.Classes
 		{
 			if(!str.Trim().Equals(""))  
 			{
-				string[] strTokens = str.Split(new char[] {'/'},str.Length);
+                
+				string[] strTokens = str.IndexOf("-")>0? str.Split(new char[] {'-'},str.Length): str.Split(new char[] { '/' }, str.Length);
 				return strTokens[1] + "/" + strTokens[0] + "/" + strTokens[2];
 			}
 			else

@@ -61,7 +61,7 @@
 				<tr>
 					<td align=center>
 						<table border=1 bordercolor="#DEBA84" cellpadding=0 cellspacing=0>
-							<asp:Panel Runat=server ID=panEmp>
+							<asp:Panel Runat=server ID=panEmp Visible="false">
 							<tr>
 							<td colspan=4>Attendance Date &nbsp;&nbsp;<asp:DropDownList Runat=server ID="DropEmp" AutoPostBack=True><asp:ListItem Value="Select">Select</asp:ListItem></asp:DropDownList>
 							<asp:CompareValidator ID=cv1 Runat=server ControlToValidate="DropEmp" ErrorMessage="Please Select The Date" ValueToCompare="Select" Operator=NotEqual>*</asp:CompareValidator>
@@ -71,7 +71,7 @@
 							<asp:Panel Runat=server ID="pandate">
 							<tr><td colspan=4>Attendance Date &nbsp;&nbsp;<asp:textbox id="txtdate" runat="server" Width="70px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.f1.txtdate);return false;"><IMG align=middle class="PopcalTrigger" alt="" src=../../HeaderFooter/DTPicker/calender_icon.jpg
-												align="absMiddle" border="0"></A>&nbsp;<asp:Button ID="btnView" Text=View Runat=server Width=80 CausesValidation=True onclick="btnView_Click"></asp:Button></td></tr>
+												align="absMiddle" border="0"></A>&nbsp;<asp:Button ID="btnView" Text=View Runat=server BackColor=#CE4848 BorderColor=#CE4848 ForeColor=white Width=80 CausesValidation=True onclick="btnView_Click"></asp:Button></td></tr>
 												</asp:Panel>
 							<tr>
 								<th width=60 align="center" bgcolor="#CE4848"><font color=white>Emp ID</font></th>
@@ -186,7 +186,7 @@
 					</td>
 				</tr>
 				<TR>
-					<td align=center><asp:Button ID=Btnsave Text=Submit Runat=server Width=80 CausesValidation=True onclick="Btnsave_Click"></asp:Button>&nbsp;&nbsp;&nbsp;<asp:Button ID="btnEdit" Text=Edit Runat=server OnClick="View"  Visible=False Width=70 CausesValidation=True></asp:Button></td>
+					<td align=center><asp:Button ID=Btnsave Text=Submit Runat=server BackColor=#CE4848 BorderColor=#CE4848 ForeColor=white Width=80 CausesValidation=True onclick="Btnsave_Click"></asp:Button>&nbsp;&nbsp;&nbsp;<asp:Button ID="btnEdit" Text=Edit Runat=server OnClick="View" BackColor=#CE4848 BorderColor=#CE4848 Visible=False ForeColor=white Width=70 CausesValidation=True></asp:Button></td>
 				</TR>
 				<tr><td><asp:ValidationSummary ID=vs1 Runat=server ShowMessageBox=True ShowSummary=False></asp:ValidationSummary></td></tr>
 				

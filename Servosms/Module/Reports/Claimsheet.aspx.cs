@@ -50,7 +50,9 @@ namespace Servosms.Module.Reports
 			try
 			{
 				uid=(Session["User_Name"].ToString());
-			}
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:claimsheet.aspx,Class:DBOperation_LETEST.cs,Method:page_load"+ ex.Message+"EXCEPTION"+uid);	
@@ -84,30 +86,29 @@ namespace Servosms.Module.Reports
 					}
 					#endregion 
 					grdLeg.Visible=false;
-					txtDateFrom.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
-					txtDateTo.Text=DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
-					//System.Data.SqlClient.SqlDataReader rdr1=null;
-					// Fetch store_in locations from products tables, if store_in not available then get the tank.
-					//					dbobj.SelectQuery("select distinct store_in from products",ref rdr);
-					//					while(rdr.Read())
-					//					{
-					//						if(Char.IsDigit(rdr["store_in"].ToString(),0))
-					//						{
-					//							dbobj.SelectQuery("select tank_id,tank_name,prod_name from tank where tank_id="+rdr["store_in"].ToString(),ref rdr1);
-					//							if(rdr1.Read())
-					//							{
-					//							
-					//								drpstore.Items.Add(rdr1["tank_name"].ToString()+":"+rdr1["prod_name"].ToString());					
-					//							}
-					//						}
-					//						else
-					//							drpstore.Items.Add(rdr["store_in"].ToString());					
-					//					}
+                  
+                    //System.Data.SqlClient.SqlDataReader rdr1=null;
+                    // Fetch store_in locations from products tables, if store_in not available then get the tank.
+                    //					dbobj.SelectQuery("select distinct store_in from products",ref rdr);
+                    //					while(rdr.Read())
+                    //					{
+                    //						if(Char.IsDigit(rdr["store_in"].ToString(),0))
+                    //						{
+                    //							dbobj.SelectQuery("select tank_id,tank_name,prod_name from tank where tank_id="+rdr["store_in"].ToString(),ref rdr1);
+                    //							if(rdr1.Read())
+                    //							{
+                    //							
+                    //								drpstore.Items.Add(rdr1["tank_name"].ToString()+":"+rdr1["prod_name"].ToString());					
+                    //							}
+                    //						}
+                    //						else
+                    //							drpstore.Items.Add(rdr["store_in"].ToString());					
+                    //					}
 
-			
-					//					drpstore.Items.Insert(0,"All");
-					//					dbobj.Dispose();
-				}
+
+                    //					drpstore.Items.Insert(0,"All");
+                    //					dbobj.Dispose();
+                }
 				catch(Exception ex)
 				{
 					CreateLogFiles.ErrorLog("Form:claimsheet.aspx,Class:DBOperation_LETEST.cs,Method:page_load().  EXCEPTION: "+ ex.Message+" User_ID: "+uid);	
@@ -463,7 +464,7 @@ namespace Servosms.Module.Reports
 			{
 				while(rdr.Read())
 				{
-					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(Request.Form["txtDateFrom"].ToString(), true).Date.ToShortDateString(),"@strtodate",getdate(Request.Form["txtDateTo"].ToString(), true).Date.ToShortDateString());
 					count++;
 				}
 				rdr.Close();
@@ -525,7 +526,7 @@ namespace Servosms.Module.Reports
 			else
 			{
 				grdLeg.Visible=false;
-				grdnewdata.Visible=false;
+				grdnewdata.Visible=false;http://localhost/Servosms/HeaderFooter/images/headersms1.jpg
 				MessageBox.Show("Data Not Available");
 			}
 			sqlcon.Dispose();
@@ -555,8 +556,9 @@ namespace Servosms.Module.Reports
 				dbobj.SelectQuery(sql,ref rdr);
 				object op=null;
 				while(rdr.Read())
-					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
-				rdr.Close();
+					dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(Request.Form["txtDateFrom"].ToString().Trim(),true).Date.ToShortDateString(),"@strtodate",getdate(Request.Form["txtDateTo"].ToString().Trim(),true).Date.ToShortDateString());
+
+                rdr.Close();
 				
 				//sql="select * from stkmv s,products p where s.Prod_id=p.Prod_id";
 				sql="select * from stkmv s,products p where p.prod_id=s.prod_id and (op<>0 or sales<>0 or rcpt<>0 or cs<>0 or salesfoc<>0 or rcptfoc<>0)";
@@ -697,7 +699,7 @@ namespace Servosms.Module.Reports
 			dbobj.SelectQuery(sql,ref rdr);
 			object op=null;
 			while(rdr.Read())
-				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(Request.Form["txtDateFrom"].ToString(),true).Date.ToShortDateString(),"@strtodate",getdate(Request.Form["txtDateTo"].ToString(),true).Date.ToShortDateString());
 			rdr.Close();
 			/*******************/
 			//sql="select * from stkmv s, products p where s.Prod_id=p.Prod_id";
@@ -749,7 +751,7 @@ namespace Servosms.Module.Reports
 			dbobj.SelectQuery(sql,ref rdr);
 			object op=null;
 			while(rdr.Read())
-				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@fromdate",getdate(txtDateFrom.Text,true).Date.ToShortDateString(),"@todate",getdate(txtDateTo.Text,true).Date.ToShortDateString());
+				dbobj.ExecProc(OprType.Insert,"sp_stockmovement",ref op,"@id",Int32.Parse(rdr["productid"].ToString()),"@strfromdate",getdate(Request.Form["txtDateFrom"].ToString(),true).Date.ToShortDateString(),"@strtodate",getdate(Request.Form["txtDateTo"].ToString(),true).Date.ToShortDateString());
 			rdr.Close();
 
 			sql="select * from stkmv s,products p where p.prod_id=s.prod_id and (op<>0 or sales<>0 or rcpt<>0 or cs<>0 or salesfoc<>0 or rcptfoc<>0)";
@@ -853,7 +855,7 @@ namespace Servosms.Module.Reports
 			//coment by vikas 2.11.2012 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and  cast(floor(cast(o.datefrom as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
 			//coment by vikas 5.3.2013 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and  (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"')";     //Add by vikas 2.11.2012
 			
-			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and  '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
+			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and  '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
 			// Calls the sp_stockmovement for each product and create one stkmv temp. table.
 			dbobj.SelectQuery(sql1,ref rdr);
 			if(rdr.Read())
@@ -880,7 +882,7 @@ namespace Servosms.Module.Reports
 			}
 			rdr.Close();
 			
-			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry SP(LTRSP Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and  '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
+			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry SP(LTRSP Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and  '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
 			dbobj.SelectQuery(sql1,ref rdr);
 			if(rdr.Read())
 			{
@@ -913,7 +915,7 @@ namespace Servosms.Module.Reports
 			//coment by vikas 2.11.2012 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and  cast(floor(cast(o.datefrom as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
 			//string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and  (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"')";     //Add by vikas 2.11.2012
 
-			string sql1="select sum(quant) Total_qty,Pack_Type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and ct.group_name like '%Ro%' and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim()) +"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"') group by pack_type";
+			string sql1="select sum(quant) Total_qty,Pack_Type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and ct.group_name like '%Ro%' and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"') group by pack_type";
 
 			// Calls the sp_stockmovement for each product and create one stkmv temp. table.
 			dbobj.SelectQuery(sql1,ref rdr);
@@ -960,7 +962,7 @@ namespace Servosms.Module.Reports
 			}
 			rdr.Close();
 			
-			string sql1="select sum(quant) Total_qty,pack_type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and (ct.group_name like '%Bazzar%' or ct.group_name like '%OE%' or ct.group_name like '%Fleet%') and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim()) +"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"') group by pack_type ";
+			string sql1="select sum(quant) Total_qty,pack_type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and (ct.group_name like '%Bazzar%' or ct.group_name like '%OE%' or ct.group_name like '%Fleet%') and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"') group by pack_type ";
 			
 			//(ct.group_name like '%Bazzar%' or ct.group_name like '%OE%' or ct.group_name like '%Fleet%')
 			// Calls the sp_stockmovement for each product and create one stkmv temp. table.
@@ -999,7 +1001,7 @@ namespace Servosms.Module.Reports
 			/****************Add by vikas 5.3.2013*******************************/
 			sale=0;
 			SqlDataReader rdr=null;
-			string sql1="select sum(quant) Qty,Total_qty,pack_type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim()) +"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"') group by pack_type,Total_qty ";
+			string sql1="select sum(quant) Qty,Total_qty,pack_type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"') group by pack_type,Total_qty ";
 			dbobj.SelectQuery(sql1,ref rdr);
 			if(rdr.Read())
 			{
@@ -1024,7 +1026,7 @@ namespace Servosms.Module.Reports
 		{
 			sale=0;
 			SqlDataReader rdr=null;
-			string sql1="select sum(quant) Qty,Total_qty,pack_type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim()) +"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"') group by pack_type,Total_qty ";
+			string sql1="select sum(quant) Qty,Total_qty,pack_type from vw_SaleBook sb,customertype ct where sb.cust_type=ct.customertypename and prod_id="+prodid+" and  (cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' or cast(floor(cast(invoice_date as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"') group by pack_type,Total_qty ";
 			dbobj.SelectQuery(sql1,ref rdr);
 			if(rdr.Read())
 			{
@@ -1163,7 +1165,7 @@ namespace Servosms.Module.Reports
 			//coment by vikas 2.11.2012 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and  cast(floor(cast(o.datefrom as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
 			
 			//coment by vikas 5.3.2013 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and Group_Name like '%Bazzar%' and schname='Secondry(LTR Scheme)' and  (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"')";     //Add by vikas 2.11.2012
-			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and Group_Name like '%Bazzar%' and schname='Secondry(LTR Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and  '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
+			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and Group_Name like '%Bazzar%' and schname='Secondry(LTR Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and  '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
 			// Calls the sp_stockmovement for each product and create one stkmv temp. table.
 			dbobj.SelectQuery(sql1,ref rdr);
 			if(rdr.Read())
@@ -1199,7 +1201,7 @@ namespace Servosms.Module.Reports
 			//string sql1="select discount from oilscheme o where prodid='"+prodid+"' and  cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
 			//coment by vikas 2.11.2012 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and schname='Secondry(LTR Scheme)' and  cast(floor(cast(o.datefrom as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
 			//Coment By vikas 5.3.2013 string sql1="select discount from oilscheme o where prodid='"+prodid+"' and Group_Name like '%Ro%' and schname='Secondry(LTR Scheme)' and  (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"')";     //Add by vikas 2.11.2012
-			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and Group_Name like '%Ro%' and schname='Secondry(LTR Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and  '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
+			string sql1="select discount from oilscheme o where prodid='"+prodid+"' and Group_Name like '%Ro%' and schname='Secondry(LTR Scheme)' and cast(floor(cast(datefrom as float)) as datetime)<= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())+"' and  '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString().Trim()) +"' <= cast(floor(cast(dateto as float)) as datetime)"; 
 			// Calls the sp_stockmovement for each product and create one stkmv temp. table.
 			dbobj.SelectQuery(sql1,ref rdr);
 			if(rdr.Read())
@@ -1311,7 +1313,7 @@ namespace Servosms.Module.Reports
 				{
 					double tot=0;
 					InventoryClass obj = new InventoryClass();
-					SqlDataReader rdr = obj.GetRecordSet("select sum(InQty),total_qty from stock_adjustment,products where Inprod_id=prod_id and InProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' group by prod_id,total_qty");
+					SqlDataReader rdr = obj.GetRecordSet("select sum(InQty),total_qty from stock_adjustment,products where Inprod_id=prod_id and InProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString())+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString())+"' group by prod_id,total_qty");
 					if(rdr.Read())
 					{
 						if(rdr.GetValue(0).ToString()!="")
@@ -1376,7 +1378,7 @@ namespace Servosms.Module.Reports
 					{
 						double tot=0;
 						InventoryClass obj = new InventoryClass();
-						SqlDataReader rdr = obj.GetRecordSet("select sum(InQty),total_qty from stock_adjustment,products where Inprod_id=prod_id and InProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' group by prod_id,total_qty");
+						SqlDataReader rdr = obj.GetRecordSet("select sum(InQty),total_qty from stock_adjustment,products where Inprod_id=prod_id and InProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString())+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString())+"' group by prod_id,total_qty");
 						if(rdr.Read())
 						{
 							if(rdr.GetValue(0).ToString()!="")
@@ -1494,7 +1496,7 @@ namespace Servosms.Module.Reports
 				{
 					double tot=0;
 					InventoryClass obj = new InventoryClass();
-					SqlDataReader rdr = obj.GetRecordSet("select sum(OutQty),total_qty from stock_adjustment,products where Outprod_id=prod_id and OutProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' group by prod_id,total_qty");
+					SqlDataReader rdr = obj.GetRecordSet("select sum(OutQty),total_qty from stock_adjustment,products where Outprod_id=prod_id and OutProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString())+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString())+"' group by prod_id,total_qty");
 					if(rdr.Read())
 					{
 						if(rdr.GetValue(0).ToString()!="")
@@ -1569,7 +1571,7 @@ namespace Servosms.Module.Reports
 					{
 						double tot=0;
 						InventoryClass obj = new InventoryClass();
-						SqlDataReader rdr = obj.GetRecordSet("select sum(OutQty),total_qty from stock_adjustment,products where Outprod_id=prod_id and OutProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' group by prod_id,total_qty");
+						SqlDataReader rdr = obj.GetRecordSet("select sum(OutQty),total_qty from stock_adjustment,products where Outprod_id=prod_id and OutProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString())+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString())+"' group by prod_id,total_qty");
 						if(rdr.Read())
 						{
 							if(rdr.GetValue(0).ToString()!="")
@@ -1726,7 +1728,7 @@ namespace Servosms.Module.Reports
 		{
 			double tot=0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select sum(InQty),total_qty from stock_adjustment,products where prod_id=inprod_id and InProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' group by prod_id,total_qty");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(InQty),total_qty from stock_adjustment,products where prod_id=inprod_id and InProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString())+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString())+"' group by prod_id,total_qty");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")
@@ -1744,7 +1746,7 @@ namespace Servosms.Module.Reports
 		{
 			double tot=0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select sum(OutQty),total_qty from stock_adjustment,products where prod_id=outprod_id and OutProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' group by prod_id,total_qty");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(OutQty),total_qty from stock_adjustment,products where prod_id=outprod_id and OutProd_ID='"+Prod_ID+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString())+"' and cast(floor(cast(cast(entry_time as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString())+"' group by prod_id,total_qty");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")
