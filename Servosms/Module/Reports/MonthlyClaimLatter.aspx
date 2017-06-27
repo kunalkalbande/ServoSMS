@@ -82,8 +82,8 @@
 									<asp:ListItem Value="2019">2019</asp:ListItem>
 									<asp:ListItem Value="2020">2020</asp:ListItem>
 								</asp:DropDownList>&nbsp; 
-<asp:Button id=btnView runat="server" Text="View" Width="70px" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" onclick="btnView_Click"></asp:Button>&nbsp;&nbsp; 
-<asp:Button id=btnPrint runat="server" Text="Print" Width="70px" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" onclick="btnPrint_Click"></asp:Button></TD></TR>
+<asp:Button id=btnView runat="server" Text="View" Width="70px"  onclick="btnView_Click"></asp:Button>&nbsp;&nbsp; 
+<asp:Button id=btnPrint runat="server" Text="Print" Width="70px" onclick="btnPrint_Click"></asp:Button></TD></TR>
 					</asp:panel>
 					<%
 		InventoryClass obj = new InventoryClass();

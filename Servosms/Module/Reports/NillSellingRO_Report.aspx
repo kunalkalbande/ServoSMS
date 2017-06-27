@@ -120,10 +120,10 @@
 									<asp:RadioButton ID="RadNill" CssClass="dropdownlist" GroupName="Customer" Runat="server" Text="Nill"
 										Checked="True"></asp:RadioButton>&nbsp;
 									<asp:RadioButton ID="RadSele" CssClass="dropdownlist" GroupName="Customer" Runat="server" Text="Selling"></asp:RadioButton>&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="btnView" Width="70" Runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-										Text="View" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" Width="70" Runat="server" ForeColor="white" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Width="70" Runat="server" ForeColor="white" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Excel" onclick="btnExcel_Click"></asp:button></td>
+									<asp:button id="btnView" Width="70" Runat="server" 
+										Text="View" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" Width="70" Runat="server" 
+										Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Width="70" Runat="server" 
+										Text="Excel" onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 						</table>
 					</td>

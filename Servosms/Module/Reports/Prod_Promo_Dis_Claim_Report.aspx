@@ -39,10 +39,10 @@
 									<td><asp:textbox id="txtDateTo" runat="server" ReadOnly="True" Width="70px" BorderStyle="Groove"
 											CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A></td>
-									<td colSpan="3">&nbsp;&nbsp;<asp:button id="btnview" runat="server" Width="60px" Text="View" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnview_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="60px" Text="Print" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnExcel_Click"></asp:button></td>
+									<td colSpan="3">&nbsp;&nbsp;<asp:button id="btnview" runat="server" Width="60px" Text="View" 
+											onclick="btnview_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="60px" Text="Print"
+											onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel"
+											 onclick="btnExcel_Click"></asp:button></td>
 								</tr>
 								<tr>
 									<td colspan="7">Scheme Name&nbsp;&nbsp;<asp:DropDownList CssClass="dropdownlist" Width="250px" ID="DropSchemName" Runat="server"></asp:DropDownList></td>

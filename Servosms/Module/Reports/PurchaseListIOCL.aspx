@@ -51,11 +51,11 @@
 									<TD vAlign="top"><asp:textbox id="txtDateTo" runat="server" Width="110px" CssClass="fontstyle" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A></TD>
-									<TD align="center" colSpan="11"><asp:button id="cmdrpt" runat="server" Width="60px" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+									<TD align="center" colSpan="11"><asp:button id="cmdrpt" runat="server" Width="60px" 
 											Text="View " onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;&nbsp;
-										<asp:button id="BtnPrint" Width="60px" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+										<asp:button id="BtnPrint" Width="60px" 
 											Text="Print" Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;
-										<asp:button id="btnExcel" Width="60px" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+										<asp:button id="btnExcel" Width="60px" 
 											Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></TD>
 								</TR>
 							</TABLE>

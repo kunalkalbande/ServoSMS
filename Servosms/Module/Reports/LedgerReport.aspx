@@ -85,12 +85,12 @@
 								</TR>
 								<TR>
 								<tr>
-									<TD align="center" colSpan="11"><asp:button id="cmdrpt" runat="server" Width="60px" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+									<TD align="center" colSpan="11"><asp:button id="cmdrpt" runat="server" Width="60px" 
 											Text="View " onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;&nbsp;
-										<asp:button id="BtnPrint" Width="60px" Runat="server" ForeColor="white" BackColor="#CE4848"
-											BorderColor="#CE4848" Text="Print" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;
-										<asp:button id="btnExcel" Width="60px" Runat="server" ForeColor="white" BackColor="#CE4848"
-											BorderColor="#CE4848" Text="Excel" onclick="btnExcel_Click"></asp:button></TD>
+										<asp:button id="BtnPrint" Width="60px" Runat="server" 
+											 Text="Print" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;
+										<asp:button id="btnExcel" Width="60px" Runat="server" 
+											 Text="Excel" onclick="btnExcel_Click"></asp:button></TD>
 								</tr>
 							</TABLE>
 						</TD>

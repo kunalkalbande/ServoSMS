@@ -40,11 +40,11 @@
 				<TR>
 					<TH align="center" valign="top">
 						<font color="#ce4848">Market Potential Report</font><hr>
-						<asp:Button id="btnview" runat="server" Text="View  " Width="60px" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnview_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;
-						<asp:Button id="btnprint" runat="server" Text="Print " Width="60px" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnprint_Click"></asp:Button>&nbsp;&nbsp;&nbsp;
-						<asp:Button id="btnExcel" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+						<asp:Button id="btnview" runat="server" Text="View  " Width="60px" 
+							 onclick="btnview_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;
+						<asp:Button id="btnprint" runat="server" Text="Print " Width="60px" 
+							 onclick="btnprint_Click"></asp:Button>&nbsp;&nbsp;&nbsp;
+						<asp:Button id="btnExcel" runat="server" 
 							Width="60px" Text="Excel" onclick="btnExcel_Click"></asp:Button>
 					</TH>
 				</TR>

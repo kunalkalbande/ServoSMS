@@ -59,7 +59,7 @@
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist>
 									<asp:Button id="btnEdit1" runat="server" Width="24px" Text="..." ToolTip="Click here for edit"
-										CausesValidation="False" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848" onclick="btnEdit1_Click"></asp:Button></TD>
+										CausesValidation="False"  onclick="btnEdit1_Click"></asp:Button></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle's Type</TD>
@@ -222,12 +222,11 @@
 								</TD>
 							</TR>
 							<TR>
-								<TD align="center" colSpan="5"><asp:button id="btnSave" runat="server" Text="Save" Width="70px" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:Button id="btnEdit" runat="server" Width="70px" Text="Edit" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnEdit_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:Button id="btnDelete" runat="server" Text="Delete" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" Width="70px" onclick="btnDelete_Click"></asp:Button></TD>
+								<TD align="center" colSpan="5"><asp:button id="btnSave" runat="server" Text="Save" Width="70px" 
+										 onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:Button id="btnEdit" runat="server" Width="70px" Text="Edit" 
+										 onclick="btnEdit_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:Button id="btnDelete" runat="server" Text="Delete"  Width="70px" onclick="btnDelete_Click"></asp:Button></TD>
 							</TR>
 							<tr>
 								<td colSpan="5"><asp:validationsummary id="vsVehicle" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

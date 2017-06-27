@@ -89,7 +89,7 @@
 					</TH>
 				</TR>
 				<tr>
-					<td vAlign="top" align="center" height="20"><asp:button id="btnShow" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+					<td vAlign="top" align="center" height="20"><asp:button id="btnShow" runat="server" 
 							Text="Submit" Width="75px" CausesValidation="True" onclick="btnShow_Click"></asp:button></td>
 				</tr>
 				<tr>

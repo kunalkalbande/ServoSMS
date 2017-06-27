@@ -142,10 +142,10 @@ function CheckSearchOption(t)
 												style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 190px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropValue)" multiple name="DropProdName"
 												type="select-one"></select></div>
 									</td>
-									<td align="right" colSpan="2"><asp:button id="cmdrpt" runat="server" Width="74px" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="View " onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;<asp:button id="BtnPrint" Width="74px" Runat="server" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Print" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="74px" Runat="server" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" Text="Excel" onclick="btnExcel_Click"></asp:button></td>
+									<td align="right" colSpan="2"><asp:button id="cmdrpt" runat="server" Width="74px" 
+											 Text="View " onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;<asp:button id="BtnPrint" Width="74px" Runat="server" 
+											 Text="Print" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="74px" Runat="server" 
+											 Text="Excel" onclick="btnExcel_Click"></asp:button></td>
 								</TR>
 							</TABLE>
 						</TD>

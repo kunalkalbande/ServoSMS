@@ -137,10 +137,10 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="right" colSpan="9">&nbsp;&nbsp;<asp:button id="btnView" Width="60" Runat="server" Text="Search" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" Width="60" Runat="server" Text="Print" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="60" Runat="server" Text="Excel" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnExcel_Click"></asp:button>
+								<td align="right" colSpan="9">&nbsp;&nbsp;<asp:button id="btnView" Width="60" Runat="server" Text="Search" 
+										 onclick="btnView_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" Width="60" Runat="server" Text="Print" 
+										 onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="60" Runat="server" Text="Excel"
+										 onclick="btnExcel_Click"></asp:button>
 								</td>
 							</tr>
 						</table>

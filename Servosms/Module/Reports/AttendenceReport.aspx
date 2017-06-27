@@ -99,12 +99,12 @@
 										<asp:ListItem Value="2029">2029</asp:ListItem>
 										<asp:ListItem Value="2030">2030</asp:ListItem>
 									</asp:dropdownlist></td>
-								<td align="center"><asp:button id="btnView" Runat="server" Width="70" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" Text="View" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnPrint" Runat="server" Width="70" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnExcel" Runat="server" Width="70" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" Text="Excel" onclick="btnExcel_Click"></asp:button></td>
+								<td align="center"><asp:button id="btnView" Runat="server" Width="70" 
+										 Text="View" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnPrint" Runat="server" Width="70" 
+										 Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnExcel" Runat="server" Width="70" 
+										 Text="Excel" onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 						</table>
 					</td>

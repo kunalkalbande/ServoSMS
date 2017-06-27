@@ -68,12 +68,12 @@
 								<td align="right" colSpan="4"><asp:radiobutton id="RadSM" Runat="server" Text="StockMovement" GroupName="Stock" Checked="True"></asp:radiobutton>&nbsp;&nbsp;&nbsp;&nbsp;<asp:radiobutton id="RadSJ" Runat="server" Text="SJ" GroupName="Stock" oncheckedchanged="RadSJ_CheckedChanged"></asp:radiobutton>
 									&nbsp;&nbsp;&nbsp;<asp:checkbox id="chkZeroBal" Runat="server"></asp:checkbox>&nbsp;&nbsp;Zero&nbsp;Stock&nbsp; 
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="cmdrpt" runat="server" Width="60px" Text="View" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" onclick="cmdrpt_Click"></asp:button>&nbsp;
-									<asp:button id="prnButton" runat="server" Width="60px" Text=" Print " BorderColor="#CE4848"
-										BackColor="#CE4848" ForeColor="white" onclick="prnButton_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" onclick="btnExcel_Click"></asp:button></td>
+									<asp:button id="cmdrpt" runat="server" Width="60px" Text="View" 
+										 onclick="cmdrpt_Click"></asp:button>&nbsp;
+									<asp:button id="prnButton" runat="server" Width="60px" Text=" Print " 
+										 onclick="prnButton_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" 
+										 onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 						</TABLE>
 					</TD>

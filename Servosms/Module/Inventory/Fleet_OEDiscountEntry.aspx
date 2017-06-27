@@ -56,7 +56,8 @@ type=hidden name=tempCustOE runat="server">
         <TBODY>
         <TR>
           <TD colSpan=3>FO/OE ID&nbsp;&nbsp;&nbsp;<asp:label id=lblschid runat="server" Width="54px" ForeColor="#000099"></asp:label> 
-<asp:dropdownlist id=dropschid runat="server" Width="250px" AutoPostBack="True" CssClass="dropdownlist" onselectedindexchanged="dropschid_SelectedIndexChanged"></asp:dropdownlist>&nbsp;<asp:comparevalidator id=cv1 Runat="server" Operator="NotEqual" ErrorMessage="Please Select The FOE ID" ControlToValidate="dropschid" ValueToCompare="Select">*</asp:comparevalidator><asp:button id=btschid runat="server" Width="20px" ForeColor="White" CausesValidation="False" Text="..." BackColor="#CE4848" BorderColor="#CE4848" onclick="btschid_Click"></asp:button>&nbsp;&nbsp; 
+<asp:dropdownlist id=dropschid runat="server" Width="250px" AutoPostBack="True" CssClass="dropdownlist" onselectedindexchanged="dropschid_SelectedIndexChanged"></asp:dropdownlist>&nbsp;<asp:comparevalidator id=cv1 Runat="server" Operator="NotEqual" ErrorMessage="Please Select The FOE ID" ControlToValidate="dropschid" ValueToCompare="Select">*</asp:comparevalidator>
+              <asp:button id=btschid runat="server" Width="20px"  CausesValidation="False" Text="..." onclick="btschid_Click"></asp:button>&nbsp;&nbsp; 
             &nbsp;Description&nbsp; <asp:textbox id=txtschname runat="server" Width="208px" CssClass="dropdownlist" BorderStyle="Groove"></asp:textbox></TD></TR>
         <tr>
           <td vAlign=top colSpan=3 style="HEIGHT: 6px">Date From&nbsp; <asp:textbox id=txtDateFrom runat="server" Width="65px" CssClass="dropdownlist" BorderStyle="Groove" ReadOnly="True"></asp:textbox><A 
@@ -82,9 +83,9 @@ type=hidden name=tempCustOE runat="server">
             >*</FONT></FONT></TD></TR>
         <TR>
           <TD vAlign=top><asp:listbox id=ListEmpAvailable runat="server" Width="270px" CssClass="dropdownlist" SelectionMode="Multiple" Height="105px" onselectedindexchanged="ListEmpAvailable_DoubleClick"></asp:listbox></TD>
-          <TD vAlign=top align=center><asp:button id=btnIn runat="server" Width="50px" ForeColor="White" CausesValidation="False" Text=">" BackColor="#CE4848" BorderColor="#CE4848" Font-Bold="True" onclick="btnIn_Click"></asp:button><br 
-            ><br><asp:button id=btnout runat="server" Width="50px" ForeColor="White" CausesValidation="False" Text="<" BackColor="#CE4848" BorderColor="#CE4848" Font-Bold="True" onclick="buttonout_Click"></asp:button><br 
-            ><br><asp:button id=btn1 runat="server" Width="50px" ForeColor="White" CausesValidation="False" Text=">>" BackColor="#CE4848" BorderColor="#CE4848" Font-Bold="True" onclick="btnOut_Click"></asp:button></TD>
+          <TD vAlign=top align=center><asp:button id=btnIn runat="server" Width="50px"  CausesValidation="False" Text=">"  Font-Bold="True" onclick="btnIn_Click"></asp:button><br 
+            ><br><asp:button id=btnout runat="server" Width="50px"  CausesValidation="False" Text="<"  Font-Bold="True" onclick="buttonout_Click"></asp:button><br 
+            ><br><asp:button id=btn1 runat="server" Width="50px"  CausesValidation="False" Text=">>"  Font-Bold="True" onclick="btnOut_Click"></asp:button></TD>
           <TD vAlign=top><asp:listbox id=ListEmpAssigned runat="server" Width="270px" CssClass="dropdownlist" SelectionMode="Multiple" Height="110px"></asp:listbox></TD></TR>
         <tr>
           <td colSpan=3 
@@ -98,13 +99,15 @@ type=hidden name=tempCustOE runat="server">
                 <TD vAlign=top>
 <asp:listbox id=Listprodavail runat="server" Width="270px" CssClass="dropdownlist" Height="110px" SelectionMode="Multiple"></asp:listbox></TD>
                 <TD vAlign=top>
-<asp:button id=btngo runat="server" Width="50px" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848" Text=">" CausesValidation="False" Font-Bold="True" onclick="btngo_Click"></asp:button><BR><BR>
-<asp:button id=btnback runat="server" Width="50px" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848" Text="<" CausesValidation="False" Font-Bold="True" onclick="btnback_Click"></asp:button><BR><BR>
-<asp:button id=btnall runat="server" Width="50px" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848" Text=">>" CausesValidation="False" Height="25px" Font-Bold="True" onclick="btnall_Click"></asp:button></TD>
+<asp:button id=btngo runat="server" Width="50px"  Text=">" CausesValidation="False" Font-Bold="True" onclick="btngo_Click"></asp:button><BR><BR>
+<asp:button id=btnback runat="server" Width="50px"  Text="<" CausesValidation="False" Font-Bold="True" onclick="btnback_Click"></asp:button><BR><BR>
+<asp:button id=btnall runat="server" Width="50px"  Text=">>" CausesValidation="False" Height="25px" Font-Bold="True" onclick="btnall_Click"></asp:button></TD>
                 <TD vAlign=top>
 <asp:listbox id=Listprodassign runat="server" Width="270px" CssClass="dropdownlist" Height="110px" SelectionMode="Multiple"></asp:listbox></TD></TR></TABLE></asp:panel></td></tr>
         <TR>
-          <TD align=center colSpan=3><asp:button id=btnsave runat="server" Width="75px" ForeColor="White" Text="Save" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnsave_Click"></asp:button><asp:button id=btnSubmit runat="server" Width="75px" Visible="False" ForeColor="White" Text="Submit" BackColor="#CE4848" BorderColor="#CE4848"></asp:button><asp:button id=btnupdate runat="server" Width="75px" ForeColor="White" Text="Update" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnupdate_Click"></asp:button></TD></TR>
+          <TD align=center colSpan=3><asp:button id=btnsave runat="server" Width="75px"  Text="Save"  onclick="btnsave_Click"></asp:button>
+              <asp:button id=btnSubmit runat="server" Width="75px" Visible="False"  Text="Submit" ></asp:button>
+              <asp:button id=btnupdate runat="server" Width="75px"  Text="Update" onclick="btnupdate_Click"></asp:button></TD></TR>
         <TR>
           <TD colSpan=3><asp:validationsummary id=vsShiftAssignment runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></TD></TR></TBODY></TABLE></td></tr></table>
 			<IFRAME id="gToday:contrast:agenda.js" style="Z-INDEX: 101; LEFT: -500px; VISIBILITY: visible; POSITION: absolute; TOP: 0px"

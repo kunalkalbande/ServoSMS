@@ -119,7 +119,7 @@
 											<asp:ListItem Value="Sales Return">Sales Return</asp:ListItem>
 											<asp:ListItem Value="Purchase Return">Purchase Return</asp:ListItem>
 										</asp:dropdownlist></TD>
-          <td><asp:button id=cmdrpt runat="server" Width="60px" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Text="View " onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id=BtnPrint Width="60px" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Text="Print" Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id=btnExcel Width="60px" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td></TR></TABLE></TD></TR>
+          <td><asp:button id=cmdrpt runat="server" Width="60px"  Text="View " onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id=BtnPrint Width="60px" Text="Print" Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id=btnExcel Width="60px"  Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td></TR></TABLE></TD></TR>
   <TR>
     <TD align=center>&nbsp;</TD></TR>
   <TR>

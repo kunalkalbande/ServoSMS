@@ -110,10 +110,10 @@
 												<asp:ListItem Value="Ro">Ro</asp:ListItem>
 												<asp:ListItem Value="Bazzar">Bazzar</asp:ListItem>
 											</asp:dropdownlist>&nbsp;&nbsp;
-											<asp:button id="btnShow" runat="server" Width="60px" CausesValidation="False" Text="View" BorderColor="#CE4848"
-												BackColor="#CE4848" ForeColor="white" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Runat="server" Width="60px" Visible="False" CausesValidation="False"
-												Text="Print " BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Runat="server" Width="60px" CausesValidation="False" Text="Excel"
-												BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" onclick="btnExcel_Click"></asp:button></td>
+											<asp:button id="btnShow" runat="server" Width="60px" CausesValidation="False" Text="View" 
+												 onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Runat="server" Width="60px" Visible="False" CausesValidation="False"
+												Text="Print " onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Runat="server" Width="60px" CausesValidation="False" Text="Excel"
+												 onclick="btnExcel_Click"></asp:button></td>
 									</tr>
 									<tr>
 										<TD align="center" colSpan="9"><font color="#ce4848">Vat Inclusive Invoice Amount</font></TD>

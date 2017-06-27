@@ -171,12 +171,12 @@
 						</asp:dropdownlist></td>
 				</TR>
 				<tr>
-					<td align="right" colSpan="8"><asp:button id="btnview" runat="server" Width="60px" Text="View" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" onclick="btnview_Click"></asp:button>&nbsp;&nbsp;
-						<asp:button id="btnprint" runat="server" Width="60px" Text="Print" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;
-						<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" onclick="btnExcel_Click"></asp:button></td>
+					<td align="right" colSpan="8"><asp:button id="btnview" runat="server" Width="60px" Text="View" 
+							 onclick="btnview_Click"></asp:button>&nbsp;&nbsp;
+						<asp:button id="btnprint" runat="server" Width="60px" Text="Print" 
+							 onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;
+						<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" 
+							 onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<asp:panel id="Pansch" Runat="server">
 					<TR>

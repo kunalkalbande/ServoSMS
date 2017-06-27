@@ -50,8 +50,8 @@
 							<TR>
 								<TD id="r1">Route Name&nbsp;<asp:RequiredFieldValidator ID="Requiredfieldvalidator2" Runat="server" ControlToValidate="DropDownList1" ErrorMessage="Please Select Route"
 										InitialValue="Select">*</asp:RequiredFieldValidator></TD>
-								<TD><asp:dropdownlist id="DropDownList1" runat="server" AutoPostBack="True" Width="170px" CssClass="fontstyle" onselectedindexchanged="DropDownList1_SelectedIndexChanged"></asp:dropdownlist><asp:Label ID="lblRouteID" Runat="server"></asp:Label>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="20px" Height="20px" Text="..." ForeColor="White"
-										BackColor="#CE4848" BorderColor="#CE4848" CausesValidation="False" onclick="btnEdit_Click"></asp:button></TD>
+								<TD><asp:dropdownlist id="DropDownList1" runat="server" AutoPostBack="True" Width="170px" CssClass="fontstyle" onselectedindexchanged="DropDownList1_SelectedIndexChanged"></asp:dropdownlist><asp:Label ID="lblRouteID" Runat="server"></asp:Label>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="20px" Height="20px" Text="..." 
+										              CausesValidation="False" onclick="btnEdit_Click"></asp:button></TD>
 							</TR>
 							<TR>
 								<TD id="r2">Route Name&nbsp;<asp:RequiredFieldValidator ID="rfv1" Runat="server" ControlToValidate="txtrname" ErrorMessage="Please Enter Route Name">*</asp:RequiredFieldValidator></TD>
@@ -62,9 +62,9 @@
 								<TD><asp:textbox id="txtrkm" runat="server" Width="170px" MaxLength="15" CssClass="fontstyle" BorderStyle="Groove" ontextchanged="txtrkm_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>
-								<TD align="center" colSpan="6"><asp:button id="Button1" runat="server" Width="60px" Text="Add " ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="Button1_Click"></asp:button><asp:button id="btnsave" runat="server" Width="60px" Text="Edit " ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnsave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnDel" runat="server" Text="Delete" ForeColor="White" BackColor="#CE4848" BorderColor="#CE4848"
+								<TD align="center" colSpan="6"><asp:button id="Button1" runat="server" Width="60px" Text="Add " 
+										 onclick="Button1_Click"></asp:button><asp:button id="btnsave" runat="server" Width="60px" Text="Edit " 
+										 onclick="btnsave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnDel" runat="server" Text="Delete" 
 										Width="60px" onclick="btnDel_Click"></asp:button></TD>
 							</TR>
 							<tr>

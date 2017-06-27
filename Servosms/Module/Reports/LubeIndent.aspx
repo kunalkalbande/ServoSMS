@@ -95,8 +95,8 @@
 					</TH>
 				</TR>
 				<tr>
-					<td vAlign="top" align="center" height="20"><asp:button id="btnPrint" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-							Text="Print" Width="75px" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+					<td vAlign="top" align="center" height="20"><asp:button id="btnPrint" runat="server" 
+							Text="Print" Width="75px" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" 
 							Text="Excel" Width="75px" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<%try{%>

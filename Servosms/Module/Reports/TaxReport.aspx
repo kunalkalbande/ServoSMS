@@ -40,9 +40,9 @@
 				<TR valign=top height=20>
 					<TH align="center">
 						<font color="#CE4848">Tax Report</font><HR>
-						<asp:Button id="btnView" runat="server" Text="View " Width="60px" BorderColor="#CE4848" BackColor="#CE4848"
-							ForeColor="white" onclick="btnView_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="BtnPrint" Runat="server" Text="Print  " Width="60px" BorderColor="#CE4848" BackColor="#CE4848"
-							ForeColor="white" onclick="BtnPrint_Click"></asp:Button>
+						<asp:Button id="btnView" runat="server" Text="View " Width="60px" 
+							 onclick="btnView_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="BtnPrint" Runat="server" Text="Print  " Width="60px" 
+							 onclick="BtnPrint_Click"></asp:Button>
 					</TH>
 				</TR>
 				<tr valign=top>

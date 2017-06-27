@@ -79,9 +79,9 @@
 						</asp:dropdownlist>&nbsp;&nbsp;Discription&nbsp;&nbsp;<asp:TextBox ID=txtDiscription Runat=server CssClass=dropdownlist MaxLength=49 Width="200px" BorderStyle=Groove onkeypress="return GetAnyNumber(this, event);"></asp:TextBox>
 							&nbsp;<asp:RadioButton ID=RadSummarized Runat=server Text=Summarized GroupName=Radio></asp:RadioButton>
 							&nbsp;<asp:RadioButton ID="RadDetails" Runat=server Text=Details GroupName=Radio Checked=True></asp:RadioButton>
-						&nbsp;&nbsp;<asp:button id="btnView" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Width="65"
+						&nbsp;&nbsp;<asp:button id="btnView"  Width="65"
 							Text="View" Runat="server" onclick="btnView_Click"></asp:button>&nbsp;
-						<asp:button id="btnSubmit" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Width="65"
+						<asp:button id="btnSubmit"  Width="65"
 							Text="Submit" Runat="server" Visible=False></asp:button></td>
 				</tr>
 				<tr>

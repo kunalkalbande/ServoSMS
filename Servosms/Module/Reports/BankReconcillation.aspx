@@ -86,10 +86,10 @@ function SetCheck()
     To Date&nbsp;<asp:textbox id="txtDateTo" runat="server" Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
     <A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle" border="0"></A>
     Bank Name&nbsp;<asp:comparevalidator id="Comparevalidator1" runat="server" ValueToCompare="Select" Operator="NotEqual" ErrorMessage="Please Select Bank Name" ControlToValidate="DropBank">*</asp:comparevalidator>&nbsp;<asp:DropDownList ID=DropBank Runat=server CssClass=fontstyle><asp:ListItem Value="Select">Select</asp:ListItem></asp:DropDownList>&nbsp;
-<asp:button id="btnShow" runat="server" CausesValidation=True ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" Width="55" Text="View"></asp:button>&nbsp;
-<asp:button id=btnView runat="server" CausesValidation=True ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" Width="80" Text="Reconciled" OnClick="Recon"></asp:button>&nbsp;
-<asp:button id=btnPrint runat="server" CausesValidation=True ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" Width="55" Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;
-<asp:button id=btnExcel runat="server" CausesValidation=True ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" Width="55" Text="Excel" onclick="btnExcel_Click"></asp:button></TD></TR>
+<asp:button id="btnShow" runat="server" CausesValidation=True  Width="55" Text="View"></asp:button>&nbsp;
+<asp:button id=btnView runat="server" CausesValidation=True  Width="80" Text="Reconciled" OnClick="Recon"></asp:button>&nbsp;
+<asp:button id=btnPrint runat="server" CausesValidation=True  Width="55" Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;
+<asp:button id=btnExcel runat="server" CausesValidation=True  Width="55" Text="Excel" onclick="btnExcel_Click"></asp:button></TD></TR>
   <tr>
     <td align=center>
     <%

@@ -50,9 +50,9 @@
 					<td width=110><asp:textbox id="txtDateFrom" runat="server" Width="80px" ReadOnly="True" CssClass=fontstyle BorderStyle=Groove></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle" border="0"></A></td>
 					<td align="center">Date To</td>
 					<td width=110><asp:textbox id="txtDateTo" runat="server" Width="80px" ReadOnly="True" CssClass=fontstyle BorderStyle=Groove ontextchanged="Textbox1_TextChanged"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle" border="0"></A></td>
-					<td><asp:button id="btnShow" runat="server" Width="60px" Text="View" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" onclick="btnShow_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="60px" Text="Print " Runat="server" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="60px" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white"
+					<td><asp:button id="btnShow" runat="server" Width="60px" Text="View" 
+							 onclick="btnShow_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="60px" Text="Print " Runat="server" 
+							 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="60px" 
 							Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<TR>
