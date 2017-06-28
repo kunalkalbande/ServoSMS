@@ -763,8 +763,8 @@ function MoveFocus(t,drop,e)
 														AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" ReadOnly="True" BorderStyle="None"
-														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" ForeColor="White" ToolTip="Click For Edit"
-														Text="..." CausesValidation="False" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnEdit_Click"></asp:button></TD>
+														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" ToolTip="Click For Edit"
+														Text="..." CausesValidation="False" onclick="btnEdit_Click"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
@@ -1400,10 +1400,10 @@ function MoveFocus(t,drop,e)
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</tr>
 							<TR>
-								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" ForeColor="White" Text="Save" BackColor="#CE4848"
-										BorderColor="#CE4848"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" ForeColor="White" Text="Print" BackColor="#CE4848"
-										BorderColor="#CE4848"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" ForeColor="White"
-										Text="Delete" CausesValidation="False" BackColor="#CE4848" BorderColor="#CE4848"></asp:button></TD>
+								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" 
+										BorderColor="#CE4848"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
+										BorderColor="#CE4848"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
+										Text="Delete" CausesValidation="False" ></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

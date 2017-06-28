@@ -39,7 +39,7 @@
 				</TR>
 				<tr>
 					<td align="center">
-						<TABLE cellSpacing="0" cellPadding="0">
+						<TABLE cellSpacing="5" cellPadding="5">
 							<TBODY>
 								<TR>
 									<TD colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -68,7 +68,7 @@
 												align="absMiddle" border="0"></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scheme 
 										Discount&nbsp;<asp:requiredfieldvalidator id="rfv2" ErrorMessage="Please Enter The Scheme Discount" ControlToValidate="txtSchDiscount"
 											Runat="server">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtSchDiscount"
-											Width="50px" Runat="server" CssClass="dropdownlist" BorderStyle="Groove" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropSchDiscount" Runat="server" CssClass="dropdownlist">
+											Width="80px" Runat="server" CssClass="dropdownlist" BorderStyle="Groove" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropSchDiscount" Runat="server" CssClass="dropdownlist">
 											<asp:ListItem Value="Rs">Rs</asp:ListItem>
 											<asp:ListItem Value="%">%</asp:ListItem>
 										</asp:dropdownlist></td>
@@ -105,7 +105,7 @@
 					</td>
 				</tr>
 			</table>
-			</TD></TR></TBODY></TABLE><iframe id="gToday:contrast:agenda.js" style="Z-INDEX: 101; LEFT: -500px; VISIBILITY: visible; POSITION: absolute; TOP: 0px"
+			<iframe id="gToday:contrast:agenda.js" style="Z-INDEX: 101; LEFT: -500px; VISIBILITY: visible; POSITION: absolute; TOP: 0px"
 				name="gToday:contrast:agenda.js" src="../../HeaderFooter/DTPicker/ipopeng.htm" frameBorder="0" width="174" scrolling="no"
 				height="189"> </iframe>
 			<uc1:footer id="Footer1" runat="server"></uc1:footer></form>

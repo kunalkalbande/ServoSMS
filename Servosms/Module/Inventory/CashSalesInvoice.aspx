@@ -591,8 +591,8 @@
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD>
 								<TD style="WIDTH: 52px"></TD>
 								<TD align="right" colSpan="2"><asp:button id="Button1" runat="server" Width="70px" ForeColor="white" Text="Pre Print" BorderColor="#CE4848"
-										BackColor="#CE4848"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnSave" runat="server" Width="70px" ForeColor="white" Text="Print" BorderColor="#CE4848"
-										BackColor="#CE4848" onclick="btnSave_Click"></asp:button></TD>
+										BackColor="#CE4848"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnSave" runat="server" Width="70px"  Text="Print" 
+										 onclick="btnSave_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" Width="468px" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></td>

@@ -150,8 +150,8 @@
 								<TD colSpan="2"><asp:textbox id="txtEMail" runat="server" Width="100%" BorderStyle="Groove" CssClass="DropDownList"
 										MaxLength="49"></asp:textbox></TD>
 								<TD align="right">
-									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Update" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnUpdate_Click"></asp:button>
+									<asp:button id="btnUpdate" runat="server" Width="90px" Text="Update" 
+										 onclick="btnUpdate_Click"></asp:button>
 								</TD>
 							</TR>
 						</TABLE>

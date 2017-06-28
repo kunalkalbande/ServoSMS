@@ -2025,13 +2025,13 @@ function MoveFocus(t,drop,e)
 												<TD noWrap><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="125px" Visible="False" AutoPostBack="True"
 														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
-													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="None" ReadOnly="True"
+													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="Groove" ReadOnly="True"
 														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" 
 														CausesValidation="False" Text="..." ToolTip="Click For Edit" onclick="btnEdit_Click"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
-												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="None" ReadOnly="True"
+												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 															align="absMiddle" border="0"></A></TD>
 											</TR>
@@ -2658,8 +2658,8 @@ function MoveFocus(t,drop,e)
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>VAT
-									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" BackColor="#FFE0C0" ToolTip="Not Applied"
-										Checked="false" GroupName="VAT" oncheckedchanged="No_CheckedChanged"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" BackColor="#C0FFC0" ToolTip="Apply"
+									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"
+										Checked="false" GroupName="VAT" oncheckedchanged="No_CheckedChanged"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply"
 										Checked="True" GroupName="VAT" oncheckedchanged="Yes_CheckedChanged"></asp:radiobutton></TD>
 								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist" ontextchanged="txtVAT_TextChanged"></asp:textbox></TD>
 							</TR>

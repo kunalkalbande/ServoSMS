@@ -971,7 +971,7 @@
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty11" style="Z-INDEX: 113; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty12" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="TextBox2" style="Z-INDEX: 131; LEFT: 456px; POSITION: absolute; TOP: 16px" runat="server"
-				Width="0px"></asp:textbox><asp:textbox id="txtTempQty13" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
+				Width="130px"></asp:textbox><asp:textbox id="txtTempQty13" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty14" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty15" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty16" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
@@ -1134,7 +1134,7 @@
 									<TABLE cellSpacing="0" cellPadding="0">
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Invoice No</TD>
-											<TD><asp:textbox id="lblInvoiceNo" runat="server" Width="63px" ForeColor="Blue" ReadOnly="True" BorderStyle="None"
+											<TD><asp:textbox id="lblInvoiceNo" runat="server" Width="63px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="fontstyle" Height="16px"></asp:textbox><asp:dropdownlist id="DropInvoiceNo" runat="server" Width="114px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropInvoiceNo_SelectedIndexChanged">
 													<asp:ListItem Value="Select">Select</asp:ListItem>
 												</asp:dropdownlist><asp:button id="BtnEdit" tabIndex="200" runat="server" Text="..." ToolTip="Edit Existing Record "
@@ -1142,7 +1142,7 @@
 										</TR>
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Invoice Date</TD>
-											<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="81px" ReadOnly="True" BorderStyle="None"
+											<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 														align="absMiddle" border="0"></A></TD>
 										</TR>
@@ -1172,7 +1172,7 @@
 										<TR>
 											<TD>Place</TD>
 											<TD colSpan="2"><INPUT class="dropdownlist" id="lblPlace" style="BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
-													readOnly type="text" size="38" name="lblPlace" runat="server"></TD>
+													readOnly type="text" size="38" Width="420px" name="lblPlace" runat="server"></TD>
 										</TR>
 										<TR>
 											<TD>Vehicle No&nbsp;*
@@ -1824,8 +1824,8 @@
 										MaxLength="49"></asp:textbox></TD>
 								<TD>&nbsp;VAT
 									<asp:radiobutton id="No" onclick="return GetNetAmountEtaxnew();" runat="server" Width="39px" ToolTip="Not Applied"
-										BackColor="#FFE0C0" Checked="false" GroupName="VAT"></asp:radiobutton><asp:radiobutton id="Yes" onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Apply"
-										BackColor="#C0FFC0" Checked="true" GroupName="VAT"></asp:radiobutton></TD>
+										 Checked="false" GroupName="VAT"></asp:radiobutton><asp:radiobutton id="Yes" onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Apply"
+										 Checked="true" GroupName="VAT"></asp:radiobutton></TD>
 								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtVAT_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>

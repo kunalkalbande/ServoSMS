@@ -52,7 +52,7 @@ type=hidden name=tempCustOE runat="server">
     </TH></TR>
   <tr>
     <td align=center>
-      <TABLE cellSpacing=0 cellPadding=0>
+      <TABLE cellSpacing=5 cellPadding=5>
         <TBODY>
         <TR>
           <TD colSpan=3>FO/OE ID&nbsp;&nbsp;&nbsp;<asp:label id=lblschid runat="server" Width="54px" ForeColor="#000099"></asp:label> 
@@ -68,7 +68,7 @@ type=hidden name=tempCustOE runat="server">
             Disc&nbsp; <asp:dropdownlist id=DropShiftID runat="server" Width="60px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropShiftID_SelectedIndexChanged">
 <asp:ListItem Value="OE">OE</asp:ListItem>
 <asp:ListItem Value="Fleet">Fleet</asp:ListItem>
-										</asp:dropdownlist>&nbsp;Rate of Disc&nbsp;<asp:textbox id=txtrs runat="server" Width="40px" CssClass="dropdownlist" BorderStyle="Groove" MaxLength="6"></asp:textbox><asp:requiredfieldvalidator id=RequiredFieldValidator1 runat="server" ErrorMessage="Please Enter The Rate Of Dis." ControlToValidate="txtrs">*</asp:requiredfieldvalidator><asp:dropdownlist id=dropdiscount runat="server" Width="40px" CssClass="dropdownlist">
+										</asp:dropdownlist>&nbsp;Rate of Disc&nbsp;<asp:textbox id=txtrs runat="server" Width="70px" CssClass="dropdownlist" BorderStyle="Groove" MaxLength="6"></asp:textbox><asp:requiredfieldvalidator id=RequiredFieldValidator1 runat="server" ErrorMessage="Please Enter The Rate Of Dis." ControlToValidate="txtrs">*</asp:requiredfieldvalidator><asp:dropdownlist id=dropdiscount runat="server" Width="40px" CssClass="dropdownlist">
 <asp:ListItem Value="Rs." Selected="True">Rs.</asp:ListItem>
 <asp:ListItem Value="%">%</asp:ListItem>
 										</asp:dropdownlist></td></tr>
@@ -81,29 +81,31 @@ type=hidden name=tempCustOE runat="server">
             >&nbsp;<FONT color=#000066 
             >Customer </FONT>Assigned <FONT color=red 
             >*</FONT></FONT></TD></TR>
+
+        
         <TR>
-          <TD vAlign=top><asp:listbox id=ListEmpAvailable runat="server" Width="270px" CssClass="dropdownlist" SelectionMode="Multiple" Height="105px" onselectedindexchanged="ListEmpAvailable_DoubleClick"></asp:listbox></TD>
-          <TD vAlign=top align=center><asp:button id=btnIn runat="server" Width="50px"  CausesValidation="False" Text=">"  Font-Bold="True" onclick="btnIn_Click"></asp:button><br 
-            ><br><asp:button id=btnout runat="server" Width="50px"  CausesValidation="False" Text="<"  Font-Bold="True" onclick="buttonout_Click"></asp:button><br 
-            ><br><asp:button id=btn1 runat="server" Width="50px"  CausesValidation="False" Text=">>"  Font-Bold="True" onclick="btnOut_Click"></asp:button></TD>
-          <TD vAlign=top><asp:listbox id=ListEmpAssigned runat="server" Width="270px" CssClass="dropdownlist" SelectionMode="Multiple" Height="110px"></asp:listbox></TD></TR>
+          <TD vAlign=top><asp:listbox id=ListEmpAvailable runat="server" Width="300px" CssClass="dropdownlist" SelectionMode="Multiple" Height="105px" onselectedindexchanged="ListEmpAvailable_DoubleClick"></asp:listbox></TD>
+          <TD vAlign=top align=center><asp:button id=btnIn runat="server" Width="45px"  CausesValidation="False" Text=">"  Font-Bold="True" onclick="btnIn_Click"></asp:button><br 
+            ><br><asp:button id=btnout runat="server" Width="45px"  CausesValidation="False" Text="<"  Font-Bold="True" onclick="buttonout_Click"></asp:button><br 
+            ><br><asp:button id=btn1 runat="server" Width="45px"  CausesValidation="False" Text=">>"  Font-Bold="True" onclick="btnOut_Click"></asp:button></TD>
+          <TD vAlign=top><asp:listbox id=ListEmpAssigned runat="server" Width="300px" CssClass="dropdownlist" SelectionMode="Multiple" Height="110px"></asp:listbox></TD></TR>
         <tr>
           <td colSpan=3 
             >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             If Fleet/Oe Discount for Specific Product <asp:checkbox id=Checkfoe runat="server" AutoPostBack="True" oncheckedchanged="Checkfoe_CheckedChanged"></asp:checkbox></td></tr>
         <tr>
           <td colSpan=3><asp:panel id=Panel1 
-             runat="server" Visible="False" Height="20px">
-            <TABLE cellSpacing=0 cellPadding=0>
+             runat="server" Visible="False" >
+            <TABLE cellSpacing=5 cellPadding=5>
               <TR>
                 <TD vAlign=top>
-<asp:listbox id=Listprodavail runat="server" Width="270px" CssClass="dropdownlist" Height="110px" SelectionMode="Multiple"></asp:listbox></TD>
+<asp:listbox id=Listprodavail runat="server" Width="300px" CssClass="dropdownlist" Height="110px" SelectionMode="Multiple"></asp:listbox></TD>
                 <TD vAlign=top>
-<asp:button id=btngo runat="server" Width="50px"  Text=">" CausesValidation="False" Font-Bold="True" onclick="btngo_Click"></asp:button><BR><BR>
-<asp:button id=btnback runat="server" Width="50px"  Text="<" CausesValidation="False" Font-Bold="True" onclick="btnback_Click"></asp:button><BR><BR>
-<asp:button id=btnall runat="server" Width="50px"  Text=">>" CausesValidation="False" Height="25px" Font-Bold="True" onclick="btnall_Click"></asp:button></TD>
-                <TD vAlign=top>
-<asp:listbox id=Listprodassign runat="server" Width="270px" CssClass="dropdownlist" Height="110px" SelectionMode="Multiple"></asp:listbox></TD></TR></TABLE></asp:panel></td></tr>
+<asp:button id=btngo runat="server" Width="45px"  Text=">" CausesValidation="False" Font-Bold="True" onclick="btngo_Click"></asp:button><BR><BR>
+<asp:button id=btnback runat="server" Width="45px"  Text="<" CausesValidation="False" Font-Bold="True" onclick="btnback_Click"></asp:button><BR><BR>
+<asp:button id=btnall runat="server" Width="45px"  Text=">>" CausesValidation="False" Height="25px" Font-Bold="True" onclick="btnall_Click"></asp:button></TD>
+                <TD vAlign=top> 
+<asp:listbox id=Listprodassign runat="server" Width="300px" CssClass="dropdownlist" Height="110px" SelectionMode="Multiple"></asp:listbox></TD></TR></TABLE></asp:panel></td></tr>
         <TR>
           <TD align=center colSpan=3><asp:button id=btnsave runat="server" Width="75px"  Text="Save"  onclick="btnsave_Click"></asp:button>
               <asp:button id=btnSubmit runat="server" Width="75px" Visible="False"  Text="Submit" ></asp:button>
@@ -113,6 +115,6 @@ type=hidden name=tempCustOE runat="server">
 			<IFRAME id="gToday:contrast:agenda.js" style="Z-INDEX: 101; LEFT: -500px; VISIBILITY: visible; POSITION: absolute; TOP: 0px"
 				name="gToday:contrast:agenda.js" src="../../HeaderFooter/DTPicker/ipopeng.htm" frameBorder="0" width="174"
 				scrolling="no" height="189"></IFRAME>
-			<uc1:footer id="Footer1" runat="server"></uc1:footer></form></TD></TR></TBODY></TABLE>
+			<uc1:footer id="Footer1" runat="server"></uc1:footer></form>
 	</body>
 </HTML>

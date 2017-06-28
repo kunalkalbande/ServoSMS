@@ -84,8 +84,8 @@
 										Font-Names="Verdana" TextMode="MultiLine" Height="42px"></asp:textbox></td>
 							</TR>
 							<TR>
-								<TD align="right" colSpan="2"><asp:button id="btnApply" runat="server" Width="80px" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="White" Text="Apply" onclick="btnApply_Click"></asp:button></TD>
+								<TD align="right" colSpan="2"><asp:button id="btnApply" runat="server" Width="80px"
+										 Text="Apply" onclick="btnApply_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" Height="16px" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

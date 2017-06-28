@@ -89,8 +89,8 @@
 							To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 							&nbsp;<asp:textbox id="txtDateTO" runat="server" ReadOnly="True" Width="99px"></asp:textbox><A onClick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTO);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 									align="absMiddle" border="0"></A>
-							<asp:button id="printBtn" runat="server" Width="82px" Text="Save &amp; Print" ForeColor="white"
-								BorderColor="#CE4848" BackColor="#CE4848" onclick="printBtn_Click"></asp:button></P>
+							<asp:button id="printBtn" runat="server" Width="82px" Text="Save &amp; Print" 
+								 onclick="printBtn_Click"></asp:button></P>
 					</TD>
 					<TD></TD>
 				</TR>

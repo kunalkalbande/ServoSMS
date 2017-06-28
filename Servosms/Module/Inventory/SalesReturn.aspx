@@ -1292,7 +1292,7 @@ function calc1(txtQty,txtRate)
 								<TD></TD>
 								<TD>VAT
 									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" Enabled="False" Checked="True"
-										BackColor="#FFE0C0" GroupName="VAT" ToolTip="Not Applied"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" Enabled="False" BackColor="#C0FFC0"
+										 GroupName="VAT" ToolTip="Not Applied"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" Enabled="False" 
 										GroupName="VAT" ToolTip="Applied"></asp:radiobutton></TD>
 								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>

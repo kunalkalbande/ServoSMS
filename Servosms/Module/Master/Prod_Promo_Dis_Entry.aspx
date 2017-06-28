@@ -45,8 +45,8 @@
 									<TD colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 										Scheme ID&nbsp;<asp:requiredfieldvalidator id="rfv1" InitialValue="Select" ErrorMessage="Please Select The Scheme ID" ControlToValidate="dropschid"
 											Runat="server">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:dropdownlist id="dropschid" runat="server" Width="296px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropschid_SelectedIndexChanged"></asp:dropdownlist>&nbsp;<asp:label id="lblschid" runat="server" Width="50px"></asp:label>&nbsp;&nbsp;&nbsp;
-										<asp:button id="btschid" runat="server" Width="20px" Text="..." CausesValidation="False" BackColor="#CE4848"
-											BorderColor="#CE4848" ForeColor="White" onclick="btschid_Click"></asp:button></TD>
+										<asp:button id="btschid" runat="server" Width="20px" Text="..." CausesValidation="False" 
+											 onclick="btschid_Click"></asp:button></TD>
 								</TR>
 								<TR>
 									<TD align="left" colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -79,20 +79,20 @@
 									<TD><asp:listbox id="ListEmpAvailable" runat="server" Width="350px" Font-Size="8pt" SelectionMode="Multiple"
 											Height="160px"></asp:listbox></TD>
 									<TD>
-										<P><asp:button id="btnIn" runat="server" Width="50px" Text=">" CausesValidation="False" BackColor="#CE4848"
-												BorderColor="#CE4848" ForeColor="White" Font-Bold="True" onclick="btnIn_Click"></asp:button></P>
-										<P dir="ltr" align="justify"><asp:button id="btnout" runat="server" Width="50px" Text="<" CausesValidation="False" BackColor="#CE4848"
-												BorderColor="#CE4848" ForeColor="White" Font-Bold="True" onclick="btnout_Click"></asp:button></P>
-										<P><asp:button id="btn1" runat="server" Width="50px" Text=">>" CausesValidation="False" BackColor="#CE4848"
-												BorderColor="#CE4848" ForeColor="White" Height="25px" Font-Bold="True" onclick="btn1_Click"></asp:button></P>
+										<P><asp:button id="btnIn" runat="server" Width="50px" Text=">" CausesValidation="False" 
+												 Font-Bold="True" onclick="btnIn_Click"></asp:button></P>
+										<P dir="ltr" align="justify"><asp:button id="btnout" runat="server" Width="50px" Text="<" CausesValidation="False" 
+												 Font-Bold="True" onclick="btnout_Click"></asp:button></P>
+										<P><asp:button id="btn1" runat="server" Width="50px" Text=">>" CausesValidation="False" 
+												 Height="25px" Font-Bold="True" onclick="btn1_Click"></asp:button></P>
 									</TD>
 									<TD><asp:listbox id="ListEmpAssigned" runat="server" Width="350px" CssClass="Dropdownlist" SelectionMode="Multiple"
 											Height="160px"></asp:listbox></TD>
 								</TR>
 								<TR>
-									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="75px" Text="Submit" BackColor="#CE4848" BorderColor="#CE4848"
-											ForeColor="White" onclick="btnSubmit_Click"></asp:button><asp:button id="btnupdate" runat="server" Width="75px" Text="Update" BackColor="#CE4848" BorderColor="#CE4848"
-											ForeColor="White" onclick="btnupdate_Click"></asp:button></TD>
+									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="75px" Text="Submit" 
+											 onclick="btnSubmit_Click"></asp:button><asp:button id="btnupdate" runat="server" Width="75px" Text="Update" 
+											 onclick="btnupdate_Click"></asp:button></TD>
 								</TR>
 								<TR>
 									<TD colSpan="3"><asp:validationsummary id="vsShiftAssignment" runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></TD>
