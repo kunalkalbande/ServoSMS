@@ -81,8 +81,8 @@
 								</td>
 							<tr>
 								<td>Customer TypeID</td>
-								<td colSpan="2"><asp:dropdownlist id="dropid" runat="server" Width="130px" Visible="False" AutoPostBack="True" CssClass="FontStyle" onselectedindexchanged="dropid_SelectedIndexChanged"></asp:dropdownlist>
-									<asp:TextBox id="txtid" runat="server" Width="66px" BorderStyle="Groove" ReadOnly="True" CssClass="FontStyle"></asp:TextBox></td>
+								<td colSpan="2"><asp:dropdownlist id="dropid" runat="server" Width="115px" Visible="False" AutoPostBack="True" CssClass="FontStyle" onselectedindexchanged="dropid_SelectedIndexChanged"></asp:dropdownlist>
+									<asp:TextBox id="txtid" runat="server"  BorderStyle="Groove" ReadOnly="True" CssClass="FontStyle"></asp:TextBox></td>
 							</tr>
 							<tr>
 								<td style="HEIGHT: 21px">Customer Type Name
@@ -93,7 +93,7 @@
 							<tr>
 								<td>Group Name <font color="#ff0000"></font>
 								</td>
-								<td><asp:DropDownList ID="dropGroup" Runat="server" CssClass="FontStyle" Width=130px onChange="setOther(this)"></asp:DropDownList><FONT color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;(if 
+								<td><asp:DropDownList ID="dropGroup" Runat="server" CssClass="FontStyle" Width=70px onChange="setOther(this)"></asp:DropDownList><FONT color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;(if 
 										another, Specify)</FONT>&nbsp;
 									<asp:textbox id="txtGroup" runat="server" Width="110px" MaxLength="20" CssClass="DropDownList"
 										BorderStyle="Groove"></asp:textbox>
@@ -102,7 +102,7 @@
 							<tr>
 								<td>SubGroup Name <font color="#ff0000"></font>
 								</td>
-								<td><asp:DropDownList ID="dropSGroup" Runat="server" CssClass="FontStyle" Width="130px" onChange="setOther(this)"></asp:DropDownList><FONT color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;(if 
+								<td><asp:DropDownList ID="dropSGroup" Runat="server" CssClass="FontStyle" Width="110px" onChange="setOther(this)"></asp:DropDownList><FONT color="#0000ff">&nbsp;&nbsp;&nbsp;&nbsp;(if 
 										another, Specify)</FONT>&nbsp;
 									<asp:textbox id="txtSGroup" runat="server" Width="110px" MaxLength="20" CssClass="DropDownList"
 										BorderStyle="Groove"></asp:textbox>

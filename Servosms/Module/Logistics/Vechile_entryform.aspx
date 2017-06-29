@@ -116,7 +116,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Route</TD>
-								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="200px" CssClass="fontstyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="110px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<TD>&nbsp;Insurance Company Name</TD>
 								<TD><asp:textbox id="txtInsCompName" runat="server" Width="100px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator6" Runat="server" Display="Dynamic" ErrorMessage="Driver salary must be numeric."
@@ -124,7 +124,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Fuel Used ( Petrol/Deisel )</TD>
-								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="130px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
+								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="100px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Petrol(MS)">Petrol(MS)</asp:ListItem>
 										<asp:ListItem Value="Deisel(HSD)">Deisel(HSD)</asp:ListItem>

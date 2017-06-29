@@ -376,8 +376,8 @@ function SetFocus(t,e)
 							<TR>
 								<TD style="HEIGHT: 23px" align="left">&nbsp;<STRONG>SAV ID</STRONG>&nbsp;<font color="red">*</font>&nbsp;<asp:requiredfieldvalidator id="rfv1" Runat="server" InitialValue="Select" ErrorMessage="Please Select SavID From DropDownList"
 										ControlToValidate="DropSavID">*</asp:requiredfieldvalidator>&nbsp;&nbsp;
-									<asp:textbox id="lblSAV_ID" runat="server" CssClass="dropdownlist" BorderStyle="None" ForeColor="Blue"
-										Width="50"></asp:textbox><asp:dropdownlist id="DropSavID" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="100px"
+									<asp:textbox id="lblSAV_ID" runat="server" CssClass="dropdownlist" BorderStyle="Groove" 
+										Width="80"></asp:textbox><asp:dropdownlist id="DropSavID" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="100px"
 										AutoPostBack="True" onselectedindexchanged="DropSavID_SelectedIndexChanged"></asp:dropdownlist><asp:button id="btnEdit" Runat="server"  Width="20" Text="..." Height="20"
 										CausesValidation="False" onclick="btnEdit_Click"></asp:button></TD>
 								<td style="HEIGHT: 23px" align="right">Date&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox id="txtDate" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="103px"
@@ -597,7 +597,7 @@ function SetFocus(t,e)
 								</td>
 							</tr>
 							<TR>
-								<TD colSpan="2">&nbsp;&nbsp;Narration&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox id="txtNarration" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="92%"
+								<TD colSpan="2">&nbsp;&nbsp;Narration&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox id="txtNarration" Runat="server" CssClass="fontstyle" BorderStyle="Groove" Width="120px"
 										MaxLength="99"></asp:textbox></TD>
 							</TR>
 							<TR>

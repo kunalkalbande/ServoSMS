@@ -77,7 +77,7 @@
 							<asp:ListItem Value="2018">2018</asp:ListItem>
 							<asp:ListItem Value="2019">2019</asp:ListItem>
 							<asp:ListItem Value="2020">2020</asp:ListItem>
-						</asp:dropdownlist>&nbsp;&nbsp;&nbsp;Target SSA&nbsp;&nbsp;&nbsp;<asp:TextBox ID=txtTargetSSA Runat=server BorderStyle=Groove onkeypress="return GetOnlyNumbers(this, event,true,false)" CssClass=dropdownlist Width=70px MaxLength=10></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID=rfv1 Runat=server ErrorMessage="Target SSA Can Not Be Blank" ControlToValidate="txtTargetSSA">*</asp:RequiredFieldValidator>&nbsp;&nbsp;<asp:button id="btnView" Height="23"
+						</asp:dropdownlist>&nbsp;&nbsp;&nbsp;Target SSA&nbsp;&nbsp;&nbsp;<asp:TextBox ID=txtTargetSSA Runat=server BorderStyle=Groove onkeypress="return GetOnlyNumbers(this, event,true,false)" CssClass=dropdownlist Width=110px MaxLength=10></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID=rfv1 Runat=server ErrorMessage="Target SSA Can Not Be Blank" ControlToValidate="txtTargetSSA">*</asp:RequiredFieldValidator>&nbsp;&nbsp;<asp:button id="btnView" Height="23"
 							Width="70" Text="View" Runat="server" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" Visible=False  Height="23"
 							Width="70" Text="Print" Runat="server" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Height="23"
 							Width="70" Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>

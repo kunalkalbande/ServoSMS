@@ -57,7 +57,7 @@
 								</tr>
 								<tr>
 									<td colSpan="1">&nbsp;Firm Name</td>
-									<td colSpan="7"><asp:textbox id="txtfname" runat="server" Width="265" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></td>
+									<td colSpan="7"><asp:textbox id="txtfname" runat="server" Width="150px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></td>
 								</tr>
 								<tr>
 									<td>&nbsp;Type:</td>
@@ -73,15 +73,15 @@
 						<asp:regularexpressionvalidator id="RegularExpressionValidator3" runat="server" ControlToValidate="txttelno" ErrorMessage="Contact No. Between 6-10 Digits"
 							ValidationExpression="\d{6,11}">*</asp:regularexpressionvalidator></td>
 					<td colSpan="7"><asp:textbox id="txttelno" onkeypress="return GetOnlyNumbers(this, event, true,false);" runat="server"
-							Width="265px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="11"></asp:textbox></td>
+							Width="150px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="11"></asp:textbox></td>
 				</tr>
 				<tr>
 					<td>&nbsp;Contact Person</td>
-					<td colSpan="7"><asp:textbox id="txtcontact" runat="server" Width="265px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></td>
+					<td colSpan="7"><asp:textbox id="txtcontact" runat="server" Width="150px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></td>
 				</tr>
 				<tr>
 					<td>&nbsp;Specific Detail</td>
-					<td colSpan="7"><asp:textbox id="txtdetail" runat="server" Width="265px" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtdetail_TextChanged"></asp:textbox></td>
+					<td colSpan="7"><asp:textbox id="txtdetail" runat="server" Width="150px" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtdetail_TextChanged"></asp:textbox></td>
 				</tr>
 				<tr>
 					<td>&nbsp;Regular Customer</td>
@@ -95,41 +95,41 @@
 				</tr>
 				<tr>
 					<td>&nbsp;Potential(Total)</td>
-					<td colSpan="1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtpot" Width="61px"
+					<td colSpan="1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtpot" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;Servo</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtservo" Width="61"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtservo" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;Castrol</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtcastrol" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtcastrol" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>Shell&nbsp;</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtshell" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtshell" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 				</tr>
 				<tr>
 					<td>&nbsp;BPCL</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtbpcl" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtbpcl" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;Veedol</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtveedol" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtveedol" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;ELF</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtelf" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtelf" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;HPCL</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txthpcl" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txthpcl" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 				</tr>
 				<tr>
 					<td>&nbsp;Pennzoil</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtpennzoil" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtpennzoil" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;Spurious</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtspurious" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtspurious" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td>&nbsp;Others</td>
-					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtother" Width="60"
+					<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtother" 
 							BorderStyle="Groove" Runat="server" CssClass="dropdownlist" MaxLength="9"></asp:textbox></td>
 					<td colspan="2"></td>
 				</tr>

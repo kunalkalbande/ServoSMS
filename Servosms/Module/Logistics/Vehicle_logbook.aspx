@@ -128,7 +128,7 @@
 							</TR>
 							<TR>
 								<TD style="WIDTH: 68px">&nbsp;Vehicle&nbsp;Route</TD>
-								<TD style="WIDTH: 266px"><asp:dropdownlist id="Dropvehicleroute" runat="server" Width="248px" CssClass="fontstyle"></asp:dropdownlist></TD>
+								<TD style="WIDTH: 266px"><asp:dropdownlist id="Dropvehicleroute" runat="server" Width="188px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<!--td style="WIDTH: 122px">Fuel Used</td-->
 								<TD style="WIDTH: 350px" colSpan="2">&nbsp;Fuel Used <FONT color="#ff0000">*</FONT><asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" ErrorMessage="Please select Fuel Used"
 										ControlToValidate="Dropfuelused" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;&nbsp;<asp:dropdownlist id="Dropfuelused" runat="server" Width="136px" CssClass="fontstyle">

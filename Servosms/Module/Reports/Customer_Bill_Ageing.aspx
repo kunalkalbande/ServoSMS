@@ -137,7 +137,7 @@ function CheckSearchOption(t)
 													ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.Textbox1);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 														align="absMiddle" border="0"></A>&nbsp;</TD>
 											<TD>Interest Rate&nbsp;&nbsp;</TD>
-											<TD align="right"><asp:textbox id="InterestText" runat="server" Width="30px" CssClass="fontstyle" BorderStyle="Groove" ontextchanged="InterestText_TextChanged"></asp:textbox><asp:checkbox id="c" runat="server" Width="35px" Height="12px"></asp:checkbox>&nbsp;&nbsp;<asp:button id="Update1" runat="server" Width="65px" Text="Update" 
+											<TD align="right"><asp:textbox id="InterestText" runat="server" Width="110px" CssClass="fontstyle" BorderStyle="Groove" ontextchanged="InterestText_TextChanged"></asp:textbox><asp:checkbox id="c" runat="server" Width="35px" Height="12px"></asp:checkbox>&nbsp;&nbsp;<asp:button id="Update1" runat="server" Width="65px" Text="Update" 
 													 onclick="Update1_Click"></asp:button></TD>
 										</tr>
 										<tr>

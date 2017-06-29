@@ -81,11 +81,11 @@ function SetCheck()
       <hr>
     </TH></TR>
   <tr height=10>
-    <td align=center>From Date&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
+    <td align=center>From Date&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
     <A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle" border="0"></A>&nbsp;
-    To Date&nbsp;<asp:textbox id="txtDateTo" runat="server" Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
+    To Date&nbsp;<asp:textbox id="txtDateTo" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
     <A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle" border="0"></A>
-    Bank Name&nbsp;<asp:comparevalidator id="Comparevalidator1" runat="server" ValueToCompare="Select" Operator="NotEqual" ErrorMessage="Please Select Bank Name" ControlToValidate="DropBank">*</asp:comparevalidator>&nbsp;<asp:DropDownList ID=DropBank Runat=server CssClass=fontstyle><asp:ListItem Value="Select">Select</asp:ListItem></asp:DropDownList>&nbsp;
+    Bank Name&nbsp;<asp:comparevalidator id="Comparevalidator1" runat="server" ValueToCompare="Select" Operator="NotEqual" ErrorMessage="Please Select Bank Name" ControlToValidate="DropBank">*</asp:comparevalidator>&nbsp;<asp:DropDownList ID=DropBank Runat=server Width="200" CssClass=fontstyle><asp:ListItem Value="Select">Select</asp:ListItem></asp:DropDownList>&nbsp;
 <asp:button id="btnShow" runat="server" CausesValidation=True  Width="55" Text="View"></asp:button>&nbsp;
 <asp:button id=btnView runat="server" CausesValidation=True  Width="80" Text="Reconciled" OnClick="Recon"></asp:button>&nbsp;
 <asp:button id=btnPrint runat="server" CausesValidation=True  Width="55" Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;

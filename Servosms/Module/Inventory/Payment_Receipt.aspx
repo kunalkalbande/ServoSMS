@@ -237,7 +237,7 @@ function CheckReceipt(t)
 				</TR>
 				<TR>
 					<TD></TD>
-					<TD colSpan="3">The sum of Rupees&nbsp;&nbsp;<asp:textbox id="lblAmountinWords" Width="80" Runat="server" CssClass="dropdownlist" ForeColor="#0000C0"
+					<TD colSpan="3">The sum of Rupees&nbsp;&nbsp;<asp:textbox id="lblAmountinWords" Width="80" Runat="server" CssClass="dropdownlist" 
 							BorderStyle="Groove" ReadOnly="True"></asp:textbox>&nbsp;in&nbsp;Full / 
 						Part&nbsp;&nbsp;payment against Bill details given on account of your supply.</TD>
 					<TD style="HEIGHT: 20px"></TD>
@@ -283,7 +283,7 @@ function CheckReceipt(t)
 												<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ControlToValidate="txtRecAmount" ErrorMessage="Please Fill Received Amount">*</asp:requiredfieldvalidator></TD>
 										</TR>
 										<TR>
-											<TD><asp:dropdownlist id="DropMode" runat="server" Width="100%" CssClass="DropDownList" AutoPostBack="True" onselectedindexchanged="DropMode_SelectedIndexChanged">
+											<TD><asp:dropdownlist id="DropMode" runat="server" Width="40%" CssClass="DropDownList" AutoPostBack="True" onselectedindexchanged="DropMode_SelectedIndexChanged">
 													<asp:ListItem Value="Cash">Cash</asp:ListItem>
 													<asp:ListItem Value="Cheque">Cheque</asp:ListItem>
 													<asp:ListItem Value="DD">DD</asp:ListItem>

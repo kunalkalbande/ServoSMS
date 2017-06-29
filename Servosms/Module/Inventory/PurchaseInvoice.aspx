@@ -1134,7 +1134,7 @@
 									<TABLE cellSpacing="0" cellPadding="0">
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Invoice No</TD>
-											<TD><asp:textbox id="lblInvoiceNo" runat="server" Width="63px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="lblInvoiceNo" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="fontstyle" Height="16px"></asp:textbox><asp:dropdownlist id="DropInvoiceNo" runat="server" Width="114px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropInvoiceNo_SelectedIndexChanged">
 													<asp:ListItem Value="Select">Select</asp:ListItem>
 												</asp:dropdownlist><asp:button id="BtnEdit" tabIndex="200" runat="server" Text="..." ToolTip="Edit Existing Record "
@@ -1142,13 +1142,13 @@
 										</TR>
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Invoice Date</TD>
-											<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 														align="absMiddle" border="0"></A></TD>
 										</TR>
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Mode of Payment <FONT color="red">&nbsp;</FONT>&nbsp;&nbsp;</TD>
-											<TD><asp:dropdownlist id="DropModeType" runat="server" Width="118px" CssClass="dropdownlist" Height="20px" onselectedindexchanged="DropModeType_SelectedIndexChanged">
+											<TD><asp:dropdownlist id="DropModeType" runat="server" Width="70px" CssClass="dropdownlist" Height="20px" onselectedindexchanged="DropModeType_SelectedIndexChanged">
 													<asp:ListItem Value="Cash" Selected="True">Cash</asp:ListItem>
 													<asp:ListItem Value="Cheque">Cheque</asp:ListItem>
 													<asp:ListItem Value="DD on Delivery">DD on Delivery</asp:ListItem>
@@ -1162,7 +1162,7 @@
 										<TR>
 											<TD>Vendor&nbsp;Name&nbsp;<FONT color="#ff0000">*</FONT>
 											</TD>
-											<TD colSpan="2"><asp:dropdownlist id="DropVendorID" runat="server" Width="220px" CssClass="dropdownlist" AutoPostBack="False"
+											<TD colSpan="2"><asp:dropdownlist id="DropVendorID" runat="server" Width="100px" CssClass="dropdownlist" AutoPostBack="False"
 													onChange="getCity(this,document.Form1.lblPlace);" onselectedindexchanged="DropVendorID_SelectedIndexChanged">
 													<asp:ListItem Value="Select">Select</asp:ListItem>
 												</asp:dropdownlist>&nbsp;<asp:comparevalidator id="CompareValidator1" runat="server" ErrorMessage="Please Select The Vendor Name"
@@ -1178,7 +1178,7 @@
 											<TD>Vehicle No&nbsp;*
 											</TD>
 											<TD colSpan="2"><asp:textbox onkeypress="return GetAnyNumber(this, event);" id="txtVehicleNo" onkeyup="MoveFocus(this,document.Form1.txtVInnvoiceNo,event)"
-													runat="server" Width="220px" BorderStyle="Groove" CssClass="dropdownlist" Height="20px" MaxLength="15" ontextchanged="txtVehicleNo_TextChanged"></asp:textbox>&nbsp;<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter Vehicle No."
+													runat="server" Width="100px" BorderStyle="Groove" CssClass="dropdownlist" Height="20px" MaxLength="15" ontextchanged="txtVehicleNo_TextChanged"></asp:textbox>&nbsp;<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter Vehicle No."
 													ControlToValidate="txtVehicleNo">*</asp:requiredfieldvalidator></TD>
 										</TR>
 										<TR>
@@ -1186,7 +1186,7 @@
 												<asp:regularexpressionvalidator id="RegularExpressionValidator1" runat="server" ErrorMessage="Numeric only" ControlToValidate="txtVInnvoiceNo"
 													ValidationExpression="\d+">*</asp:regularexpressionvalidator></TD>
 											<TD colSpan="2"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtVInnvoiceNo"
-													onblur="getInvoiceNo(this);" runat="server" Width="220px" BorderStyle="Groove" CssClass="dropdownlist"
+													onblur="getInvoiceNo(this);" runat="server" Width="100px" BorderStyle="Groove" CssClass="dropdownlist"
 													Height="20px" MaxLength="9"></asp:textbox>&nbsp;<asp:requiredfieldvalidator id="Requiredfieldvalidator2" runat="server" ErrorMessage="Please Enter Vendor Invoice No"
 													ControlToValidate="txtVInnvoiceNo">*</asp:requiredfieldvalidator></TD>
 										</TR>
