@@ -87,13 +87,13 @@
 								<asp:ListItem Value="SRSM 9">SRSM 9</asp:ListItem>
 								<asp:ListItem Value="SRSM 10 & 12">SRSM 10 & 12</asp:ListItem>
 								<asp:ListItem Value="SRSM 14">SRSM 14</asp:ListItem>
-							</asp:dropdownlist>&nbsp;&nbsp;<asp:button id="btnShow" Runat="server" Width="80px" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+							</asp:dropdownlist>&nbsp;&nbsp;<asp:button id="btnShow" Runat="server" Width="80px" 
 								Text="Show" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;<asp:textbox id="txtvalue" runat="server" CssClass="fontstyle" Width="30px" BorderStyle="Groove"
 								Visible="False"></asp:textbox>
-							&nbsp;&nbsp;<asp:button id="btnSave" Runat="server" Width="80px" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+							&nbsp;&nbsp;<asp:button id="btnSave" Runat="server" Width="80px" 
 								Text="Update" Visible="False" CausesValidation="False" onclick="btnSave_Click"></asp:button>
-							&nbsp;&nbsp;<asp:button id="btneExcel" Runat="server" Width="80px" ForeColor="White" BackColor="#CE4848"
-								BorderColor="#CE4848" Text="Excel" onclick="btneExcel_Click"></asp:button></td>
+							&nbsp;&nbsp;<asp:button id="btneExcel" Runat="server" Width="80px" 
+								 Text="Excel" onclick="btneExcel_Click"></asp:button></td>
 					</tr>
 					<tr vAlign="top">
 						<td align="center">

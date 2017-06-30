@@ -59,9 +59,9 @@
 							BorderStyle="Groove"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 								border="0"></A><asp:RadioButton ID=radDetails Runat=server GroupName=radio Text=Details></asp:RadioButton><asp:RadioButton ID="radSummerized" Runat=server GroupName=radio Text=Summerized Checked=True></asp:RadioButton>
 					</td>
-					<td vAlign="top" width="35%">&nbsp;&nbsp;<asp:button id="btnShow" runat="server" Width="75px" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="View" onclick="btnShow_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="75px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-							Text="Print  " Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="75px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+					<td vAlign="top" width="35%">&nbsp;&nbsp;<asp:button id="btnShow" runat="server" Width="75px" 
+							 Text="View" onclick="btnShow_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="75px" 
+							Text="Print  " Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="75px" 
 							Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<%if(View==1){%>

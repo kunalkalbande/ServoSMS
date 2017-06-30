@@ -51,7 +51,7 @@
 							<TR>
 								<TD>User&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 								<TD colSpan="3">
-									<asp:dropdownlist id="dropUserID" runat="server" Width="130px" AutoPostBack="True" Visible="False"
+									<asp:dropdownlist id="dropUserID" runat="server" Width="60px" AutoPostBack="True" Visible="False"
 										CssClass="FontStyle" onselectedindexchanged="dropUserID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist>
@@ -96,14 +96,14 @@
 									<asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server" ErrorMessage="Please Fill the User Name"
 										ControlToValidate="txtFName">*</asp:RequiredFieldValidator></TD>
 								<TD><asp:textbox id="txtFName" runat="server" Width="130px" BorderStyle="Groove" MaxLength="15" CssClass="FontStyle"></asp:textbox></TD>
-								<TD><asp:textbox id="txtMName" runat="server" Width="59px" BorderStyle="Groove" MaxLength="10" CssClass="FontStyle"></asp:textbox></TD>
+								<TD><asp:textbox id="txtMName" runat="server" Width="130px" BorderStyle="Groove" MaxLength="10" CssClass="FontStyle"></asp:textbox></TD>
 								<TD><asp:textbox id="txtLName" runat="server" Width="130px" BorderStyle="Groove" MaxLength="20" CssClass="FontStyle"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Role&nbsp;
 									<asp:CompareValidator id="CompareValidator1" runat="server" ErrorMessage="Please Select the Role Name"
 										ControlToValidate="DropRole" Operator="NotEqual" ValueToCompare="Select">*</asp:CompareValidator></TD>
-								<TD colspan="3"><asp:dropdownlist id="DropRole" runat="server" Width="328px" CssClass="FontStyle">
+								<TD colspan="3"><asp:dropdownlist id="DropRole" runat="server" Width="120px" CssClass="FontStyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
 							</TR>

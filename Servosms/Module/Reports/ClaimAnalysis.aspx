@@ -84,10 +84,10 @@
 										<asp:ListItem Value="2019">2019</asp:ListItem>
 										<asp:ListItem Value="2020">2020</asp:ListItem>
 									</asp:DropDownList></TD>
-								<TD><asp:button id="cmdrpt" runat="server" Width="60px" Text="View" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;<asp:button id="prnButton" runat="server" Width="60px" Text=" Print " BorderColor="#CE4848"
-										BackColor="#CE4848" ForeColor="white" onclick="prnButton_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" onclick="btnExcel_Click"></asp:button>
+								<TD><asp:button id="cmdrpt" runat="server" Width="60px" Text="View" 
+										 onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;<asp:button id="prnButton" runat="server" Width="60px" Text=" Print " 
+										 onclick="prnButton_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" 
+										 onclick="btnExcel_Click"></asp:button>
 								</TD>
 							</TR>
 						</TABLE>

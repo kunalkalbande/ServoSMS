@@ -123,11 +123,11 @@
 												style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 170px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropValue)" multiple name="DropProdName"
 												type="select-one"></select></div>
 									</td>
-									<TD vAlign="middle"><asp:checkbox id="chkTesting" Runat="server" Text="Required Info"></asp:checkbox>&nbsp;&nbsp;<asp:button id="txtview" runat="server" Width="60px" Text="View" Height="24" BackColor="#CE4848"
-											BorderColor="#CE4848" ForeColor="white" onclick="txtview_Click"></asp:button>&nbsp;<asp:button id="btnPrint" runat="server" Width="60px" Text="Print" Height="24px" BackColor="#CE4848"
-											BorderColor="#CE4848" ForeColor="white" onclick="btnPrint_Click"></asp:button>&nbsp;
-										<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" Height="24px" BackColor="#CE4848"
-											BorderColor="#CE4848" ForeColor="white" onclick="btnExcel_Click"></asp:button><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"></A></TD>
+									<TD vAlign="middle"><asp:checkbox id="chkTesting" Runat="server" Text="Required Info"></asp:checkbox>&nbsp;&nbsp;<asp:button id="txtview" runat="server" Width="60px" Text="View" Height="24" 
+											onclick="txtview_Click"></asp:button>&nbsp;<asp:button id="btnPrint" runat="server" Width="60px" Text="Print" Height="24px" 
+											onclick="btnPrint_Click"></asp:button>&nbsp;
+										<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" Height="24px" 
+											onclick="btnExcel_Click"></asp:button><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"></A></TD>
 									<TD></TD>
 								</TR>
 							</TABLE>

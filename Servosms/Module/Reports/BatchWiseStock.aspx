@@ -57,12 +57,12 @@
 							</TR>
 							<tr>
 								<td align="center" colSpan="4">&nbsp;&nbsp;
-									<asp:button id="cmdrpt" runat="server" Width="60px" Text="View " BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnPrint" Width="60px" Runat="server" Text="Print  " BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnExcel" Width="60px" Runat="server" Text="Excel" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="btnExcel_Click"></asp:button></td>
+									<asp:button id="cmdrpt" runat="server" Width="60px" Text="View "
+										onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnPrint" Width="60px" Runat="server" Text="Print  "
+										onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnExcel" Width="60px" Runat="server" Text="Excel"
+										onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 						</TABLE>
 					</TD>

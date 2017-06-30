@@ -223,10 +223,10 @@ function window_onload()
 												align="absBottom" border="0"></A><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:radiobutton id="RadAmount" Runat="server" Text="Sales With Amount" GroupName="Amount"></asp:radiobutton>&nbsp;&nbsp;
 										<asp:radiobutton id="RadNonAmount" Runat="server" Text="Sales" GroupName="Amount" Checked="True"></asp:radiobutton>&nbsp;&nbsp;
 										<asp:radiobutton id="RadPurchase" Runat="server" Text="Sales &amp; Purchase" GroupName="Amount"></asp:radiobutton>&nbsp;&nbsp;
-										<asp:button id="cmdrpt" runat="server" Width="50px" Text="View  " ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="50px" Runat="server" Text="Print  " ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="50px" Runat="server" Text="Excel" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnExcel_Click"></asp:button></TD>
+										<asp:button id="cmdrpt" runat="server" Width="50px" Text="View  " 
+											 onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="50px" Runat="server" Text="Print  " 
+											 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="50px" Runat="server" Text="Excel" 
+											 onclick="btnExcel_Click"></asp:button></TD>
 								</TR>
 								<tr>
 									<td>Search By&nbsp;</td>

@@ -39,10 +39,10 @@
 					<td vAlign="top" align="center">Stock as On&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<asp:textbox id="txtDateFrom" runat="server" Width="100px" BorderStyle="Groove" ReadOnly="True" CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 								border="0"></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<asp:button id="btnShow" runat="server" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-							Text="View   " Width="75px" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" Text="Print  "
+						<asp:button id="btnShow" runat="server" 
+							Text="View   " Width="75px" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Text="Print  "
 							Width="75px" Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;
-						<asp:button id="btnExcel" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" Text="Excel"
+						<asp:button id="btnExcel" Text="Excel"
 							Width="75px" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<tr>

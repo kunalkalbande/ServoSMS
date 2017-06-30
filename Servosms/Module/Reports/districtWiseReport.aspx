@@ -48,9 +48,9 @@
 					</th>
 				</tr>
 				<tr>
-					<td align="center"><asp:button id="btnPrint" Text="Print" Width="70" Runat="server" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Text="Excel" Width="70" Runat="server" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnExcel_Click"></asp:button></td>
+					<td align="center"><asp:button id="btnPrint" Text="Print" Width="70" Runat="server" 
+							 onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" Text="Excel" Width="70" Runat="server" 
+							 onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<tr>
 					<td>

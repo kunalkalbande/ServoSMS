@@ -55,10 +55,10 @@
 							CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A>&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
-					<td width="40%"><asp:button id="btnShow" runat="server" Width="75px" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="View   " onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Width="75px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+					<td width="40%"><asp:button id="btnShow" runat="server" Width="75px" 
+							 Text="View   " onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Width="75px"
 							Text="Print  " Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;
-						<asp:button id="btnExcel" Width="75px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+						<asp:button id="btnExcel" Width="75px"
 							Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<%if(View==1){%>

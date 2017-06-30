@@ -142,10 +142,10 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="right" colSpan="7">&nbsp;&nbsp;<asp:button id="btnView" Width="60" Runat="server" Text="View" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnView_Click"></asp:button><asp:button id="btnPrint" Width="60" Runat="server" Text="Print" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" Visible="False" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="60" Runat="server" Text="Excel" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnExcel_Click"></asp:button>
+								<td align="right" colSpan="7">&nbsp;&nbsp;<asp:button id="btnView" Width="60" Runat="server" Text="View" 
+										 onclick="btnView_Click"></asp:button><asp:button id="btnPrint" Width="60" Runat="server" Text="Print" 
+										 Visible="False" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="60" Runat="server" Text="Excel" 
+										 onclick="btnExcel_Click"></asp:button>
 								</td>
 								<td align="right" colSpan="9"><asp:checkbox id="ChkTrue" Runat="server" Text="Show Detail"></asp:checkbox></td>
 							</tr>

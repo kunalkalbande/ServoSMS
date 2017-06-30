@@ -88,7 +88,7 @@
 					<td width="50%"><input type="text" maxlength="9" class="dropdownlist" onkeypress="return GetOnlyNumbers(this, event, true,true);"
 							name="txtSchDisc" style="WIDTH: 100%; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"></td>
 					<td width="50%" align="center"><asp:Button ID="btnSubmit" Runat="server" CssClass="dropdownlist" Height="20px" Width="60px"
-							Text="Submit" ForeColor="White" BackColor="#CE4848" BorderColor="#CE4848"></asp:Button></td>
+							Text="Submit" ></asp:Button></td>
 				</tr>
 			</table>
 		</form>

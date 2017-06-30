@@ -92,8 +92,8 @@
 							<asp:textbox id="txtDateTo" runat="server" Width="70px" ReadOnly="True" BorderStyle="Groove"
 								CssClass="dropdownlist" Height="21"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 									align="absMiddle" border="0"></A></td>
-						<td align="left" width="60%"><asp:button id="btnview1" Width="65px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
-								Text="View" Runat="server" onclick="btnview1_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="65px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+						<td align="left" width="60%"><asp:button id="btnview1" Width="65px" 
+								Text="View" Runat="server" onclick="btnview1_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="65px" 
 								Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 					</tr>
 					<tr>

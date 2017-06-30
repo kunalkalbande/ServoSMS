@@ -138,10 +138,10 @@
 									<TD align="right" colSpan="2">
 										<%}else{%>
 									<TD align="right" colSpan="6"><%}%>
-										<asp:button id="cmdrpt" runat="server" Width="60px" Text="View " BorderColor="#CE4848" BackColor="#CE4848"
-											ForeColor="white" onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="60px" Text="Print" Runat="server" BorderColor="#CE4848" BackColor="#CE4848"
-											ForeColor="white" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="60px" Text="Excel" Runat="server" BorderColor="#CE4848" BackColor="#CE4848"
-											ForeColor="white" onclick="btnExcel_Click"></asp:button></TD>
+										<asp:button id="cmdrpt" runat="server" Width="60px" Text="View " 
+											 onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="60px" Text="Print" Runat="server" 
+											 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="60px" Text="Excel" Runat="server"
+											 onclick="btnExcel_Click"></asp:button></TD>
 								</TR>
 							</TABLE>
 						</TD>

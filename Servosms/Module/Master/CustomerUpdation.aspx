@@ -355,8 +355,8 @@ bbnisys Technologies.
 					</td>
 				</tr>
 				<tr>
-					<td align="center" colspan="5"><asp:Button TabIndex="1000" ID="btnSubmit" Text="Submit" Runat="server" Width="80" BackColor="#CE4848"
-							BorderColor="#CE4848" ForeColor="white" onclick="btnSubmit_Click"></asp:Button>
+					<td align="center" colspan="5"><asp:Button TabIndex="1000" ID="btnSubmit" Text="Submit" Runat="server" Width="80"
+							 onclick="btnSubmit_Click"></asp:Button>
 						<input type=hidden name="Total_Cust" value="<%=j%>">
 					</td>
 				</tr>

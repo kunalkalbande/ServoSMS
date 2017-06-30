@@ -235,9 +235,9 @@
 							<asp:textbox id="txtfromdate" CssClass="fontstyle" Runat="server" Width="65px" BorderStyle="Groove" ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtfromdate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle" border="0"></A>&nbsp;To Year&nbsp;
 							<asp:textbox id="txttodate" CssClass="fontstyle" Runat="server" Width="65px" BorderStyle="Groove" ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txttodate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"	align="absMiddle" border="0"></A>&nbsp;&nbsp;
 							
-							<asp:button id="btnView" Runat="server" Width="70" Text="View" Height="23" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;
-							<asp:button id="btnExcel" Runat="server" Width="70" Text="Excel" Height="23" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnExcel_Click"></asp:button>
-							<asp:button id="btnSave" Runat="server" Width="70" Text="Save" Height="23" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>
+							<asp:button id="btnView" Runat="server" Width="70" Text="View" Height="23"  onclick="btnView_Click"></asp:button>&nbsp;&nbsp;
+							<asp:button id="btnExcel" Runat="server" Width="70" Text="Excel" Height="23" onclick="btnExcel_Click"></asp:button>
+							<asp:button id="btnSave" Runat="server" Width="70" Text="Save" Height="23" onclick="btnSave_Click"></asp:button>
 						</td></tr></table></td>
 					</tr>
 					<%

@@ -448,8 +448,8 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="3"><asp:button id="btnBatch" Runat="server" Text="Submit" ForeColor="White" BorderColor="#CE4848"
-								BackColor="#CE4848" onclick="btnBatch_Click"></asp:button></td>
+						<td align="center" colSpan="3"><asp:button id="btnBatch" Runat="server" Text="Submit" 
+								 onclick="btnBatch_Click"></asp:button></td>
 					</tr>
 				</table>
 			</div>

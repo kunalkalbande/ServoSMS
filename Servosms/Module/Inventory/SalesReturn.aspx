@@ -1292,7 +1292,7 @@ function calc1(txtQty,txtRate)
 								<TD></TD>
 								<TD>VAT
 									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" Enabled="False" Checked="True"
-										BackColor="#FFE0C0" GroupName="VAT" ToolTip="Not Applied"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" Enabled="False" BackColor="#C0FFC0"
+										 GroupName="VAT" ToolTip="Not Applied"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" Enabled="False" 
 										GroupName="VAT" ToolTip="Applied"></asp:radiobutton></TD>
 								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
@@ -1316,9 +1316,8 @@ function calc1(txtQty,txtRate)
 								<!--TD>Entry Date &amp; Time</TD>
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
 								<TD colSpan="3"></TD>
-								<TD align="right" colSpan="2"><asp:button id="btnSave" runat="server" Width="75px" ForeColor="White" BackColor="#CE4848" BorderColor="#CE4848"
-										Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" Text="Print" onclick="btnPrint_Click"></asp:button></TD>
+								<TD align="right" colSpan="2"><asp:button id="btnSave" runat="server" Width="75px" 
+										Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" Text="Print" onclick="btnPrint_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

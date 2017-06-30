@@ -53,8 +53,8 @@
       ><IMG class=PopcalTrigger alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align=absMiddle border=0 ></A> 
 &nbsp;&nbsp;<asp:checkbox id=chkFOC CssClass="dropdownlist" Runat="server" Text="Show FOC Product"></asp:checkbox> 
     </TD>
-    <td width="20%">&nbsp;&nbsp;<asp:button id=btnShow runat="server" Width="60px" Text="View" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" onclick="btnShow_Click"></asp:button>&nbsp; 
-<asp:button id=btnExcel Width="60px" Runat="server" Text="Excel" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848" onclick="btnExcel_Click"></asp:button></TD></TR>
+    <td width="20%">&nbsp;&nbsp;<asp:button id=btnShow runat="server" Width="60px" Text="View"  onclick="btnShow_Click"></asp:button>&nbsp; 
+<asp:button id=btnExcel Width="60px" Runat="server" Text="Excel"  onclick="btnExcel_Click"></asp:button></TD></TR>
   <tr>
     <td colSpan=2>
       <table border=0>

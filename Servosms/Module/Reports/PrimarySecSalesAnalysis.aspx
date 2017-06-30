@@ -75,9 +75,9 @@
 							<asp:ListItem Value="2018">2018</asp:ListItem>
 							<asp:ListItem Value="2019">2019</asp:ListItem>
 							<asp:ListItem Value="2020">2020</asp:ListItem>
-						</asp:dropdownlist>&nbsp;&nbsp;&nbsp;<asp:button id="btnView" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Height="23"
-							Width="70" Text="View" Runat="server" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Height="23"
-							Width="70" Text="Print" Runat="server" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel" BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" Height="23"
+						</asp:dropdownlist>&nbsp;&nbsp;&nbsp;<asp:button id="btnView"  Height="23"
+							Width="70" Text="View" Runat="server" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint"  Height="23"
+							Width="70" Text="Print" Runat="server" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnExcel"  Height="23"
 							Width="70" Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<tr vAlign="top">

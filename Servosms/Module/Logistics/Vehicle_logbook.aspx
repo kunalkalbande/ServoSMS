@@ -93,7 +93,7 @@
 								<TD style="WIDTH: 266px"><asp:label id="lblVDLBID" runat="server" ForeColor="Blue"></asp:label><asp:dropdownlist id="DropVDLBID" runat="server" Visible="False" AutoPostBack="True" CssClass="fontstyle" onselectedindexchanged="DropVDLBID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist><asp:button id="btnEdit1" runat="server" Width="20px" Text="..." ToolTip="Click here for Edit"
-										CausesValidation="False" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848" onclick="btnEdit1_Click"></asp:button></TD>
+										CausesValidation="False" onclick="btnEdit1_Click"></asp:button></TD>
 								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vehicle No.
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please select Vehicle No."
 										ControlToValidate="DropVehicleNo" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;<FONT color="#ff0000">*</FONT>
@@ -128,7 +128,7 @@
 							</TR>
 							<TR>
 								<TD style="WIDTH: 68px">&nbsp;Vehicle&nbsp;Route</TD>
-								<TD style="WIDTH: 266px"><asp:dropdownlist id="Dropvehicleroute" runat="server" Width="248px" CssClass="fontstyle"></asp:dropdownlist></TD>
+								<TD style="WIDTH: 266px"><asp:dropdownlist id="Dropvehicleroute" runat="server" Width="188px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<!--td style="WIDTH: 122px">Fuel Used</td-->
 								<TD style="WIDTH: 350px" colSpan="2">&nbsp;Fuel Used <FONT color="#ff0000">*</FONT><asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" ErrorMessage="Please select Fuel Used"
 										ControlToValidate="Dropfuelused" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;&nbsp;<asp:dropdownlist id="Dropfuelused" runat="server" Width="136px" CssClass="fontstyle">
@@ -184,14 +184,13 @@
 								</TD>
 							</TR>
 							<TR>
-								<TD align="center" colSpan="5" height="10"><asp:button id="btnSave" runat="server" ForeColor="White" Width="75px" Text="Save" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="btnEdit" runat="server" ForeColor="White" Width="75px" Text="Edit" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="btnDelete" runat="server" ForeColor="White" Width="75px" Text="Delete" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnDelete_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:button id="btnPrint" runat="server" ForeColor="White" Width="75px" Text="Print" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnPrint_Click"></asp:button></TD>
+								<TD align="center" colSpan="5" height="10"><asp:button id="btnSave" runat="server"  Width="75px" Text="Save" 
+                                     onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:button id="btnEdit" runat="server"  Width="75px" Text="Edit" 
+										 onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:button id="btnDelete" runat="server"  Width="75px" Text="Delete" 
+										 onclick="btnDelete_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:button id="btnPrint" runat="server"  Width="75px" Text="Print" onclick="btnPrint_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 					</td>

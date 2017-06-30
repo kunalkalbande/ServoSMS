@@ -86,7 +86,7 @@ function getclose()
 		SqlDtr.Close();
 		Tot_Rows=i;
       %>
-					<tr><td colspan=3 align=center><asp:Button ID=btnSubmit Runat=server Text=Submit ForeColor="White" BorderColor="#CE4848"
-								BackColor="#CE4848" onclick="btnSubmit_Click"></asp:Button></td></tr></TABLE></FORM>
+					<tr><td colspan=3 align=center><asp:Button ID=btnSubmit Runat=server Text=Submit 
+								 onclick="btnSubmit_Click"></asp:Button></td></tr></TABLE></FORM>
 	</body>
 </HTML>

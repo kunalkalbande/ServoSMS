@@ -163,8 +163,8 @@
 							</TR>
 							<TR>
 								<TD align="right" colSpan="4">
-									<asp:button id="btnUpdate" runat="server" Width="110px" Text="Update Profile" ForeColor="White"
-										BackColor="#CE4848" BorderColor="#CE4848" onclick="btnUpdate_Click"></asp:button></TD>
+									<asp:button id="btnUpdate" runat="server" Width="110px" Text="Update Profile" 
+										 onclick="btnUpdate_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" Height="4px" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

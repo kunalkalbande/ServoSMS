@@ -119,10 +119,10 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="right" colSpan="9">&nbsp;&nbsp;<asp:button id="btnView" Width="60" Runat="server" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" Text="Search" onclick="btnView_Click"></asp:button><asp:button id="btnPrint" Width="60" Runat="server" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" Text="Print" Visible="False" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="60" Runat="server" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" Text="Excel" Visible="False" onclick="btnExcel_Click"></asp:button>
+								<td align="right" colSpan="9">&nbsp;&nbsp;<asp:button id="btnView" Width="60" Runat="server" 
+										 Text="Search" onclick="btnView_Click"></asp:button><asp:button id="btnPrint" Width="60" Runat="server" 
+										 Text="Print" Visible="False" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="60" Runat="server" 
+										 Text="Excel" Visible="False" onclick="btnExcel_Click"></asp:button>
 								</td>
 							</tr>
 							<tr>
@@ -197,8 +197,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td align="center" colSpan="8"><asp:button id="btnPrecess" Width="100" Runat="server" BorderColor="#CE4848" BackColor="#CE4848"
-										ForeColor="white" Text="BO Process" onclick="btnPrecess_Click"></asp:button></td>
+								<td align="center" colSpan="8"><asp:button id="btnPrecess" Width="100" Runat="server" 
+										 Text="BO Process" onclick="btnPrecess_Click"></asp:button></td>
 							</tr>
 						</table>
 					</td>

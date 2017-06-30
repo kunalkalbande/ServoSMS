@@ -55,11 +55,11 @@
 							ControlToValidate="txtDateTo">*</asp:requiredfieldvalidator>&nbsp;
 						<asp:textbox id="txtDateTo" runat="server" Width="110px" ReadOnly="True" CssClass="fontstyle" BorderStyle="Groove"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 								border="0"></A>&nbsp;&nbsp;&nbsp;
-					<asp:button id="btnShow" runat="server" Width="60px" ForeColor="white" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="View" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;
-						<asp:button id="BtnPrint" Width="60px" ForeColor="white" BorderColor="#CE4848" BackColor="#CE4848"
+					<asp:button id="btnShow" runat="server" Width="60px" 
+							 Text="View" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;
+						<asp:button id="BtnPrint" Width="60px" 
 							Text="Print " Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp; 
-						<asp:button id=btnExcel Width="60px" Text="Excel" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" Runat="server" onclick="btnExcel_Click"></asp:button>
+						<asp:button id=btnExcel Width="60px" Text="Excel"  Runat="server" onclick="btnExcel_Click"></asp:button>
 					</td>
 				
 				<tr height="50">

@@ -62,7 +62,7 @@
 							<TR>
 								<TD>Customer Name&nbsp; <FONT color="#ff0000">*</FONT>
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ControlToValidate="txtFName" ErrorMessage="Please Fill Customer name">*</asp:requiredfieldvalidator></TD>
-								<TD colspan="3"><asp:textbox id="txtFName" runat="server" CssClass="dropdownlist" Width="400px" MaxLength="49"
+								<TD colspan="3"><asp:textbox id="txtFName" runat="server" CssClass="dropdownlist" Width="130px" MaxLength="49"
 										BorderStyle="Groove" ontextchanged="txtFName_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>
@@ -77,7 +77,7 @@
 							</TR>
 							<TR>
 								<TD>Address</TD>
-								<TD colSpan="3"><asp:textbox id="txtAddress" runat="server" CssClass="dropdownlist" Width="100%" MaxLength="99"
+								<TD colSpan="3"><asp:textbox id="txtAddress" runat="server" CssClass="dropdownlist" Width="130px" MaxLength="99"
 										BorderStyle="Groove" Font-Names="Verdana" ontextchanged="txtAddress_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>
@@ -135,7 +135,7 @@
 								<TD>E - Mail
 									<asp:regularexpressionvalidator id="RegularExpressionValidator2" runat="server" ControlToValidate="txtEMail" ErrorMessage="Please Fill Valid E-mail"
 										ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:regularexpressionvalidator></TD>
-								<TD colSpan="3"><asp:textbox id="txtEMail" runat="server" CssClass="dropdownlist" Width="100%" MaxLength="49"
+								<TD colSpan="3"><asp:textbox id="txtEMail" runat="server" CssClass="dropdownlist" Width="130px" MaxLength="49"
 										BorderStyle="Groove"></asp:textbox></TD>
 							</TR>
 							<TR>

@@ -44,12 +44,12 @@
 					</th>
 				<tr>
 					<td align="center" valign="top" height=20>
-						<asp:Button id="btnview" runat="server" Text="View" BackColor="#CE4848" BorderColor="#CE4848"
-							Width="60px" ForeColor="white" onclick="btnview_Click"></asp:Button>&nbsp;
-						<asp:Button id="btnprint" runat="server" Text="Print" BackColor="#CE4848" BorderColor="#CE4848"
-							Width="60px" ForeColor="white" onclick="btnprint_Click"></asp:Button>&nbsp;
-						<asp:Button id="btnExcel" runat="server" ForeColor="white" Width="60px" BorderColor="#CE4848"
-							BackColor="#CE4848" Text="Excel" onclick="btnExcel_Click"></asp:Button></td>
+						<asp:Button id="btnview" runat="server" Text="View" 
+							Width="60px"  onclick="btnview_Click"></asp:Button>&nbsp;
+						<asp:Button id="btnprint" runat="server" Text="Print" 
+							Width="60px"  onclick="btnprint_Click"></asp:Button>&nbsp;
+						<asp:Button id="btnExcel" runat="server"  Width="60px" 
+							 Text="Excel" onclick="btnExcel_Click"></asp:Button></td>
 				</tr>
 				</tr>
 				<tr>

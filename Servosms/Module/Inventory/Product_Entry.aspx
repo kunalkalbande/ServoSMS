@@ -344,10 +344,10 @@
 										BorderStyle="Groove" CssClass="dropdownlist" MaxLength="9" Runat="server"></asp:textbox></td>
 							</tr>
 							<TR>
-								<TD align="right" colSpan="4"><asp:button id="btnSave" runat="server" Width="80px" ForeColor="White" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;
-									<asp:button onmouseup="checkDelRec()" id="btnDelete" runat="server" Width="80px" ForeColor="White"
-										BorderColor="#CE4848" BackColor="#CE4848" Text="Delete" onclick="btnDelete_Click"></asp:button></TD>
+								<TD align="right" colSpan="4"><asp:button id="btnSave" runat="server" Width="80px" 
+										 Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;
+									<asp:button onmouseup="checkDelRec()" id="btnDelete" runat="server" Width="80px" 
+										 Text="Delete" onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 					</TD>

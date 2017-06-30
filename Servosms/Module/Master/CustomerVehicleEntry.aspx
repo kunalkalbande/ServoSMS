@@ -56,8 +56,8 @@
 										<asp:DropDownList id="DropID" runat="server" Visible="False" AutoPostBack="True" onselectedindexchanged="DropID_SelectedIndexChanged">
 											<asp:ListItem Value="Select" Selected="True">Select</asp:ListItem>
 										</asp:DropDownList>
-										<asp:Button id="btnEdit" runat="server" Text="..." ToolTip="Click here to edit" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnEdit_Click"></asp:Button></FONT></TD>
+										<asp:Button id="btnEdit" runat="server" Text="..." ToolTip="Click here to edit" 
+											 onclick="btnEdit_Click"></asp:Button></FONT></TD>
 							</TR>
 							<TR>
 								<TD style="WIDTH: 84px; HEIGHT: 9px">Customer Name :</TD>
@@ -102,12 +102,12 @@
 							<TR>
 								<TD align="center" colSpan="4">
 									<HR color="#000099" SIZE="1">
-									<asp:button id="btnSave" runat="server" Width="60px" Text="Save" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:Button id="btnUpdate" runat="server" Width="60px" Text="Edit" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnUpdate_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:Button id="btnDelete" runat="server" Text="Delete" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" Width="60px" onclick="btnDelete_Click"></asp:Button></TD>
+									<asp:button id="btnSave" runat="server" Width="60px" Text="Save" 
+										 onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:Button id="btnUpdate" runat="server" Width="60px" Text="Edit" 
+										 onclick="btnUpdate_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:Button id="btnDelete" runat="server" Text="Delete" 
+										 Width="60px" onclick="btnDelete_Click"></asp:Button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" Height="4px" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></td>

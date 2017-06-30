@@ -83,7 +83,7 @@
 									Reason&nbsp;&nbsp; <FONT color="#ff0000">*</FONT>
 									<asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please Specify the Reason of Leave"
 										ControlToValidate="txtReason">*</asp:RequiredFieldValidator></TD>
-								<td><asp:textbox id="txtReason" runat="server" Width="215px" Height="42px" TextMode="MultiLine" BorderStyle="Groove"
+								<td><asp:textbox id="txtReason" runat="server" Width="110px" Height="42px" TextMode="MultiLine" BorderStyle="Groove"
 										Font-Names="Verdana" CssClass="FontStyle"></asp:textbox></td>
 							</TR>
 							<TR>

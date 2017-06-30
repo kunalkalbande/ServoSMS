@@ -86,10 +86,10 @@
 									<td><asp:textbox id="txtDateTo" runat="server" ReadOnly="True" Width="70px" BorderStyle="Groove"
 											CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A></td>
-									<td><asp:radiobutton id="RadDetails" Text="Details" GroupName="Sales" Runat="server"></asp:radiobutton><asp:radiobutton id="RadSummarized" Text="Summarized" GroupName="Sales" Runat="server" Checked="True"></asp:radiobutton>&nbsp;&nbsp;<asp:button id="btnview" runat="server" Width="60px" Text="View" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnview_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="60px" Text="Print" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel" ForeColor="white" BorderColor="#CE4848"
-											BackColor="#CE4848" onclick="btnExcel_Click"></asp:button></td>
+									<td><asp:radiobutton id="RadDetails" Text="Details" GroupName="Sales" Runat="server"></asp:radiobutton><asp:radiobutton id="RadSummarized" Text="Summarized" GroupName="Sales" Runat="server" Checked="True"></asp:radiobutton>&nbsp;&nbsp;<asp:button id="btnview" runat="server" Width="60px" Text="View" 
+											onclick="btnview_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnprint" runat="server" Width="60px" Text="Print"
+											onclick="btnprint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" runat="server" Width="60px" Text="Excel"
+											onclick="btnExcel_Click"></asp:button></td>
 								</tr>
 								<tr>
 									<td>&nbsp;SSR</td>

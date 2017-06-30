@@ -181,10 +181,10 @@
 											style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 245px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropValue)" multiple name="DropProdName"
 											type="select-one"></select></div>
 								</TD>
-								<td colSpan="2"><asp:button id="btnShow" runat="server" Width="60px" Text="View" ForeColor="white" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Width="60px" Text="Print " ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+								<td colSpan="2"><asp:button id="btnShow" runat="server" Width="60px" Text="View" 
+										 onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="BtnPrint" Width="60px" Text="Print " 
 										Runat="server" onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnExcel" Width="60px" Text="Excel" ForeColor="white" BackColor="#CE4848" BorderColor="#CE4848"
+									<asp:button id="btnExcel" Width="60px" Text="Excel" 
 										Runat="server" onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 							<tr>

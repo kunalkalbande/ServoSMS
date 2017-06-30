@@ -104,11 +104,11 @@
 									<TD>To Date</TD>
 									<td><asp:textbox id="txtDateTo" runat="server" Width="70px" ReadOnly="True" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 												border="0"></A></td>
-									<td><asp:button id="btnView" runat="server" Width="60px" ForeColor="white" BorderColor="#CE4848"
-								BackColor="#CE4848" Text="View" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;
-							<asp:button id="btnPrint" runat="server" Width="60px" ForeColor="white" BorderColor="#CE4848"
-								BackColor="#CE4848" Text="Print" CausesValidation="False" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
-								<asp:button id=btnExcel runat="server" Width="60px" Text="Excel" BackColor="#CE4848" BorderColor="#CE4848" ForeColor="white" CausesValidation="False" onclick="btnExcel_Click"></asp:button></td>
+									<td><asp:button id="btnView" runat="server" Width="60px" 
+								 Text="View" onclick="btnView_Click"></asp:button>&nbsp;&nbsp;
+							<asp:button id="btnPrint" runat="server" Width="60px" 
+								 Text="Print" CausesValidation="False" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
+								<asp:button id=btnExcel runat="server" Width="60px" Text="Excel" CausesValidation="False" onclick="btnExcel_Click"></asp:button></td>
 								</TR>
 							</TABLE>
 							</TD>

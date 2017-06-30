@@ -124,10 +124,10 @@
 												<asp:ListItem Value="Existing">Existing</asp:ListItem>
 												<asp:ListItem Value="New Report">New Report</asp:ListItem>
 											</asp:dropdownlist>&nbsp;&nbsp;&nbsp;
-											<asp:button id="btnShow" runat="server" Width="60px" CausesValidation="False" Text="View" BorderColor="#CE4848"
-												BackColor="#CE4848" ForeColor="white" onclick="btnShow_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Runat="server" Width="60px" CausesValidation="False" Text="Print "
-												BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Runat="server" Width="60px" CausesValidation="False" Text="Excel"
-												BorderColor="#CE4848" BackColor="#CE4848" ForeColor="white" onclick="btnExcel_Click"></asp:button>
+											<asp:button id="btnShow" runat="server" Width="60px" CausesValidation="False" Text="View" 
+												 onclick="btnShow_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Runat="server" Width="60px" CausesValidation="False" Text="Print "
+												 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Runat="server" Width="60px" CausesValidation="False" Text="Excel"
+												 onclick="btnExcel_Click"></asp:button>
 												&nbsp;<asp:CheckBox ID="chkboxNew" Runat="server" Text="All"></asp:CheckBox>
 										</td>
 										

@@ -67,12 +67,12 @@
 									<asp:radiobutton id="chkZeroStock" GroupName="Stock" Runat="server" Text="Zero Stock"></asp:radiobutton>&nbsp;&nbsp;&nbsp;
 									<asp:radiobutton id="chkMRP" GroupName="Stock" Runat="server" Text="MRP"></asp:radiobutton>&nbsp;&nbsp;&nbsp;
 									<asp:radiobutton id="chkAmount" GroupName="Stock" Runat="server" Text="Amount"></asp:radiobutton>&nbsp;&nbsp;&nbsp;
-									<asp:button id="cmdrpt" runat="server" Width="70px" Text="View" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnPrint" Width="70px" Runat="server" Text="Print" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
-									<asp:button id="btnExcel" Width="70px" Runat="server" Text="Excel" BackColor="#CE4848" BorderColor="#CE4848"
-										ForeColor="white" onclick="btnExcel_Click"></asp:button></td>
+									<asp:button id="cmdrpt" runat="server" Width="70px" Text="View" 
+										 onclick="cmdrpt_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnPrint" Width="70px" Runat="server" Text="Print" 
+										 onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;
+									<asp:button id="btnExcel" Width="70px" Runat="server" Text="Excel" 
+										 onclick="btnExcel_Click"></asp:button></td>
 							</tr>
 						</TABLE>
 					</TD>

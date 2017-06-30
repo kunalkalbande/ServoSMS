@@ -23,7 +23,7 @@
 				</TR>
 				<tr>
 					<td align="center">
-						<TABLE cellSpacing="0" cellPadding="0">
+						<TABLE cellSpacing="5" cellPadding="5">
 							<tbody>
 								<TR>
 									<TD align="center" colSpan="3">Selection Of SSR&nbsp;<FONT color="red">*&nbsp;&nbsp;</FONT>&nbsp;&nbsp;<asp:dropdownlist id="DropSSRname" runat="server" AutoPostBack="True" CssClass="dropdownlist" Width="165px" onselectedindexchanged="DropSSRname_SelectedIndexChanged">

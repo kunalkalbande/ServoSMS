@@ -64,10 +64,10 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;&nbsp;1.MechanicName</TD>
-								<TD><asp:textbox id="txtname1" runat="server" Width="152px" BackColor="FloralWhite" BorderStyle="Groove"
+								<TD><asp:textbox id="txtname1" runat="server" Width="152px"  BorderStyle="Groove"
 										CssClass="FontStyle"></asp:textbox></TD>
 								<TD>&nbsp;&nbsp;&nbsp;Type&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:dropdownlist id="Droptype1" runat="server" Width="105px" BackColor="FloralWhite" Height="22px"
+								<TD><asp:dropdownlist id="Droptype1" runat="server" Width="105px"  Height="22px"
 										CssClass="FontStyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="2 Wheeler">2 Wheeler</asp:ListItem>
@@ -80,7 +80,7 @@
 										<asp:ListItem Value="Tractor">Tractor</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp;&nbsp;City&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:dropdownlist id="Dropcity1" runat="server" Width="120px" BackColor="FloralWhite" CssClass="FontStyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="Dropcity1" runat="server" Width="120px"  CssClass="FontStyle"></asp:dropdownlist></TD>
 								<td><asp:textbox id="mccd1" Visible="False" Width="80" ReadOnly="True" BorderStyle="Groove" Runat="server"
 										CssClass="FontStyle"></asp:textbox></td>
 							</TR>
@@ -106,10 +106,10 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;&nbsp;3.MechanicName</TD>
-								<TD><asp:textbox id="txtname3" runat="server" Width="152px" BackColor="FloralWhite" BorderStyle="Groove"
+								<TD><asp:textbox id="txtname3" runat="server" Width="152px"  BorderStyle="Groove"
 										CssClass="FontStyle"></asp:textbox></TD>
 								<TD>&nbsp;&nbsp; Type</TD>
-								<TD><asp:dropdownlist id="Droptype3" runat="server" Width="104px" BackColor="FloralWhite" CssClass="FontStyle">
+								<TD><asp:dropdownlist id="Droptype3" runat="server" Width="104px"  CssClass="FontStyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="2 Wheeler">2 Wheeler</asp:ListItem>
 										<asp:ListItem Value="4 Wheeler">4 Wheeler</asp:ListItem>
@@ -121,7 +121,7 @@
 										<asp:ListItem Value="Tractor">Tractor</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp;&nbsp;City</TD>
-								<TD><asp:dropdownlist id="Dropcity3" runat="server" Width="120px" BackColor="FloralWhite" CssClass="FontStyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="Dropcity3" runat="server" Width="120px"  CssClass="FontStyle"></asp:dropdownlist></TD>
 								<td><asp:textbox id="mccd3" Visible="False" Width="80" ReadOnly="True" BorderStyle="Groove" Runat="server"
 										CssClass="FontStyle"></asp:textbox></td>
 							</TR>
@@ -147,10 +147,10 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;&nbsp;5.MechanicName</TD>
-								<TD><asp:textbox id="txtname5" runat="server" Width="152px" BackColor="FloralWhite" BorderStyle="Groove"
+								<TD><asp:textbox id="txtname5" runat="server" Width="152px"  BorderStyle="Groove"
 										CssClass="FontStyle"></asp:textbox></TD>
 								<TD>&nbsp;&nbsp; Type</TD>
-								<TD><asp:dropdownlist id="Droptype5" runat="server" Width="104px" BackColor="FloralWhite" CssClass="FontStyle">
+								<TD><asp:dropdownlist id="Droptype5" runat="server" Width="104px"  CssClass="FontStyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="2 Wheeler">2 Wheeler</asp:ListItem>
 										<asp:ListItem Value="4 Wheeler">4 Wheeler</asp:ListItem>
@@ -162,7 +162,7 @@
 										<asp:ListItem Value="Tractor">Tractor</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp; City</TD>
-								<TD><asp:dropdownlist id="Dropcity5" runat="server" Width="120px" BackColor="FloralWhite" CssClass="FontStyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="Dropcity5" runat="server" Width="120px"  CssClass="FontStyle"></asp:dropdownlist></TD>
 								<td><asp:textbox id="mccd5" Visible="False" Width="80" ReadOnly="True" BorderStyle="Groove" Runat="server"
 										CssClass="FontStyle"></asp:textbox></td>
 							</TR>
@@ -188,10 +188,10 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;&nbsp;7.MechanicName</TD>
-								<TD><asp:textbox id="txtname7" runat="server" Width="152px" BackColor="FloralWhite" BorderStyle="Groove"
+								<TD><asp:textbox id="txtname7" runat="server" Width="152px"  BorderStyle="Groove"
 										CssClass="FontStyle"></asp:textbox></TD>
 								<TD>&nbsp;&nbsp; Type</TD>
-								<TD><asp:dropdownlist id="Droptype7" runat="server" Width="104px" BackColor="FloralWhite" CssClass="FontStyle">
+								<TD><asp:dropdownlist id="Droptype7" runat="server" Width="104px"  CssClass="FontStyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="2 Wheeler">2 Wheeler</asp:ListItem>
 										<asp:ListItem Value="4 Wheeler">4 Wheeler</asp:ListItem>
@@ -203,7 +203,7 @@
 										<asp:ListItem Value="Tractor">Tractor</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp; City</TD>
-								<TD><asp:dropdownlist id="Dropcity7" runat="server" Width="120px" BackColor="FloralWhite" CssClass="FontStyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="Dropcity7" runat="server" Width="120px"  CssClass="FontStyle"></asp:dropdownlist></TD>
 								<td><asp:textbox id="mccd7" Visible="False" Width="80" ReadOnly="True" BorderStyle="Groove" Runat="server"
 										CssClass="FontStyle"></asp:textbox></td>
 							</TR>
@@ -229,10 +229,10 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;&nbsp;9.MechanicName</TD>
-								<TD><asp:textbox id="txtname9" runat="server" Width="152px" BackColor="FloralWhite" BorderStyle="Groove"
+								<TD><asp:textbox id="txtname9" runat="server" Width="152px"  BorderStyle="Groove"
 										CssClass="FontStyle"></asp:textbox></TD>
 								<TD>&nbsp;&nbsp; Type</TD>
-								<TD><asp:dropdownlist id="Droptype9" runat="server" Width="104px" BackColor="FloralWhite" CssClass="FontStyle">
+								<TD><asp:dropdownlist id="Droptype9" runat="server" Width="104px"  CssClass="FontStyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="2 Wheeler">2 Wheeler</asp:ListItem>
 										<asp:ListItem Value="4 Wheeler">4 Wheeler</asp:ListItem>
@@ -244,7 +244,7 @@
 										<asp:ListItem Value="Tractor">Tractor</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp; City</TD>
-								<TD><asp:dropdownlist id="Dropcity9" runat="server" Width="122" BackColor="FloralWhite" Height="22" CssClass="FontStyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="Dropcity9" runat="server" Width="122"  Height="22" CssClass="FontStyle"></asp:dropdownlist></TD>
 								<td><asp:textbox id="mccd9" Visible="False" Width="80" ReadOnly="True" BorderStyle="Groove" Runat="server"
 										CssClass="FontStyle"></asp:textbox></td>
 							</TR>

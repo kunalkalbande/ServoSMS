@@ -42,11 +42,11 @@
 							<asp:ListItem Value="N-KSK">N-KSK</asp:ListItem>
 							<asp:ListItem Value="KSK">KSK</asp:ListItem>
 							<asp:ListItem Value="Essar ro">Essar ro</asp:ListItem>
-						</asp:dropdownlist>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnview" Text="View" Runat="server" Width="60px" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnview_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Text="Print" Width="60px" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;
-						<asp:button id="btnExcel" runat="server" Text="Excel" Width="60px" BackColor="#CE4848" BorderColor="#CE4848"
-							ForeColor="white" onclick="btnExcel_Click"></asp:button></td>
+						</asp:dropdownlist>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnview" Text="View" Runat="server" Width="60px" 
+							 onclick="btnview_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Text="Print" Width="60px" 
+							 onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;&nbsp;
+						<asp:button id="btnExcel" runat="server" Text="Excel" Width="60px" 
+							 onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<tr>
 					<td>

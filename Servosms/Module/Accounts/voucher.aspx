@@ -446,7 +446,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName1" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount1" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_1" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Dr">Dr</asp:ListItem>
@@ -463,7 +463,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName5" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount5" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_5" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Cr">Cr</asp:ListItem>
@@ -482,7 +482,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName2" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount2" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_2" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Dr">Dr</asp:ListItem>
@@ -499,7 +499,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName6" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount6" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_6" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Cr">Cr</asp:ListItem>
@@ -518,7 +518,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName3" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount3" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_3" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle" onselectedindexchanged="Dropdownlist10_SelectedIndexChanged">
 											<asp:ListItem Value="Dr">Dr</asp:ListItem>
@@ -535,7 +535,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName7" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount7" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_7" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Cr">Cr</asp:ListItem>
@@ -554,7 +554,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName4" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount4" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_4" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Dr">Dr</asp:ListItem>
@@ -571,7 +571,7 @@ function calcTotal()
 										<INPUT class="dropdownlist" id="txtAccName8" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount8" onblur="return calcTotal();"
-											runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
+											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
 									<td><asp:dropdownlist id="dropType_8" runat="server" Width="40px" onChange="return changeType(this);"
 											CssClass="FontStyle">
 											<asp:ListItem Value="Cr">Cr</asp:ListItem>
@@ -581,30 +581,30 @@ function calcTotal()
 								<tr>
 									<td align="right"><b>Total CR&nbsp;: </b>
 									</td>
-									<td><asp:textbox id="txtLCr" runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove"
+									<td><asp:textbox id="txtLCr" runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox></td>
 									<td></td>
 									<td></td>
-									<td><asp:textbox id="txtRCr" runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove"
+									<td><asp:textbox id="txtRCr" runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox></td>
 									<td></td>
 								</tr>
 								<tr>
 									<td align="right"><b>Total DR : </b>
 									</td>
-									<td><asp:textbox id="txtLDr" runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove"
+									<td><asp:textbox id="txtLDr" runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox></td>
 									<td></td>
 									<td></td>
-									<td><asp:textbox id="txtRDr" runat="server" Width="84px" CssClass="dropdownlist" BorderStyle="Groove"
+									<td><asp:textbox id="txtRDr" runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox></td>
 									<td></td>
 								</tr>
 								<tr>
 									<TD vAlign="top" colSpan="3"><FONT color="#ff0000"><b><FONT color="black">Narration:&nbsp; </FONT>
 											</b>&nbsp;
-											<asp:textbox onkeypress="CheckLength(this);" id="txtNarration" runat="server" Width="320px" CssClass="dropdownlist"
-												BorderStyle="Groove" Height="60" TextMode="MultiLine" MaxLength="10"></asp:textbox></FONT></TD>
+											<asp:textbox onkeypress="CheckLength(this);" id="txtNarration" runat="server" Width="150px" CssClass="dropdownlist"
+												BorderStyle="Groove" Height="40" TextMode="MultiLine" MaxLength="10"></asp:textbox></FONT></TD>
 									<td align="right" colSpan="3"><asp:button id="btnAdd" runat="server" Width="75px" 
 											  Text="Save" onclick="btnAdd_Click"></asp:button><asp:button id="btnEdit" runat="server" Width="75px" 
 											  Text="Edit" onclick="btnEdit_Click"></asp:button><asp:button id="btnDelete" runat="server" Width="75px" 

@@ -59,7 +59,7 @@
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist>
 									<asp:Button id="btnEdit1" runat="server" Width="24px" Text="..." ToolTip="Click here for edit"
-										CausesValidation="False" ForeColor="White" BorderColor="#CE4848" BackColor="#CE4848" onclick="btnEdit1_Click"></asp:Button></TD>
+										CausesValidation="False"  onclick="btnEdit1_Click"></asp:Button></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle's Type</TD>
@@ -116,7 +116,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Route</TD>
-								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="200px" CssClass="fontstyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="110px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<TD>&nbsp;Insurance Company Name</TD>
 								<TD><asp:textbox id="txtInsCompName" runat="server" Width="100px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator6" Runat="server" Display="Dynamic" ErrorMessage="Driver salary must be numeric."
@@ -124,7 +124,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Fuel Used ( Petrol/Deisel )</TD>
-								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="130px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
+								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="100px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Petrol(MS)">Petrol(MS)</asp:ListItem>
 										<asp:ListItem Value="Deisel(HSD)">Deisel(HSD)</asp:ListItem>
@@ -222,12 +222,11 @@
 								</TD>
 							</TR>
 							<TR>
-								<TD align="center" colSpan="5"><asp:button id="btnSave" runat="server" Text="Save" Width="70px" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:Button id="btnEdit" runat="server" Width="70px" Text="Edit" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" onclick="btnEdit_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<asp:Button id="btnDelete" runat="server" Text="Delete" ForeColor="White" BackColor="#CE4848"
-										BorderColor="#CE4848" Width="70px" onclick="btnDelete_Click"></asp:Button></TD>
+								<TD align="center" colSpan="5"><asp:button id="btnSave" runat="server" Text="Save" Width="70px" 
+										 onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:Button id="btnEdit" runat="server" Width="70px" Text="Edit" 
+										 onclick="btnEdit_Click"></asp:Button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<asp:Button id="btnDelete" runat="server" Text="Delete"  Width="70px" onclick="btnDelete_Click"></asp:Button></TD>
 							</TR>
 							<tr>
 								<td colSpan="5"><asp:validationsummary id="vsVehicle" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>
