@@ -242,7 +242,8 @@ namespace DBOperations
 			{
 				System.Data.SqlClient.SqlCommand command=getCmd(procedurename);
 				command.CommandType=System.Data.CommandType.StoredProcedure;
-				if (args==null)
+                command.CommandTimeout = 180;
+                if (args==null)
 					goto there;
 				for(int i=0;i<args.Length;i++)
 				{
@@ -258,7 +259,9 @@ namespace DBOperations
 			{
 				System.Data.SqlClient.SqlCommand command=getCmd(procedurename);
 				command.CommandType=System.Data.CommandType.StoredProcedure;
-				if (args==null)
+                command.CommandTimeout = 180;
+
+                if (args==null)
 					goto there;
 				for(int i=0;i<args.Length;i++)
 				{

@@ -39,8 +39,7 @@ namespace Servosms.Module.LoginHome
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		protected void Page_Load(object sender, System.EventArgs e)
-		{
-			
+		{   
 			try
 			{
 				uid=Cache["User_Name"].ToString();

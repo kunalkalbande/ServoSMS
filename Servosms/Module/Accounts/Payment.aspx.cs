@@ -189,7 +189,9 @@ namespace Servosms.Module.Accounts
 		{
 			try
 			{
-				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
+                var dt = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Acc_Date));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()));
+                if (DateTime.Compare(dt,dt2)>0)
 					MessageBox.Show("Please Select Date Must be Greater than Opening Date");
 				else
 				{
@@ -230,44 +232,49 @@ namespace Servosms.Module.Accounts
 			SqlDataReader SqlDtr = null;
 			string strNew = DropLedgerName.Value;
 			string[] arrstrNew = strNew.Split(new char[] {';'},strNew.Length);
-			Ledger_ID=arrstrNew[1].ToString();
+            if (strNew == "Select")
+                MessageBox.Show("Please Select a Ledger");
+            else
+            {
+                Ledger_ID = arrstrNew[1].ToString();
 
-			dbobj.SelectQuery("Select Ledger_ID from Ledger_Master where Ledger_Name ='"+By_Name+"'",ref SqlDtr);
-			if(SqlDtr.Read())
-			{
-				By_ID = SqlDtr["Ledger_ID"].ToString(); 
-			}
-			SqlDtr.Close();
-             
-			dbobj.SelectQuery("Select top 1 (voucher_ID+1)  from Payment_Transaction order by voucher_ID desc",ref SqlDtr);
-			if(SqlDtr.Read())
-			{
-				Vouch_ID = SqlDtr.GetValue(0).ToString();   
-			}
-			else
-			{
-				Vouch_ID = "50001";
-			}
-			SqlDtr.Close();
+                dbobj.SelectQuery("Select Ledger_ID from Ledger_Master where Ledger_Name ='" + By_Name + "'", ref SqlDtr);
+                if (SqlDtr.Read())
+                {
+                    By_ID = SqlDtr["Ledger_ID"].ToString();
+                }
+                SqlDtr.Close();
 
-			int c= 0;
-				
-			dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID+","+Amount+","+By_ID+","+Amount+",'"+Bank_name+"','"+Cheque_No+"','"+chkDate+"','"+narration+"','"+uid+"', CONVERT(datetime,'"+ Entry_Date+"', 103))",ref c);
-			object obj = null;
-			dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",Ledger_ID,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount",Amount,"@Credit_Amount","0.0","@type","Dr","@Invoice_Date",Entry_Date); 
-			dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",By_ID,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount","0.0","@Credit_Amount",Amount,"@type","Cr","@Invoice_Date",Entry_Date); 
-			dbobj.ExecProc(DBOperations.OprType.Insert,"ProCustomerLedgerEntry",ref obj,"@Voucher_ID",Vouch_ID,"@Ledger_ID",Ledger_ID,"@Amount" ,Amount,"@Type","Dr.","@Invoice_Date",Entry_Date);
-			dbobj.ExecProc(DBOperations.OprType.Insert,"ProCustomerLedgerEntry",ref obj,"@Voucher_ID",Vouch_ID,"@Ledger_ID",By_ID,"@Amount" ,Amount,"@Type","Cr.","@Invoice_Date",Entry_Date);
-			CustomerInsertUpdate(Ledger_ID);
-			if(c != 0)
-			{
-				MessageBox.Show("Payment Saved"); 
-				CreateLogFiles.ErrorLog("Form:Payment,Method:btnSave_click Payment of Ledger name "+Ledger_Name+" with voucher_id "+Vouch_ID+" Saved  User: "+ uid);
-				makingReport();
-				clear();
-			}
-			checkPrivileges();
-			btnPrint.CausesValidation=false;
+                dbobj.SelectQuery("Select top 1 (voucher_ID+1)  from Payment_Transaction order by voucher_ID desc", ref SqlDtr);
+                if (SqlDtr.Read())
+                {
+                    Vouch_ID = SqlDtr.GetValue(0).ToString();
+                }
+                else
+                {
+                    Vouch_ID = "50001";
+                }
+                SqlDtr.Close();
+
+                int c = 0;
+
+                dbobj.Insert_or_Update("insert into payment_transaction values(" + Vouch_ID + ",'Payment'," + Ledger_ID + "," + Amount + "," + By_ID + "," + Amount + ",'" + Bank_name + "','" + Cheque_No + "','" + chkDate + "','" + narration + "','" + uid + "', CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
+                object obj = null;
+                dbobj.ExecProc(DBOperations.OprType.Insert, "ProInsertAccountsLedger", ref obj, "@Ledger_ID", Ledger_ID, "@Particulars", "Payment (" + Vouch_ID + ")", "@Debit_Amount", Amount, "@Credit_Amount", "0.0", "@type", "Dr", "@Invoice_Date", Entry_Date);
+                dbobj.ExecProc(DBOperations.OprType.Insert, "ProInsertAccountsLedger", ref obj, "@Ledger_ID", By_ID, "@Particulars", "Payment (" + Vouch_ID + ")", "@Debit_Amount", "0.0", "@Credit_Amount", Amount, "@type", "Cr", "@Invoice_Date", Entry_Date);
+                dbobj.ExecProc(DBOperations.OprType.Insert, "ProCustomerLedgerEntry", ref obj, "@Voucher_ID", Vouch_ID, "@Ledger_ID", Ledger_ID, "@Amount", Amount, "@Type", "Dr.", "@Invoice_Date", Entry_Date);
+                dbobj.ExecProc(DBOperations.OprType.Insert, "ProCustomerLedgerEntry", ref obj, "@Voucher_ID", Vouch_ID, "@Ledger_ID", By_ID, "@Amount", Amount, "@Type", "Cr.", "@Invoice_Date", Entry_Date);
+                CustomerInsertUpdate(Ledger_ID);
+                if (c != 0)
+                {
+                    MessageBox.Show("Payment Saved");
+                    CreateLogFiles.ErrorLog("Form:Payment,Method:btnSave_click Payment of Ledger name " + Ledger_Name + " with voucher_id " + Vouch_ID + " Saved  User: " + uid);
+                    makingReport();
+                    clear();
+                }
+                checkPrivileges();
+                btnPrint.CausesValidation = false;
+            }
 		}
 
 		/// <summary>
@@ -624,8 +631,8 @@ namespace Servosms.Module.Accounts
 			string narration1="";
 			string Ledger_ID1 ="",OldLedger_ID="";
 			string By_ID1 = "";
-			DateTime Entry_Date = System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
-			int c= 0;
+            DateTime Entry_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()) + " " + DateTime.Now.TimeOfDay.ToString());
+            int c= 0;
 			Ledger_Name1 = DropLedgerName.Value.Trim();
 			string strOld = DropLedgerName1.SelectedItem.Text;
 			string strNew = DropLedgerName.Value;
@@ -663,13 +670,14 @@ namespace Servosms.Module.Accounts
 			rdr.Close();
 			if(arrstrOld[0].ToString().Equals(DropLedgerName.Value))
 			{
-				dbobj.Insert_or_Update("Update Payment_transaction set Ledger_ID_Dr = "+Ledger_ID1+",Amount1 = "+Amount1+",Ledger_ID_Cr = "+By_ID1+",Amount2 = "+Amount1+",Bank_Name='"+Bank_name1+"',Cheque_No='"+Cheque_No1+"',Cheque_date = '"+Date1+"',Narration ='"+narration1+"',Entered_By = '"+uid+"',Entry_Date = '"+Entry_Date+"' where Voucher_ID = "+strArr[1].Trim() ,ref c);
+				dbobj.Insert_or_Update("Update Payment_transaction set Ledger_ID_Dr = "+Ledger_ID1+",Amount1 = "+Amount1+",Ledger_ID_Cr = "+By_ID1+",Amount2 = "+Amount1+",Bank_Name='"+Bank_name1+"',Cheque_No='"+Cheque_No1+"',Cheque_date = '"+Date1+"',Narration ='"+narration1+"',Entered_By = '"+uid+ "', Entry_Date= CONVERT(datetime,'" + Entry_Date + "', 103) where Voucher_ID = "+strArr[1].Trim() ,ref c);
 				object obj = null;
 				if(CheckCashMode.Equals(DropBy.SelectedItem.Text))
 				{
 					dbobj.ExecProc(DBOperations.OprType.Update,"ProUpdateAccountsLedger",ref obj,"@Voucher_ID",strArr[1].Trim(),"@Ledger_ID",Ledger_ID1,"@Amount",Amount1,"@Type","Dr","@Invoice_Date",Entry_Date);
 					dbobj.ExecProc(DBOperations.OprType.Update,"ProUpdateAccountsLedger",ref obj,"@Voucher_ID",strArr[1].Trim(),"@Ledger_ID",By_ID1,"@Amount",Amount1,"@Type","Cr","@Invoice_Date",Entry_Date);
-				}
+
+                }
 				else
 				{
 					dbobj.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Voucher("+strArr[1].Trim()+")' and CustID='"+OldCust_ID+"'",ref c);
@@ -689,7 +697,7 @@ namespace Servosms.Module.Accounts
 					dbobj.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Voucher("+strArr[1].Trim()+")' and CustID='"+OldCust_ID+"'",ref c);
 				}
 					
-				dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID1+","+Amount1+","+By_ID1+","+Amount1+",'"+Bank_name1+"','"+Cheque_No1+"','"+Date1+"','"+narration1+"','"+uid+"','"+Entry_Date+"')",ref c);
+				dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID1+","+Amount1+","+By_ID1+","+Amount1+",'"+Bank_name1+"','"+Cheque_No1+"','"+Date1+"','"+narration1+"','"+uid+"','CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
 				object obj = null;
 				dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",Ledger_ID1,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount",Amount1,"@Credit_Amount","0.0","@type","Dr","@Invoice_Date",Entry_Date); 
 				dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",By_ID1,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount","0.0","@Credit_Amount",Amount1,"@type","Cr","@Invoice_Date",Entry_Date); 
@@ -881,15 +889,19 @@ namespace Servosms.Module.Accounts
 			object obj1=null;
 			if(Invoice_Date.IndexOf(" ")>0)
 			{
-				string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
-					Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
-				else
-					Invoice_Date=CheckDate[0].ToString();
-			}
+                 string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
+                var dt = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(CheckDate[0].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()));
+                if (DateTime.Compare(dt, dt2) > 0)
+                    Invoice_Date = GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString());
+
+                else
+                    Invoice_Date = GenUtil.str2DDMMYYYY(CheckDate[0].ToString());
+
+            }
 			else
-				Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
-			for(int k=0;k<LedgerID.Count;k++)
+				Invoice_Date= GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString());
+            for (int k=0;k<LedgerID.Count;k++)
 			{
 				dbobj.ExecProc(DBOperations.OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj1,"@Ledger_ID",LedgerID[k].ToString(),"@Invoice_Date",Invoice_Date);
 				dbobj.SelectQuery("select cust_id from customer,ledger_master where ledger_name=cust_name and ledger_id='"+LedgerID[k].ToString()+"'",ref rdr);
@@ -916,12 +928,14 @@ namespace Servosms.Module.Accounts
 			if(Invoice_Date.IndexOf(" ")>0)
 			{
 				string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
-					Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
-			}
+                var dt = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(CheckDate[0].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()));
+                if (DateTime.Compare(dt, dt2) > 0)
+                    Invoice_Date =GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString());
+            }
 			else
-				Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
-			rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID='"+Ledger_ID.ToString()+"' and Entry_Date<='"+Invoice_Date+"' order by entry_date desc");
+				Invoice_Date= GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString());
+            rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID='"+Ledger_ID.ToString()+"' and Entry_Date<=Convert(datetime,'"+Invoice_Date+"',103) order by entry_date desc");
             if (rdr.Read())
             {
                 var entry_date = GenUtil.str2MMDDYYYY(rdr.GetValue(0).ToString());
@@ -995,9 +1009,9 @@ namespace Servosms.Module.Accounts
 			}
 			rdr.Close();
 			
-			rdr = obj.GetRecordSet("select top 1 EntryDate from CustomerLedgerTable where CustID=(select Cust_ID from Customer,Ledger_Master where Ledger_Name=Cust_Name and Ledger_ID='"+Ledger_ID.ToString()+"') and EntryDate<='"+Invoice_Date+"' order by entrydate desc");
+			rdr = obj.GetRecordSet("select top 1 EntryDate from CustomerLedgerTable where CustID=(select Cust_ID from Customer,Ledger_Master where Ledger_Name=Cust_Name and Ledger_ID='"+Ledger_ID.ToString()+ "') and EntryDate<=Convert(datetime,'" + Invoice_Date + "',103) order by entrydate desc");
 			if(rdr.Read())
-				str="select * from CustomerLedgerTable where CustID=(select Cust_ID from Customer,Ledger_Master where Ledger_Name=Cust_Name and Ledger_ID='"+Ledger_ID+"') and EntryDate>='"+rdr.GetValue(0).ToString()+"' order by entrydate";
+				str="select * from CustomerLedgerTable where CustID=(select Cust_ID from Customer,Ledger_Master where Ledger_Name=Cust_Name and Ledger_ID='"+Ledger_ID+ "') and  EntryDate>=Convert(datetime,'" + rdr.GetValue(0).ToString() + "',103) order by entrydate";
 			else
 				str="select * from CustomerLedgerTable where CustID=(select Cust_ID from Customer c,Ledger_Master l where Ledger_Name=Cust_Name and Ledger_ID='"+Ledger_ID+"') order by entrydate";
 			rdr.Close();
