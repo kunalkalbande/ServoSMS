@@ -1526,7 +1526,7 @@
 										Width="58px" CssClass="dropdownlist">
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
 										<asp:ListItem Value="%">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="64px" ReadOnly="True"
+									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="110px" ReadOnly="True"
 										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 									Secondry Sp. Disc.&nbsp;&nbsp;<asp:textbox id="txtSecondrySpDisc" Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"
 										Runat="server"></asp:textbox></TD>

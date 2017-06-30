@@ -1550,7 +1550,7 @@ function MoveFocus(t,drop,e)
 										Visible="False" CssClass="dropdownlist">
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
 										<asp:ListItem Value="%">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="64px" BorderStyle="Groove"
+									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="110px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>
 									Secondry Sp. Disc.<asp:textbox id="txtSecondrySpDisc" Width="60px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 										Runat="server"></asp:textbox></TD>

@@ -2037,7 +2037,7 @@ function MoveFocus(t,drop,e)
 											</TR>
 											<TR>
 												<TD>Sales Type</TD>
-												<TD><asp:dropdownlist id="DropSalesType" runat="server" Width="125px" CssClass="dropdownlist" onselectedindexchanged="DropSalesType_SelectedIndexChanged">
+												<TD><asp:dropdownlist id="DropSalesType" runat="server" Width="60px" CssClass="dropdownlist" onselectedindexchanged="DropSalesType_SelectedIndexChanged">
 														<asp:ListItem Value="Cash">Cash</asp:ListItem>
 														<asp:ListItem Value="Credit" Selected="True">Credit</asp:ListItem>
 														<asp:ListItem Value="Van">Van</asp:ListItem>
@@ -2047,7 +2047,7 @@ function MoveFocus(t,drop,e)
 												<TD>Under Sales Man&nbsp;
 													<asp:comparevalidator id="CompareValidator2" runat="server" Operator="NotEqual" ValueToCompare="Select"
 														ControlToValidate="DropUnderSalesMan" ErrorMessage="Please Select Sales Man">*</asp:comparevalidator></TD>
-												<TD><asp:dropdownlist id="DropUnderSalesMan" runat="server" Width="125px" CssClass="dropdownlist">
+												<TD><asp:dropdownlist id="DropUnderSalesMan" runat="server" Width="115px" CssClass="dropdownlist">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist></TD>
 											</TR>
@@ -2064,7 +2064,7 @@ function MoveFocus(t,drop,e)
 											</TR>
 											<TR>
 												<TD>Order Invoice</TD>
-												<TD><asp:dropdownlist id="DropOrderInvoice" Width="125px" AutoPostBack="True" CssClass="fontstyle" Runat="server" onselectedindexchanged="DropOrderInvoice_SelectedIndexChanged">
+												<TD><asp:dropdownlist id="DropOrderInvoice" Width="60px" AutoPostBack="True" CssClass="fontstyle" Runat="server" onselectedindexchanged="DropOrderInvoice_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist></TD>
 											</TR>
@@ -2448,11 +2448,11 @@ function MoveFocus(t,drop,e)
 												<td colSpan="7">
 													<table cellSpacing="0" cellPadding="0">
 														<tr>
-															<TD colSpan="3"><asp:textbox id="txtTypesch1" runat="server" Width="326px" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch1" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch1 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch1 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch1" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch1" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td width="51">&nbsp;</td>
 															<td width="51">&nbsp;</td>
@@ -2464,7 +2464,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD style="HEIGHT: 24px"><asp:textbox id=txtProdsch2 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD style="HEIGHT: 24px"><asp:textbox id=txtPacksch2 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch2" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch2" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td>&nbsp;</td>
 															<td>&nbsp;</td>
@@ -2476,7 +2476,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch3 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch3 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch3" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch3" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2488,7 +2488,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch4 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch4 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch4" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch4" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2500,7 +2500,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch5 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch5 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch5" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch5" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2512,7 +2512,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch6 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch6 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch6" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch6" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2524,7 +2524,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch7 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch7 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch7" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch7" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2536,7 +2536,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch8 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch8 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch8" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch8" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2548,7 +2548,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD style="HEIGHT: 23px"><asp:textbox id=txtProdsch9 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD style="HEIGHT: 23px"><asp:textbox id=txtPacksch9 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch9" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch9" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2560,7 +2560,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch10 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch10 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch10" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch10" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2572,7 +2572,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch11 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch11 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch11" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch11" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2584,7 +2584,7 @@ function MoveFocus(t,drop,e)
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<!--TD><asp:textbox id=txtProdsch12 runat="server" Width="200px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
                       <TD><asp:textbox id=txtPacksch12 runat="server" Width="81px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD-->
-															<TD><asp:textbox id="txtQtysch12" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch12" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
@@ -2614,7 +2614,7 @@ function MoveFocus(t,drop,e)
 							<TR>
 								<TD>Promo Scheme</TD>
 								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="124px" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtPromoScheme_TextChanged"></asp:textbox></TD>
-								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+								<TD>&nbsp;</TD>
 								<TD>Grand Total</TD>
 								<TD><asp:textbox id="txtGrandTotal" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
@@ -2623,26 +2623,26 @@ function MoveFocus(t,drop,e)
 								<TD>Scheme&nbsp;Discount&nbsp;</TD>
 								<TD><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-									Total Ltr.&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
-										Width="60px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
+									Total Ltr.<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
+										Width="75px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtDisc" onblur="GetNetAmount()"
 										runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropDiscType" runat="server" CssClass="dropdownlist" onchange="GetNetAmount()">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtDiscount" runat="server" Width="40px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+									</asp:dropdownlist><asp:textbox id="txtDiscount" runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Fleet/OE Discount</TD>
-								<TD><asp:textbox id="txtfleetoediscount" onblur="GetNetAmount()" runat="server" Width="170px" Visible="False"
-										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:dropdownlist id="dropfleetoediscount" onblur="GetNetAmount()" runat="server" Height="22px" Width="58px"
+								<TD><asp:textbox id="txtfleetoediscount" onblur="GetNetAmount()" runat="server" Width="110px" Visible="False"
+										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:dropdownlist id="dropfleetoediscount" onblur="GetNetAmount()" runat="server" Height="22px" Width="75px"
 										Visible="False" CssClass="dropdownlist">
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
 										<asp:ListItem Value="%">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="64px" BorderStyle="Groove"
+									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="142px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>
-									Secondry Sp. Disc.<asp:textbox id="txtSecondrySpDisc" Width="60px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+									Secondry Sp. Disc.<asp:textbox id="txtSecondrySpDisc" Width="75px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 										Runat="server"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Cash Discount</TD>
@@ -2650,7 +2650,7 @@ function MoveFocus(t,drop,e)
 										runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropCashDiscType" runat="server" Height="22" CssClass="dropdownlist" onchange="GetNetAmount()">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtCashDiscount" runat="server" Width="40px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+									</asp:dropdownlist><asp:textbox id="txtCashDiscount" runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Message</TD>
