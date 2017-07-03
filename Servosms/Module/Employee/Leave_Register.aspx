@@ -66,7 +66,7 @@
 									Date&nbsp;From&nbsp;&nbsp;&nbsp; <FONT color="#ff0000">*</FONT>
 									<asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server" ControlToValidate="txtDateFrom" ErrorMessage="Please Select Date From">*</asp:RequiredFieldValidator></TD>
 								<TD><asp:TextBox id="txtDateFrom" runat="server" Width="110px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="FontStyle" ontextchanged="txtDateFrom_TextChanged"></asp:TextBox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Leave_Register.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
+										CssClass="FontStyle" ontextchanged="txtDateFrom_TextChanged"></asp:TextBox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></TD>
 							</TR>
 							<TR>
@@ -74,7 +74,7 @@
 									Date To&nbsp;&nbsp;&nbsp; <FONT color="#ff0000">*</FONT>
 									<asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server" ControlToValidate="txtDateTO" ErrorMessage="Please Select Date To">*</asp:RequiredFieldValidator></TD>
 								<TD><asp:TextBox id="txtDateTO" runat="server" Width="110px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="FontStyle"></asp:TextBox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Leave_Register.txtDateTO);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
+										CssClass="FontStyle"></asp:TextBox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtDateTO);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></TD>
 							</TR>
 							<tr><td>Day's</td><td><asp:TextBox ID=txtleaveday Runat=server BorderStyle=Groove CssClass="FontStyle" MaxLength=4 Width=110px></asp:TextBox></td></tr>
