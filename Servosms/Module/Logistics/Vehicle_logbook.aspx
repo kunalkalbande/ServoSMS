@@ -40,7 +40,7 @@
 		var index = t.selectedIndex;
 		var typetext = t.options[index].text;
 		//alert(typetext);
-		var temp = document.Vehicle_logbook.txtHidden.value;
+		var temp = document.all.txtHidden.value;
 		var mainArr = new Array();
 		mainArr = temp.split("#");
 		
@@ -59,9 +59,9 @@
 		       if( typetext == secArr[j])
 		       {
 		  
-		          document.Vehicle_logbook.txtVehiclename.value = secArr[j+1]
-		          document.Vehicle_logbook.txtdrivername.value = secArr[j+2]
-		          document.Vehicle_logbook.txtmeterreadpre.value = secArr[j+3]
+		           document.all.txtVehiclename.value = secArr[j + 1]
+		           document.all.txtdrivername.value = secArr[j + 2]
+		           document.all.txtmeterreadpre.value = secArr[j + 3]
 		          break
 		       }
 		   
@@ -98,7 +98,7 @@
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please select Vehicle No."
 										ControlToValidate="DropVehicleNo" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;<FONT color="#ff0000">*</FONT>
 									&nbsp;&nbsp;&nbsp;
-									<asp:dropdownlist id="DropVehicleNo" runat="server" Width="124px" onchange="return getVehicleInfo(this);"
+									<asp:dropdownlist id="DropVehicleNo" runat="server" Width="132px" onchange="return getVehicleInfo(this);"
 										CssClass="fontstyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
