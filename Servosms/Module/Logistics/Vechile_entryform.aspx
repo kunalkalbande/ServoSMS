@@ -54,7 +54,7 @@
 							<TR>
 								<TD colSpan="1">&nbsp;Vehicle ID</TD>
 								<TD align="left" colSpan="3">
-									<asp:Label id="lblVehicleID" runat="server" Width="100px" Height="20px" ForeColor="Blue"></asp:Label><asp:dropdownlist id="DropVehicleID" runat="server" Width="100px" Visible="False" AutoPostBack="True"
+									<asp:Label id="lblVehicleID" runat="server" Width="100px" Height="20px" ForeColor="Blue"></asp:Label><asp:dropdownlist id="DropVehicleID" runat="server" Width="60px" Visible="False" AutoPostBack="True"
 										CssClass="fontstyle" onselectedindexchanged="DropVehicleID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist>
@@ -80,17 +80,17 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Name</TD>
-								<TD><asp:textbox id="txtVehiclenm" runat="server" Width="100px" MaxLength="49" BorderStyle="Groove"
+								<TD><asp:textbox id="txtVehiclenm" runat="server" Width="160px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;RTO Registration Validity&nbsp;</TD>
 								<TD><asp:textbox id="txtrtoregvalidity" ReadOnly="True" runat="server" Width="100px" MaxLength="12"
-										BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtrtoregvalidity);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtrtoregvalidity);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A><asp:comparevalidator id="Comparevalidator1" Runat="server" Display="Dynamic" ErrorMessage="Rto registration validity must be numeric."
 										ControlToValidate="txtrtoregvalidity" Operator="DataTypeCheck" Enabled="False">*</asp:comparevalidator></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Model Name</TD>
-								<TD><asp:textbox id="txtmodelnm" runat="server" Width="100px" MaxLength="49" BorderStyle="Groove"
+								<TD><asp:textbox id="txtmodelnm" runat="server" Width="160px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;RTO Registration No. <FONT color="#ff0033" size="2">*</FONT></TD>
 								<TD><asp:textbox id="txtrtono" runat="server" Width="100px" MaxLength="20" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="You Must Enter R.T.O Registration No"
@@ -98,7 +98,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Manufact. Date</TD>
-								<TD><asp:textbox id="txtVehicleyear" runat="server" Width="100px" MaxLength="12" BorderStyle="Groove"
+								<TD><asp:textbox id="txtVehicleyear" runat="server" Width="160px" MaxLength="12" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Insurance No.</TD>
 								<TD><asp:textbox id="txtinsuranceno" runat="server" Width="100px" MaxLength="20" BorderStyle="Groove"
@@ -106,17 +106,17 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Meter Reading (K.M.)</TD>
-								<TD><asp:textbox id="txtVehiclemreading" runat="server" Width="100px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD><asp:textbox id="txtVehiclemreading" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator4" Runat="server" Display="Dynamic" ErrorMessage="Meter reading must be numeric."
 										ControlToValidate="txtVehiclemreading" Operator="DataTypeCheck" Type="Integer">*</asp:comparevalidator></TD>
 								<TD>&nbsp;Insurance Validity</TD>
 								<TD><asp:textbox id="txtvalidityinsurance" runat="server" ReadOnly="True" Width="100px" MaxLength="12"
-										BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtvalidityinsurance);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtvalidityinsurance);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Route</TD>
-								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="110px" CssClass="fontstyle"></asp:dropdownlist></TD>
+								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<TD>&nbsp;Insurance Company Name</TD>
 								<TD><asp:textbox id="txtInsCompName" runat="server" Width="100px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator6" Runat="server" Display="Dynamic" ErrorMessage="Driver salary must be numeric."
@@ -124,11 +124,11 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Fuel Used ( Petrol/Deisel )</TD>
-								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="100px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
+								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="120px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Petrol(MS)">Petrol(MS)</asp:ListItem>
 										<asp:ListItem Value="Deisel(HSD)">Deisel(HSD)</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtfuelinword" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+									</asp:dropdownlist><asp:textbox id="txtfuelinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Starting Fuel Qty.
 								</TD>
@@ -146,11 +146,11 @@
 							</TR>
 							<TR>
 								<TD colSpan="1" rowSpan="1">&nbsp;Engine Oil</TD>
-								<TD><asp:dropdownlist id="DropEngineOil" runat="server" Width="130px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtEngineQty" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD><asp:dropdownlist id="DropEngineOil" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtEngineQty" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtEngineOilDate" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtEngineOilDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtEngineOilDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 								<TD vAlign="top">&nbsp;K.M&nbsp;<asp:textbox id="txtEngineKM" onkeypress="return GetOnlyNumbers(this, event);" runat="server"
 										Width="100px" MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
@@ -158,11 +158,11 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Gear Oil</TD>
-								<TD><asp:dropdownlist id="Dropgear" runat="server" Width="130px" CssClass="fontstyle" onselectedindexchanged="Dropgear_SelectedIndexChanged"></asp:dropdownlist><asp:textbox id="txtgearinword" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD><asp:dropdownlist id="Dropgear" runat="server" Width="250px" CssClass="fontstyle" onselectedindexchanged="Dropgear_SelectedIndexChanged"></asp:dropdownlist><asp:textbox id="txtgearinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtgeardt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtgeardt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtgeardt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 								<TD vAlign="top">&nbsp;K.M&nbsp;<asp:textbox id="txtgearkm" onkeypress="return GetOnlyNumbers(this, event);" runat="server" Width="100px"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
@@ -170,11 +170,11 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Brake Oil</TD>
-								<TD><asp:dropdownlist id="Dropbreak" runat="server" Width="130px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtbearkinword" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD><asp:dropdownlist id="Dropbreak" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtbearkinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtbreakdt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtbreakdt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtbreakdt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 								<TD>&nbsp;K.M&nbsp;<asp:textbox id="txtbreakkm" onkeypress="return GetOnlyNumbers(this, event);" runat="server"
 										Width="100px" MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
@@ -182,41 +182,41 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Coolent</TD>
-								<TD><asp:dropdownlist id="Dropcoolent" runat="server" Width="130px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtcoolentinword" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD><asp:dropdownlist id="Dropcoolent" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtcoolentinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD vAlign="top">&nbsp;Date
 									<asp:textbox id="txtcoolentdt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtcoolentdt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtcoolentdt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 								<TD vAlign="top">&nbsp;K.M&nbsp;<asp:textbox id="txtcoolentkm" onkeypress="return GetOnlyNumbers(this, event);" runat="server"
 										Width="100px" MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<TR style="HEIGHT: 17px">
 								<TD>&nbsp;Grease</TD>
-								<TD height="26" style="HEIGHT: 26px"><asp:dropdownlist id="Dropgrease" runat="server" Width="130px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtgreaseinword" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD height="26" style="HEIGHT: 26px"><asp:dropdownlist id="Dropgrease" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtgreaseinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
 								</TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtgreasedt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtgreasedt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txtgreasedt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 								<TD>&nbsp;K.M&nbsp;<asp:textbox id="txtgreasekm" onkeypress="return GetOnlyNumbers(this, event);" runat="server"
 										Width="100px" MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Transmission Oil</TD>
-								<TD><asp:dropdownlist id="Droptransmission" runat="server" Width="130px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txttransinword" runat="server" Width="70px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD><asp:dropdownlist id="Droptransmission" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txttransinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txttransmissiondt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
-										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txttransmissiondt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
+										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.txttransmissiondt);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 											border="0"></A></TD>
 								<TD>&nbsp;K.M&nbsp;<asp:textbox id="txttransmissionkm" onkeypress="return GetOnlyNumbers(this, event);" runat="server"
 										Width="100px" MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Average</TD>
-								<TD colSpan="3"><asp:textbox id="txtvechileavarge" runat="server" Width="100px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD colSpan="3"><asp:textbox id="txtvechileavarge" runat="server" Width="150px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator19" Runat="server" Display="Dynamic" ErrorMessage="Vechile average must be numeric"
 										ControlToValidate="txtvechileavarge" Operator="DataTypeCheck" Enabled="False">*</asp:comparevalidator>
 								</TD>

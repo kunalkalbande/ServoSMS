@@ -84,7 +84,8 @@ namespace Servosms.Module.Accounts
 				}
 				rdr.Close();
 			}
-		}
+            txtDate.Text = Request.Form["txtDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDate"].ToString().Trim();
+        }
 
 		/// <summary>
 		/// This method checks the User Privilegs from session.

@@ -67,8 +67,9 @@ namespace Servosms.Module.Inventory
 				Response.Redirect("../../Sysitem/ErrorPage.aspx",false);
 				return;
 			}
-			
-			if(!IsPostBack)
+
+            txtReceivedDate.Text = Request.Form["txtReceivedDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtReceivedDate"].ToString().Trim();
+            if (!IsPostBack)
 			{
 				try
 				{

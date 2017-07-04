@@ -106,7 +106,9 @@ namespace Servosms.Module.Employee
 					CreateLogFiles.ErrorLog("Form:Leave_Register.aspx,Method:pageload"+"EXCEPTION  "+ ex.Message+ uid);
 				}
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            txtDateTO.Text = Request.Form["txtDateTO"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTO"].ToString().Trim();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
