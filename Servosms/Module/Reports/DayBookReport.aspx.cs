@@ -695,7 +695,7 @@ namespace Servosms.Module.Reports
 		{
 			if(dt!="")
 			{
-				string[] year=dt.Split(new char[] {'/'},dt.Length);
+				string[] year=dt.Split(new char[] {'-'},dt.Length);
 				string yr=year[2].Substring(2);	
 				return(yr);
 			}

@@ -49,7 +49,8 @@ namespace Servosms.Module.Reports
 		/// <param name="e"></param>
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			try
+           
+            try
 			{
 				uid=(Session["User_Name"].ToString());
 				// if the user is admin. then visible the update interest button and make the Ineterest Text field editable to modify or vice versa.
@@ -70,7 +71,9 @@ namespace Servosms.Module.Reports
 				Response.Redirect("../../Sysitem/ErrorPage.aspx",false);
 				return;
 			}
-			if(!IsPostBack)
+            txtDateFrom.Text = Request.Form["txtDateFrom"]==null? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString(): Request.Form["txtDateFrom"].ToString();
+            Textbox1.Text = Request.Form["Textbox1"]==null? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString(): Request.Form["Textbox1"].ToString();
+            if (!IsPostBack)
 			{
 				try
 				{
@@ -902,8 +905,9 @@ namespace Servosms.Module.Reports
 			{
 				if(DropType.SelectedIndex==0)
 				{
-					if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-					{
+                    if (System.DateTime.Compare(ToMMddYYYY(Request.Form["txtDateFrom"].ToString().Trim()), ToMMddYYYY(Request.Form["Textbox1"].ToString().Trim())) > 0)
+                      //  if (DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
+                    {
 						MessageBox.Show("Date From Should be less than Date To");
 						GridReport.Visible=false;
 					}
