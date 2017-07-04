@@ -2060,9 +2060,13 @@ namespace Servosms.Module.Employee
 		{
 			try
 			{
-				Convertinto_Excel();
-				MessageBox.Show(" Successfully Convert File Into Excel Format ");
-				CreateLogFiles.ErrorLog("Form:SaleBook.aspx,Class:PetrolPumpClass.cs,Method:btnExcel_Click   SaleBook Report Convert Into Excel Format, userid  "+uid);
+                if (DropMonth.SelectedIndex != 0)
+                {
+
+                    Convertinto_Excel();
+                    MessageBox.Show(" Successfully Convert File Into Excel Format ");
+                    CreateLogFiles.ErrorLog("Form:SaleBook.aspx,Class:PetrolPumpClass.cs,Method:btnExcel_Click   SaleBook Report Convert Into Excel Format, userid  " + uid);
+                }
 			}
 			catch(Exception ex)
 			{

@@ -82,7 +82,9 @@ namespace Servosms.Module.Accounts
 				}
 				rdr.Close();
 			}
-		}
+            txtDate.Text = Request.Form["txtDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDate"].ToString().Trim();
+            txtchkDate.Text = Request.Form["txtchkDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtchkDate"].ToString().Trim();
+        }
 
 		/// <summary>
 		/// Method to check the user previleges
