@@ -71,7 +71,9 @@ namespace Servosms.Module.Reports
 				txtDateFrom.Text=DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
 				TextBox1.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["txtDateFrom"].ToString();
+            TextBox1.Text = Request.Form["Textbox1"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["Textbox1"].ToString();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)

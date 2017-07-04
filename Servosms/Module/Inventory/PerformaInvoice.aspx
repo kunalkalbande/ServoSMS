@@ -1563,7 +1563,7 @@
 							</TR>
 							<TR>
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
-								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px"  Text="Print" 
+								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="50px"  Text="Print" 
 										 onclick="Button1_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
