@@ -49,7 +49,8 @@ namespace Servosms.Module.Reports
 			try
 			{
 				uid=(Session["User_Name"].ToString());
-			}
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year : Request.Form["txtDateTo"].ToString();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:BatchWiseStock.aspx,Class:DBOperation_LETEST.cs,Method:page_load"+ ex.Message+"EXCEPTION"+uid);	
