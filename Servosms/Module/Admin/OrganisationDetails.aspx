@@ -69,7 +69,7 @@
 						<TABLE cellSpacing="0" cellPadding="0">
 							<TR>
 								<TD><asp:label id="Label1" runat="server" Width="64px">Company ID</asp:label></TD>
-								<TD><asp:label id="LblCompanyID" Width="72px" Runat="server" ForeColor="Blue"></asp:label><asp:dropdownlist id="Drop" runat="server" Width="104px" Visible="False" AutoPostBack="True" CssClass="DropDownlist" onselectedindexchanged="Drop_SelectedIndexChanged">
+								<TD><asp:label id="LblCompanyID" Width="72px" Runat="server" ForeColor="Blue"></asp:label><asp:dropdownlist id="Drop" runat="server" Width="60px" Visible="False" AutoPostBack="True" CssClass="DropDownlist" onselectedindexchanged="Drop_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist><asp:button id="Button1" runat="server" Text="..." CausesValidation="False" Height="20px" onclick="Button1_Click"></asp:button></TD>
 								<TD colspan="2" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT color="#ff0000">Fields 
@@ -77,11 +77,11 @@
 							</TR>
 							<TR>
 								<TD>Name Of Dealer</TD>
-								<TD colSpan="3"><asp:textbox id="txtDealerName" runat="server" Width="350px" BorderStyle="Groove" CssClass="DropDownlist" ontextchanged="txtDealerName_TextChanged"></asp:textbox></TD>
+								<TD colSpan="3"><asp:textbox id="txtDealerName" runat="server" Width="130px" BorderStyle="Groove" CssClass="DropDownlist" ontextchanged="txtDealerName_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Stockist Type</TD>
-								<TD colSpan="3"><asp:dropdownlist id="DropDealerShip" runat="server" Width="350px" CssClass="DropDownlist" onselectedindexchanged="DropDealerShip_SelectedIndexChanged">
+								<TD colSpan="3"><asp:dropdownlist id="DropDealerShip" runat="server" Width="140px" CssClass="DropDownlist" onselectedindexchanged="DropDealerShip_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Servo Stockist(Auto)">Servo Stockist(Auto)</asp:ListItem>
 										<asp:ListItem Value="Servo Stockist(Industrial)">Servo Stockist(Industrial)</asp:ListItem>
@@ -89,7 +89,7 @@
 							</TR>
 							<TR>
 								<TD>Address</TD>
-								<TD colSpan="3"><asp:textbox id="TxtAddress" runat="server" Width="350px" BorderStyle="Groove" TextMode="MultiLine"
+								<TD colSpan="3"><asp:textbox id="TxtAddress" runat="server" Width="150px" BorderStyle="Groove" TextMode="MultiLine"
 										Font-Names="Verdana" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<!--TR>
@@ -110,41 +110,41 @@
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tin No.</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="TxtTinno" runat="server"
-										Width="109px" BorderStyle="Groove" MaxLength="11" CssClass="DropDownlist"></asp:textbox></TD>
+										Width="130px" BorderStyle="Groove" MaxLength="11" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>District</TD>
-								<TD><asp:dropdownlist id="DropState" runat="server" Width="130px" CssClass="DropDownlist">
+								<TD><asp:dropdownlist id="DropState" runat="server" Width="90px" CssClass="DropDownlist">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD align="center">Phone&nbsp;No
 									<asp:regularexpressionvalidator id="RegularExpressionValidator2" runat="server" ControlToValidate="txtPhoneOff"
 										ErrorMessage="Contact No. Between 7-12 Digits" ValidationExpression="\d{7,12}">*</asp:regularexpressionvalidator></TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtPhoneOff" runat="server"
-										Width="109px" BorderStyle="Groove" MaxLength="12" CssClass="DropDownlist"></asp:textbox></TD>
+										Width="130px" BorderStyle="Groove" MaxLength="12" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>State</TD>
-								<TD><asp:dropdownlist id="DropCountry" runat="server" Width="130px" CssClass="DropDownlist">
+								<TD><asp:dropdownlist id="DropCountry" runat="server" Width="80px" CssClass="DropDownlist">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fax No<asp:regularexpressionvalidator id="Regularexpressionvalidator1" runat="server" ControlToValidate="TxtFaxNo" ErrorMessage="Fax No. Between 7-12 Digits"
 										ValidationExpression="\d{7,12}">*</asp:regularexpressionvalidator></TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="TxtFaxNo" runat="server"
-										Width="109px" BorderStyle="Groove" CssClass="DropDownlist" MaxLength="12"></asp:textbox></TD>
+										Width="130px" BorderStyle="Groove" CssClass="DropDownlist" MaxLength="12"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>E - Mail<asp:regularexpressionvalidator id="Regularexpressionvalidator3" runat="server" ControlToValidate="txtEMail" ErrorMessage="Please Fill Valid E-mail"
 										ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:regularexpressionvalidator></TD>
-								<TD colSpan="3"><asp:textbox id="txtEMail" runat="server" Width="350px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
+								<TD colSpan="3"><asp:textbox id="txtEMail" runat="server" Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Web Site</TD>
-								<TD colSpan="3"><asp:textbox id="TxtWebsite" runat="server" Width="350px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
+								<TD colSpan="3"><asp:textbox id="TxtWebsite" runat="server" Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>State Office</TD>
-								<TD><asp:dropdownlist id="dropstateoffice" runat="server" Width="132px" CssClass="DropDownlist">
+								<TD><asp:dropdownlist id="dropstateoffice" runat="server" Width="70px" CssClass="DropDownlist">
 										<asp:ListItem Value="APSO">APSO</asp:ListItem>
 										<asp:ListItem Value="BSO">BSO</asp:ListItem>
 										<asp:ListItem Value="DSO">DSO</asp:ListItem>
@@ -164,23 +164,23 @@
 									</asp:dropdownlist></TD>
 								<TD align="center">Entry Tax</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtentry" runat="server"
-										Width="48px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox>%</TD>
+										Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox>%</TD>
 							</TR>
 							<TR>
 								<TD>Auth. Person</TD>
-								<TD><asp:textbox id="txtfood" runat="server" Width="134px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
+								<TD><asp:textbox id="txtfood" runat="server" Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
 								<TD align="center">VAT Rate</TD>
 								<TD vAlign="middle"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtVatRate" runat="server"
-										Width="48px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox>&nbsp;<STRONG>%</STRONG></TD>
+										Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox>&nbsp;<STRONG>%</STRONG></TD>
 							</TR>
 							<TR>
 								<TD>SAP Code</TD>
-								<TD><asp:textbox id="TxtWMlic" runat="server" Width="134px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
+								<TD><asp:textbox id="TxtWMlic" runat="server" Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
 								<TD align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Start Invoice No
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ControlToValidate="txtStartInvoiceNo"
 										ErrorMessage="Please Enter The Start Invoice No">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event);" id="txtStartInvoiceNo" onkeyup="StartInvoice(this)"
-										Width="48px" BorderStyle="Groove" Runat="Server" MaxLength="5" CssClass="DropDownlist"></asp:textbox></TD>
+										Width="130px" BorderStyle="Groove" Runat="Server" MaxLength="5" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Company Logo</TD>
@@ -189,15 +189,15 @@
 							</TR>
 							<TR>
 								<TD>Message</TD>
-								<TD colSpan="3"><asp:textbox id="txtMsg" runat="server" Width="276px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
+								<TD colSpan="3"><asp:textbox id="txtMsg" runat="server" Width="130px" BorderStyle="Groove" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Accounts Period From&nbsp;&nbsp;</TD>
-								<TD><asp:textbox id="txtDateFrom" runat="server" Width="88px" BorderStyle="Groove" ReadOnly="True"
+								<TD><asp:textbox id="txtDateFrom" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="DropDownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></TD>
 								<TD align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To</TD>
-								<TD><asp:textbox id="txtDateTo" runat="server" Width="88px" BorderStyle="Groove" ReadOnly="True"
+								<TD><asp:textbox id="txtDateTo" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="DropDownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></TD>
 							</TR>
