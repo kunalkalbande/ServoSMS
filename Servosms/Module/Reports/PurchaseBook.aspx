@@ -86,10 +86,10 @@
 					</TH>
 				</TR>
 				<tr height="20">
-					<td align="center" width="15%">&nbsp;From&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="60px" CssClass="fontstyle" BorderStyle="Groove"
+					<td align="center" width="15%">&nbsp;From&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="100px" CssClass="fontstyle" BorderStyle="Groove"
 							ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A></td>
-					<td width="10%" align=right>&nbsp;To&nbsp;<asp:textbox id="Textbox1" runat="server" Width="60px" CssClass="fontstyle" BorderStyle="Groove"
+					<td width="10%" align=right>&nbsp;To&nbsp;<asp:textbox id="Textbox1" runat="server" Width="100px" CssClass="fontstyle" BorderStyle="Groove"
 							ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.Textbox1);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A></td>
 					<td align="center" width="15%"></td>
@@ -109,7 +109,7 @@
 					<TD align="center">Value</TD>
 					<TD align="left" colSpan="2"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 							onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnShow)"
-							style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 225px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+							style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 260px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 							value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 							readOnly type="text" name="temp"><br>
 						<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropValue,document.Form1.btnShow)"
@@ -117,9 +117,9 @@
 								style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 245px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropValue)" multiple name="DropProdName"
 								type="select-one"></select></div>
 					</TD>
-					<td align="center" width="40%" colSpan="1"><asp:button id="btnShow" runat="server" Width="65px" Text="View" 
-							onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;<asp:button id="BtnPrint" Width="65px" Text="Print  " Runat="server"
-							onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="65px" Text="Excel" Runat="server"
+					<td align="center" width="40%" colSpan="1"><asp:button id="btnShow" runat="server" Width="50px" Text="View" 
+							onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;<asp:button id="BtnPrint" Width="50px" Text="Print  " Runat="server"
+							onclick="BtnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="50px" Text="Excel" Runat="server"
 							onclick="btnExcel_Click"></asp:button></td>
 				</tr>
 				<tr>

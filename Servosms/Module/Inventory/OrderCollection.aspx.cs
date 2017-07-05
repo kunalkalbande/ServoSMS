@@ -122,10 +122,11 @@ namespace Servosms.Module.Inventory
 					checkPrevileges();
 					lblInvoiceDate.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 					txtChallanDate.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
-					//lblEntryTime.Text=DateTime.Now.ToString ();
-					//lblEntryBy.Text =Session["User_Name"].ToString();
-					
-					InventoryClass  obj=new InventoryClass();
+                    lblInvoiceDate.Text = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+                    //lblEntryTime.Text=DateTime.Now.ToString ();
+                    //lblEntryBy.Text =Session["User_Name"].ToString();
+
+                    InventoryClass  obj=new InventoryClass();
 					SqlDataReader SqlDtr;
 					string sql;
 					
@@ -216,12 +217,15 @@ namespace Servosms.Module.Inventory
 					getschemefoe();
 					getschemeSecSP();
 				}
-				catch(Exception ex)
+                
+
+                catch (Exception ex)
 				{
 					CreateLogFiles.ErrorLog("Form:OrderCollection.aspx,Method:pageload.   EXCEPTION: "+ ex.Message+"  User_ID: "+uid);   
 				}
 			}
-		}
+            
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
