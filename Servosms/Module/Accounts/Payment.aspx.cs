@@ -697,7 +697,7 @@ namespace Servosms.Module.Accounts
 					dbobj.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Voucher("+strArr[1].Trim()+")' and CustID='"+OldCust_ID+"'",ref c);
 				}
 					
-				dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID1+","+Amount1+","+By_ID1+","+Amount1+",'"+Bank_name1+"','"+Cheque_No1+"','"+Date1+"','"+narration1+"','"+uid+"','CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
+				dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID1+","+Amount1+","+By_ID1+","+Amount1+",'"+Bank_name1+"','"+Cheque_No1+"','"+Date1+"','"+narration1+"','"+uid+"',CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
 				object obj = null;
 				dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",Ledger_ID1,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount",Amount1,"@Credit_Amount","0.0","@type","Dr","@Invoice_Date",Entry_Date); 
 				dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",By_ID1,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount","0.0","@Credit_Amount",Amount1,"@type","Cr","@Invoice_Date",Entry_Date); 

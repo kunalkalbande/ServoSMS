@@ -235,7 +235,7 @@ namespace Servosms.Module.Reports
 			SqlDataReader rdr=null;
 			int max=0,min=0;
 			string deleted_invoice="";
-			string str="SELECT max(receipt_no) from Payment_Receipt where cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString())+"' and subreceiptno<>'Deleted'";
+			string str="SELECT max(receipt_no) from Payment_Receipt where cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)>=Convert(datetime,'"+GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString())+"',103) and cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)<=Convert(datetime,'"+GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString())+"',103) and subreceiptno<>'Deleted'";
 			rdr=obj.GetRecordSet(str);
 			if(rdr.Read())
 			{
@@ -243,8 +243,8 @@ namespace Servosms.Module.Reports
 			}
 			rdr.Close();
 
-			str="SELECT min(receipt_no) from Payment_Receipt where cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString())+"' and subreceiptno<>'Deleted'";
-			rdr=obj.GetRecordSet(str);
+            str = "SELECT min(receipt_no) from Payment_Receipt where cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(Receipt_date as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) and subreceiptno<>'Deleted'";
+            rdr =obj.GetRecordSet(str);
 			if(rdr.Read())
 			{
 				min=Convert.ToInt32(rdr.GetValue(0));
