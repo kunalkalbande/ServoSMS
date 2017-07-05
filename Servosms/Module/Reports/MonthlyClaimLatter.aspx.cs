@@ -111,7 +111,7 @@ namespace Servosms.Module.Reports
 		public string DateToYear(string str)
 		{
 			string[] dt1=str.Split(new char[] {' '},str.Length);
-			string[] dt=dt1[0].Split(new char[] {'/'},dt1[0].Length);
+			string[] dt=dt1[0].Split(new char[] {'-'},dt1[0].Length);
 			return dt[2];
 		}
 
