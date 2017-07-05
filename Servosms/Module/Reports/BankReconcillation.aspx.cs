@@ -97,8 +97,9 @@ namespace Servosms.Module.Reports
 					txtDateFrom.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 					txtDateTo.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 				}
-				
-			}
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:BankReconcillation.aspx,Method:pageload "+ " EXCEPTION  "+ex.Message+"  "+ uid );

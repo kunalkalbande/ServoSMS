@@ -55,6 +55,13 @@
 							 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="60px" 
 							Text="Excel" Runat="server" onclick="btnExcel_Click"></asp:button></td>
 				</tr>
+				<tr>
+					<td align="right" height=20 width=170>&nbsp;</td>
+					<td width=110>&nbsp;</td>
+					<td align="center">&nbsp;</td>
+					<td width=110>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
 				<TR>
 					<TD vAlign="top" align="center" colspan=5>
 						<TABLE id="Table1" border="1" runat="server" cellpadding=0 cellspacing=0>

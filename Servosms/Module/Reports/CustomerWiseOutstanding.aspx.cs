@@ -110,7 +110,9 @@ namespace Servosms.Module.Reports
 				#endregion
 				GetMultiValue();
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+        }
 
 		/// <summary>
 		/// This method is used to fill the searchable combo box when according to select value from dropdownlist with the help of java script.
