@@ -81,6 +81,7 @@
 							</tr>
 							<% 
 							//try{
+                           
 								EmployeeClass obj=new EmployeeClass();
 								SqlDataReader SqlDtr;
 								string sql;
@@ -88,12 +89,12 @@
 								string str1;
 								int i=0;
 								//coment by vikas 29.10.2012 str1=obj.date();
-								str1=GenUtil.str2MMDDYYYY(txtdate.Text.ToString());
+								str1=GenUtil.str2DDMMYYYY(txtdate.Text.ToString());
 								if(panEmp.Visible==false)
 								{ 
 									//coment by vikas 29.10.2012 sql=" select employee.emp_id,employee.Emp_Name,employee.Designation from employee where emp_id!=all(select distinct Attandance_Register.emp_id from Attandance_Register where att_Date ='"+str1+"')and emp_ID!=all(    select  emp_id from leave_Register where  getdate() between Date_from and DATEADD(day, 1, date_to) and  issanction=1)"; 
 									//coment by vikas 6.11.2012 sql=" select employee.emp_id,employee.Emp_Name,employee.Designation from employee where status='1' and emp_id!=all(select distinct Attandance_Register.emp_id from Attandance_Register where att_Date ='"+str1+"')and emp_ID!=all( select  emp_id from leave_Register where  getdate() between Date_from and DATEADD(day, 1, date_to) and  issanction=1)"; 
-									sql="select employee.emp_id,employee.Emp_Name,employee.Designation from employee where status='1' and emp_ID!=all( select  emp_id from leave_Register where  '"+str1+"' between Date_from and DATEADD(day, 1, date_to) and  issanction=1) order by Designation";
+									sql="select employee.emp_id,employee.Emp_Name,employee.Designation from employee where status='1' and emp_ID!=all( select  emp_id from leave_Register where  Convert(datetime,'"+str1+"',103) between Date_from and DATEADD(day, 1, date_to) and  issanction=1) order by Designation";
 									SqlDtr=obj.GetRecordSet(sql);
 									while(SqlDtr.Read())
 									{
@@ -207,6 +208,7 @@
 			try
 			{
 				 uid=(Session["User_Name"].ToString());
+               txtdate.Text = Request.Form["txtdate"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["txtdate"].ToString();
 			}
 			catch(Exception ex)
 			{

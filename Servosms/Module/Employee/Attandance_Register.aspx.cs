@@ -44,8 +44,10 @@ namespace Servosms.Module.Employee
 			DBOperations.DBUtil dbobj=new DBOperations.DBUtil(System.Configuration.ConfigurationSettings.AppSettings["Servosms"],true);
 			try
 			{
-				uid=(Session["User_Name"].ToString());
-			}
+                uid = (Session["User_Name"].ToString());
+              
+
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:Addtandance_Registor,Method:Page_load Exception :"+ex.Message+"  userid "+ uid);
