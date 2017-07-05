@@ -88,7 +88,9 @@ namespace Servosms.Module.Reports
 				txtDateFrom.Text=DateTime.Now.Day +"/"+ DateTime.Now.Month+"/"+ DateTime.Now.Year; 
 				Textbox1.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            Textbox1.Text = Request.Form["Textbox1"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["Textbox1"].ToString().Trim();
+        }
 		
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
@@ -120,8 +122,10 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-				{
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
+                {                
 					MessageBox.Show("Date From Should be less than Date To");
 					GridReport.Visible=false;
 				}

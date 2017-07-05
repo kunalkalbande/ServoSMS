@@ -102,7 +102,9 @@ namespace Servosms.Module.Reports
 				}
 				#endregion
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            Textbox1.Text = Request.Form["Textbox1"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["Textbox1"].ToString().Trim();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
@@ -1855,7 +1857,7 @@ namespace Servosms.Module.Reports
 		{
 			if(dt!="")
 			{
-				string[] year=dt.Split(new char[] {'/'},dt.Length);
+				string[] year=dt.Split(new char[] {'-'},dt.Length);
 				string yr=year[2].Substring(2);	
 				return(yr);
 			}

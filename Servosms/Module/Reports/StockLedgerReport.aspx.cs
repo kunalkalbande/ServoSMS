@@ -96,7 +96,9 @@ namespace Servosms.Module.Reports
 					}
 					#endregion
 				}
-			}
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:StockLedgerReport.aspx,Method:Page_Load"+ " EXCEPTION "  +ex.Message+"  userid  "+uid);  
@@ -179,11 +181,13 @@ namespace Servosms.Module.Reports
 				MessageBox.Show(ErrorMessage);
 				return false;
 			}
-			
 
-			if(System.DateTime.Compare(ToMMddYYYY(txtDateFrom.Text.Trim()),ToMMddYYYY(txtDateTo.Text.Trim())) > 0)
-			{
-				MessageBox.Show("Date From Should be less than Date To");
+
+            var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+            var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
+            if (DateTime.Compare(dt1, dt2) > 0)
+            {
+                MessageBox.Show("Date From Should be less than Date To");
 				return false;
 			}
 			else

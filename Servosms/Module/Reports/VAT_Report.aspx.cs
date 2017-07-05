@@ -102,7 +102,9 @@ namespace Servosms.Module.Reports
 
 					tempMonth=new ArrayList();
 				}
-				if(txtValue.Text!="")
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+                if (txtValue.Text!="")
 					Total_PurVar+=double.Parse(txtValue.Text);
 				BtnPrint.Attributes.Add("OnClick","CheckPurchaseSum();");
 				btnExcel.Attributes.Add("OnClick","CheckPurchaseSum();");

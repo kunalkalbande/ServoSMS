@@ -84,7 +84,9 @@ namespace Servosms.Module.Reports
 					GetMultiValue();
 					Fill_Drop();
 				}
-			}
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:Schemelist.aspx,Method:Page_Load, EXCEPTION "+ex.Message+"  userid  "+uid );

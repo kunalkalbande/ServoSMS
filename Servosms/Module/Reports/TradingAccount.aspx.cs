@@ -79,7 +79,9 @@ namespace Servosms.Module.Reports
 					#endregion 
 					Table1.Visible  = false;
 				}
-			}
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:TradingAccount.aspx,Method:page_load"+ "  EXCEPTION "+ex.Message+"  userid  "+uid);
@@ -130,8 +132,10 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(txtDateTo.Text))>0)
-				{
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
+                {                  
 					MessageBox.Show("Date From Should be less than Date To");
 					return;
 				}
