@@ -71,7 +71,7 @@
 												<TR>
 													<TD>&nbsp;Date From</TD>
 													<TD>
-														<asp:DropDownList id="drop1" Runat="server" CssClass="fontstyle" Width="50px">
+														<asp:DropDownList id="drop1" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="01">01</asp:ListItem>
 															<asp:ListItem Value="02">02</asp:ListItem>
 															<asp:ListItem Value="03">03</asp:ListItem>
@@ -83,7 +83,7 @@
 															<asp:ListItem Value="09">09</asp:ListItem>
 															<asp:ListItem Value="10">10</asp:ListItem>
 														</asp:DropDownList>
-														<asp:DropDownList id="drop3" Runat="server" CssClass="fontstyle" Width="50px">
+														<asp:DropDownList id="drop3" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="05">05</asp:ListItem>
 															<asp:ListItem Value="06">06</asp:ListItem>
 															<asp:ListItem Value="07">07</asp:ListItem>
@@ -95,7 +95,7 @@
 															<asp:ListItem Value="13">13</asp:ListItem>
 															<asp:ListItem Value="14">14</asp:ListItem>
 														</asp:DropDownList>
-														<asp:DropDownList id="drop5" Runat="server" CssClass="fontstyle" Width="50px">
+														<asp:DropDownList id="drop5" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="10">10</asp:ListItem>
 															<asp:ListItem Value="11">11</asp:ListItem>
 															<asp:ListItem Value="12">12</asp:ListItem>
@@ -107,7 +107,7 @@
 															<asp:ListItem Value="18">18</asp:ListItem>
 															<asp:ListItem Value="19">19</asp:ListItem>
 														</asp:DropDownList>
-														<asp:DropDownList id="drop7" Runat="server" CssClass="fontstyle" Width="60px">
+														<asp:DropDownList id="drop7" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="15">15</asp:ListItem>
 															<asp:ListItem Value="16">16</asp:ListItem>
 															<asp:ListItem Value="17">17</asp:ListItem>
@@ -125,7 +125,7 @@
 												<TR>
 													<TD>&nbsp;Date To</TD>
 													<TD>
-														<asp:DropDownList id="drop2" Runat="server" CssClass="fontstyle" Width="50px">
+														<asp:DropDownList id="drop2" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="05">05</asp:ListItem>
 															<asp:ListItem Value="06">06</asp:ListItem>
 															<asp:ListItem Value="07">07</asp:ListItem>
@@ -137,7 +137,7 @@
 															<asp:ListItem Value="13">13</asp:ListItem>
 															<asp:ListItem Value="14">14</asp:ListItem>
 														</asp:DropDownList>
-														<asp:DropDownList id="drop4" Runat="server" CssClass="fontstyle" Width="50px">
+														<asp:DropDownList id="drop4" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="10">10</asp:ListItem>
 															<asp:ListItem Value="11">11</asp:ListItem>
 															<asp:ListItem Value="12">12</asp:ListItem>
@@ -149,7 +149,7 @@
 															<asp:ListItem Value="18">18</asp:ListItem>
 															<asp:ListItem Value="19">19</asp:ListItem>
 														</asp:DropDownList>
-														<asp:DropDownList id="drop6" Runat="server" CssClass="fontstyle" Width="50px">
+														<asp:DropDownList id="drop6" Runat="server" CssClass="fontstyle" Width="40px">
 															<asp:ListItem Value="15">15</asp:ListItem>
 															<asp:ListItem Value="16">16</asp:ListItem>
 															<asp:ListItem Value="17">17</asp:ListItem>
@@ -171,13 +171,13 @@
 													<TD>&nbsp;Early Bird Dis.</TD>
 													<TD>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurEarlyBird"
-															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox>
+															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurEarlyBird1"
-															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox>
+															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurEarlyBird2"
-															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox>
+															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurEarlyBird3"
-															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox></TD>
+															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
 													<TD>
 														<asp:DropDownList id="DropPurEarlyRs" Runat="server" CssClass="fontstyle" Width="100%">
 															<asp:ListItem Value="%">%</asp:ListItem>
@@ -190,9 +190,9 @@
 													<TD>Servo Stk. Discount</TD>
 													<TD>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurServostk"
-															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox></TD>
+															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
 													<TD>
-														<asp:DropDownList id="DropPurServostkRs" Runat="server" CssClass="fontstyle" Width="100%">
+														<asp:DropDownList id="DropPurServostkRs" Runat="server" CssClass="fontstyle" Width="90%">
 															<asp:ListItem Value="%">%</asp:ListItem>
 														</asp:DropDownList></TD>
 													<TD align="center">
@@ -202,7 +202,7 @@
 													<TD>&nbsp;Fixed Discount</TD>
 													<TD>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurFixed" Runat="server"
-															CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox></TD>
+															CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
 													<TD>
 														<asp:DropDownList id="DropPurFixedRs" Runat="server" CssClass="fontstyle">
 															<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
@@ -214,7 +214,7 @@
 													<TD>&nbsp;Cash Discount</TD>
 													<TD>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurCashDis"
-															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox></TD>
+															Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
 													<TD>
 														<asp:DropDownList id="DropPurCashDisRs" Runat="server" CssClass="fontstyle">
 															<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
@@ -227,7 +227,7 @@
 													<TD>&nbsp;Discount</TD>
 													<TD>
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurDis" Runat="server"
-															CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox></TD>
+															CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
 													<TD>
 														<asp:DropDownList id="DropPurDisRs" Runat="server" CssClass="fontstyle">
 															<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
@@ -240,9 +240,9 @@
 													<TD style="HEIGHT: 23px">&nbsp;Vat</TD>
 													<TD style="HEIGHT: 23px">
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurVat" Runat="server"
-															CssClass="FontStyle" BorderStyle="Groove" Width="50px" MaxLength="6"></asp:TextBox></TD>
+															CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
 													<TD style="HEIGHT: 23px">
-														<asp:DropDownList id="DropPurVatRs" Runat="server" CssClass="fontstyle" Width="100%">
+														<asp:DropDownList id="DropPurVatRs" Runat="server" CssClass="fontstyle" Width="90%">
 															<asp:ListItem Value="%">%</asp:ListItem>
 														</asp:DropDownList></TD>
 													<TD style="HEIGHT: 23px" align="center">
@@ -262,7 +262,7 @@
 									<TD width="100%">&nbsp;Scheme Discount</TD>
 									<TD>
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtSalesSchDis"
-											Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
+											Runat="server" CssClass="FontStyle" BorderStyle="Groove" Width="120px" MaxLength="6"></asp:TextBox></TD>
 									<TD>
 										<asp:DropDownList id="DropSalesSchDisRs" Runat="server" CssClass="fontstyle">
 											<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
@@ -314,7 +314,7 @@
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtSalesVat" Runat="server"
 											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
 									<TD>
-										<asp:DropDownList id="DropSalesVatRs" Runat="server" CssClass="fontstyle" Width="100%">
+										<asp:DropDownList id="DropSalesVatRs" Runat="server" CssClass="fontstyle" >
 											<asp:ListItem Value="%">%</asp:ListItem>
 										</asp:DropDownList></TD>
 									<TD align="center">
@@ -333,7 +333,7 @@
 									<TD width="100%">&nbsp;Scheme Discount</TD>
 									<TD>
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtModSchDis" Runat="server"
-											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
+											CssClass="FontStyle" BorderStyle="Groove" Width="120px" MaxLength="6"></asp:TextBox></TD>
 									<TD>
 										<asp:DropDownList id="DropModSchDisRs" Runat="server" CssClass="fontstyle">
 											<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
@@ -385,7 +385,7 @@
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtModVat" Runat="server"
 											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
 									<TD>
-										<asp:DropDownList id="DropModVatRs" Runat="server" CssClass="fontstyle" Width="100%">
+										<asp:DropDownList id="DropModVatRs" Runat="server" CssClass="fontstyle" Width="90%">
 											<asp:ListItem Value="%">%</asp:ListItem>
 										</asp:DropDownList></TD>
 									<TD align="center">

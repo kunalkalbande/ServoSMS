@@ -141,6 +141,7 @@ namespace Servosms.Module.Inventory
 				DeleteTheRec();
 				UpdateBatchNo();
 			}
+
 			if(!IsPostBack)
 			{
 				try
@@ -313,7 +314,9 @@ namespace Servosms.Module.Inventory
 				//getscheme1();
 				//getschemefoe();
 			}
-			txtVehicleNo.Attributes.Add("onmousemove","getScheme_New();");
+            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
+            txtChallanDate.Text = Request.Form["txtChallanDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtChallanDate"].ToString().Trim();
+            txtVehicleNo.Attributes.Add("onmousemove","getScheme_New();");
 		}
 
 		/// <summary>

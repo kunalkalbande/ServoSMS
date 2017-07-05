@@ -1526,7 +1526,7 @@
 										Width="58px" CssClass="dropdownlist">
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
 										<asp:ListItem Value="%">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="64px" ReadOnly="True"
+									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="110px" ReadOnly="True"
 										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 									Secondry Sp. Disc.&nbsp;&nbsp;<asp:textbox id="txtSecondrySpDisc" Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"
 										Runat="server"></asp:textbox></TD>
@@ -1563,7 +1563,7 @@
 							</TR>
 							<TR>
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
-								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px"  Text="Print" 
+								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="50px"  Text="Print" 
 										 onclick="Button1_Click"></asp:button></TD>
 							</TR>
 						</TABLE>

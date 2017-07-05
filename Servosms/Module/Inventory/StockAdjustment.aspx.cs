@@ -68,7 +68,8 @@ namespace Servosms.Module.Inventory
 					ProductQty = new ArrayList();
 					tempDate ="";
 				}
-			}
+                txtDate.Text = Request.Form["txtDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDate"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:StockAdjustment.aspx,Method:page_load  EXCEPTION: "+ ex.Message+".  UserID: "+uid);	

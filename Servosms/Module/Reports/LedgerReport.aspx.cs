@@ -54,15 +54,17 @@ namespace Servosms.Module.Reports
 		/// <param name="e"></param>
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			// Put user code to initialize the page here
-			try
+            txtDateTo.Text = Request.Form["txtDateTo"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["txtDateTo"].ToString();
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["txtDateFrom"].ToString();
+            // Put user code to initialize the page here
+            try
 			{
 				uid=(Session["User_Name"].ToString());
 
 				if(! IsPostBack)
 				{
-					txtDateTo.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
-					txtDateFrom.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
+					//txtDateTo.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
+					//txtDateFrom.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
 					#region Check Privileges
 					int i;
 					string View_flag="0", Add_Flag="0", Edit_Flag="0", Del_Flag="0";
@@ -1515,7 +1517,7 @@ namespace Servosms.Module.Reports
 		{
 			if(dt!="")
 			{
-				string[] year=dt.Split(new char[] {'/'},dt.Length);
+				string[] year=dt.Split(new char[] {'-'},dt.Length);
 				string yr=year[2].Substring(2);	
 				return(yr);
 			}

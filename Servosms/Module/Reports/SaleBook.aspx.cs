@@ -116,7 +116,9 @@ namespace Servosms.Module.Reports
 				Textbox1.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
 				GetMultiValue();
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["txtDateFrom"].ToString();
+            Textbox1.Text = Request.Form["Textbox1"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["Textbox1"].ToString();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
@@ -834,11 +836,9 @@ namespace Servosms.Module.Reports
 		{
 			SqlConnection sqlcon=new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 
-			string sql="";
-				
-			sql="select sb.cust_name+', '+sb.city as cust_name,Cust_type,prod_name+','+pack_type as prod_name,quant,quant*total_qty as total_qty,rate,Quant*rate TotalRate from vw_SaleBook sb, employee e where under_salesman=e.emp_id  and under_salesman='1001' and cast(floor(cast(invoice_date as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ToMMddYYYY(Textbox1.Text)+"'";
-				
-			SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
+			string sql="";            
+            sql="select sb.cust_name+', '+sb.city as cust_name,Cust_type,prod_name+','+pack_type as prod_name,quant,quant*total_qty as total_qty,rate,Quant*rate TotalRate from vw_SaleBook sb, employee e where under_salesman=e.emp_id  and under_salesman='1001' and cast(floor(cast(invoice_date as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ToMMddYYYY(Textbox1.Text)+"'";            
+            SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
 			DataSet ds=new DataSet();	
 			da.Fill(ds,"vw_SaleBook");
 			DataTable dtcustomer=ds.Tables["vw_SaleBook"];
@@ -995,7 +995,9 @@ namespace Servosms.Module.Reports
 		{   
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
 				{
 					MessageBox.Show("Date From Should be less than Date To");
 					GridSalesReport.Visible=false;

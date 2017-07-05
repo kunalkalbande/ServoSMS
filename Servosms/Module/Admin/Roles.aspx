@@ -50,7 +50,7 @@
 							<TR>
 								<TD>Role&nbsp;ID&nbsp;<asp:RequiredFieldValidator id="Requiredfieldvalidator2" runat="server" ErrorMessage="Please Select The Role ID"
 										ControlToValidate="dropRoleID" InitialValue="Select">*</asp:RequiredFieldValidator></TD>
-								<TD><asp:dropdownlist id="dropRoleID" runat="server" Width="130px" AutoPostBack="True" Visible="False"
+								<TD><asp:dropdownlist id="dropRoleID" runat="server" Width="60px" AutoPostBack="True" Visible="False"
 										CssClass="fontstyle" onselectedindexchanged="dropRoleID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist><asp:label id="lblRoleID" ForeColor="Blue" Width="100px" Runat="server"></asp:label>
@@ -61,13 +61,13 @@
 								<TD>Role Name
 									<asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please Fill the Role Name"
 										ControlToValidate="txtRoleName">*</asp:RequiredFieldValidator></TD>
-								<TD><asp:textbox id="txtRoleName" runat="server" Width="300px" BorderStyle="Groove" onkeypress="return GetOnlyChars(this, event);"
+								<TD><asp:textbox id="txtRoleName" runat="server" Width="125px" BorderStyle="Groove" onkeypress="return GetOnlyChars(this, event);"
 										MaxLength="30" CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 									&nbsp;</TD>
-								<TD colSpan="2"><asp:textbox id="txtDesc" runat="server" Width="300px" BorderStyle="Groove" TextMode="MultiLine"
+								<TD colSpan="2"><asp:textbox id="txtDesc" runat="server" Width="115px" BorderStyle="Groove" TextMode="MultiLine"
 										CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<TR>

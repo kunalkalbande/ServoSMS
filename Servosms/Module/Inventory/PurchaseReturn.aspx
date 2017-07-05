@@ -967,7 +967,7 @@
 										<TABLE cellSpacing="0" cellPadding="0">
 											<TR>
 												<TD vAlign="middle">Invoice No</TD>
-												<TD vAlign="middle"><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="135px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
+												<TD vAlign="middle"><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="60px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist></TD>
 											</TR>
@@ -1327,10 +1327,10 @@
 															type="checkbox" name="Checkbox1" runat="server"></TD>
 												</TR>
 												<tr>
-													<td>&nbsp; Total Ltr/Kg<asp:textbox id="txttotalqtyltr" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True"
+													<td>&nbsp; Total Ltr/Kg<asp:textbox id="txttotalqtyltr" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist"></asp:textbox></td>
 													<td>&nbsp;&nbsp;&nbsp;&nbsp; Total</td>
-													<td><asp:textbox id="txttotalqty" runat="server" Width="53px" BorderStyle="Groove" ReadOnly="True"
+													<td><asp:textbox id="txttotalqty" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist"></asp:textbox></td>
 													<td>&nbsp;</td>
 													<td align="center" colSpan="2">Select All</td>
@@ -1345,7 +1345,7 @@
 						<TABLE cellSpacing="0" cellPadding="0">
 							<TR>
 								<TD>Promo Scheme</TD>
-								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="150px" BorderStyle="Groove" ReadOnly="True"
+								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 								<TD width="20"></TD>
 								<TD>Grand Total</TD>
@@ -1354,8 +1354,8 @@
 							</TR>
 							<TR>
 								<TD>Entry Tax</TD>
-								<TD><asp:textbox id="txtentry" onblur="GetNetAmount()" runat="server" Width="67px" BorderStyle="Groove"
-										CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtentrytype" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtentry" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
+										CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtentrytype" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 								<TD></TD>
 								<TD></TD>
@@ -1364,19 +1364,19 @@
 							<TR>
 								<TD>Remark</TD>
 								<TD>
-									<P><asp:textbox id="txtRemark" runat="server" Width="150px" BorderStyle="Groove" ReadOnly="True"
+									<P><asp:textbox id="txtRemark" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 											CssClass="dropdownlist" Enabled="False"></asp:textbox></P>
 								</TD>
 								<TD></TD>
 								<TD>Cash Discount</TD>
-								<TD><asp:textbox id="txtCashDisc" onblur="GetNetAmount()" runat="server" Width="67px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtCashDiscType" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtCashDisc" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtCashDiscType" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>FOC Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:textbox id="txtfocamt" onblur="GetNetAmount()" runat="server" Width="67px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtfoctype" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtfocamt" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtfoctype" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 								<!--<TD style="WIDTH: 150px; HEIGHT: 27px"></TD>
 								<TD style="WIDTH: 184px; HEIGHT: 27px">
@@ -1384,16 +1384,16 @@
 								</TD-->
 								<TD></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:textbox id="txtDisc" onblur="GetNetAmount()" runat="server" Width="67px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtDiscType" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtDisc" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtDiscType" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Servo 
 									Stk.&nbsp;Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:textbox id="txttrade" onblur="GetNetAmount()" runat="server" Width="38px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txttradeamt" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
-										ReadOnly="true" CssClass="dropdownlist" Enabled="False"></asp:textbox><FONT color="#990066">Minus</FONT><asp:textbox id="txttradeless" onblur="GetNetAmount()" runat="server" Width="30px" BorderStyle="Groove"
+								<TD><asp:textbox id="txttrade" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txttradeamt" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
+										ReadOnly="true" CssClass="dropdownlist" Enabled="False"></asp:textbox><FONT color="#990066">Minus</FONT><asp:textbox id="txttradeless" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<!--<TD style="WIDTH: 150px"></TD>
 								<TD style="WIDTH: 184px"></TD>-->
@@ -1409,9 +1409,9 @@
 								<TD style="WIDTH: 184px; HEIGHT: 27px"></TD-->
 								<TD>Early Bird 
 									Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:textbox id="txtebird" onblur="GetNetAmount()" runat="server" Width="38px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtebirdamt" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist" Enabled="False"></asp:textbox><FONT color="#990066">Minus</FONT><asp:textbox id="txtbirdless" onblur="GetNetAmount()" runat="server" Width="30px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtebird" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtebirdamt" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist" Enabled="False"></asp:textbox><FONT color="#990066">Minus</FONT><asp:textbox id="txtbirdless" onblur="GetNetAmount()" runat="server" Width="120px" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Net Amount</TD>
@@ -1427,7 +1427,7 @@
 							</TR-->
 							<TR>
 								<TD>Message</TD>
-								<TD colSpan="2"><asp:textbox id="txtMessage" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+								<TD colSpan="2"><asp:textbox id="txtMessage" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 								<TD align="right" colSpan="2"><asp:button id="btnSave" runat="server" Width="75px"  Text="Save"
 										 onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" 

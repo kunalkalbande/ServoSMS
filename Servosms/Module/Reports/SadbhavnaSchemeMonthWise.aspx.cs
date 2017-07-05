@@ -78,7 +78,9 @@ namespace Servosms.Module.Reports
 				Response.Redirect("../../Sysitem/ErrorPage.aspx",false);
 				return;
 			}
-			if(!Page.IsPostBack )
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["txtDateFrom"].ToString();
+            Textbox1.Text = Request.Form["Textbox1"] == null ? DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year.ToString() : Request.Form["Textbox1"].ToString();
+            if (!Page.IsPostBack )
 			{
 				GridSalesReport.Visible=false;
 				#region Check Privileges
@@ -606,8 +608,9 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-				{
+                if (System.DateTime.Compare(ToMMddYYYY(Request.Form["txtDateFrom"].ToString().Trim()), ToMMddYYYY(Request.Form["Textbox1"].ToString().Trim())) > 0)
+                //if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
+                {
 					MessageBox.Show("Date From Should be less than Date To");
 					GridSalesReport.Visible=false;
 				}

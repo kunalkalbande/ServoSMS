@@ -179,7 +179,10 @@ namespace Servosms.Module.inventory
 					CreateLogFiles.ErrorLog("Form:SchemeDiscountEntry.aspx,Method:pageload"+ ex.Message+"  EXCEPTION  "+uid); 
 				}
 			}
-		}
+
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+        }
 
 		/// <summary>
 		/// This method is used to fatch the all product name with pack type and fill in list.

@@ -1203,7 +1203,7 @@
 							</TR>
 							<TR>
 								<TD align="center" colSpan="2">
-									<TABLE id="Table4" cellSpacing="0" cellPadding="0" width="550" border="0">
+									<TABLE id="Table4" cellSpacing="0" cellPadding="0" width="778" border="0">
 										<TR>
 											<TD align="center" colSpan="7"><FONT color="#990066"><STRONG><U>Products Details</U></STRONG></FONT></TD>
 										</TR>
@@ -1234,12 +1234,12 @@
 														onfocusout="HideList(this,document.Form1.DropType1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
 														multiple name="DropProdName1"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty1" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType2,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty1" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType2,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate1" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate1" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount1" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount1" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc1" onclick="GetFOC(this,document.Form1.txtAmount1)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType1,document.Form1.lblInvoiceNo,document.Form1.txtQty1)"
@@ -1260,12 +1260,12 @@
 														onfocusout="HideList(this,document.Form1.DropType2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
 														multiple name="DropProdName2"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty2" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType3,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty2" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType3,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD style="WIDTH: 54px"><asp:textbox id="txtRate2" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD style="WIDTH: 54px"><asp:textbox id="txtRate2" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount2" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount2" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc2" onclick="GetFOC(this,document.Form1.txtAmount2)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType2,document.Form1.lblInvoiceNo,document.Form1.txtQty2)"
@@ -1286,12 +1286,12 @@
 														onfocusout="HideList(this,document.Form1.DropType3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
 														multiple name="DropProdName3"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty3" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType4,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty3" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType4,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD style="WIDTH: 54px"><asp:textbox id="txtRate3" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD style="WIDTH: 54px"><asp:textbox id="txtRate3" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount3" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount3" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc3" onclick="GetFOC(this,document.Form1.txtAmount3)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType3,document.Form1.lblInvoiceNo,document.Form1.txtQty3)"
@@ -1312,12 +1312,12 @@
 														onfocusout="HideList(this,document.Form1.DropType4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
 														multiple name="DropProdName4"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty4" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType5,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty4" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType5,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate4" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate4" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount4" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount4" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc4" onclick="GetFOC(this,document.Form1.txtAmount4)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType4,document.Form1.lblInvoiceNo,document.Form1.txtQty4)"
@@ -1338,12 +1338,12 @@
 														onfocusout="HideList(this,document.Form1.DropType5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
 														multiple name="DropProdName5"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty5" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType6,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty5" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType6,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate5" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate5" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount5" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount5" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc5" onclick="GetFOC(this,document.Form1.txtAmount5)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType5,document.Form1.lblInvoiceNo,document.Form1.txtQty5)"
@@ -1364,12 +1364,12 @@
 														onfocusout="HideList(this,document.Form1.DropType6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
 														multiple name="DropProdName6"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty6" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType7,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty6" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType7,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate6" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate6" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount6" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount6" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc6" onclick="GetFOC(this,document.Form1.txtAmount6)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType6,document.Form1.lblInvoiceNo,document.Form1.txtQty6)"
@@ -1390,12 +1390,12 @@
 														onfocusout="HideList(this,document.Form1.DropType7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
 														multiple name="DropProdName7"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty7" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType8,event)" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty7" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType8,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate7" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate7" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount7" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount7" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc7" onclick="GetFOC(this,document.Form1.txtAmount7)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType7,document.Form1.lblInvoiceNo,document.Form1.txtQty7)"
@@ -1416,12 +1416,12 @@
 														onfocusout="HideList(this,document.Form1.DropType8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
 														multiple name="DropProdName8"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty8" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType9,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty8" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType9,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate8" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate8" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount8" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount8" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc8" onclick="GetFOC(this,document.Form1.txtAmount8)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType8,document.Form1.lblInvoiceNo,document.Form1.txtQty8)"
@@ -1442,12 +1442,12 @@
 														onfocusout="HideList(this,document.Form1.DropType9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
 														multiple name="DropProdName9"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty9" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType10,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty9" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType10,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate9" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate9" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount9" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount9" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc9" onclick="GetFOC(this,document.Form1.txtAmount9)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType9,document.Form1.lblInvoiceNo,document.Form1.txtQty9)"
@@ -1468,12 +1468,12 @@
 														onfocusout="HideList(this,document.Form1.DropType10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
 														multiple name="DropProdName10"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty10" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType11,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty10" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType11,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate10" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate10" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount10" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount10" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc10" onclick="GetFOC(this,document.Form1.txtAmount10)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType10,document.Form1.lblInvoiceNo,document.Form1.txtQty10)"
@@ -1494,12 +1494,12 @@
 														onfocusout="HideList(this,document.Form1.DropType11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
 														multiple name="DropProdName11"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty11" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType12,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty11" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType12,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate11" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate11" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount11" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount11" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc11" onclick="GetFOC(this,document.Form1.txtAmount11)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType11,document.Form1.lblInvoiceNo,document.Form1.txtQty11)"
@@ -1520,12 +1520,12 @@
 														onfocusout="HideList(this,document.Form1.DropType12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
 														multiple name="DropProdName12"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty12" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType13,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty12" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType13,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate12" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate12" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount12" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount12" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc12" onclick="GetFOC(this,document.Form1.txtAmount12)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType12,document.Form1.lblInvoiceNo,document.Form1.txtQty12)"
@@ -1546,12 +1546,12 @@
 														onfocusout="HideList(this,document.Form1.DropType13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
 														multiple name="DropProdName13"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty13" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType14,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty13" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType14,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate13" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate13" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount13" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount13" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc13" onclick="GetFOC(this,document.Form1.txtAmount13)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType13,document.Form1.lblInvoiceNo,document.Form1.txtQty13)"
@@ -1572,12 +1572,12 @@
 														onfocusout="HideList(this,document.Form1.DropType14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
 														multiple name="DropProdName14"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty14" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType15,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty14" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType15,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate14" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate14" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount14" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount14" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc14" onclick="GetFOC(this,document.Form1.txtAmount14)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType14,document.Form1.lblInvoiceNo,document.Form1.txtQty14)"
@@ -1598,12 +1598,12 @@
 														onfocusout="HideList(this,document.Form1.DropType15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
 														multiple name="DropProdName15"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty15" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType16,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty15" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType16,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate15" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate15" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount15" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount15" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc15" onclick="GetFOC(this,document.Form1.txtAmount15)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType15,document.Form1.lblInvoiceNo,document.Form1.txtQty15)"
@@ -1624,12 +1624,12 @@
 														onfocusout="HideList(this,document.Form1.DropType16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
 														multiple name="DropProdName16"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty16" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType17,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty16" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType17,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate16" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate16" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount16" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount16" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc16" onclick="GetFOC(this,document.Form1.txtAmount16)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType16,document.Form1.lblInvoiceNo,document.Form1.txtQty16)"
@@ -1650,12 +1650,12 @@
 														onfocusout="HideList(this,document.Form1.DropType17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
 														multiple name="DropProdName17"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty17" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType18,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty17" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType18,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate17" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate17" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount17" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount17" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc17" onclick="GetFOC(this,document.Form1.txtAmount17)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType17,document.Form1.lblInvoiceNo,document.Form1.txtQty17)"
@@ -1676,12 +1676,12 @@
 														onfocusout="HideList(this,document.Form1.DropType18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
 														multiple name="DropProdName18"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty18" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType19,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty18" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType19,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate18" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate18" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount18" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount18" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc18" onclick="GetFOC(this,document.Form1.txtAmount18)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType18,document.Form1.lblInvoiceNo,document.Form1.txtQty18)"
@@ -1702,12 +1702,12 @@
 														onfocusout="HideList(this,document.Form1.DropType19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
 														multiple name="DropProdName19"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty19" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.DropType20,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty19" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.DropType20,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate19" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate19" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount19" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount19" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc19" onclick="GetFOC(this,document.Form1.txtAmount19)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType19,document.Form1.lblInvoiceNo,document.Form1.txtQty19)"
@@ -1728,12 +1728,12 @@
 														onfocusout="HideList(this,document.Form1.DropType20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
 														multiple name="DropProdName20"></select></div>
 											</TD>
-											<TD style="WIDTH: 54px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty20" onblur="calc(),get_EBD()"
-													onkeyup="MoveFocus(this,document.Form1.txtRemark,event)" runat="server" Width="53" BorderStyle="Groove" CssClass="dropdownlist"
+											<TD style="WIDTH: 115px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtQty20" onblur="calc(),get_EBD()"
+													onkeyup="MoveFocus(this,document.Form1.txtRemark,event)" runat="server" Width="115px" BorderStyle="Groove" CssClass="dropdownlist"
 													MaxLength="5"></asp:textbox></TD>
-											<TD><asp:textbox id="txtRate20" onblur="calc()" runat="server" Width="52px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtRate20" onblur="calc()" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
-											<TD><asp:textbox id="txtAmount20" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+											<TD><asp:textbox id="txtAmount20" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></TD>
 											<TD align="center"><asp:checkbox id="chkfoc20" onclick="GetFOC(this,document.Form1.txtAmount20)" runat="server"></asp:checkbox></TD>
 											<td align="center"><input onclick="getBatch(this,document.Form1.DropType20,document.Form1.lblInvoiceNo,document.Form1.txtQty20)"
@@ -1742,13 +1742,22 @@
 													type="checkbox" name="chkSchDisc20" runat="server"></td>
 										</TR>
 										<tr>
-											<td align="center">&nbsp; Total Ltr/Kg</td>
-											<td><asp:textbox id="txttotalqtyltr1" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
-													CssClass="dropdownlist"></asp:textbox><asp:textbox id="txttotalqtyltr" runat="server" Width="0px" ReadOnly="True" BorderStyle="Groove"
+											<td align="center"> Total</td>
+											<td><asp:textbox id="txttotalqtyltr1" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
+													CssClass="dropdownlist"></asp:textbox>
+											<td align="center"> Total</td>
+											<td style="WIDTH: 115px"><asp:textbox id="txttotalqty" runat="server" Width="115px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></td>
-											<td align="center">&nbsp;&nbsp;&nbsp;&nbsp; Total</td>
-											<td style="WIDTH: 54px"><asp:textbox id="txttotalqty" runat="server" Width="53px" ReadOnly="True" BorderStyle="Groove"
+											<td style="WIDTH: 54px">&nbsp;</td>
+											<td></td>
+											<TD align="center"></TD>
+											<TD align="center"></TD>
+										</tr>
+                                        <tr>
+											<td align="center">&nbsp; Ltr/Kg</td>
+											<td><asp:textbox id="txttotalqtyltr" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
 													CssClass="dropdownlist"></asp:textbox></td>
+											
 											<td style="WIDTH: 54px">&nbsp;</td>
 											<td></td>
 											<TD align="center"></TD>
@@ -1761,84 +1770,84 @@
 						<TABLE style="WIDTH: 600px" cellSpacing="0" cellPadding="0">
 							<TR>
 								<TD>Sch. Discount</TD>
-								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="67px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD>&nbsp;Grand Total</TD>
-								<TD><asp:textbox id="txtGrandTotal" runat="server" Width="123px" ReadOnly="True" BorderStyle="Groove"
+								<TD><asp:textbox id="txtGrandTotal" runat="server" Width="140px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<tr>
 								<td>FOC Discount</td>
 								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtfoc" runat="server"
-										Width="67px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:dropdownlist id="dropfoc" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()"
+										Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:dropdownlist id="dropfoc" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()"
 										Enabled="False">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
 									</asp:dropdownlist></td>
 								<td>&nbsp;EarlyBird Discount &nbsp;</td>
 								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtebird" onblur="GetNetAmountEtaxnew(),get_EBD()"
-										runat="server" Width="32px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:textbox id="txtebirdamt" onblur="GetNetAmountEtaxnew(),get_EBD()" runat="server" Width="67px"
+										runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:textbox id="txtebirdamt" onblur="GetNetAmountEtaxnew(),get_EBD()" runat="server" Width="140px"
 										ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><FONT color="#990066">Minus</FONT><asp:textbox onkeypress="return GetOnlyNumbers(this, event, true,true);" id="txtbirdless" onblur="GetNetAmountEtaxnew(),get_EBD()"
-										runat="server" Width="28px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox></td>
+										runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox></td>
 							</tr>
 							<tr>
 								<td>Entry Tax</td>
-								<td><asp:textbox id="txtentry" runat="server" Width="68" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtentry_TextChanged"></asp:textbox><asp:dropdownlist id="dropentry" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()" onselectedindexchanged="Dropdownlist1_SelectedIndexChanged">
+								<td><asp:textbox id="txtentry" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtentry_TextChanged"></asp:textbox><asp:dropdownlist id="dropentry" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()" onselectedindexchanged="Dropdownlist1_SelectedIndexChanged">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 									</asp:dropdownlist></td>
 								<td>&nbsp;Servo Stk. Discount&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								</td>
-								<td><asp:textbox id="txttradedisamt" runat="server" Width="99px" ReadOnly="True" BorderStyle="Groove"
+								<td><asp:textbox id="txttradedisamt" runat="server" Width="140px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox><FONT color="#990066">Minus</FONT><asp:textbox onkeypress="return GetOnlyNumbers(this, event, true,true);" id="txttradeless" onblur="GetNetAmountEtaxnew()"
-										runat="server" Width="28px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox></td>
+										runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox></td>
 							</tr>
 							<TR>
 								<TD style="HEIGHT: 21px">Discount(%)</TD>
 								<TD style="HEIGHT: 21px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtfixed" runat="server"
-										Visible="False" Width="1px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtfixedamt" runat="server" Width="67px" ReadOnly="True" BorderStyle="Groove"
+										Visible="False" Width="1px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:textbox id="txtfixedamt" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist" ontextchanged="txtfixed_TextChanged"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addl. 
 									Discount(%)&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAddDis" runat="server"
-										Width="67px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+										Width="120px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD style="HEIGHT: 21px">&nbsp;Credit/Cash Discount</TD>
 								<TD style="HEIGHT: 21px"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtCashDisc" onblur="GetNetAmountEtaxnew()"
-										runat="server" Width="40px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropCashDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
+										runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropCashDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
 										<asp:ListItem Value="Rs">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per" Selected="True">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtTotalCashDisc" onblur="GetNetAmountEtaxnew()" runat="server" Width="67px"
+									</asp:dropdownlist><asp:textbox id="txtTotalCashDisc" onblur="GetNetAmountEtaxnew()" runat="server" Width="140px"
 										BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtTotalCashDisc_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Message</TD>
-								<TD><asp:textbox id="txtMessage" runat="server" Width="246px" ReadOnly="True" BorderStyle="Groove"
+								<TD><asp:textbox id="txtMessage" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD>&nbsp;Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, true,true);" id="txtDisc" onblur="GetNetAmountEtaxnew()"
-										runat="server" Width="40px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox><asp:dropdownlist id="DropDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
+										runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox><asp:dropdownlist id="DropDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
 									</asp:dropdownlist><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtTotalDisc" onblur="GetNetAmountEtaxnew()"
-										runat="server" Width="67px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+										runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Remark</TD>
-								<TD><asp:textbox id="txtRemark" runat="server" Width="246px" BorderStyle="Groove" CssClass="dropdownlist"
+								<TD><asp:textbox id="txtRemark" runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist"
 										MaxLength="49"></asp:textbox></TD>
 								<TD>&nbsp;VAT
 									<asp:radiobutton id="No" onclick="return GetNetAmountEtaxnew();" runat="server" Width="39px" ToolTip="Not Applied"
 										 Checked="false" GroupName="VAT"></asp:radiobutton><asp:radiobutton id="Yes" onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Apply"
 										 Checked="true" GroupName="VAT"></asp:radiobutton></TD>
-								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtVAT_TextChanged"></asp:textbox></TD>
+								<TD><asp:textbox id="txtVAT" runat="server" Width="140px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtVAT_TextChanged"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Fixed Discount&nbsp;</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, true,true);" id="txtfixdisc" runat="server"
-										Width="40px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox><asp:dropdownlist id="DropFixDisType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()"
+										Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:textbox><asp:dropdownlist id="DropFixDisType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()"
 										Enabled="false">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
 									</asp:dropdownlist><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtfixdiscamount"
-										onblur="GetNetAmountEtaxnew()" runat="server" Width="67px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+										onblur="GetNetAmountEtaxnew()" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD>&nbsp;Net Amount</TD>
-								<TD><asp:textbox id="txtNetAmount" runat="server" Width="124px" ReadOnly="True" BorderStyle="Groove"
+								<TD><asp:textbox id="txtNetAmount" runat="server" Width="140px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<!--TR>
