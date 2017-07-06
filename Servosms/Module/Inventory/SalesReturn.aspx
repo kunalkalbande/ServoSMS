@@ -836,17 +836,18 @@ function calc1(txtQty,txtRate)
 											<TR>
 												<TD vAlign="middle">Invoice No&nbsp;<asp:requiredfieldvalidator id="rfv1" InitialValue="Select" Runat="server" ControlToValidate="dropInvoiceNo"
 														ErrorMessage="Please Select the Invoice No">*</asp:requiredfieldvalidator></TD>
-												<TD vAlign="middle"><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="135px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
+												<TD vAlign="middle"><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="60px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
-												<TD><asp:textbox id="lblInvoiceDate" runat="server" BorderStyle="None"></asp:textbox></TD>
+												<TD><asp:textbox id="lblInvoiceDate" Visible="True" style="WIDTH: 135px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
+														 size="22" runat="server" ></asp:textbox></TD>
 											</TR>
 											<TR>
 												<TD>Sales Type</TD>
-												<TD><INPUT class="dropdownlist" id="lblSalesType" style="WIDTH: 135px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
+												<TD><INPUT class="dropdownlist" id="lblSalesType" style="WIDTH: 120px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 														disabled readOnly type="text" size="22" name="lblSalesType" runat="server"></TD>
 											</TR>
 											<TR>
@@ -1256,7 +1257,7 @@ function calc1(txtQty,txtRate)
 						<TABLE cellSpacing="0" cellPadding="0" width="530" align="center" border="0">
 							<TR>
 								<TD>Promo Scheme</TD>
-								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="184px" BorderStyle="Groove" ReadOnly="True"
+								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Grand Total</TD>
@@ -1266,28 +1267,28 @@ function calc1(txtQty,txtRate)
 							<TR>
 								<TD>Remark</TD>
 								<TD>
-									<P><asp:textbox id="txtRemark" runat="server" Width="184px" BorderStyle="Groove" ReadOnly="True"
+									<P><asp:textbox id="txtRemark" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
 											CssClass="dropdownlist" Enabled="False"></asp:textbox></P>
 								</TD>
 								<TD></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:textbox id="txtDisc" onblur="GetNetAmount()" runat="server" Width="67px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist" Height="22px"></asp:textbox><asp:textbox id="txtDiscType" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtDisc" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist" Height="22px"></asp:textbox><asp:textbox id="txtDiscType" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist" Height="22px" Enabled="False"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Scheme Discount</TD>
-								<TD><asp:textbox id="txtschemetotal" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
+								<TD><asp:textbox id="txtschemetotal" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Cash Discount</TD>
-								<TD><asp:textbox id="txtCashDisc" onblur="GetNetAmount()" runat="server" Width="67px" BorderStyle="Groove"
-										ReadOnly="false" CssClass="dropdownlist" Height="22px"></asp:textbox><asp:textbox id="txtCashDiscType" onblur="GetNetAmount()" runat="server" Width="56px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtCashDisc" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
+										ReadOnly="false" CssClass="dropdownlist" Height="22px"></asp:textbox><asp:textbox id="txtCashDiscType" onblur="GetNetAmount()" runat="server" Width="124px" BorderStyle="Groove"
 										ReadOnly="True" CssClass="dropdownlist" Height="22px" Enabled="False"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<td>Fleet/OE Discount</td>
-								<TD><asp:textbox id="txtfleetoedis" Width="70px" BorderStyle="Groove" ReadOnly="True" Runat="server"
+								<TD><asp:textbox id="txtfleetoedis" Width="124px" BorderStyle="Groove" ReadOnly="True" Runat="server"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>VAT
@@ -1298,7 +1299,7 @@ function calc1(txtQty,txtRate)
 							</TR>
 							<TR>
 								<TD>Message</TD>
-								<TD><asp:textbox id="txtMessage" runat="server" Width="184px" BorderStyle="Groove" ReadOnly="True"
+								<TD><asp:textbox id="txtMessage" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 								<td></td>
 								<TD>Net Amount</TD>
@@ -1316,8 +1317,8 @@ function calc1(txtQty,txtRate)
 								<!--TD>Entry Date &amp; Time</TD>
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
 								<TD colSpan="3"></TD>
-								<TD align="right" colSpan="2"><asp:button id="btnSave" runat="server" Width="75px" 
-										Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="75px" Text="Print" onclick="btnPrint_Click"></asp:button></TD>
+								<TD align="right" colSpan="2"><asp:button id="btnSave" runat="server" Width="55px" 
+										Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="55px" Text="Print" onclick="btnPrint_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>

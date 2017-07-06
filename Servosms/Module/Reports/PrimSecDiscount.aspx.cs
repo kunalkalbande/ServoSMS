@@ -181,172 +181,179 @@ namespace Servosms.Module.Reports
 			try
 			{
 
-				Pre_Discount();      //Add by vikas 14.08.09
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["TextBox1"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
+                {
+                    MessageBox.Show("Date From Should be less than Date To");
+                }
+                else
+                {
+                    Pre_Discount();      //Add by vikas 14.08.09
 
-				double tradetotal=0;
-				double ebirdtotal=0;
-				double schemetotal=0;
-				double fleettotal=0;
-				double oetotal=0;
-				double totalsalltr=0;
-				double totalpurltr=0;
-				
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(TextBox1.Text))>0)
-				{
-					MessageBox.Show("Date From Should be less than Date To");
-				}
-				//*****************
-				InventoryClass  obj=new InventoryClass ();
-				SqlDataReader SqlDtr;
-				//SqlDataReader SqlDtr1;
-				//string sql;
-				string sql1;
-				//SqlDataReader rdr; 
-				
-				//cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
-				sql1="select * from Purchase_master  where cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) +"'";
-				//sql="select  from Purchase_master  where  cast(floor(cast(vndr_invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(vndr_invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) +"'";
-				SqlDtr=obj.GetRecordSet(sql1);
-				if(SqlDtr.HasRows)
-				{
-					while(SqlDtr.Read())
-					{
-						discountpurchase(SqlDtr.GetValue(0).ToString());
-						tradetotal+=System.Convert.ToDouble(SqlDtr.GetValue(19).ToString());
-						ebirdtotal+=System.Convert.ToDouble(SqlDtr.GetValue(21).ToString());
-						totalpurltr+=System.Convert.ToDouble(SqlDtr.GetValue(28).ToString());
-						
-					}
-				}
-				else
-				{
-					Cache["focDisctotal"]="0";
-					Cache["fixedDisctotal"]="0";
-					Cache["CashDisctotal"]="0";
-				}
-				//*********************
-				//txttotalpurltr.Text=totalpurltr.ToString();
-				//totalpurltr=Math.Round(totalpurltr,2);
-				lbltotalpurltr.Text=GenUtil.strNumericFormat(totalpurltr.ToString());
-				//txttrade.Text=tradetotal.ToString();
-				//tradetotal=Math.Round(tradetotal,2);
-				lbltrade.Text=GenUtil.strNumericFormat(tradetotal.ToString());
-				//txtebird.Text=ebirdtotal.ToString();
-				//ebirdtotal=Math.Round(ebirdtotal,2);
-				lblebird.Text=GenUtil.strNumericFormat(ebirdtotal.ToString());
-				//				txtfoc.Text=Cache["focDisctotal"].ToString();
-				//				txtfixed.Text=Cache["fixedDisctotal"].ToString();
-				//				txtcash.Text=Cache["CashDisctotal"].ToString();
-				//				double s1=	System.Convert.ToDouble(txtfoc.Text.ToString())+System.Convert.ToDouble(txtfixed.Text.ToString())+System.Convert.ToDouble(txtcash.Text.ToString())+tradetotal+ebirdtotal;
-				lblfoc.Text=Cache["focDisctotal"].ToString();
-				lblfixed.Text=Cache["fixedDisctotal"].ToString();
-				lblcash.Text=Cache["CashDisctotal"].ToString();
-				
+                    double tradetotal = 0;
+                    double ebirdtotal = 0;
+                    double schemetotal = 0;
+                    double fleettotal = 0;
+                    double oetotal = 0;
+                    double totalsalltr = 0;
+                    double totalpurltr = 0;
 
 
-				SqlDtr.Close();
-				//********************
-				
-				SqlDataReader SqlDtr1;
-				string sql3;
-				string sql2;
-				SqlDataReader rdr=null; 
-				//SqlDataReader rdr; 
-				//*********************************
-				//sql2="select sum(total_qty*sales*o.discount) from products p,oilscheme o,stock_master ss where ss.productid=p.prod_id and ss.productid=o.prodid and schname='Secondry(LTR Scheme)' and cast(floor(cast(stock_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(stock_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"' and cast(floor(cast(datefrom as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"'";
-				sql2="select sum(schdiscount) from sales_master where cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"'";
-				SqlDtr1=obj.GetRecordSet(sql2);
-				if(SqlDtr1.Read())
-				{
-					if(SqlDtr1.GetValue(0).ToString()!="" && SqlDtr1.GetValue(0).ToString()!=null)
-						schemetotal=double.Parse(SqlDtr1.GetValue(0).ToString());
-				}
-				SqlDtr1.Close();
-				//*********************************
+                    //*****************
+                    InventoryClass obj = new InventoryClass();
+                    SqlDataReader SqlDtr;
+                    //SqlDataReader SqlDtr1;
+                    //string sql;
+                    string sql1;
+                    //SqlDataReader rdr; 
 
-				//**********Add by Vikas Sharma 15.04.09*********************** 
-				//sql2="select sum(schdiscount) from sales_master where cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"'";
-				
-				sql2="select sum((case when discount_type = 'Per' then ((Grand_Total-(case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end))+VAT_Amount)*Discount/100 else Discount end)) as Disc from Purchase_Master p, Supplier s where s.Supp_ID = p.Vendor_ID and cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"'";
-				double Old_Disc=0;
-				SqlDtr1=obj.GetRecordSet(sql2);
-				if(SqlDtr1.Read())
-				{
-					if(SqlDtr1.GetValue(0).ToString()!="" && SqlDtr1.GetValue(0).ToString()!=null)
-						Old_Disc=double.Parse(SqlDtr1.GetValue(0).ToString());
-				}
-				SqlDtr1.Close();
-				lblold.Text=GenUtil.strNumericFormat(Old_Disc.ToString());
+                    //cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
+                    sql1 = "select * from Purchase_master  where cast(floor(cast(Invoice_date as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) + "'";
+                    //sql="select  from Purchase_master  where  cast(floor(cast(vndr_invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(vndr_invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) +"'";
+                    SqlDtr = obj.GetRecordSet(sql1);
+                    if (SqlDtr.HasRows)
+                    {
+                        while (SqlDtr.Read())
+                        {
+                            discountpurchase(SqlDtr.GetValue(0).ToString());
+                            tradetotal += System.Convert.ToDouble(SqlDtr.GetValue(19).ToString());
+                            ebirdtotal += System.Convert.ToDouble(SqlDtr.GetValue(21).ToString());
+                            totalpurltr += System.Convert.ToDouble(SqlDtr.GetValue(28).ToString());
 
-				double s1=	System.Convert.ToDouble(lblfoc.Text.ToString())+System.Convert.ToDouble(lblfixed.Text.ToString())+System.Convert.ToDouble(lblcash.Text.ToString())+tradetotal+ebirdtotal+Old_Disc;
-				s1=Math.Round(s1,2);
-				lblpurtotal.Text=s1.ToString();
-				//**********end*************************************************
+                        }
+                    }
+                    else
+                    {
+                        Cache["focDisctotal"] = "0";
+                        Cache["fixedDisctotal"] = "0";
+                        Cache["CashDisctotal"] = "0";
+                    }
+                    //*********************
+                    //txttotalpurltr.Text=totalpurltr.ToString();
+                    //totalpurltr=Math.Round(totalpurltr,2);
+                    lbltotalpurltr.Text = GenUtil.strNumericFormat(totalpurltr.ToString());
+                    //txttrade.Text=tradetotal.ToString();
+                    //tradetotal=Math.Round(tradetotal,2);
+                    lbltrade.Text = GenUtil.strNumericFormat(tradetotal.ToString());
+                    //txtebird.Text=ebirdtotal.ToString();
+                    //ebirdtotal=Math.Round(ebirdtotal,2);
+                    lblebird.Text = GenUtil.strNumericFormat(ebirdtotal.ToString());
+                    //				txtfoc.Text=Cache["focDisctotal"].ToString();
+                    //				txtfixed.Text=Cache["fixedDisctotal"].ToString();
+                    //				txtcash.Text=Cache["CashDisctotal"].ToString();
+                    //				double s1=	System.Convert.ToDouble(txtfoc.Text.ToString())+System.Convert.ToDouble(txtfixed.Text.ToString())+System.Convert.ToDouble(txtcash.Text.ToString())+tradetotal+ebirdtotal;
+                    lblfoc.Text = Cache["focDisctotal"].ToString();
+                    lblfixed.Text = Cache["fixedDisctotal"].ToString();
+                    lblcash.Text = Cache["CashDisctotal"].ToString();
 
-				//cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
-				sql2="select * from sales_master  where cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) +"'";
-				//sql="select  from Purchase_master  where  cast(floor(cast(vndr_invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(vndr_invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) +"'";
-				SqlDtr1=obj.GetRecordSet(sql2);
-				if(SqlDtr1.HasRows)
-				{
-					while(SqlDtr1.Read())
-					{
-						discountsale(SqlDtr1.GetValue(0).ToString());
-						//schemetotal+=System.Convert.ToDouble(SqlDtr1.GetValue(18).ToString());
-						totalsalltr+=System.Convert.ToDouble(SqlDtr1.GetValue(22).ToString());	
-						//*********
-						sql3="select cust_type from customer  where cust_id='"+SqlDtr1.GetValue(3).ToString()+"'";
-						dbobj.SelectQuery(sql3,ref rdr); 
-						if(rdr.Read())
-						{
-							string type=rdr.GetValue(0).ToString();
-							type=type.Substring(0,2);
-							if(type.ToLower().Equals("fl"))
-							{
-								fleettotal+=System.Convert.ToDouble(SqlDtr1.GetValue(21).ToString());
-							}
-							else if(type.ToLower().Equals("oe"))
-								oetotal+=System.Convert.ToDouble(SqlDtr1.GetValue(21).ToString());
-						}
-						// rdr.Close();
-						//******************
-						//**		fleettotal+=System.Convert.ToDouble(SqlDtr1.GetValue(21).ToString());
-						
-					}
-				}
-				else
-					Cache["saleCashDisctotal"]="0";
-				//SqlDtr1.Close();
-				//*********************
-				
-				//				txtoesale.Text=oetotal.ToString();
-				//				txtfleetsale.Text=fleettotal.ToString();
-				//				txtsecsale.Text=schemetotal.ToString();
-				//				//txtdiscountsale.Text=Cache["saleDisctotal"].ToString();
-				//				txtcashsale.Text=Cache["saleCashDisctotal"].ToString();
-				//				double s2=	System.Convert.ToDouble(txtfleetsale.Text.ToString())+System.Convert.ToDouble(txtoesale.Text.ToString())+System.Convert.ToDouble(txtsecsale.Text.ToString())+System.Convert.ToDouble(txtcashsale.Text.ToString());
-				//				txtsaletotal.Text=s2.ToString();
-				//totalsalltr=Math.Round(totalsalltr,2);
-				lbltotalsalltr.Text=GenUtil.strNumericFormat(totalsalltr.ToString());
-				//oetotal=Math.Round(oetotal,2);
-				lbloesale.Text=GenUtil.strNumericFormat(oetotal.ToString());
-				//fleettotal=Math.Round(fleettotal,2);
-				lblfleetsale.Text=GenUtil.strNumericFormat(fleettotal.ToString());
-				//schemetotal=Math.Round(schemetotal,2);
-				lblsecsale.Text=GenUtil.strNumericFormat(schemetotal.ToString());
-				//txtdiscountsale.Text=Cache["saleDisctotal"].ToString();
-				lblcashsale.Text=Cache["saleCashDisctotal"].ToString();
-				if(lblcashsale.Text!="")
-					lblcashsale.Text=System.Convert.ToString(Math.Round(double.Parse(lblcashsale.Text),2));
-				
-				//Coment by vikas 14.08.09 double s2=	System.Convert.ToDouble(lblfleetsale.Text.ToString())+System.Convert.ToDouble(lbloesale.Text.ToString())+System.Convert.ToDouble(lblsecsale.Text.ToString())+System.Convert.ToDouble(lblcashsale.Text.ToString());
-				
-				double s2=	System.Convert.ToDouble(lblfleetsale.Text.ToString())+System.Convert.ToDouble(lbloesale.Text.ToString())+System.Convert.ToDouble(lblsecsale.Text.ToString())+System.Convert.ToDouble(lblcashsale.Text.ToString())+System.Convert.ToDouble(lblperdis.Text.ToString());
-				
-				//s2=Math.Round(s2,2);
-				lblsaletotal.Text=GenUtil.strNumericFormat(s2.ToString());
-				//**********************
-				CreateLogFiles.ErrorLog("Form:PrimSecDiscount.aspx,Method:btnShow_Click  PrimSecDiscount   Viewed "+"  userid  "+uid);
+
+
+                    SqlDtr.Close();
+                    //********************
+
+                    SqlDataReader SqlDtr1;
+                    string sql3;
+                    string sql2;
+                    SqlDataReader rdr = null;
+                    //SqlDataReader rdr; 
+                    //*********************************
+                    //sql2="select sum(total_qty*sales*o.discount) from products p,oilscheme o,stock_master ss where ss.productid=p.prod_id and ss.productid=o.prodid and schname='Secondry(LTR Scheme)' and cast(floor(cast(stock_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(stock_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"' and cast(floor(cast(datefrom as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"'";
+                    sql2 = "select sum(schdiscount) from sales_master where cast(floor(cast(invoice_date as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(txtDateFrom.Text) + "' and cast(floor(cast(invoice_date as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(TextBox1.Text) + "'";
+                    SqlDtr1 = obj.GetRecordSet(sql2);
+                    if (SqlDtr1.Read())
+                    {
+                        if (SqlDtr1.GetValue(0).ToString() != "" && SqlDtr1.GetValue(0).ToString() != null)
+                            schemetotal = double.Parse(SqlDtr1.GetValue(0).ToString());
+                    }
+                    SqlDtr1.Close();
+                    //*********************************
+
+                    //**********Add by Vikas Sharma 15.04.09*********************** 
+                    //sql2="select sum(schdiscount) from sales_master where cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(TextBox1.Text)+"'";
+
+                    sql2 = "select sum((case when discount_type = 'Per' then ((Grand_Total-(case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end))+VAT_Amount)*Discount/100 else Discount end)) as Disc from Purchase_Master p, Supplier s where s.Supp_ID = p.Vendor_ID and cast(floor(cast(Invoice_date as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(txtDateFrom.Text) + "' and cast(floor(cast(invoice_date as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(TextBox1.Text) + "'";
+                    double Old_Disc = 0;
+                    SqlDtr1 = obj.GetRecordSet(sql2);
+                    if (SqlDtr1.Read())
+                    {
+                        if (SqlDtr1.GetValue(0).ToString() != "" && SqlDtr1.GetValue(0).ToString() != null)
+                            Old_Disc = double.Parse(SqlDtr1.GetValue(0).ToString());
+                    }
+                    SqlDtr1.Close();
+                    lblold.Text = GenUtil.strNumericFormat(Old_Disc.ToString());
+
+                    double s1 = System.Convert.ToDouble(lblfoc.Text.ToString()) + System.Convert.ToDouble(lblfixed.Text.ToString()) + System.Convert.ToDouble(lblcash.Text.ToString()) + tradetotal + ebirdtotal + Old_Disc;
+                    s1 = Math.Round(s1, 2);
+                    lblpurtotal.Text = s1.ToString();
+                    //**********end*************************************************
+
+                    //cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
+                    sql2 = "select * from sales_master  where cast(floor(cast(Invoice_date as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) + "'";
+                    //sql="select  from Purchase_master  where  cast(floor(cast(vndr_invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(vndr_invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(TextBox1.Text.Trim()) +"'";
+                    SqlDtr1 = obj.GetRecordSet(sql2);
+                    if (SqlDtr1.HasRows)
+                    {
+                        while (SqlDtr1.Read())
+                        {
+                            discountsale(SqlDtr1.GetValue(0).ToString());
+                            //schemetotal+=System.Convert.ToDouble(SqlDtr1.GetValue(18).ToString());
+                            totalsalltr += System.Convert.ToDouble(SqlDtr1.GetValue(22).ToString());
+                            //*********
+                            sql3 = "select cust_type from customer  where cust_id='" + SqlDtr1.GetValue(3).ToString() + "'";
+                            dbobj.SelectQuery(sql3, ref rdr);
+                            if (rdr.Read())
+                            {
+                                string type = rdr.GetValue(0).ToString();
+                                type = type.Substring(0, 2);
+                                if (type.ToLower().Equals("fl"))
+                                {
+                                    fleettotal += System.Convert.ToDouble(SqlDtr1.GetValue(21).ToString());
+                                }
+                                else if (type.ToLower().Equals("oe"))
+                                    oetotal += System.Convert.ToDouble(SqlDtr1.GetValue(21).ToString());
+                            }
+                            // rdr.Close();
+                            //******************
+                            //**		fleettotal+=System.Convert.ToDouble(SqlDtr1.GetValue(21).ToString());
+
+                        }
+                    }
+                    else
+                        Cache["saleCashDisctotal"] = "0";
+                    //SqlDtr1.Close();
+                    //*********************
+
+                    //				txtoesale.Text=oetotal.ToString();
+                    //				txtfleetsale.Text=fleettotal.ToString();
+                    //				txtsecsale.Text=schemetotal.ToString();
+                    //				//txtdiscountsale.Text=Cache["saleDisctotal"].ToString();
+                    //				txtcashsale.Text=Cache["saleCashDisctotal"].ToString();
+                    //				double s2=	System.Convert.ToDouble(txtfleetsale.Text.ToString())+System.Convert.ToDouble(txtoesale.Text.ToString())+System.Convert.ToDouble(txtsecsale.Text.ToString())+System.Convert.ToDouble(txtcashsale.Text.ToString());
+                    //				txtsaletotal.Text=s2.ToString();
+                    //totalsalltr=Math.Round(totalsalltr,2);
+                    lbltotalsalltr.Text = GenUtil.strNumericFormat(totalsalltr.ToString());
+                    //oetotal=Math.Round(oetotal,2);
+                    lbloesale.Text = GenUtil.strNumericFormat(oetotal.ToString());
+                    //fleettotal=Math.Round(fleettotal,2);
+                    lblfleetsale.Text = GenUtil.strNumericFormat(fleettotal.ToString());
+                    //schemetotal=Math.Round(schemetotal,2);
+                    lblsecsale.Text = GenUtil.strNumericFormat(schemetotal.ToString());
+                    //txtdiscountsale.Text=Cache["saleDisctotal"].ToString();
+                    lblcashsale.Text = Cache["saleCashDisctotal"].ToString();
+                    if (lblcashsale.Text != "")
+                        lblcashsale.Text = System.Convert.ToString(Math.Round(double.Parse(lblcashsale.Text), 2));
+
+                    //Coment by vikas 14.08.09 double s2=	System.Convert.ToDouble(lblfleetsale.Text.ToString())+System.Convert.ToDouble(lbloesale.Text.ToString())+System.Convert.ToDouble(lblsecsale.Text.ToString())+System.Convert.ToDouble(lblcashsale.Text.ToString());
+
+                    double s2 = System.Convert.ToDouble(lblfleetsale.Text.ToString()) + System.Convert.ToDouble(lbloesale.Text.ToString()) + System.Convert.ToDouble(lblsecsale.Text.ToString()) + System.Convert.ToDouble(lblcashsale.Text.ToString()) + System.Convert.ToDouble(lblperdis.Text.ToString());
+
+                    //s2=Math.Round(s2,2);
+                    lblsaletotal.Text = GenUtil.strNumericFormat(s2.ToString());
+                    //**********************
+                    CreateLogFiles.ErrorLog("Form:PrimSecDiscount.aspx,Method:btnShow_Click  PrimSecDiscount   Viewed " + "  userid  " + uid);
+                }
+                
 			}
 			catch(Exception ex)
 			{
