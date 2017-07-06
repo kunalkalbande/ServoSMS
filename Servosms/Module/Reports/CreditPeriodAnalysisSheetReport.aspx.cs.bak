@@ -73,7 +73,7 @@ namespace Servosms.Module.Reports
 				if(rdr.Read())
 				{
 					string s =GenUtil.trimDate(rdr.GetValue(0).ToString());
-					string[] ss=s.Split(new char[] {'-'},s.Length);
+					string[] ss=s.Split(new char[] {'/'},s.Length);
 					tempPeriod.Value=ss[0]+":"+ss[2];
 				}
 				rdr.Close();
@@ -157,9 +157,7 @@ namespace Servosms.Module.Reports
 				//*******************/
 				GetMultiValue();
 			}
-            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
-            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
-        }
+		}
 
 		private DateTime getdate(string dat,bool to)
 		{
