@@ -524,10 +524,9 @@ namespace Servosms.Module.inventory
 					obj.discount=txtrs.Text.ToString();
 				
 				obj.schemetype=DropDisType.SelectedItem.Text;
-                
-                obj.dateto= System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
+				obj.dateto=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString()));
 					
-				obj.datefrom= System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+				obj.datefrom=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString()));			
 				obj.Type=DropType.SelectedItem.Text;
 
 				//obj.Group_Name=dropGroup.SelectedValue.ToString().Trim();      //Add by Vikas Sharma 23.10.2012
@@ -1009,12 +1008,11 @@ namespace Servosms.Module.inventory
 				else
 					obj.discount=txtrs.Text.ToString();
 				obj.schemetype=DropDisType.SelectedItem.Text;
-                //DateTime df;
-                //DateTime dt;
-                obj.dateto = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
-
-                obj.datefrom = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
-	
+				//DateTime df;
+				//DateTime dt;
+				obj.dateto=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString()));
+					
+				obj.datefrom=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString()));			
 				obj.Type=DropType.SelectedItem.Text;
 
 				//obj.Group_Name=dropGroup.SelectedValue.ToString().Trim();			//Add by Vikas Sharma 23.10.2012

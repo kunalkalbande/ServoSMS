@@ -1273,24 +1273,27 @@ namespace Servosms.Module.Accounts
 		/// </summary>
 		protected void btnPrint_Click(object sender, System.EventArgs e)
 		{
-			if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
-				MessageBox.Show("Please Select Date Must be Greater than Opening Date");
-			else
-			{
-				if(PrintFlag==false)
-				{
-					if(txtVouchID.Visible==true)
-						Save();
-					else
-					{
-						Update();
-					}
-				}
-				Print();
-				PrintFlag=false;
-				btnPrint.CausesValidation=true;
-			}
-		}
+            var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Acc_Date));
+            var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()));
+            if (DateTime.Compare(dt1, dt2) > 0)
+                MessageBox.Show("Please Select Date Must be Greater than Opening Date");
+
+            else
+            {
+                if (PrintFlag == false)
+                {
+                    if (txtVouchID.Visible == true)
+                        Save();
+                    else
+                    {
+                        Update();
+                    }
+                }
+                Print();
+                PrintFlag = false;
+                btnPrint.CausesValidation = true;
+            }
+        }
 
 		protected void DropVoucherName_SelectedIndexChanged(object sender, System.EventArgs e)
 		{

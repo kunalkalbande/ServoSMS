@@ -326,8 +326,7 @@ namespace Servosms.Module.Master
 		/// This is to clear the form
 		/// </summary>
 		public void Clear()
-		{
-			DropBeatNo.SelectedIndex=0;
+		{			
 			txtCity.Text="";
 			txtState.Text="";
 			txtCountry.Text=""; 

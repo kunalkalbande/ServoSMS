@@ -281,9 +281,8 @@ namespace Servosms.Module.Inventory
 					obj.discount=txtSchDiscount.Text.ToString();
 				
 				obj.discounttype=DropSchDiscount.SelectedItem.Text;
-              
-                obj.dateto= System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString())); 
-				obj.datefrom= System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+				obj.dateto=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString()));
+				obj.datefrom=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString()));			
 				//obj.Type=DropType.SelectedItem.Text;
 				for(int i=0;i<ListEmpAssigned.Items.Count;++i)
 				{
@@ -454,11 +453,9 @@ namespace Servosms.Module.Inventory
 				else
 					obj.discount=txtSchDiscount.Text.ToString();
 				obj.discounttype=DropSchDiscount.SelectedItem.Text;
-                
-                obj.dateto = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
-                obj.datefrom = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
-
-                if (ListEmpAssigned.Items.Count!=0)
+				obj.dateto=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString()));
+				obj.datefrom=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString()));			
+				if(ListEmpAssigned.Items.Count!=0)
 				{
 					for(int i=0;i<ListEmpAssigned.Items.Count;++i)
 					{
