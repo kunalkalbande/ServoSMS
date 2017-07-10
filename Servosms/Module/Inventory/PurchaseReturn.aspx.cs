@@ -409,12 +409,12 @@ namespace Servosms.Module.Inventory
 					return ;
 
 				}
-				obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY (lblInvoiceDate.Text.ToString() )) ;
+				obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY (lblInvoiceDate.Text.ToString() )) ;
 				obj.Vendor_Name=lblVendName.Value.ToString();
 				obj.City=lblPlace.Value .ToString();
 				obj.Vehicle_No=lblVehicleNo.Value  ;
 				obj.Vendor_Invoice_No =lblVendInvoiceNo.Value ;
-				obj.Vendor_Invoice_Date=GenUtil.str2MMDDYYYY(lblVendInvoiceDate.Value) ;
+				obj.Vendor_Invoice_Date=GenUtil.str2DDMMYYYY(lblVendInvoiceDate.Value) ;
 				obj.Grand_Total =txtGrandTotal.Text ;
 				if(txtDisc.Text=="")
 					obj.Discount ="0.0";
@@ -426,7 +426,7 @@ namespace Servosms.Module.Inventory
 				obj.Remerk =txtRemark.Text;
 				obj.Entry_By =lblEntryBy.Text ;
 				//obj.Entry_Time =DateTime.Parse(lblEntryTime .Text);			
-				obj.Entry_Time =System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
+				obj.Entry_Time =System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
 				if(txtCashDisc.Text.Trim() =="")
 					obj.Cash_Discount  ="0.0";
 				else
