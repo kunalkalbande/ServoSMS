@@ -81,6 +81,26 @@ namespace Servosms.Module.Logistics
 					btnDelete.Enabled = false;
 					checkPrevileges(); 
 				}
+                else
+                {
+                   
+                    txtVehiclename.Text = Request.Form["txtVehiclename"]; 
+                    txtDOE.Text = Request.Form["txtDOE"];
+                    txtdrivername.Text = Request.Form["txtdrivername"]; 
+                    txtmeterreadpre.Text = Request.Form["txtmeterreadpre"];
+                    txtmeterreadcurr.Text = Request.Form["txtmeterreadcurr"];
+                    txtfuelused.Text = Request.Form["txtfuelused"];
+                    txtengineqty.Text = Request.Form["txtengineqty"];
+                    txtGearqty.Text = Request.Form["txtGearqty"];
+                    txtGreaseqty.Text = Request.Form["txtGreaseqty"];
+                    txtBrakeqty.Text = Request.Form["txtBrakeqty"];
+                    txtCoolentqty.Text = Request.Form["txtCoolentqty"];
+                    txtTranqty.Text = Request.Form["txtTranqty"];
+                    txtTollqty.Text = Request.Form["txtTollqty"];
+                    txtPoliceqty.Text = Request.Form["txtPoliceqty"];
+                    txtfoodqty.Text = Request.Form["txtfoodqty"];
+                    txtMiscqty.Text = Request.Form["txtMiscqty"];
+                }
 			}
 			catch(Exception ex)
 			{
