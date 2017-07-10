@@ -1030,9 +1030,9 @@
 															disabled readOnly type="text" size="22" name="txtProdName1" runat="server"></TD>
 													<!--TD><INPUT id="txtPack1" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack1" runat="server" class="dropdownlist"></TD-->
-													<TD align="center"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty1" onblur="calc(this,document.Form1.txtRate1,document.Form1.tmpQty1)"
+													<TD ><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty1" onblur="calc(this,document.Form1.txtRate1,document.Form1.tmpQty1)"
 															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate1" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD><asp:textbox id="txtRate1" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
 													<TD><asp:textbox id="txtAmount1" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>

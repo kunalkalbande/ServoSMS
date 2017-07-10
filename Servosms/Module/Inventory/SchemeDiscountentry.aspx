@@ -69,8 +69,8 @@
 							<TBODY>
 								<TR>
 									<TD colSpan="3" style="HEIGHT: 22px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-										Scheme ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox id="lblschid" runat="server" Width="63px" ForeColor="Blue" ReadOnly="True" BorderStyle="None"
-											CssClass="fontstyle" Height="16px"></asp:textbox><asp:dropdownlist id="dropschid" runat="server" Width="296px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropschid_SelectedIndexChanged"></asp:dropdownlist>&nbsp;&nbsp;&nbsp;
+										Scheme ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox id="lblschid" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
+											CssClass="fontstyle" ></asp:textbox><asp:dropdownlist id="dropschid" runat="server" Width="296px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropschid_SelectedIndexChanged"></asp:dropdownlist>&nbsp;&nbsp;&nbsp;
 										<asp:button id="btschid" runat="server" Width="20px" Text="..." CausesValidation="False" 
 											 onclick="btschid_Click"></asp:button></TD>
 								</TR>
@@ -109,7 +109,7 @@
 								<TR>
 									<TD align="center"><FONT color="#000066">Products Available</FONT></TD>
 									<TD></TD>
-									<TD align="center"><FONT color="#000066">Products Assigned <FONT color="red">*</FONT></FONT></TD>
+									<TD align="center"><FONT color="#000066">Products Assigned <FON*</FONT></FONT></TD>
 								</TR>
 								<TR>
 									<TD><asp:listbox id="ListEmpAvailable" runat="server" Width="350px" Font-Size="8pt" SelectionMode="Multiple"
@@ -129,7 +129,7 @@
 									<td colSpan="3"><asp:panel id="Panel1" Visible="False" Runat="server">
 											<TABLE>
 												<TR>
-													<TD align="right" width="230" colSpan="2">Scheme&nbsp;Discount</TD>
+													<TD align="right" width="230">Scheme&nbsp;Discount</TD>
 													<TD width="180">
 														<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtrs" runat="server"
 															Width="70px" CssClass="dropdownlist" BorderStyle="Groove"></asp:textbox>

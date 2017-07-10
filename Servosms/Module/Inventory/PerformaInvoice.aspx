@@ -812,7 +812,7 @@
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
 			<uc1:header id="Header1" runat="server"></uc1:header>
-			<asp:textbox id="lblInvoiceDate" runat="server" Width="1" Height="1px" ReadOnly="True" BorderStyle="None"
+			<asp:textbox id="lblInvoiceDate" runat="server" Width="120" ReadOnly="True" BorderStyle="Groove"
 				CssClass="dropdownlist"></asp:textbox>
 			<INPUT id="tmpQty4" style="Z-INDEX: 121; LEFT: 390px; WIDTH: 0px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="0" name="tmpQty4" runat="server"><asp:textbox id="txtpname12" style="Z-INDEX: 149; LEFT: 752px; POSITION: absolute; TOP: 0px"
