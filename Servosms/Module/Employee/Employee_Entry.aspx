@@ -39,7 +39,7 @@
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
 			<uc1:header id="Header1" runat="server"></uc1:header><asp:textbox id="txtbeatname" style="Z-INDEX: 101; LEFT: 176px; POSITION: absolute; TOP: 24px"
-				Runat="server" Height="1" Width="1"></asp:textbox>
+				Runat="server"  Width="160px"></asp:textbox>
 			<table height="290" cellSpacing="0" cellPadding="0" width="778" align="center">
 				<TR>
 					<TH align="center">

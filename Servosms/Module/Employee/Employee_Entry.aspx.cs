@@ -262,7 +262,7 @@ namespace Servosms.Module.Employee
 				SqlDr=obj.GetRecordSet(sql1);
 				if(SqlDr.HasRows)
 				{
-					MessageBox.Show("Ledger Name  "+ename+" Already Exist");
+					MessageBox.Show("Employee Name  " + ename+" Already Exist");
 					return;
 				}
 				SqlDr.Close();
