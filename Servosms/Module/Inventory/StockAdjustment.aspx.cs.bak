@@ -1351,8 +1351,8 @@ namespace Servosms.Module.Inventory
 			int x=0;
 			for(int i=0;i<ProductID.Count;i++)
 			{
-				dbobj.Insert_or_Update("update stock_master set sales=sales-"+ProductQty[i]+",closing_stock=closing_stock+"+ProductQty[i]+" where productid='"+ProductID[i]+"' and cast(floor(cast(stock_date as float)) as datetime)=Convert(datetime,'"+ tempDate + "',103)",ref x);
-				dbobj.Insert_or_Update("update stock_master set receipt=receipt-"+ProductQty[++i]+",closing_stock=closing_stock-"+ProductQty[i]+" where productid='"+ProductID[i]+ "' and cast(floor(cast(stock_date as float)) as datetime)=Convert(datetime,'" + tempDate + "',103)",ref x);
+				dbobj.Insert_or_Update("update stock_master set sales=sales-"+ProductQty[i]+",closing_stock=closing_stock+"+ProductQty[i]+" where productid='"+ProductID[i]+"' and cast(floor(cast(stock_date as float)) as datetime)='"+tempDate+"'",ref x);
+				dbobj.Insert_or_Update("update stock_master set receipt=receipt-"+ProductQty[++i]+",closing_stock=closing_stock-"+ProductQty[i]+" where productid='"+ProductID[i]+"' and cast(floor(cast(stock_date as float)) as datetime)='"+tempDate+"'",ref x);
 			}
 		}
 
@@ -1381,7 +1381,7 @@ namespace Servosms.Module.Inventory
 						OS=CS;
 					CS=OS+double.Parse(rdr1["receipt"].ToString())-(double.Parse(rdr1["sales"].ToString())+double.Parse(rdr1["salesfoc"].ToString()));
 					Con.Open();
-					cmd = new SqlCommand("update Stock_Master set opening_stock='"+OS.ToString()+"', Closing_Stock='"+CS.ToString()+"' where ProductID='"+rdr1["Productid"].ToString()+"' and Stock_Date=Convert(datetime,'"+rdr1["stock_date"].ToString()+"',103)",Con);
+					cmd = new SqlCommand("update Stock_Master set opening_stock='"+OS.ToString()+"', Closing_Stock='"+CS.ToString()+"' where ProductID='"+rdr1["Productid"].ToString()+"' and Stock_Date='"+rdr1["stock_date"].ToString()+"'",Con);
 					cmd.ExecuteNonQuery();
 					cmd.Dispose();
 					Con.Close();

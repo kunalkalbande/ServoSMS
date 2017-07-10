@@ -1324,7 +1324,7 @@ namespace Servosms.Module.Reports
 			double Tot1=0;
 			DiscInPer=0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr=obj.GetRecordSet("select Discount,DiscountType from per_discount where prodid = '"+ Prod_ID +"' and cast(floor(cast(datefrom as float)) as datetime)<=Convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103) and cast(floor(cast(dateto as float)) as datetime)>=Convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103)");
+			SqlDataReader rdr=obj.GetRecordSet("select Discount,DiscountType from per_discount where prodid = '"+ Prod_ID +"' and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.trimDate(Invoice_Date)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.trimDate(Invoice_Date)+"'");
 			
 			/*Coment by vikas 31.07.09
 			if(rdr.Read())
@@ -1422,7 +1422,7 @@ namespace Servosms.Module.Reports
 				if(double.Parse(Tradeval)==0)
 				{
 					InventoryClass obj = new InventoryClass();
-					SqlDataReader rdr=obj.GetRecordSet("select Discount,DiscountType from stktschdiscount where prodid = '"+ Prod_ID +"' and cast(floor(cast(datefrom as float)) as datetime)<=Convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103) and cast(floor(cast(dateto as float)) as datetime)>=Convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103)");
+					SqlDataReader rdr=obj.GetRecordSet("select Discount,DiscountType from stktschdiscount where prodid = '"+ Prod_ID +"' and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.trimDate(Invoice_Date)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.trimDate(Invoice_Date)+"'");
 					if(rdr.Read())
 					{
 						if(rdr["DiscountType"].ToString()=="%")
@@ -1450,7 +1450,7 @@ namespace Servosms.Module.Reports
 		{
 			double Tot=0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr=obj.GetRecordSet("select Discount,DiscountType from per_discount where prodid = '"+ Prod_ID +"' and cast(floor(cast(datefrom as float)) as datetime)<=Convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103) and cast(floor(cast(dateto as float)) as datetime)>=Convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103)");
+			SqlDataReader rdr=obj.GetRecordSet("select Discount,DiscountType from per_discount where prodid = '"+ Prod_ID +"' and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.trimDate(Invoice_Date)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.trimDate(Invoice_Date)+"'");
 			if(rdr.Read())
 			{
 				if(rdr["DiscountType"].ToString()=="%")
