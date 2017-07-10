@@ -168,9 +168,7 @@
 									</FooterTemplate>
 								</asp:TemplateColumn>
 								<asp:BoundColumn DataField="Cr_Days" SortExpression="Cr_Days" HeaderText="Credit Days"></asp:BoundColumn>
-								<asp:BoundColumn DataField="duedate" SortExpression="duedate" HeaderText="Due Date" DataFormatString="{0:dd/MM/yyyy}">   
-                                    <HeaderStyle Width="150px"></HeaderStyle>                                 
-								</asp:BoundColumn>
+								<asp:BoundColumn DataField="duedate" SortExpression="duedate" HeaderText="Due Date" DataFormatString="{0:dd/MM/yyyy}"></asp:BoundColumn>
 							</Columns>
 							<PagerStyle HorizontalAlign="Center" ForeColor="#8C4510" Mode="NumericPages"></PagerStyle>
 						</asp:datagrid>
