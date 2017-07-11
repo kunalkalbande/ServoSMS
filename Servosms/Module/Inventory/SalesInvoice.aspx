@@ -2026,7 +2026,7 @@ function MoveFocus(t,drop,e)
 														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="Groove" ReadOnly="True"
-														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" 
+														 CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" 
 														CausesValidation="False" Text="..." ToolTip="Click For Edit" onclick="btnEdit_Click"></asp:button></TD>
 											</TR>
 											<TR>
