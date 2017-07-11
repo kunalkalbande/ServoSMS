@@ -622,7 +622,7 @@ To   Date : mm/dd/yyyy
 			double Net_Loss= 0;
 			con=new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 			con.Open ();
-			cmd = new SqlCommand( "exec getProfitLoss '"+getFromDate()+"','"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'", con );
+			cmd = new SqlCommand( "exec getProfitLoss '"+GenUtil.str2DDMMYYYY(getFromDate())+"','"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"'", con );
 			SqlDtr = cmd.ExecuteReader();
 			
 			
@@ -658,7 +658,7 @@ To   Date : mm/dd/yyyy
 			string op_bal_cr = "";
 			double op_bal_d = 0;
 			double op_bal_c = 0;
-			cmd = new SqlCommand( "exec getBalanceSheet '"+getFromDate()+"','"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'", con );
+			cmd = new SqlCommand( "exec getBalanceSheet '"+ GenUtil.str2DDMMYYYY(getFromDate())+"','"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"'", con );
 			SqlDtr = cmd.ExecuteReader();
 			if(SqlDtr.Read())
 			{
