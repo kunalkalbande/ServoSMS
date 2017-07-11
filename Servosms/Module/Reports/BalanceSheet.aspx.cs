@@ -200,7 +200,7 @@ namespace Servosms.Module.Reports
 				con.Open ();
 
 				// This calls the getProfitLoss procedure to fetch the Net Profit , Opening Stock and Closing stock.
-				cmd = new SqlCommand( "exec getProfitLoss '"+getFromDate()+"','"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'", con );
+				cmd = new SqlCommand( "exec getProfitLoss '"+ GenUtil.str2DDMMYYYY(getFromDate())+"','"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"'", con );
 				SqlDtr = cmd.ExecuteReader();
 				if(SqlDtr.Read())
 				{
@@ -233,7 +233,7 @@ namespace Servosms.Module.Reports
 				double op_bal_c = 0;
 
 				// Its calls the getBalanceSheet stored procedure to calculates the closing balances of all the accounts from 1st april to selected end date.
-				cmd = new SqlCommand( "exec getBalanceSheet '"+getFromDate()+"','"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'", con );
+				cmd = new SqlCommand( "exec getBalanceSheet '"+ GenUtil.str2DDMMYYYY(getFromDate())+"','"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"'", con );
 				SqlDtr = cmd.ExecuteReader();
 				if(SqlDtr.Read())
 				{
