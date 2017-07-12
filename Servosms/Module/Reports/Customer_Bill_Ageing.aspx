@@ -232,8 +232,8 @@ function CheckSearchOption(t)
 							
 							if(dropCat.SelectedIndex==0)
 							{
-								if(DateTime.Compare(Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)),Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)))>0)
-									sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' order by cust_id,invoice_date ,invoice_no" ;
+								if(DateTime.Compare(Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDateFrom.Text)),Convert.ToDateTime(GenUtil.str2DDMMYYYY(Textbox1.Text)))>0)
+									sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+(GenUtil.str2MMDDYYYY(txtDateFrom.Text))+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+(GenUtil.str2MMDDYYYY(Textbox1.Text))+"' order by cust_id,invoice_date ,invoice_no" ;
 								else
 									sql="select * from vw_Cust_Ageing order by cust_id,invoice_date ,invoice_no" ;
 							}
