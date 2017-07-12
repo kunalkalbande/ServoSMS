@@ -270,7 +270,7 @@ namespace Servosms.Module.Reports
 			//			string sql="(select * from vw_PurchaseBook1 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"') union (select * from vw_PurchaseBook2 where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime)<= '"+ ToMMddYYYY(Textbox1.Text)+"')";		
 			string sql="";
 			if(RadioSumrized.Checked)
-				sql="select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"' ";		
+				sql="select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ GenUtil.str2MMDDYYYY(Textbox1.Text)+"' ";		
 			
 				/******* add by vikas 04.06.09**********/
 			else if(RadPerclaim.Checked)
@@ -400,7 +400,7 @@ namespace Servosms.Module.Reports
 		{    
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
+				if(DateTime.Compare(Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDateFrom.Text)), Convert.ToDateTime(GenUtil.str2DDMMYYYY(Textbox1.Text)))>0)
 				{
 					MessageBox.Show("Date From Should be less than Date To");
 					GridReport.Visible=false;
@@ -452,7 +452,7 @@ namespace Servosms.Module.Reports
 			string sql;
 			//int count1=0;
 			//**sql="(select count(Invoice_No) from vw_PurchaseBook1 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"') union (select * from vw_PurchaseBook2 where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime)<= '"+ ToMMddYYYY(Textbox1.Text)+"')";		
-			sql="select count(Invoice_No) from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"'";		
+			sql="select count(Invoice_No) from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ GenUtil.str2MMDDYYYY(Textbox1.Text)+"'";		
 			SqlDtr =obj.GetRecordSet(sql);
 			/*
 			while(
@@ -553,7 +553,7 @@ namespace Servosms.Module.Reports
 				}
 				SqlDtr.Close();
 				*/
-				dbobj.ExecuteScalar("select count(*) from vw_PurchaseBook3  where Vndr_Invoice_No="+Cache["Invoice_No"].ToString()+" and cast(floor(cast(vndr_invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(vndr_invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"'",ref count);
+				dbobj.ExecuteScalar("select count(*) from vw_PurchaseBook3  where Vndr_Invoice_No="+Cache["Invoice_No"].ToString()+" and cast(floor(cast(vndr_invoice_date as float)) as datetime) >=  '"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text) +"' and cast(floor(cast(vndr_invoice_date as float)) as datetime) <= '"+ GenUtil.str2MMDDYYYY(Textbox1.Text)+"'",ref count);
 				status=1;
 			}
 			if(i<count)
@@ -685,7 +685,7 @@ namespace Servosms.Module.Reports
 				//*******
 				//	sql="(select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"') union (select * from vw_PurchaseBook2 where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime)<= '"+ ToMMddYYYY(Textbox1.Text)+"')";		
 				if(RadioSumrized.Checked)
-					sql="select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"' ";	
+					sql="select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ GenUtil.str2MMDDYYYY(Textbox1.Text)+"' ";	
 					
 					/******* add by vikas 04.06.09**********/
 				else if(RadPerclaim.Checked)
@@ -952,7 +952,7 @@ namespace Servosms.Module.Reports
 			string sql="";
 			string strDueDate = "",strDate="";
 			if(RadioSumrized.Checked)
-				sql="select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ ToMMddYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ ToMMddYYYY(Textbox1.Text)+"' ";	
+				sql="select * from vw_PurchaseBook3 where cast(floor(cast(invoice_date as float)) as datetime) >=  '"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ GenUtil.str2MMDDYYYY(Textbox1.Text)+"' ";	
 					
 				/******* add by vikas 05.06.09**********/
 			else if(RadPerclaim.Checked)
