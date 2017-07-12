@@ -379,14 +379,14 @@ namespace Servosms.Module.Reports
 			if(DropType.SelectedIndex==0)
 			{
 				if(DropSearchBy.SelectedIndex==0)
-					sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'" ;
+					sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'" ;
 				else
 				{
 				
 					if(DropSearchBy.SelectedIndex==1)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
 						{
 							//coment by vikas 25.05.09 sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+DropValue.Value+"'";
@@ -394,7 +394,7 @@ namespace Servosms.Module.Reports
 							/*******Add by vikas sharma 25.05.09 *****************************/
 								
 							cust_name=DropValue.Value.Substring(0,DropValue.Value.IndexOf(":"));
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+cust_name+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+cust_name+"'";
 								
 							/*******End*****************************/
 						}
@@ -403,11 +403,11 @@ namespace Servosms.Module.Reports
 					else if(DropSearchBy.SelectedIndex==2)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
 						{
 							//if(DropValue.Value=="Oe")
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 							//else
 							//	sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where cust_type='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						}
@@ -415,39 +415,39 @@ namespace Servosms.Module.Reports
 					else if(DropSearchBy.SelectedIndex==3)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
 						{
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and sub_group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and sub_group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						}
 					}/******End*17.11.2012**********************/
 					else if(DropSearchBy.SelectedIndex==4)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where state='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where state='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					}
 					else if(DropSearchBy.SelectedIndex==5)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and invoice_no='"+DropValue.Value+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and invoice_no='"+DropValue.Value+"'";
 					}
 					else if(DropSearchBy.SelectedIndex==6)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and city='"+DropValue.Value+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and city='"+DropValue.Value+"'";
 					}
 					else if(DropSearchBy.SelectedIndex==7)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where ssr=(select emp_id from employee where emp_name='"+DropValue.Value+"')) and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where ssr=(select emp_id from employee where emp_name='"+DropValue.Value+"')) and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					}
 				}
 				sql=sql+" order by "+Cache["strorderby"];
@@ -559,8 +559,8 @@ namespace Servosms.Module.Reports
 				string des="-------------------------------------------------------------------------------------------------------------------------------------";
 				if(dropCat.SelectedIndex==0)
 				{
-					if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' order by cust_id,invoice_date ,invoice_no" ;
+					if(DateTime.Compare(Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)),Convert.ToDateTime( GenUtil.str2MMDDYYYY(Textbox1.Text)))>0)
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' order by cust_id,invoice_date ,invoice_no" ;
 					else
 						sql="select * from vw_Cust_Ageing order by cust_id,invoice_date ,invoice_no" ;
 				}
@@ -649,17 +649,17 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		/// <param name="str"></param>
 		/// <returns></returns>
-		public DateTime ToMMddYYYY(string str)
-		{
-			int dd,mm,yy;
-			string [] strarr = new string[3];			
-			strarr=str.Split(new char[]{'/'},str.Length);
-			dd=Int32.Parse(strarr[0]);
-			mm=Int32.Parse(strarr[1]);
-			yy=Int32.Parse(strarr[2]);
-			DateTime dt=new DateTime(yy,mm,dd);			
-			return(dt);
-		}
+		//public DateTime ToMMddYYYY(string str)
+		//{
+		//	int dd,mm,yy;
+		//	string [] strarr = new string[3];			
+		//	strarr=str.Split(new char[]{'/'},str.Length);
+		//	dd=Int32.Parse(strarr[0]);
+		//	mm=Int32.Parse(strarr[1]);
+		//	yy=Int32.Parse(strarr[2]);
+		//	DateTime dt=new DateTime(yy,mm,dd);			
+		//	return(dt);
+		//}
 		
 		/// <summary>
 		/// This method is not used.
@@ -804,13 +804,13 @@ namespace Servosms.Module.Reports
 			string sql="";
 			string cust_name="";
 			if(DropSearchBy.SelectedIndex==0)
-				sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'" ;
+				sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'" ;
 			else
 			{
 				if(DropSearchBy.SelectedIndex==1)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
 					{
 						//coment by vikas 25.05.09 sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+DropValue.Value+"'";
@@ -818,7 +818,7 @@ namespace Servosms.Module.Reports
 						/*******Add by vikas sharma 25.05.09 *****************************/
 						
 						cust_name=DropValue.Value.Substring(0,DropValue.Value.IndexOf(":"));
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+cust_name+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+cust_name+"'";
 						
 						/*******End*****************************/
 					}
@@ -826,11 +826,11 @@ namespace Servosms.Module.Reports
 				else if(DropSearchBy.SelectedIndex==2)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
 					{
 						//if(DropValue.Value=="Oe")
-						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						//else
 						//	sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where cust_type='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					}
@@ -838,39 +838,39 @@ namespace Servosms.Module.Reports
 				else if(DropSearchBy.SelectedIndex==3)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
 					{
-						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and sub_group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and sub_group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					}
 				}/******End*17.11.2012**********************/
 				else if(DropSearchBy.SelectedIndex==4)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
-						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where state='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where state='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 				}
 				else if(DropSearchBy.SelectedIndex==5)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and invoice_no='"+DropValue.Value+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and invoice_no='"+DropValue.Value+"'";
 				}
 				else if(DropSearchBy.SelectedIndex==6)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and city='"+DropValue.Value+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and city='"+DropValue.Value+"'";
 				}
 				else if(DropSearchBy.SelectedIndex==7)
 				{
 					if(DropValue.Value=="All")
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					else
-						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where ssr=(select emp_id from employee where emp_name='"+DropValue.Value+"')) and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+						sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where ssr=(select emp_id from employee where emp_name='"+DropValue.Value+"')) and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 				}
 			}
 			SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
@@ -905,7 +905,7 @@ namespace Servosms.Module.Reports
 			{
 				if(DropType.SelectedIndex==0)
 				{
-                    if (System.DateTime.Compare(ToMMddYYYY(Request.Form["txtDateFrom"].ToString().Trim()), ToMMddYYYY(Request.Form["Textbox1"].ToString().Trim())) > 0)
+                    if (System.DateTime.Compare(Convert.ToDateTime(GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString().Trim())), Convert.ToDateTime(GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString().Trim()))) > 0)
                       //  if (DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
                     {
 						MessageBox.Show("Date From Should be less than Date To");
@@ -1108,14 +1108,14 @@ namespace Servosms.Module.Reports
 			if(DropType.SelectedIndex==0)
 			{
 				if(DropSearchBy.SelectedIndex==0)
-					sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'" ;
+					sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'" ;
 				else
 				{
 				
 					if(DropSearchBy.SelectedIndex==1)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
 						{
 							//coment by vikas 25.05.09 sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+DropValue.Value+"'";
@@ -1123,7 +1123,7 @@ namespace Servosms.Module.Reports
 							/*******Add by vikas sharma 25.05.09 *****************************/
 									
 							cust_name=DropValue.Value.Substring(0,DropValue.Value.IndexOf(":"));
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+cust_name+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and cust_name='"+cust_name+"'";
 									
 							/*******End*****************************/
 						}
@@ -1131,11 +1131,11 @@ namespace Servosms.Module.Reports
 					else if(DropSearchBy.SelectedIndex==2)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
 						{
 							//if(DropValue.Value=="Oe")
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 							//else
 							//	sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where cust_type='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						}
@@ -1143,39 +1143,39 @@ namespace Servosms.Module.Reports
 					else if(DropSearchBy.SelectedIndex==3)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
 						{
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and sub_group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer c,customertype ct where c.cust_type=ct.customertypename and sub_group_Name ='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						}
 					}/******End*17.11.2012**********************/
 					else if(DropSearchBy.SelectedIndex==4)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where state='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where state='"+DropValue.Value+"') and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					}
 					else if(DropSearchBy.SelectedIndex==5)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and invoice_no='"+DropValue.Value+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and invoice_no='"+DropValue.Value+"'";
 					}
 					else if(DropSearchBy.SelectedIndex==6)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' and city='"+DropValue.Value+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' and city='"+DropValue.Value+"'";
 					}
 					else if(DropSearchBy.SelectedIndex==7)
 					{
 						if(DropValue.Value=="All")
-							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 						else
-							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where ssr=(select emp_id from employee where emp_name='"+DropValue.Value+"')) and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"'";
+							sql="select * from vw_cust_ageing where cust_id in(select cust_id from customer where ssr=(select emp_id from employee where emp_name='"+DropValue.Value+"')) and cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"'";
 					}
 				}
 				sql=sql+" order by "+Cache["strorderby"];
@@ -1209,8 +1209,8 @@ namespace Servosms.Module.Reports
 				string des="-------------------------------------------------------------------------------------------------------------------------------------";
 				if(dropCat.SelectedIndex==0)
 				{
-					if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(ToMMddYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(ToMMddYYYY(Textbox1.Text)).ToShortDateString()+"' order by cust_id,invoice_date ,invoice_no" ;
+					if(DateTime.Compare(Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)), Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)))>0)
+						sql="select * from vw_Cust_Ageing where cast(floor(cast(invoice_date as float)) as datetime)>='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text)).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(Textbox1.Text)).ToShortDateString()+"' order by cust_id,invoice_date ,invoice_no" ;
 					else
 						sql="select * from vw_Cust_Ageing order by cust_id,invoice_date ,invoice_no" ;
 				}
