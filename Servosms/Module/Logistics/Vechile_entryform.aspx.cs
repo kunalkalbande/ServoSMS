@@ -384,14 +384,17 @@ namespace Servosms.Module.Logistics
 				cmdInsert.Parameters .Add ("@Vehicle_Type",DropVechileType2.SelectedItem .Text .ToString () );
 				cmdInsert.Parameters .Add ("@Vehicle_no",txtVehicleno.Text.Trim());
 				cmdInsert.Parameters .Add ("@Vehicle_name",txtVehiclenm .Text.Trim());
-				cmdInsert.Parameters .Add ("@RTO_Reg_Val_yrs",GenUtil.str2MMDDYYYY(txtrtoregvalidity.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Model_name",txtmodelnm.Text.Trim());
+				cmdInsert.Parameters .Add ("@RTO_Reg_Val_yrs",GenUtil.str2MMDDYYYY(Request.Form["txtrtoregvalidity"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Model_name",txtmodelnm.Text.Trim());
 				cmdInsert.Parameters .Add ("@RTO_Reg_No",txtrtono.Text.Trim());
-				cmdInsert.Parameters .Add ("@Vehicle_Man_Date",GenUtil.str2MMDDYYYY(txtVehicleyear.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Insurance_No",txtinsuranceno.Text.Trim());
+				cmdInsert.Parameters .Add ("@Vehicle_Man_Date",GenUtil.str2MMDDYYYY(Request.Form["txtVehicleyear"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Insurance_No",txtinsuranceno.Text.Trim());
 				cmdInsert.Parameters .Add ("@Meter_Reading",txtVehiclemreading.Text.Trim());
-				cmdInsert.Parameters .Add ("@Insurance_validity",GenUtil.str2MMDDYYYY(txtvalidityinsurance.Text.Trim()));
-				SqlDataReader SqlDtr  = null;
+				cmdInsert.Parameters .Add ("@Insurance_validity",GenUtil.str2MMDDYYYY(Request.Form["txtvalidityinsurance"].ToString().Trim()));
+
+                SqlDataReader SqlDtr  = null;
 				string route_id = "";
 				//Fetch the route id for selected route from route table.
 				dbobj.SelectQuery("Select route_id from Route where route_name='"+DropDownList1.SelectedItem.Text.Trim()+"'",ref SqlDtr);
@@ -433,8 +436,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Engine_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Engine_Oil_Qty",txtEngineQty.Text.Trim());
-				cmdInsert.Parameters .Add ("@Engine_Oil_Dt",GenUtil.str2MMDDYYYY(txtEngineOilDate.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Engine_Oil_km",txtEngineKM.Text.Trim());
+				cmdInsert.Parameters .Add ("@Engine_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtEngineOilDate"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Engine_Oil_km",txtEngineKM.Text.Trim());
 				//Fetch the product id for selected product of type Gear Oil from table products.
 				if(Dropgear.SelectedIndex != 0)
 				{
@@ -453,8 +457,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Gear_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Gear_Oil_Qty",txtgearinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Gear_Oil_Dt",GenUtil.str2MMDDYYYY(txtgeardt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Gear_Oil_km",txtgearkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Gear_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtgeardt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Gear_Oil_km",txtgearkm.Text.Trim());
 				//Fetch the product id for selected product of type Brake Oil from table products. 
 				if(Dropbreak.SelectedIndex != 0)
 				{
@@ -473,8 +478,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Brake_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Brake_Oil_Qty",txtbearkinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Brake_Oil_Dt",GenUtil.str2MMDDYYYY(txtbreakdt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Brake_Oil_km",txtbreakkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Brake_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtbreakdt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Brake_Oil_km",txtbreakkm.Text.Trim());
 				//Fetch the product id for selected product of type Coolent from table products. 
 				if(Dropcoolent.SelectedIndex != 0)
 				{
@@ -493,8 +499,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Coolent",prod_id);
 				cmdInsert.Parameters .Add ("@Coolent_Qty",txtcoolentinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Coolent_Dt",GenUtil.str2MMDDYYYY(txtcoolentdt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Coolent_km",txtcoolentkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Coolent_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtcoolentdt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Coolent_km",txtcoolentkm.Text.Trim());
 				//Fetch the product id for selected product of type Grease from table products.
 				if(Dropgrease.SelectedIndex != 0)
 				{
@@ -513,8 +520,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Grease",prod_id);
 				cmdInsert.Parameters .Add ("@Grease_Qty",txtgreaseinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Grease_Dt",GenUtil.str2MMDDYYYY(txtgreasedt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Grease_km",txtgreasekm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Grease_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtgreasedt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Grease_km",txtgreasekm.Text.Trim());
 				//Fetch the product id for selected product of type Transmission Oil from table products.
 				if(Droptransmission.SelectedIndex != 0)
 				{
@@ -533,8 +541,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Trans_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Trans_Oil_Qty",txttransinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Trans_Oil_Dt",GenUtil.str2MMDDYYYY(txttransmissiondt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Trans_Oil_km",txttransmissionkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Trans_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txttransmissiondt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Trans_Oil_km",txttransmissionkm.Text.Trim());
 				cmdInsert.Parameters .Add ("@Vehicle_Avg",txtvechileavarge.Text.Trim());			
 				cmdInsert.ExecuteNonQuery();
 				con.Close ();
@@ -782,68 +791,69 @@ namespace Servosms.Module.Logistics
 				MessageBox.Show("Please select Vehicle ID");
 				return;
 			}
-			try
-			{
-				SqlConnection con;
-				string strInsert ;
-				SqlCommand cmdInsert;
-				DateTime dt1=DateTime.Now ;
-				con=new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
-				con.Open ();
-				strInsert = "update Vehicleentry set Vehicle_Type = @Vehicle_Type,Vehicle_no = @Vehicle_no,vehicle_name = @vehicle_name,RTO_Reg_Val_yrs = @RTO_Reg_Val_yrs,Model_name = @Model_name,RTO_Reg_No = @RTO_Reg_No,Vehicle_Man_Date =@Vehicle_Man_Date,Insurance_No = @Insurance_No,Meter_Reading=@Meter_Reading,Insurance_validity = @Insurance_validity,Vehicle_Route = @Vehicle_Route,Insurance_Comp_Name = @Insurance_Comp_Name,Fuel_Used=@Fuel_Used,Fuel_Used_Qty = @Fuel_Used_Qty,start_Fuel_Qty = @start_Fuel_Qty,"
-					+"Engine_Oil = @Engine_Oil,Engine_Oil_Qty =@Engine_Oil_Qty,Engine_Oil_Dt = @Engine_Oil_Dt,Engine_Oil_km = @Engine_Oil_km,Gear_Oil = @Gear_Oil,Gear_Oil_Qty = @Gear_Oil_Qty,Gear_Oil_Dt = @Gear_Oil_Dt,Gear_Oil_Km = @Gear_Oil_Km,Brake_oil = @Brake_Oil,Brake_Oil_Qty = @Brake_Oil_Qty,BRake_Oil_dt = @Brake_Oil_Dt,Brake_OIl_Km = @Brake_Oil_Km,Coolent = @Coolent, Coolent_Qty = @Coolent_Qty, Coolent_Dt =@Coolent_Dt, Coolent_km = @Coolent_Km,Grease = @Grease,Grease_Qty =@Grease_Qty,Grease_Dt = @Grease_Dt,Grease_Km = @Grease_Km,"                     
-					+"Trans_Oil = @Trans_Oil, Trans_Oil_Qty = @Trans_Oil_Qty, Trans_Oil_Dt = @Trans_Oil_Dt, Trans_Oil_Km = @Trans_Oil_km,Vehicle_Avg = @Vehicle_Avg where Vehicledetail_id = "+DropVehicleID.SelectedItem.Text.Trim();   
-				cmdInsert=new SqlCommand (strInsert,con);
-				cmdInsert.Parameters .Add ("@Vehicle_Type",DropVechileType2.SelectedItem .Text .ToString () );
-				cmdInsert.Parameters .Add ("@Vehicle_no",txtVehicleno.Text.Trim());
-				cmdInsert.Parameters .Add ("@Vehicle_name",txtVehiclenm .Text.Trim());
-				cmdInsert.Parameters .Add ("@RTO_Reg_Val_yrs",GenUtil.str2MMDDYYYY(txtrtoregvalidity.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Model_name",txtmodelnm.Text.Trim());
-				cmdInsert.Parameters .Add ("@RTO_Reg_No",txtrtono.Text.Trim());
-				cmdInsert.Parameters .Add ("@Vehicle_Man_Date",GenUtil.str2MMDDYYYY(txtVehicleyear.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Insurance_No",txtinsuranceno.Text.Trim());
-				cmdInsert.Parameters .Add ("@Meter_Reading",txtVehiclemreading.Text.Trim());
-				cmdInsert.Parameters .Add ("@Insurance_validity",GenUtil.str2MMDDYYYY(txtvalidityinsurance.Text.Trim()));
-				SqlDataReader SqlDtr  = null;
-				string route_id = "";
-				dbobj.SelectQuery("Select route_id from Route where route_name='"+DropDownList1.SelectedItem.Text.Trim()+"'",ref SqlDtr);
-				if(SqlDtr.Read())
-				{
-					route_id = SqlDtr.GetValue(0).ToString();       
-				}
-				SqlDtr.Close();
-				cmdInsert.Parameters .Add ("@Vehicle_Route",route_id);
-				cmdInsert.Parameters .Add ("@Insurance_Comp_name",txtInsCompName.Text.Trim() );
-				string prod_id = "";
-				//					dbobj.SelectQuery("Select prod_id from products where prod_name='"+DropFuelused.SelectedItem.Text.Trim()+"' and Category ='Fuel'" ,ref SqlDtr);
-				//					if(SqlDtr.Read())
-				//					{
-				//						prod_id = SqlDtr.GetValue(0).ToString();       
-				//					}
-				//					SqlDtr.Close();
-				//cmdInsert.Parameters .Add ("@Fuel_Used",prod_id);
-				cmdInsert.Parameters .Add ("@Fuel_Used",DropFuelused.SelectedItem.Text.Trim());
-				cmdInsert.Parameters .Add ("@Fuel_Used_Qty",txtfuelinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Start_Fuel_Qty",txtfuelintank.Text.Trim() );
-				string[] strArr = DropEngineOil.SelectedItem.Text.Split(new char[] {':'},DropEngineOil.SelectedItem.Text.Length);    
-				if(DropEngineOil.SelectedIndex != 0)
-				{
-					prod_id = "";
-					dbobj.SelectQuery("Select prod_id from products where prod_name='"+strArr[0].Trim()+"' and pack_type ='"+strArr[1].Trim()+"' and Category like 'Engine Oil%'" ,ref SqlDtr);
-					if(SqlDtr.Read())
-					{
-						prod_id = SqlDtr.GetValue(0).ToString();       
-					}
-					SqlDtr.Close();
-				}
-				else
-				{
-					prod_id = "0";
-				}
-				cmdInsert.Parameters .Add ("@Engine_Oil",prod_id);
-				cmdInsert.Parameters .Add ("@Engine_Oil_Qty",txtEngineQty.Text.Trim());
-				cmdInsert.Parameters .Add ("@Engine_Oil_Dt",GenUtil.str2MMDDYYYY(txtEngineOilDate.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Engine_Oil_km",txtEngineKM.Text.Trim());
+            try
+            {
+                SqlConnection con;
+                string strInsert;
+                SqlCommand cmdInsert;
+                DateTime dt1 = DateTime.Now;
+                con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
+                con.Open();
+                strInsert = "update Vehicleentry set Vehicle_Type = @Vehicle_Type,Vehicle_no = @Vehicle_no,vehicle_name = @vehicle_name,RTO_Reg_Val_yrs = @RTO_Reg_Val_yrs,Model_name = @Model_name,RTO_Reg_No = @RTO_Reg_No,Vehicle_Man_Date =@Vehicle_Man_Date,Insurance_No = @Insurance_No,Meter_Reading=@Meter_Reading,Insurance_validity = @Insurance_validity,Vehicle_Route = @Vehicle_Route,Insurance_Comp_Name = @Insurance_Comp_Name,Fuel_Used=@Fuel_Used,Fuel_Used_Qty = @Fuel_Used_Qty,start_Fuel_Qty = @start_Fuel_Qty,"
+                    + "Engine_Oil = @Engine_Oil,Engine_Oil_Qty =@Engine_Oil_Qty,Engine_Oil_Dt = @Engine_Oil_Dt,Engine_Oil_km = @Engine_Oil_km,Gear_Oil = @Gear_Oil,Gear_Oil_Qty = @Gear_Oil_Qty,Gear_Oil_Dt = @Gear_Oil_Dt,Gear_Oil_Km = @Gear_Oil_Km,Brake_oil = @Brake_Oil,Brake_Oil_Qty = @Brake_Oil_Qty,BRake_Oil_dt = @Brake_Oil_Dt,Brake_OIl_Km = @Brake_Oil_Km,Coolent = @Coolent, Coolent_Qty = @Coolent_Qty, Coolent_Dt =@Coolent_Dt, Coolent_km = @Coolent_Km,Grease = @Grease,Grease_Qty =@Grease_Qty,Grease_Dt = @Grease_Dt,Grease_Km = @Grease_Km,"
+                    + "Trans_Oil = @Trans_Oil, Trans_Oil_Qty = @Trans_Oil_Qty, Trans_Oil_Dt = @Trans_Oil_Dt, Trans_Oil_Km = @Trans_Oil_km,Vehicle_Avg = @Vehicle_Avg where Vehicledetail_id = " + DropVehicleID.SelectedItem.Text.Trim();
+                cmdInsert = new SqlCommand(strInsert, con);
+                cmdInsert.Parameters.Add("@Vehicle_Type", DropVechileType2.SelectedItem.Text.ToString());
+                cmdInsert.Parameters.Add("@Vehicle_no", txtVehicleno.Text.Trim());
+                cmdInsert.Parameters.Add("@Vehicle_name", txtVehiclenm.Text.Trim());
+                cmdInsert.Parameters.Add("@RTO_Reg_Val_yrs", GenUtil.str2MMDDYYYY(Request.Form["txtrtoregvalidity"].ToString().Trim()));
+                cmdInsert.Parameters.Add("@Model_name", txtmodelnm.Text.Trim());
+                cmdInsert.Parameters.Add("@RTO_Reg_No", txtrtono.Text.Trim());
+                cmdInsert.Parameters.Add("@Vehicle_Man_Date", GenUtil.str2MMDDYYYY(Request.Form["txtVehicleyear"].ToString().Trim()));
+                cmdInsert.Parameters.Add("@Insurance_No", txtinsuranceno.Text.Trim());
+                cmdInsert.Parameters.Add("@Meter_Reading", txtVehiclemreading.Text.Trim());
+                cmdInsert.Parameters.Add("@Insurance_validity", GenUtil.str2MMDDYYYY(Request.Form["txtvalidityinsurance"].ToString().Trim()));
+                SqlDataReader SqlDtr = null;
+                string route_id = "";
+                dbobj.SelectQuery("Select route_id from Route where route_name='" + DropDownList1.SelectedItem.Text.Trim() + "'", ref SqlDtr);
+                if (SqlDtr.Read())
+                {
+                    route_id = SqlDtr.GetValue(0).ToString();
+                }
+                SqlDtr.Close();
+                cmdInsert.Parameters.Add("@Vehicle_Route", route_id);
+                cmdInsert.Parameters.Add("@Insurance_Comp_name", txtInsCompName.Text.Trim());
+                string prod_id = "";
+                //					dbobj.SelectQuery("Select prod_id from products where prod_name='"+DropFuelused.SelectedItem.Text.Trim()+"' and Category ='Fuel'" ,ref SqlDtr);
+                //					if(SqlDtr.Read())
+                //					{
+                //						prod_id = SqlDtr.GetValue(0).ToString();       
+                //					}
+                //					SqlDtr.Close();
+                //cmdInsert.Parameters .Add ("@Fuel_Used",prod_id);
+                cmdInsert.Parameters.Add("@Fuel_Used", DropFuelused.SelectedItem.Text.Trim());
+                cmdInsert.Parameters.Add("@Fuel_Used_Qty", txtfuelinword.Text.Trim());
+                cmdInsert.Parameters.Add("@Start_Fuel_Qty", txtfuelintank.Text.Trim());
+                string[] strArr = DropEngineOil.SelectedItem.Text.Split(new char[] { ':' }, DropEngineOil.SelectedItem.Text.Length);
+                if (DropEngineOil.SelectedIndex != 0)
+                {
+                    prod_id = "";
+                    dbobj.SelectQuery("Select prod_id from products where prod_name='" + strArr[0].Trim() + "' and pack_type ='" + strArr[1].Trim() + "' and Category like 'Engine Oil%'", ref SqlDtr);
+                    if (SqlDtr.Read())
+                    {
+                        prod_id = SqlDtr.GetValue(0).ToString();
+                    }
+                    SqlDtr.Close();
+                }
+                else
+                {
+                    prod_id = "0";
+                }
+                cmdInsert.Parameters.Add("@Engine_Oil", prod_id);
+                cmdInsert.Parameters.Add("@Engine_Oil_Qty", txtEngineQty.Text.Trim());
+                cmdInsert.Parameters.Add("@Engine_Oil_Dt", GenUtil.str2MMDDYYYY(Request.Form["txtEngineOilDate"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Engine_Oil_km",txtEngineKM.Text.Trim());
 
 				if(Dropgear.SelectedIndex != 0)
 				{
@@ -862,8 +872,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Gear_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Gear_Oil_Qty",txtgearinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Gear_Oil_Dt",GenUtil.str2MMDDYYYY(txtgeardt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Gear_Oil_km",txtgearkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Gear_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtgeardt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Gear_Oil_km",txtgearkm.Text.Trim());
 
 				if(Dropbreak.SelectedIndex != 0)
 				{
@@ -882,8 +893,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Brake_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Brake_Oil_Qty",txtbearkinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Brake_Oil_Dt",GenUtil.str2MMDDYYYY(txtbreakdt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Brake_Oil_km",txtbreakkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Brake_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtbreakdt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Brake_Oil_km",txtbreakkm.Text.Trim());
 
 				if(Dropcoolent.SelectedIndex != 0 )
 				{
@@ -902,8 +914,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Coolent",prod_id);
 				cmdInsert.Parameters .Add ("@Coolent_Qty",txtcoolentinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Coolent_Dt",GenUtil.str2MMDDYYYY(txtcoolentdt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Coolent_km",txtcoolentkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Coolent_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtcoolentdt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Coolent_km",txtcoolentkm.Text.Trim());
 				
 				if(Dropgrease.SelectedIndex != 0)
 				{
@@ -922,8 +935,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Grease",prod_id);
 				cmdInsert.Parameters .Add ("@Grease_Qty",txtgreaseinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Grease_Dt",GenUtil.str2MMDDYYYY(txtgreasedt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Grease_km",txtgreasekm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Grease_Dt",GenUtil.str2MMDDYYYY(Request.Form["txtgreasedt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Grease_km",txtgreasekm.Text.Trim());
 
 				if(Droptransmission.SelectedIndex != 0)
 				{
@@ -942,8 +956,9 @@ namespace Servosms.Module.Logistics
 				}
 				cmdInsert.Parameters .Add ("@Trans_Oil",prod_id);
 				cmdInsert.Parameters .Add ("@Trans_Oil_Qty",txttransinword.Text.Trim());
-				cmdInsert.Parameters .Add ("@Trans_Oil_Dt",GenUtil.str2MMDDYYYY(txttransmissiondt.Text.Trim()));
-				cmdInsert.Parameters .Add ("@Trans_Oil_km",txttransmissionkm.Text.Trim());
+				cmdInsert.Parameters .Add ("@Trans_Oil_Dt",GenUtil.str2MMDDYYYY(Request.Form["txttransmissiondt"].ToString().Trim()));
+
+                cmdInsert.Parameters .Add ("@Trans_Oil_km",txttransmissionkm.Text.Trim());
 				cmdInsert.Parameters .Add ("@Vehicle_Avg",txtvechileavarge.Text.Trim());			
 				cmdInsert.ExecuteNonQuery();
 				con.Close ();
