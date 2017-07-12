@@ -917,7 +917,7 @@ namespace Servosms.Module.Reports
 				}
 				SqlDtr.Close();
 				
-				string  sql="Select top 1 Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+ " and cast(floor(cast(Entry_Date as float)) as datetime) < Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) order by Entry_Date desc"; 
+				string  sql="Select top 1 Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+" and cast(floor(cast(Entry_Date as float)) as datetime) < '"+ToMMddYYYY(txtDateFrom.Text)+"' order by Entry_Date desc"; 
 				SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
 				DataSet ds=new DataSet();
 				da.Fill(ds,"AccountsLedgerTable");
@@ -941,7 +941,7 @@ namespace Servosms.Module.Reports
 					CustomerGrid.ShowHeader=true;
 				}
 				
-				string sql1="Select Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+ " and cast(floor(cast(Entry_Date as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Entry_Date as float)) as datetime) <= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) order by Entry_Date"; 
+				string sql1="Select Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+" and cast(floor(cast(Entry_Date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text)+"' and cast(floor(cast(Entry_Date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text)+"' order by Entry_Date"; 
 				SqlDataAdapter da1=new SqlDataAdapter(sql1,sqlcon1);
 				DataSet ds1=new DataSet();	
 				da1.Fill(ds1," AccountsLedgerTable");
@@ -971,7 +971,7 @@ namespace Servosms.Module.Reports
 				string sql="";
 				string drop_value=DropPartyName.Value.Trim();
 				string[] strArr = drop_value.Split(new char[] {':'},drop_value.Length);
-				sql="Select distinct month(entry_date),substring(datename(month,entry_date),0,4)+' '+substring(datename(year,entry_date),3,4) entry_date,sum(Debit_Amount) Debit_Amount,sum(Credit_Amount) Credit_Amount,year(entry_date) dateyear from AccountsLedgerTable where ledger_id=(select ledger_id from ledger_master where ledger_name='"+strArr[0].ToString()+ "') and cast(floor(cast(Entry_Date as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Entry_Date as float)) as datetime) <= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) group by year(entry_date),datename(year,entry_date),datename(month,entry_date), month(entry_date) order by year(entry_date)";
+				sql="Select distinct month(entry_date),substring(datename(month,entry_date),0,4)+' '+substring(datename(year,entry_date),3,4) entry_date,sum(Debit_Amount) Debit_Amount,sum(Credit_Amount) Credit_Amount,year(entry_date) dateyear from AccountsLedgerTable where ledger_id=(select ledger_id from ledger_master where ledger_name='"+strArr[0].ToString()+"') and cast(floor(cast(Entry_Date as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(txtDateFrom.Text)+"' and cast(floor(cast(Entry_Date as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"' group by year(entry_date),datename(year,entry_date),datename(month,entry_date), month(entry_date) order by year(entry_date)";
 				SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
 				DataSet ds=new DataSet();
 				da.Fill(ds,"AccountsLedgerTable");
@@ -1291,7 +1291,7 @@ namespace Servosms.Module.Reports
 					}
 					SqlDtr.Close();
 						
-					dbobj.SelectQuery("Select top 1 Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+ " and cast(floor(cast(Entry_Date as float)) as datetime) < Convert(datetime,'" + ToMMddYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) order by Entry_Date desc",ref SqlDtr); 
+					dbobj.SelectQuery("Select top 1 Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+" and cast(floor(cast(Entry_Date as float)) as datetime) < '"+ToMMddYYYY(txtDateFrom.Text)+"' order by Entry_Date desc",ref SqlDtr); 
 					
 					if(SqlDtr.Read())
 					{
@@ -1314,7 +1314,7 @@ namespace Servosms.Module.Reports
 				
 				SqlDtr.Close();
 			
-				dbobj.SelectQuery("Select Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type,(Balance-Debit_Amount+Credit_Amount) opb from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+ " and cast(floor(cast(Entry_Date as float)) as datetime) >= Convert(datetime,'" + ToMMddYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Entry_Date as float)) as datetime) <= Convert(datetime,'" + ToMMddYYYY(Request.Form["txtDateTo"].ToString()) + "',103) order by Entry_Date",ref SqlDtr); 
+				dbobj.SelectQuery("Select Entry_Date,Particulars,Debit_Amount,Credit_Amount,Balance, Bal_Type,(Balance-Debit_Amount+Credit_Amount) opb from AccountsLedgerTable where Ledger_ID = "+Ledger_ID+" and cast(floor(cast(Entry_Date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text)+"' and cast(floor(cast(Entry_Date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text)+"' order by Entry_Date",ref SqlDtr); 
 				if(SqlDtr.HasRows)
 				{
 					//string DebitAmount="0.00";
@@ -1371,7 +1371,7 @@ namespace Servosms.Module.Reports
 				sw.WriteLine("Report Type\t"+DropReportType.SelectedItem.Text);
 				sw.WriteLine("Party Name\t"+DropPartyName.Value);
 				sw.WriteLine("Month\tDebit Amount\tCredit Amount\tClosing Balance");
-				dbobj.SelectQuery("Select distinct month(entry_date),substring(datename(month,entry_date),0,4)+' '+substring(datename(year,entry_date),3,4) entry_date,sum(Debit_Amount) Debit_Amount,sum(Credit_Amount) Credit_Amount,year(entry_date) dateyear from AccountsLedgerTable where ledger_id=(select ledger_id from ledger_master where ledger_name='"+strArr[0].ToString()+ "') and cast(floor(cast(Entry_Date as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Entry_Date as float)) as datetime) <= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) group by year(entry_date),datename(year,entry_date),datename(month,entry_date), month(entry_date) order by year(entry_date)",ref SqlDtr);
+				dbobj.SelectQuery("Select distinct month(entry_date),substring(datename(month,entry_date),0,4)+' '+substring(datename(year,entry_date),3,4) entry_date,sum(Debit_Amount) Debit_Amount,sum(Credit_Amount) Credit_Amount,year(entry_date) dateyear from AccountsLedgerTable where ledger_id=(select ledger_id from ledger_master where ledger_name='"+strArr[0].ToString()+"') and cast(floor(cast(Entry_Date as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(txtDateFrom.Text)+"' and cast(floor(cast(Entry_Date as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"' group by year(entry_date),datename(year,entry_date),datename(month,entry_date), month(entry_date) order by year(entry_date)",ref SqlDtr);
 				while(SqlDtr.Read())
 				{
 					sw.WriteLine(SqlDtr["entry_date"].ToString()+"\t"+
