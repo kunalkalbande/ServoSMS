@@ -29,7 +29,7 @@
 		<form id="Form1" method="post" runat="server">
 			<uc1:header id="Header1" runat="server"></uc1:header><asp:textbox id="TextBox2" style="Z-INDEX: 102; LEFT: 144px; POSITION: absolute; TOP: 16px" runat="server"
 				Visible="False" Width="8px"></asp:textbox>
-			<table height="290" width="778" align="center" cellpadding="0" cellspacing="0">
+			<table height="340" width="778" align="center" cellpadding="0" cellspacing="0">
 				<TBODY>
 					<TR>
 						<TH style="HEIGHT: 4px" align="center">
