@@ -216,7 +216,7 @@ namespace Servosms.Module.Reports
 				}
 
 				SqlDataReader SqlDtr = null;
-				dbobj.SelectQuery("Select *,(Meter_reading_Cur - Meter_Reading_Pre) as KM,((Meter_reading_Cur - Meter_Reading_Pre)/Fuel_Used_Qty) as Mileage from VDLB where vehicle_no = right('"+Dropvehicleno.SelectedItem.Text.Trim()+"',4) and cast(floor(cast(DOE as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and  cast(floor(cast(DOE as float)) as datetime) <= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)",ref SqlDtr);
+				dbobj.SelectQuery("Select *,(Meter_reading_Cur - Meter_Reading_Pre) as KM,((Meter_reading_Cur - Meter_Reading_Pre)/Fuel_Used_Qty) as Mileage from VDLB where vehicle_no = right('"+Dropvehicleno.SelectedItem.Text.Trim()+"',4) and cast(floor(cast(DOE as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.Trim())+"' and  cast(floor(cast(DOE as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.Trim())+"'",ref SqlDtr);
 				grdLog.DataSource = SqlDtr;
 				grdLog.DataBind();
 				if(grdLog.Items.Count==0)
@@ -318,7 +318,7 @@ namespace Servosms.Module.Reports
 				//info : to set string format.
 				string info =" {0,6:f} {1,-23:S} {2,6:f} {3,5:f} {4,6:f} {5,5:f} {6,7:f} {7,6:f} {8,6:f} {9,8:f} {10,6:f} {11,6:f} {12,8:f} {13,8:f} {14,6:f} {15,7:f}";
 				string route = "";
-				dbobj.SelectQuery("Select *,(Meter_reading_Cur - Meter_Reading_Pre) as KM,((Meter_reading_Cur - Meter_Reading_Pre)/Fuel_Used_Qty) as Mileage from VDLB where vehicle_no = right('"+Dropvehicleno.SelectedItem.Text.Trim()+"',4) and cast(floor(cast(DOE as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and  cast(floor(cast(DOE as float)) as datetime) <= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)",ref SqlDtr);
+				dbobj.SelectQuery("Select *,(Meter_reading_Cur - Meter_Reading_Pre) as KM,((Meter_reading_Cur - Meter_Reading_Pre)/Fuel_Used_Qty) as Mileage from VDLB where vehicle_no = right('"+Dropvehicleno.SelectedItem.Text.Trim()+"',4) and cast(floor(cast(DOE as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.Trim())+"' and  cast(floor(cast(DOE as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.Trim())+"'",ref SqlDtr);
 				if(SqlDtr.HasRows)
 				{
 					while(SqlDtr.Read())
@@ -391,7 +391,7 @@ namespace Servosms.Module.Reports
 			sw.WriteLine();
 			sw.WriteLine("Fuel Inward\tVehicle Route\tEngine Oil Used\tGear Oil Used\tGrease Used\tBrake Oil Used\tCoolent Used\ttansaction Oil Used\tExp. Toll\tExp. Police\tExp. Food\tExp. Misc\tOpening Meter Reading\tClosing Meter Reading\tKM.\tMileage");
 			string route = "";
-			dbobj.SelectQuery("Select *,(Meter_reading_Cur - Meter_Reading_Pre) as KM,((Meter_reading_Cur - Meter_Reading_Pre)/Fuel_Used_Qty) as Mileage from VDLB where vehicle_no = right('"+Dropvehicleno.SelectedItem.Text.Trim()+"',4) and cast(floor(cast(DOE as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and  cast(floor(cast(DOE as float)) as datetime) <= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)",ref SqlDtr);
+			dbobj.SelectQuery("Select *,(Meter_reading_Cur - Meter_Reading_Pre) as KM,((Meter_reading_Cur - Meter_Reading_Pre)/Fuel_Used_Qty) as Mileage from VDLB where vehicle_no = right('"+Dropvehicleno.SelectedItem.Text.Trim()+"',4) and cast(floor(cast(DOE as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.Trim())+"' and  cast(floor(cast(DOE as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.Trim())+"'",ref SqlDtr);
 			if(SqlDtr.HasRows)
 			{
 				while(SqlDtr.Read())
