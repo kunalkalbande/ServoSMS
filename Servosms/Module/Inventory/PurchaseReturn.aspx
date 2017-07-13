@@ -864,6 +864,11 @@
 		<meta content="JavaScript" name="vs_defaultClientScript">
 		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
 		<LINK href="../../Sysitem/Styles.css" type="text/css" rel="stylesheet">
+	    <style type="text/css">
+            .auto-style1 {
+                width: 90px;
+            }
+        </style>
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -1017,7 +1022,7 @@
 												<TR>
 													<TD align="center" width="290" colSpan="2"><FONT color="#990066">SKU Name With Pack</FONT></TD>
 													<!--TD align="center"><FONT color="#990066">&nbsp;&nbsp;&nbsp;&nbsp;Package</FONT></TD-->
-													<TD align="center"><FONT color="#990066">Qty
+													<TD align="center" class="auto-style1"><FONT color="#990066">Qty
 															<asp:requiredfieldvalidator id="RequiredFieldValidator4" runat="server" ErrorMessage="Please Fill Quentity"
 																ControlToValidate="txtQty1">*</asp:requiredfieldvalidator></FONT></TD>
 													<TD align="center"><FONT color="#990066">Rate</FONT></TD>
@@ -1030,11 +1035,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName1" runat="server"></TD>
 													<!--TD><INPUT id="txtPack1" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack1" runat="server" class="dropdownlist"></TD-->
-													<TD ><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty1" onblur="calc(this,document.Form1.txtRate1,document.Form1.tmpQty1)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate1" runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist"
+													<TD class="auto-style1" ><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty1" onblur="calc(this,document.Form1.txtRate1,document.Form1.tmpQty1)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate1" runat="server" Width="105px" BorderStyle="Groove" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount1" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount1" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC1" disabled type="checkbox" name="chkFOC1" runat="server"></TD>
 													<TD align="center"><INPUT id="Check1" onclick="select1(document.Form1.Check1,document.Form1.txtProdName1,document.Form1.txtQty1,document.Form1.txtRate1,document.Form1.txtAmount1,document.Form1.tmpQty1)"
@@ -1045,11 +1050,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName2" runat="server"></TD>
 													<!--TD><INPUT id="txtPack2" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack2" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty2" onblur="calc(this,document.Form1.txtRate2,document.Form1.tmpQty2)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate2" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty2" onblur="calc(this,document.Form1.txtRate2,document.Form1.tmpQty2)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate2" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount2" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount2" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC2" disabled type="checkbox" name="chkFOC2" runat="server"></TD>
 													<TD align="center"><INPUT id="Check2" onclick="select1(document.Form1.Check2,document.Form1.txtProdName2,document.Form1.txtQty2,document.Form1.txtRate2,document.Form1.txtAmount2,document.Form1.tmpQty2)"
@@ -1060,11 +1065,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName3" runat="server"></TD>
 													<!--TD><INPUT id="txtPack3" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack3" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty3" onblur="calc(this,document.Form1.txtRate3,document.Form1.tmpQty3)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate3" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty3" onblur="calc(this,document.Form1.txtRate3,document.Form1.tmpQty3)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate3" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount3" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount3" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC3" disabled type="checkbox" name="chkFOC3" runat="server"></TD>
 													<TD align="center"><INPUT id="Check3" onclick="select1(document.Form1.Check3,document.Form1.txtProdName3,document.Form1.txtQty3,document.Form1.txtRate3,document.Form1.txtAmount3,document.Form1.tmpQty3)"
@@ -1075,11 +1080,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName4" runat="server"></TD>
 													<!--TD><INPUT id="txtPack4" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack4" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty4" onblur="calc(this,document.Form1.txtRate4,document.Form1.tmpQty4)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate4" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty4" onblur="calc(this,document.Form1.txtRate4,document.Form1.tmpQty4)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate4" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount4" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount4" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC4" disabled type="checkbox" name="chkFOC4" runat="server"></TD>
 													<TD align="center"><INPUT id="Check4" onclick="select1(document.Form1.Check4,document.Form1.txtProdName4,document.Form1.txtQty4,document.Form1.txtRate4,document.Form1.txtAmount4,document.Form1.tmpQty4)"
@@ -1091,11 +1096,11 @@
 													</TD>
 													<!--TD><INPUT id="txtPack5" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack5" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty5" onblur="calc(this,document.Form1.txtRate5,document.Form1.tmpQty5)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate5" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty5" onblur="calc(this,document.Form1.txtRate5,document.Form1.tmpQty5)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate5" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount5" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount5" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC5" disabled type="checkbox" name="chkFOC5" runat="server"></TD>
 													<TD align="center"><INPUT id="Check5" onclick="select1(document.Form1.Check5,document.Form1.txtProdName5,document.Form1.txtQty5,document.Form1.txtRate5,document.Form1.txtAmount5,document.Form1.tmpQty5)"
@@ -1106,11 +1111,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName6" runat="server"></TD>
 													<!--TD><INPUT id="txtPack6" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack6" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty6" onblur="calc(this,document.Form1.txtRate6,document.Form1.tmpQty6)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate6" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty6" onblur="calc(this,document.Form1.txtRate6,document.Form1.tmpQty6)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate6" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount6" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount6" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC6" disabled type="checkbox" name="chkFOC6" runat="server"></TD>
 													<TD align="center"><INPUT id="Check6" onclick="select1(document.Form1.Check6,document.Form1.txtProdName6,document.Form1.txtQty6,document.Form1.txtRate6,document.Form1.txtAmount6,document.Form1.tmpQty6)"
@@ -1121,11 +1126,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName7" runat="server"></TD>
 													<!--TD><INPUT id="txtPack7" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack7" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox id="txtQty7" onblur="calc(this,document.Form1.txtRate7,document.Form1.tmpQty7)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate7" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox id="txtQty7" onblur="calc(this,document.Form1.txtRate7,document.Form1.tmpQty7)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate7" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount7" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount7" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC7" disabled type="checkbox" name="chkFOC7" runat="server"></TD>
 													<TD align="center"><INPUT id="Check7" onclick="select1(document.Form1.Check7,document.Form1.txtProdName7,document.Form1.txtQty7,document.Form1.txtRate7,document.Form1.txtAmount7,document.Form1.tmpQty7)"
@@ -1136,11 +1141,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName8" runat="server"></TD>
 													<!--TD><INPUT id="txtPack8" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack8" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty8" onblur="calc(this,document.Form1.txtRate8,document.Form1.tmpQty8)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate8" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty8" onblur="calc(this,document.Form1.txtRate8,document.Form1.tmpQty8)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate8" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount8" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount8" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC8" disabled type="checkbox" name="chkFOC8" runat="server"></TD>
 													<TD align="center"><INPUT id="Check8" onclick="select1(document.Form1.Check8,document.Form1.txtProdName8,document.Form1.txtQty8,document.Form1.txtRate8,document.Form1.txtAmount8,document.Form1.tmpQty8)"
@@ -1151,11 +1156,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName9" runat="server"></TD>
 													<!--TD><INPUT id="txtPack9" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack9" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty9" onblur="calc(this,document.Form1.txtRate9,document.Form1.tmpQty9)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate9" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty9" onblur="calc(this,document.Form1.txtRate9,document.Form1.tmpQty9)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate9" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 															Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount9" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount9" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC9" disabled type="checkbox" name="chkFOC9" runat="server"></TD>
 													<TD align="center"><INPUT id="Check9" onclick="select1(document.Form1.Check9,document.Form1.txtProdName9,document.Form1.txtQty9,document.Form1.txtRate9,document.Form1.txtAmount9,document.Form1.tmpQty9)"
@@ -1166,11 +1171,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName10" runat="server"></TD>
 													<!--TD><INPUT id="txtPack10" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack10" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty10" onblur="calc(this,document.Form1.txtRate10,document.Form1.tmpQty10)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate10" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty10" onblur="calc(this,document.Form1.txtRate10,document.Form1.tmpQty10)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate10" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount10" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount10" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC10" disabled type="checkbox" name="chkFOC10" runat="server"></TD>
 													<TD align="center"><INPUT id="Check10" onclick="select1(document.Form1.Check10,document.Form1.txtProdName10,document.Form1.txtQty10,document.Form1.txtRate10,document.Form1.txtAmount10,document.Form1.tmpQty10)"
@@ -1181,11 +1186,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName11" runat="server"></TD>
 													<!--TD><INPUT id="txtPack11" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack11" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty11" onblur="calc(this,document.Form1.txtRate11,document.Form1.tmpQty11)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate11" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty11" onblur="calc(this,document.Form1.txtRate11,document.Form1.tmpQty11)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate11" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount11" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount11" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC11" disabled type="checkbox" name="chkFOC11" runat="server"></TD>
 													<TD align="center"><INPUT id="Check11" onclick="select1(document.Form1.Check11,document.Form1.txtProdName11,document.Form1.txtQty11,document.Form1.txtRate11,document.Form1.txtAmount11,document.Form1.tmpQty11)"
@@ -1196,11 +1201,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack12" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty12" onblur="calc(this,document.Form1.txtRate12,document.Form1.tmpQty12)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate12" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty12" onblur="calc(this,document.Form1.txtRate12,document.Form1.tmpQty12)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate12" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount12" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount12" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC12" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check12" onclick="select1(document.Form1.Check12,document.Form1.txtProdName12,document.Form1.txtQty12,document.Form1.txtRate12,document.Form1.txtAmount12,document.Form1.tmpQty12)"
@@ -1211,11 +1216,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack13" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty13" onblur="calc(this,document.Form1.txtRate13,document.Form1.tmpQty13)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate13" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty13" onblur="calc(this,document.Form1.txtRate13,document.Form1.tmpQty13)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate13" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount13" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount13" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC13" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check13" onclick="select1(document.Form1.Check13,document.Form1.txtProdName13,document.Form1.txtQty13,document.Form1.txtRate13,document.Form1.txtAmount13,document.Form1.tmpQty13)"
@@ -1226,11 +1231,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack14" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty14" onblur="calc(this,document.Form1.txtRate14,document.Form1.tmpQty14)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate14" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty14" onblur="calc(this,document.Form1.txtRate14,document.Form1.tmpQty14)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate14" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount14" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount14" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC14" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check14" onclick="select1(document.Form1.Check14,document.Form1.txtProdName14,document.Form1.txtQty14,document.Form1.txtRate14,document.Form1.txtAmount14,document.Form1.tmpQty14)"
@@ -1241,11 +1246,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack15" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty15" onblur="calc(this,document.Form1.txtRate15,document.Form1.tmpQty15)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate15" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty15" onblur="calc(this,document.Form1.txtRate15,document.Form1.tmpQty15)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate15" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount15" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount15" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC15" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check15" onclick="select1(document.Form1.Check15,document.Form1.txtProdName15,document.Form1.txtQty15,document.Form1.txtRate15,document.Form1.txtAmount15,document.Form1.tmpQty15)"
@@ -1256,11 +1261,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack16" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty16" onblur="calc(this,document.Form1.txtRate16,document.Form1.tmpQty16)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate16" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty16" onblur="calc(this,document.Form1.txtRate16,document.Form1.tmpQty16)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate16" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount16" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount16" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC16" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check16" onclick="select1(document.Form1.Check16,document.Form1.txtProdName16,document.Form1.txtQty16,document.Form1.txtRate16,document.Form1.txtAmount16,document.Form1.tmpQty16)"
@@ -1271,11 +1276,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack17" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty17" onblur="calc(this,document.Form1.txtRate17,document.Form1.tmpQty17)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate17" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty17" onblur="calc(this,document.Form1.txtRate17,document.Form1.tmpQty17)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate17" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount17" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount17" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC17" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check17" onclick="select1(document.Form1.Check17,document.Form1.txtProdName17,document.Form1.txtQty17,document.Form1.txtRate17,document.Form1.txtAmount17,document.Form1.tmpQty17)"
@@ -1286,11 +1291,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack18" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty18" onblur="calc(this,document.Form1.txtRate18,document.Form1.tmpQty18)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate18" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty18" onblur="calc(this,document.Form1.txtRate18,document.Form1.tmpQty18)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate18" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount18" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount18" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC18" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check18" onclick="select1(document.Form1.Check18,document.Form1.txtProdName18,document.Form1.txtQty18,document.Form1.txtRate18,document.Form1.txtAmount18,document.Form1.tmpQty18)"
@@ -1301,11 +1306,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack19" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty19" onblur="calc(this,document.Form1.txtRate19,document.Form1.tmpQty19)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate19" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty19" onblur="calc(this,document.Form1.txtRate19,document.Form1.tmpQty19)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate19" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount19" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount19" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC19" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check19" onclick="select1(document.Form1.Check19,document.Form1.txtProdName19,document.Form1.txtQty19,document.Form1.txtRate19,document.Form1.txtAmount19,document.Form1.tmpQty19)"
@@ -1316,11 +1321,11 @@
 															disabled readOnly type="text" size="22" name="txtProdName12" runat="server"></TD>
 													<!--TD><INPUT id="txtPack20" style="WIDTH: 100px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 															disabled readOnly type="text" size="22" name="txtPack12" runat="server" class="dropdownlist"></TD-->
-													<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty20" onblur="calc(this,document.Form1.txtRate20,document.Form1.tmpQty20)"
-															runat="server" Width="52px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtRate20" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+													<TD class="auto-style1"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtQty20" onblur="calc(this,document.Form1.txtRate20,document.Form1.tmpQty20)"
+															runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
+													<TD><asp:textbox id="txtRate20" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
-													<TD><asp:textbox id="txtAmount20" runat="server" Width="79px" BorderStyle="Groove" ReadOnly="True"
+													<TD><asp:textbox id="txtAmount20" runat="server" Width="105px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist" Enabled="False"></asp:textbox></TD>
 													<TD align="center"><INPUT id="chkFOC20" disabled type="checkbox" name="chkFOC12" runat="server"></TD>
 													<TD align="center"><INPUT id="Check20" onclick="select1(document.Form1.Check20,document.Form1.txtProdName20,document.Form1.txtQty20,document.Form1.txtRate20,document.Form1.txtAmount20,document.Form1.tmpQty20)"
@@ -1330,7 +1335,7 @@
 													<td>&nbsp; Total Ltr/Kg<asp:textbox id="txttotalqtyltr" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist"></asp:textbox></td>
 													<td>&nbsp;&nbsp;&nbsp;&nbsp; Total</td>
-													<td><asp:textbox id="txttotalqty" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
+													<td class="auto-style1"><asp:textbox id="txttotalqty" runat="server" Width="120px" BorderStyle="Groove" ReadOnly="True"
 															CssClass="dropdownlist"></asp:textbox></td>
 													<td>&nbsp;</td>
 													<td align="center" colSpan="2">Select All</td>
