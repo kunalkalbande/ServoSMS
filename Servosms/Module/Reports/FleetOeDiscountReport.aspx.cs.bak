@@ -391,8 +391,10 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-				{
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
+                {                 
 					MessageBox.Show("Date From Should be less than Date To");
 					GridSalesReport.Visible=false;
 				}

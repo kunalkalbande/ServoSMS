@@ -279,7 +279,7 @@ namespace Servosms.Module.Reports
 			
 			//string sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and  (cust_type='Fleet' or cust_type like('Oe%'))";
 			//Coment by vikas sharma 21.05.09 string sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type='Fleet'";
-			string sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type='Fleet'";
+			string sql= "select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()) + "',103) and cust_type='Fleet'";
 			SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
 			DataSet ds=new DataSet();	
 			//coment by vikas 26.05.09 da.Fill(ds,"Vw_fleetoediscount");
@@ -347,7 +347,7 @@ namespace Servosms.Module.Reports
 			
 			//string sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and  (cust_type='Fleet' or cust_type like('Oe%'))";
 			//coment by vikas sharma 21.05.09 string sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
-			string sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
+			string sql= "select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()) + "',103) and cust_type like('Oe%')";
 			SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
 			DataSet ds=new DataSet();	
 			//coment by vikas 26.05.09 da.Fill(ds,"Vw_fleetoediscount");
@@ -1385,7 +1385,7 @@ namespace Servosms.Module.Reports
 				if(droptype.SelectedItem.Text.Equals("Fleet")||droptype.SelectedItem.Text.Equals("Both"))
 				{
 					//coment by vikas sharma 21.05.09 sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type='Fleet'";
-					sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type='Fleet'";
+					sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()) + "',103) and cust_type='Fleet'";
 					sql=sql+" order by "+Cache["strorderby"];
 					dbobj.SelectQuery(sql,ref rdr);
 										
@@ -1484,7 +1484,7 @@ namespace Servosms.Module.Reports
 				if(droptype.SelectedItem.Text.Equals("OE")||droptype.SelectedItem.Text.Equals("Both"))
 				{
 					//coment by vikas sharma 21.05.09 sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
-					sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
+					sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()) + "',103) and cust_type like('Oe%')";
 					sql=sql+" order by "+Cache["strorderby1"];
 					dbobj.SelectQuery(sql,ref rdr);
 					// Condensed
@@ -1610,7 +1610,7 @@ namespace Servosms.Module.Reports
 			if(droptype.SelectedItem.Text.Equals("Fleet")||droptype.SelectedItem.Text.Equals("Both"))
 			{
 				//Comment by vikas sharma 21.05.09 sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type='Fleet'";
-				sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type='Fleet'";
+				sql= "select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()) + "',103) and cust_type='Fleet'";
 				sql=sql+" order by "+Cache["strorderby"];
 				dbobj.SelectQuery(sql,ref rdr);
 					
@@ -1667,8 +1667,8 @@ namespace Servosms.Module.Reports
 			}
 			if(droptype.SelectedItem.Text.Equals("OE")||droptype.SelectedItem.Text.Equals("Both"))
 			{
-				//Comment by vikas sharma 21.05.09 sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
-				sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
+				//Comment by vikas sharma 21.05.09 sql="select * from Vw_fleetoediscount where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and cust_type like('Oe%')";
+				sql="select * from Vw_fleetoediscountReport where cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()) + "',103) and cust_type like('Oe%')";
 				sql=sql+" order by "+Cache["strorderby1"];
 				dbobj.SelectQuery(sql,ref rdr);
 				
