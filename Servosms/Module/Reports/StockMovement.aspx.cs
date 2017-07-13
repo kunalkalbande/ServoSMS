@@ -40,104 +40,104 @@ namespace Servosms.Module.Reports
 		string uid;
 		ArrayList custAccount = new ArrayList();
 
-		/// <summary>
-		/// This method is used for setting the Session variable for userId and 
-		/// after that filling the required dropdowns with database values 
-		/// and also check accessing priviledges for particular user.
-		/// </summary>
-		protected void Page_Load(object sender, System.EventArgs e)
-		{
-			try
-			{
-				uid=(Session["User_Name"].ToString());
-			}
-			catch(Exception ex)
-			{
-				CreateLogFiles.ErrorLog("Form:StockMovement.aspx,Class:DBOperation_LETEST.cs,Method:page_load"+ ex.Message+"EXCEPTION"+uid);	
-				Response.Redirect("../../Sysitem/ErrorPage.aspx",false);
-				return;
-			}
-			if(!Page.IsPostBack )
-			{
-				try
-				{
-					grdLeg.Visible=false;
-					gridSJ.Visible=false;
-					#region Check Privileges
-					int i;
-					string View_flag="0", Add_Flag="0", Edit_Flag="0", Del_Flag="0";
-					string Module="5";
-					string SubModule="46";
-					string[,] Priv=(string[,]) Session["Privileges"];
-					for(i=0;i<Priv.GetLength(0);i++)
-					{
-						if(Priv[i,0]== Module &&  Priv[i,1]==SubModule)
-						{						
-							View_flag=Priv[i,2];
-							Add_Flag=Priv[i,3];
-							Edit_Flag=Priv[i,4];
-							Del_Flag=Priv[i,5];
-							break;
-						}
-					}	
-					if(View_flag=="0")
-					{
-						Response.Redirect("../../Sysitem/AccessDeny.aspx",false);
-					}
-					#endregion
-					txtDateFrom.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
-					txtDateTo.Text=DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
-					System.Data.SqlClient.SqlDataReader rdr=null,rdr1=null;
-					// Fetch store_in locations from products tables, if store_in not available then get the tank.
-					dbobj.SelectQuery("select distinct store_in from products",ref rdr);
-					while(rdr.Read())
-					{
-						if(Char.IsDigit(rdr["store_in"].ToString(),0))
-						{
-							dbobj.SelectQuery("select tank_id,tank_name,prod_name from tank where tank_id="+rdr["store_in"].ToString(),ref rdr1);
-							if(rdr1.Read())
-							{
-							
-								drpstore.Items.Add(rdr1["tank_name"].ToString()+":"+rdr1["prod_name"].ToString());					
-							}
-						}
-						else
-							drpstore.Items.Add(rdr["store_in"].ToString());					
-					}
+        /// <summary>
+        /// This method is used for setting the Session variable for userId and 
+        /// after that filling the required dropdowns with database values 
+        /// and also check accessing priviledges for particular user.
+        /// </summary>
+        protected void Page_Load(object sender, System.EventArgs e)
+        {
+            try
+            {
+                uid = (Session["User_Name"].ToString());
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:StockMovement.aspx,Class:DBOperation_LETEST.cs,Method:page_load" + ex.Message + "EXCEPTION" + uid);
+                Response.Redirect("../../Sysitem/ErrorPage.aspx", false);
+                return;
+            }
+            if (!Page.IsPostBack)
+            {
+                try
+                {
+                    grdLeg.Visible = false;
+                    gridSJ.Visible = false;
+                    #region Check Privileges
+                    int i;
+                    string View_flag = "0", Add_Flag = "0", Edit_Flag = "0", Del_Flag = "0";
+                    string Module = "5";
+                    string SubModule = "46";
+                    string[,] Priv = (string[,])Session["Privileges"];
+                    for (i = 0; i < Priv.GetLength(0); i++)
+                    {
+                        if (Priv[i, 0] == Module && Priv[i, 1] == SubModule)
+                        {
+                            View_flag = Priv[i, 2];
+                            Add_Flag = Priv[i, 3];
+                            Edit_Flag = Priv[i, 4];
+                            Del_Flag = Priv[i, 5];
+                            break;
+                        }
+                    }
+                    if (View_flag == "0")
+                    {
+                        Response.Redirect("../../Sysitem/AccessDeny.aspx", false);
+                    }
+                    #endregion
+                    txtDateFrom.Text = GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
+                    txtDateTo.Text = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+                    System.Data.SqlClient.SqlDataReader rdr = null, rdr1 = null;
+                    // Fetch store_in locations from products tables, if store_in not available then get the tank.
+                    dbobj.SelectQuery("select distinct store_in from products", ref rdr);
+                    while (rdr.Read())
+                    {
+                        if (Char.IsDigit(rdr["store_in"].ToString(), 0))
+                        {
+                            dbobj.SelectQuery("select tank_id,tank_name,prod_name from tank where tank_id=" + rdr["store_in"].ToString(), ref rdr1);
+                            if (rdr1.Read())
+                            {
 
-			
-					drpstore.Items.Insert(0,"All");
-					dbobj.Dispose();
-					//*********************
-					SqlDataReader rdr2=null;
-					dbobj.SelectQuery("select distinct category from products",ref rdr2);
-					while(rdr2.Read())
-					{
-						dropcategory.Items.Add(rdr2.GetValue(0).ToString());
-					}
-					dropcategory.Items.Insert(0,"All");
-					dbobj.Dispose();
-					//********************
-					SqlDataReader rdr3=null;
-					dbobj.SelectQuery("select distinct Pack_Type from products",ref rdr3);
-					while(rdr3.Read())
-					{
-						dropPackType.Items.Add(rdr3.GetValue(0).ToString());
-					}
-					dropPackType.Items.Insert(0,"All");
-					dbobj.Dispose();
-					//*********************
-					object ob=null;
-					dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertStockMaster",ref ob,"@ProductID","");
-				}
-				catch(Exception ex)
-				{
-					CreateLogFiles.ErrorLog("Form:StockMovement.aspx,Class:DBOperation_LETEST.cs,Method:page_load().  EXCEPTION: "+ ex.Message+" User_ID: "+uid);	
-				}
-			}
+                                drpstore.Items.Add(rdr1["tank_name"].ToString() + ":" + rdr1["prod_name"].ToString());
+                            }
+                        }
+                        else
+                            drpstore.Items.Add(rdr["store_in"].ToString());
+                    }
+
+
+                    drpstore.Items.Insert(0, "All");
+                    dbobj.Dispose();
+                    //*********************
+                    SqlDataReader rdr2 = null;
+                    dbobj.SelectQuery("select distinct category from products", ref rdr2);
+                    while (rdr2.Read())
+                    {
+                        dropcategory.Items.Add(rdr2.GetValue(0).ToString());
+                    }
+                    dropcategory.Items.Insert(0, "All");
+                    dbobj.Dispose();
+                    //********************
+                    SqlDataReader rdr3 = null;
+                    dbobj.SelectQuery("select distinct Pack_Type from products", ref rdr3);
+                    while (rdr3.Read())
+                    {
+                        dropPackType.Items.Add(rdr3.GetValue(0).ToString());
+                    }
+                    dropPackType.Items.Insert(0, "All");
+                    dbobj.Dispose();
+                    //*********************
+                    object ob = null;
+                    dbobj.ExecProc(DBOperations.OprType.Insert, "ProInsertStockMaster", ref ob, "@ProductID", "");
+                }
+                catch (Exception ex)
+                {
+                    CreateLogFiles.ErrorLog("Form:StockMovement.aspx,Class:DBOperation_LETEST.cs,Method:page_load().  EXCEPTION: " + ex.Message + " User_ID: " + uid);
+                }
+            }
             txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
             txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
-
+        }
 		/// <summary>
 		/// This Method multiplies the package quantity with Quantity.
 		/// </summary>
