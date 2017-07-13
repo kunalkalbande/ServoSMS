@@ -1,4 +1,4 @@
-<%@ Page language="c#" Inherits="Servosms.Module.Inventory.Payment_Receipt" CodeFile="Payment_Receipt.aspx.cs" %>
+<%@ Page language="c#" Inherits="Servosms.Module.Inventory.Payment_Receipt" CodeFile="Payment_Receipt.aspx.cs"  EnableEventValidation="false"%>
 <%@ Register TagPrefix="uc1" TagName="Header" Src="../../HeaderFooter/Header.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="Footer" Src="../../HeaderFooter/Footer.ascx" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >

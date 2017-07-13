@@ -1927,10 +1927,10 @@ namespace Servosms.Module.Inventory
 					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_"+DisType2+" ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
 					dbobj.Insert_or_Update("delete from CustomerLedgerTable where particular = 'Payment Received("+DropReceiptNo.SelectedItem.Text+")'",ref x);
 					dbobj.Insert_or_Update("delete from Payment_Receipt where Receipt_No='"+DropReceiptNo.SelectedItem.Text+"'",ref x);
-					dbobj.Insert_or_Update("insert into payment_receipt values("+DropReceiptNo.SelectedItem.Text+",'Deleted','"+Invoice_Date+"','','','','','','','','','','','','','')",ref x);
+					dbobj.Insert_or_Update("insert into payment_receipt values("+DropReceiptNo.SelectedItem.Text+",'Deleted','"+GenUtil.str2MMDDYYYY(Invoice_Date)+"','','','','','','','','','','','','','')",ref x);
 					
 					dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_id = '"+customerID+"')",ref Cust_ID);
-					dbobj.ExecProc(OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj,"@Ledger_ID",customerID,"@Invoice_Date",GenUtil.str2MMDDYYYY(txtReceivedDate.Text));
+					dbobj.ExecProc(OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj,"@Ledger_ID",customerID,"@Invoice_Date",GenUtil.str2DDMMYYYY(txtReceivedDate.Text));
 					dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj,"@Cust_ID",Cust_ID,"@Invoice_Date",GenUtil.str2MMDDYYYY(txtReceivedDate.Text));
 					MessageBox.Show("Receipt Cancellation Successfully");
 					Clear();
