@@ -124,7 +124,8 @@ namespace Servosms.Module.Reports
 					CreateLogFiles.ErrorLog("Form:StockReport.aspx,Method:page_load EXCEPTION  "+ex.Message+" userid "+ uid);
 				}
 			}
-		}
+            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+        }
 		
 		/// <summary>
 		/// This method is used to make sorting the datagrid onclicking of the datagridheader.
