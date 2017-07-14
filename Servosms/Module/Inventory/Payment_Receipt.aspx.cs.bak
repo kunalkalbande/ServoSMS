@@ -928,17 +928,13 @@ namespace Servosms.Module.Inventory
 		{
 			try
 			{
-                var dt = System.Convert.ToDateTime(Acc_Date);
-                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtReceivedDate"].ToString()));
-                if (DateTime.Compare(dt, dt2) > 0)
-                {
-                    MessageBox.Show("Please Select Date Must be Greater than Opening Date");
-                }
-                else
-                {
-                    string s = txtRecAmount.Text;
-                    SaveUpdate();
-                }
+				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)))>0)
+					MessageBox.Show("Please Select Date Must be Greater than Opening Date");
+				else
+				{
+					string s=txtRecAmount.Text;
+					SaveUpdate();
+				}
 				Last_ID();
 			}
 			catch(Exception ex)
@@ -1055,13 +1051,13 @@ namespace Servosms.Module.Inventory
 			//obj.BankName=txtBankName.Text.Trim().ToString();
 			obj.ChequeNo=txtChequeno.Text.Trim().ToString();
 			obj.Mode=DropMode.SelectedItem.Text;
-			obj.ChequeDate=GenUtil.str2DDMMYYYY(txtDate.Text.Trim().ToString());            
-            obj.cust_id=Cust_ID;
+			obj.ChequeDate=GenUtil.str2MMDDYYYY(txtDate.Text.Trim().ToString());
+			obj.cust_id=Cust_ID;
 			obj.Narration=txtNar.Text;
 			obj.discount=txtDisc1.Text;
 			obj.Discount=txtDisc2.Text;
 			obj.CustBankName=txtCustBankName.Text;
-			obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
+			obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
 			string DiscID1="0",DiscID2="0";
 			
 			
@@ -1303,11 +1299,11 @@ namespace Servosms.Module.Inventory
 					obj.InsertPaymentReceived();
 
 					//dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",DropCustName.Value,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",ReceiptNo.ToString(),"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())); //Comment by Vikas sharma 30.04.09
-					dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",_CustName,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",ReceiptNo.ToString(),"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()));
+					dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",_CustName,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",ReceiptNo.ToString(),"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()));
 					if(txtDisc1.Text!="" && txtDisc1.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo.ToString(),"@Amount",txtDisc1.Text,"@Ledger_ID",DiscID1,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType1);
+						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo.ToString(),"@Amount",txtDisc1.Text,"@Ledger_ID",DiscID1,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType1);
 					if(txtDisc2.Text!="" && txtDisc2.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo.ToString(),"@Amount",txtDisc2.Text,"@Ledger_ID",DiscID2,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType2);
+						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo.ToString(),"@Amount",txtDisc2.Text,"@Ledger_ID",DiscID2,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType2);
 
 					/******************Add by vikas Sharma 12.09.09**********************************************/
 					int x = 0;
@@ -1349,13 +1345,13 @@ namespace Servosms.Module.Inventory
 					if(Invoice_Date.IndexOf(" ")>0)
 					{
 						string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-						if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)))>0)
-							Invoice_Date=GenUtil.str2DDMMYYYY(txtReceivedDate.Text);
+						if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)))>0)
+							Invoice_Date=GenUtil.str2MMDDYYYY(txtReceivedDate.Text);
 						else
 							Invoice_Date=CheckDate[0].ToString();
 					}
 					else
-						Invoice_Date=GenUtil.str2DDMMYYYY(txtReceivedDate.Text);
+						Invoice_Date=GenUtil.str2MMDDYYYY(txtReceivedDate.Text);
 					
 					for(int p=0;p<UpdateLedgerID.Count;p++)
 					{
@@ -1375,11 +1371,11 @@ namespace Servosms.Module.Inventory
 					for(int i=0;i<UpdateLedgerID.Count;i++)
 					{
 						string ss=UpdateLedgerID[i].ToString();
-						dbobj.ExecProc(OprType.Update,"UpdateAccountsLedgerForCustomer",ref opp,"@Ledger_ID",UpdateLedgerID[i].ToString(),"@Invoice_Date",GenUtil.str2DDMMYYYY(txtReceivedDate.Text));
+						dbobj.ExecProc(OprType.Update,"UpdateAccountsLedgerForCustomer",ref opp,"@Ledger_ID",UpdateLedgerID[i].ToString(),"@Invoice_Date",GenUtil.str2MMDDYYYY(txtReceivedDate.Text));
 						dbobj.SelectQuery("select cust_id from customer,ledger_master where Cust_Name=Ledger_Name and Ledger_ID='"+UpdateLedgerID[i].ToString()+"'",ref SqlDtr);
 						if(SqlDtr.Read())
 						{
-							dbobj.ExecProc(OprType.Update,"UpdateCustomerLedgerForCustomer",ref opp,"@Cust_ID",SqlDtr["Cust_ID"].ToString(),"@Invoice_Date", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)));
+							dbobj.ExecProc(OprType.Update,"UpdateCustomerLedgerForCustomer",ref opp,"@Cust_ID",SqlDtr["Cust_ID"].ToString(),"@Invoice_Date",GenUtil.str2MMDDYYYY(txtReceivedDate.Text));
 						}
 					}
 
