@@ -353,7 +353,7 @@ namespace Servosms.Module.Inventory
 								qty1 = QtyLtr[i].Text.Trim();
 							else
 								qty1 = QtyPack[i].Text.Trim();
-							store1 = Store_In[i].Text.Trim ();
+							store1 = Request.Form[Store_In[i].ID.ToString()].ToString().Trim ();
 							type1 = "Other";
 						}
 						else
@@ -375,7 +375,7 @@ namespace Servosms.Module.Inventory
 								qty2 = QtyLtr[i+4].Text.Trim();
 							else
 								qty2 = QtyPack[i+4].Text.Trim();
-							store2 = Store_In[i+4].Text.Trim ();
+							store2 = Request.Form[Store_In[i + 4].ID.ToString()].ToString().Trim ();
 							type2 = "Other";
 						}
 						else
@@ -383,7 +383,7 @@ namespace Servosms.Module.Inventory
 							prod_name2  = Products[i+4].Value.ToString().Trim();
 							pack2 = "";
 							qty2 = QtyLtr[i+4].Text.Trim();
-							store2 = Store_In[i+4].Text.Trim ();
+							store2 = Request.Form[Store_In[i+4].ID.ToString()].ToString().Trim ();
 							type2 = "Fuel";
 						}
 						save(sav_id,prod_name1,pack1,store1,type1,qty1,prod_name2,pack2,store2,type2,qty2);
@@ -1336,7 +1336,7 @@ namespace Servosms.Module.Inventory
 				QtyPack[i+4].Text=rdr["InQty"].ToString();
 				QtyLtr[i+4].Text=System.Convert.ToString(totqty*double.Parse(rdr["inqty"].ToString()));
 				QtyLtr1[i+4].Value=System.Convert.ToString(totqty*double.Parse(rdr["inqty"].ToString()));
-				txtDate.Text=GenUtil.str2MMDDYYYY(GenUtil.trimDate(rdr["Entry_Time"].ToString()));
+				txtDate.Text=GenUtil.str2DDMMYYYY(GenUtil.trimDate(rdr["Entry_Time"].ToString()));
 				tempDate=GenUtil.trimDate(rdr["Entry_Time"].ToString());
 				i++;
 			}

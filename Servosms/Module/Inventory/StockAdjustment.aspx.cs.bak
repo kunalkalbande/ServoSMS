@@ -353,7 +353,7 @@ namespace Servosms.Module.Inventory
 								qty1 = QtyLtr[i].Text.Trim();
 							else
 								qty1 = QtyPack[i].Text.Trim();
-							store1 = Store_In[i].Text.Trim ();
+							store1 = Request.Form[Store_In[i].ID.ToString()].ToString().Trim ();
 							type1 = "Other";
 						}
 						else
@@ -361,7 +361,7 @@ namespace Servosms.Module.Inventory
 							prod_name1  = Products[i].Value.ToString().Trim();
 							pack1 = "";
 							qty1 = QtyLtr[i].Text.Trim();
-							store1 = Store_In[i].Text.Trim ();
+							store1 = Request.Form[Store_In[i].ID.ToString()].ToString().Trim ();
 							type1 = "Fuel";
 						}
 
