@@ -570,7 +570,7 @@ namespace Servosms.Module.Logistics
 		{
 			if(!str.Trim().Equals(""))
 			{
-				if(str.Trim().Equals("1/1/1900"))
+				if(str.Trim().Equals("1/1/1900") || str.Trim().Equals("01/01/1900"))
 					str = "";
 			}
 			return str;
