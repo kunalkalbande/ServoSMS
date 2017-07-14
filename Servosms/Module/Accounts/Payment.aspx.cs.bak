@@ -191,13 +191,10 @@ namespace Servosms.Module.Accounts
 		{
 			try
 			{
-                var dt = System.Convert.ToDateTime(Acc_Date);
+                var dt = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Acc_Date));
                 var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()));
                 if (DateTime.Compare(dt,dt2)>0)
-                {
-                    MessageBox.Show("Please Select Date Must be Greater than Opening Date");
-                }
-					
+					MessageBox.Show("Please Select Date Must be Greater than Opening Date");
 				else
 				{
 					Save();
@@ -231,9 +228,8 @@ namespace Servosms.Module.Accounts
 			Bank_name = txtBankname.Text.Trim();
 			Cheque_No = txtCheque.Text.Trim();
 			chkDate = txtchkDate.Text.Trim();
-			chkDate = GenUtil.str2DDMMYYYY(chkDate);
-            DateTime dtDate = System.Convert.ToDateTime(chkDate);
-            Amount = txtAmount.Text.Trim();
+			chkDate = GenUtil.str2MMDDYYYY(chkDate);
+			Amount = txtAmount.Text.Trim();
 			narration = txtNarrartion.Value.Trim();
 			SqlDataReader SqlDtr = null;
 			string strNew = DropLedgerName.Value;
@@ -264,7 +260,7 @@ namespace Servosms.Module.Accounts
 
                 int c = 0;
 
-                dbobj.Insert_or_Update("insert into payment_transaction values(" + Vouch_ID + ",'Payment'," + Ledger_ID + "," + Amount + "," + By_ID + "," + Amount + ",'" + Bank_name + "','" + Cheque_No + "',CONVERT(datetime,'" + dtDate + "', 103),'" + narration + "','" + uid + "', CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
+                dbobj.Insert_or_Update("insert into payment_transaction values(" + Vouch_ID + ",'Payment'," + Ledger_ID + "," + Amount + "," + By_ID + "," + Amount + ",'" + Bank_name + "','" + Cheque_No + "','" + chkDate + "','" + narration + "','" + uid + "', CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
                 object obj = null;
                 dbobj.ExecProc(DBOperations.OprType.Insert, "ProInsertAccountsLedger", ref obj, "@Ledger_ID", Ledger_ID, "@Particulars", "Payment (" + Vouch_ID + ")", "@Debit_Amount", Amount, "@Credit_Amount", "0.0", "@type", "Dr", "@Invoice_Date", Entry_Date);
                 dbobj.ExecProc(DBOperations.OprType.Insert, "ProInsertAccountsLedger", ref obj, "@Ledger_ID", By_ID, "@Particulars", "Payment (" + Vouch_ID + ")", "@Debit_Amount", "0.0", "@Credit_Amount", Amount, "@type", "Cr", "@Invoice_Date", Entry_Date);
@@ -604,12 +600,8 @@ namespace Servosms.Module.Accounts
 		{
 			try
 			{
-                var dt = System.Convert.ToDateTime(Acc_Date);
-                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString()));
-                if (DateTime.Compare(dt, dt2) > 0)
-                {
-                    MessageBox.Show("Please Select Date Must be Greater than Opening Date");
-                }                    					
+				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
+					MessageBox.Show("Please Select Date Must be Greater than Opening Date");
 				else
 				{
 					Update();  
@@ -653,9 +645,8 @@ namespace Servosms.Module.Accounts
 			Bank_name1 = txtBankname.Text.Trim();
 			Cheque_No1 = txtCheque.Text.Trim();
 			Date1 = txtchkDate.Text.Trim();
-			Date1 = GenUtil.str2DDMMYYYY(Date1);            
-            DateTime dtDate = System.Convert.ToDateTime(Date1);
-            Amount1 = txtAmount.Text.Trim();
+			Date1 = GenUtil.str2MMDDYYYY(Date1);
+			Amount1 = txtAmount.Text.Trim();
 			narration1 = txtNarrartion.Value.Trim();
 			SqlDataReader SqlDtr = null;
 			Ledger_ID1=arrstrNew[1].ToString();
@@ -681,7 +672,7 @@ namespace Servosms.Module.Accounts
 			rdr.Close();
 			if(arrstrOld[0].ToString().Equals(DropLedgerName.Value))
 			{
-				dbobj.Insert_or_Update("Update Payment_transaction set Ledger_ID_Dr = "+Ledger_ID1+",Amount1 = "+Amount1+",Ledger_ID_Cr = "+By_ID1+",Amount2 = "+Amount1+",Bank_Name='"+Bank_name1+"',Cheque_No='"+Cheque_No1+ "',Cheque_date = CONVERT(datetime,'" + dtDate + "', 103),Narration ='"+narration1+"',Entered_By = '"+uid+ "', Entry_Date= CONVERT(datetime,'" + Entry_Date + "', 103) where Voucher_ID = "+strArr[1].Trim() ,ref c);
+				dbobj.Insert_or_Update("Update Payment_transaction set Ledger_ID_Dr = "+Ledger_ID1+",Amount1 = "+Amount1+",Ledger_ID_Cr = "+By_ID1+",Amount2 = "+Amount1+",Bank_Name='"+Bank_name1+"',Cheque_No='"+Cheque_No1+"',Cheque_date = '"+Date1+"',Narration ='"+narration1+"',Entered_By = '"+uid+ "', Entry_Date= CONVERT(datetime,'" + Entry_Date + "', 103) where Voucher_ID = "+strArr[1].Trim() ,ref c);
 				object obj = null;
 				if(CheckCashMode.Equals(DropBy.SelectedItem.Text))
 				{
@@ -708,7 +699,7 @@ namespace Servosms.Module.Accounts
 					dbobj.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Voucher("+strArr[1].Trim()+")' and CustID='"+OldCust_ID+"'",ref c);
 				}
 					
-				dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID1+","+Amount1+","+By_ID1+","+Amount1+",'"+Bank_name1+"','"+Cheque_No1+ "',CONVERT(datetime,'" + dtDate + "', 103),'"+narration1+"','"+uid+"',CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
+				dbobj.Insert_or_Update("insert into payment_transaction values("+Vouch_ID+",'Payment',"+Ledger_ID1+","+Amount1+","+By_ID1+","+Amount1+",'"+Bank_name1+"','"+Cheque_No1+"','"+Date1+"','"+narration1+"','"+uid+"',CONVERT(datetime,'" + Entry_Date + "', 103))", ref c);
 				object obj = null;
 				dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",Ledger_ID1,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount",Amount1,"@Credit_Amount","0.0","@type","Dr","@Invoice_Date",Entry_Date); 
 				dbobj.ExecProc(DBOperations.OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",By_ID1,"@Particulars","Payment ("+Vouch_ID+")","@Debit_Amount","0.0","@Credit_Amount",Amount1,"@type","Cr","@Invoice_Date",Entry_Date); 
