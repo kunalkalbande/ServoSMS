@@ -537,7 +537,7 @@ namespace Servosms.Module.Accounts
 		{
 			try
 			{
-				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
+				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)))>0)
 					MessageBox.Show("Please Select Date Must be Greater than Opening Date");
 				else
 				{
@@ -591,7 +591,7 @@ namespace Servosms.Module.Accounts
 					}
 				}
 			}
-			DateTime date = System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString());
+			DateTime date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString());
 			int intID = System.Convert.ToInt32(id.ToString()); 
 			int flag = 0;
 			
@@ -640,7 +640,7 @@ namespace Servosms.Module.Accounts
 						L_Type = "Cr";
 					}
  
-					dbobj.Insert_or_Update("Insert into Voucher_Transaction values("+intID+",'"+Vouch_Type.Trim()+"','"+date+"',"+crID.Trim() +","+Amount_cr.Trim() +","+drID.Trim() +","+Amount_Dr.Trim() +",'"+narration+"','"+L_Type+"')",ref c);
+					dbobj.Insert_or_Update("Insert into Voucher_Transaction values("+intID+",'"+Vouch_Type.Trim()+ "',Convert(datetime,'" + date+"',103),"+crID.Trim() +","+Amount_cr.Trim() +","+drID.Trim() +","+Amount_Dr.Trim() +",'"+narration+"','"+L_Type+"')",ref c);
 					object obj = null;
 					dbobj.ExecProc(OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",drID.Trim(),"@Particulars",Vouch_Type.Trim()+" ("+intID+")","@Debit_Amount",Amount_Dr.Trim(),"@Credit_Amount","0.0","@type","Dr","@Invoice_Date",date);
 					dbobj.ExecProc(OprType.Insert,"ProInsertAccountsLedger",ref obj,"@Ledger_ID",crID.Trim(),"@Particulars",Vouch_Type.Trim()+" ("+intID+")","@Debit_Amount","0.0","@Credit_Amount",Amount_cr.Trim(),"@type","Cr","@Invoice_Date",date);
@@ -1140,7 +1140,7 @@ namespace Servosms.Module.Accounts
 		{
 			try
 			{
-				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
+				if(DateTime.Compare(System.Convert.ToDateTime(Acc_Date),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)))>0)
 					MessageBox.Show("Please Select Date Must be Greater than Opening Date");
 				else
 				{
@@ -1184,7 +1184,7 @@ namespace Servosms.Module.Accounts
 			}
 			string voucher_type = DropVoucherName.SelectedItem.Text;
 			string voucher_ID = DropDownID.SelectedItem.Text;
-			DateTime date = System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
+			DateTime date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
 			string narration = txtNarration.Text.Trim();  
 			string crID = "";
 			string drID = "";
@@ -1213,7 +1213,7 @@ namespace Servosms.Module.Accounts
 			}
 			int c = 0;
 				
-			dbobj.Insert_or_Update("Update voucher_transaction set voucher_date ='"+date+"',Ledg_ID_Cr ="+crID.Trim()+",Amount1="+Amount_cr+",Ledg_ID_Dr="+drID.Trim()+",Amount2="+Amount_Dr+",Narration='"+narration+"',L_Type='"+L_Type+"' where Voucher_ID ="+voucher_ID,ref c);   
+			dbobj.Insert_or_Update("Update voucher_transaction set voucher_date =Convert(datetime,'" + date+"',103),Ledg_ID_Cr ="+crID.Trim()+",Amount1="+Amount_cr+",Ledg_ID_Dr="+drID.Trim()+",Amount2="+Amount_Dr+",Narration='"+narration+"',L_Type='"+L_Type+"' where Voucher_ID ="+voucher_ID,ref c);   
 			object obj = null;
 			dbobj.ExecProc(OprType.Update,"ProUpdateAccountsLedger",ref obj,"@Voucher_ID",voucher_ID,"@Ledger_ID",drID.Trim(),"@Amount",Amount_Dr,"@Type","Dr","@Invoice_Date",date);
 			dbobj.ExecProc(OprType.Update,"ProUpdateAccountsLedger",ref obj,"@Voucher_ID",voucher_ID,"@Ledger_ID",crID.Trim(),"@Amount",Amount_cr,"@Type","Cr","@Invoice_Date",date);
@@ -1310,15 +1310,15 @@ namespace Servosms.Module.Accounts
 			SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 			object obj1=null;
 			if(Invoice_Date.IndexOf(" ")>0)
-			{
-				string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
-					Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
+			{               
+                string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
+				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()), System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString())))>0)
+					Invoice_Date= GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString());
 				else
 					Invoice_Date=CheckDate[0].ToString();
 			}
 			else
-				Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
+				Invoice_Date= GenUtil.str2DDMMYYYY(Request.Form["txtDate"].ToString());
 						
 			for(int k=0;k<LedgerID.Count;k++)
 			{
@@ -1342,11 +1342,11 @@ namespace Servosms.Module.Accounts
 			InventoryClass obj =new InventoryClass();
 			SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 			object obj1 = null;
-			dbobj.ExecProc(OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj1,"@Ledger_ID",Ledger_ID,"@Invoice_Date",GenUtil.str2MMDDYYYY(txtDate.Text));
+			dbobj.ExecProc(OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj1,"@Ledger_ID",Ledger_ID,"@Invoice_Date",GenUtil.str2DDMMYYYY(txtDate.Text));
 			dbobj.SelectQuery("select cust_id from customer,ledger_master where ledger_name=cust_name and ledger_id='"+Ledger_ID+"'",ref rdr);
 			if(rdr.Read())
 			{
-				dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj1,"@Cust_ID",rdr["Cust_ID"].ToString(),"@Invoice_Date",GenUtil.str2MMDDYYYY(txtDate.Text));
+				dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj1,"@Cust_ID",rdr["Cust_ID"].ToString(),"@Invoice_Date",GenUtil.str2DDMMYYYY(txtDate.Text));
 			}
 			rdr.Close();
 			

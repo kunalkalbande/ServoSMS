@@ -1210,20 +1210,20 @@ namespace Servosms.Module.Inventory
 					//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Ledger_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",txtDate.Text,"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text);
 					if(DropMode.SelectedItem.Text=="Cash")
 						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Update","@Receipt_No",DropReceiptNo.SelectedItem.Text);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text);
+						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text);
 					else
 						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Update","@Receipt_No",DropReceiptNo.SelectedItem.Text);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text);
+						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text);
 				}
 				else
 				{
 					//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Ledger_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","");
 					if(DropMode.SelectedItem.Text=="Cash")
 						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
+						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
 					else
 						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
+						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
 				}
 				//MessageBox.Show("Payment Receipt Saved");
 				//Clear();
@@ -1287,11 +1287,11 @@ namespace Servosms.Module.Inventory
 					obj.InsertPaymentReceived();
 					
 					//dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",DropCustName.Value,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",DropReceiptNo.SelectedItem.Text,"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())); //Comment by vikas sharma 30.04.09
-					dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",_CustName,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",DropReceiptNo.SelectedItem.Text,"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()));
+					dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",_CustName,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",DropReceiptNo.SelectedItem.Text,"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()));
 					if(txtDisc1.Text!="" && txtDisc1.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text,"@Amount",txtDisc1.Text,"@Ledger_ID",DiscID1,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType1);
+						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text,"@Amount",txtDisc1.Text,"@Ledger_ID",DiscID1,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType1);
 					if(txtDisc2.Text!="" && txtDisc2.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text,"@Amount",txtDisc2.Text,"@Ledger_ID",DiscID2,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType2);
+						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text,"@Amount",txtDisc2.Text,"@Ledger_ID",DiscID2,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType2);
 				}
 				else
 				{
@@ -2016,11 +2016,11 @@ namespace Servosms.Module.Inventory
 			if(Invoice_Date.IndexOf(" ")>0)
 			{
 				string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDate.Text)))>0)
-					Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
+				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)))>0)
+					Invoice_Date=GenUtil.str2DDMMYYYY(txtDate.Text);
 			}
 			else
-				Invoice_Date=GenUtil.str2MMDDYYYY(txtDate.Text);
+				Invoice_Date=GenUtil.str2DDMMYYYY(txtDate.Text);
 			//			for(int k=0;k<LedgerID.Count;k++)
 			//			{
 			rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID='"+Ledger_ID.ToString()+"' and Entry_Date<='"+Invoice_Date+"' order by entry_date desc");

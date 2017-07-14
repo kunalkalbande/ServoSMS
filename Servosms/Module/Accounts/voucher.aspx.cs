@@ -1342,11 +1342,11 @@ namespace Servosms.Module.Accounts
 			InventoryClass obj =new InventoryClass();
 			SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 			object obj1 = null;
-			dbobj.ExecProc(OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj1,"@Ledger_ID",Ledger_ID,"@Invoice_Date",GenUtil.str2DDMMYYYY(txtDate.Text));
+			dbobj.ExecProc(OprType.Insert,"UpdateAccountsLedgerForCustomer",ref obj1,"@Ledger_ID",Ledger_ID,"@Invoice_Date", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)));
 			dbobj.SelectQuery("select cust_id from customer,ledger_master where ledger_name=cust_name and ledger_id='"+Ledger_ID+"'",ref rdr);
 			if(rdr.Read())
 			{
-				dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj1,"@Cust_ID",rdr["Cust_ID"].ToString(),"@Invoice_Date",GenUtil.str2DDMMYYYY(txtDate.Text));
+				dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj1,"@Cust_ID",rdr["Cust_ID"].ToString(),"@Invoice_Date", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)));
 			}
 			rdr.Close();
 			
