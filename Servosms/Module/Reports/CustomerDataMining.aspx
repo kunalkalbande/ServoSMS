@@ -140,38 +140,38 @@
 								<SelectedItemStyle Font-Size="2pt" Font-Bold="True" Height="4px" ForeColor="White" CssClass="DataGridItem"
 									BackColor="#738A9C"></SelectedItemStyle>
 								<EditItemStyle Height="4px"></EditItemStyle>
-								<ItemStyle Font-Size="10pt" Height="4px" ForeColor="#8C4510" CssClass="DataGridItem" BackColor="#FFF7E7"></ItemStyle>
-								<HeaderStyle Font-Size="2px" Font-Names="Verdana" Font-Bold="True" Wrap="False" HorizontalAlign="Center"
+								<ItemStyle Font-Size="40pt" Height="4px" ForeColor="#8C4510" CssClass="DataGridItem" BackColor="#FFF7E7"></ItemStyle>
+								<HeaderStyle Font-Size="40px" Font-Names="Verdana" Font-Bold="True" Wrap="False" HorizontalAlign="Center"
 									Height="2px" ForeColor="White" BackColor="#CE4848"></HeaderStyle>
 								<FooterStyle ForeColor="#8C4510" BackColor="#F7DFB5"></FooterStyle>
 								<Columns>
-									<asp:BoundColumn DataField="sadbhavnacd" SortExpression="sadbhavnacd" HeaderText="Unique Code"></asp:BoundColumn>
-									<asp:BoundColumn DataField="Tin_No" SortExpression="Tin_No" HeaderText="Tin No"></asp:BoundColumn>
-									<asp:TemplateColumn SortExpression="Cust_name" HeaderText="Customer Name">
+									<asp:BoundColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" DataField="sadbhavnacd" SortExpression="sadbhavnacd" HeaderText="Unique Code"></asp:BoundColumn>
+									<asp:BoundColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" DataField="Tin_No" SortExpression="Tin_No" HeaderText="Tin No"></asp:BoundColumn>
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="Cust_name" HeaderText="Customer Name">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
-										<ItemTemplate>
+										<ItemTemplate>                                           
 											<%#DataBinder.Eval(Container.DataItem,"Cust_name")%>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn SortExpression="Cust_Type" HeaderText="Type">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="Cust_Type" HeaderText="Type">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"Cust_Type")%>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn SortExpression="Address" HeaderText="Address">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="Address" HeaderText="Address">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"Address")%>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn SortExpression="City" HeaderText="City">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="City" HeaderText="City">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"City")%>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn HeaderText="Contact Number&lt;br&gt;Office &#160;&#160;&#160;&#160;Residence &#160;&#160;&#160;&#160;Mobile">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" HeaderText="Contact Number&lt;br&gt;Office &#160;&#160;&#160;&#160;Residence &#160;&#160;&#160;&#160;Mobile">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<TABLE border="0" align="center">
@@ -183,7 +183,7 @@
 											</TABLE>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn HeaderText="Contact Person">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" HeaderText="Contact Person">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"ContactPerson")%>
@@ -202,19 +202,19 @@
 									Height="20px" ForeColor="White" BackColor="#CE4848"></HeaderStyle>
 								<FooterStyle ForeColor="#8C4510" BackColor="#F7DFB5"></FooterStyle>
 								<Columns>
-									<asp:TemplateColumn SortExpression="Cust_name" HeaderText="Customer Name">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="Cust_name" HeaderText="Customer Name">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"Cust_name")%>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn SortExpression="City" HeaderText="City">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="City" HeaderText="City">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"City")%>
 										</ItemTemplate>
 									</asp:TemplateColumn>
-									<asp:TemplateColumn SortExpression="Cust_Type" HeaderText="Type">
+									<asp:TemplateColumn HeaderStyle-Font-Size="Small" HeaderStyle-Font-Bold="true" SortExpression="Cust_Type" HeaderText="Type">
 										<ItemStyle HorizontalAlign="Left"></ItemStyle>
 										<ItemTemplate>
 											<%#DataBinder.Eval(Container.DataItem,"Cust_Type")%>
