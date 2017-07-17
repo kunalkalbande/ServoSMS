@@ -403,7 +403,8 @@ namespace Servosms.Module.Inventory
 					CreateLogFiles.ErrorLog("Form:PurchaceInvice.aspx,Method:pageload.  EXCEPTION: "+ex.Message+" User_ID: "+uid);
 				}
 			}
-		}
+            txtVInvoiceDate.Text = Request.Form["txtVInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtVInvoiceDate"].ToString().Trim();
+        }
 
 		public void Earlybird_dis()
 		{

@@ -391,6 +391,8 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
+                CreateLogFiles.ErrorLog("Error occured Kunal K." + Request.Form["txtDateFrom"].ToString());
+                CreateLogFiles.ErrorLog("Error occured Textbox 1 Kunal K." + Request.Form["Textbox1"].ToString());
                 var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
                 var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()));
                 if (DateTime.Compare(dt1, dt2) > 0)
@@ -1857,14 +1859,16 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string GetYear(string dt)
 		{
-			if(dt!="")
-			{
-				string[] year=dt.Split('-').Length>0? dt.Split(new char[] {'-'},dt.Length): dt.Split(new char[] { '/' }, dt.Length);
-				string yr=year[2].Substring(2);	
-				return(yr);
-			}
-			else
-				return "";
+             if (dt != "")
+                {
+                    string[] year = dt.IndexOf('-') > 0 ? dt.Split(new char[] { '-' }, dt.Length) : dt.Split(new char[] { '/' }, dt.Length);
+                    string yr = year[2].Substring(2);
+                    return (yr);
+                }
+                else
+                    return "";
+         
+         
 		}
 
 		/// <summary>
