@@ -151,9 +151,8 @@ namespace Servosms.Module.Reports
 				double total2 = 0;
 				con=new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 				con.Open ();
-                cmd = new SqlCommand( "exec getProfitLoss '"+GenUtil.str2DDMMYYYY(txtDateFrom.Text)+"','"+GenUtil.str2DDMMYYYY(txtDateTo.Text)+"'", con );
-                //cmd = new SqlCommand("exec getProfitLoss '" + GenUtil.str2MMDDYYYY(txtDateFrom.Text) + "','" + GenUtil.str2MMDDYYYY(txtDateTo.Text) + "'", con);
-                SqlDtr = cmd.ExecuteReader();
+				cmd = new SqlCommand( "exec getProfitLoss '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"','"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'", con );
+				SqlDtr = cmd.ExecuteReader();
 				if(SqlDtr.Read())
 				{
 					lblOpeningStockValue.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(0).ToString());
