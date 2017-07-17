@@ -4362,7 +4362,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
 			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
 			SqlCmd.Parameters .Add("@ChallanNo",ChallanNo);
-			SqlCmd.Parameters .Add("@ChallanDate",ChallanDate);
+			SqlCmd.Parameters .Add("@ChallanDate", System.Convert.ToDateTime(ChallanDate));
 			SqlCmd.Parameters .Add("@Credit_Limit",Credit_Limit);
 			SqlCmd.Parameters .Add("@schdiscount",schdiscount);
 			SqlCmd.Parameters .Add("@foediscount",foediscount);
@@ -4619,7 +4619,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Entry_Time",EntryTime);
 			SqlCmd.Parameters .Add("@Slip_No",Slip_No);
 		    SqlCmd.Parameters .Add("@ChallanNo",ChallanNo);
-			SqlCmd.Parameters .Add("@ChallanDate",ChallanDate);
+			SqlCmd.Parameters .Add("@ChallanDate", System.Convert.ToDateTime(ChallanDate));
 			SqlCmd.Parameters .Add("@Cash_Discount",Cash_Discount );
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
 			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
