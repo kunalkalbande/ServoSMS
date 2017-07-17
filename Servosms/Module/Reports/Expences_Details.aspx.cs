@@ -152,8 +152,8 @@ namespace Servosms.Module.Reports
 				string s2="";
 				s1=txtDateTo.Text;
 				s2=txtDateFrom.Text;
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -226,8 +226,8 @@ namespace Servosms.Module.Reports
 				string s2="";
 				s1=txtDateTo.Text;
 				s2=txtDateFrom.Text;
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
