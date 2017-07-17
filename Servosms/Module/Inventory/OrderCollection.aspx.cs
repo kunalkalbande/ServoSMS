@@ -642,7 +642,8 @@ namespace Servosms.Module.Inventory
 		public void save_updateInvoive()
 		{
 			InventoryClass  obj=new InventoryClass();
-			try
+            
+            try
 			{
 				if(lblInvoiceNo.Visible==true)
 				{				
@@ -686,26 +687,26 @@ namespace Servosms.Module.Inventory
 					obj.Vehicle_No=DropVehicleNo.SelectedItem.Text  ;
 				else
 					obj.Vehicle_No=txtVehicleNo.Text ;
-				obj.Grand_Total =txtGrandTotal.Text ;
+				obj.Grand_Total = Request.Form["txtGrandTotal"].ToString();
 				if(txtDisc.Text=="")
 					obj.Discount ="0.0";
 				else
-					obj.Discount =txtDisc.Text;
+					obj.Discount = Request.Form["txtDisc"].ToString();
 				obj.Discount_Type=DropDiscType.SelectedItem.Value;
-				obj.Net_Amount =txtNetAmount.Text;
-				obj.Promo_Scheme=txtPromoScheme.Text;
-				obj.Remerk =txtRemark.Text;
+				obj.Net_Amount = Request.Form["txtNetAmount"].ToString();
+				obj.Promo_Scheme= Request.Form["txtPromoScheme"].ToString();
+				obj.Remerk = Request.Form["txtRemark"].ToString();
 				obj.Entry_By ="";
 				obj.EntryTime ="";
 				if(txtCashDisc.Text.Trim() =="")
 					obj.Cash_Discount  ="0.0";
 				else
-					obj.Cash_Discount = txtCashDisc.Text.Trim() ;
+					obj.Cash_Discount = Request.Form["txtCashDisc"].ToString();
 				obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value ;
-				obj.VAT_Amount = txtVAT.Text.Trim();
+				obj.VAT_Amount = Request.Form["txtVAT"].ToString();
 				obj.Slip_No="0"; 
 				obj.Cr_Plus="0";
-				obj.Dr_Plus=txtNetAmount.Text;	
+				obj.Dr_Plus= Request.Form["txtNetAmount"].ToString();	
 				obj.Credit_Limit = lblCreditLimit.Value.ToString();
 				obj.schdiscount=txtschemetotal.Text.Trim();
 				if(txtfleetoediscount.Text.Equals(""))
@@ -817,8 +818,9 @@ namespace Servosms.Module.Inventory
 				}
 
 				string temp,Schtemp;
-				
-				HtmlInputText[] ProdType={DropType1, DropType2, DropType3, DropType4, DropType5, DropType6, DropType7, DropType8, DropType9, DropType10, DropType11, DropType12};
+                
+
+                HtmlInputText[] ProdType={DropType1, DropType2, DropType3, DropType4, DropType5, DropType6, DropType7, DropType8, DropType9, DropType10, DropType11, DropType12};
 				TextBox[]  Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12}; 
 				TextBox[]  Rate={txtRate1, txtRate2, txtRate3, txtRate4, txtRate5, txtRate6, txtRate7, txtRate8, txtRate9, txtRate10, txtRate11, txtRate12}; 
 				TextBox[]  Amount={txtAmount1, txtAmount2, txtAmount3, txtAmount4, txtAmount5, txtAmount6, txtAmount7, txtAmount8, txtAmount9, txtAmount10, txtAmount11, txtAmount12};			
@@ -835,22 +837,21 @@ namespace Servosms.Module.Inventory
 				for(int j=0;j<ProdType.Length;j++)
 				{
 					
-					if((ProdType[j].Value.ToString()!="Type" && Qty[j].Text!=""))
-						Insert_Ovd(ProdType[j].Value.ToString(),Qty[j].Text.ToString());			// Add by vikas 12.11.2012
+					if((ProdType[j].Value.ToString()!="Type" && Request.Form[Qty[j].ID].ToString()!=""))
+						Insert_Ovd(ProdType[j].Value.ToString(), Request.Form[Qty[j].ID].ToString());			// Add by vikas 12.11.2012
 
-
-					if(Rate[j].Text==""||Rate[j].Text=="0")
-						continue;
+                    if (Request.Form[Rate[j].ID].ToString() == "" || Request.Form[Rate[j].ID].ToString() == "0")
+                        continue;
 					
-					if(lblInvoiceNo.Visible==true || Quantity[j].Text =="")
+					if(lblInvoiceNo.Visible==true || Quantity[j].Text == "")
 					{
-						temp = Qty[j].Text;
-						Schtemp = Qty1[j].Text;
-					}
+                        temp = Request.Form[Qty[j].ID].ToString();
+                        Schtemp = Request.Form[Qty1[j].ID].ToString();
+                    }
 					else
 					{
-						temp = Qty[j].Text;
-						Schtemp=Qty1[j].Text;
+						temp = Request.Form[Qty[j].ID].ToString();
+						Schtemp= Request.Form[Qty1[j].ID].ToString();
 					}
 					string[] arrName=new string[3];
 					if(ProdType[j].Value.IndexOf(":")>0)
@@ -864,8 +865,8 @@ namespace Servosms.Module.Inventory
 					
 					//Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j);
 					//09.07.09 vikas Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
-					Save(arrName[1].ToString(),arrName[2].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
-					if((Qty1[j].Text=="" || Qty1[j].Text=="0") && (ProdType1[j].Text==""))
+					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(), Request.Form[scheme[j].ID].ToString(), Request.Form[foe[j].ID].ToString(),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
+					if((Request.Form[Qty1[j].ID].ToString()== "" || Request.Form[Qty1[j].ID].ToString() == "0") && (Request.Form[ProdType1[j].ID].ToString() == ""))
 						continue;
 						
 					string[] arrschName=new string[2];
