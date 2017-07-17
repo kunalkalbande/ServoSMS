@@ -652,7 +652,7 @@ namespace Servosms.Module.Reports
 		{
 			int dd,mm,yy;
 			string [] strarr = new string[3];			
-			strarr=str.Split(new char[]{'/'},str.Length);
+			strarr=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length): str.Split(new char[] { '-' }, str.Length);
 			dd=Int32.Parse(strarr[0]);
 			mm=Int32.Parse(strarr[1]);
 			yy=Int32.Parse(strarr[2]);
@@ -665,8 +665,8 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public void GetMonth()
 		{
-			string[] arrDateFrom=txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
-			string[] arrDateTo=txtDateTo.Text.Split(new char[] {'/'},txtDateTo.Text.Length);
+			string[] arrDateFrom= txtDateFrom.Text.IndexOf("/")>0?txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length): txtDateFrom.Text.Split(new char[] { '-' }, txtDateFrom.Text.Length);
+			string[] arrDateTo= txtDateTo.Text.IndexOf("/")>0?txtDateTo.Text.Split(new char[] {'/'},txtDateTo.Text.Length): txtDateTo.Text.Split(new char[] { '-' }, txtDateTo.Text.Length);
 			int MonthFrom=int.Parse(arrDateFrom[1].ToString());
 			int YearFrom=int.Parse(arrDateFrom[2].ToString());
 			int MonthTo=int.Parse(arrDateTo[1].ToString());

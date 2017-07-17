@@ -991,7 +991,7 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string getFromDate(string FD)
 		{
-			string[] FromDate = FD.Split(new char[] {'/'},FD.Length);
+			string[] FromDate = FD.IndexOf("/")>0?FD.Split(new char[] {'/'},FD.Length): FD.Split(new char[] { '-' }, FD.Length);
 			return "1"+"/"+FromDate[1]+"/"+FromDate[2];
 		}
 

@@ -147,7 +147,7 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public static string month(string s1)
 		{
-			string[] ds1 = s1.Split(new char[] {'/'},s1.Length);
+			string[] ds1 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 			ds1[0]="31";
 			return ds1[1] + "/" + ds1[0] + "/" + ds1[2];	
 		}
@@ -700,9 +700,9 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public string GetMonthName(string mon)
 		{
-			if(mon.IndexOf("/")>0)
+			if(mon.IndexOf("/")>0 || mon.IndexOf("-")>0)
 			{
-				string[] month=mon.Split(new char[] {'/'},mon.Length);
+				string[] month=mon.IndexOf("/")>0?mon.Split(new char[] {'/'},mon.Length): mon.Split(new char[] { '-' }, mon.Length);
 				if(month[0].ToString()=="1")
 					return "January "+month[2].ToString();
 				else if(month[0].ToString()=="2")

@@ -1070,9 +1070,9 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public string GetMonthName(string mon)
 		{
-			if(mon.IndexOf("/")>0)
+			if(mon.IndexOf("/")>0 || mon.IndexOf("-")>0)
 			{
-				string[] month=mon.Split(new char[] {'/'},mon.Length);
+				string[] month=mon.IndexOf("/")>0?mon.Split(new char[] {'/'},mon.Length): mon.Split(new char[] { '-' }, mon.Length);
 				if(month[0].ToString()=="1")
 					return "Jan. "+month[2].ToString();
 				else if(month[0].ToString()=="2")

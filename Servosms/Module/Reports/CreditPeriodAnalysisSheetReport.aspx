@@ -393,7 +393,7 @@
 								<%
 												}
 												double PreviousDue = 0;
-												string[] ss=txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
+												string[] ss=txtDateFrom.Text.IndexOf("/")>0?txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length):txtDateFrom.Text.Split(new char[] {'-'},txtDateFrom.Text.Length);
 												string[] s=null;
 												if(tempPeriod.Value!="")
 													s=tempPeriod.Value.Split(new char[] {':'},tempPeriod.Value.Length);
@@ -759,7 +759,7 @@
 								<%
 													}
 													double PreviousDue = 0;
-													string[] ss=txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
+													string[] ss=txtDateFrom.Text.IndexOf("/")>0?txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length):txtDateFrom.Text.Split(new char[] {'-'},txtDateFrom.Text.Length);
 													string[] s=null;
 													if(tempPeriod.Value!="")
 														s=tempPeriod.Value.Split(new char[] {':'},tempPeriod.Value.Length);
