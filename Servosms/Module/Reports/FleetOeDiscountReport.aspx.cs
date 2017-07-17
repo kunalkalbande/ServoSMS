@@ -1857,14 +1857,16 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string GetYear(string dt)
 		{
-			if(dt!="")
-			{
-				string[] year=dt.Split('-').Length>0? dt.Split(new char[] {'-'},dt.Length): dt.Split(new char[] { '/' }, dt.Length);
-				string yr=year[2].Substring(2);	
-				return(yr);
-			}
-			else
-				return "";
+             if (dt != "")
+                {
+                    string[] year = dt.IndexOf('-') > 0 ? dt.Split(new char[] { '-' }, dt.Length) : dt.Split(new char[] { '/' }, dt.Length);
+                    string yr = year[2].Substring(2);
+                    return (yr);
+                }
+                else
+                    return "";
+         
+         
 		}
 
 		/// <summary>
