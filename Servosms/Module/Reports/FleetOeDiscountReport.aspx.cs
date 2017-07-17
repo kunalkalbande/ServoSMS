@@ -391,6 +391,8 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
+                CreateLogFiles.ErrorLog("Error occured Kunal K." + Request.Form["txtDateFrom"].ToString());
+                CreateLogFiles.ErrorLog("Error occured Textbox 1 Kunal K." + Request.Form["Textbox1"].ToString());
                 var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
                 var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()));
                 if (DateTime.Compare(dt1, dt2) > 0)
