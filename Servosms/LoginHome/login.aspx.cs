@@ -268,7 +268,7 @@ namespace Servosms.Module.LoginHome
 		/// </summary>
 		public string convertDate(string strDate)
 		{
-			string[] strArr = strDate.Split(new char[] {'/'} , strDate.Length);
+			string[] strArr = strDate.IndexOf("/")>0?strDate.Split(new char[] {'/'} , strDate.Length): strDate.Split(new char[] { '-' }, strDate.Length);
 			return strArr[1]+"-"+strArr[0]+"-"+strArr[2];
 		}
 
