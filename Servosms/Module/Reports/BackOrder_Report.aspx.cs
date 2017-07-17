@@ -77,7 +77,7 @@ namespace Servosms.Module.Reports
 				if(rdr.Read())
 				{
 					string s =GenUtil.trimDate(rdr.GetValue(0).ToString());
-					string[] ss=s.Split(new char[] {'/'},s.Length);
+					string[] ss=s.IndexOf("/")>0?s.Split(new char[] {'/'},s.Length): s.Split(new char[] { '-' }, s.Length);
 					tempPeriod.Value=ss[0]+":"+ss[2];
 				}
 				rdr.Close();
@@ -608,7 +608,7 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string getFromDateInPrivMonth(string FD)
 		{
-			string[] FromDate = FD.Split(new char[] {'/'},FD.Length);
+			string[] FromDate = FD.IndexOf("/")>0?FD.Split(new char[] {'/'},FD.Length): FD.Split(new char[] { '-' }, FD.Length);
 			FromDate[1]=System.Convert.ToString(int.Parse(FromDate[1])-1);
 			return "1"+"/"+FromDate[1]+"/"+FromDate[2];
 		}
@@ -632,7 +632,7 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string getFromDate(string FD)
 		{
-			string[] FromDate = FD.Split(new char[] {'/'},FD.Length);
+			string[] FromDate = FD.IndexOf("/")>0?FD.Split(new char[] {'/'},FD.Length): FD.Split(new char[] { '-' }, FD.Length);
 			return "1"+"/"+FromDate[1]+"/"+FromDate[2];
 		}
 	}

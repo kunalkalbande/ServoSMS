@@ -241,32 +241,32 @@
 						</td></tr></table></td>
 					</tr>
 					<%
-					if(View==1) 
-					{ 
-						int frmDay=0,frmMonth=0,frmYear=0,toDay=0,toMonth=0,toYear=0;
-						string todate="";
-						string fromdate="";
-						todate=txttodate.Text;
-						fromdate=txtfromdate.Text;
-						string[] Todt = todate.Split(new char[] {'/'},todate.Length);
-						string[] Frmdt = fromdate.Split(new char[] {'/'},fromdate.Length);
-						frmDay=System.Convert.ToInt32(Frmdt[0]);
-						frmMonth=System.Convert.ToInt32(Frmdt[1]);
-						frmYear=System.Convert.ToInt32(Frmdt[2]);
-						toDay=System.Convert.ToInt32(Todt[0]);
-						toMonth=System.Convert.ToInt32(Todt[1]);
-						toYear=System.Convert.ToInt32(Todt[2]);
-						string ssr_id="";
-						tot_mon=DateFrom.Length;
-						InventoryClass obj2=new InventoryClass ();
-						SqlDataReader rdr2=null;
-						if(DropSSR.SelectedIndex==0) 
-						{ 
-							int Couter=0;
-							Tot_Achiv_I=0;
-							Tot_Achiv_II=0;
-							Tot_Achiv_III=0;
-							Tot_Achiv_IV=0;
+                        if(View==1)
+                        {
+                            int frmDay=0,frmMonth=0,frmYear=0,toDay=0,toMonth=0,toYear=0;
+                            string todate="";
+                            string fromdate="";
+                            todate=txttodate.Text;
+                            fromdate=txtfromdate.Text;
+                            string[] Todt =todate.IndexOf("/")>0? todate.Split(new char[] {'/'},todate.Length): todate.Split(new char[] {'-'},todate.Length);
+                            string[] Frmdt =fromdate.IndexOf("/")>0? fromdate.Split(new char[] {'/'},fromdate.Length):fromdate.Split(new char[] { '-' },fromdate.Length);
+                            frmDay=System.Convert.ToInt32(Frmdt[0]);
+                            frmMonth=System.Convert.ToInt32(Frmdt[1]);
+                            frmYear=System.Convert.ToInt32(Frmdt[2]);
+                            toDay=System.Convert.ToInt32(Todt[0]);
+                            toMonth=System.Convert.ToInt32(Todt[1]);
+                            toYear=System.Convert.ToInt32(Todt[2]);
+                            string ssr_id="";
+                            tot_mon=DateFrom.Length;
+                            InventoryClass obj2=new InventoryClass ();
+                            SqlDataReader rdr2=null;
+                            if(DropSSR.SelectedIndex==0)
+                            {
+                                int Couter=0;
+                                Tot_Achiv_I=0;
+                                Tot_Achiv_II=0;
+                                Tot_Achiv_III=0;
+                                Tot_Achiv_IV=0;
 							%>
 							<tr valign=top>
 								<td>

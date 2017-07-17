@@ -642,29 +642,29 @@ namespace Servosms.Module.Reports
 		{    
 
 		}
-		#endregion
-	
-		/// <summary>
-		/// This method returns the date in MM/DD/YYYY format.
-		/// </summary>
-		/// <param name="str"></param>
-		/// <returns></returns>
-		//public DateTime ToMMddYYYY(string str)
-		//{
-		//	int dd,mm,yy;
-		//	string [] strarr = new string[3];			
-		//	strarr=str.Split(new char[]{'/'},str.Length);
-		//	dd=Int32.Parse(strarr[0]);
-		//	mm=Int32.Parse(strarr[1]);
-		//	yy=Int32.Parse(strarr[2]);
-		//	DateTime dt=new DateTime(yy,mm,dd);			
-		//	return(dt);
-		//}
-		
-		/// <summary>
-		/// This method is not used.
-		/// </summary>
-		protected string Stop(string str)
+        #endregion
+
+        /// <summary>
+        /// This method returns the date in MM/DD/YYYY format.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        //public DateTime ToMMddYYYY(string str)
+        //{
+        //	int dd,mm,yy;
+        //	string [] strarr = new string[3];			
+        //	strarr=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //	dd=Int32.Parse(strarr[0]);
+        //	mm=Int32.Parse(strarr[1]);
+        //	yy=Int32.Parse(strarr[2]);
+        //	DateTime dt=new DateTime(yy,mm,dd);			
+        //	return(dt);
+        //}
+
+        /// <summary>
+        /// This method is not used.
+        /// </summary>
+        protected string Stop(string str)
 		{
 			if(str.IndexOf(".")>0)
 			{

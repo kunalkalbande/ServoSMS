@@ -226,7 +226,7 @@ namespace Servosms.Module.Reports
 		{
 			int dd,mm,yy;
 			string [] strarr = new string[3];			
-			strarr=str.Split(new char[]{'/'},str.Length);
+			strarr=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length): str.Split(new char[] { '-' }, str.Length);
 			dd=Int32.Parse(strarr[0]);
 			mm=Int32.Parse(strarr[1]);
 			yy=Int32.Parse(strarr[2]);
@@ -1519,7 +1519,7 @@ namespace Servosms.Module.Reports
 		{
 			if(dt!="")
 			{
-				string[] year=dt.Split(new char[] {'-'},dt.Length);
+				string[] year=dt.IndexOf("/")>0?dt.Split(new char[] {'/'},dt.Length): dt.Split(new char[] { '-' }, dt.Length);
 				string yr=year[2].Substring(2);	
 				return(yr);
 			}

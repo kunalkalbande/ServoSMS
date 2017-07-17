@@ -249,7 +249,7 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public static string month(string s1)
 		{
-			string[] ds1 = s1.Split(new char[] {'/'},s1.Length);
+			string[] ds1 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 
 			ds1[0]="31";
 			return ds1[1] + "/" + ds1[0] + "/" + ds1[2];	
@@ -261,7 +261,7 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		protected void btnview1_Click(object sender, System.EventArgs e)
 		{
-			/*
+            /*
 			try
 			{
 				DataGrid[] dgarr={DataGrid1,Datagrid2,Datagrid3,Datagrid4,Datagrid5,Datagrid6,Datagrid7,Datagrid8,Datagrid9,Datagrid10,Datagrid11,Datagrid12};
@@ -280,8 +280,8 @@ namespace Servosms.Module.Reports
 				string s2="";
 				s1=txtDateTo1.Text;
 				s2=txtDateFrom1.Text;
-				string[] ds1 = s1.Split(new char[] {'/'},s1.Length);
-				string[] ds2 = s2.Split(new char[] {'/'},s1.Length);
+				string[] ds1 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length):s1.Split(new char[] {'-'},s1.Length);
+				string[] ds2 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s1.Length):s2.Split(new char[] {'-'},s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -837,8 +837,8 @@ namespace Servosms.Module.Reports
 			{
 				CreateLogFiles.ErrorLog("Form:Monwiseprodsal.aspx,Method:btnView,   EXCEPTION "+ex.Message+"  userid  "+UID );
 			}*/
-			try
-			{
+            try
+            {
 				string s1="";
 				string s2="";
 				s1=txtDateTo.Text;
@@ -846,8 +846,8 @@ namespace Servosms.Module.Reports
 				//SqlConnection con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 				//SqlCommand cmd;
 				//RowCounter.RemoveRange(0,RowCounter.Count);
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -1410,251 +1410,251 @@ namespace Servosms.Module.Reports
 			
 		
 		}
-		//**********************************************
+        //**********************************************
 
-		//		public string monthj1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="1";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthj2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="1";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthfeb1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="2";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthfeb2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="2";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="28";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthm1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="3";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthm2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="3";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string montha1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="4";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string montha2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="4";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="30";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthmay1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="5";
-		//			if((s[1]==System.Convert.ToString(ds11)) )
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthmay2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="5";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthjune1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="6";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthjune2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="6";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="30";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthjuly1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="7";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthjuly2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="7";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthau1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="8";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthau2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="8";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthsep1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="9";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthsep2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="9";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="30";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthoct1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="10";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthoct2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="10";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthnov1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="11";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthnov2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="11";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="30";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthdec1(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="12";
-		//			if((s[1]==System.Convert.ToString(ds11)))
-		//			{}
-		//			else
-		//				s[0]="1";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
-		//		public string monthdec2(string str)
-		//		{
-		//			string[] s=str.Split(new char[]{'/'},str.Length);
-		//			s[1]="12";
-		//			if((s[1]==System.Convert.ToString(ds21)))
-		//			{}
-		//			else
-		//				s[0]="31";
-		//			return s[1]+"/"+s[0]+"/"+s[2];
-		//		}
+        //		public string monthj1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="1";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthj2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="1";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthfeb1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="2";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthfeb2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="2";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="28";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthm1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="3";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthm2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="3";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string montha1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="4";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string montha2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="4";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="30";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthmay1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="5";
+        //			if((s[1]==System.Convert.ToString(ds11)) )
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthmay2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="5";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthjune1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="6";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthjune2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="6";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="30";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthjuly1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="7";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthjuly2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="7";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthau1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="8";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthau2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="8";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthsep1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="9";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthsep2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="9";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="30";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthoct1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="10";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthoct2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="10";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthnov1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="11";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthnov2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="11";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="30";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthdec1(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="12";
+        //			if((s[1]==System.Convert.ToString(ds11)))
+        //			{}
+        //			else
+        //				s[0]="1";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
+        //		public string monthdec2(string str)
+        //		{
+        //			string[] s=str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length):str.Split(new char[]{'-'},str.Length);
+        //			s[1]="12";
+        //			if((s[1]==System.Convert.ToString(ds21)))
+        //			{}
+        //			else
+        //				s[0]="31";
+        //			return s[1]+"/"+s[0]+"/"+s[2];
+        //		}
 
 
-		/****
+        /****
 		public string monthj1(string str)
 		{
 			string[] s=str.Split(new char[]{'/'},str.Length);
@@ -1897,11 +1897,11 @@ namespace Servosms.Module.Reports
 			return s[1]+"/"+s[0]+"/"+s[2];
 		}
 		****/
-		
-		/// <summary>
-		/// Method to write into the excel report file to print.
-		/// </summary>
-		public void ConvertToExcel()
+
+        /// <summary>
+        /// Method to write into the excel report file to print.
+        /// </summary>
+        public void ConvertToExcel()
 		{
 			InventoryClass obj=new InventoryClass();
 			//SqlDataReader SqlDtr;
@@ -1911,15 +1911,15 @@ namespace Servosms.Module.Reports
 			Directory.CreateDirectory(strExcelPath);
 			string path = home_drive+@"\Servosms_ExcelFile\Export\MonthlyProductSecondarySales.xls";
 			StreamWriter sw = new StreamWriter(path);
-			//***********
-			/*string qry1="",qry2="",qry3="",qry4="",qry5="",qry6="",qry7="",qry8="",qry9="",qry10="",qry11="",qry12="";
+            //***********
+            /*string qry1="",qry2="",qry3="",qry4="",qry5="",qry6="",qry7="",qry8="",qry9="",qry10="",qry11="",qry12="";
 			string qry13="",qry14="",qry15="",qry16="",qry17="",qry18="",qry19="",qry20="",qry21="",qry22="",qry23="",qry24="";
 			string s1="";
 			string s2="";
 			s1=txtDateTo1.Text;
 			s2=txtDateFrom1.Text;
-			string[] ds1 = s1.Split(new char[] {'/'},s1.Length);
-			string[] ds2 = s2.Split(new char[] {'/'},s1.Length);
+			string[] ds1 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length):s1.Split(new char[] {'-'},s1.Length);
+			string[] ds2 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s1.Length):s2.Split(new char[] {'-'},s1.Length);
 			ds10=System.Convert.ToInt32(ds1[0]);
 			ds20=System.Convert.ToInt32(ds2[0]);
 			ds11=System.Convert.ToInt32(ds1[1]);
@@ -2291,8 +2291,8 @@ namespace Servosms.Module.Reports
 				}
 			}
 			sw.Close();*/
-			//int flag1=0;
-			if(View==1)
+            //int flag1=0;
+            if (View==1)
 			{
 				int flag=0;
 				if(arrProductList.Length!=0)
@@ -2345,7 +2345,7 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public void makingReport()
 		{
-			/*
+            /*
 			System.Data.SqlClient.SqlDataReader rdr=null;
 			string info= "";
 			string home_drive = Environment.SystemDirectory;
@@ -2370,8 +2370,8 @@ namespace Servosms.Module.Reports
 				string s2="";
 				s1=txtDateTo1.Text;
 				s2=txtDateFrom1.Text;
-				string[] ds1 = s1.Split(new char[] {'/'},s1.Length);
-				string[] ds2 = s2.Split(new char[] {'/'},s1.Length);
+				string[] ds1 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length):s1.Split(new char[] {'-'},s1.Length);
+				string[] ds2 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s1.Length):s2.Split(new char[] {'-'},s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -3921,12 +3921,12 @@ namespace Servosms.Module.Reports
 			{
 				CreateLogFiles.ErrorLog("Form:Monwiseprodsal.aspx,Method:btnprint,   EXCEPTION "+ex.Message+"  userid  "+UID );
 			}*/
-		}
+        }
 
-		/// <summary>
-		/// contacts the print server and sends the Monthwiseprodsale.txt file name to print.
-		/// </summary>
-		private void BtnPrint1_Click(object sender, System.EventArgs e)
+        /// <summary>
+        /// contacts the print server and sends the Monthwiseprodsale.txt file name to print.
+        /// </summary>
+        private void BtnPrint1_Click(object sender, System.EventArgs e)
 		{
 			//*************************
 			byte[] bytes = new byte[1024];
@@ -4034,9 +4034,9 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public string GetMonthName(string mon)
 		{
-			if(mon.IndexOf("/")>0)
+			if(mon.IndexOf("/")>0 || mon.IndexOf("-")>0)
 			{
-				string[] month=mon.Split(new char[] {'/'},mon.Length);
+				string[] month=mon.IndexOf("/")>0?mon.Split(new char[] {'/'},mon.Length): mon.Split(new char[] { '-' }, mon.Length);
 				if(month[0].ToString()=="1")
 					return "January "+month[2].ToString();
 				else if(month[0].ToString()=="2")
