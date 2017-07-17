@@ -181,7 +181,7 @@ namespace Servosms.Module.Reports
 		{
 			int dd,mm,yy;
 			string [] strarr = new string[3];			
-			strarr=str.Split(new char[]{'/'},str.Length);
+			strarr= str.IndexOf("/")>0?str.Split(new char[]{'/'},str.Length): str.Split(new char[] { '-' }, str.Length);
 			dd=Int32.Parse(strarr[0]);
 			mm=Int32.Parse(strarr[1]);
 			yy=Int32.Parse(strarr[2]);
@@ -275,8 +275,8 @@ namespace Servosms.Module.Reports
 				s2="";
 				s1=txtDateTo.Text;
 				s2=txtDateFrom.Text;
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 =s2.IndexOf("/")>0? s2.Split(new char[] {'/'},s2.Length) : s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 =s1.IndexOf("/")>0? s1.Split(new char[] {'/'},s1.Length) : s1.Split(new char[] { '-' }, s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -605,8 +605,8 @@ namespace Servosms.Module.Reports
 				s2="";
 				s1=txtDateTo.Text;
 				s2=txtDateFrom.Text;
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 =s2.IndexOf("/")>0? s2.Split(new char[] {'/'},s2.Length) : s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 =s1.IndexOf("/")>0? s1.Split(new char[] {'/'},s1.Length) : s2.Split(new char[] { '-' }, s2.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -986,8 +986,8 @@ namespace Servosms.Module.Reports
 			s2="";
 			s1=txtDateTo.Text;
 			s2=txtDateFrom.Text;
-			string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-			string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+			string[] ds1 = s2.IndexOf("/")>0?s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+			string[] ds2 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length) : s1.Split(new char[] { '-' }, s1.Length);
 			ds10=System.Convert.ToInt32(ds1[0]);
 			ds20=System.Convert.ToInt32(ds2[0]);
 			ds11=System.Convert.ToInt32(ds1[1]);

@@ -151,7 +151,7 @@ namespace Servosms.Module.Reports
 
 		public static string month(string s1)
 		{
-			string[] ds1 = s1.Split(new char[] {'/'},s1.Length);
+			string[] ds1 =s1.IndexOf("/")>0? s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 			ds1[0]="31";
 			return ds1[1] + "/" + ds1[0] + "/" + ds1[2];
 		}
@@ -203,8 +203,8 @@ namespace Servosms.Module.Reports
 					string fromdate="";
 					todate=txttodate.Text;
 					fromdate=txtfromdate.Text;
-					string[] Todt = todate.Split(new char[] {'/'},todate.Length);
-					string[] Frmdt = fromdate.Split(new char[] {'/'},fromdate.Length);
+					string[] Todt =todate.IndexOf("/")>0? todate.Split(new char[] {'/'},todate.Length) : todate.Split(new char[] { '-' }, todate.Length);
+					string[] Frmdt =fromdate.IndexOf("/")>0? fromdate.Split(new char[] {'/'},fromdate.Length): fromdate.Split(new char[] { '-' }, fromdate.Length);
 					frmDay=System.Convert.ToInt32(Frmdt[0]);
 					frmMonth=System.Convert.ToInt32(Frmdt[1]);
 					frmYear=System.Convert.ToInt32(Frmdt[2]);
@@ -730,8 +730,8 @@ namespace Servosms.Module.Reports
 			string s2="";
 			s1=txttodate.Text;
 			s2=txtfromdate.Text;
-			string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-			string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+			string[] ds1 =s2.IndexOf("/")>0? s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+			string[] ds2 =s1.IndexOf("/")>0? s1.Split(new char[] {'/'},s1.Length) : s1.Split(new char[] { '-' }, s1.Length);
 
 			ds10=System.Convert.ToInt32(ds1[0]);
 
