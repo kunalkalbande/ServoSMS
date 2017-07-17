@@ -573,7 +573,7 @@ namespace Servosms.Module.Reports
 		private DateTime getdate(string dat,bool to)
 		{
 			
-			string[] dt=dat.Split(new char[]{'/'},dat.Length);
+			string[] dt= dat.IndexOf("/")>0?dat.Split(new char[]{'/'},dat.Length): dat.Split(new char[] { '-' }, dat.Length);
 			if(to)
 				return new DateTime(Int32.Parse(dt[2]),Int32.Parse(dt[1]),Int32.Parse(dt[0]));
 			else

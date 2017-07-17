@@ -201,7 +201,7 @@ namespace Servosms.Module.Reports
 		{
 			int dd,mm,yy;
 			string [] strarr = new string[3];			
-			strarr=str.Split(new char[]{'/'},str.Length);
+			strarr=str.IndexOf("/")>0? str.Split(new char[]{'/'},str.Length) : str.Split(new char[] { '-' }, str.Length);
 			dd=Int32.Parse(strarr[0]);
 			mm=Int32.Parse(strarr[1]);
 			yy=Int32.Parse(strarr[2]);
@@ -1622,8 +1622,8 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public void getMonth()
 		{
-			string[] FromDate = txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
-			string[] ToDate = txtDateTo.Text.Split(new char[] {'/'},txtDateTo.Text.Length);
+			string[] FromDate = txtDateFrom.Text.IndexOf("/")>0? txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length) : txtDateFrom.Text.Split(new char[] { '-' }, txtDateFrom.Text.Length);
+			string[] ToDate = txtDateTo.Text.IndexOf("/")>0? txtDateTo.Text.Split(new char[] {'/'},txtDateTo.Text.Length): txtDateTo.Text.Split(new char[] { '-' }, txtDateTo.Text.Length);
 			string[] Mon = {"","Jan.","Feb.","Mar.","Apr.","May.","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec."};
 			if(FromDate[2].ToString()==ToDate[2].ToString())
 			{
@@ -1795,7 +1795,7 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public string getFromMonth(string Mon)
 		{
-			string[] Month = Mon.Split(new char[] {'/'},Mon.Length);
+			string[] Month =Mon.IndexOf("/")>0? Mon.Split(new char[] {'/'},Mon.Length) : Mon.Split(new char[] { '-' }, Mon.Length);
 			if(Month[0].ToString()=="01" || Month[0].ToString()=="1")
 			{
 				if(Month[1].ToString()=="1" || Month[1].ToString()=="01")
@@ -1834,7 +1834,7 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public string getToMonth(string Mon)
 		{
-			string[] Month = Mon.Split(new char[] {'/'},Mon.Length);
+			string[] Month =Mon.IndexOf("/")>0? Mon.Split(new char[] {'/'},Mon.Length): Mon.Split(new char[] { '-' }, Mon.Length);
 			int day=DateTime.DaysInMonth(int.Parse(Month[2]),int.Parse(Month[1]));
 			if(Month[0].ToString()==day.ToString())
 			{

@@ -499,7 +499,7 @@ namespace Servosms.Module.Reports
 		
 		private DateTime getdate(string dat,bool to)
 		{
-			string[] dt=dat.Split(new char[]{'/'},dat.Length);
+			string[] dt=dat.IndexOf("/")>0? dat.Split(new char[]{'/'},dat.Length): dat.Split(new char[] { '-' }, dat.Length);
 			if(to)
 				return new DateTime(Int32.Parse(dt[2]),Int32.Parse(dt[1]),Int32.Parse(dt[0]));
 			else
@@ -817,8 +817,8 @@ namespace Servosms.Module.Reports
 				s2=GenUtil.str2MMDDYYYY(StartDate.ToString());
 				s1=GenUtil.str2MMDDYYYY(EndDate.ToString());
 
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 =s2.IndexOf("/")>0? s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 = s1.IndexOf("/")>0?s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -879,8 +879,8 @@ namespace Servosms.Module.Reports
 				string s2="";
 				s2=GenUtil.str2MMDDYYYY(StartDate.ToString());
 				s1=GenUtil.str2MMDDYYYY(EndDate.ToString());
-				string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-				string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+				string[] ds1 =s2.IndexOf("/")>0? s2.Split(new char[] {'/'},s2.Length) : s2.Split(new char[] { '-' }, s2.Length);
+				string[] ds2 =s1.IndexOf("-")>0? s1.Split(new char[] {'/'},s1.Length) : s1.Split(new char[] { '-' }, s1.Length);
 				ds10=System.Convert.ToInt32(ds1[0]);
 				ds20=System.Convert.ToInt32(ds2[0]);
 				ds11=System.Convert.ToInt32(ds1[1]);
@@ -1615,9 +1615,9 @@ namespace Servosms.Module.Reports
 
 		public string GetMonthName(string mon)
 		{
-			if(mon.IndexOf("/")>0)
+			if(mon.IndexOf("/")>0 || mon.IndexOf("-")>0)
 			{
-				string[] month=mon.Split(new char[] {'/'},mon.Length);
+				string[] month=mon.IndexOf("/")>0?mon.Split(new char[] {'/'},mon.Length): mon.Split(new char[] { '-' }, mon.Length);
 				if(month[0].ToString()=="1")
 					return "Jan. "+month[2].ToString();
 				else if(month[0].ToString()=="2")
@@ -1689,8 +1689,8 @@ namespace Servosms.Module.Reports
 			s2=GenUtil.str2MMDDYYYY(StartDate.ToString());
 			s1=GenUtil.str2MMDDYYYY(EndDate.ToString());
 
-			string[] ds1 = s2.Split(new char[] {'/'},s2.Length);
-			string[] ds2 = s1.Split(new char[] {'/'},s1.Length);
+			string[] ds1 =s2.IndexOf("/")>0? s2.Split(new char[] {'/'},s2.Length): s2.Split(new char[] { '-' }, s2.Length);
+			string[] ds2 =s1.IndexOf("/")>0? s1.Split(new char[] {'/'},s1.Length): s1.Split(new char[] { '-' }, s1.Length);
 			ds10=System.Convert.ToInt32(ds1[0]);
 			ds20=System.Convert.ToInt32(ds2[0]);
 			ds11=System.Convert.ToInt32(ds1[1]);
