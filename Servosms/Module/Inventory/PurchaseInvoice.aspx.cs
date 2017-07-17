@@ -403,8 +403,7 @@ namespace Servosms.Module.Inventory
 					CreateLogFiles.ErrorLog("Form:PurchaceInvice.aspx,Method:pageload.  EXCEPTION: "+ex.Message+" User_ID: "+uid);
 				}
 			}
-            txtVInvoiceDate.Text = Request.Form["txtVInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtVInvoiceDate"].ToString().Trim();
-        }
+		}
 
 		public void Earlybird_dis()
 		{
@@ -854,7 +853,7 @@ namespace Servosms.Module.Inventory
 		/// <returns></returns>
 		private DateTime getdate(string dat,bool to)
 		{
-			string[] dt=dat.Split(new char[]{'/'},dat.Length);
+			string[] dt=dat.IndexOf("/")>0? dat.Split(new char[]{'/'},dat.Length): dat.Split(new char[] { '-' }, dat.Length);
 			if(to)
 				return new DateTime(Int32.Parse(dt[2]),Int32.Parse(dt[1]),Int32.Parse(dt[0]));
 			else

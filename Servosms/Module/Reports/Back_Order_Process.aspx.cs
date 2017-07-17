@@ -78,7 +78,7 @@ namespace Servosms.Module.Reports
 				if(rdr.Read())
 				{
 					string s =GenUtil.trimDate(rdr.GetValue(0).ToString());
-					string[] ss=s.Split(new char[] {'/'},s.Length);
+					string[] ss=s.IndexOf("/")>0?s.Split(new char[] {'/'},s.Length): s.Split(new char[] { '-' }, s.Length);
 					tempPeriod.Value=ss[0]+":"+ss[2];
 				}
 				rdr.Close();
@@ -407,7 +407,7 @@ namespace Servosms.Module.Reports
 						//**********
 						double PreviousDue = 0;
 						//rdr1=obj1.GetRecordSet("select sum(amount) amount from ledgerdetails where cust_id='"+rdr["cust_id"].ToString()+"' and cast(floor(cast(cast(bill_date as datetime) as float)) as datetime)<'"+GenUtil.str2MMDDYYYY(getFromDate(txtDateFrom.Text))+"'");
-						string[] ss=txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
+						string[] ss=txtDateFrom.Text.IndexOf("/")>0? txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length): txtDateFrom.Text.Split(new char[] { '-' }, txtDateFrom.Text.Length);
 						string[] s=null;
 						if(tempPeriod.Value!="")
 							s=tempPeriod.Value.Split(new char[] {':'},tempPeriod.Value.Length);
@@ -673,7 +673,7 @@ namespace Servosms.Module.Reports
 						//**********
 						double PreviousDue = 0;
 						//rdr1=obj1.GetRecordSet("select sum(amount) amount from ledgerdetails where cust_id='"+rdr["cust_id"].ToString()+"' and cast(floor(cast(cast(bill_date as datetime) as float)) as datetime)<'"+GenUtil.str2MMDDYYYY(getFromDate(txtDateFrom.Text))+"'");
-						string[] ss=txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
+						string[] ss=txtDateFrom.Text.IndexOf("/")>0?txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length): txtDateFrom.Text.Split(new char[] { '-' }, txtDateFrom.Text.Length);
 						string[] s=null;
 						if(tempPeriod.Value!="")
 							s=tempPeriod.Value.Split(new char[] {':'},tempPeriod.Value.Length);
@@ -876,7 +876,7 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string GetMonthName1()
 		{
-			string[] month=txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length);
+			string[] month=txtDateFrom.Text.IndexOf("/")>0? txtDateFrom.Text.Split(new char[] {'/'},txtDateFrom.Text.Length): txtDateFrom.Text.Split(new char[] { '-' }, txtDateFrom.Text.Length);
 			if(month[1].ToString()=="1" || month[1].ToString()=="01")
 				return "Dec";
 			else if(month[1].ToString()=="2" || month[1].ToString()=="02")
@@ -967,7 +967,7 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string getFromDateInPrivMonth(string FD)
 		{
-			string[] FromDate = FD.Split(new char[] {'/'},FD.Length);
+			string[] FromDate =FD.IndexOf("/")>0? FD.Split(new char[] {'/'},FD.Length): FD.Split(new char[] { '-' }, FD.Length);
 			FromDate[1]=System.Convert.ToString(int.Parse(FromDate[1])-1);
 			return "1"+"/"+FromDate[1]+"/"+FromDate[2];
 		}
@@ -979,7 +979,7 @@ namespace Servosms.Module.Reports
 		/// <returns></returns>
 		public string getToDate(string FD)
 		{
-			string[] FromDate = FD.Split(new char[] {'/'},FD.Length);
+			string[] FromDate =FD.IndexOf("/")>0?FD.Split(new char[] {'/'},FD.Length): FD.Split(new char[] { '-' }, FD.Length);
 			int day=DateTime.DaysInMonth(int.Parse(FromDate[2]),int.Parse(FromDate[1]));
 			return day.ToString()+"/"+FromDate[1]+"/"+FromDate[2];
 		}

@@ -351,7 +351,7 @@ namespace Servosms.Module.Logistics
 			if(!str.Trim().Equals("")) 
 			{
 				string [] strarr = new string[3];			
-				strarr=str.Split(new char[]{'/'},str.Length);
+				strarr=str.IndexOf("/")>0? str.Split(new char[]{'/'},str.Length): str.Split(new char[] { '-' }, str.Length);
 				date = strarr[1]+"/"+strarr[0]+"/"+strarr[2];
 				return date;
 			}
