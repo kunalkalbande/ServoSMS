@@ -111,7 +111,7 @@ namespace Servosms.Module.Reports
 		public string Discount(string Prod_id)
 		{
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select distinct discount from oilscheme where schname='Secondry(LTR Scheme)' and prodid="+Prod_id+" and (cast(floor(cast(datefrom as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(dateto as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) or cast(floor(cast(datefrom as float)) as datetime) between Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) or cast(floor(cast(dateto as float)) as datetime) between Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))");
+			SqlDataReader rdr = obj.GetRecordSet("select distinct discount from oilscheme where schname='Secondry(LTR Scheme)' and prodid="+Prod_id+" and (cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"')");
 			string sub="";
 			if(rdr.Read())
 			{
@@ -135,7 +135,7 @@ namespace Servosms.Module.Reports
 		{
 			double ltr=double.Parse(Qty.ToString());
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select distinct discount from oilscheme where schname='Secondry(LTR Scheme)' and prodid="+Prod_id+" and (cast(floor(cast(datefrom as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(dateto as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) or cast(floor(cast(datefrom as float)) as datetime) between Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) or cast(floor(cast(dateto as float)) as datetime) between Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))");
+			SqlDataReader rdr = obj.GetRecordSet("select distinct discount from oilscheme where schname='Secondry(LTR Scheme)' and prodid="+Prod_id+" and (cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and '"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"')");
 			string sub="";
 			if(rdr.Read())
 			{
@@ -167,10 +167,8 @@ namespace Servosms.Module.Reports
 		{
 			try
 			{
-                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
-                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
-                if (DateTime.Compare(dt1, dt2) > 0)
-                {
+				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(txtDateTo.Text))>0)
+				{
 					MessageBox.Show("Date From Should be less than Date To");
 					gridSchemeSecondry.Visible=false;
 				}
@@ -197,9 +195,9 @@ namespace Servosms.Module.Reports
 			string sqlstr="";
 			SqlConnection SqlCon =new SqlConnection(System .Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 			if(chkFOC.Checked)
-				sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) order by invoice_No";
+				sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' order by invoice_No";
 			else
-				sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and amount>0 and cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) order by invoice_No";
+				sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and amount>0 and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' order by invoice_No";
 			DataSet ds= new DataSet();
 			SqlDataAdapter da = new SqlDataAdapter(sqlstr, SqlCon);
 			da.Fill(ds, "Sales_Master");
@@ -225,7 +223,7 @@ namespace Servosms.Module.Reports
 			else
 			{
 				/*//if(chkFOC.Checked)
-					sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) order by invoice_No";
+					sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' order by invoice_No";
 				//else
 				//	sqlstr="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and amount>0 and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' order by invoice_No";
 				DataSet ds= new DataSet();
@@ -372,7 +370,7 @@ namespace Servosms.Module.Reports
 			DiscPerLtr=0;
 			InventoryClass obj = new InventoryClass();
 
-			SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schname='Secondry SP(LTRSP Scheme)' and prodid='"+ProdID+ "' and cast(floor(cast(datefrom as float)) as datetime)<=Convert(datetime,'" + Dt + "',103) and cast(floor(cast(dateto as float)) as datetime)>=Convert(datetime,'" + Dt + "',103)");
+			SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schname='Secondry SP(LTRSP Scheme)' and prodid='"+ProdID+"' and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.trimDate(Dt)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.trimDate(Dt)+"'");
 			if(rdr.Read())
 			{
 				tot=double.Parse(rdr.GetValue(0).ToString());
@@ -434,9 +432,9 @@ namespace Servosms.Module.Reports
 			StreamWriter sw = new StreamWriter(path);
 			string sql="";
 			if(chkFOC.Checked)
-				sql="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)";
+				sql="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'";
 			else
-				sql="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and amount>0 and cast(floor(cast(invoice_date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(invoice_date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)";
+				sql="select distinct cust_name,p.Prod_ID,prod_name+':'+pack_type ProdName,Pack_Type,Prod_Code,cust_type,substring(cast(sm.invoice_no as varchar),4,10) Invoice_No,sm.invoice_date,qty*total_qty as qty,Amount,c.cust_id,qty ltr from sales_master sm,customer c,sales_details sd,products p where sm.cust_id=c.cust_id and sd.invoice_no=sm.invoice_no and p.prod_id=sd.prod_id and amount>0 and cast(floor(cast(invoice_date as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'";
 			sql=sql+" order by "+Cache["strOrderBy"];
 			
 			rdr=obj.GetRecordSet(sql);
@@ -464,7 +462,7 @@ namespace Servosms.Module.Reports
 						GetOthers(rdr["Cust_Type"].ToString(),rdr["qty"].ToString())+"\t"+
 						rdr["Cust_Type"].ToString()+"\t"+
 						rdr["Invoice_No"].ToString()+"\t"+
-						GenUtil.str2DDMMYYYY(GenUtil.trimDate(rdr["Invoice_Date"].ToString()))+"\t"+
+						GenUtil.str2MMDDYYYY(GenUtil.trimDate(rdr["Invoice_Date"].ToString()))+"\t"+
 						GetDiscount(rdr["Prod_ID"].ToString(),rdr["Invoice_Date"].ToString())+"\t"+
 						rdr["Qty"].ToString()+"\t"+
 						GetAmount(rdr["Qty"].ToString())
@@ -473,7 +471,7 @@ namespace Servosms.Module.Reports
 				else
 				{
 					sw.WriteLine(i.ToString()+"\t"+
-						GenUtil.str2DDMMYYYY(GenUtil.trimDate(rdr["Invoice_Date"].ToString()))+"\t"+
+						GenUtil.str2MMDDYYYY(GenUtil.trimDate(rdr["Invoice_Date"].ToString()))+"\t"+
 						rdr["Invoice_No"].ToString()+"\t"+
 						rdr["Cust_Type"].ToString()+"\t"+
 						rdr["Cust_Name"].ToString()+"\t"+
