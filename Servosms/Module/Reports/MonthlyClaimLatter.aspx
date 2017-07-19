@@ -206,21 +206,21 @@
 									<!--td class="font2" width="30%" colSpan="3">Secondary Sales Claim</td>
 									<td class="font2" width="20%" colSpan="2"><%=DropMonth.SelectedItem.Text%>&nbsp;<%=DropYear.SelectedItem.Text%></td>
 									<td class="font2" width="20%" colSpan="2"><%=Claim_Amt%></td-->
-									<td class="font2" width="30%" colSpan="3"><asp:textbox id="txtTypeofclaim1" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
-									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtPeriod1" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
-									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtAmount1" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
+									<td class="font2" width="30%" colSpan="3"><asp:textbox id="txtTypeofclaim1" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
+									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtPeriod1" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
+									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtAmount1" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
 								</tr>
 								<tr>
 									<td class="font2" width="10%" colSpan="2"><font size="2">2</font></td>
-									<td class="font2" width="30%" colSpan="3"><asp:textbox id="txtTypeofclaim2" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None">Fleet Operator Claim</asp:textbox></td>
-									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtPeriod2" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
-									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtAmount2" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
+									<td class="font2" width="30%" colSpan="3"><asp:textbox id="txtTypeofclaim2" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove">Fleet Operator Claim</asp:textbox></td>
+									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtPeriod2" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
+									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtAmount2" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
 								</tr>
 								<tr>
 									<td class="font2" width="10%" colSpan="2"><font size="2">3</font></td>
-									<td class="font2" width="30%" colSpan="3"><asp:textbox id="txtTypeofclaim3" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
-									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtPeriod3" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
-									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtAmount3" Runat="server" Width="100%" ReadOnly="True" BorderStyle="None"></asp:textbox></td>
+									<td class="font2" width="30%" colSpan="3"><asp:textbox id="txtTypeofclaim3" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
+									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtPeriod3" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
+									<td class="font2" width="20%" colSpan="2"><asp:textbox id="txtAmount3" Runat="server" Width="100%" ReadOnly="True" BorderStyle="Groove"></asp:textbox></td>
 								</tr>
 								<tr>
 									<td class="font2" width="10%" colSpan="2"><font size="2">4</font></td>
@@ -265,7 +265,7 @@
 								<tr>
 									<td class="font1" colSpan="7"><b>Total Claim Amount</b></td>
 									<!--td class="font2" colSpan="2"><font size=2><b><%=GenUtil.strNumericFormat((double.Parse(Claim_Amt)+double.Parse(OEM_Amt)+double.Parse(Fleet_Amt)).ToString())%></b></font></td-->
-									<td class="font2" colSpan="2"><asp:textbox id="txtTotal" Runat="server" Width="100%" BorderStyle="None" Font-Bold="True"></asp:textbox></td>
+									<td class="font2" colSpan="2"><asp:textbox id="txtTotal" Runat="server" Width="100%" BorderStyle="Groove" Font-Bold="True"></asp:textbox></td>
 								</tr>
 								<tr>
 									<td align="center" colSpan="9"><font size="3"><b><asp:linkbutton id="btnLinkSave" Runat="server" onclick="btnLinkSave_Click">Save</asp:linkbutton>&nbsp;&nbsp;&nbsp;&nbsp;<asp:linkbutton id="btnLinkPrint" Runat="server">Print</asp:linkbutton></b></font></td>

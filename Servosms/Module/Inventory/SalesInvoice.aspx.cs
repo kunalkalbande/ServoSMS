@@ -490,7 +490,7 @@ namespace Servosms.Module.Inventory
 				//cmd = new SqlCommand("Update Customer_Balance set DR_Amount = DR_Amount-'"+double.Parse(txtNetAmount.Text)+"' where Cust_ID = (select Cust_ID from Customer where Cust_Name='"+DropCustName.SelectedItem.Text+"' and city='"+lblPlace.Value+"')",Con);
 				
 				//Comment by vikas sharma 1.05.09 cmd = new SqlCommand("Update Customer_Balance set DR_Amount = DR_Amount-'"+double.Parse(txtNetAmount.Text)+"' where Cust_ID = (select Cust_ID from Customer where Cust_Name='"+text1.Value+"' and city='"+lblPlace.Value+"')",Con);
-				cmd = new SqlCommand("Update Customer_Balance set DR_Amount = DR_Amount-'"+double.Parse(txtNetAmount.Text)+"' where Cust_ID = (select Cust_ID from Customer where Cust_Name='"+txtval+"' and city='"+lblPlace.Value+"')",Con);
+				cmd = new SqlCommand("Update Customer_Balance set DR_Amount = DR_Amount-'"+double.Parse(Request.Form["txtNetAmount"].ToString()) +"' where Cust_ID = (select Cust_ID from Customer where Cust_Name='"+txtval+"' and city='"+lblPlace.Value+"')",Con);
 				cmd.ExecuteNonQuery();
 				Con.Close();
 				cmd.Dispose();
@@ -1326,7 +1326,7 @@ namespace Servosms.Module.Inventory
 						string[] str1=str.Split(new char[]{' '},str.Length);
 						if(str1[1].Equals("Cr."))
 						{
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString());
 						}
 						else
 						{
@@ -1369,11 +1369,11 @@ namespace Servosms.Module.Inventory
 						if(str1[1].Equals("Cr."))
 							//13.07.09 vikas net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
 							//21.3.2013 Vikas net=System.Convert.ToDouble(txtNetAmount.Text.ToString())+System.Convert.ToDouble(str1[0].ToString());
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString())-System.Convert.ToDouble(str1[0].ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) -System.Convert.ToDouble(str1[0].ToString());
 						else
 							//13.07.09 vikas net=System.Convert.ToDouble(txtNetAmount.Text.ToString())+System.Convert.ToDouble(str1[0].ToString());
 							//21.3.2013 net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString());
 						if(cr>=net)
 						{
 							save_updateInvoive();            //Add by Vikas 13.07..09
@@ -1492,17 +1492,17 @@ namespace Servosms.Module.Inventory
 					obj.Vehicle_No=DropVehicleNo.SelectedItem.Text;
 				else
 					obj.Vehicle_No=txtVehicleNo.Text ;
-				obj.Grand_Total =txtGrandTotal.Text ;
+				obj.Grand_Total = Request.Form["txtGrandTotal"].ToString();
 				if(txtDisc.Text=="")
 					obj.Discount ="0.0";
 				else
 					obj.Discount =txtDisc.Text;
 				obj.Discount_Type=DropDiscType.SelectedItem.Value;
-				obj.Net_Amount =txtNetAmount.Text;
+				obj.Net_Amount = Request.Form["txtNetAmount"].ToString();
 				obj.Promo_Scheme=txtPromoScheme.Text;
 				obj.Remerk =txtRemark.Text;
 				obj.Entry_By =lblEntryBy.Text;
-				obj.Entry_Time =DateTime.Parse(lblEntryTime .Text);
+				obj.Entry_Time =DateTime.Parse(lblEntryTime.Text);
 				if(txtCashDisc.Text.Trim() =="")
 					obj.Cash_Discount  ="0.0";
 				else
@@ -1545,10 +1545,10 @@ namespace Servosms.Module.Inventory
 						string str=lblCurrBalance.Value.ToString();
 						string[] str1=str.Split(new char[]{' '},str.Length);
 						if(str1[1].Equals("Cr."))
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString())-System.Convert.ToDouble(str1[0].ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) -System.Convert.ToDouble(str1[0].ToString());
 						else
 							//net=System.Convert.ToDouble(txtNetAmount.Text.ToString())+System.Convert.ToDouble(str1[0].ToString());
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString());
 
 						if(cr>=net)
 						{
@@ -1581,13 +1581,13 @@ namespace Servosms.Module.Inventory
 						double cr =System.Convert.ToDouble(TxtCrLimit.Value.ToString());
 						string str=lblCurrBalance.Value.ToString();
 						string[] str1=str.Split(new char[]{' '},str.Length);
-						
-						cr+=System.Convert.ToDouble(str1[0].ToString());                          //Add by vikas 15.09.09
+                        NetAmount = GenUtil.strNumericFormat(Request.Form["txtNetAmount"].ToString());
+                        cr +=System.Convert.ToDouble(str1[0].ToString());                          //Add by vikas 15.09.09
 
 						if(str1[1].Equals("Cr."))
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString())-System.Convert.ToDouble(str1[0].ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) -System.Convert.ToDouble(str1[0].ToString());
 						else
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString());
 
 						if(cr<net)
 						{
@@ -1609,9 +1609,9 @@ namespace Servosms.Module.Inventory
 						string[] str1=str.Split(new char[]{' '},str.Length);
 						cr+=System.Convert.ToDouble(str1[0].ToString());                    //Add by vikas 15.09.09
 						if(str1[1].Equals("Cr."))
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString())-System.Convert.ToDouble(str1[0].ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) -System.Convert.ToDouble(str1[0].ToString());
 						else
-							net=System.Convert.ToDouble(txtNetAmount.Text.ToString())+System.Convert.ToDouble(str1[0].ToString());
+							net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) +System.Convert.ToDouble(str1[0].ToString());
 
 						if(cr>=net)
 						{
@@ -1664,8 +1664,8 @@ namespace Servosms.Module.Inventory
 					/**********Add by vikas 16.11.2012*********************/
 					//if(DropOrderInvoice.SelectedIndex!=0)
 					//{
-						if((ProdType[j].Value.ToString()!="Type" && Qty[j].Text!=""))
-							Insert_Ovd(ProdType[j].Value.ToString(),Qty[j].Text.ToString());			
+						if((ProdType[j].Value.ToString()!="Type" && Request.Form[Qty[j].ID].ToString() != ""))
+							Insert_Ovd(ProdType[j].Value.ToString(), Request.Form[Qty[j].ID].ToString());			
 					//}
 					/*********End**********************/
 
@@ -1701,7 +1701,7 @@ namespace Servosms.Module.Inventory
 					
 					//**Save(ProdName[j].Value,PackType[j].Value,Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j);
 					//vikas sharma 22.04.09 Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
-					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Amount[j].Text.ToString (),temp, GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()), scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
+					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()), Request.Form[scheme[j].ID].ToString(), Request.Form[foe[j].ID].ToString(),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
 					//for(int i=0;i<ProdName1.Length ;i++)
 					//{
 					//****************
@@ -2926,7 +2926,7 @@ namespace Servosms.Module.Inventory
 						arrProdschName1[1]="";
 					}
 					/****************End********************/
-					if(arrProdName[0].ToString() !="" && Qty[cc].Text != "" )
+					if(arrProdName[0].ToString() !="" && Request.Form[Qty[cc].ID].ToString() != "" )
 					{
 						//					}	
 						//					else
@@ -3766,7 +3766,7 @@ namespace Servosms.Module.Inventory
 				obj.Amt6 =txtAmount6.Text.ToString();
 				obj.Amt7=txtAmount7.Text.ToString();
 				obj.Amt8=txtAmount8.Text.ToString();  
-				obj.Total =txtNetAmount.Text.ToString();
+				obj.Total = Request.Form["txtNetAmount"].ToString();
 				obj.Promo=txtPromoScheme.Text.ToString();
 				obj.Remarks=txtRemark.Text.ToString() ;
 				obj.InsertSalesInvoiceDuplicate();
@@ -3966,8 +3966,8 @@ namespace Servosms.Module.Inventory
 							txtVehicleNo.Text=SqlDtr.GetValue(5).ToString();
 						}
 						txtGrandTotal.Text=SqlDtr.GetValue(6).ToString();
-						txtGrandTotal.Text = GenUtil.strNumericFormat(txtGrandTotal.Text.ToString()); 
-						txtDisc.Text=SqlDtr.GetValue(7).ToString(); 
+						txtGrandTotal.Text = GenUtil.strNumericFormat(txtGrandTotal.Text.ToString());
+                        txtDisc.Text=SqlDtr.GetValue(7).ToString(); 
 						txtDisc.Text = GenUtil.strNumericFormat(txtDisc.Text.ToString()); 
 						DropDiscType.SelectedIndex= DropDiscType.Items.IndexOf((DropDiscType.Items.FindByValue(SqlDtr.GetValue(8).ToString())));
 						txtNetAmount.Text =SqlDtr.GetValue(9).ToString(); 
@@ -3975,8 +3975,8 @@ namespace Servosms.Module.Inventory
 						tempNetAmount.Value=SqlDtr.GetValue(9).ToString();                               //Add by vikas 14.07.09
 						tempNetAmount.Value=GenUtil.strNumericFormat(tempNetAmount.Value.ToString());     //Add by vikas 14.07.09
 
-						NetAmount=GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
-						txtPromoScheme.Text= SqlDtr.GetValue(10).ToString(); 
+						NetAmount= GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
+                        txtPromoScheme.Text= SqlDtr.GetValue(10).ToString(); 
 						txtRemark.Text=SqlDtr.GetValue(11).ToString();  
 						lblEntryBy.Text=SqlDtr.GetValue(12).ToString();  
 						lblEntryTime.Text= SqlDtr.GetValue(13).ToString();  
@@ -5552,25 +5552,25 @@ namespace Servosms.Module.Inventory
 				}
 				if(CurrBal[1].Equals("Dr."))
 				{
-					if(txtNetAmount.Text != "")
+					if(Request.Form["txtNetAmount"].ToString() != "")
 					{
 						if(dropInvoiceNo.Visible!=true)
-							CurrBal[0]=System.Convert.ToString(System.Convert.ToDouble(CurrBal[0])+System.Convert.ToDouble(txtNetAmount.Text));
+							CurrBal[0]=System.Convert.ToString(System.Convert.ToDouble(CurrBal[0])+System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()));
 					}
 					else
 						CurrBal[0]="";
 				}
 				else
 				{
-					if(txtNetAmount.Text != "")
+					if(Request.Form["txtNetAmount"].ToString() != "")
 					{
-						if(System.Convert.ToDouble(txtNetAmount.Text) > System.Convert.ToDouble(CurrBal[0]))
+						if(System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) > System.Convert.ToDouble(CurrBal[0]))
 						{
 							if(dropInvoiceNo.Visible!=true)
-								CurrBal[0]=System.Convert.ToString(System.Convert.ToDouble(txtNetAmount.Text)-System.Convert.ToDouble(CurrBal[0]));
+								CurrBal[0]=System.Convert.ToString(System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) -System.Convert.ToDouble(CurrBal[0]));
 						}
 						else
-							CurrBal[0]=System.Convert.ToString(System.Convert.ToDouble(CurrBal[0])-System.Convert.ToDouble(txtNetAmount.Text));
+							CurrBal[0]=System.Convert.ToString(System.Convert.ToDouble(CurrBal[0])-System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()));
 					}
 					else
 						CurrBal[0]="";
@@ -6066,7 +6066,7 @@ namespace Servosms.Module.Inventory
 				/**********End*******************************/
 
 				sw.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------");
-				sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ",txtGrandTotal.Text);
+				sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ", Request.Form["txtGrandTotal"].ToString());
 				sw.WriteLine(info4,"","----------","----------","FREE/SCH DISC        : ","-"+txtschemetotal.Text);
 				sw.WriteLine(info4,"","","","Sec./Sp. Disc        : ","-"+txtSecondrySpDisc.Text);//add
                 if(txtfleetoediscountRs.Text=="" || txtfleetoediscountRs.Text=="0")
@@ -6100,8 +6100,8 @@ namespace Servosms.Module.Inventory
 						//sw.WriteLine(info4,"","----------","----------","Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+txtCashDisc.Text);
 				}
 				sw.WriteLine(info4,"","----------","----------","Vat Amount(@"+txtVatRate.Value+")    : ",txtVAT.Text);
-				sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
-				sw.WriteLine(info51,"",GenUtil.ConvertNoToWord(txtNetAmount.Text));
+				sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ", Request.Form["txtNetAmount"].ToString());
+				sw.WriteLine(info51,"",GenUtil.ConvertNoToWord(Request.Form["txtNetAmount"].ToString()));
 				sw.WriteLine(info61,"",CurrBal[0],"(INCLUDING CURRENT INVOICE AMOUNT)");
 				sw.WriteLine(info71,"",txtRemark.Text);
 				sw.Close();		
@@ -6565,7 +6565,7 @@ namespace Servosms.Module.Inventory
 				sw.WriteLine(info,trimProduct(txtProdName7.Value.ToString()) ,txtQty7.Text,txtRate7.Text,GenUtil.strNumericFormat(txtAmount7.Text.ToString().Trim()));
 				sw.WriteLine(info,trimProduct(txtProdName8.Value.ToString()) ,txtQty8.Text,txtRate8.Text,GenUtil.strNumericFormat(txtAmount8.Text.ToString().Trim()));*/
 				sw.WriteLine("+---------------+------+------+--------+");
-				sw.WriteLine("           Grand Total      : {0,10:F}" , GenUtil.strNumericFormat(txtGrandTotal.Text.ToString()) );
+				sw.WriteLine("           Grand Total      : {0,10:F}" , GenUtil.strNumericFormat(Request.Form["txtGrandTotal"].ToString()) );
 				double disc_amt=0;
 				string msg ="";
 				if(txtDisc.Text=="")
@@ -6581,8 +6581,8 @@ namespace Servosms.Module.Inventory
 					if(strDiscType.Trim().Equals("%"))
 					{
 						double temp =0;
-						if(txtGrandTotal.Text.Trim() != "")
-							temp = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString());
+						if(Request.Form["txtGrandTotal"].ToString() != "")
+							temp = System.Convert.ToDouble(Request.Form["txtGrandTotal"].ToString());
  
 						disc_amt  = (temp*disc_amt/100);
 						msg = "("+txtDisc.Text.ToString()+strDiscType+")";
@@ -6593,7 +6593,7 @@ namespace Servosms.Module.Inventory
 					}			
 				}
 				sw.WriteLine("           Discount{0,-8:S} : {1,10:S}",msg,GenUtil.strNumericFormat(disc_amt.ToString()));
-				sw.WriteLine("           Net Amount       : {0,10:F}" , GenUtil.strNumericFormat(txtNetAmount.Text.ToString()) );
+				sw.WriteLine("           Net Amount       : {0,10:F}" , GenUtil.strNumericFormat(Request.Form["txtNetAmount"].ToString()) );
 				sw.WriteLine("+--------------------------------------+");
 				string promo = txtPromoScheme.Text.Trim();
 				if(promo.Length > 25)
@@ -7132,7 +7132,7 @@ namespace Servosms.Module.Inventory
 							string[] str1=str.Split(new char[]{' '},str.Length);
 							if(str1[1].Equals("Cr."))
 							{
-								net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
+								net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString());
 							}
 							else
 							{
@@ -7160,10 +7160,10 @@ namespace Servosms.Module.Inventory
 							string str=lblCurrBalance.Value.ToString();
 							string[] str1=str.Split(new char[]{' '},str.Length);
 							if(str1[1].Equals("Cr."))
-								net=System.Convert.ToDouble(txtNetAmount.Text.ToString())-System.Convert.ToDouble(str1[0].ToString());
+								net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString()) -System.Convert.ToDouble(str1[0].ToString());
 							else
 								//net=System.Convert.ToDouble(txtNetAmount.Text.ToString())+System.Convert.ToDouble(str1[0].ToString());
-								net=System.Convert.ToDouble(txtNetAmount.Text.ToString());
+								net=System.Convert.ToDouble(Request.Form["txtNetAmount"].ToString());
 							if(cr>=net)
 							{
 								save_updateInvoive();           
@@ -8116,13 +8116,13 @@ namespace Servosms.Module.Inventory
 							txtVehicleNo.Text=SqlDtr.GetValue(5).ToString();
 						}
 						txtGrandTotal.Text=SqlDtr.GetValue(6).ToString();
-						txtGrandTotal.Text = GenUtil.strNumericFormat(txtGrandTotal.Text.ToString()); 
+						txtGrandTotal.Text = GenUtil.strNumericFormat(Request.Form["txtGrandTotal"].ToString()); 
 						txtDisc.Text=SqlDtr.GetValue(7).ToString(); 
 						txtDisc.Text = GenUtil.strNumericFormat(txtDisc.Text.ToString()); 
 						DropDiscType.SelectedIndex= DropDiscType.Items.IndexOf((DropDiscType.Items.FindByValue(SqlDtr.GetValue(8).ToString())));
 						txtNetAmount.Text =SqlDtr.GetValue(9).ToString(); 
-						txtNetAmount.Text = GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
-						NetAmount=GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
+						txtNetAmount.Text = GenUtil.strNumericFormat(Request.Form["txtNetAmount"].ToString());
+						NetAmount=GenUtil.strNumericFormat(Request.Form["txtNetAmount"].ToString());
 						txtPromoScheme.Text= SqlDtr.GetValue(10).ToString(); 
 						txtRemark.Text=SqlDtr.GetValue(11).ToString();  
 						lblEntryBy.Text=SqlDtr.GetValue(12).ToString();  
