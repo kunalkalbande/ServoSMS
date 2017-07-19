@@ -4730,7 +4730,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd=new SqlCommand("ProSalesReturnDetailsSchemeEntry",SqlCon);
 			SqlCmd.CommandType = CommandType.StoredProcedure;
 			SqlCmd.Parameters .Add("@Invoice_No",Invoice_No );
-			SqlCmd.Parameters.Add("@Invoice_Date",Inv_date); 
+			SqlCmd.Parameters.Add("@Invoice_Date",System.Convert.ToDateTime(Inv_date)); 
 			SqlCmd.Parameters .Add("@Prod_Name",Product_Name );
 			SqlCmd.Parameters .Add("@Pack_Type",Package_Type);
 			//SqlCmd.Parameters .Add("@Qty1",QtyTemp);

@@ -394,29 +394,29 @@ namespace Servosms.Module.Inventory
 				}
 				obj.Customer_Name =lblCustName.Value.ToString() ;
 				obj.Place =lblPlace.Value.ToString();
-				obj.Grand_Total =txtGrandTotal.Text;
+				obj.Grand_Total = Request.Form["txtGrandTotal"];
 				if(txtDisc.Text.Trim() =="")
 					obj.Discount ="0.0";
 				else
 					obj.Discount =txtDisc.Text;
 				obj.Discount_Type=txtDiscType.Text;
-				obj.Net_Amount =txtNetAmount.Text ;
+				obj.Net_Amount = Request.Form["txtNetAmount"];
 				obj.Entry_By =uid ;
 				//obj.Entry_Time =DateTime.Parse(lblEntryTime .Text);
 				//obj.Entry_Time =DateTime.Parse("1/1/1900");
-				obj.Entry_Time =System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate .Text)+" "+DateTime.Now.TimeOfDay.ToString());
+				obj.Entry_Time =System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate .Text)+" "+DateTime.Now.TimeOfDay.ToString());
 				if(txtCashDisc.Text.Trim() =="")
 					obj.Cash_Discount  ="0.0";
 				else
 					obj.Cash_Discount  = txtCashDisc.Text.Trim();
 				obj.Cash_Disc_Type = txtCashDiscType.Text;
-				obj.VAT_Amount = txtVAT.Text.Trim();
+				obj.VAT_Amount = Request.Form["txtVAT"];
 				obj.Cr_Plus="0";
-				double amount = System.Convert.ToDouble(txtNetAmount.Text)*-1;
+				double amount = System.Convert.ToDouble(Request.Form["txtNetAmount"]) *-1;
 				obj.Dr_Plus= amount.ToString();
 		        //obj.Pre_Amount = tmpNetAmount.Value;
-				obj.Pre_Amount = txtNetAmount.Text;
-				obj.schdiscount=txtschemetotal.Text.ToString();
+				obj.Pre_Amount = Request.Form["txtNetAmount"];
+				obj.schdiscount= Request.Form["txtschemetotal"];
 				
 				// Calls the InsertSalesReturnMaster fucntion which calls the ProInsertSalesReturnMaster pocedure to enter the Sales Return master details.
 			obj.InsertSalesReturnMaster();
@@ -441,15 +441,15 @@ namespace Servosms.Module.Inventory
 						continue;
 					strName = ProdName[j].Value.Split(new char[] {':'},ProdName[j].Value.Length);
 					//Save(ProdName[j].Value,PackType[j].Value,Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),scheme[j].Text.Trim());
-					Save(strName[0].ToString(),strName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),scheme[j].Text.Trim());
+					Save(strName[0].ToString(),strName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (), Request.Form[Amount[j].ID].ToString(), scheme[j].Text.Trim());
 					UpdateBatchNo(strName[0].ToString(),strName[1].ToString(),Qty[j].Text);
 					
-					if((SchQty[j].Text==""||SchQty[j].Text=="0") &&(SchName[j].Value==""))
+					if((SchQty[j].Text == "" || SchQty[j].Text=="0") &&(SchName[j].Value==""))
 						continue;
 					strSchName = SchName[j].Value.Split(new char[] {':'},SchName[j].Value.Length);
 					//Mahesh11.04.007 Save1(ProdName1[j].Text.ToString(),PackType1[j].Text.ToString(),Qty1[j].Text.ToString(),GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.ToString()),scheme[j].Text.ToString ());
 					//**Save1(SchName[j].Value.ToString(),SchPack[j].Text.ToString(),SchQty[j].Text.ToString(),GenUtil.str2MMDDYYYY(Session["CurrentDate"].ToString()),scheme[j].Text.Trim());
-					Save1(strSchName[0].ToString(),strSchName[1].ToString(),SchQty[j].Text.ToString(),GenUtil.str2MMDDYYYY(Session["CurrentDate"].ToString()),scheme[j].Text.Trim());
+					Save1(strSchName[0].ToString(),strSchName[1].ToString(),SchQty[j].Text.ToString(),GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()),scheme[j].Text.Trim());
 					UpdateBatchNo(strSchName[0].ToString(),strSchName[1].ToString(),SchQty[j].Text);
 				}
 				CreateLogFiles.ErrorLog("Form:SalesReturn.aspx,Method:btnSave_Click()"+" Sales Return for  Invoice No."+obj.Invoice_No+" ,"+"of Customer Name  "+obj.Customer_Name+",  "+" and NetAmount  "+obj.Net_Amount+"  is Saved "+" userid "+"   "+uid);
@@ -1457,7 +1457,7 @@ namespace Servosms.Module.Inventory
 						//*****************************
 						cl_sk+=CountQty;
 						Con.Open();
-						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Return','"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+CountQty.ToString()+"',"+cl_sk.ToString()+")",Con);
+						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Return','"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+CountQty.ToString()+"',"+cl_sk.ToString()+")",Con);
 						cmd.ExecuteNonQuery();
 						cmd.Dispose();
 						Con.Close();
@@ -1480,7 +1480,7 @@ namespace Servosms.Module.Inventory
 						//*****************************
 						cl_sk+=double.Parse(rdr["Qty"].ToString());
 						Con.Open();
-						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Return','"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["Qty"].ToString()+"',"+cl_sk.ToString()+")",Con);
+						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Return','"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["Qty"].ToString()+"',"+cl_sk.ToString()+")",Con);
 						cmd.ExecuteNonQuery();
 						cmd.Dispose();
 						Con.Close();
@@ -1519,7 +1519,7 @@ namespace Servosms.Module.Inventory
 			string str="";
 			SqlDataReader rdr=null; 
 			 
-			sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim()) +"' and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)')";
+			sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) +"' and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)')";
 			//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Session["CurrentDate"].ToString()) +"' and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)')";
 			SqlDtr=obj.GetRecordSet(sql);
 			while(SqlDtr.Read())

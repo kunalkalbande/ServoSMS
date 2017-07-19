@@ -264,6 +264,10 @@ namespace Servosms.Sysitem.Classes
 		/// </summary>
 		public static string ConvertNoToWord(string number)
 		{
+            if(string.IsNullOrEmpty(number))
+            {
+                return "0";
+            }
 			string[] num=new string[2];
 			int count=0,div=0;
 			if(number.IndexOf(".")>0)

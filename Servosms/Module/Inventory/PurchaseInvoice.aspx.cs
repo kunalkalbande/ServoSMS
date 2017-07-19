@@ -3259,7 +3259,7 @@ namespace Servosms.Module.Inventory
 							chkfoc[i].Checked=false;
 						else
 							chkfoc[i].Checked=true;
-						string strstr="select Discount,DiscountType from stktSchDiscount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"'";
+						string strstr="select Discount,DiscountType from stktSchDiscount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"'";
 						rdr=obj1.GetRecordSet(strstr);
 						if(rdr.Read())
 						{
@@ -3269,7 +3269,7 @@ namespace Servosms.Module.Inventory
 							tempStktSchDis[i].Value="";
 						rdr.Close();
 
-						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"'";
+						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"'";
 						rdr=obj1.GetRecordSet(strstr);
 						if(rdr.Read())
 						{
@@ -3280,7 +3280,7 @@ namespace Servosms.Module.Inventory
 						rdr.Close();
 						
 						/*****03.07.09**Add by vikas *******************/
-						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Addl Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"'";
+						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Addl Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"'";
 						rdr=obj1.GetRecordSet(strstr);
 						if(rdr.Read())
 						{
@@ -4309,9 +4309,9 @@ namespace Servosms.Module.Inventory
 
             sw.WriteLine(info4,"","","","Vat Amount(@"+txtVatRate.Value+")    : ", Request.Form["txtVAT"].ToString());
 
-            sw.WriteLine(info4,"","","","Net Amount           : ", txtNetAmount.Text.ToString());
+            sw.WriteLine(info4,"","","","Net Amount           : ",string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString());
 
-            sw.WriteLine(info5,"",GenUtil.ConvertNoToWord(txtNetAmount.Text.ToString()));
+            sw.WriteLine(info5,"",GenUtil.ConvertNoToWord(string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString()));
 
             sw.WriteLine();
 			sw.WriteLine(info7,"", Request.Form["txtRemark"].ToString());
