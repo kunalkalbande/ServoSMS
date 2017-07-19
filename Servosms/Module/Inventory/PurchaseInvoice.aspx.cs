@@ -187,9 +187,11 @@ namespace Servosms.Module.Inventory
 				{
 					sw.Write(" ");
 				}
-				sw.Write("|"+Qty[i].Text);
-				for(int a=Qty[i].Text.Length;a<7;a++)
-				{
+				sw.Write("|"+ Request.Form[Qty[i].ID].ToString());
+
+                for (int a= Request.Form[Qty[i].ID].ToString().Length;a<7;a++)
+
+                {
 					sw.Write(" ");
 				}
 				sw.Write("|");
@@ -657,50 +659,78 @@ namespace Servosms.Module.Inventory
 		public void SaveForReport()
 		{
 			Sysitem.Classes.InventoryClass obj=new InventoryClass();
-			obj.InvoiceNo =lblInvoiceNo.Text.ToString();
-			//Mahesh11.04.007 
-			obj.InvoiceDate= lblInvoiceDate.Text;
-			//obj.InvoiceDate= Session["CurrentDate"].ToString();
-			obj.VendorName=DropVendorID.SelectedItem.Value.ToString();
+			obj.InvoiceNo = Request.Form["lblInvoiceNo"].ToString();
+            //Mahesh11.04.007 
+            obj.InvoiceDate= Request.Form["lblInvoiceDate"];
+            //obj.InvoiceDate= Session["CurrentDate"].ToString();
+            obj.VendorName=DropVendorID.SelectedItem.Value.ToString();
 			obj.Place =lblPlace.Value.ToString(); 
-			obj.vendorInvoiceNo =txtVInnvoiceNo.Text.ToString();
-			obj.vendorInvoiceDate=txtVInvoiceDate.Text.ToString();
-			//obj.Prod1=txtProdName1.Value.ToString();
-			obj.Prod2=txtProdName2.Value.ToString();
+			obj.vendorInvoiceNo = Request.Form["txtVInnvoiceNo"].ToString();
+
+            obj.vendorInvoiceDate= Request.Form["txtVInvoiceDate"].ToString();
+            //obj.Prod1=txtProdName1.Value.ToString();
+            obj.Prod2=txtProdName2.Value.ToString();
 			obj.Prod3=txtProdName3.Value.ToString();
 			obj.Prod4=txtProdName4.Value.ToString();
 			obj.Prod5=txtProdName5.Value.ToString();
 			obj.Prod6=txtProdName6.Value.ToString();
 			obj.Prod7=txtProdName7.Value.ToString();
 			obj.Prod8=txtProdName8.Value.ToString();
-			obj.Qty1=txtQty1.Text.ToString();
-			obj.Qty2=txtQty2.Text .ToString();
-			obj.Qty3 =txtQty3.Text .ToString();
-			obj.Qty4=txtQty4.Text.ToString();  
-			obj.Qty5=txtQty5.Text.ToString();
-			obj.Qty6 =txtQty6.Text.ToString();
-			obj.Qty7=txtQty7.Text.ToString();
-			obj.Qty8=txtQty8.Text.ToString();
-			obj.Rate1=txtRate1.Text.ToString();
-			obj.Rate2 =txtRate2.Text.ToString();
-			obj.Rate3 =txtRate3.Text.ToString();
-			obj.Rate4 =txtRate4.Text.ToString();
-			obj.Rate5=txtRate5.Text.ToString();
-			obj.Rate6=txtRate6.Text.ToString();
-			obj.Rate7=txtRate7.Text.ToString();
-			obj.Rate8=txtRate8.Text.ToString();
-			obj.Amt1 =txtAmount1.Text.ToString();
-			obj.Amt2=txtAmount2 .Text.ToString();
-			obj.Amt3=txtAmount3 .Text.ToString();
-			obj.Amt4=txtAmount4.Text.ToString();
-			obj.Amt5=txtAmount5.Text.ToString();
-			obj.Amt6 =txtAmount6.Text.ToString();
-			obj.Amt7=txtAmount7.Text.ToString();
-			obj.Amt8=txtAmount8.Text.ToString();  
-			obj.Total =txtNetAmount.Text.ToString();
-			obj.Promo=txtPromoScheme.Text.ToString();
-			obj.Remarks=txtRemark.Text.ToString() ;
-			obj.InsertPurchaseInvoiceDuplicate();
+			obj.Qty1= Request.Form["txtQty1"].ToString();
+
+            obj.Qty2= Request.Form["txtQty2"].ToString();
+
+            obj.Qty3 = Request.Form["txtQty3"] .ToString();
+
+            obj.Qty4= Request.Form["txtQty4"].ToString();  
+
+            obj.Qty5= Request.Form["txtQty5"].ToString();
+
+            obj.Qty6 = Request.Form["txtQty6"].ToString();
+
+            obj.Qty7= Request.Form["txtQty7"].ToString();
+
+            obj.Qty8= Request.Form["txtQty8"].ToString();
+
+            obj.Rate1= Request.Form["txtRate1"].ToString();
+
+            obj.Rate2 = Request.Form["txtRate2"].ToString();
+
+            obj.Rate3 = Request.Form["txtRate3"].ToString();
+
+            obj.Rate4 = Request.Form["txtRate4"].ToString();
+
+            obj.Rate5= Request.Form["txtRate5"].ToString();
+
+            obj.Rate6= Request.Form["txtRate6"].ToString();
+
+            obj.Rate7= Request.Form["txtRate7"].ToString();
+
+            obj.Rate8= Request.Form["txtRate8"].ToString();
+
+            obj.Amt1 = Request.Form["txtAmount1"].ToString();
+
+            obj.Amt2= Request.Form["txtAmount2"].ToString();
+
+            obj.Amt3= Request.Form["txtAmount3"].ToString();
+
+            obj.Amt4= Request.Form["txtAmount4"].ToString();
+
+            obj.Amt5= Request.Form["txtAmount5"].ToString();
+
+            obj.Amt6 = Request.Form["txtAmount6"].ToString();
+
+            obj.Amt7= Request.Form["txtAmount7"].ToString();
+
+            obj.Amt8= Request.Form["txtAmount8"].ToString();  
+
+            obj.Total = Request.Form["txtNetAmount"].ToString();
+
+            obj.Promo= Request.Form["txtPromoScheme"].ToString();
+
+            obj.Remarks= Request.Form["txtRemark"].ToString() ;
+
+            obj.InsertPurchaseInvoiceDuplicate();
 		}
 
 		/// <summary>
@@ -795,14 +825,15 @@ namespace Servosms.Module.Inventory
 		public void Save(string ProdName,string PackType, string Qty, string Rate,string Amount,string foc,string PerDisc,string PerDiscType,string StktDisc,string StktDiscType,string Discount,int sno)
 		{
 			InventoryClass obj=new InventoryClass();
-			obj.Invoice_No=lblInvoiceNo.Text;
-			obj.Product_Name=ProdName;
+			obj.Invoice_No= Request.Form["lblInvoiceNo"].ToString();
+
+            obj.Product_Name=ProdName;
 			obj.Package_Type=PackType;
 			obj.Qty=Qty;
 			obj.Rate=Rate;
 			obj.Amount=Amount; 
 			//********
-			obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
+			obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString())+" "+DateTime.Now.TimeOfDay.ToString());
 			obj.foc=foc;
 			//***********
 			obj.sno=sno+1;
@@ -939,11 +970,13 @@ namespace Servosms.Module.Inventory
 				// if lable is visible then save otherwise update the invoice.
 				if(lblInvoiceNo.Visible==true)
 				{
-					obj.Invoice_No = lblInvoiceNo.Text;
-					int count = 0;
+					obj.Invoice_No = Request.Form["lblInvoiceNo"].ToString();
+
+                    int count = 0;
 					// This part of code is use to solve the double click problem, Its checks the purchase Invoice no. and display the popup, that it is saved.
-					dbobj.ExecuteScalar("Select count(Invoice_No) from Purchase_Master where Invoice_No = "+lblInvoiceNo.Text.Trim(),ref count);
-					if(count > 0)
+					dbobj.ExecuteScalar("Select count(Invoice_No) from Purchase_Master where Invoice_No = "+ Request.Form["lblInvoiceNo"].ToString().Trim(),ref count);
+
+                    if (count > 0)
 					{
 						MessageBox.Show("Purchase Invoice AllReady Saved");
 						GetProducts();
@@ -956,108 +989,123 @@ namespace Servosms.Module.Inventory
 					}
 					else
 					{
-						obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString());
+						obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form[lblInvoiceDate.ID.ToString()].ToString())+" "+DateTime.Now.TimeOfDay.ToString());
 						//obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.ToString()));
 						//obj.Invoice_Date=DateTime.Now;
 						obj.Mode_of_Payment =DropModeType.SelectedItem.Value ;
 						obj.Vendor_Name=DropVendorID.SelectedItem.Value ;
 						obj.City=lblPlace.Value .ToString();
-						obj.Vehicle_No=txtVehicleNo.Text;
-						obj.Vendor_Invoice_No =txtVInnvoiceNo.Text;
-						obj.Vendor_Invoice_Date=GenUtil.str2MMDDYYYY(txtVInvoiceDate.Text.ToString());
-						obj.Grand_Total =txtGrandTotal.Text;
-						
-						/* Coment by vikas 23.11.2012 if(txtDisc.Text=="")
+						obj.Vehicle_No= Request.Form["txtVehicleNo"].ToString();
+
+                        obj.Vendor_Invoice_No = Request.Form["txtVInnvoiceNo"].ToString();
+
+                        obj.Vendor_Invoice_Date=GenUtil.str2MMDDYYYY(Request.Form["txtVInvoiceDate"].ToString());
+
+                        obj.Grand_Total = Request.Form["txtGrandTotal"].ToString();
+
+                        /* Coment by vikas 23.11.2012 if(txtDisc.Text=="")
 							obj.Discount ="0.0";
 						else
 							obj.Discount =txtDisc.Text;*/
-						
-						/*******Add by vikas 23.11.2012*******************/
-						if(DropDiscType.SelectedValue.ToString()=="Rs")
+
+                        /*******Add by vikas 23.11.2012*******************/
+                        if (DropDiscType.SelectedValue.ToString()=="Rs")
 						{
-							if(txtDisc.Text.ToString()!="")
-								obj.Discount=txtDisc.Text.ToString();
+							if(Request.Form["txtDisc"].ToString()!="")
+								obj.Discount= Request.Form["txtDisc"].ToString();
 							else
 								obj.Discount ="0.0";
 						}
 						else
 						{
-							if(txtTotalDisc.Text.ToString()!="")
-								obj.Discount =txtTotalDisc.Text.ToString();
+							if(Request.Form["txtTotalDisc"].ToString()!="")
+								obj.Discount = Request.Form["txtTotalDisc"].ToString();
 							else
-								obj.Discount ="0.0";
+
+                                obj.Discount ="0.0";
 							
 						}
 						/*******End*******************/
 
 						obj.Discount_Type=DropDiscType.SelectedItem.Value;
-						obj.Net_Amount =txtNetAmount.Text;
-						obj.Promo_Scheme=txtPromoScheme.Text;
-						obj.Remerk =txtRemark.Text;
-						obj.Entry_By =lblEntryBy.Text;
-						obj.Entry_Time =DateTime.Parse(lblEntryTime .Text);
-						if(txtCashDisc.Text.Trim() =="")
+						obj.Net_Amount = Request.Form["txtNetAmount"].ToString();
+                        obj.Promo_Scheme = Request.Form["txtPromoScheme"].ToString();
+                        obj.Remerk = Request.Form["txtRemark"].ToString();
+
+                        obj.Entry_By = lblEntryBy.Text.ToString();
+
+                        obj.Entry_Time =DateTime.Parse(lblEntryTime.Text.ToString());
+
+                        if (Request.Form["txtCashDisc"].ToString().Trim() =="")
 							obj.Cash_Discount  ="0.0";
 						else
-							obj.Cash_Discount  = txtCashDisc.Text.Trim();
-						obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value;
-						obj.VAT_Amount = txtVAT.Text.Trim();
-						/////////////******Save*****************
-						
-						/*****Coment by vikas 30.06.09****************************
+							obj.Cash_Discount  = Request.Form["txtCashDisc"].ToString().Trim();
+
+                        obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value;
+						obj.VAT_Amount = Request.Form["txtVAT"].ToString().Trim();
+                        /////////////******Save*****************
+
+                        /*****Coment by vikas 30.06.09****************************
 						if(txtfixed.Text.Trim() =="")
 							obj.fixed_Discount  ="0.0";
 						else
 							obj.fixed_Discount  = txtfixed.Text.Trim();
 						*********************************/
 
-						if(txtAddDis.Text.Trim() =="")
+                        if (Request.Form["txtAddDis"].ToString().Trim() =="")
 							obj.fixed_Discount  ="0.0";
 						else
-							obj.fixed_Discount  = txtAddDis.Text.Trim();
-	
-						//obj.fixed_Discount_Type =dropfixed.SelectedItem.Value;
-						obj.fixed_Discount_Type=txtfixedamt.Text;
-						if(txtfoc.Text.Trim() =="")
+							obj.fixed_Discount  = Request.Form["txtAddDis"].ToString().Trim();
+
+                        //obj.fixed_Discount_Type =dropfixed.SelectedItem.Value;
+                        obj.fixed_Discount_Type= Request.Form["txtfixedamt"].ToString();
+
+                        if (Request.Form["txtfoc"].ToString().Trim() =="")
 							obj.Foc_Discount  ="0.0";
 						else
-							obj.Foc_Discount  = txtfoc.Text.Trim();
-						obj.Foc_Discount_Type =dropfoc.SelectedItem.Value;
-						if(txtentry.Text.Trim() =="")
+							obj.Foc_Discount  = Request.Form["txtfoc"].ToString().Trim();
+
+                        obj.Foc_Discount_Type =dropfoc.SelectedItem.Value;
+						if(Request.Form["txtentry"].ToString().Trim() =="")
 							obj.Entry_Tax1  ="0.0";
 						else
-							obj.Entry_Tax1  = txtentry.Text.Trim() ;
-						obj.Entry_Tax_Type =dropentry.SelectedItem.Value;
+							obj.Entry_Tax1  = Request.Form["txtentry"].ToString().Trim() ;
+
+                        obj.Entry_Tax_Type =dropentry.SelectedItem.Value;
 					
-						if(txtebird.Text.Trim() =="")
+						if(Request.Form["txtebird"].ToString().Trim() =="")
 							obj.Ebird  ="0.0";
 						else
-							obj.Ebird  = txtebird.Text.Trim();
+							obj.Ebird  = Request.Form["txtebird"].ToString().Trim();
 
-						if(txtebirdamt.Text.Trim() =="")
+
+                        if (Request.Form["txtebirdamt"].ToString().Trim() =="")
 							obj.Ebird_Discount  ="0.0";
 						else
-							obj.Ebird_Discount  = txtebirdamt.Text.Trim() ;
-						
-						obj.Tradeval="0";
-						if(txttradedisamt.Text.Trim() =="")
+							obj.Ebird_Discount  = Request.Form["txtebirdamt"].ToString().Trim() ;
+
+
+                        obj.Tradeval="0";
+						if(Request.Form["txttradedisamt"].ToString().Trim() =="")
 							obj.Trade_Discount  ="0.0";
 						else
-							obj.Trade_Discount  = txttradedisamt.Text.Trim() ;
-						if(txttotalqtyltr1.Text.Trim() =="")
+							obj.Trade_Discount  = Request.Form["txttradedisamt"].ToString().Trim() ;
+
+                        if (Request.Form["txttotalqtyltr1"].ToString().Trim() =="")
 							obj.totalqtyltr  ="0.0";
 						else
-							obj.totalqtyltr  = txttotalqtyltr1.Text.Trim();
-						
-						/********Add by vikas 5.11.2012 ************************/
-						if(txtfixdisc.Text.ToString().Trim() =="")
+							obj.totalqtyltr  = Request.Form["txttotalqtyltr1"].ToString().Trim();
+
+                        /********Add by vikas 5.11.2012 ************************/
+                        if (Request.Form["txtfixdisc"].ToString().Trim() =="")
 							obj.New_fixeddisc ="0.0";
 						else
-							obj.New_fixeddisc =txtfixdisc.Text.Trim();
-						obj.New_fixeddiscAmount=txtfixdiscamount.Text.ToString().Trim();
-						/************end********************/
+							obj.New_fixeddisc = Request.Form["txtfixdisc"].ToString().Trim();
 
-						obj.InsertPurchaseMaster();
+                        obj.New_fixeddiscAmount= Request.Form["txtfixdiscamount"].ToString().Trim();
+                        /************end********************/
+
+                        obj.InsertPurchaseMaster();
 						
 						HtmlInputText[] ProdType={DropType1, DropType2, DropType3, DropType4, DropType5, DropType6, DropType7, DropType8, DropType9, DropType10, DropType11, DropType12, DropType13, DropType14, DropType15, DropType16, DropType17, DropType18, DropType19, DropType20};
 						TextBox[]  Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12, txtQty13, txtQty14, txtQty15, txtQty16, txtQty17, txtQty18, txtQty19, txtQty20}; 
@@ -1082,7 +1130,7 @@ namespace Servosms.Module.Inventory
 						}
 						for(int j=0;j<ProdType.Length ;j++)
 						{
-							if(Rate[j].Text==""||Rate[j].Text=="0")
+							if(Request.Form[Rate[j].ID.ToString()].ToString()==""|| Request.Form[Rate[j].ID.ToString()].ToString() == "0")
 								continue;
 							string[] arrName=ProdType[j].Value.Split(new char[] {':'},ProdType[j].Value.Length);
 							string[] arrPerDisc= new string[2];
@@ -1104,7 +1152,7 @@ namespace Servosms.Module.Inventory
 								arrStktDisc[1]="";
 							}
 							
-							Save(arrName[1].ToString(),arrName[2].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),foc[j].ToString(),arrPerDisc[0],arrPerDisc[1],arrStktDisc[0],arrStktDisc[1],tempDiscount[j].Value,j);
+							Save(arrName[1].ToString(),arrName[2].ToString(),Request.Form[Qty[j].ID.ToString()].ToString(), Request.Form[Rate[j].ID.ToString()].ToString(), Request.Form[Amount[j].ID.ToString()], foc[j].ToString(),arrPerDisc[0],arrPerDisc[1],arrStktDisc[0],arrStktDisc[1],tempDiscount[j].Value,j);
 						}
 
 						/*** **** Insert Batch No ********************/
@@ -1150,7 +1198,7 @@ namespace Servosms.Module.Inventory
 								}
 								rdr.Close();
 								
-								DateTime dt = System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
+								DateTime dt = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString())+" "+DateTime.Now.TimeOfDay.ToString());
 								
 								string[] arr = batch[i].Value.Split(new char[] {','},batch[i].Value.Length);
 								for(int n=0;n<arr.Length;n+=3)
@@ -1182,7 +1230,7 @@ namespace Servosms.Module.Inventory
 												dbobj.Insert_or_Update("update StockMaster_Batch set stock_date='"+dt+"',opening_stock="+op_stk+",receipt="+receipt.ToString()+", sales="+Sales+",closing_stock="+Math.Round(Cl_stk)+" where productid="+prodid+" and batch_id="+rdr.GetValue(0).ToString(),ref x);
 
 												//coment by vikas 17.06.09 dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Purchase Invoice','"+dt+"','"+prodid+"',"+rdr.GetValue(0).ToString()+","+arr[n+2].ToString()+","+arr[n+2].ToString()+")",ref x);//Maintain the closing stock by Prod_ID on every Batch No
-												dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Purchase Invoice','"+dt+"','"+prodid+"',"+rdr.GetValue(0).ToString()+","+arr[n+2].ToString()+","+Cl_stk+")",ref x);
+												dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+ Request.Form["lblInvoiceNo"].ToString()+"','Purchase Invoice','"+dt+"','"+prodid+"',"+rdr.GetValue(0).ToString()+","+arr[n+2].ToString()+","+Cl_stk+")",ref x);
 												dbobj.Insert_or_Update("update BatchNo set qty="+Cl_stk+" where prod_id="+prodid+" and batch_id="+rdr.GetValue(0).ToString(),ref x);
 												
 												BQty=BQty.Substring(1,(BQty.Length)-2);
@@ -1195,7 +1243,7 @@ namespace Servosms.Module.Inventory
 										{
 											//18.09.09 vikas dbobj.Insert_or_Update("insert into BatchNo values("+batch_id+","+arr[n].ToString()+",'"+prodid+"','"+dt+"',"+arr[n+2].ToString()+",'"+lblInvoiceNo.Text+"')",ref x);
 											dbobj.Insert_or_Update("insert into BatchNo values("+batch_id+","+arr[n].ToString()+",'"+prodid+"','"+dt+"',"+arr[n+2].ToString()+")",ref x);
-											dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Purchase Invoice','"+dt+"','"+prodid+"',"+batch_id+","+arr[n+2].ToString()+","+arr[n+2].ToString()+")",ref x);//Maintain the closing stock by Prod_ID on every Batch No
+											dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+ Request.Form["lblInvoiceNo"].ToString()+"','Purchase Invoice','"+dt+"','"+prodid+"',"+batch_id+","+arr[n+2].ToString()+","+arr[n+2].ToString()+")",ref x);//Maintain the closing stock by Prod_ID on every Batch No
 											dbobj.Insert_or_Update("insert into StockMaster_Batch values("+prodid+",'"+batch_id+"','"+dt+"',0,"+arr[n+2].ToString()+",0,"+arr[n+2].ToString()+",0,0)",ref x);
 													
 											BQty=BQty.Substring(1,(BQty.Length)-2);
@@ -1216,7 +1264,7 @@ namespace Servosms.Module.Inventory
 									{
 										if(!arr[n+2].ToString().Equals("''"))
 										{
-											dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Purchase Invoice','"+dt+"','"+prodid+"','',"+arr[n+2].ToString()+","+arr[n+2].ToString()+")",ref x);
+											dbobj.Insert_or_Update("insert into Batch_Transaction values("+(SNo++)+",'"+ Request.Form["lblInvoiceNo"].ToString()+"','Purchase Invoice','"+dt+"','"+prodid+"','',"+arr[n+2].ToString()+","+arr[n+2].ToString()+")",ref x);
 											dbobj.Insert_or_Update("insert into StockMaster_Batch values("+prodid+",'','"+dt+"',0,"+arr[n+2].ToString()+",0,"+arr[n+2].ToString()+",0,0)",ref x);
 										}
 										
@@ -1300,104 +1348,122 @@ namespace Servosms.Module.Inventory
 							Invoice_No = rdr.GetValue(0).ToString();
 						}
 						
-						obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString());
+						obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString())+" "+DateTime.Now.TimeOfDay.ToString());
 						
 						obj.Mode_of_Payment =DropModeType.SelectedItem.Value;
 						obj.Vendor_Name=DropVendorID.SelectedItem.Value;
 						obj.City=lblPlace.Value .ToString();
-						obj.Vehicle_No=txtVehicleNo.Text;
-						obj.Vendor_Invoice_No=txtVInnvoiceNo.Text;
-						obj.Vendor_Invoice_Date=GenUtil.str2MMDDYYYY(txtVInvoiceDate.Text.ToString());
-						obj.Grand_Total =txtGrandTotal.Text;
-						
-						/*Coment by vikas 23.11.2012 if(txtDisc.Text=="")
+						obj.Vehicle_No= Request.Form["txtVehicleNo"].ToString();
+
+                        obj.Vendor_Invoice_No= Request.Form["txtVInnvoiceNo"].ToString();
+
+                        obj.Vendor_Invoice_Date=GenUtil.str2MMDDYYYY(Request.Form["txtVInvoiceDate"].ToString());
+
+                        obj.Grand_Total = Request.Form["txtGrandTotal"].ToString();
+
+                        /*Coment by vikas 23.11.2012 if(txtDisc.Text=="")
 							obj.Discount ="0.0";
 						else
 							obj.Discount =txtDisc.Text;*/
 
-						/*******Add by vikas 23.11.2012*******************/
-						if(DropDiscType.SelectedValue.ToString()=="Rs")
+                        /*******Add by vikas 23.11.2012*******************/
+                        if (DropDiscType.SelectedValue.ToString()=="Rs")
 						{
-							if(txtDisc.Text.ToString()!="")
-								obj.Discount=txtDisc.Text.ToString();
+							if(Request.Form["txtDisc"].ToString()!="")
+								obj.Discount= Request.Form["txtDisc"].ToString();
 							else
-								obj.Discount ="0.0";
+
+                                obj.Discount ="0.0";
 						}
 						else
 						{
-							if(txtTotalDisc.Text.ToString()!="")
-								obj.Discount =txtTotalDisc.Text.ToString();
+							if(Request.Form["txtTotalDisc"].ToString()!="")
+								obj.Discount = Request.Form["txtTotalDisc"].ToString();
 							else
-								obj.Discount ="0.0";
+
+                                obj.Discount ="0.0";
 						}
 						/*******End*******************/
 						obj.Discount_Type=DropDiscType.SelectedItem.Value;
-						obj.Net_Amount =txtNetAmount.Text;
-						obj.Promo_Scheme=txtPromoScheme.Text;
-						obj.Remerk=txtRemark.Text;
-						obj.Entry_By =lblEntryBy.Text;
-						obj.Entry_Time =DateTime.Parse(lblEntryTime.Text);	
-						if(txtCashDisc.Text.Trim() =="")
+						obj.Net_Amount = Request.Form["txtNetAmount"].ToString();
+
+                        obj.Promo_Scheme= Request.Form["txtPromoScheme"].ToString();
+
+                        obj.Remerk= Request.Form["txtRemark"].ToString();
+
+                        obj.Entry_By = lblEntryBy.Text.ToString();
+
+                        obj.Entry_Time =DateTime.Parse(lblEntryTime.Text.ToString());	
+
+                        if (Request.Form["txtCashDisc"].ToString().Trim() =="")
 							obj.Cash_Discount  ="0.0";
 						else
-							obj.Cash_Discount  = txtCashDisc.Text.Trim();
-						obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value;
-						obj.VAT_Amount = txtVAT.Text.Trim();
-						
-						/*****Coment by vikas 30.06.09************************
+							obj.Cash_Discount  = Request.Form["txtCashDisc"].ToString().Trim();
+
+                        obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value;
+						obj.VAT_Amount = Request.Form["txtVAT"].ToString().Trim();
+
+                        /*****Coment by vikas 30.06.09************************
 						if(txtfixed.Text.Trim() =="")
 							obj.fixed_Discount  ="0.0";
 						else
 							obj.fixed_Discount  = txtfixed.Text.Trim();
 						*****************************/
 
-						/*****Coment by vikas 30.06.09************************/
-						if(txtAddDis.Text.Trim() =="")
+                        /*****Coment by vikas 30.06.09************************/
+                        if (Request.Form["txtAddDis"].ToString().Trim() =="")
 							obj.fixed_Discount  ="0.0";
 						else
-							obj.fixed_Discount  = txtAddDis.Text.Trim();
-						/****************************/
-						
-						obj.fixed_Discount_Type =txtfixedamt.Text;
-						if(txtfoc.Text.Trim() =="")
+							obj.fixed_Discount  = Request.Form["txtAddDis"].ToString().Trim();
+                        /****************************/
+
+                        obj.fixed_Discount_Type = Request.Form["txtfixedamt"].ToString();
+
+                        if (Request.Form["txtfoc"].ToString().Trim() =="")
 							obj.Foc_Discount  ="0.0";
 						else
-							obj.Foc_Discount  = txtfoc.Text.Trim();
-						obj.Foc_Discount_Type =dropfoc.SelectedItem.Value;
-						if(txtentry.Text.Trim() =="")
+							obj.Foc_Discount  = Request.Form["txtfoc"].ToString().Trim();
+
+                        obj.Foc_Discount_Type =dropfoc.SelectedItem.Value;
+						if(Request.Form["txtentry"].ToString().Trim() =="")
 							obj.Entry_Tax1  ="0.0";
 						else
-							obj.Entry_Tax1  = txtentry.Text.Trim();
-						obj.Entry_Tax_Type =dropentry.SelectedItem.Value;
-						if(txtebird.Text.Trim() =="")
+							obj.Entry_Tax1  = Request.Form["txtentry"].ToString().Trim();
+
+                        obj.Entry_Tax_Type =dropentry.SelectedItem.Value;
+						if(Request.Form["txtebird"].ToString().Trim() =="")
 							obj.Ebird  ="0.0";
 						else
-							obj.Ebird  = txtebird.Text.Trim();
-						if(txtebirdamt.Text.Trim() =="")
+							obj.Ebird  = Request.Form["txtebird"].ToString().Trim();
+
+                        if (Request.Form["txtebirdamt"].ToString().Trim() =="")
 							obj.Ebird_Discount  ="0.0";
 						else
-							obj.Ebird_Discount  = txtebirdamt.Text.Trim() ;
-						
-						obj.Tradeval="0";
-						if(txttradedisamt.Text.Trim() =="")
+							obj.Ebird_Discount  = Request.Form["txtebirdamt"].ToString().Trim() ;
+
+
+                        obj.Tradeval="0";
+						if(Request.Form["txttradedisamt"].ToString().Trim() =="")
 							obj.Trade_Discount  ="0.0";
 						else
-							obj.Trade_Discount  = txttradedisamt.Text.Trim();
+							obj.Trade_Discount  = Request.Form["txttradedisamt"].ToString().Trim();
 
-						if(txttotalqtyltr1.Text.Trim() =="")
+
+                        if (Request.Form["txttotalqtyltr1"].ToString().Trim() =="")
 							obj.totalqtyltr  ="0.0";
 						else
-							obj.totalqtyltr  = txttotalqtyltr1.Text.Trim();
+							obj.totalqtyltr  = Request.Form["txttotalqtyltr1"].ToString().Trim();
 
-						/********Add by vikas 5.11.2012 ************************/
-						if(txtfixdisc.Text.ToString().Trim() =="")
+                        /********Add by vikas 5.11.2012 ************************/
+                        if (Request.Form["txtfixdisc"].ToString().Trim() =="")
 							obj.New_fixeddisc ="0.0";
 						else
-							obj.New_fixeddisc =txtfixdisc.Text.Trim();
-						obj.New_fixeddiscAmount=txtfixdiscamount.Text.ToString().Trim();
-						/************end********************/
+							obj.New_fixeddisc = Request.Form["txtfixdisc"].ToString().Trim();
 
-						UpdateProductQty();
+                        obj.New_fixeddiscAmount= Request.Form["txtfixdiscamount"].ToString().Trim();
+                        /************end********************/
+
+                        UpdateProductQty();
 						int VendorID=0;
 						dbobj.ExecuteScalar("Select Supp_ID from  Supplier where Supp_Name='"+DropVendorID.SelectedItem.Text+"'",ref VendorID);
 						if(Vendor_ID!=VendorID.ToString())
@@ -1433,7 +1499,7 @@ namespace Servosms.Module.Inventory
 						
 						for(int j=0;j<ProdType.Length ;j++)
 						{
-							if(Rate[j].Text==""||Rate[j].Text=="0")
+							if(Request.Form[Rate[j].ID.ToString()].ToString()==""|| Request.Form[Rate[j].ID.ToString()].ToString()=="0")
 								continue;
 							string[] arrName=ProdType[j].Value.Split(new char[] {':'},ProdType[j].Value.Length);
 							string[] arrPerDisc= new string[2];
@@ -1455,12 +1521,14 @@ namespace Servosms.Module.Inventory
 								arrStktDisc[1]="";
 							}
 							
-							temp = Qty[j].Text;
+							temp = Request.Form[Qty[j].ID.ToString()].ToString();
+
+
+                            Save1(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID.ToString()].ToString(), Request.Form[Rate[j].ID.ToString()].ToString (), Request.Form[Amount[j].ID.ToString()].ToString (),temp,GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()+" "+DateTime.Now.TimeOfDay.ToString()),foc[j].ToString(),arrPerDisc[0],arrPerDisc[1],arrStktDisc[0],arrStktDisc[1],tempDiscount[j].Value,j);
 							
-							Save1(arrName[1].ToString(),arrName[2].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.ToString()+" "+DateTime.Now.TimeOfDay.ToString()),foc[j].ToString(),arrPerDisc[0],arrPerDisc[1],arrStktDisc[0],arrStktDisc[1],tempDiscount[j].Value,j);
-							
-							InsertBatchNo(arrName[1].ToString(),arrName[2].ToString(),Qty[j].Text.ToString(),batch[j].Value,j);
-						}
+							InsertBatchNo(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID.ToString()].ToString(),batch[j].Value,j);
+
+                        }
 						PrePrintReport();
 						SeqStockMaster();
 						CustomerUpdate();
@@ -1859,19 +1927,22 @@ namespace Servosms.Module.Inventory
 				sw.WriteLine(GenUtil.GetCenterAddr("==================",des.Length));
 				if (lblInvoiceNo.Visible==true)
 					//strInvNo = lblInvoiceNo.Text;
-					strInvNo = txtVInnvoiceNo.Text;
+					strInvNo = Request.Form["txtVInnvoiceNo"].ToString();
 				else
-					strInvNo = DropInvoiceNo.SelectedItem.Text;   
+
+                    strInvNo = DropInvoiceNo.SelectedItem.Text;   
 				//sw.WriteLine(" Invoice No : " +strInvNo+ "                               Date : " +lblInvoiceDate.Text.ToString());
 				//Mahesh11.04.07 
-				sw.WriteLine(info,"Invoice No : " +strInvNo,"","Date :",lblInvoiceDate.Text.ToString());
-				//sw.WriteLine(info,"Invoice No : " +strInvNo,"","Date :",Session["CurrentDate"].ToString());
-				sw.WriteLine("+--------------------------------------------------------------------------+");
+				sw.WriteLine(info,"Invoice No : " +strInvNo,"","Date :", Request.Form["lblInvoiceDate"].ToString());
+                //sw.WriteLine(info,"Invoice No : " +strInvNo,"","Date :",Session["CurrentDate"].ToString());
+                sw.WriteLine("+--------------------------------------------------------------------------+");
 				sw.WriteLine(" Vendor Name         :  "+DropVendorID.SelectedItem.Value);
 				sw.WriteLine(" Place               :  "+lblPlace.Value);
-				sw.WriteLine(" Vendor Invoice No   :  "+txtVInnvoiceNo.Text);
-				sw.WriteLine(" Vendor Invoice Date :  "+txtVInvoiceDate.Text);
-				sw.WriteLine("+----------------------------------------+-----------+----------+----------+");
+				sw.WriteLine(" Vendor Invoice No   :  "+ Request.Form["txtVInnvoiceNo"].ToString());
+
+                sw.WriteLine(" Vendor Invoice Date :  "+ Request.Form["txtVInvoiceDate"].ToString());
+
+                sw.WriteLine("+----------------------------------------+-----------+----------+----------+");
 				sw.WriteLine("|            Product Name                | Quantity  |   Rate   |  Amount  |");
 				sw.WriteLine("+----------------------------------------+-----------+----------+----------+");
 				
@@ -1924,20 +1995,21 @@ namespace Servosms.Module.Inventory
 				string[] arrName = new string[3];
 				for(int i=0;i<20;i++)
 				{
-					if(!ProdType[i].Value.Equals("Type") && (Qty[i].Text != "" || Qty[i].Text != "0"))
+					if(!ProdType[i].Value.Equals("Type") && (Request.Form[Qty[i].ID.ToString()].ToString() != "" || Request.Form[Qty[i].ID.ToString()].ToString() != "0"))
 					{
 						arrName = ProdType[i].Value.Split(new char[] {':'},ProdType[i].Value.Length);
-						sw.WriteLine(info,arrName[1].ToString()+":"+arrName[2].ToString(),Qty[i].Text,GenUtil.strNumericFormat(Rate[i].Text),GenUtil.strNumericFormat(Amount[i].Text.ToString().Trim()));
-					}
+						sw.WriteLine(info,arrName[1].ToString()+":"+arrName[2].ToString(), Request.Form[Qty[i].ID.ToString()].ToString(),GenUtil.strNumericFormat(Request.Form[Rate[i].ID.ToString()].ToString()),GenUtil.strNumericFormat(Request.Form[Amount[i].ID.ToString()].ToString().Trim()));
+
+                    }
 				}
 				
 				sw.WriteLine("+----------------------------------------+-----------+----------+----------+");
 		
 				//sw.WriteLine("                               Grand Total           : {0,10:F}" , GenUtil.strNumericFormat(txtGrandTotal.Text.ToString() ));
-				sw.WriteLine(info1,"","Grand Total",GenUtil.strNumericFormat(txtGrandTotal.Text.ToString() ));
-				//**********Calculation of Entry Tax **************
-				//********
-				double sdisc=0;
+				sw.WriteLine(info1,"","Grand Total",GenUtil.strNumericFormat(Request.Form["txtGrandTotal"].ToString() ));
+                //**********Calculation of Entry Tax **************
+                //********
+                double sdisc=0;
 				double disc_amt1=0;
 				string msg1 ="";
 				double temp1 =0;
@@ -1946,21 +2018,23 @@ namespace Servosms.Module.Inventory
 				disc_amt1=0;
 				msg1 ="";
 				temp1 =0;
-				if(txtentry.Text=="")
+				if(Request.Form["txtentry"].ToString()=="")
 				{
 					strDiscType1="";
 					msg1 = "";
 				}
 				else
 				{
-					disc_amt1 = System.Convert.ToDouble(txtentry.Text.ToString()); 
-					strDiscType1= dropentry.SelectedItem.Text;
+					disc_amt1 = System.Convert.ToDouble(Request.Form["txtentry"].ToString()); 
+
+                    strDiscType1 = dropentry.SelectedItem.Text;
 					if(strDiscType1.Trim().Equals("%"))
 					{
-						if(txtGrandTotal.Text.Trim() != "")
-							temp1 = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString());
-						disc_amt1  = (temp1*disc_amt1/100);
-						msg1 = "("+txtentry.Text.ToString()+strDiscType1+")";
+						if(Request.Form["txtGrandTotal"].ToString().Trim() != "")
+							temp1 = System.Convert.ToDouble(Request.Form["txtGrandTotal"].ToString().Trim().ToString());
+
+                        disc_amt1  = (temp1*disc_amt1/100);
+						msg1 = "("+ Request.Form["txtentry"].ToString()+strDiscType1+")";
 					}
 					else
 					{
@@ -1979,21 +2053,23 @@ namespace Servosms.Module.Inventory
 				temp1 =0;
 				disc_amt1=0;
 				msg1 ="";
-				if(txtfoc.Text=="")
+				if(Request.Form["txtfoc"].ToString()=="")
 				{
 					strDiscType1="";
 					msg1 = "";
 				}
 				else
 				{
-					disc_amt1 = System.Convert.ToDouble(txtfoc.Text.ToString());
-					strDiscType1= dropfoc.SelectedItem.Text;
+					disc_amt1 = System.Convert.ToDouble(Request.Form["txtfoc"].ToString());
+
+                    strDiscType1 = dropfoc.SelectedItem.Text;
 					if(strDiscType1.Trim().Equals("%"))
 					{
-						if(txtGrandTotal.Text.Trim() != "")
-							temp1 = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString());
-						disc_amt1  = (temp1*disc_amt1/100);
-						msg1 = "("+txtfoc.Text.ToString()+strDiscType1+")";
+						if(Request.Form["txtGrandTotal"].ToString().Trim() != "")
+							temp1 = System.Convert.ToDouble(Request.Form["txtGrandTotal"].Trim().ToString());
+
+                        disc_amt1  = (temp1*disc_amt1/100);
+						msg1 = "("+ Request.Form["txtfoc"].ToString()+strDiscType1+")";
 					}
 					else
 					{
@@ -2007,22 +2083,24 @@ namespace Servosms.Module.Inventory
 				//****************** Calculation of Fixed Discount ****************
 				disc_amt1=0;
 				msg1 ="";
-				if(txtfixed.Text=="")
+				if(Request.Form["txtfixed"].ToString()=="")
 				{
 					strDiscType1="";
 					msg1 = "";
 				}
 				else
 				{
-					disc_amt1 = System.Convert.ToDouble(txtfixed.Text.ToString()); 
-					//strDiscType1= dropfixed.SelectedItem.Text;
-					strDiscType1= txtfixedamt.Text;
-					if(strDiscType1.Trim().Equals("%"))
+					disc_amt1 = System.Convert.ToDouble(Request.Form["txtfixed"].ToString()); 
+                    //strDiscType1= dropfixed.SelectedItem.Text;
+                    strDiscType1 = Request.Form["txtfixedamt"].ToString();
+
+                    if (strDiscType1.Trim().Equals("%"))
 					{
-						if(txtGrandTotal.Text.Trim() != "")
-							temp1 = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString());
-						disc_amt1  = (temp1*disc_amt1/100);
-						msg1 = "("+txtfixed.Text.ToString()+strDiscType1+")";
+						if(Request.Form["txtGrandTotal"].ToString().Trim() != "")
+							temp1 = System.Convert.ToDouble(Request.Form["txtGrandTotal"].ToString().Trim().ToString());
+
+                        disc_amt1  = (temp1*disc_amt1/100);
+						msg1 = "("+ Request.Form["txtfixed"].ToString()+strDiscType1+")";
 					}
 					else
 					{
@@ -2037,9 +2115,9 @@ namespace Servosms.Module.Inventory
 				disc_amt1=0;
 				msg1 ="";
 				sdisc=0;
-				if(txttradeless.Text.Equals(""))
+				if(Request.Form["txttradeless"].ToString().Equals(""))
 					txttradeless.Text="0";
-				if(txttradedisamt.Text=="")
+				if(Request.Form["txttradedisamt"].ToString()=="")
 				{
 					sdisc=0;
 					disc_amt1=0;
@@ -2048,9 +2126,9 @@ namespace Servosms.Module.Inventory
 				else
 				{
 					//disc_amt1 = System.Convert.ToDouble(txttradedisamt.Text.ToString())-System.Convert.ToDouble(txttradeless.Text.ToString()); 
-					disc_amt1 = System.Convert.ToDouble(txttradedisamt.Text.ToString()); 
-					//sdisc= System.Convert.ToDouble(txttradedis.Text.ToString()); 
-				}	
+					disc_amt1 = System.Convert.ToDouble(Request.Form["txttradedisamt"].ToString()); 
+                    //sdisc= System.Convert.ToDouble(txttradedis.Text.ToString()); 
+                }	
 				TD=disc_amt1;
 				//sw.WriteLine("                              Trade Discount{0,-8:S} : {1,10:F}" ,"("+GenUtil.strNumericFormat(sdisc.ToString())+")",GenUtil.strNumericFormat(disc_amt1.ToString()));
 				sw.WriteLine(info1,"","Trade Discount"+"("+GenUtil.strNumericFormat(sdisc.ToString())+")","-"+GenUtil.strNumericFormat(disc_amt1.ToString()));
@@ -2058,22 +2136,24 @@ namespace Servosms.Module.Inventory
 				//********************* Calculation of Discount *********************
 				disc_amt=0;
 				msg ="";
-				if(txtDisc.Text=="")
+				if(Request.Form["txtDisc"].ToString()=="")
 				{
 					strDiscType="";
 					msg = "";
 				}
 				else
 				{
-					disc_amt = System.Convert.ToDouble(txtDisc.Text.ToString()); 
-					strDiscType= DropDiscType.SelectedItem.Text;
+					disc_amt = System.Convert.ToDouble(Request.Form["txtDisc"].ToString()); 
+
+                    strDiscType = DropDiscType.SelectedItem.Text;
 					if(strDiscType.Trim().Equals("%"))
 					{
 						double temp =0;
-						if(txtGrandTotal.Text.Trim() != "")
-							temp = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString());
-						disc_amt  = (temp*disc_amt/100);
-						msg = "("+txtDisc.Text.ToString()+strDiscType+")";
+						if(Request.Form["txtGrandTotal"].ToString().Trim() != "")
+							temp = System.Convert.ToDouble(Request.Form["txtGrandTotal"].Trim().ToString());
+
+                        disc_amt  = (temp*disc_amt/100);
+						msg = "("+ Request.Form["txtDisc"].ToString()+strDiscType+")";
 					}
 					else
 					{
@@ -2087,23 +2167,25 @@ namespace Servosms.Module.Inventory
 				//*********bhal End************
 				disc_amt=0;
 				msg ="";
-				if(txtCashDisc .Text=="")
+				if(Request.Form["txtCashDisc"] .ToString()=="")
 				{
 					strDiscType="";
 					msg = "";
 				}
 				else
 				{
-					disc_amt = System.Convert.ToDouble(txtCashDisc.Text.ToString()); 
-					strDiscType= DropCashDiscType.SelectedItem.Text;
+					disc_amt = System.Convert.ToDouble(Request.Form["txtCashDisc"].ToString()); 
+
+                    strDiscType = DropCashDiscType.SelectedItem.Text;
 					if(strDiscType.Trim().Equals("%"))
 					{
 						double temp =0;
-						if(txtGrandTotal.Text.Trim() != "")
+						if(Request.Form["txtGrandTotal"].ToString().Trim() != "")
 							//temp = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString());
-							temp = System.Convert.ToDouble(txtGrandTotal.Text.Trim().ToString())+ET-(TD+FOC+FD);
-						disc_amt  = (temp*disc_amt/100);
-						msg = "("+txtCashDisc.Text.ToString()+strDiscType+")";
+							temp = System.Convert.ToDouble(Request.Form["txtGrandTotal"].ToString().Trim().ToString())+ET-(TD+FOC+FD);
+
+                        disc_amt  = (temp*disc_amt/100);
+						msg = "("+ Request.Form["txtCashDisc"].ToString()+strDiscType+")";
 					}
 					else
 					{
@@ -2116,9 +2198,9 @@ namespace Servosms.Module.Inventory
 				disc_amt1=0;
 				msg1 ="";
 				sdisc=0;
-				if(txtbirdless.Text.Equals(""))
+				if(Request.Form["txtbirdless"].ToString().Equals(""))
 					txtbirdless.Text="0";
-				if(txtebirdamt.Text=="")
+				if(Request.Form["txtebirdamt"].ToString()=="")
 				{
 					sdisc=0;
 					disc_amt1=0;
@@ -2127,9 +2209,11 @@ namespace Servosms.Module.Inventory
 				else
 				{
 					//disc_amt1 = System.Convert.ToDouble(txtebirdamt.Text.ToString())-System.Convert.ToDouble(txtbirdless.Text.ToString()); 
-					disc_amt1 = System.Convert.ToDouble(txtebirdamt.Text.ToString());
-					sdisc= System.Convert.ToDouble(txtebird.Text.ToString()); 
-				}			
+					disc_amt1 = System.Convert.ToDouble(Request.Form["txtebirdamt"].ToString());
+
+                    sdisc = System.Convert.ToDouble(Request.Form["txtebird"].ToString()); 
+
+                }			
 				//sw.WriteLine("                              Ebird Discount{0,-8:S} : {1,10:F}" ,"("+GenUtil.strNumericFormat(sdisc.ToString())+")",GenUtil.strNumericFormat(disc_amt1.ToString()));
 				sw.WriteLine(info1,"","Ebird Discount"+"("+GenUtil.strNumericFormat(sdisc.ToString())+")","-"+GenUtil.strNumericFormat(disc_amt1.ToString()));
 				//******************** End of Ebird Discount *******************
@@ -2139,20 +2223,24 @@ namespace Servosms.Module.Inventory
 				if(Yes.Checked)
 				{
 					Vat_Rate = "("+Session["VAT_Rate"].ToString()+"%)";
-					amount = txtVAT.Text.Trim();  
-				}
+					amount = Request.Form["txtVAT"].ToString().Trim();  
+
+                }
 				//sw.WriteLine("                               VAT          {0,-8:S} : {1,10:F}" ,Vat_Rate,GenUtil.strNumericFormat(amount));
 				sw.WriteLine(info1,"","VAT"+Vat_Rate,GenUtil.strNumericFormat(amount));
 				
 				//sw.WriteLine("                               Net Amount            : {0,10:F}" , GenUtil.strNumericFormat(txtNetAmount.Text.ToString()));
-				sw.WriteLine(info1,"","Net Amount",GenUtil.strNumericFormat(txtNetAmount.Text.ToString()));
-				sw.WriteLine("+----------------------------------------+-----------+----------+----------+");
-				sw.WriteLine("Promo Scheme : " + txtPromoScheme.Text);
-				sw.WriteLine("Remarks      : " + txtRemark.Text);
-				sw.WriteLine("Message      : " + txtMessage.Text);
-				//				sw.WriteLine("");
-				//				sw.WriteLine("");
-				sw.WriteLine("");
+				sw.WriteLine(info1,"","Net Amount",GenUtil.strNumericFormat(Request.Form["txtNetAmount"].ToString()));
+
+                sw.WriteLine("+----------------------------------------+-----------+----------+----------+");
+				sw.WriteLine("Promo Scheme : " + Request.Form["txtPromoScheme"].ToString());
+
+                sw.WriteLine("Remarks      : " + Request.Form["txtRemark"].ToString());
+
+                sw.WriteLine("Message      : " + Request.Form["txtMessage"].ToString());
+                //				sw.WriteLine("");
+                //				sw.WriteLine("");
+                sw.WriteLine("");
 				sw.WriteLine("                                                Signature");
 				/*
 				HtmlInputHidden[] batch={bat0,bat1,bat2,bat3,bat4,bat5,bat6,bat7,bat8,bat9,bat10,bat11};
@@ -2787,7 +2875,7 @@ namespace Servosms.Module.Inventory
 			while(SqlDtr.Read())
 			{
 				lblInvoiceNo.Text =SqlDtr.GetValue(0).ToString ();				
-				if(lblInvoiceNo.Text=="")
+				if(lblInvoiceNo.Text.ToString()=="")
 					lblInvoiceNo.Text ="1001";
 			}
 			SqlDtr.Close ();		
@@ -2999,8 +3087,9 @@ namespace Servosms.Module.Inventory
 						//Coment By vikas 7.3.2013 Fore Early Birld Tax txtVInvoiceDate.Text=GenUtil.str2DDMMYYYY(strDate1);
 						txtVInvoiceDate.Text=GenUtil.str2DDMMYYYYNew(strDate1);
 						txtGrandTotal.Text=SqlDtr.GetValue(7).ToString();
-						txtGrandTotal.Text = GenUtil.strNumericFormat(txtGrandTotal.Text);
-						double ETFOC=double.Parse(SqlDtr["FOC_Discount"].ToString())*2/100;
+						txtGrandTotal.Text = GenUtil.strNumericFormat(Request.Form["txtGrandTotal"].ToString());
+
+                        double ETFOC=double.Parse(SqlDtr["FOC_Discount"].ToString())*2/100;
 						//coment by vikas 23.11.2012 txtDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString()); 
 						//txtDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString());
 						DropDiscType.SelectedIndex= DropDiscType.Items.IndexOf((DropDiscType.Items.FindByValue(SqlDtr.GetValue(9).ToString())));
@@ -3011,14 +3100,16 @@ namespace Servosms.Module.Inventory
 						
 
 						txtNetAmount.Text =SqlDtr.GetValue(10).ToString(); 
-						txtNetAmount.Text = GenUtil.strNumericFormat(txtNetAmount.Text);
-						txtPromoScheme.Text= SqlDtr.GetValue(11).ToString(); 
+						txtNetAmount.Text = GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
+
+                        txtPromoScheme.Text= SqlDtr.GetValue(11).ToString(); 
 						txtRemark.Text=SqlDtr.GetValue(12).ToString();  
 						lblEntryBy.Text=SqlDtr.GetValue(13).ToString();  
 						lblEntryTime.Text= SqlDtr.GetValue(14).ToString();  
 						txtCashDisc.Text=SqlDtr.GetValue(15).ToString(); 
-						txtCashDisc.Text = GenUtil.strNumericFormat(txtCashDisc.Text.ToString()); 
-						DropCashDiscType.SelectedIndex= DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
+						txtCashDisc.Text = GenUtil.strNumericFormat(Request.Form["txtCashDisc"].ToString()); 
+
+                        DropCashDiscType.SelectedIndex= DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
 						txtVAT.Text =  SqlDtr.GetValue(17).ToString();
 						
 						
@@ -3153,10 +3244,12 @@ namespace Servosms.Module.Inventory
 						chkfoc[i].Enabled=true;
 						ProdType[i].Value=SqlDtr.GetValue(7).ToString ()+":"+SqlDtr.GetValue(1).ToString ()+":"+SqlDtr.GetValue(2).ToString ();
 						Qty[i].Text=SqlDtr.GetValue(3).ToString();
-						if(Qty[i].Text != "")
-							TotalQty+=System.Convert.ToInt32(Qty[i].Text);
-						Quantity[i].Text = Qty[i].Text;
-						Rate[i].Text=SqlDtr.GetValue(4).ToString();
+						if(Request.Form[Qty[i].ID.ToString()].ToString() != "")
+							TotalQty+=System.Convert.ToInt32(Request.Form[Qty[i].ID.ToString()].ToString());
+
+                        Quantity[i].Text = Request.Form[Qty[i].ID.ToString()].ToString();
+
+                        Rate[i].Text=SqlDtr.GetValue(4).ToString();
 						Amount[i].Text=SqlDtr.GetValue(5).ToString();
 						ProductType[i]=SqlDtr.GetValue(0).ToString ();
 						ProductName[i]=SqlDtr.GetValue(1).ToString ();
@@ -3166,7 +3259,7 @@ namespace Servosms.Module.Inventory
 							chkfoc[i].Checked=false;
 						else
 							chkfoc[i].Checked=true;
-						string strstr="select Discount,DiscountType from stktSchDiscount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"'";
+						string strstr="select Discount,DiscountType from stktSchDiscount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"'";
 						rdr=obj1.GetRecordSet(strstr);
 						if(rdr.Read())
 						{
@@ -3176,7 +3269,7 @@ namespace Servosms.Module.Inventory
 							tempStktSchDis[i].Value="";
 						rdr.Close();
 
-						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"'";
+						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"'";
 						rdr=obj1.GetRecordSet(strstr);
 						if(rdr.Read())
 						{
@@ -3187,7 +3280,7 @@ namespace Servosms.Module.Inventory
 						rdr.Close();
 						
 						/*****03.07.09**Add by vikas *******************/
-						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Addl Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString())+"'";
+						strstr="select Discount,DiscountType from Per_Discount where prodid='"+SqlDtr["Prod_ID"].ToString()+"' and schname='Primary(LTR&% Addl Scheme)' and cast(floor(cast(cast(Datefrom as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"' and cast(floor(cast(cast(Dateto as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(GenUtil.trimDate(SqlDtr["Invoice_Date"].ToString()))+"'";
 						rdr=obj1.GetRecordSet(strstr);
 						if(rdr.Read())
 						{
@@ -3391,7 +3484,7 @@ namespace Servosms.Module.Inventory
 						Con.Open();
 						//string ss="update Stock_Master set receipt=receipt-'"+double.Parse(Qty[i].Text)+"',closing_stock=closing_stock-'"+double.Parse(Qty[i].Text)+"' where ProductID=(select Prod_ID from Products where Category='"+DropType[i].SelectedItem.Text+"' and Prod_Name='"+ProdName[i].Value+"' and Pack_Type='"+PackType[i].Value+"') and cast(stock_date as smalldatetime)='"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+"'";
 						//cmd = new SqlCommand("update Stock_Master set receipt=receipt-'"+double.Parse(Qty[i].Text)+"',closing_stock=closing_stock-'"+double.Parse(Qty[i].Text)+"' where ProductID=(select Prod_ID from Products where Category='"+DropType[i].SelectedItem.Text+"' and Prod_Name='"+ProdName[i].Value+"' and Pack_Type='"+PackType[i].Value+"') and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)='"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+"'",Con);
-						cmd = new SqlCommand("update Stock_Master set receipt=receipt-'"+double.Parse(ProductQty[i].ToString())+"',closing_stock=closing_stock-'"+double.Parse(ProductQty[i].ToString())+"' where ProductID=(select Prod_ID from Products where Category='"+ProductType[i].ToString()+"' and Prod_Name='"+ProductName[i].ToString()+"' and Pack_Type='"+ProductPack[i].ToString()+"') and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)='"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+"'",Con);
+						cmd = new SqlCommand("update Stock_Master set receipt=receipt-'"+double.Parse(ProductQty[i].ToString())+"',closing_stock=closing_stock-'"+double.Parse(ProductQty[i].ToString())+"' where ProductID=(select Prod_ID from Products where Category='"+ProductType[i].ToString()+"' and Prod_Name='"+ProductName[i].ToString()+"' and Pack_Type='"+ProductPack[i].ToString()+"') and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)='"+GenUtil.str2MMDDYYYY(Request.Form["lblInvoiceDate"].ToString())+"'",Con);
 						cmd.ExecuteNonQuery();
 						Con.Close();
 						cmd.Dispose();
@@ -3438,7 +3531,7 @@ namespace Servosms.Module.Inventory
 						Con.Open();
 						//cmd = new SqlCommand("update Stock_Master set receipt=receipt-"+double.Parse(ProductQty[i].ToString())+", Closing_Stock=Closing_Stock-"+double.Parse(ProductQty[i].ToString())+" where ProductID='"+rdr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)='"+GenUtil.str2MMDDYYYY(txtVInvoiceDate.Text)+"'",Con);
 						//**cmd = new SqlCommand("update Stock_Master set receipt=receipt-"+double.Parse(ProductQty[i].ToString())+", Closing_Stock=Closing_Stock-"+double.Parse(ProductQty[i].ToString())+" where ProductID='"+rdr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)='"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+"'",Con);
-						cmd = new SqlCommand("update Stock_Master set receipt=receipt-"+double.Parse(ProductQty[i].ToString())+", Closing_Stock=Closing_Stock-"+double.Parse(ProductQty[i].ToString())+" where ProductID='"+rdr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)='"+GenUtil.trimDate(Invoice_Date)+"'",Con);
+						cmd = new SqlCommand("update Stock_Master set receipt=receipt-"+double.Parse(ProductQty[i].ToString())+", Closing_Stock=Closing_Stock-"+double.Parse(ProductQty[i].ToString())+" where ProductID='"+rdr["Prod_ID"].ToString()+"' and cast(floor(cast(cast(Stock_Date as datetime) as float)) as datetime)=convert(datetime,'"+GenUtil.trimDate(Invoice_Date)+"',103)",Con);
 						cmd.ExecuteNonQuery();
 						cmd.Dispose();
 						Con.Close();
@@ -3482,7 +3575,7 @@ namespace Servosms.Module.Inventory
 								OS=CS;
 							CS=OS+double.Parse(rdr1["receipt"].ToString())-(double.Parse(rdr1["sales"].ToString())+double.Parse(rdr1["salesfoc"].ToString()));
 							Con.Open();
-							cmd = new SqlCommand("update Stock_Master set opening_stock='"+OS.ToString()+"', Closing_Stock='"+CS.ToString()+"' where ProductID='"+rdr1["Productid"].ToString()+"' and Stock_Date='"+rdr1["stock_date"].ToString()+"'",Con);
+							cmd = new SqlCommand("update Stock_Master set opening_stock='"+OS.ToString()+"', Closing_Stock='"+CS.ToString()+"' where ProductID='"+rdr1["Productid"].ToString()+"' and Stock_Date=convert(datetime,'"+rdr1["stock_date"].ToString()+"',103)",Con);
 							cmd.ExecuteNonQuery();
 							cmd.Dispose();
 							Con.Close();
@@ -3885,7 +3978,7 @@ namespace Servosms.Module.Inventory
 			string[] InvoiceDate=new string[2];
 			string[] arrInvoiceNo=DropInvoiceNo.SelectedItem.Text.Split(new char[] {':'},DropInvoiceNo.SelectedItem.Text.Length);
 			if(lblInvoiceNo.Visible==true)
-				str="select invoice_date from purchase_master where invoice_no="+lblInvoiceNo.Text+"";
+				str="select invoice_date from purchase_master where invoice_no="+ Request.Form["lblInvoiceNo"].ToString()+"";
 			else
 				//str="select invoice_date from purchase_master where vndr_invoice_no="+DropInvoiceNo.SelectedItem.Text.Trim()+"";
 				str="select invoice_date from purchase_master where invoice_no="+arrInvoiceNo[0]+"";
@@ -3933,24 +4026,30 @@ namespace Servosms.Module.Inventory
 			{
 				if(!foe[j].Checked)
 				{
-					if(!Qty[j].Text.Equals(""))
+					if(!Request.Form[Qty[j].ID.ToString()].Equals(""))
 					{
-						TotalQtyPack=TotalQtyPack+System.Convert.ToDouble(Qty[j].Text);
-						TotalQtyPackLtr+=System.Convert.ToDouble(Qty[j].Text)*System.Convert.ToDouble(PackType[j].ToString());
-						DespQty[j]=Qty[j].Text;
-					}
+						TotalQtyPack=TotalQtyPack+System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()].ToString());
+
+                        TotalQtyPackLtr +=System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()].ToString())*System.Convert.ToDouble(PackType[j].ToString());
+
+                        DespQty[j]= Request.Form[Qty[j].ID.ToString()].ToString();
+
+                    }
 					else
 						DespQty[j]="";
 					freeDespQty[j]="";
 				}
 				else
 				{
-					if(!Qty[j].Text.Equals(""))
+					if(!Request.Form[Qty[j].ID.ToString()].ToString().Equals(""))
 					{
-						TotalQtyfoe=TotalQtyfoe+System.Convert.ToDouble(Qty[j].Text);
-						TotalQtyFoeLtr+=System.Convert.ToDouble(Qty[j].Text)*System.Convert.ToDouble(PackType[j].ToString());
-						freeDespQty[j]=Qty[j].Text;
-					}
+						TotalQtyfoe=TotalQtyfoe+System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()]);
+
+                        TotalQtyFoeLtr +=System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()])*System.Convert.ToDouble(PackType[j].ToString());
+
+                        freeDespQty[j]= Request.Form[Qty[j].ID.ToString()].ToString();
+
+                    }
 					else
 						freeDespQty[j]="";
 					DespQty[j]="";
@@ -3971,11 +4070,11 @@ namespace Servosms.Module.Inventory
 			//int q=0;
 			for(int p=0;p<=Qty.Length-1;p++)
 			{
-				if(Qty[p].Text!="")
+				if(Request.Form[Qty[p].ID.ToString()].ToString()!="")
 				{
 					string[] arrProdCat = ProdCat[p].Value.Split(new char[] {':'},ProdCat[p].Value.Length);
 					if(lblInvoiceNo.Visible==true)
-						str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+lblInvoiceNo.Text+"' and trans_type='Purchase Invoice'";
+						str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+ Request.Form["lblInvoiceNo"].ToString()+"' and trans_type='Purchase Invoice'";
 					else
 						//str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+DropInvoiceNo.SelectedItem.Text+"' and trans_type='Purchase Invoice'";
 						str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+arrInvoiceNo[0]+"' and trans_type='Purchase Invoice'";
@@ -3990,9 +4089,11 @@ namespace Servosms.Module.Inventory
 							{
 								arrProdName.Add(ProdName[p].ToString());
 								arrBillQty.Add(SqlDtr.GetValue(1).ToString());
-								arrProdRate.Add(Rate[p].Text);
-								arrProdAmount.Add(System.Convert.ToString(double.Parse(SqlDtr.GetValue(1).ToString())*double.Parse(Rate[p].Text)));
-								arrFreeQty.Add("");
+								arrProdRate.Add(Request.Form[Rate[p].ID.ToString()].ToString());
+
+                                arrProdAmount.Add(System.Convert.ToString(double.Parse(SqlDtr.GetValue(1).ToString())*double.Parse(Request.Form[Rate[p].ID.ToString()].ToString())));
+
+                                arrFreeQty.Add("");
 							}
 							else
 							{
@@ -4013,14 +4114,18 @@ namespace Servosms.Module.Inventory
 						arrProdCode.Add(ProdCode[p].ToString());
 						arrBatchNo.Add("");
 						arrDespQty.Add(DespQty[p].ToString());
-						arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(Qty[p].Text)));
-						if(!foe[p].Checked)
+						arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(Request.Form[Qty[p].ID.ToString()].ToString())));
+
+                        if (!foe[p].Checked)
 						{
 							arrProdName.Add(ProdName[p].ToString());
-							arrBillQty.Add(Qty[p].Text);
-							arrProdRate.Add(Rate[p].Text);
-							arrProdAmount.Add(Amount[p].Text);
-							arrFreeQty.Add("");
+							arrBillQty.Add(Request.Form[Qty[p].ID].ToString());
+
+                            arrProdRate.Add(Request.Form[Rate[p].ID].ToString());
+
+                            arrProdAmount.Add(Request.Form[Amount[p].ID].ToString());
+
+                            arrFreeQty.Add("");
 						}
 						else
 						{
@@ -4028,8 +4133,9 @@ namespace Servosms.Module.Inventory
 							arrBillQty.Add("");
 							arrProdRate.Add("");
 							arrProdAmount.Add("");
-							arrFreeQty.Add(Qty[p].Text);
-						}
+							arrFreeQty.Add(Request.Form[Qty[p].ID].ToString());
+
+                        }
 					}
 					SqlDtr.Close();
 				}
@@ -4072,9 +4178,10 @@ namespace Servosms.Module.Inventory
 				addr=addr.ToUpper();
 				SqlDataReader rdr=null;
 				if(lblInvoiceNo.Visible==true)
-					sw.WriteLine(info2,"",DropVendorID.SelectedItem.Text.ToUpper(),"",lblInvoiceNo.Text);
+					sw.WriteLine(info2,"",DropVendorID.SelectedItem.Text.ToUpper(),"", Request.Form["lblInvoiceNo"].ToString());
 				else
-				{
+
+                {
 					//dbobj.SelectQuery("select invoice_no from purchase_master where vndr_invoice_no='"+DropInvoiceNo.SelectedItem.Text+"'",ref rdr);
 					dbobj.SelectQuery("select invoice_no from purchase_master where invoice_no='"+arrInvoiceNo[0]+"'",ref rdr);
 					if(rdr.Read())
@@ -4083,13 +4190,15 @@ namespace Servosms.Module.Inventory
 					}
 				}
 				if(addr!="")
-					sw.WriteLine(info2,"",GenUtil.TrimLength(addr,50),"",lblInvoiceDate.Text);
+					sw.WriteLine(info2,"",GenUtil.TrimLength(addr,50),"", Request.Form["lblInvoiceDate"].ToString());
 				else
-					sw.WriteLine(info2,"","","",lblInvoiceDate.Text);
-                sw.WriteLine(info2,"V_Inv_No/DT",txtVInnvoiceNo.Text+" / "+txtVInvoiceDate.Text,"",InvoiceDate[1]);
+
+                    sw.WriteLine(info2,"","","", Request.Form["lblInvoiceDate"].ToString());
+                sw.WriteLine(info2,"V_Inv_No/DT", Request.Form["txtVInnvoiceNo"].ToString()+" / "+ Request.Form["txtVInvoiceDate"].ToString(),"",InvoiceDate[1]);
 				sw.WriteLine(info2,"Tin No",TinNo,"","");
-				sw.WriteLine(info2,"","","",txtVehicleNo.Text);
-				sw.WriteLine("");
+				sw.WriteLine(info2,"","","", Request.Form["txtVehicleNo"].ToString());
+
+                sw.WriteLine("");
 				sw.WriteLine("");
 				sw.WriteLine(info3,"P-Code","  Batch No"," Grade/Package Name "," B-Qty"," F-Qty"," R-Qty","  Ltr/Kg","  Rate Rs.","    Amount (Rs.)");
 				sw.WriteLine("");
@@ -4155,47 +4264,59 @@ namespace Servosms.Module.Inventory
 			}
 			while(FlagCount==true);
 			sw.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------");
-			sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ",txtGrandTotal.Text);
-			sw.WriteLine(info4,"","----------","----------","Entry Tax(.Rs)       : ",txtentry.Text);
-			if(txtfoc.Text!="")
+			sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ", Request.Form["txtGrandTotal"].ToString());
+
+            sw.WriteLine(info4,"","----------","----------","Entry Tax(.Rs)       : ", Request.Form["txtentry"].ToString());
+
+            if (Request.Form["txtfoc"].ToString()!="")
                 //sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","-"+txtfoc.Text);
-				sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),TotalQtyPackLtr.ToString(),"FOC Discount         : ","-"+txtfoc.Text);
+				sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),TotalQtyPackLtr.ToString(),"FOC Discount         : ","-"+ Request.Form["txtfoc"].ToString());
 			else
-				//sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","0");
-				sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),TotalQtyPackLtr.ToString(),"FOC Discount         : ","0");
+                //sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","0");
+                sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),TotalQtyPackLtr.ToString(),"FOC Discount         : ","0");
 			/*if(txttradedisamt.Text!="")
                 sw.WriteLine(info4,"","","","Trade Dis("+txttradedis.Text+")      : ","-"+txttradedisamt.Text);
 			else
 				sw.WriteLine(info4,"","","","Trade Dis("+txttradedis.Text+")      : ","0");*/
-			if(txttradedisamt.Text!="")
-				sw.WriteLine(info4,"","","","Trade Discount       : ","-"+txttradedisamt.Text);
+			if(Request.Form["txttradedisamt"].ToString()!="")
+				sw.WriteLine(info4,"","","","Trade Discount       : ","-"+ Request.Form["txttradedisamt"].ToString());
 			else
-				sw.WriteLine(info4,"","","","Trade Discount       : ","0");
-			if(txtTotalDisc.Text!="")
+
+                sw.WriteLine(info4,"","","","Trade Discount       : ","0");
+			if(Request.Form["txtTotalDisc"].ToString()!="")
 			{
 				if(DropDiscType.SelectedIndex==0)
-					sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+txtTotalDisc.Text);
+					sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+ Request.Form["txtTotalDisc"].ToString());
 				else
-					sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")       : ","-"+txtTotalDisc.Text);
-			}
+
+                    sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")       : ","-"+ Request.Form["txtTotalDisc"].ToString());
+
+            }
 			else
 				sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")       : ","0");
-			if(txtTotalCashDisc.Text!="")
+			if(Request.Form["txtTotalCashDisc"].ToString()!="")
 			{
 				if(DropCashDiscType.SelectedIndex==0)
-					sw.WriteLine(info4,"","----------","----------","Cash Dis("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+")    : ","-"+txtTotalCashDisc.Text);
+					sw.WriteLine(info4,"","----------","----------","Cash Dis("+ Request.Form["txtCashDisc"].ToString()+DropCashDiscType.SelectedItem.Text+")    : ","-"+ Request.Form["txtTotalCashDisc"].ToString());
 				else
-					sw.WriteLine(info4,"","----------","----------","Cash Dis("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+")      : ","-"+txtTotalCashDisc.Text);
-			}
+
+                    sw.WriteLine(info4,"","----------","----------","Cash Dis("+ Request.Form["txtCashDisc"].ToString()+DropCashDiscType.SelectedItem.Text+")      : ","-"+ Request.Form["txtTotalCashDisc"].ToString());
+
+            }
 			else
 				sw.WriteLine(info4,"","----------","----------","Cash Discount        : ","0");
-			sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txttotalqtyltr1.Text)+TotalfoeLtr),"EBird Dis("+txtebird.Text+")      : ","-"+txtebirdamt.Text);
-			sw.WriteLine(info4,"","","","Vat Amount(@"+txtVatRate.Value+")    : ",txtVAT.Text);
-			sw.WriteLine(info4,"","","","Net Amount           : ",txtNetAmount.Text);
-			sw.WriteLine(info5,"",GenUtil.ConvertNoToWord(txtNetAmount.Text));
-			sw.WriteLine();
-			sw.WriteLine(info7,"",txtRemark.Text);
-			sw.Close();
+			sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(Request.Form["txttotalqtyltr1"].ToString())+TotalfoeLtr),"EBird Dis("+ Request.Form["txtebird"].ToString()+")      : ","-"+ Request.Form["txtebirdamt"].ToString());
+
+            sw.WriteLine(info4,"","","","Vat Amount(@"+txtVatRate.Value+")    : ", Request.Form["txtVAT"].ToString());
+
+            sw.WriteLine(info4,"","","","Net Amount           : ",string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString());
+
+            sw.WriteLine(info5,"",GenUtil.ConvertNoToWord(string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString()));
+
+            sw.WriteLine();
+			sw.WriteLine(info7,"", Request.Form["txtRemark"].ToString());
+
+            sw.Close();
 		}
 
 //		public void getscheme()
@@ -4338,13 +4459,14 @@ namespace Servosms.Module.Inventory
 			int i=0;
 			//*************************
 			string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-			if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)))>0)
-				Invoice_Date=GenUtil.str2MMDDYYYY(lblInvoiceDate.Text);
-			//for(int k=0;k<LedgerID.Count;k++)
-			//{
-				rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,supplier s where Supp_Name=Ledger_Name and Supp_ID='"+Vendor_ID+"') and Entry_Date<='"+Invoice_Date+"' order by entry_date desc");
+			if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString())))>0)
+
+                Invoice_Date =GenUtil.str2MMDDYYYY(Request.Form["lblInvoiceDate"].ToString());
+            //for(int k=0;k<LedgerID.Count;k++)
+            //{
+                rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,supplier s where Supp_Name=Ledger_Name and Supp_ID='"+Vendor_ID+"') and Entry_Date<=convert(datetime,'"+Invoice_Date+"',103) order by entry_date desc");
 				if(rdr.Read())
-					str="select * from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,supplier s where Supp_Name=Ledger_Name and Supp_ID='"+Vendor_ID+"') and Entry_Date>='"+rdr.GetValue(0).ToString()+"' order by entry_date";
+					str="select * from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,supplier s where Supp_Name=Ledger_Name and Supp_ID='"+Vendor_ID+"') and Entry_Date>=convert(datetime,'"+rdr.GetValue(0).ToString()+"',103) order by entry_date";
 				else
 					str="select * from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,supplier s where Supp_Name=Ledger_Name and Supp_ID='"+Vendor_ID+"') order by entry_date";
 				rdr.Close();
@@ -4415,9 +4537,9 @@ namespace Servosms.Module.Inventory
 				}
 				rdr.Close();
 				//*************************
-				rdr = obj.GetRecordSet("select top 1 EntryDate from VendorLedgerTable where VendorID='"+Vendor_ID.ToString()+"' and EntryDate<='"+Invoice_Date+"' order by entrydate desc");
+				rdr = obj.GetRecordSet("select top 1 EntryDate from VendorLedgerTable where VendorID='"+Vendor_ID.ToString()+"' and EntryDate<=convert(datetime,'"+Invoice_Date+"',103) order by entrydate desc");
 				if(rdr.Read())
-					str="select * from VendorLedgerTable where VendorID='"+Vendor_ID+"' and EntryDate>='"+rdr.GetValue(0).ToString()+"' order by entrydate";
+					str="select * from VendorLedgerTable where VendorID='"+Vendor_ID+"' and EntryDate>=convert(datetime,'"+rdr.GetValue(0).ToString()+"',103) order by entrydate";
 				else
 					str="select * from VendorLedgerTable where VendorID='"+Vendor_ID+"' order by entrydate";
 				rdr.Close();
@@ -4506,7 +4628,7 @@ namespace Servosms.Module.Inventory
 				double TotalInvoiceAmount=0;
 				for(int i=0;i<ProdType.Length;i++)
 				{
-					if(ProdType[i].Value!="" && Qty[i].Text!="")
+					if(ProdType[i].Value!="" && Request.Form[Qty[i].ID].ToString()!="")
 					{
 						if(i==0)
 						{
@@ -4520,8 +4642,9 @@ namespace Servosms.Module.Inventory
 						}
 						string str=ProdType[i].Value;
 						string[] Name=str.Split(new char[] {':'},str.Length);
-						sw.WriteLine(Name[1]+"\t"+Name[2]+"\t"+Qty[i].Text+"\t"+Rate[i].Text+"\t"+Amount[i].Text);
-						double entrytax=0, stktDisc=0, bird=0, foc=0, etfoc=0, disc=0, cashdisc=0, perdisc=0, perdiscAdd=0;
+						sw.WriteLine(Name[1]+"\t"+Name[2]+"\t"+ Request.Form[Qty[i].ID].ToString()+"\t"+ Request.Form[Rate[i].ID].ToString()+"\t"+ Request.Form[Amount[i].ID].ToString());
+
+                        double entrytax=0, stktDisc=0, bird=0, foc=0, etfoc=0, disc=0, cashdisc=0, perdisc=0, perdiscAdd=0;
 						string[] stkt;
 
 						if(tempSchDis[i].Value!="")
@@ -4529,10 +4652,12 @@ namespace Servosms.Module.Inventory
 							string discname=tempSchDis[i].Value;
 							string[] arrstr = discname.Split(new char[] {':'},discname.Length);
 							if(arrstr[1]=="%")
-								perdisc=double.Parse(Amount[i].Text)*double.Parse(arrstr[0])/100;
+								perdisc=double.Parse(Request.Form[Amount[i].ID].ToString())*double.Parse(arrstr[0])/100;
 							else
-								perdisc=double.Parse(GenUtil.changeqtyltr(Name[2],int.Parse(Qty[i].Text)))*double.Parse(arrstr[0]);
-						}
+
+                                perdisc =double.Parse(GenUtil.changeqtyltr(Name[2],int.Parse(Request.Form[Qty[i].ID].ToString())))*double.Parse(arrstr[0]);
+
+                        }
 
 						/****Add by vikas 30.06.09******************/
 						if(tempSchAddDis[i].Value!="")
@@ -4540,18 +4665,22 @@ namespace Servosms.Module.Inventory
 							string discname_Add=tempSchAddDis[i].Value;
 							string[] arrstr = discname_Add.Split(new char[] {':'},discname_Add.Length);
 							if(arrstr[1]=="%")
-								perdiscAdd=double.Parse(Amount[i].Text)*double.Parse(arrstr[0])/100;
+								perdiscAdd=double.Parse(Request.Form[Amount[i].ID].ToString())*double.Parse(arrstr[0])/100;
 							else
-								perdiscAdd=double.Parse(GenUtil.changeqtyltr(Name[2],int.Parse(Qty[i].Text)))*double.Parse(arrstr[0]);
-						}
+
+                                perdiscAdd =double.Parse(GenUtil.changeqtyltr(Name[2],int.Parse(Request.Form[Qty[i].ID].ToString())))*double.Parse(arrstr[0]);
+
+                        }
 						/*****end*****************/
 
 						//Coment by vikas 23.5.2013 entrytax=(double.Parse(Amount[i].Text)-perdisc)*2/100;
-						entrytax=(double.Parse(Amount[i].Text))*2/100;
-						if(chkfoc[i].Checked)
+						entrytax=(double.Parse(Request.Form[Amount[i].ID].ToString()))*2/100;
+
+                        if (chkfoc[i].Checked)
 						{
-							foc=double.Parse(Amount[i].Text);
-							etfoc=foc*2/100;
+							foc=double.Parse(Request.Form[Amount[i].ID].ToString());
+
+                            etfoc =foc*2/100;
 						}
 						else
 						{
@@ -4567,20 +4696,21 @@ namespace Servosms.Module.Inventory
 									if(Tot_Ltr>=50)
 									{
 										/*******Add by vikas 1.11.2012*****************/
-										stktDisc=(double.Parse(Amount[i].Text))*double.Parse(stkt[0])/100;
-										/******end******************/
-									}
+										stktDisc=(double.Parse(Request.Form[Amount[i].ID].ToString()))*double.Parse(stkt[0])/100;
+                                        /******end******************/
+                                    }
 									else
 									{
 										/*************End by Vikas 29.12.2012*****************/
 
 										//coment by vikas 1.11.2012 stktDisc=double.Parse(Amount[i].Text)*double.Parse(stkt[0])/100;
 										/*******Add by vikas 1.11.2012*****************/
-										double Dealer_VAT=double.Parse(Amount[i].Text)+entrytax;
-										Dealer_VAT=Dealer_VAT*double.Parse(txtVatRate.Value.ToString())/100;
-										stktDisc=(double.Parse(Amount[i].Text)+entrytax+Dealer_VAT)*double.Parse(stkt[0])/100;
-										/******end******************/
-									}
+										double Dealer_VAT=double.Parse(Request.Form[Amount[i].ID].ToString())+entrytax;
+
+                                        Dealer_VAT =Dealer_VAT*double.Parse(txtVatRate.Value.ToString())/100;
+										stktDisc=(double.Parse(Request.Form[Amount[i].ID].ToString())+entrytax+Dealer_VAT)*double.Parse(stkt[0])/100;
+                                        /******end******************/
+                                    }
 								}
 								else
 								{
@@ -4590,8 +4720,9 @@ namespace Servosms.Module.Inventory
 									stktDisc=(double.Parse(Amount[i].Text)+entrytax+Dealer_VAT)*double.Parse(stkt[0])/100;
 									******end******************/
 									string[] qty_Ltr=Name[2].Split(new char[] {'X'},Name[2].Length);
-									double Tot_Ltr=double.Parse(qty_Ltr[0].ToString())*double.Parse(qty_Ltr[1])*Double.Parse(Qty[i].Text.ToString());
-									stktDisc=Tot_Ltr*double.Parse(stkt[0].ToString());
+									double Tot_Ltr=double.Parse(qty_Ltr[0].ToString())*double.Parse(qty_Ltr[1])*Double.Parse(Request.Form[Qty[i].ID].ToString());
+
+                                    stktDisc =Tot_Ltr*double.Parse(stkt[0].ToString());
 								}
 								/*coment by vikas 29.12.2012 if(txtebird.Text!="")
 								{
@@ -4599,10 +4730,11 @@ namespace Servosms.Module.Inventory
 								}*/
 							}
 						}
-						if(txtebird.Text!="")
+						if(Request.Form["txtebird"].ToString()!="")
 						{
-							bird=double.Parse(GenUtil.changeqtyltr(Name[2],int.Parse(Qty[i].Text)))*double.Parse(txtebird.Text);
-						}
+							bird=double.Parse(GenUtil.changeqtyltr(Name[2],int.Parse(Request.Form[Qty[i].ID].ToString())))*double.Parse(Request.Form["txtebird"].ToString());
+
+                        }
 						if(tempDiscount[i].Value!="")
 						{
 							disc=double.Parse(tempDiscount[i].Value);
@@ -4631,27 +4763,32 @@ namespace Servosms.Module.Inventory
 							else
 							{
 								string[] qty_Ltr=Name[2].Split(new char[] {'X'},Name[2].Length);
-								double Tot_Ltr=double.Parse(qty_Ltr[0].ToString())*double.Parse(qty_Ltr[1])*Double.Parse(Qty[i].Text.ToString());
-								fixdDisc=Tot_Ltr*double.Parse(stkt[0].ToString());
+								double Tot_Ltr=double.Parse(qty_Ltr[0].ToString())*double.Parse(qty_Ltr[1])*Double.Parse(Request.Form[Qty[i].ID].ToString());
+
+                                fixdDisc =Tot_Ltr*double.Parse(stkt[0].ToString());
 							}
 						}
-						if(txtCashDisc.Text!="")
+						if(Request.Form["txtCashDisc"].ToString()!="")
 						{
 							//03.07.09 cashdisc=double.Parse(Amount[i].Text)+entrytax-(stktDisc+foc+bird+etfoc+disc+perdisc);
 							//coment by vikas 1.11.2012 cashdisc=double.Parse(Amount[i].Text)+entrytax-(stktDisc+foc+bird+etfoc+disc+perdisc+perdiscAdd);
-							cashdisc=double.Parse(Amount[i].Text)+entrytax-(stktDisc+foc+bird+etfoc+disc+perdisc+perdiscAdd+ fixdDisc);
-							cashdisc=cashdisc*double.Parse(txtCashDisc.Text)/100;
-						}
+							cashdisc=double.Parse(Request.Form[Amount[i].ID].ToString())+entrytax-(stktDisc+foc+bird+etfoc+disc+perdisc+perdiscAdd+ fixdDisc);
+
+                            cashdisc =cashdisc*double.Parse(Request.Form["txtCashDisc"].ToString())/100;
+
+                        }
 
 						//03.07.09 double vat=double.Parse(Amount[i].Text)+entrytax-(stktDisc+foc+bird+disc+cashdisc+perdisc);
 						//coment by vikas 31.10.2012 double vat=double.Parse(Amount[i].Text)+entrytax-(stktDisc+foc+bird+disc+cashdisc+perdisc+perdiscAdd);
-						double vat=double.Parse(Amount[i].Text)+entrytax-(stktDisc+foc+bird+disc+cashdisc+perdisc+perdiscAdd+fixdDisc);
-						vat=vat*double.Parse(txtVatRate.Value)/100;
+						double vat=double.Parse(Request.Form[Amount[i].ID].ToString())+entrytax-(stktDisc+foc+bird+disc+cashdisc+perdisc+perdiscAdd+fixdDisc);
+
+                        vat =vat*double.Parse(txtVatRate.Value)/100;
 						//03.07.09 double total=double.Parse(Amount[i].Text)+entrytax+vat-(stktDisc+cashdisc+bird+foc+disc+perdisc);
 						//coment by vikas 31.10.2012 double total=double.Parse(Amount[i].Text)+entrytax+vat-(stktDisc+cashdisc+bird+foc+disc+perdisc+perdiscAdd);
-						double total=double.Parse(Amount[i].Text)+entrytax+vat-(stktDisc+cashdisc+bird+foc+disc+perdisc+perdiscAdd+fixdDisc);
+						double total=double.Parse(Request.Form[Amount[i].ID].ToString())+entrytax+vat-(stktDisc+cashdisc+bird+foc+disc+perdisc+perdiscAdd+fixdDisc);
 
-						sw.WriteLine("Entry Tax\t\t\t\t"+GenUtil.strNumericFormat(entrytax.ToString()));
+
+                        sw.WriteLine("Entry Tax\t\t\t\t"+GenUtil.strNumericFormat(entrytax.ToString()));
 						sw.WriteLine("Servo Stockist Discount\t\t\t\t"+"-"+GenUtil.strNumericFormat(stktDisc.ToString()));
 						sw.WriteLine("FOC Discount\t\t\t\t"+"-"+GenUtil.strNumericFormat(foc.ToString()));
 						sw.WriteLine("Add Discount (%)\t\t\t\t"+"-"+GenUtil.strNumericFormat(perdiscAdd.ToString()));

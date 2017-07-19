@@ -90,7 +90,9 @@ namespace Servosms.Module.Reports
 					CreateLogFiles.ErrorLog("Form:SSRIncentiveSheet.aspx,Method:page_load"+ "  EXCEPTION "+ex.Message+"  userid  "+uid);
 				}
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+        }
 
 		public void GetSSRInc()
 		{
@@ -142,7 +144,7 @@ namespace Servosms.Module.Reports
 		public string GetReceipt(string Emp_ID)
 		{
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select sum(creditamount) from customerledgertable where custid in(select cust_id from customer where ssr='"+Emp_ID+"') and particular like 'Payment Received%' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(creditamount) from customerledgertable where custid in(select cust_id from customer where ssr='"+Emp_ID+"') and particular like 'Payment Received%' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")
@@ -184,7 +186,7 @@ namespace Servosms.Module.Reports
 		{
 			double bounce=0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select sum(DebitAmount) from customerledgertable where custid in(select cust_id from customer where ssr='"+Emp_ID+"') and particular like'voucher(5%' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(DebitAmount) from customerledgertable where custid in(select cust_id from customer where ssr='"+Emp_ID+"') and particular like'voucher(5%' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")
@@ -205,7 +207,7 @@ namespace Servosms.Module.Reports
 		{
 			double cd =0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select sum(credit_amount) from Accountsledgertable where Ledger_id in(select Ledger_id from ledger_master,customer where ledger_name=cust_name and ssr='"+Emp_ID+"') and particulars like 'Receipt_cd%' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(credit_amount) from Accountsledgertable where Ledger_id in(select Ledger_id from ledger_master,customer where ledger_name=cust_name and ssr='"+Emp_ID+"') and particulars like 'Receipt_cd%' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")
@@ -224,8 +226,8 @@ namespace Servosms.Module.Reports
 		{
 			double sd =0;
 			InventoryClass obj = new InventoryClass();
-			//SqlDataReader rdr = obj.GetRecordSet("select sum(credit_amount) from Accountsledgertable where Ledger_id in(select Ledger_id from ledger_master,customer where ledger_name=cust_name and ssr='"+Emp_ID+"') and particulars like 'Receipt_sd%' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
-			SqlDataReader rdr = obj.GetRecordSet("select sum(credit_amount) from Accountsledgertable where Ledger_id in(select Ledger_id from ledger_master,customer where ledger_name=cust_name and ssr='"+Emp_ID+"') and (particulars like 'Receipt_sd%' or particulars like 'Receipt_fd%' or particulars like 'Receipt_dd%') and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+			//SqlDataReader rdr = obj.GetRecordSet("select sum(credit_amount) from Accountsledgertable where Ledger_id in(select Ledger_id from ledger_master,customer where ledger_name=cust_name and ssr='"+Emp_ID+"') and particulars like 'Receipt_sd%' and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(credit_amount) from Accountsledgertable where Ledger_id in(select Ledger_id from ledger_master,customer where ledger_name=cust_name and ssr='"+Emp_ID+"') and (particulars like 'Receipt_sd%' or particulars like 'Receipt_fd%' or particulars like 'Receipt_dd%') and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(entry_date as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")
@@ -244,7 +246,7 @@ namespace Servosms.Module.Reports
 		{
 			double cn=0;
 			InventoryClass obj = new InventoryClass();
-			SqlDataReader rdr = obj.GetRecordSet("select sum(creditamount) from customerledgertable where custid in(select cust_id from customer where ssr='"+Emp_ID+"') and particular like 'voucher(3%' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+			SqlDataReader rdr = obj.GetRecordSet("select sum(creditamount) from customerledgertable where custid in(select cust_id from customer where ssr='"+Emp_ID+"') and particular like 'voucher(3%' and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(cast(entrydate as datetime) as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103)");
 			if(rdr.Read())
 			{
 				if(rdr.GetValue(0).ToString()!="")

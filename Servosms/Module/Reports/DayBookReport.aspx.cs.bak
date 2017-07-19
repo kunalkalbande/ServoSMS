@@ -135,7 +135,7 @@ namespace Servosms.Module.Reports
 			msg="";
 			if(chkReceipt.Checked==true || chkPayment.Checked==true || chkContra.Checked==true || chkJournel.Checked==true || chkCN.Checked==true || chkDN.Checked==true || chkCS.Checked==true || chkVan.Checked==true || chkCredit.Checked==true || chkOtherPer.Checked==true)
 			{
-				sql="select * from AccountsLedgerTable alt,Ledger_Master lm where lm.ledger_id!=(select ledger_id from Ledger_Master where sub_grp_id=118) and cast(floor(cast(Entry_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Entry_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103) and (";
+				sql="select * from AccountsLedgerTable alt,Ledger_Master lm where lm.ledger_id!=(select ledger_id from Ledger_Master where sub_grp_id=118) and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"' and (";
 				if(chkReceipt.Checked)
 				{
 					if(Flag==0)
@@ -194,10 +194,10 @@ namespace Servosms.Module.Reports
 				{
 					if(Flag==0)
 						//sql+=" Particulars in (select 'Sales Invoice ('+cast(Invoice_No as varchar)+')' from Sales_Master where sales_type='Credit' and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ ToMMddYYYY(txtDateTo.Text) +"')";
-						sql+=" Particulars in (select 'Sales Invoice ('+cast(Invoice_No as varchar)+')' from Sales_Master where sales_type='Credit' and cast(floor(cast(Invoice_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Invoice_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))";
+						sql+=" Particulars in (select 'Sales Invoice ('+cast(Invoice_No as varchar)+')' from Sales_Master where sales_type='Credit' and cast(floor(cast(Invoice_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Invoice_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"')";
 					else
 						//sql+=" or Particulars in (select 'Sales Invoice ('+cast(Invoice_No as varchar)+')' from Sales_Master where sales_type='Credit'  and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ ToMMddYYYY(txtDateTo.Text) +"')";
-						sql+=" or Particulars in (select 'Sales Invoice ('+cast(Invoice_No as varchar)+')' from Sales_Master where sales_type='Credit'  and cast(floor(cast(Invoice_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Invoice_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))";
+						sql+=" or Particulars in (select 'Sales Invoice ('+cast(Invoice_No as varchar)+')' from Sales_Master where sales_type='Credit'  and cast(floor(cast(Invoice_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Invoice_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"')";
 					Flag=1;
 					msg+="SWS, ";
 				}
@@ -205,10 +205,10 @@ namespace Servosms.Module.Reports
 				{
 					if(Flag==0)
 						//sql+=" Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Cash' and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ ToMMddYYYY(txtDateTo.Text) +"')";
-						sql+=" Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Cash' and cast(floor(cast(Invoice_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Invoice_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))";
+						sql+=" Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Cash' and cast(floor(cast(Invoice_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Invoice_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"')";
 					else
 						//sql+=" or Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Cash' and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ ToMMddYYYY(txtDateTo.Text) +"')";
-						sql+=" or Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Cash' and cast(floor(cast(Invoice_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Invoice_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))";
+						sql+=" or Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Cash' and cast(floor(cast(Invoice_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Invoice_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"')";
 					Flag=1;
 					msg+="CS, ";
 				}
@@ -216,10 +216,10 @@ namespace Servosms.Module.Reports
 				{
 					if(Flag==0)
 						//sql+=" Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Van' and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ ToMMddYYYY(txtDateTo.Text) +"')";
-						sql+=" Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Van' and cast(floor(cast(Invoice_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Invoice_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))";
+						sql+=" Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Van' and cast(floor(cast(Invoice_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Invoice_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"')";
 					else
 						//sql+=" or Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Van' and cast(floor(cast(Entry_Date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Entry_Date as float)) as datetime)<='"+ ToMMddYYYY(txtDateTo.Text) +"')";
-						sql+=" or Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Van' and cast(floor(cast(Invoice_Date as float)) as datetime)>=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()) + "',103) and cast(floor(cast(Invoice_Date as float)) as datetime)<=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()) + "',103))";
+						sql+=" or Particulars in (select 'Sales Invoice ('+cast(invoice_no as varchar)+')' from sales_master where sales_type='Van' and cast(floor(cast(Invoice_Date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(Invoice_Date as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(txtDateTo.Text) +"')";
 					Flag=1;
 					msg+="FCS, ";
 				}
