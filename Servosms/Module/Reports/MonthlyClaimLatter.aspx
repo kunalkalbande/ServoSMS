@@ -265,7 +265,7 @@
 								<tr>
 									<td class="font1" colSpan="7"><b>Total Claim Amount</b></td>
 									<!--td class="font2" colSpan="2"><font size=2><b><%=GenUtil.strNumericFormat((double.Parse(Claim_Amt)+double.Parse(OEM_Amt)+double.Parse(Fleet_Amt)).ToString())%></b></font></td-->
-									<td class="font2" colSpan="2"><asp:textbox id="txtTotal" Runat="server" Width="100%" BorderStyle="Groove" Font-Bold="True"></asp:textbox></td>
+									<td class="font2" colSpan="2"><asp:textbox id="txtTotal" Runat="server" Width="100%" BorderStyle="Groove" ></asp:textbox></td>
 								</tr>
 								<tr>
 									<td align="center" colSpan="9"><font size="3"><b><asp:linkbutton id="btnLinkSave" Runat="server" onclick="btnLinkSave_Click">Save</asp:linkbutton>&nbsp;&nbsp;&nbsp;&nbsp;<asp:linkbutton id="btnLinkPrint" Runat="server">Print</asp:linkbutton></b></font></td>
