@@ -415,13 +415,13 @@ namespace Servosms.Module.Inventory
 				obj.Vehicle_No=lblVehicleNo.Value  ;
 				obj.Vendor_Invoice_No =lblVendInvoiceNo.Value ;
 				obj.Vendor_Invoice_Date=GenUtil.str2DDMMYYYY(lblVendInvoiceDate.Value) ;
-				obj.Grand_Total =txtGrandTotal.Text ;
+				obj.Grand_Total = Request.Form["txtGrandTotal"];
 				if(txtDisc.Text=="")
 					obj.Discount ="0.0";
 				else
 					obj.Discount =txtDisc.Text;
 				obj.Discount_Type=txtDiscType.Text ;
-				obj.Net_Amount =txtNetAmount.Text ;
+				obj.Net_Amount = Request.Form["txtNetAmount"];
 				obj.Promo_Scheme=txtPromoScheme.Text;
 				obj.Remerk =txtRemark.Text;
 				obj.Entry_By =lblEntryBy.Text ;
@@ -432,7 +432,7 @@ namespace Servosms.Module.Inventory
 				else
 					obj.Cash_Discount  = txtCashDisc.Text.Trim() ;
 				obj.Cash_Disc_Type =txtDiscType.Text ;
-				obj.VAT_Amount = txtVAT.Text.Trim(); 
+				obj.VAT_Amount = Request.Form["txtVAT"]; 
 				obj.Invoice_No = dropInvoiceNo.SelectedItem.Text; 
 				obj.Pre_Amount = tmpNetAmount.Value; 
 				/////////////******Save*****************
@@ -495,7 +495,7 @@ namespace Servosms.Module.Inventory
 						continue;
 					string[] arrName=ProdName[j].Value.Split(new char[] {':'},ProdName[j].Value.Length);
 					//Save(ProdName[j].Value,PackType[j].Value,Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString ());
-					Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString ());
+					Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (), Request.Form[Amount[j].ID].ToString());
 					UpdateBatchNo(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text);
 				}
 		
@@ -971,7 +971,7 @@ namespace Servosms.Module.Inventory
 						//*****************************
 						cl_sk-=CountQty;
 						Con.Open();
-						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Purchase Return','"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+CountQty.ToString()+"',"+cl_sk.ToString()+")",Con);
+						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Purchase Return','"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+CountQty.ToString()+"',"+cl_sk.ToString()+")",Con);
 						cmd.ExecuteNonQuery();
 						cmd.Dispose();
 						Con.Close();
@@ -994,7 +994,7 @@ namespace Servosms.Module.Inventory
 						//*****************************
 						cl_sk-=double.Parse(rdr["Qty"].ToString());
 						Con.Open();
-						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Purchase Return','"+System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["Qty"].ToString()+"',"+cl_sk.ToString()+")",Con);
+						cmd = new SqlCommand("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Purchase Return','"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())+"','"+rdr["Prod_ID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["Qty"].ToString()+"',"+cl_sk.ToString()+")",Con);
 						cmd.ExecuteNonQuery();
 						cmd.Dispose();
 						Con.Close();
