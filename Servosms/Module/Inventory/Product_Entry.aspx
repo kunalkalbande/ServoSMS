@@ -244,17 +244,17 @@
 						<TABLE cellSpacing="0" cellPadding="0">
 							<TR>
 								<TD>Product</TD>
-								<TD colSpan="3"><asp:textbox id="lblProdID" runat="server" Width="76px" BorderStyle="None" ForeColor="Blue" CssClass="dropdownlist"
-										ReadOnly="True"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" ForeColor="White" BorderColor="#CE4848"
-										BackColor="#CE4848" Text="..." ToolTip="Click For Edit" Height="20px" CausesValidation="False" onclick="btnEdit_Click"></asp:button>
-									<asp:dropdownlist id="dropProdID" runat="server" Width="400px" Visible="False" CssClass="dropdownlist"
+								<TD colSpan="3"><asp:textbox id="lblProdID" runat="server" Width="120px" BorderStyle="Groove"  CssClass="dropdownlist"
+										ReadOnly="True"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" 
+										 Text="..." ToolTip="Click For Edit" Height="20px" CausesValidation="False" onclick="btnEdit_Click"></asp:button>
+									<asp:dropdownlist id="dropProdID" runat="server" Width="230px" Visible="False" CssClass="dropdownlist"
 										AutoPostBack="True" onselectedindexchanged="dropProdID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist>&nbsp;<asp:label id="lb" runat="server" ForeColor="Red" CssClass="dropdownlist"></asp:label></TD>
 							</TR>
 							<TR>
 								<TD>Product Name <FONT color="red">*</FONT></TD>
-								<TD><asp:textbox id="txtProdName" runat="server" Width="300px" BorderStyle="Groove" CssClass="dropdownlist"
+								<TD><asp:textbox id="txtProdName" runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist"
 										MaxLength="49"></asp:textbox></TD>
 								<TD>&nbsp; Product Code&nbsp;<asp:requiredfieldvalidator id="rfv1" Runat="server" ControlToValidate="txtProdCode" ErrorMessage="Please Enter the Product Code">*</asp:requiredfieldvalidator></TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtProdCode" runat="server"
@@ -262,7 +262,7 @@
 							</TR>
 							<TR>
 								<TD>Category&nbsp;Type <FONT color="red">*</FONT></TD>
-								<TD><asp:dropdownlist id="DropCategory" Width="300px" CssClass="dropdownlist" AutoPostBack="false" Runat="server"
+								<TD><asp:dropdownlist id="DropCategory" Width="100px" CssClass="dropdownlist" AutoPostBack="false" Runat="server"
 										OnChange="check(this);" onselectedindexchanged="DropCategory_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
@@ -272,25 +272,25 @@
 							</TR>
 							<TR>
 								<TD>Package Type <FONT color="red">*</FONT></TD>
-								<TD><asp:dropdownlist id="DropPackage" runat="server" Width="160px" CssClass="dropdownlist" onChange="check2(this);" onselectedindexchanged="DropPackage_SelectedIndexChanged">
+								<TD><asp:dropdownlist id="DropPackage" runat="server" Width="75px" CssClass="dropdownlist" onChange="check2(this);" onselectedindexchanged="DropPackage_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Loose Oil">Loose Oil</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD><FONT color="#0000ff">&nbsp; (if another, Specify)</FONT></TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPack1" onblur="CalcTotalQty()"
-										runat="server" Width="48px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5" ontextchanged="txtPack1_TextChanged"></asp:textbox>&nbsp; 
+										runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5" ontextchanged="txtPack1_TextChanged"></asp:textbox>&nbsp; 
 									X&nbsp;&nbsp;
 									<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPack2" onblur="CalcTotalQty()"
-										runat="server" Width="50px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox></TD>
+										runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Opening Stock
 								</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtOp_Stock" onblur="CalcQty()"
-										runat="server" Width="78px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="8"></asp:textbox><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtBox" runat="server"
+										runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="8"></asp:textbox><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtBox" runat="server"
 										Width="78px" BorderStyle="Groove" CssClass="dropdownlist" ontextchanged="txtBox_TextChanged"></asp:textbox></TD>
 								<TD>&nbsp; Package&nbsp;Qty&nbsp; <FONT color="red">*</FONT></TD>
-								<TD><asp:textbox id="txtTotalQty" runat="server" Width="58px" BorderStyle="Groove" CssClass="dropdownlist"
+								<TD><asp:textbox id="txtTotalQty" runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist"
 										ReadOnly="True"></asp:textbox><asp:dropdownlist id="DropPackUnit" runat="server" Width="63px" CssClass="dropdownlist">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Kg.">Kg.</asp:ListItem>
@@ -301,7 +301,7 @@
 							</TR>
 							<TR>
 								<TD>Unit <FONT color="red">*</FONT></TD>
-								<TD><asp:dropdownlist id="DropUnit" runat="server" Width="160px" CssClass="dropdownlist" onChange="check1(this);" onselectedindexchanged="DropUnit_SelectedIndexChanged">
+								<TD><asp:dropdownlist id="DropUnit" runat="server" Width="75px" CssClass="dropdownlist" onChange="check1(this);" onselectedindexchanged="DropUnit_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Barrel">Barrel</asp:ListItem>
 										<asp:ListItem Value="Bucket">Bucket</asp:ListItem>
@@ -312,26 +312,26 @@
 										<asp:ListItem Value="Other">Other</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<TD><FONT color="#0000ff">&nbsp;<asp:label id="Label1" runat="server" Width="88px">(if another, Specify)</asp:label></FONT></TD>
-								<TD><asp:textbox id="txtunit" onblur="CalcTotalQty()" runat="server" Width="58px" BorderStyle="Groove"
+								<TD><asp:textbox id="txtunit" onblur="CalcTotalQty()" runat="server" Width="120px" BorderStyle="Groove"
 										CssClass="dropdownlist" MaxLength="15"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Store in <FONT color="red">*</FONT></TD>
-								<TD><asp:dropdownlist id="DropStorein" runat="server" Width="160px" CssClass="dropdownlist">
+								<TD><asp:dropdownlist id="DropStorein" runat="server" Width="60px" CssClass="dropdownlist">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Godown">Godown</asp:ListItem>
 										<asp:ListItem Value="Sales Room">Sales Room</asp:ListItem>
 									</asp:dropdownlist></TD>
 								<td>&nbsp; Minimum Lavel</td>
-								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtMinLabel" Width="58px"
+								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtMinLabel" Width="120px"
 										BorderStyle="Groove" CssClass="dropdownlist" MaxLength="8" Runat="server"></asp:textbox></td>
 							</TR>
 							<tr>
 								<td>ReOrder Lavel</td>
 								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtReOrderLabel"
-										Width="80" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="8" Runat="server"></asp:textbox></td>
+										Width="120px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="8" Runat="server"></asp:textbox></td>
 								<td>&nbsp; Max Lavel</td>
-								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtMaxLabel" Width="58px"
+								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="txtMaxLabel" Width="120px"
 										BorderStyle="Groove" CssClass="dropdownlist" MaxLength="8" Runat="server"></asp:textbox></td>
 							</tr>
 							<tr>
@@ -340,13 +340,13 @@
 										Text="Yes" Runat="server" GroupName="BatchNo"></asp:radiobutton>&nbsp;
 									<asp:radiobutton id="No" Text="No" Runat="server" GroupName="BatchNo"></asp:radiobutton></td>
 								<td>&nbsp; MRP</td>
-								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtMRP" Width="58px"
+								<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtMRP" Width="120px"
 										BorderStyle="Groove" CssClass="dropdownlist" MaxLength="9" Runat="server"></asp:textbox></td>
 							</tr>
 							<TR>
-								<TD align="right" colSpan="4"><asp:button id="btnSave" runat="server" Width="80px" 
+								<TD align="right" colSpan="4"><asp:button id="btnSave" runat="server" Width="60px" 
 										 Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;
-									<asp:button onmouseup="checkDelRec()" id="btnDelete" runat="server" Width="80px" 
+									<asp:button onmouseup="checkDelRec()" id="btnDelete" runat="server" Width="60px" 
 										 Text="Delete" onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
