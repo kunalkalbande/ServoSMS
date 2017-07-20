@@ -102,7 +102,7 @@
 							</TR>
 							<TR>
 								<TD align="left">&nbsp;&nbsp;&nbsp;&nbsp;Search By</TD>
-								<TD align="left"><asp:dropdownlist id="DropSearchBy" runat="server" Width="110px" CssClass="dropdownlist" onchange="CheckSearchOption(this)" onselectedindexchanged="DropSearchBy_SelectedIndexChanged">
+								<TD align="left"><asp:dropdownlist id="DropSearchBy" runat="server" Width="140px" CssClass="dropdownlist" onchange="CheckSearchOption(this)" onselectedindexchanged="DropSearchBy_SelectedIndexChanged">
 										<asp:ListItem Value="All">All</asp:ListItem>
 										<asp:ListItem Value="Customer Group">Customer Group</asp:ListItem>
 										<asp:ListItem Value="Customer Sub Group">Customer Sub Group</asp:ListItem>
