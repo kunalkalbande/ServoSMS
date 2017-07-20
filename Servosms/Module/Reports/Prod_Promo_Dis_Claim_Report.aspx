@@ -54,22 +54,21 @@
 								<tr>
 									<td align="center" colSpan="7">
 										<table borderColor="#deba84" cellSpacing="0" align="center" border="1">
-											<%
-									Qty_Tot=0;
-									Qty_Tot_ltr=0;
-									string	sql="";
-									int flage1=0;
-									if(DropSchemName.SelectedIndex==0)
-										//Coment by Vikas 01.08.09 sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where datefrom >='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and dateto<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"') order by p.prod_name,p.pack_type";
-										sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where datefrom <='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and prodid in(select prodid from Prod_Promo_Grade_Entry where dateto >='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"')) order by p.prod_name,p.pack_type";
+											<%             Qty_Tot=0;
+                                                Qty_Tot_ltr=0;
+                                                string  sql="";
+                                                int flage1=0;
+                                                if(DropSchemName.SelectedIndex==0)
+                                                    //Coment by Vikas 01.08.09 sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where datefrom >='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and dateto<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"') order by p.prod_name,p.pack_type";
+                                                    sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"])+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"])+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where datefrom <='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"])+"' and prodid in(select prodid from Prod_Promo_Grade_Entry where dateto >='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"])+"')) order by p.prod_name,p.pack_type";
 									else
 										//Coment by Vikas 01.08.09 sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where schname='"+DropSchemName.SelectedItem.Value.ToString()+"' and datefrom >='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and dateto<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"') order by p.prod_name,p.pack_type";
-										sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where schname='"+DropSchemName.SelectedItem.Value.ToString()+"' and datefrom <='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and prodid in(select prodid from Prod_Promo_Grade_Entry where schname='"+DropSchemName.SelectedItem.Value.ToString()+"' and dateto >='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"')) order by p.prod_name,p.pack_type";
-										
-									InventoryClass obj = new InventoryClass();
-									SqlDataReader rdr = obj.GetRecordSet(sql);
-									if(rdr.HasRows)
-									{
+										sql="select sp.supp_name,pm.vndr_invoice_no,pm.vndr_invoice_date,p.prod_name+':'+p.pack_type,pd.qty from supplier sp,purchase_master pm,purchase_details pd,products p where pm.invoice_no=pd.invoice_no and sp.supp_id=pm.vendor_id and p.prod_id=pd.prod_id  and pm.vndr_invoice_date>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"])+"' and pm.vndr_invoice_date<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"])+"' and pd.prod_id in (select prodid from Prod_Promo_Grade_Entry where schname='"+DropSchemName.SelectedItem.Value.ToString()+"' and datefrom <='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"])+"' and prodid in(select prodid from Prod_Promo_Grade_Entry where schname='"+DropSchemName.SelectedItem.Value.ToString()+"' and dateto >='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"])+"')) order by p.prod_name,p.pack_type";
+
+                                                    InventoryClass obj = new InventoryClass();
+                                                    SqlDataReader rdr = obj.GetRecordSet(sql);
+                                                    if(rdr.HasRows)
+                                                    {
 										%>
 										<tr bgColor="#ce4848">
 												<th>
