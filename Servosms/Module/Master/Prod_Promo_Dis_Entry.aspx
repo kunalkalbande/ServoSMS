@@ -52,46 +52,45 @@
 									<TD align="left" colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scheme 
 										Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<asp:textbox id="txtschname" runat="server" Width="204px" CssClass="dropdownlist" BorderStyle="Groove"></asp:textbox></TD>
+										<asp:textbox id="txtschname" runat="server" Width="110px" CssClass="dropdownlist" BorderStyle="Groove"></asp:textbox></TD>
 								<tr>
 									<td vAlign="top" colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 										Date From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<asp:textbox id="txtDateFrom" runat="server" Width="80px" CssClass="dropdownlist" BorderStyle="Groove"
+										<asp:textbox id="txtDateFrom" runat="server" Width="110px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date 
 										To&nbsp;&nbsp;&nbsp;
-										<asp:textbox id="txtDateTo" runat="server" Width="80px" CssClass="dropdownlist" BorderStyle="Groove"
+										<asp:textbox id="txtDateTo" runat="server" Width="110px" CssClass="dropdownlist" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scheme 
 										Discount&nbsp;<asp:requiredfieldvalidator id="rfv2" ErrorMessage="Please Enter The Scheme Discount" ControlToValidate="txtSchDiscount"
 											Runat="server">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtSchDiscount"
-											Width="50px" Runat="server" CssClass="dropdownlist" BorderStyle="Groove" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropSchDiscount" Runat="server" CssClass="dropdownlist">
+											Width="110px" Runat="server" CssClass="dropdownlist" BorderStyle="Groove" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropSchDiscount" Runat="server" CssClass="dropdownlist">
 											<asp:ListItem Value="Rs">Rs</asp:ListItem>
 											<asp:ListItem Value="%">%</asp:ListItem>
 										</asp:dropdownlist></td>
 								<TR>
-								<TR>
-									<TD align="center"><FONT color="#000066">Products Available</FONT></TD>
+									<TD align="center"><FONT color="#000066">Products Availableucts Available</FONT></TD>
 									<TD></TD>
 									<TD align="center"><FONT color="#000066">Products Assigned <FONT color="red">*</FONT></FONT></TD>
 								</TR>
 								<TR>
-									<TD><asp:listbox id="ListEmpAvailable" runat="server" Width="350px" Font-Size="8pt" SelectionMode="Multiple"
+									<TD><asp:listbox id="ListEmpAvailable" runat="server" Width="350px" SelectionMode="Multiple"
 											Height="160px"></asp:listbox></TD>
 									<TD>
-										<P><asp:button id="btnIn" runat="server" Width="50px" Text=">" CausesValidation="False" 
+										<P><asp:button id="btnIn" runat="server" Width="35px" Text=">" CausesValidation="False" 
 												 Font-Bold="True" onclick="btnIn_Click"></asp:button></P>
-										<P dir="ltr" align="justify"><asp:button id="btnout" runat="server" Width="50px" Text="<" CausesValidation="False" 
+										<P dir="ltr" align="justify"><asp:button id="btnout" runat="server" Width="35px" Text="<" CausesValidation="False" 
 												 Font-Bold="True" onclick="btnout_Click"></asp:button></P>
-										<P><asp:button id="btn1" runat="server" Width="50px" Text=">>" CausesValidation="False" 
+										<P><asp:button id="btn1" runat="server" Width="35px" Text=">>" CausesValidation="False" 
 												 Height="25px" Font-Bold="True" onclick="btn1_Click"></asp:button></P>
 									</TD>
-									<TD><asp:listbox id="ListEmpAssigned" runat="server" Width="350px" CssClass="Dropdownlist" SelectionMode="Multiple"
+									<TD align="right"><asp:listbox id="ListEmpAssigned" runat="server" Width="350px" CssClass="Dropdownlist" SelectionMode="Multiple"
 											Height="160px"></asp:listbox></TD>
 								</TR>
 								<TR>
-									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="75px" Text="Submit" 
-											 onclick="btnSubmit_Click"></asp:button><asp:button id="btnupdate" runat="server" Width="75px" Text="Update" 
+									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="60px" Text="Submit" 
+											 onclick="btnSubmit_Click"></asp:button><asp:button id="btnupdate" runat="server" Width="60px" Text="Update" 
 											 onclick="btnupdate_Click"></asp:button></TD>
 								</TR>
 								<TR>

@@ -287,7 +287,7 @@ namespace Servosms.Module.Reports
 						double tot_temp=0;
 						string Cust_ID=rdr["ledger_id"].ToString();
 											
-						rdr1=obj1.GetRecordSet("select sum(debit_Amount) from accountsledgertable where ledger_id="+Cust_ID+" and cast(floor(cast(entry_date as float)) as datetime)>= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and  cast(floor(cast(entry_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+						rdr1=obj1.GetRecordSet("select sum(debit_Amount) from accountsledgertable where ledger_id="+Cust_ID+" and cast(floor(cast(entry_date as float)) as datetime)>= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"])+"' and  cast(floor(cast(entry_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"])+"'");
 						if(rdr1.Read())
 						{
 							if(rdr1.GetValue(0).ToString()!=null && rdr1.GetValue(0).ToString()!="")

@@ -80,8 +80,8 @@
 							</tr>
 							<TR>
 								<TD>Reason&nbsp;&nbsp;</TD>
-								<td><asp:textbox id="txtReason" runat="server" Width="105px" CssClass="FontStyle" BorderStyle="Groove"
-										Font-Names="Verdana" TextMode="MultiLine" Height="32px"></asp:textbox></td>
+								<td><asp:textbox id="txtReason" runat="server" Width="215px" CssClass="FontStyle" BorderStyle="Groove"
+										Font-Names="Verdana" TextMode="MultiLine" Height="42px"></asp:textbox></td>
 							</TR>
 							<TR>
 								<TD align="right" colSpan="2"><asp:button id="btnApply" runat="server" Width="80px"

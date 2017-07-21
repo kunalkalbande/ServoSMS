@@ -75,9 +75,9 @@ namespace Servosms.Module.Reports
 				{
 					Response.Redirect("../../Sysitem/AccessDeny.aspx",false);
 				}
-				#endregion
-				txtDateFrom.Text=DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
-				Textbox1.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
+                #endregion
+                txtDateFrom.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
+                Textbox1.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
 				GetMultiValue();
 			}
 		}
@@ -248,8 +248,8 @@ namespace Servosms.Module.Reports
 				
 				if(dropsummry.SelectedIndex==0)
 				{
-					sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
-					//string sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text)+"'";
+					sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
+					//string sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"])+"'";
 
 					if(DropSearchBy.SelectedIndex!=0)
 					{
@@ -313,10 +313,10 @@ namespace Servosms.Module.Reports
 				}
 				else
 				{
-					//1.12.2012 sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,quant quant,quant*total_qty totqty,sno,prod_id from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
-					sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,quant quant,quant*total_qty totqty,sno,prod_id from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name not like '%FOC%'";
+					//1.12.2012 sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,quant quant,quant*total_qty totqty,sno,prod_id from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
+					sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,quant quant,quant*total_qty totqty,sno,prod_id from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name not like '%FOC%'";
 
-					//sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,quant quant,quant*total_qty totqty,sno,prod_id from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)+"' and cast(floor(cast(invoice_date as float)) as datetime)<='10/31/2012' and prod_name not like '%FOC%'";
+					//sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,quant quant,quant*total_qty totqty,sno,prod_id from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])+"' and cast(floor(cast(invoice_date as float)) as datetime)<='10/31/2012' and prod_name not like '%FOC%'";
 
 					if(DropSearchBy.SelectedIndex!=0)
 					{
@@ -363,9 +363,9 @@ namespace Servosms.Module.Reports
 								sql=sql+" and ssr=(select Emp_ID from Employee where Emp_Name='"+DropValue.Value+"')";
 						}
 
-						//1.12.2012 sql+=" and prod_id in (select Prodid from oilscheme where (cast(floor(cast(datefrom as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ ToMMddYYYY(Textbox1.Text)+"')) Order by invoice_no,sno,cust_name";
+						//1.12.2012 sql+=" and prod_id in (select Prodid from oilscheme where (cast(floor(cast(datefrom as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ ToMMddYYYY(Request.Form["Textbox1"])+"')) Order by invoice_no,sno,cust_name";
 					}
-					sql+=" and prod_id in (select Prodid from oilscheme where (schname ='Secondry(Free Scheme)' or schname ='Primary(Free Scheme)')  and (cast(floor(cast(datefrom as float)) as datetime)<='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(dateto as float)) as datetime)>='"+ ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ ToMMddYYYY(Textbox1.Text)+"')) Order by invoice_no,sno,cust_name";
+					sql+=" and prod_id in (select Prodid from oilscheme where (schname ='Secondry(Free Scheme)' or schname ='Primary(Free Scheme)')  and (cast(floor(cast(datefrom as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(dateto as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ ToMMddYYYY(Request.Form["Textbox1"])+"')) Order by invoice_no,sno,cust_name";
 
 					int i;
 					string invoice_no="";
@@ -395,7 +395,7 @@ namespace Servosms.Module.Reports
 						qty_Nos=0;
 						qty_Ltr=0;
 
-						//sql="select p.Prod_Name,p.Pack_Type,qty,(qty*total_qty) Ltr from oilscheme o,Sales_details sd,sales_master sm,products p where sd.invoice_no=sm.invoice_no and sd.prod_id=p.prod_id and sd.prod_id='"+prod_id+"' and sm.invoice_no='709"+invoice_no+"' and o.pack_type='combo' and o.prodid=sd.prod_id and p.mrp>0 and (cast(floor(cast(datefrom as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ ToMMddYYYY(Textbox1.Text)+"')";
+						//sql="select p.Prod_Name,p.Pack_Type,qty,(qty*total_qty) Ltr from oilscheme o,Sales_details sd,sales_master sm,products p where sd.invoice_no=sm.invoice_no and sd.prod_id=p.prod_id and sd.prod_id='"+prod_id+"' and sm.invoice_no='709"+invoice_no+"' and o.pack_type='combo' and o.prodid=sd.prod_id and p.mrp>0 and (cast(floor(cast(datefrom as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ ToMMddYYYY(Request.Form["Textbox1"])+"')";
 						//sdr_detail1=obj1.GetRecordSet(sql);
 						//while(sdr_detail1.Read())
 						//{
@@ -414,7 +414,7 @@ namespace Servosms.Module.Reports
 						//}
 						//sdr_detail1.Close();
 
-						/*sql="select p.Prod_Name,p.Pack_Type,qty,(qty*total_qty) Ltr from oilscheme o,Sales_details sd,sales_master sm,products p where sd.invoice_no=sm.invoice_no and sd.prod_id=p.prod_id and sd.prod_id='"+prod_id+"' and sm.invoice_no='709"+invoice_no+"' and o.pack_type='combo' and o.prodid=sd.prod_id and p.mrp>0 and (cast(floor(cast(datefrom as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ToMMddYYYY(Textbox1.Text)+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(txtDateFrom.Text)  +"' and '"+ ToMMddYYYY(Textbox1.Text)+"')";
+						/*sql="select p.Prod_Name,p.Pack_Type,qty,(qty*total_qty) Ltr from oilscheme o,Sales_details sd,sales_master sm,products p where sd.invoice_no=sm.invoice_no and sd.prod_id=p.prod_id and sd.prod_id='"+prod_id+"' and sm.invoice_no='709"+invoice_no+"' and o.pack_type='combo' and o.prodid=sd.prod_id and p.mrp>0 and (cast(floor(cast(datefrom as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ToMMddYYYY(Request.Form["Textbox1"])+"' or cast(floor(cast(dateto as float)) as datetime) between '"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and '"+ ToMMddYYYY(Request.Form["Textbox1"])+"')";
 						sdr_detail1=obj1.GetRecordSet(sql);
 						while(sdr_detail1.Read())
 						{
@@ -444,9 +444,9 @@ namespace Servosms.Module.Reports
 				DataView dv=new DataView(dtcustomer);*/
 				/***************Start Add by vikas sharma**************************************/
 
-				//string sql1 = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
+				//string sql1 = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
 				
-				/*Coment by vikas 25.10.09 string sql1 = "select cust_name,city,invoice_no,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
+				/*Coment by vikas 25.10.09 string sql1 = "select cust_name,city,invoice_no,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
 
 				if(DropSearchBy.SelectedIndex!=0)
 				{
@@ -501,14 +501,14 @@ namespace Servosms.Module.Reports
 				{
 					if(ChkFoc.Checked!=true)
 					{
-						string sql1 = " select cust_name,city,invoice_no,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' ";
+						string sql1 = " select cust_name,city,invoice_no,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' ";
 
 						if(DropSearchBy.SelectedIndex!=0)
 						{
 							if(DropSearchBy.SelectedIndex==1)
 							{
 								if(DropValue.Value!="All")
-									sql1=sql1+"  and cust_type like '"+DropValue.Value+"%' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%' and cust_type like '"+DropValue.Value+"%'";
+									sql1=sql1+"  and cust_type like '"+DropValue.Value+"%' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%' and cust_type like '"+DropValue.Value+"%'";
 							}
 							else if(DropSearchBy.SelectedIndex==2)
 							{
@@ -516,7 +516,7 @@ namespace Servosms.Module.Reports
 								{
 									string cust_name="";
 									cust_name=DropValue.Value.Substring(0,DropValue.Value.IndexOf(":"));
-									sql1=sql1+"  and cust_Name='"+cust_name.ToString()+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%' and cust_Name='"+cust_name.ToString()+"'";
+									sql1=sql1+"  and cust_Name='"+cust_name.ToString()+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%' and cust_Name='"+cust_name.ToString()+"'";
 								}
 							}
 							else if(DropSearchBy.SelectedIndex==3)
@@ -528,31 +528,31 @@ namespace Servosms.Module.Reports
 							{
 								if(DropValue.Value!="All")
 									//02.10.09 sql=sql+" and Category='"+DropValue.Value+"'";
-									sql1=sql1+" and Pack_Type='"+DropValue.Value+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%' and Pack_Type='"+DropValue.Value+"'";
+									sql1=sql1+" and Pack_Type='"+DropValue.Value+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%' and Pack_Type='"+DropValue.Value+"'";
 							}
 							else if(DropSearchBy.SelectedIndex==5)
 							{
 								if(DropValue.Value!="All")
-									sql1=sql1+" and Category='"+DropValue.Value+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%' and Category='"+DropValue.Value+"'";
+									sql1=sql1+" and Category='"+DropValue.Value+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%' and Category='"+DropValue.Value+"'";
 							}
 							else if(DropSearchBy.SelectedIndex==6)
 							{
 								if(DropValue.Value!="All")
 								{
 									string[] str = DropValue.Value.Split(new char[] {':'},DropValue.Value.Length);
-									sql1=sql1+" and Prod_Name='"+str[0]+"' and Pack_Type='"+str[1]+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%' and Prod_Name='"+str[0]+"' and Pack_Type='"+str[1]+"'";
+									sql1=sql1+" and Prod_Name='"+str[0]+"' and Pack_Type='"+str[1]+"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%' and Prod_Name='"+str[0]+"' and Pack_Type='"+str[1]+"'";
 								}
 							}
 							else if(DropSearchBy.SelectedIndex==7)
 							{
 								if(DropValue.Value!="All")
-									sql1=sql1+"  and ssr=(select Emp_ID from Employee where Emp_Name='"+DropValue.Value+"') and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%' and ssr=(select Emp_ID from Employee where Emp_Name='"+DropValue.Value+"')";
+									sql1=sql1+"  and ssr=(select Emp_ID from Employee where Emp_Name='"+DropValue.Value+"') and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%' and ssr=(select Emp_ID from Employee where Emp_Name='"+DropValue.Value+"')";
 							}
 
 							//}
 							//else
 							//{
-							//sql1 = "select cust_name,city,invoice_no,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
+							//sql1 = "select cust_name,city,invoice_no,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and invoice_no not in (select distinct invoice_no from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"'and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
 
 							/*21.11.2012 if(DropSearchBy.SelectedIndex!=0)
 							{
@@ -661,7 +661,8 @@ namespace Servosms.Module.Reports
 		
 		protected void btnShow_Click(object sender, System.EventArgs e)
 		{
-			if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
+         
+            if (DateTime.Compare(System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"])), System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"])))>0)
 			{
 				MessageBox.Show("Date From Should be less than Date To");
 			}
@@ -770,8 +771,8 @@ namespace Servosms.Module.Reports
 				sw.Write((char)15);
 
 				/*****************Start Coment by vikas 24.10.09 
-				//02.10.09 sql="select invoice_no,cust_name,city,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty,discount,net_amount from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"'";
-				sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
+				//02.10.09 sql="select invoice_no,cust_name,city,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty,discount,net_amount from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"'";
+				sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
 
 				if(DropSearchBy.SelectedIndex!=0)
 				{
@@ -831,7 +832,7 @@ namespace Servosms.Module.Reports
 				sw.WriteLine(GenUtil.GetCenterAddr("Tin No : "+addr[3],des.Length));
 				sw.WriteLine(des);
 				sw.WriteLine(GenUtil.GetCenterAddr("==========================================",des.Length));
-				sw.WriteLine(GenUtil.GetCenterAddr("FOC MAnagement Report From "+txtDateFrom.Text.ToString()+" To "+Textbox1.Text.ToString(),des.Length));
+				sw.WriteLine(GenUtil.GetCenterAddr("FOC MAnagement Report From "+ txtDateFrom.Text.ToString()+" To "+ Textbox1.Text.ToString(),des.Length));
 				sw.WriteLine(GenUtil.GetCenterAddr("==========================================",des.Length));
 				
 				/*Coment by vikas 23.10.09
@@ -959,8 +960,8 @@ namespace Servosms.Module.Reports
 			StreamWriter sw = new StreamWriter(path);
 			string sql="",strDate="";  
 			/*Coment by vikas 24.10.09
-			//sql="select invoice_no,cust_name,city,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty,discount,net_amount from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"'";
-			sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(txtDateFrom.Text)  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Textbox1.Text) +"' and prod_name like '%FOC%'";
+			//sql="select invoice_no,cust_name,city,invoice_date,sum(quant) quant,sum(quant*total_qty) totqty,discount,net_amount from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"'";
+			sql = "select cust_name,city,invoice_no,invoice_date,Prod_Name,Pack_Type,sum(quant) quant,sum(quant*total_qty) totqty from vw_salebook where cast(floor(cast(invoice_date as float)) as datetime)>='"+ ToMMddYYYY(Request.Form["txtDateFrom"])  +"' and cast(floor(cast(invoice_date as float)) as datetime)<='"+ ToMMddYYYY(Request.Form["Textbox1"]) +"' and prod_name like '%FOC%'";
 			if(DropSearchBy.SelectedIndex!=0)
 			{
 				if(DropSearchBy.SelectedIndex==1)
@@ -1005,8 +1006,8 @@ namespace Servosms.Module.Reports
 			sql=sql+" order by "+Cache["strorderby"];
 			rdr=obj.GetRecordSet(sql);*/
 
-			sw.WriteLine("From Date\t"+txtDateFrom.Text);
-			sw.WriteLine("To Date\t"+Textbox1.Text);
+			sw.WriteLine("From Date\t"+Request.Form["txtDateFrom"]);
+			sw.WriteLine("To Date\t"+Request.Form["Textbox1"]);
 			sw.WriteLine();
 			
 			
