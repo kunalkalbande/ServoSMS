@@ -99,23 +99,23 @@
 				</tr>
 				<tr>
 					<td valign="top" align="center" colSpan="9">
-						<table borderColor="#deba84" cellSpacing="0" cellPadding="0" border="0">
+						<table borderColor="#deba84" cellSpacing="0" cellPadding="6" border="0">
 							<tr>
-								<td width="7%">Date From</td>
+								<td >Date From</td>
 								<td><asp:textbox id="txtDateFrom" runat="server" ReadOnly="True" BorderStyle="Groove" CssClass="FontStyle"
-										Width="65px"></asp:textbox>&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
+										Width="60px"></asp:textbox>&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></td>
-								<td width="7%">Date To</td>
+								<td >Date To</td>
 								<td><asp:textbox id="txtDateTo" runat="server" ReadOnly="True" BorderStyle="Groove" CssClass="FontStyle"
-										Width="65px"></asp:textbox>&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
+										Width="60px"></asp:textbox>&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></td>
-								<td width="8%"><asp:DropDownList ID="droptype" CssClass="dropdownlist" Runat="server">
+								<td ><asp:DropDownList ID="droptype" CssClass="dropdownlist" Runat="server">
 										<asp:ListItem Value="Pending">Pending</asp:ListItem>
 										<asp:ListItem Value="Complete">Complete</asp:ListItem>
 										<asp:ListItem Value="All" Selected="True">All</asp:ListItem>
 									</asp:DropDownList></td>
-								<td width="7%">Search By</td>
-								<td><asp:dropdownlist id="DropSearchBy" CssClass="dropdownlist" Runat="server" AutoPostBack="False" onchange="CheckSearchOption(this);" onselectedindexchanged="DropSearchBy_SelectedIndexChanged">
+								<td align="center">Search By</td>
+								<td><asp:dropdownlist id="DropSearchBy" CssClass="dropdownlist" Runat="server" AutoPostBack="False" onchange="CheckSearchOption(this);" onselectedindexchanged="DropSearchBy_SelectedIndexChanged" Width="60px">
 										<asp:ListItem Value="Select">All</asp:ListItem>
 										<asp:ListItem Value="Customer Group">Group</asp:ListItem>
 										<asp:ListItem Value="Customer SubGroup">SubGroup</asp:ListItem>
@@ -127,7 +127,7 @@
 								<td>Value</td>
 								<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 										onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnView)"
-										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 125px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 100px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										readOnly type="text" name="temp"><br>
 									<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onmousemove="MouseMove(this)" onkeypress="Selectbyenter(this,event,document.Form1.DropValue,document.Form1.btnView)"
