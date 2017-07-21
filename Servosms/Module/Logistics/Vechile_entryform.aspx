@@ -35,6 +35,15 @@
 		if(document.getElementById("STM0_0__0___")!=null)
 			window.onload=change();
 		</script>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 349px;
+            }
+            .auto-style2 {
+                height: 26px;
+                width: 349px;
+            }
+        </style>
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form method="post" runat="server">
@@ -58,12 +67,12 @@
 										CssClass="fontstyle" onselectedindexchanged="DropVehicleID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist>
-									<asp:Button id="btnEdit1" runat="server" Width="24px" Text="..." ToolTip="Click here for edit"
+									<asp:Button id="btnEdit1" runat="server" Width="35px" Text="..." ToolTip="Click here for edit"
 										CausesValidation="False"  onclick="btnEdit1_Click"></asp:Button></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle's Type</TD>
-								<TD><asp:dropdownlist id="DropVechileType2" runat="server" Width="100px" CssClass="fontstyle" onselectedindexchanged="DropVechileType2_SelectedIndexChanged">
+								<TD class="auto-style1"><asp:dropdownlist id="DropVechileType2" runat="server" Width="100px" CssClass="fontstyle" onselectedindexchanged="DropVechileType2_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="2 Wheeler">2 Wheeler</asp:ListItem>
 										<asp:ListItem Value="3 Wheeler">3 Wheeler</asp:ListItem>
@@ -80,7 +89,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Name</TD>
-								<TD><asp:textbox id="txtVehiclenm" runat="server" Width="160px" MaxLength="49" BorderStyle="Groove"
+								<TD class="auto-style1"><asp:textbox id="txtVehiclenm" runat="server" Width="160px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;RTO Registration Validity&nbsp;</TD>
 								<TD><asp:textbox id="txtrtoregvalidity" ReadOnly="True" runat="server" Width="100px" MaxLength="12"
@@ -90,7 +99,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Model Name</TD>
-								<TD><asp:textbox id="txtmodelnm" runat="server" Width="160px" MaxLength="49" BorderStyle="Groove"
+								<TD class="auto-style1"><asp:textbox id="txtmodelnm" runat="server" Width="160px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;RTO Registration No. <FONT color="#ff0033" size="2">*</FONT></TD>
 								<TD><asp:textbox id="txtrtono" runat="server" Width="100px" MaxLength="20" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="You Must Enter R.T.O Registration No"
@@ -98,7 +107,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Manufact. Date</TD>
-								<TD><asp:textbox id="txtVehicleyear" runat="server" Width="160px" MaxLength="12" BorderStyle="Groove"
+								<TD class="auto-style1"><asp:textbox id="txtVehicleyear" runat="server" Width="160px" MaxLength="12" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Insurance No.</TD>
 								<TD><asp:textbox id="txtinsuranceno" runat="server" Width="100px" MaxLength="20" BorderStyle="Groove"
@@ -106,7 +115,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Meter Reading (K.M.)</TD>
-								<TD><asp:textbox id="txtVehiclemreading" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD class="auto-style1"><asp:textbox id="txtVehiclemreading" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator4" Runat="server" Display="Dynamic" ErrorMessage="Meter reading must be numeric."
 										ControlToValidate="txtVehiclemreading" Operator="DataTypeCheck" Type="Integer">*</asp:comparevalidator></TD>
 								<TD>&nbsp;Insurance Validity</TD>
@@ -116,7 +125,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Vehicle Route</TD>
-								<TD><asp:dropdownlist id="DropDownList1" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist></TD>
+								<TD class="auto-style1"><asp:dropdownlist id="DropDownList1" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<TD>&nbsp;Insurance Company Name</TD>
 								<TD><asp:textbox id="txtInsCompName" runat="server" Width="100px" MaxLength="49" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox><asp:comparevalidator id="Comparevalidator6" Runat="server" Display="Dynamic" ErrorMessage="Driver salary must be numeric."
@@ -124,7 +133,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Fuel Used ( Petrol/Deisel )</TD>
-								<TD><asp:dropdownlist id="DropFuelused" runat="server" Width="120px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
+								<TD class="auto-style1"><asp:dropdownlist id="DropFuelused" runat="server" Width="120px" CssClass="fontstyle" onselectedindexchanged="DropFuelused_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Petrol(MS)">Petrol(MS)</asp:ListItem>
 										<asp:ListItem Value="Deisel(HSD)">Deisel(HSD)</asp:ListItem>
@@ -146,7 +155,7 @@
 							</TR>
 							<TR>
 								<TD colSpan="1" rowSpan="1">&nbsp;Engine Oil</TD>
-								<TD><asp:dropdownlist id="DropEngineOil" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtEngineQty" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD class="auto-style1"><asp:dropdownlist id="DropEngineOil" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtEngineQty" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtEngineOilDate" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
@@ -158,7 +167,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Gear Oil</TD>
-								<TD><asp:dropdownlist id="Dropgear" runat="server" Width="250px" CssClass="fontstyle" onselectedindexchanged="Dropgear_SelectedIndexChanged"></asp:dropdownlist><asp:textbox id="txtgearinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD class="auto-style1"><asp:dropdownlist id="Dropgear" runat="server" Width="250px" CssClass="fontstyle" onselectedindexchanged="Dropgear_SelectedIndexChanged"></asp:dropdownlist><asp:textbox id="txtgearinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtgeardt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
@@ -170,7 +179,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Brake Oil</TD>
-								<TD><asp:dropdownlist id="Dropbreak" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtbearkinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD class="auto-style1"><asp:dropdownlist id="Dropbreak" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtbearkinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txtbreakdt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
@@ -182,7 +191,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Coolent</TD>
-								<TD><asp:dropdownlist id="Dropcoolent" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtcoolentinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD class="auto-style1"><asp:dropdownlist id="Dropcoolent" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtcoolentinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD vAlign="top">&nbsp;Date
 									<asp:textbox id="txtcoolentdt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
@@ -193,7 +202,7 @@
 							</TR>
 							<TR style="HEIGHT: 17px">
 								<TD>&nbsp;Grease</TD>
-								<TD height="26" style="HEIGHT: 26px"><asp:dropdownlist id="Dropgrease" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtgreaseinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD height="26" class="auto-style2"><asp:dropdownlist id="Dropgrease" runat="server" Width="250px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txtgreaseinword" runat="server" Width="160px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
 								</TD>
 								<TD>&nbsp;Date
@@ -205,7 +214,7 @@
 							</TR>
 							<TR>
 								<TD>&nbsp;Transmission Oil</TD>
-								<TD><asp:dropdownlist id="Droptransmission" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txttransinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
+								<TD class="auto-style1"><asp:dropdownlist id="Droptransmission" runat="server" Width="180px" CssClass="fontstyle"></asp:dropdownlist><asp:textbox id="txttransinword" runat="server" Width="110px" onkeypress="return GetOnlyNumbers(this, event, false,true);"
 										MaxLength="12" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD>&nbsp;Date
 									<asp:textbox id="txttransmissiondt" runat="server" Width="100px" ReadOnly="True" BorderStyle="Groove"
