@@ -101,11 +101,11 @@
 									type="select-one"></select></div>
 						</td>
 						<td>From</td>
-						<td><asp:textbox id="txtDateFrom" runat="server" Width="60px" CssClass="dropdownlist" BorderStyle="Groove"
+						<td><asp:textbox id="txtDateFrom" runat="server" Width="100px" CssClass="dropdownlist" BorderStyle="Groove"
 								ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 									align="absMiddle" border="0"></A></td>
 						<td>To</td>
-						<td><asp:textbox id="txtDateTo" runat="server" Width="60px" CssClass="dropdownlist" BorderStyle="Groove"
+						<td><asp:textbox id="txtDateTo" runat="server" Width="100px" CssClass="dropdownlist" BorderStyle="Groove"
 								ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 									align="absMiddle" border="0"></A></td>
 						<td><asp:button id="btnview1" Width="60" Runat="server" Text="View" 
