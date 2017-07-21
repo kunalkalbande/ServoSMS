@@ -3087,7 +3087,7 @@ namespace Servosms.Module.Inventory
 						//Coment By vikas 7.3.2013 Fore Early Birld Tax txtVInvoiceDate.Text=GenUtil.str2DDMMYYYY(strDate1);
 						txtVInvoiceDate.Text=GenUtil.str2DDMMYYYYNew(strDate1);
 						txtGrandTotal.Text=SqlDtr.GetValue(7).ToString();
-						txtGrandTotal.Text = GenUtil.strNumericFormat(Request.Form["txtGrandTotal"].ToString());
+						
 
                         double ETFOC=double.Parse(SqlDtr["FOC_Discount"].ToString())*2/100;
 						//coment by vikas 23.11.2012 txtDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString()); 
