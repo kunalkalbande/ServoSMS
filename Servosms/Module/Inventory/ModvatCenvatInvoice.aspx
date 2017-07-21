@@ -1401,8 +1401,8 @@ function MoveFocus(t,drop,e)
 							</tr>
 							<TR>
 								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" 
-										BorderColor="#CE4848"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
-										BorderColor="#CE4848"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
+										BorderColor="#CE4848" Text="Save"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
+										BorderColor="#CE4848" Text="Print"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
 										Text="Delete" CausesValidation="False" ></asp:button></TD>
 							</TR>
 						</TABLE>

@@ -143,7 +143,7 @@
 				type="text" name="texthiddenprod1" runat="server">
 			<table height="290" cellSpacing="0" cellPadding="0" width="778" align="center" border="0">
 				<tr vAlign="top" height="20">
-					<th colSpan="5">
+					<th>
 						<font color="#ce4848">Party Wise Sales Figure</font>
 						<hr>
 					</th>

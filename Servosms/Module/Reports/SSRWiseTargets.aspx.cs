@@ -106,7 +106,9 @@ namespace Servosms.Module.Reports
 			{
 				CreateLogFiles.ErrorLog("Form:Salesreport.aspx,Class:PetrolPumpClass.cs,Method: page_load " + ex.Message+"  EXCEPTION " +" userid  "+UID);
 			}
-		}
+            txtfromdate.Text = Request.Form["txtfromdate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtfromdate"].ToString().Trim();
+            txttodate.Text = Request.Form["txttodate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txttodate"].ToString().Trim();
+        }
 
 		public void fill_Drop()
 		{
