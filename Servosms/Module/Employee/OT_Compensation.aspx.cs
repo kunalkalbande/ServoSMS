@@ -107,7 +107,9 @@ namespace Servosms.Module.Employee
 					CreateLogFiles.ErrorLog("Form:Leave_Register.aspx,Method:pageload"+"EXCEPTION  "+ ex.Message+ uid);
 				}
 			}
-		}
+            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+            txtDateTO.Text = Request.Form["txtDateTO"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTO"].ToString().Trim();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
@@ -159,19 +161,19 @@ namespace Servosms.Module.Employee
 			try
 			{
 				#region Check Validation
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(txtDateTO.Text))>0)
+				if(DateTime.Compare(ToMMddYYYY(Request.Form["txtDateFrom"]),ToMMddYYYY(Request.Form["txtDateTO"]))>0)
 				{
 					MessageBox.Show("Date From Should Be Less Than Date To");
 					return;
 				}
-				if(DateTime.Compare(ToMMddYYYY(GenUtil.str2DDMMYYYY(GenUtil.trimDate(DateTime.Now.ToString()))),ToMMddYYYY(txtDateFrom.Text))>0)
+				if(DateTime.Compare(ToMMddYYYY(GenUtil.str2DDMMYYYY(GenUtil.trimDate(DateTime.Now.ToString()))),ToMMddYYYY(Request.Form["txtDateFrom"]))>0)
 				{
 					MessageBox.Show("Date From Should Be Gratter Or Equal to Date To");
 					return;
 				}
 				int Count=0;
 				string str ="";
-				str = "select count(*) from OverTime_Register where Emp_ID='"+DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":"))+"' and cast(floor(cast(cast(ot_from as datetime) as float)) as datetime) <='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(ot_to as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"'";
+				str = "select count(*) from OverTime_Register where Emp_ID='"+DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":"))+"' and cast(floor(cast(cast(ot_from as datetime) as float)) as datetime) <='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"]) +"' and cast(floor(cast(cast(ot_to as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"]) +"'";
 				dbobj.ExecuteScalar(str,ref Count);
 				if(Count>0)
 				{
@@ -179,11 +181,11 @@ namespace Servosms.Module.Employee
 					return;
 				}
 				int x=0;
-				str = "select * from OverTime_Register where Emp_ID='"+DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":"))+"' and cast(floor(cast(cast(ot_from as datetime) as float)) as datetime) <='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(ot_to as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"'";
+				str = "select * from OverTime_Register where Emp_ID='"+DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":"))+"' and cast(floor(cast(cast(ot_from as datetime) as float)) as datetime) <='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"]) +"' and cast(floor(cast(cast(ot_to as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"]) +"'";
 				dbobj.ExecuteScalar(str,ref Count);
 				if(Count>0)
 				{
-					dbobj.Insert_or_Update("delete from OverTime_Register where Emp_ID='"+DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":"))+"' and cast(floor(cast(cast(ot_from as datetime) as float)) as datetime) <='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(cast(ot_to as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"'",ref x);
+					dbobj.Insert_or_Update("delete from OverTime_Register where Emp_ID='"+DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":"))+"' and cast(floor(cast(cast(ot_from as datetime) as float)) as datetime) <='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"]) +"' and cast(floor(cast(cast(ot_to as datetime) as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"]) +"'",ref x);
 				}
 				#endregion
 				obj.Leave_ID=NextOt_Id();
@@ -191,15 +193,15 @@ namespace Servosms.Module.Employee
 				
 				string Emp_id=DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":")) ;
 
-				obj.Date_From  =ToMMddYYYY(txtDateFrom.Text).ToShortDateString(); 
-				obj.Date_To  = ToMMddYYYY(txtDateTO.Text).ToShortDateString();
+				obj.Date_From  =ToMMddYYYY(Request.Form["txtDateFrom"]).ToShortDateString(); 
+				obj.Date_To  = ToMMddYYYY(Request.Form["txtDateTo"]).ToShortDateString();
 				string todate=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 				//obj.Reason =StringUtil.FirstCharUpper(txtReason.Text.ToString());
 				//obj.Days = txtleaveday.Text.ToString().Trim();           //add by vikas 17.11.2012
 				// calls fuction to insert the leave
 				//obj.InsertLeave();
 				x=0;
-				dbobj.Insert_or_Update("Insert into OverTime_Register (OT_ID,OT_Date,Emp_Id,OT_From,Ot_To) values("+obj.Leave_ID+",'"+ToMMddYYYY(todate)+"',"+Emp_id+",'"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"','"+ToMMddYYYY(txtDateTO.Text).ToShortDateString()+"')",ref x);
+				dbobj.Insert_or_Update("Insert into OverTime_Register (OT_ID,OT_Date,Emp_Id,OT_From,Ot_To) values("+obj.Leave_ID+",'"+ToMMddYYYY(todate)+"',"+Emp_id+",'"+ToMMddYYYY(Request.Form["txtDateFrom"]).ToShortDateString()+"','"+ToMMddYYYY(Request.Form["txtDateTo"]).ToShortDateString()+"')",ref x);
 				MessageBox.Show("OverTime Information Saved");
 				Clear();
 				
