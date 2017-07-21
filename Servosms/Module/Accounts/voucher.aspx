@@ -392,7 +392,7 @@ function calcTotal()
 				</tr>
 				<TR>
 					<TD vAlign="middle" align="center">
-						<TABLE cellSpacing="0" cellPadding="0" align="center" border="0">
+						<TABLE cellSpacing="0" cellPadding="2" align="center" border="0">
 							<TBODY>
 								<TR vAlign="top">
 									<TD colSpan="6"><FONT color="#ff0000">Fields Marked as (*) Are 
@@ -410,10 +410,10 @@ function calcTotal()
 											<asp:ListItem Value="Debit Note">Debit Note</asp:ListItem>
 											<asp:ListItem Value="Journal">Journal</asp:ListItem>
 										</asp:dropdownlist></TD>
-									<TD align="center">&nbsp;Voucher ID <FONT color="#ff0000">*</FONT>
+									<TD align="center" colspan="2">&nbsp;Voucher ID <FONT color="#ff0000">*</FONT>
 										<asp:comparevalidator id="Comparevalidator6" runat="server" ErrorMessage="Please Select Voucher ID " ControlToValidate="DropDownID"
-											Operator="NotEqual" ValueToCompare="Select" ForeColor="White">*</asp:comparevalidator></TD>
-									<TD><asp:dropdownlist id="DropDownID" runat="server" Width="69px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropDownID_SelectedIndexChanged">
+											Operator="NotEqual" ValueToCompare="Select" ForeColor="White">*</asp:comparevalidator>
+									<asp:dropdownlist id="DropDownID" runat="server" Width="69px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="DropDownID_SelectedIndexChanged">
 											<asp:ListItem Value="Select">Select</asp:ListItem>
 										</asp:dropdownlist><INPUT class="dropdownlist" id="txtVouchID" style="WIDTH: 55px; BORDER-TOP-STYLE: groove; BORDER-RIGHT-STYLE: groove; BORDER-LEFT-STYLE: groove; BORDER-BOTTOM-STYLE: groove"
 											disabled size="6" name="txtVouchID" runat="server"><asp:button id="btnEdit1" runat="server" 
@@ -426,6 +426,7 @@ function calcTotal()
 											ReadOnly="True"></asp:textbox>&nbsp;&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A></TD>
 								</TR>
+                              
 								<tr>
 									<td align="center"><FONT color="#990066">Account Name</FONT></td>
 									<td align="center"><FONT color="#990066">Amount</FONT></td>
@@ -434,8 +435,12 @@ function calcTotal()
 									<td align="center"><FONT color="#990066">Amount</FONT></td>
 									<td></td>
 								</tr>
+                                
 								<tr>
-									<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="dropAccName1"
+									<td >
+                                        <input 
+											style="VISIBILITY: hidden; WIDTH: 250px; HEIGHT: 0px" />
+                                        <input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="dropAccName1"
 											onkeyup="search3(this,document.Form1.DropAccountName1,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropAccountName1,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropAccountName1,event,document.Form1.dropAccName1,document.Form1.txtAmount1),setValue(document.Form1.dropAccName1)"
 											style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 225px; HEIGHT: 19px" onclick="search1(document.Form1.DropAccountName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropAccountName1)"
 											value="Select" name="dropAccName1" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropAccountName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropAccountName1)"
@@ -443,7 +448,7 @@ function calcTotal()
 										<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.dropAccName1,document.Form1.txtAmount1),setValue(document.Form1.dropAccName1)"
 												id="DropAccountName1" ondblclick="select(this,document.Form1.dropAccName1),setValue(document.Form1.dropAccName1)" onkeyup="arrowkeyselect(this,event,document.Form1.dropAccName2,document.Form1.dropAccName1),setValue(document.Form1.dropAccName1)"
 												style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 245px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.dropAccName1)" multiple name="DropAccountName1"></select></div>
-										<INPUT class="dropdownlist" id="txtAccName1" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
+										<INPUT class="dropdownlist" id="txtAccName1" style="WIDTH: 124px; HEIGHT: 19px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
 									<td><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtAmount1" onblur="return calcTotal();"
 											runat="server" Width="150px" CssClass="dropdownlist" BorderStyle="Groove" Height="19px"></asp:textbox></td>
@@ -452,13 +457,16 @@ function calcTotal()
 											<asp:ListItem Value="Dr">Dr</asp:ListItem>
 											<asp:ListItem Value="Cr">Cr</asp:ListItem>
 										</asp:dropdownlist></td>
-									<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="dropAccName5"
+									<td>
+                                        <input 
+											style="VISIBILITY: hidden; WIDTH: 250px; HEIGHT: 0px" />
+                                        <input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="dropAccName5"
 											onkeyup="search3(this,document.Form1.DropAccountName5,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropAccountName5,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropAccountName5,event,document.Form1.dropAccName5,document.Form1.txtAmount5),setValue(document.Form1.dropAccName5)"
 											style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 225px; HEIGHT: 19px" onclick="search1(document.Form1.DropAccountName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropAccountName5)"
 											value="Select" name="dropAccName5" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropAccountName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropAccountName5)"
 											readOnly name="temp"><br>
 										<div id="Layer5" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.dropAccName5,document.Form1.txtAmount5),setValue(document.Form1.dropAccName5)"
-												id="DropAccountName5" ondblclick="select(this,document.Form1.dropAccName5),setValue(document.Form1.dropAccName5)" onkeyup="arrowkeyselect(this,event,document.Form1.dropAccName2,document.Form1.dropAccName5),setValue(document.Form1.dropAccName5)"
+												id="DropAccountName5"  ondblclick="select(this,document.Form1.dropAccName5),setValue(document.Form1.dropAccName5)" onkeyup="arrowkeyselect(this,event,document.Form1.dropAccName2,document.Form1.dropAccName5),setValue(document.Form1.dropAccName5)"
 												style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 245px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.dropAccName5)" multiple name="DropAccountName5"></select></div>
 										<INPUT class="dropdownlist" id="txtAccName5" style="WIDTH: 124px; HEIGHT: 22px" type="hidden"
 											size="15" name="Hidden1" runat="server"></td>
@@ -524,7 +532,7 @@ function calcTotal()
 											<asp:ListItem Value="Dr">Dr</asp:ListItem>
 											<asp:ListItem Value="Cr">Cr</asp:ListItem>
 										</asp:dropdownlist></td>
-									<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="dropAccName7"
+									<td ><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="dropAccName7"
 											onkeyup="search3(this,document.Form1.DropAccountName7,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropAccountName7,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropAccountName7,event,document.Form1.dropAccName7,document.Form1.txtAmount7)"
 											style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 225px; HEIGHT: 19px" onclick="search1(document.Form1.DropAccountName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropAccountName7)"
 											value="Select" name="dropAccName7" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropAccountName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropAccountName7)"
