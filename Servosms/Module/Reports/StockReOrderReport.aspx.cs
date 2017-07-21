@@ -82,7 +82,8 @@ namespace Servosms.Module.Reports
 				#endregion 
 				txtDateFrom.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 			}
-		}
+            txtDateFrom.Text= Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
