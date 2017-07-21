@@ -624,6 +624,11 @@ function MoveFocus(t,drop,e)
 }
 //-->
 		</SCRIPT>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 108px;
+            }
+        </style>
 	</HEAD>
 	<BODY onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -762,19 +767,19 @@ function MoveFocus(t,drop,e)
 												<TD noWrap><asp:dropdownlist id="dropInvoiceNo" runat="server" Visible="False" Width="125px" CssClass="dropdownlist"
 														AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
-													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" ReadOnly="True" BorderStyle="None"
-														ForeColor="Blue" CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" ToolTip="Click For Edit"
+													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" ReadOnly="True" BorderStyle="Groove"
+														 CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" ToolTip="Click For Edit"
 														Text="..." CausesValidation="False" onclick="btnEdit_Click"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
-												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" ReadOnly="True" BorderStyle="None"
+												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" ReadOnly="True" BorderStyle="Groove"
 														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align="absMiddle"
 															border="0"></A></TD>
 											</TR>
 											<TR>
 												<TD>Sales Type</TD>
-												<TD><asp:dropdownlist id="DropSalesType" runat="server" Width="125px" CssClass="dropdownlist">
+												<TD><asp:dropdownlist id="DropSalesType" runat="server" Width="60px" CssClass="dropdownlist">
 														<asp:ListItem Value="Cash" Selected="True">Cash</asp:ListItem>
 														<asp:ListItem Value="Credit">Credit</asp:ListItem>
 														<asp:ListItem Value="Van">Van</asp:ListItem>
@@ -846,7 +851,7 @@ function MoveFocus(t,drop,e)
 														ControlToValidate="txtVehicleNo">*</asp:requiredfieldvalidator><asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" ErrorMessage="Please Select Vehicle No."
 														ControlToValidate="DropVehicleNo" InitialValue="Select">*</asp:requiredfieldvalidator></TD>
 												<TD><asp:textbox onkeypress="return GetAnyNumber(this, event);" id="txtVehicleNo" onkeyup="MoveFocus(this,document.Form1.DropType1,event)"
-														runat="server" Width="250px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="15"></asp:textbox><asp:dropdownlist id="DropVehicleNo" runat="server" Visible="False" Width="220px" CssClass="dropdownlist"></asp:dropdownlist></TD>
+														runat="server" Width="125px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="15"></asp:textbox><asp:dropdownlist id="DropVehicleNo" runat="server" Visible="False" Width="220px" CssClass="dropdownlist"></asp:dropdownlist></TD>
 											</TR>
 										</TABLE>
 									</TD>
@@ -1313,20 +1318,20 @@ function MoveFocus(t,drop,e)
 						<TABLE cellPadding="0" border="0">
 							<TR>
 								<TD>Promo Scheme</TD>
-								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="246px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
-								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+								<TD class="auto-style1"></TD>
 								<TD>Grand Total</TD>
 								<TD><asp:textbox id="txtGrandTotal" runat="server" Width="124px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Scheme&nbsp;Discount&nbsp;</TD>
-								<TD><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="101" ReadOnly="True"
+								<TD><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="120px" ReadOnly="True"
 										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp; 
 									Total Ltr.
 									<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
-										Width="59px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
-								<TD></TD>
+										Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+								<TD class="auto-style1"></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtDisc" onblur="GetNetAmount()"
 										runat="server" Width="42px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropDiscType" runat="server" CssClass="dropdownlist" onchange="GetNetAmount()">
@@ -1342,9 +1347,9 @@ function MoveFocus(t,drop,e)
 										Width="58px" Height="22px" CssClass="dropdownlist">
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
 										<asp:ListItem Value="%">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="64px" ReadOnly="True"
+									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="120px" ReadOnly="True"
 										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
-								<TD></TD>
+								<TD class="auto-style1"></TD>
 								<TD>Cash Discount</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtCashDisc" onblur="GetNetAmount()"
 										runat="server" Width="42px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropCashDiscType" runat="server" Height="22" CssClass="dropdownlist" onchange="GetNetAmount()">
@@ -1355,9 +1360,9 @@ function MoveFocus(t,drop,e)
 							</TR>
 							<TR>
 								<TD>Message</TD>
-								<TD><asp:textbox id="txtMessage" runat="server" Width="246px" ReadOnly="True" BorderStyle="Groove"
+								<TD><asp:textbox id="txtMessage" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
-								<TD></TD>
+								<TD class="auto-style1"></TD>
 								<TD>Entry Tax</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtEntryTax" onblur="GetNetAmount()"
 										runat="server" Width="42px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropEntryTax" runat="server" Height="22" CssClass="dropdownlist" onchange="GetNetAmount()">
@@ -1369,10 +1374,10 @@ function MoveFocus(t,drop,e)
 							<TR>
 								<TD>&nbsp;Remark</TD>
 								<TD>
-									<P><asp:textbox id="txtRemark" runat="server" Width="246px" BorderStyle="Groove" CssClass="dropdownlist"
+									<P><asp:textbox id="txtRemark" runat="server" Width="120px" BorderStyle="Groove" CssClass="dropdownlist"
 											MaxLength="49"></asp:textbox></P>
 								</TD>
-								<TD></TD>
+								<TD class="auto-style1"></TD>
 								<TD>Excise Duty</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtExcise" onblur="GetNetAmount()"
 										runat="server" Width="42px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropExcise" runat="server" Height="22" CssClass="dropdownlist" onchange="GetNetAmount()">
@@ -1384,25 +1389,25 @@ function MoveFocus(t,drop,e)
 							<tr>
 								<td></td>
 								<td></td>
-								<td></td>
+								<td class="auto-style1"></td>
 								<TD>VAT
-									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied" BackColor="#FFE0C0"
-										GroupName="VAT" Checked="false"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply" BackColor="#C0FFC0"
+									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied" 
+										GroupName="VAT" Checked="false"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply" 
 										GroupName="VAT" Checked="true"></asp:radiobutton></TD>
 								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 							</tr>
 							<tr>
 								<td></td>
 								<td></td>
-								<td></td>
+								<td class="auto-style1"></td>
 								<TD>Net Amount</TD>
 								<TD><asp:textbox id="txtNetAmount" runat="server" Width="124px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</tr>
 							<TR>
 								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" 
-										BorderColor="#CE4848" Text="Save"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
-										BorderColor="#CE4848" Text="Print"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
+										 Text="Save"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
+										 Text="Print"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
 										Text="Delete" CausesValidation="False" ></asp:button></TD>
 							</TR>
 						</TABLE>
