@@ -149,7 +149,7 @@ bbnisys Technologies.
 					<td width="5%" align="right">
 						Value
 					</td>
-					<td width="20%"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
+					<td width="40%"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 							onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.txtview)"
 							style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 150px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 							value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
