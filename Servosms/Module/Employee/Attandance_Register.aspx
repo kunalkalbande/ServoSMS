@@ -70,7 +70,8 @@
 							</asp:Panel>
 							<asp:Panel Runat=server ID="pandate">
 							<tr><td colspan=4>Attendance Date &nbsp;&nbsp;<asp:textbox id="txtdate" runat="server" Width="70px" CssClass="dropdownlist" BorderStyle="Groove"
-											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.f1.txtdate);return false;"><IMG align=middle class="PopcalTrigger" alt="" src=../../HeaderFooter/DTPicker/calender_icon.jpg
+											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.f1.txtdate);return false;">
+                                                <IMG class="PopcalTrigger" alt="" src=../../HeaderFooter/DTPicker/calender_icon.jpg
 												align="absMiddle" border="0"></A>&nbsp;<asp:Button ID="btnView" Text=View Runat=server  Width=80 CausesValidation=True onclick="btnView_Click"></asp:Button></td></tr>
 												</asp:Panel>
 							<tr>
