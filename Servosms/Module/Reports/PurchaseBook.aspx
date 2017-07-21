@@ -66,6 +66,11 @@
 			alert("hello");
 		}
 		</script>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 20%;
+            }
+        </style>
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -86,10 +91,10 @@
 					</TH>
 				</TR>
 				<tr height="20">
-					<td align="center" width="15%">&nbsp;From&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="100px" CssClass="fontstyle" BorderStyle="Groove"
+					<td align="center" class="auto-style1">&nbsp;From&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="70px" CssClass="fontstyle" BorderStyle="Groove"
 							ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A></td>
-					<td width="10%" align=right>&nbsp;To&nbsp;<asp:textbox id="Textbox1" runat="server" Width="100px" CssClass="fontstyle" BorderStyle="Groove"
+					<td width="10%" align=right>&nbsp;To&nbsp;<asp:textbox id="Textbox1" runat="server" Width="70px" CssClass="fontstyle" BorderStyle="Groove"
 							ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.Textbox1);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A></td>
 					<td align="center" width="15%"></td>
@@ -97,7 +102,7 @@
 					<td width="30%"><asp:radiobutton id="RadioSumrized" Text="Summerized" Runat="server" GroupName="Radio"></asp:radiobutton>&nbsp;<asp:checkbox id="chkDiscount" Text="  (%) Discount" Runat="server"></asp:checkbox></td>
 				</tr>
 				<tr vAlign="top">
-					<TD align="center">Search By</TD>
+					<TD align="center" class="auto-style1">Search By</TD>
 					<TD align="left"><asp:dropdownlist id="DropSearchBy" runat="server" Width="140px" CssClass="dropdownlist" onchange="CheckSearchOption(this)">
 							<asp:ListItem Value="All">All</asp:ListItem>
 							<asp:ListItem Value="Customer Name">Vendor Name</asp:ListItem>
@@ -109,7 +114,7 @@
 					<TD align="center">Value</TD>
 					<TD align="left" colSpan="2"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 							onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnShow)"
-							style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 260px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+							style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 150px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 							value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 							readOnly type="text" name="temp"><br>
 						<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropValue,document.Form1.btnShow)"

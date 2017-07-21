@@ -179,6 +179,11 @@ function window_onload()
 		}
 		
 		</script>
+	    <style type="text/css">
+            .auto-style2 {
+                height: 53px;
+            }
+        </style>
 	</HEAD>
 	<body language="javascript" onkeydown="change(event)" onload="return window_onload()">
 		<form id="Form1" method="post" runat="server">
@@ -213,24 +218,24 @@ function window_onload()
 											Runat="server" Text="Specific Packs Sale"></asp:checkbox></td>
 								</tr>
 								<TR>
-									<TD align="center">From&nbsp;</TD>
-									<TD><asp:textbox id="txtDateFrom" runat="server" Width="60px" CssClass="fontstyle" BorderStyle="Groove"
+									<TD align="center" class="auto-style2">From&nbsp;</TD>
+									<TD class="auto-style2" ><asp:textbox id="txtDateFrom" runat="server" Width="80px" CssClass="fontstyle" BorderStyle="Groove"
 											ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absMiddle" border="0"></A><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"></A></TD>
-									<td align="center">To</td>
-									<TD align="right" colSpan="5"><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><asp:textbox id="txtDateTo" runat="server" Width="60px" CssClass="fontstyle" BorderStyle="Groove"
+									<td align="center" class="auto-style2">To</td>
+									<TD align="right" colSpan="5" class="auto-style2"><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><asp:textbox id="txtDateTo" runat="server" Width="80px" CssClass="fontstyle" BorderStyle="Groove"
 												ReadOnly="True"></asp:textbox></A><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 												align="absBottom" border="0"></A><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:radiobutton id="RadAmount" Runat="server" Text="Sales With Amount" GroupName="Amount"></asp:radiobutton>&nbsp;&nbsp;
 										<asp:radiobutton id="RadNonAmount" Runat="server" Text="Sales" GroupName="Amount" Checked="True"></asp:radiobutton>&nbsp;&nbsp;
 										<asp:radiobutton id="RadPurchase" Runat="server" Text="Sales &amp; Purchase" GroupName="Amount"></asp:radiobutton>&nbsp;&nbsp;
-										<asp:button id="cmdrpt" runat="server" Width="50px" Text="View  " 
-											 onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="50px" Runat="server" Text="Print  " 
-											 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="50px" Runat="server" Text="Excel" 
+										<asp:button id="cmdrpt" runat="server" Width="60px" Text="View  " 
+											 onclick="cmdrpt_Click"></asp:button>&nbsp;<asp:button id="BtnPrint" Width="60px" Runat="server" Text="Print  " 
+											 onclick="BtnPrint_Click"></asp:button>&nbsp;<asp:button id="btnExcel" Width="60px" Runat="server" Text="Excel" 
 											 onclick="btnExcel_Click"></asp:button></TD>
 								</TR>
 								<tr>
 									<td>Search By&nbsp;</td>
-									<td><asp:dropdownlist id="DropSearchBy" runat="server" CssClass="dropdownlist" onchange="CheckSearchOption(this);getChild(this,document.Form1.RadAmount)">
+									<td ><asp:dropdownlist id="DropSearchBy" runat="server" CssClass="dropdownlist" onchange="CheckSearchOption(this);getChild(this,document.Form1.RadAmount)">
 											<asp:ListItem Value="All">All</asp:ListItem>
 											<asp:ListItem Value="Group">Group</asp:ListItem>
 											<asp:ListItem Value="SubGroup">SubGroup</asp:ListItem>
@@ -243,7 +248,7 @@ function window_onload()
 									<td>&nbsp;Value&nbsp;</td>
 									<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 											onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.cmdrpt)"
-											style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 200px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+											style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 130px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 											value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 											readOnly type="text" name="temp"><br>
 										<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropValue,document.Form1.cmdrpt)"
