@@ -98,9 +98,7 @@ namespace Servosms.Module.Master
 					CreateLogFiles.ErrorLog("Form:Prod_Promo_Dis_Entry.aspx,Method:pageload"+ ex.Message+"  EXCEPTION  "+uid); 
 				}
 			}
-            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
-            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
-        }
+		}
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
@@ -216,8 +214,8 @@ namespace Servosms.Module.Master
 							else
 								schname="LTR Scheme";*/
 							schname="Secondry Claim";
-							//coment by vikas 02.06.09 sql1="select * from StktSchDiscount where Prodid='"+rdr["Prod_ID"].ToString()+"' and schtype like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"')";
-							sql1="select * from Prod_Promo_Grade_Entry where Prodid='"+rdr["Prod_ID"].ToString()+"' and schtype like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"')";
+							//coment by vikas 02.06.09 sql1="select * from StktSchDiscount where Prodid='"+rdr["Prod_ID"].ToString()+"' and schtype like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text))  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"')";
+							sql1="select * from Prod_Promo_Grade_Entry where Prodid='"+rdr["Prod_ID"].ToString()+"' and schtype like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text))  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"')";
 							dbobj.SelectQuery(sql1,ref SqlDtr);
 							if(SqlDtr.Read())
 							{
@@ -247,11 +245,11 @@ namespace Servosms.Module.Master
 				else
 					obj.discount=txtSchDiscount.Text.ToString();
 				
-				obj.discounttype=DropSchDiscount.SelectedItem.Text;                
-                obj.dateto = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
-                obj.datefrom = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
-
-                for (int i=0;i<ListEmpAssigned.Items.Count;++i)
+				obj.discounttype=DropSchDiscount.SelectedItem.Text;
+				obj.dateto=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString()));
+				obj.datefrom=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString()));			
+				
+				for(int i=0;i<ListEmpAssigned.Items.Count;++i)
 				{
 					ListEmpAssigned.SelectedIndex =i;
 					string pname = ListEmpAssigned.SelectedItem.Value; 
@@ -283,9 +281,9 @@ namespace Servosms.Module.Master
 		/// </summary>
 		public void Clear()
 		{
-            txtDateFrom.Text = GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
-            txtDateTo.Text = GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
-            ListEmpAssigned.Items.Clear();
+			txtDateFrom.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
+			txtDateTo.Text=GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString());
+			ListEmpAssigned.Items.Clear();
 			
 			txtSchDiscount.Text="";
 			txtschname.Text="";
@@ -415,9 +413,9 @@ namespace Servosms.Module.Master
 				else
 					obj.discount=txtSchDiscount.Text.ToString();
 				obj.discounttype=DropSchDiscount.SelectedItem.Text;
-                obj.dateto = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTo"].ToString()));
-                obj.datefrom = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
-                if (ListEmpAssigned.Items.Count!=0)
+				obj.dateto=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateTo.Text.ToString()));
+				obj.datefrom=System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtDateFrom.Text.ToString()));			
+				if(ListEmpAssigned.Items.Count!=0)
 				{
 					for(int i=0;i<ListEmpAssigned.Items.Count;++i)
 					{
@@ -449,8 +447,8 @@ namespace Servosms.Module.Master
 								else
 									schname="LTR Scheme";*/
 									schname="Secondry Claim";
-								//sql1="select * from StktSchDiscount where Prodid='"+rdr["Prod_ID"].ToString()+"'and SchType like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"')";
-								sql1="select * from Prod_Promo_Grade_Entry where Prodid='"+rdr["Prod_ID"].ToString()+"'and SchType like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"')";
+								//sql1="select * from StktSchDiscount where Prodid='"+rdr["Prod_ID"].ToString()+"'and SchType like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text))  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"')";
+								sql1="select * from Prod_Promo_Grade_Entry where Prodid='"+rdr["Prod_ID"].ToString()+"'and SchType like '%"+schname+"%' and (cast(floor(cast(datefrom as float)) as datetime)>='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text))  +"' and cast(floor(cast(dateto as float)) as datetime)<='"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(datefrom as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"' or cast(floor(cast(dateto as float)) as datetime) between '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateFrom.Text)) +"' and '"+ GenUtil.str2MMDDYYYY(GenUtil.trimDate(txtDateTo.Text)) +"')";
 								dbobj.SelectQuery(sql1,ref SqlDtr);
 								if(SqlDtr.Read())
 								{
