@@ -71,7 +71,7 @@
 								<TD>Product Name</TD>
 								<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="drpProductName"
 										onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.drpProductName,document.Form1.cmdrpt)"
-										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 280px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										value="Select" name="drpProductName" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										readOnly type="text" name="temp"><br>
 									<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.drpProductName,document.Form1.cmdrpt)"
