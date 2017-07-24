@@ -94,16 +94,16 @@
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist><asp:button id="btnEdit1" runat="server" Width="35px" Text="..." ToolTip="Click here for Edit"
 										CausesValidation="False" onclick="btnEdit1_Click"></asp:button></TD>
-								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vehicle No.
+								<TD align="left">&nbsp; Vehicle No.
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please select Vehicle No."
 										ControlToValidate="DropVehicleNo" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;<FONT color="#ff0000">*</FONT>
-									&nbsp;&nbsp;&nbsp;
-									<asp:dropdownlist id="DropVehicleNo" runat="server" Width="132px" onchange="return getVehicleInfo(this);"
+									
+									<asp:dropdownlist id="DropVehicleNo" runat="server" Width="55px" onchange="return getVehicleInfo(this);"
 										CssClass="fontstyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
-								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vehicle&nbsp;Name&nbsp;&nbsp;&nbsp; 
-									&nbsp;&nbsp;&nbsp;
+								<TD> &nbsp; Vehicle&nbsp;Name
+									
 									<asp:textbox id="txtVehiclename" runat="server" Width="132px" ReadOnly="True" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
