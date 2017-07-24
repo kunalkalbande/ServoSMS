@@ -91,10 +91,10 @@
 					</TH>
 				</TR>
 				<tr height="20">
-					<td align="center" class="auto-style1">&nbsp;From&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="70px" CssClass="fontstyle" BorderStyle="Groove"
+					<td align="left" class="auto-style1">From&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="70px" CssClass="fontstyle" BorderStyle="Groove"
 							ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A></td>
-					<td width="10%" align=right>&nbsp;To&nbsp;<asp:textbox id="Textbox1" runat="server" Width="70px" CssClass="fontstyle" BorderStyle="Groove"
+					<td width="10%" align="left">&nbsp;To&nbsp;<asp:textbox id="Textbox1" runat="server" Width="70px" CssClass="fontstyle" BorderStyle="Groove"
 							ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.Textbox1);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 								align="absMiddle" border="0"></A></td>
 					<td align="center" width="15%"></td>

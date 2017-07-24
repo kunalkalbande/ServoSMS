@@ -3085,7 +3085,7 @@ namespace Servosms.Module.Inventory
 						txtVInnvoiceNo.Text=SqlDtr.GetValue(5).ToString();
 						tempVndrInvoiceNo.Value=SqlDtr.GetValue(5).ToString();
 						//Coment By vikas 7.3.2013 Fore Early Birld Tax txtVInvoiceDate.Text=GenUtil.str2DDMMYYYY(strDate1);
-						txtVInvoiceDate.Text=GenUtil.str2DDMMYYYYNew(strDate1);
+						txtVInvoiceDate.Text=GenUtil.str2DDMMYYYY(strDate1);
 						txtGrandTotal.Text=SqlDtr.GetValue(7).ToString();
 						
 
