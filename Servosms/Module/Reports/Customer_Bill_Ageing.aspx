@@ -119,7 +119,7 @@ function CheckSearchOption(t)
 				</TR>
 				<tr>
 					<td vAlign="top" align="center">
-						<TABLE cellSpacing="0" cellPadding="0" width="100%" align="center" border="0">
+						<TABLE  cellSpacing="0" cellPadding="0" width="100%" align="center" border="0">
 							<TR>
 								<td colSpan="6">
 									<table align="center">
@@ -161,7 +161,7 @@ function CheckSearchOption(t)
 											<td class="auto-style1">Value</td>
 											<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 													onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnShow)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 150px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 110px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 													value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onmousemove="MouseMove(this)" onkeypress="Selectbyenter(this,event,document.Form1.DropValue,document.Form1.btnShow)"
