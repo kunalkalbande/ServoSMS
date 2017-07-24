@@ -405,7 +405,9 @@ namespace Servosms.Module.Inventory
 					CreateLogFiles.ErrorLog("Form:PurchaceInvice.aspx,Method:pageload.  EXCEPTION: "+ex.Message+" User_ID: "+uid);
 				}
 			}
-		}
+            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
+            txtVInvoiceDate.Text = Request.Form["txtVInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtVInvoiceDate"].ToString().Trim();
+        }
 
 		public void Earlybird_dis()
 		{
