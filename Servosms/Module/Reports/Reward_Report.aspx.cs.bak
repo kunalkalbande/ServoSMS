@@ -126,9 +126,7 @@ namespace Servosms.Module.Reports
 				//**Textbox1.Text = DateTime.Now.Day+ "/"+ DateTime.Now.Month +"/"+ DateTime.Now.Year;
 				GetMultiValue();
 			}
-            txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
-            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
-        }
+		}
 
 		public void GetMultiValue()
 		{
@@ -328,46 +326,46 @@ namespace Servosms.Module.Reports
 				{
 					if(DropSearchBy.SelectedIndex==0)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==1)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==2)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==3)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==4)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 				}
 				else
 				{
 					if(DropSearchBy.SelectedIndex==0)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==1)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==2)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==3)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==4)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%Bazzar1%') and ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 				}
 				//dtr=obj.GetRecordSet(sql);
@@ -536,27 +534,27 @@ namespace Servosms.Module.Reports
 				
 				/*if(DropSearchBy.SelectedIndex==0)
 				{
-					sql="SELECT distinct dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
+					sql="SELECT distinct dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
 				}
 				else if (DropSearchBy.SelectedIndex==1)
 				{
-					sql="SELECT distinct dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and cust_type in (select customertypename from customertype where group_name='"+DropValue.Value.ToString()+"') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
+					sql="SELECT distinct dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and cust_type in (select customertypename from customertype where group_name='"+DropValue.Value.ToString()+"') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
 				}
 				else if (DropSearchBy.SelectedIndex==2)
 				{
-					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and cust_type in (select customertypename from customertype where sub_group_name='"+DropValue.Value.ToString()+"')  and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
+					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and cust_type in (select customertypename from customertype where sub_group_name='"+DropValue.Value.ToString()+"')  and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
 				}
 				else if (DropSearchBy.SelectedIndex==3)
 				{
-					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and city='"+DropValue.Value.ToString()+"' and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
+					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and city='"+DropValue.Value.ToString()+"' and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
 				}
 				else if (DropSearchBy.SelectedIndex==4)
 				{
-					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and state='"+DropValue.Value.ToString()+"' and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
+					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and state='"+DropValue.Value.ToString()+"' and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
 				}
 				else if (DropSearchBy.SelectedIndex==5)
 				{
-					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and ssr=(select emp_id from employee where emp_name='"+DropValue.Value.ToString()+"') and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
+					sql="select distinct  dbo.Customer.Cust_ID s5, dbo.Customer.sadbhavnacd s4, dbo.Customer.Cust_Name s1, dbo.Customer.City s2, dbo.Customer.Cust_Type s3,sum(sm.totalqtyltr) s6 FROM Customer,Sales_Master sm where dbo.customer.cust_id=sm.cust_id and ssr=(select emp_id from employee where emp_name='"+DropValue.Value.ToString()+"') and (Cust_Type like 'Bazzar' or Cust_Type like 'Ksk%' or Cust_Type like 'N-Ksk%' or Cust_Type like 'Essar ro%') and sm.Net_Amount<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by dbo.Customer.Cust_ID,dbo.Customer.sadbhavnacd,dbo.Customer.Cust_Name,dbo.Customer.City,dbo.Customer.Cust_Type order by s6";
 				}
 			
 				dbobj.SelectQuery(sql,ref rdr);
@@ -658,62 +656,62 @@ namespace Servosms.Module.Reports
 				{
 					if(DropSearchBy.SelectedIndex==0)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type like '%RO%' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type like '%RO%' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					/*else if (DropSearchBy.SelectedIndex==1)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==2)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where sub_group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where sub_group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}*/
 					else if (DropSearchBy.SelectedIndex==1)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==2)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==3)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==4)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 				}
 				else
 				{
 					if(DropSearchBy.SelectedIndex==0)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type like '%Bazzar%' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_type like '%Bazzar%' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					/*else if (DropSearchBy.SelectedIndex==1)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==2)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where sub_group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where sub_group_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}*/
 					else if (DropSearchBy.SelectedIndex==1)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==2)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==3)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 					else if (DropSearchBy.SelectedIndex==4)
 					{
-						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+						sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 					}
 				}
 				InventoryClass obj_New=new InventoryClass();
@@ -1036,46 +1034,46 @@ namespace Servosms.Module.Reports
 			{
 				if(DropSearchBy.SelectedIndex==0)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_type in (select customertypename from customertype where group_name like '%RO%') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==1)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==2)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==3)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==4)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 			}
 			else
 			{
 				if(DropSearchBy.SelectedIndex==0)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where cust_type like '%Bazzar%' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where cust_type like '%Bazzar%' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==1)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku from vw_SaleBook where cust_name ='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==2)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where City='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==3)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where state='"+DropValue.Value.ToString()+"' and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 				else if (DropSearchBy.SelectedIndex==4)
 				{
-					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
+					sql="select cust_id,cust_name,city,sum(quant*total_qty) total_sale, count(prod_name) sku  from vw_SaleBook where ssr= (select Emp_id from Employee where emp_name='"+DropValue.Value.ToString()+"') and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+ToMMddYYYY(txtDateTo.Text.ToString())+"' group by cust_id,cust_name,city order by cust_id,cust_name,city";
 				}
 			}
 

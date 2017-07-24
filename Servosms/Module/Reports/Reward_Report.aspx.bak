@@ -96,7 +96,7 @@
 													style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 145px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropValue)" multiple name="DropProdName"
 													type="select-one"></select></div>
 										</td>
-										<td >&nbsp;&nbsp;&nbsp;From&nbsp;&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
+										<td colspan="8">&nbsp;&nbsp;&nbsp;From&nbsp;&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
 												CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 													align="absMiddle" border="0"></A> To
 											<asp:textbox id="txtDateTo" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
