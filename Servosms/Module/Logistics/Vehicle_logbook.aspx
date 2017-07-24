@@ -76,7 +76,7 @@
 		<form method="post" runat="server">
 			<uc1:header id="Header1" runat="server"></uc1:header><INPUT id="txtHidden" style="WIDTH: 8px; HEIGHT: 16px" type="hidden" size="1" name="txtHidden"
 				runat="server">
-			<table width="778" align="center" border="0">
+			<table width="900" align="center" border="0">
 				<TR>
 					<TH align="center">
 						<font color="#ce4848">Vehicle Daily Log Book</font>
@@ -84,7 +84,7 @@
 						</FONT></TH></TR>
 				<tr>
 					<td align="center">
-						<TABLE id="Table1" style="WIDTH: 691px" cellSpacing="0" cellPadding="0" border="1">
+						<TABLE id="Table1" style="WIDTH: 850px" cellSpacing="0" cellPadding="0" border="1">
 							<TR>
 								<TD colSpan="4"><asp:label id="Label4" runat="server" ForeColor="Red">asterisk (*) fields are mandatory</asp:label></TD>
 							</TR>
@@ -94,11 +94,11 @@
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist><asp:button id="btnEdit1" runat="server" Width="35px" Text="..." ToolTip="Click here for Edit"
 										CausesValidation="False" onclick="btnEdit1_Click"></asp:button></TD>
-								<TD align="left">&nbsp; Vehicle No.
+								<TD  align="left">&nbsp; Vehicle No.
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please select Vehicle No."
 										ControlToValidate="DropVehicleNo" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;<FONT color="#ff0000">*</FONT>
 									
-									<asp:dropdownlist id="DropVehicleNo" runat="server" Width="55px" onchange="return getVehicleInfo(this);"
+									<asp:dropdownlist id="DropVehicleNo" runat="server" Width="135px" onchange="return getVehicleInfo(this);"
 										CssClass="fontstyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
