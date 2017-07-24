@@ -970,8 +970,7 @@
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty10" style="Z-INDEX: 114; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty11" style="Z-INDEX: 113; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty12" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
-				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="TextBox2" style="Z-INDEX: 131; LEFT: 456px; POSITION: absolute; TOP: 16px" runat="server"
-				Width="130px"></asp:textbox><asp:textbox id="txtTempQty13" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
+				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty13" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty14" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty15" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
 				runat="server" Visible="False" Width="8px"></asp:textbox><asp:textbox id="txtTempQty16" style="Z-INDEX: 115; LEFT: 232px; POSITION: absolute; TOP: 16px"
@@ -1125,7 +1124,7 @@
 					<TH align="center" colSpan="3">
 						<font color="#ce4848">Purchase Invoice</font>
 						<HR>
-						<asp:label id="lblMessage" runat="server" ForeColor="DarkGreen" Font-Size="8pt"></asp:label></TH></TR>
+						<asp:label id="lblMessage" runat="server" ForeColor="DarkGreen" Font-Size="8pt">Price updation not available for some products</asp:label></TH></TR>
 				<tr>
 					<td align="center">
 						<TABLE border="1">
@@ -1224,13 +1223,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType1"
 													onkeyup="search3(this,document.Form1.DropProdName1,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName1,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName1,event,document.Form1.DropType1,document.Form1.txtQty1),getStock1(this,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1)"
 													value="Type" name="DropType1" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1),get_EBD()" readOnly
 													type="text" name="temp4"><br>
 												<div id="Layer2" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType1,document.Form1.txtQty1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
 														id="DropProdName1" ondblclick="select(this,document.Form1.DropType1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty1,document.Form1.DropType1)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty1,document.Form1.DropType1)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
 														multiple name="DropProdName1"></select></div>
 											</TD>
@@ -1250,13 +1249,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType2"
 													onkeyup="search3(this,document.Form1.DropProdName2,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName2,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName2,event,document.Form1.DropType2,document.Form1.txtQty2),getStock1(this,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName2,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName2)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName2,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName2)"
 													value="Type" name="DropType2" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName2,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName2)" readOnly type="text"
 													name="temp2"><br>
 												<div id="Layer3" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType2,document.Form1.txtQty2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
 														id="DropProdName2" ondblclick="select(this,document.Form1.DropType2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty2,document.Form1.DropType2)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty2,document.Form1.DropType2)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
 														multiple name="DropProdName2"></select></div>
 											</TD>
@@ -1276,13 +1275,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType3"
 													onkeyup="search3(this,document.Form1.DropProdName3,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName3,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName3,event,document.Form1.DropType3,document.Form1.txtQty3),getStock1(this,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName3,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName3)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName3,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName3)"
 													value="Type" name="DropType3" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName3,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName3)" readOnly type="text"
 													name="temp4"><br>
 												<div id="Layer4" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType3,document.Form1.txtQty3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
 														id="DropProdName3" ondblclick="select(this,document.Form1.DropType3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty3,document.Form1.DropType3)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty3,document.Form1.DropType3)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
 														multiple name="DropProdName3"></select></div>
 											</TD>
@@ -1302,13 +1301,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType4"
 													onkeyup="search3(this,document.Form1.DropProdName4,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName4,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName4,event,document.Form1.DropType4,document.Form1.txtQty4),getStock1(this,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName4,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName4)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName4,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName4)"
 													value="Type" name="DropType4" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName4,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName4)" readOnly type="text"
 													name="temp5"><br>
 												<div id="Layer5" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType4,document.Form1.txtQty4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
 														id="DropProdName4" ondblclick="select(this,document.Form1.DropType4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty4,document.Form1.DropType4)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty4,document.Form1.DropType4)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
 														multiple name="DropProdName4"></select></div>
 											</TD>
@@ -1328,13 +1327,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType5"
 													onkeyup="search3(this,document.Form1.DropProdName5,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName5,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName5,event,document.Form1.DropType5,document.Form1.txtQty5),getStock1(this,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName5)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName5)"
 													value="Type" name="DropType5" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName5)" readOnly type="text"
 													name="temp5"><br>
 												<div id="Layer6" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType5,document.Form1.txtQty5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
 														id="DropProdName5" ondblclick="select(this,document.Form1.DropType5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty5,document.Form1.DropType5)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty5,document.Form1.DropType5)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
 														multiple name="DropProdName5"></select></div>
 											</TD>
@@ -1354,13 +1353,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType6"
 													onkeyup="search3(this,document.Form1.DropProdName6,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName6,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName6,event,document.Form1.DropType6,document.Form1.txtQty6),getStock1(this,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName6,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName6)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName6,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName6)"
 													value="Type" name="DropType6" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName6,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName6)" readOnly type="text"
 													name="temp6"><br>
 												<div id="Layer7" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType6,document.Form1.txtQty6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
 														id="DropProdName6" ondblclick="select(this,document.Form1.DropType6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty6,document.Form1.DropType6)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty6,document.Form1.DropType6)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
 														multiple name="DropProdName6"></select></div>
 											</TD>
@@ -1380,13 +1379,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType7"
 													onkeyup="search3(this,document.Form1.DropProdName7,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName7,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName7,event,document.Form1.DropType7,document.Form1.txtQty7),getStock1(this,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName7)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName7)"
 													value="Type" name="DropType7" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName7)" readOnly type="text"
 													name="temp7"><br>
 												<div id="Layer8" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType7,document.Form1.txtQty7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
 														id="DropProdName7" ondblclick="select(this,document.Form1.DropType7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty7,document.Form1.DropType7)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty7,document.Form1.DropType7)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
 														multiple name="DropProdName7"></select></div>
 											</TD>
@@ -1406,13 +1405,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType8"
 													onkeyup="search3(this,document.Form1.DropProdName8,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName8,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName8,event,document.Form1.DropType8,document.Form1.txtQty8),getStock1(this,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName8,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName8)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName8,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName8)"
 													value="Type" name="DropType8" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName8,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName8)" readOnly type="text"
 													name="temp8"><br>
 												<div id="Layer9" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType8,document.Form1.txtQty8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
 														id="DropProdName8" ondblclick="select(this,document.Form1.DropType8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty8,document.Form1.DropType8)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty8,document.Form1.DropType8)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
 														multiple name="DropProdName8"></select></div>
 											</TD>
@@ -1432,13 +1431,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType9"
 													onkeyup="search3(this,document.Form1.DropProdName9,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName9,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName9,event,document.Form1.DropType9,document.Form1.txtQty9),getStock1(this,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName9,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName9)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName9,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName9)"
 													value="Type" name="DropType9" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName9,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName9)" readOnly type="text"
 													name="temp9"><br>
 												<div id="Layer10" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType9,document.Form1.txtQty9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
 														id="DropProdName9" ondblclick="select(this,document.Form1.DropType9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty9,document.Form1.DropType9)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty9,document.Form1.DropType9)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
 														multiple name="DropProdName9"></select></div>
 											</TD>
@@ -1458,13 +1457,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType10"
 													onkeyup="search3(this,document.Form1.DropProdName10,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName10,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName10,event,document.Form1.DropType10,document.Form1.txtQty10),getStock1(this,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName10,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName10)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName10,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName10)"
 													value="Type" name="DropType10" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName10,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName10)" readOnly type="text"
 													name="temp10"><br>
 												<div id="Layer11" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType10,document.Form1.txtQty10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
 														id="DropProdName10" ondblclick="select(this,document.Form1.DropType10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty10,document.Form1.DropType10)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty10,document.Form1.DropType10)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
 														multiple name="DropProdName10"></select></div>
 											</TD>
@@ -1484,13 +1483,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType11"
 													onkeyup="search3(this,document.Form1.DropProdName11,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName11,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName11,event,document.Form1.DropType11,document.Form1.txtQty11),getStock1(this,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName11,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName11)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName11,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName11)"
 													value="Type" name="DropType11" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName11,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName11)" readOnly type="text"
 													name="temp11"><br>
 												<div id="Layer12" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType11,document.Form1.txtQty11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
 														id="DropProdName11" ondblclick="select(this,document.Form1.DropType11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty11,document.Form1.DropType11)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty11,document.Form1.DropType11)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
 														multiple name="DropProdName11"></select></div>
 											</TD>
@@ -1510,13 +1509,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType12"
 													onkeyup="search3(this,document.Form1.DropProdName12,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName12,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName12,event,document.Form1.DropType12,document.Form1.txtQty12),getStock1(this,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName12,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName12)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName12,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName12)"
 													value="Type" name="DropType12" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName12,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName12)" readOnly type="text"
 													name="temp12"><br>
 												<div id="Layer13" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType12,document.Form1.txtQty12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
 														id="DropProdName12" ondblclick="select(this,document.Form1.DropType12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty12,document.Form1.DropType12)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty12,document.Form1.DropType12)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
 														multiple name="DropProdName12"></select></div>
 											</TD>
@@ -1536,13 +1535,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType13"
 													onkeyup="search3(this,document.Form1.DropProdName13,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName13,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName13,event,document.Form1.DropType13,document.Form1.txtQty13),getStock1(this,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName13,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName13)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName13,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName13)"
 													value="Type" name="DropType13" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName13,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName13)" readOnly type="text"
 													name="temp12"><br>
 												<div id="Layer14" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType13,document.Form1.txtQty13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
 														id="DropProdName13" ondblclick="select(this,document.Form1.DropType13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty13,document.Form1.DropType13)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty13,document.Form1.DropType13)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
 														multiple name="DropProdName13"></select></div>
 											</TD>
@@ -1562,13 +1561,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType14"
 													onkeyup="search3(this,document.Form1.DropProdName14,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName14,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName14,event,document.Form1.DropType14,document.Form1.txtQty14),getStock1(this,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName14,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName14)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName14,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName14)"
 													value="Type" name="DropType14" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName14,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName14)" readOnly type="text"
 													name="temp14"><br>
 												<div id="Layer15" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType14,document.Form1.txtQty14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
 														id="DropProdName14" ondblclick="select(this,document.Form1.DropType14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty14,document.Form1.DropType14)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty14,document.Form1.DropType14)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
 														multiple name="DropProdName14"></select></div>
 											</TD>
@@ -1588,13 +1587,13 @@
 										<tr>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType15"
 													onkeyup="search3(this,document.Form1.DropProdName15,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName15,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName15,event,document.Form1.DropType15,document.Form1.txtQty15),getStock1(this,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName15,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName15)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName15,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName15)"
 													value="Type" name="DropType15" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName15,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName15)" readOnly type="text"
 													name="temp15"><br>
 												<div id="Layer16" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType15,document.Form1.txtQty15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
 														id="DropProdName15" ondblclick="select(this,document.Form1.DropType15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty15,document.Form1.DropType15)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty15,document.Form1.DropType15)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
 														multiple name="DropProdName15"></select></div>
 											</TD>
@@ -1614,13 +1613,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType16"
 													onkeyup="search3(this,document.Form1.DropProdName16,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName16,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName16,event,document.Form1.DropType16,document.Form1.txtQty16),getStock1(this,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName16,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName16)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName16,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName16)"
 													value="Type" name="DropType16" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName16,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName16)" readOnly type="text"
 													name="temp16"><br>
 												<div id="Layer17" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType16,document.Form1.txtQty16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
 														id="DropProdName16" ondblclick="select(this,document.Form1.DropType16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty16,document.Form1.DropType16)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty16,document.Form1.DropType16)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
 														multiple name="DropProdName16"></select></div>
 											</TD>
@@ -1640,13 +1639,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType17"
 													onkeyup="search3(this,document.Form1.DropProdName17,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName17,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName17,event,document.Form1.DropType17,document.Form1.txtQty17),getStock1(this,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName17,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName17)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName17,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName17)"
 													value="Type" name="DropType17" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName17,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName17)" readOnly type="text"
 													name="temp17"><br>
 												<div id="Layer18" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType17,document.Form1.txtQty17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
 														id="DropProdName17" ondblclick="select(this,document.Form1.DropType17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty17,document.Form1.DropType17)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty17,document.Form1.DropType17)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
 														multiple name="DropProdName17"></select></div>
 											</TD>
@@ -1666,13 +1665,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType18"
 													onkeyup="search3(this,document.Form1.DropProdName18,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName18,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName18,event,document.Form1.DropType18,document.Form1.txtQty18),getStock1(this,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName18,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName18)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName18,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName18)"
 													value="Type" name="DropType18" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName18,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName18)" readOnly type="text"
 													name="temp18"><br>
 												<div id="Layer19" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType18,document.Form1.txtQty18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
 														id="DropProdName18" ondblclick="select(this,document.Form1.DropType18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.DropType19,document.Form1.DropType18)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.DropType19,document.Form1.DropType18)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
 														multiple name="DropProdName18"></select></div>
 											</TD>
@@ -1692,13 +1691,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType19"
 													onkeyup="search3(this,document.Form1.DropProdName19,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName19,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName19,event,document.Form1.DropType19,document.Form1.txtQty19),getStock1(this,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName19,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName19)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName19,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName19)"
 													value="Type" name="DropType19" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName19,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName19)" readOnly type="text"
 													name="temp19"><br>
 												<div id="Layer20" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType19,document.Form1.txtQty19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
 														id="DropProdName19" ondblclick="select(this,document.Form1.DropType19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty19,document.Form1.DropType19)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty19,document.Form1.DropType19)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
 														multiple name="DropProdName19"></select></div>
 											</TD>
@@ -1718,13 +1717,13 @@
 										<TR>
 											<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType20"
 													onkeyup="search3(this,document.Form1.DropProdName20,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName20,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName20,event,document.Form1.DropType20,document.Form1.txtQty20),getStock1(this,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName20,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName20)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 285px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName20,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName20)"
 													value="Type" name="DropType20" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
 													onclick="search1(document.Form1.DropProdName20,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName20)" readOnly type="text"
 													name="temp20"><br>
 												<div id="Layer21" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType20,document.Form1.txtQty20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
 														id="DropProdName20" ondblclick="select(this,document.Form1.DropType20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
-														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty20,document.Form1.DropType20)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 330px; HEIGHT: 0px"
+														onkeyup="arrowkeyselect(this,event,document.Form1.txtQty20,document.Form1.DropType20)" style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 285px; HEIGHT: 19px"
 														onfocusout="HideList(this,document.Form1.DropType20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
 														multiple name="DropProdName20"></select></div>
 											</TD>

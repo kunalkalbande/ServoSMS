@@ -346,6 +346,11 @@ function SetFocus(t,e)
 	}
 }
 		</script>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 221px;
+            }
+        </style>
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -394,7 +399,7 @@ function SetFocus(t,e)
 								<td>
 									<table cellSpacing="0" cellPadding="0" border="1">
 										<tr>
-											<td align="center" bgColor="#ce4848"><FONT color="#ffffff"><b>Product Name &amp; Package</b></FONT>
+											<td align="center" bgColor="#ce4848" class="auto-style1"><FONT color="#ffffff"><b>Product Name &amp; Package</b></FONT>
 											</td>
 											<td align="center" bgColor="#ce4848"><FONT color="#ffffff"><b>Store In</b></FONT>
 											</td>
@@ -404,15 +409,15 @@ function SetFocus(t,e)
 											</td>
 										</tr>
 										<tr>
-											<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd1"
+											<td class="auto-style1"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd1"
 													onkeyup="search3(this,document.Form1.DropProductName1,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName1,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName1,event,document.Form1.DropOutProd1,document.Form1.txtOutQtyPack1),setStore(this,document.Form1.txtOutStoreIn1,document.Form1.txtOutQtyPack1,document.Form1.txtOutQtyLtr1)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName1)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 200px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName1)"
 													value="Select" name="DropOutProd1" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName1)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropOutProd1,document.Form1.txtOutQtyPack1),setStore(document.Form1.DropOutProd1,document.Form1.txtOutStoreIn1,document.Form1.txtOutQtyPack1,document.Form1.txtOutQtyLtr1)"
 														id="DropProductName1" ondblclick="select(this,document.Form1.DropOutProd1),setStore(document.Form1.DropOutProd1,document.Form1.txtOutStoreIn1,document.Form1.txtOutQtyPack1,document.Form1.txtOutQtyLtr1)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtOutQtyPack1,document.Form1.DropOutProd1),setStore(document.Form1.DropOutProd1,document.Form1.txtOutStoreIn1,document.Form1.txtOutQtyPack1,document.Form1.txtOutQtyLtr1)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropOutProd1)" multiple name="DropProductName1"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 200px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropOutProd1)" multiple name="DropProductName1"></select></div>
 											</td>
 											<td><asp:textbox id="txtOutStoreIn1" runat="server" CssClass="dropdownlist" BorderStyle="Groove"
 													Width="60px" ReadOnly="True"></asp:textbox></td>
@@ -423,15 +428,15 @@ function SetFocus(t,e)
 													runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="40px" Enabled="False"></asp:textbox></td>
 										</tr>
 										<TR>
-											<TD><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd2"
+											<TD class="auto-style1"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd2"
 													onkeyup="search3(this,document.Form1.DropProductName2,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName2,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName2,event,document.Form1.DropOutProd2,document.Form1.txtOutQtyPack2),setStore(this,document.Form1.txtOutStoreIn2,document.Form1.txtOutQtyPack2,document.Form1.txtOutQtyLtr2)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName2,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName2)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 200px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName2,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName2)"
 													value="Select" name="DropOutProd2" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName2,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName2)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer2" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropOutProd2,document.Form1.txtOutQtyPack2),setStore(document.Form1.DropOutProd2,document.Form1.txtOutStoreIn2,document.Form1.txtOutQtyPack2,document.Form1.txtOutQtyLtr2)"
 														id="DropProductName2" ondblclick="select(this,document.Form1.DropOutProd2),setStore(document.Form1.DropOutProd2,document.Form1.txtOutStoreIn2,document.Form1.txtOutQtyPack2,document.Form1.txtOutQtyLtr2)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtOutQtyPack2,document.Form1.DropOutProd2),setStore(document.Form1.DropOutProd2,document.Form1.txtOutStoreIn2,document.Form1.txtOutQtyPack2,document.Form1.txtOutQtyLtr2)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropOutProd2)" multiple name="DropProductName2"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 200px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropOutProd2)" multiple name="DropProductName2"></select></div>
 											</TD>
 											<TD><asp:textbox id="txtOutStoreIn2" runat="server" CssClass="dropdownlist" BorderStyle="Groove"
 													Width="60px" ReadOnly="True"></asp:textbox></TD>
@@ -442,15 +447,15 @@ function SetFocus(t,e)
 													runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="40px" Enabled="False"></asp:textbox></TD>
 										</TR>
 										<TR>
-											<TD><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd3"
+											<TD class="auto-style1"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd3"
 													onkeyup="search3(this,document.Form1.DropProductName3,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName3,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName3,event,document.Form1.DropOutProd3,document.Form1.txtOutQtyPack3),setStore(this,document.Form1.txtOutStoreIn3,document.Form1.txtOutQtyPack3,document.Form1.txtOutQtyLtr3)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName3,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName3)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 200px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName3,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName3)"
 													value="Select" name="DropOutProd3" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName3,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName3)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer3" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropOutProd3,document.Form1.txtOutQtyPack3),setStore(document.Form1.DropOutProd3,document.Form1.txtOutStoreIn3,document.Form1.txtOutQtyPack3,document.Form1.txtOutQtyLtr3)"
 														id="DropProductName3" ondblclick="select(this,document.Form1.DropOutProd3),setStore(document.Form1.DropOutProd3,document.Form1.txtOutStoreIn3,document.Form1.txtOutQtyPack3,document.Form1.txtOutQtyLtr3)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtOutQtyPack3,document.Form1.DropOutProd3),setStore(document.Form1.DropOutProd3,document.Form1.txtOutStoreIn3,document.Form1.txtOutQtyPack3,document.Form1.txtOutQtyLtr3)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropOutProd3)" multiple name="DropProductName3"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 200px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropOutProd3)" multiple name="DropProductName3"></select></div>
 											</TD>
 											<TD><asp:textbox id="txtOutStoreIn3" runat="server" CssClass="dropdownlist" BorderStyle="Groove"
 													Width="60px" ReadOnly="True" ontextchanged="TextBox4_TextChanged"></asp:textbox></TD>
@@ -461,15 +466,15 @@ function SetFocus(t,e)
 													runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="40px" Enabled="False"></asp:textbox></TD>
 										</TR>
 										<TR>
-											<TD><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd4"
+											<TD class="auto-style1"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropOutProd4"
 													onkeyup="search3(this,document.Form1.DropProductName4,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName4,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName4,event,document.Form1.DropOutProd4,document.Form1.txtOutQtyPack4),setStore(document.Form1.DropOutProd4,document.Form1.txtOutStoreIn4,document.Form1.txtOutQtyPack4,document.Form1.txtOutQtyLtr4)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName4,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName4)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 200px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName4,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName4)"
 													value="Select" name="DropOutProd4" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName4,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName4)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer4" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropOutProd4,document.Form1.txtOutQtyPack4),setStore(document.Form1.DropOutProd4,document.Form1.txtOutStoreIn4,document.Form1.txtOutQtyPack4,document.Form1.txtOutQtyLtr4)"
 														id="DropProductName4" ondblclick="select(this,document.Form1.DropOutProd4),setStore(document.Form1.DropOutProd4,document.Form1.txtOutStoreIn4,document.Form1.txtOutQtyPack4,document.Form1.txtOutQtyLtr4)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtOutQtyPack4,document.Form1.DropOutProd4),setStore(document.Form1.DropOutProd4,document.Form1.txtOutStoreIn4,document.Form1.txtOutQtyPack4,document.Form1.txtOutQtyLtr4)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropOutProd4)" multiple name="DropProductName4"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 200px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropOutProd4)" multiple name="DropProductName4"></select></div>
 											</TD>
 											<TD><asp:textbox id="txtOutStoreIn4" runat="server" CssClass="dropdownlist" BorderStyle="Groove"
 													Width="60px" ReadOnly="True"></asp:textbox></TD>
@@ -480,7 +485,7 @@ function SetFocus(t,e)
 													runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="40px" Enabled="False"></asp:textbox></TD>
 										</TR>
 										<TR>
-											<TD><STRONG>Total Out:</STRONG></TD>
+											<TD class="auto-style1"><STRONG>Total Out:</STRONG></TD>
 											<TD>&nbsp;</TD>
 											<TD><asp:textbox id="txtTotalOutQtyPack" runat="server" CssClass="dropdownlist" BorderStyle="Groove"
 													Width="40px" ReadOnly="True"></asp:textbox></TD>
@@ -504,13 +509,13 @@ function SetFocus(t,e)
 										<tr>
 											<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropInProd1"
 													onkeyup="search3(this,document.Form1.DropProductName5,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName5,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName5,event,document.Form1.DropInProd1,document.Form1.txtInQtyPack1),setStore(this,document.Form1.txtInStoreIn1,document.Form1.txtInQtyPack1,document.Form1.txtInQtyLtr1)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName5)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 160px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName5)"
 													value="Select" name="DropInProd1" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName5,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName5)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer5" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropInProd1,document.Form1.txtInQtyPack1),setStore(document.Form1.DropInProd1,document.Form1.txtInStoreIn1,document.Form1.txtInQtyPack1,document.Form1.txtInQtyLtr1)"
 														id="DropProductName5" ondblclick="select(this,document.Form1.DropInProd1),setStore(document.Form1.DropInProd1,document.Form1.txtInStoreIn1,document.Form1.txtInQtyPack1,document.Form1.txtInQtyLtr1)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtInQtyPack1,document.Form1.DropInProd1),setStore(document.Form1.DropInProd1,document.Form1.txtInStoreIn1,document.Form1.txtInQtyPack1,document.Form1.txtInQtyLtr1)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropInProd1)" multiple name="DropProductName5"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 160px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropInProd1)" multiple name="DropProductName5"></select></div>
 											</td>
 											<td><asp:textbox id="txtInStoreIn1" runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="60px"
 													ReadOnly="True"></asp:textbox></td>
@@ -525,13 +530,13 @@ function SetFocus(t,e)
 										<TR>
 											<TD><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropInProd2"
 													onkeyup="search3(this,document.Form1.DropProductName6,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName6,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName6,event,document.Form1.DropInProd2,document.Form1.txtInQtyPack2),setStore(document.Form1.DropInProd2,document.Form1.txtInStoreIn2,document.Form1.txtInQtyPack2,document.Form1.txtInQtyLtr2)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName6,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName6)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 160px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName6,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName6)"
 													value="Select" name="DropInProd2" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName6,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName6)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer6" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropInProd2,document.Form1.txtInQtyPack2),setStore(document.Form1.DropInProd2,document.Form1.txtInStoreIn2,document.Form1.txtInQtyPack2,document.Form1.txtInQtyLtr2)"
 														id="DropProductName6" ondblclick="select(this,document.Form1.DropInProd2),setStore(document.Form1.DropInProd2,document.Form1.txtInStoreIn2,document.Form1.txtInQtyPack2,document.Form1.txtInQtyLtr2)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtInQtyPack2,document.Form1.DropInProd2),setStore(document.Form1.DropInProd2,document.Form1.txtInStoreIn2,document.Form1.txtInQtyPack2,document.Form1.txtInQtyLtr2)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropInProd2)" multiple name="DropProductName6"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 160px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropInProd2)" multiple name="DropProductName6"></select></div>
 											</TD>
 											<TD><asp:textbox id="txtInStoreIn2" runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="60px"
 													ReadOnly="True"></asp:textbox></TD>
@@ -546,13 +551,13 @@ function SetFocus(t,e)
 										<TR>
 											<TD><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropInProd3"
 													onkeyup="search3(this,document.Form1.DropProductName7,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName7,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName7,event,document.Form1.DropInProd3,document.Form1.txtInQtyPack3),setStore(document.Form1.DropInProd3,document.Form1.txtInStoreIn3,document.Form1.txtInQtyPack3,document.Form1.txtInQtyLtr3)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName7)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 160px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName7)"
 													value="Select" name="DropInProd3" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName7,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName7)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer7" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropInProd3,document.Form1.txtInQtyPack3),setStore(document.Form1.DropInProd3,document.Form1.txtInStoreIn3,document.Form1.txtInQtyPack3,document.Form1.txtInQtyLtr3)"
 														id="DropProductName7" ondblclick="select(this,document.Form1.DropInProd3),setStore(document.Form1.DropInProd3,document.Form1.txtInStoreIn3,document.Form1.txtInQtyPack3,document.Form1.txtInQtyLtr3)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtInQtyPack3,document.Form1.DropInProd3),setStore(document.Form1.DropInProd3,document.Form1.txtInStoreIn3,document.Form1.txtInQtyPack3,document.Form1.txtInQtyLtr3)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropInProd3)" multiple name="DropProductName7"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 160px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropInProd3)" multiple name="DropProductName7"></select></div>
 											</TD>
 											<TD><asp:textbox id="txtInStoreIn3" runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="60px"
 													ReadOnly="True"></asp:textbox></TD>
@@ -567,13 +572,13 @@ function SetFocus(t,e)
 										<TR>
 											<TD><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropInProd4"
 													onkeyup="search3(this,document.Form1.DropProductName8,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProductName8,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProductName8,event,document.Form1.DropInProd4,document.Form1.txtInQtyPack4),setStore(document.Form1.DropInProd4,document.Form1.txtInStoreIn4,document.Form1.txtInQtyPack4,document.Form1.txtInQtyLtr4)"
-													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 210px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName8,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName8)"
+													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 160px; HEIGHT: 19px" onclick="search1(document.Form1.DropProductName8,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName8)"
 													value="Select" name="DropInProd4" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProductName8,document.Form1.texthiddenprod),dropshow(document.Form1.DropProductName8)"
 													readOnly type="text" name="temp"><br>
 												<div id="Layer8" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropInProd4,document.Form1.txtInQtyPack4),setStore(document.Form1.DropInProd4,document.Form1.txtInStoreIn4,document.Form1.txtInQtyPack4,document.Form1.txtInQtyLtr4)"
 														id="DropProductName8" ondblclick="select(this,document.Form1.DropInProd4),setStore(document.Form1.DropInProd4,document.Form1.txtInStoreIn4,document.Form1.txtInQtyPack4,document.Form1.txtInQtyLtr4)"
 														onkeyup="arrowkeyselect(this,event,document.Form1.txtInQtyPack4,document.Form1.DropInProd4),setStore(document.Form1.DropInProd4,document.Form1.txtInStoreIn4,document.Form1.txtInQtyPack4,document.Form1.txtInQtyLtr4)"
-														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 230px; HEIGHT: 0px" onfocusout="HideList(this,document.Form1.DropInProd4)" multiple name="DropProductName8"></select></div>
+														style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 160px; HEIGHT: 19px" onfocusout="HideList(this,document.Form1.DropInProd4)" multiple name="DropProductName8"></select></div>
 											</TD>
 											<TD><asp:textbox id="txtInStoreIn4" runat="server" CssClass="dropdownlist" BorderStyle="Groove" Width="60px"
 													ReadOnly="True"></asp:textbox></TD>
