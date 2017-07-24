@@ -115,7 +115,7 @@
 										<asp:ListItem Value="All" Selected="True">All</asp:ListItem>
 									</asp:DropDownList></td>
 								<td align="center">Search By</td>
-								<td><asp:dropdownlist id="DropSearchBy" CssClass="dropdownlist" Runat="server" AutoPostBack="False" onchange="CheckSearchOption(this);" onselectedindexchanged="DropSearchBy_SelectedIndexChanged" Width="60px">
+								<td><asp:dropdownlist id="DropSearchBy" CssClass="dropdownlist" Runat="server" AutoPostBack="False" onchange="CheckSearchOption(this);" onselectedindexchanged="DropSearchBy_SelectedIndexChanged" Width="100px">
 										<asp:ListItem Value="Select">All</asp:ListItem>
 										<asp:ListItem Value="Customer Group">Group</asp:ListItem>
 										<asp:ListItem Value="Customer SubGroup">SubGroup</asp:ListItem>
