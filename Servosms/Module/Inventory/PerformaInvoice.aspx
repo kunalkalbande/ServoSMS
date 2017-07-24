@@ -1570,8 +1570,11 @@
 							</TR>
 							<TR>
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
-								<TD align="right" colSpan="5">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="50px"  Text="Print" 
+								<TD align="right" colSpan="4">&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="50px"  Text="Print" 
 										 onclick="Button1_Click"></asp:button></TD>
+							</TR>
+							<TR>
+								<TD>&nbsp;<TD align="right" colSpan="4">&nbsp;</TD>
 							</TR>
 						</TABLE>
 						<asp:validationsummary id="ValidationSummary1" runat="server" ShowMessageBox="True" ShowSummary="False"></asp:validationsummary></td>
