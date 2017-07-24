@@ -1147,7 +1147,7 @@
 										</TR>
 										<TR>
 											<TD>&nbsp;&nbsp;&nbsp;Mode of Payment <FONT color="red">&nbsp;</FONT>&nbsp;&nbsp;</TD>
-											<TD><asp:dropdownlist id="DropModeType" runat="server" Width="70px" CssClass="dropdownlist" Height="20px" onselectedindexchanged="DropModeType_SelectedIndexChanged">
+											<TD><asp:dropdownlist id="DropModeType" runat="server" Width="100px" CssClass="dropdownlist" Height="20px" onselectedindexchanged="DropModeType_SelectedIndexChanged">
 													<asp:ListItem Value="Cash" Selected="True">Cash</asp:ListItem>
 													<asp:ListItem Value="Cheque">Cheque</asp:ListItem>
 													<asp:ListItem Value="DD on Delivery">DD on Delivery</asp:ListItem>
