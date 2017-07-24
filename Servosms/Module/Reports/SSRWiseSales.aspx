@@ -97,9 +97,9 @@
 											<asp:ListItem Value="All">All</asp:ListItem>
 										</asp:dropdownlist></td>
 									<td align="center">Customer</td>
-									<td><asp:dropdownlist id="DropCustomer" Width="240" CssClass="fontstyle" Runat="server">
+									<td><asp:dropdownlist id="DropCustomer" Width="240px" CssClass="fontstyle" Runat="server">
 											<asp:ListItem Value="All">All</asp:ListItem>
-										</asp:dropdownlist>Zero Balance&nbsp;&nbsp;<asp:checkbox id="chkZeroBal" CssClass="fontstyle" Runat="server"></asp:checkbox></td>
+										</asp:dropdownlist>&nbsp;&nbsp;Zero Balance&nbsp;&nbsp;<asp:checkbox id="chkZeroBal" CssClass="fontstyle" Runat="server"></asp:checkbox></td>
 								</tr>
 							</table>
 						</td>

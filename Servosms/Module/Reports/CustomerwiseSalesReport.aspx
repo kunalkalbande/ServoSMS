@@ -102,7 +102,7 @@
 							</TR>
 							<TR>
 								<TD align="left">&nbsp;&nbsp;&nbsp;&nbsp;Search By</TD>
-								<TD align="left"><asp:dropdownlist id="DropSearchBy" runat="server" Width="140px" CssClass="dropdownlist" onchange="CheckSearchOption(this)" onselectedindexchanged="DropSearchBy_SelectedIndexChanged">
+								<TD align="left"><asp:dropdownlist id="DropSearchBy" runat="server" Width="110px" CssClass="dropdownlist" onchange="CheckSearchOption(this)" onselectedindexchanged="DropSearchBy_SelectedIndexChanged">
 										<asp:ListItem Value="All">All</asp:ListItem>
 										<asp:ListItem Value="Customer Group">Customer Group</asp:ListItem>
 										<asp:ListItem Value="Customer Sub Group">Customer Sub Group</asp:ListItem>
@@ -137,26 +137,26 @@
 										<HeaderStyle Font-Bold="True" HorizontalAlign="Center" ForeColor="White" BackColor="#CE4848"></HeaderStyle>
 										<FooterStyle ForeColor="#8C4510" BackColor="#F7DFB5"></FooterStyle>
 										<Columns>
-											<asp:BoundColumn DataField="Cust_Name" SortExpression="Cust_Name" HeaderText="Customer Name" FooterText="Total">
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="Cust_Name" SortExpression="Cust_Name" HeaderText="Customer Name" FooterText="Total">
 												<FooterStyle Font-Bold="True" HorizontalAlign="Center" VerticalAlign="Middle"></FooterStyle>
 											</asp:BoundColumn>
-											<asp:BoundColumn DataField="Place" SortExpression="Place" HeaderText="Place"></asp:BoundColumn>
-											<asp:BoundColumn DataField="Invoice_No" SortExpression="Invoice_No" HeaderText="Invoice No.">
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="Place" SortExpression="Place" HeaderText="Place"></asp:BoundColumn>
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="Invoice_No" SortExpression="Invoice_No" HeaderText="Invoice No.">
 												<ItemStyle HorizontalAlign="Center"></ItemStyle>
 											</asp:BoundColumn>
-											<asp:BoundColumn DataField="Invoice_Date" SortExpression="Invoice_Date" HeaderText="Invoice Date"
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="Invoice_Date" SortExpression="Invoice_Date" HeaderText="Invoice Date"
 												DataFormatString="{0:dd/MM/yyyy}"></asp:BoundColumn>
-											<asp:BoundColumn DataField="Prod_Type" SortExpression="Prod_Type" HeaderText="Product Type"></asp:BoundColumn>
-											<asp:BoundColumn DataField="Prod_Name" SortExpression="Prod_Name" HeaderText="Product Name"></asp:BoundColumn>
-											<asp:BoundColumn DataField="qty" SortExpression="qty" HeaderText="Qty&lt;BR&gt;(No's)">
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="Prod_Type" SortExpression="Prod_Type" HeaderText="Product Type"></asp:BoundColumn>
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="Prod_Name" SortExpression="Prod_Name" HeaderText="Product Name"></asp:BoundColumn>
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="qty" SortExpression="qty" HeaderText="Qty&lt;BR&gt;(No's)">
 												<ItemStyle HorizontalAlign="Right"></ItemStyle>
 												<FooterStyle Font-Bold="True" HorizontalAlign="Right"></FooterStyle>
 											</asp:BoundColumn>
-											<asp:BoundColumn DataField="qtyltr" SortExpression="qtyltr" HeaderText="Qty&lt;BR&gt;(Ltr)">
+											<asp:BoundColumn HeaderStyle-Font-Bold="true" DataField="qtyltr" SortExpression="qtyltr" HeaderText="Qty&lt;BR&gt;(Ltr)">
 												<ItemStyle HorizontalAlign="Right"></ItemStyle>
 												<FooterStyle Font-Bold="True" HorizontalAlign="Right"></FooterStyle>
 											</asp:BoundColumn>
-											<asp:TemplateColumn HeaderText="Price">
+											<asp:TemplateColumn HeaderStyle-Font-Bold="true" HeaderText="Price">
 												<ItemStyle HorizontalAlign="Right"></ItemStyle>
 												<ItemTemplate>
 													<%#getPrice(DataBinder.Eval(Container.DataItem,"rate").ToString(),DataBinder.Eval(Container.DataItem,"qty").ToString(),DataBinder.Eval(Container.DataItem,"Invoice_No").ToString(),DataBinder.Eval(Container.DataItem,"Prod_ID").ToString(),DataBinder.Eval(Container.DataItem,"Invoice_Date").ToString(),DataBinder.Eval(Container.DataItem,"cust_id").ToString(),DataBinder.Eval(Container.DataItem,"qtyltr").ToString())%>

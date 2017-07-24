@@ -123,6 +123,11 @@
 		//alert(f.texthiddenprod.value)
 	}
 		</script>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 132px;
+            }
+        </style>
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -138,7 +143,7 @@
 				type="text" name="texthiddenprod1" runat="server">
 			<table height="290" cellSpacing="0" cellPadding="0" width="778" align="center" border="0">
 				<tr vAlign="top" height="20">
-					<th colSpan="5">
+					<th>
 						<font color="#ce4848">Party Wise Sales Figure</font>
 						<hr>
 					</th>
@@ -148,7 +153,7 @@
 						<table width="100%" align="center">
 							<tr height="20">
 								<td align="center">Date From</td>
-								<td><asp:textbox id="txtDateFrom" runat="server" ReadOnly="True" Width="110px" BorderStyle="Groove"
+								<td class="auto-style1"><asp:textbox id="txtDateFrom" runat="server" ReadOnly="True" Width="110px" BorderStyle="Groove"
 										CssClass="fontstyle"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 											align="absMiddle" border="0"></A></td>
 								<td>To</td>
@@ -160,7 +165,7 @@
 							</tr>
 							<tr vAlign="top">
 								<td align="center">Search By</td>
-								<td><asp:dropdownlist id="DropSelectOption" Width="100" CssClass="fontstyle" Runat="server" onchange="CheckSearchOption(this)" onselectedindexchanged="DropSelectOption_SelectedIndexChanged">
+								<td class="auto-style1"><asp:dropdownlist id="DropSelectOption" Width="100" CssClass="fontstyle" Runat="server" onchange="CheckSearchOption(this)" onselectedindexchanged="DropSelectOption_SelectedIndexChanged">
 										<asp:ListItem Value="All">All</asp:ListItem>
 										<asp:ListItem Value="Group">Group</asp:ListItem>
 										<asp:ListItem Value="SubGroup">SubGroup</asp:ListItem>
@@ -173,7 +178,7 @@
                                 <td align="center">Option</td>
 								<td  colSpan="2"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 										onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnview)"
-										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 180px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
+										style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 120px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										value="All" name="DropValue" runat="server"><input class="ComboBoxSearchButtonStyle" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"
 										readOnly type="text" name="temp"><br>
 									<div id="Layer1" style="Z-INDEX: 2; POSITION: absolute"><select class="ListBoxBorderStyle" onkeypress="Selectbyenter(this,event,document.Form1.DropValue,document.Form1.btnview)"

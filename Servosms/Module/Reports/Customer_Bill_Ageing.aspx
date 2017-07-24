@@ -91,6 +91,11 @@ function CheckSearchOption(t)
 	//alert(f.texthiddenprod.value)
 }
 		</script>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 88px;
+            }
+        </style>
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -129,7 +134,7 @@ function CheckSearchOption(t)
 													<asp:ListItem Value="Beyond">Beyond</asp:ListItem>
 													<asp:ListItem Value="Serius">Serius</asp:ListItem>
 												</asp:DropDownList>&nbsp;Date From</TD>
-											<TD>&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="60px" CssClass="fontstyle" BorderStyle="Groove"
+											<TD class="auto-style1">&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="60px" CssClass="fontstyle" BorderStyle="Groove"
 													ReadOnly="True"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 														align="absMiddle" border="0"></A>&nbsp;</TD>
 											
@@ -153,7 +158,7 @@ function CheckSearchOption(t)
 													<asp:ListItem Value="Place">Place</asp:ListItem>
 													<asp:ListItem Value="SSR">SSR</asp:ListItem>
 												</asp:dropdownlist></td>
-											<td>Value</td>
+											<td class="auto-style1">Value</td>
 											<td><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropValue"
 													onkeyup="search3(this,document.Form1.DropProdName,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName,event,document.Form1.DropValue,document.Form1.btnShow)"
 													style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 150px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName)"

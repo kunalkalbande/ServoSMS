@@ -103,14 +103,14 @@
 					</TR>
 					<tr height="20">
 						<td colspan="9" align="center"><asp:radiobutton id="RadioInvoice" GroupName="Wise" Checked="True" Runat="server" Text="Invoice Wise"></asp:radiobutton>
-							<asp:radiobutton id="RadioYearly" GroupName="Wise" Runat="server" Text="Year Wise"></asp:radiobutton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From&nbsp;&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
+							<asp:radiobutton id="RadioYearly" GroupName="Wise" Runat="server" Text="Year Wise"></asp:radiobutton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;From&nbsp;&nbsp;<asp:textbox id="txtDateFrom" runat="server" Width="100px" BorderStyle="Groove" ReadOnly="True"
 								CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 									align="absMiddle" border="0"></A> To
-							<asp:textbox id="txtDateTo" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
+							<asp:textbox id="txtDateTo" runat="server" Width="100px" BorderStyle="Groove" ReadOnly="True"
 								CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 									align="middle" border="0"></A>
-							<asp:button id="btnview1" Width="65px" Runat="server" Text="View" 
-								 onclick="btnview1_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="65px" Runat="server" Text="Excel"  onclick="btnExcel_Click"></asp:button></td>
+							<asp:button id="btnview1" Width="50px" Runat="server" Text="View" 
+								 onclick="btnview1_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnExcel" Width="50px" Runat="server" Text="Excel"  onclick="btnExcel_Click"></asp:button></td>
 					</tr>
 					<tr height="20">
 						<td align="center" colspan="2">Search By

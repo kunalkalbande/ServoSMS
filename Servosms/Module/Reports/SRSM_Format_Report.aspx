@@ -46,7 +46,7 @@
 								ControlToValidate="DropMonth">*</asp:requiredfieldvalidator>&nbsp;
 							<asp:requiredfieldvalidator id="Requiredfieldvalidator1" Runat="server" InitialValue="Select" ErrorMessage="Please Select The Year First"
 								ControlToValidate="DropYear">*</asp:requiredfieldvalidator>&nbsp;
-							<asp:dropdownlist id="DropMonth" Runat="server" CssClass="fontstyle" AutoPostBack="False">
+							<asp:dropdownlist id="DropMonth" Runat="server" CssClass="fontstyle" AutoPostBack="False" style="margin-left: 0px">
 								<asp:ListItem Value="Select">Select</asp:ListItem>
 								<asp:ListItem Value="January">January</asp:ListItem>
 								<asp:ListItem Value="February">February</asp:ListItem>
@@ -60,7 +60,7 @@
 								<asp:ListItem Value="October">October</asp:ListItem>
 								<asp:ListItem Value="November">November</asp:ListItem>
 								<asp:ListItem Value="December">December</asp:ListItem>
-							</asp:dropdownlist><asp:dropdownlist id="DropYear" Runat="server" CssClass="fontstyle">
+							</asp:dropdownlist><asp:dropdownlist id="DropYear" Runat="server" CssClass="fontstyle" style="margin-left: 3px">
 								<asp:ListItem Value="Select">Select</asp:ListItem>
 								<asp:ListItem Value="2005">2005</asp:ListItem>
 								<asp:ListItem Value="2006">2006</asp:ListItem>
@@ -87,12 +87,12 @@
 								<asp:ListItem Value="SRSM 9">SRSM 9</asp:ListItem>
 								<asp:ListItem Value="SRSM 10 & 12">SRSM 10 & 12</asp:ListItem>
 								<asp:ListItem Value="SRSM 14">SRSM 14</asp:ListItem>
-							</asp:dropdownlist>&nbsp;&nbsp;<asp:button id="btnShow" Runat="server" Width="80px" 
+							</asp:dropdownlist>&nbsp;&nbsp;<asp:button id="btnShow" Runat="server" Width="60px" 
 								Text="Show" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;<asp:textbox id="txtvalue" runat="server" CssClass="fontstyle" Width="30px" BorderStyle="Groove"
 								Visible="False"></asp:textbox>
-							&nbsp;&nbsp;<asp:button id="btnSave" Runat="server" Width="80px" 
+							&nbsp;&nbsp;<asp:button id="btnSave" Runat="server" Width="60px" 
 								Text="Update" Visible="False" CausesValidation="False" onclick="btnSave_Click"></asp:button>
-							&nbsp;&nbsp;<asp:button id="btneExcel" Runat="server" Width="80px" 
+							&nbsp;&nbsp;<asp:button id="btneExcel" Runat="server" Width="60px" 
 								 Text="Excel" onclick="btneExcel_Click"></asp:button></td>
 					</tr>
 					<tr vAlign="top">

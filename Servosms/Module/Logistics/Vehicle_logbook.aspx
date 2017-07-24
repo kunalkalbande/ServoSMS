@@ -92,7 +92,7 @@
 								<TD style="WIDTH: 68px">&nbsp;VDLB ID</TD>
 								<TD style="WIDTH: 266px"><asp:label id="lblVDLBID" runat="server" ForeColor="Blue"></asp:label><asp:dropdownlist id="DropVDLBID" runat="server" Visible="False" AutoPostBack="True" CssClass="fontstyle" onselectedindexchanged="DropVDLBID_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
-									</asp:dropdownlist><asp:button id="btnEdit1" runat="server" Width="20px" Text="..." ToolTip="Click here for Edit"
+									</asp:dropdownlist><asp:button id="btnEdit1" runat="server" Width="35px" Text="..." ToolTip="Click here for Edit"
 										CausesValidation="False" onclick="btnEdit1_Click"></asp:button></TD>
 								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vehicle No.
 									<asp:requiredfieldvalidator id="RequiredFieldValidator1" runat="server" ErrorMessage="Please select Vehicle No."
@@ -172,15 +172,15 @@
 							<TR>
 								<TD style="WIDTH: 68px">&nbsp;Other Exp.in&nbsp; Rupees</TD>
 								<TD style="WIDTH: 266px">&nbsp;Toll&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtTollqty" runat="server"
-										Width="56px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
+										Width="80px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
 									Misc.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtMiscqty" runat="server"
-										Width="56px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
+										Width="80px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<TD colSpan="2">&nbsp;Police&nbsp;<A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtfueluseddt);return false;"></A><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Vechile_entryform.txtfueluseddt);return false;"></A>&nbsp;&nbsp;
 									<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPoliceqty" runat="server"
-										Width="56px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>&nbsp;&nbsp;Food 
+										Width="100px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>&nbsp;&nbsp;Food 
 									&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtfoodqty" runat="server"
-										Width="56px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
+										Width="100px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>
 								</TD>
 							</TR>
 							<TR>

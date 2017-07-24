@@ -108,9 +108,11 @@ namespace Servosms.Module.Reports
 
 					tempMonth=new ArrayList();
 				}
-				/*if(txtValue.Text!="")
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+                /*if(txtValue.Text!="")
 					Total_PurVar+=double.Parse(txtValue.Text);*/
-				BtnPrint.Attributes.Add("OnClick","CheckPurchaseSum();");
+                BtnPrint.Attributes.Add("OnClick","CheckPurchaseSum();");
 				btnExcel.Attributes.Add("OnClick","CheckPurchaseSum();");
 				//cmdrpt.Attributes.Add("OnClick","CheckPurchaseSum();");
 			}
@@ -657,7 +659,7 @@ namespace Servosms.Module.Reports
 				if(DropReportType.SelectedItem.Text == "Sales Return" || DropReportType.SelectedItem.Text == "Both")
 				{
 					//str1="select p.Prod_Name+':'+p.Pack_Type Product ,prm.Invoice_No,Supp_Name,prd.qty,(prd.qty*p.total_qty) Ltr,prd.Rate  from Purchase_Return_Details PRD,Purchase_Return_Master PRM, Products P,purchase_master pm,Supplier S where PRD.Pr_ID=PRM.Pr_id and Prd.Prod_id=p.prod_id and prm.invoice_no=pm.invoice_no and pm.vendor_id=s.Supp_id and cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
-					str="select Prod_Name+':'+Pack_Type Product,Invoice_No,Cust_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Net_Amount,VAT_Amount from View_Sales_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(entry_time as float)) as datetime)<='"+ToMMddYYYY(txtDateTo.Text.ToString())+"' order by Invoice_No";
+					str="select Prod_Name+':'+Pack_Type Product,Invoice_No,Cust_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Net_Amount,VAT_Amount from View_Sales_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(entry_time as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' order by Invoice_No";
 				}
 				Cache["str"]=str;
 				strorderby1="Invoice_No ASC";
@@ -669,7 +671,7 @@ namespace Servosms.Module.Reports
 				if(DropReportType.SelectedItem.Text == "Purchase Return" || DropReportType.SelectedItem.Text == "Both")
 				{
 					//str1="select invoice_no, invoice_date,Grand_Total, (case when cash_disc_type = 'Per' then ((Grand_Total+Entry_tax1-(Trade_Discount+foc_Discount+Fixed_Discount+Discount))*Cash_Discount/100) else Cash_Discount end) as Cash_Disc, VAT_Amount, (case when discount_type = 'Per' then ((Grand_Total-(case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end))+VAT_Amount)*Discount/100 else Discount end) as Disc, Net_Amount, s.Supp_Name, s.City, s.Tin_No, Vndr_Invoice_No from Purchase_Master p, Supplier s where s.Supp_ID = p.Vendor_ID and VAT_Amount != 0 and cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
-				str1="select Prod_Name+':'+pack_Type Product,Invoice_No,Supp_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Vndr_Invoice_No,Net_Amount,VAT_Amount from View_Purchase_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(entry_time as float)) as datetime)<='"+ToMMddYYYY(txtDateTo.Text.ToString())+"' order by Invoice_No";
+				str1="select Prod_Name+':'+pack_Type Product,Invoice_No,Supp_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Vndr_Invoice_No,Net_Amount,VAT_Amount from View_Purchase_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(entry_time as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' order by Invoice_No";
 				}
 				Cache["str1"]=str1;
 				strorderby2="Invoice_No ASC";
@@ -714,8 +716,8 @@ namespace Servosms.Module.Reports
 			}
 			else
 			{
-				//SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schprodid=0 and prodid=(select prod_id from products where prod_Name='"+ProdName+"' and pack_type='"+PackType+"') and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Textbox1.Text)+"'");
-				SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schprodid=0 and prodid=(select prod_id from products where prod_Name='"+ProdName+"' and pack_type='"+PackType+"') and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+				//SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schprodid=0 and prodid=(select prod_id from products where prod_Name='"+ProdName+"' and pack_type='"+PackType+"') and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Textbox1.Text)+"'");
+				SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schprodid=0 and prodid=(select prod_id from products where prod_Name='"+ProdName+"' and pack_type='"+PackType+"') and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"'");
 				if(rdr.Read())
 				{
 					localper=rdr["DiscountType"].ToString();
@@ -753,7 +755,7 @@ namespace Servosms.Module.Reports
 			}
 			else
 			{
-				SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schprodid=0 and prodid=(select prod_id from products where prod_Name='"+ProdName+"' and pack_type='"+PackType+"') and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(txtDateFrom.Text)+"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(txtDateTo.Text)+"'");
+				SqlDataReader rdr = obj.GetRecordSet("select discount,discounttype from oilscheme where schprodid=0 and prodid=(select prod_id from products where prod_Name='"+ProdName+"' and pack_type='"+PackType+"') and cast(floor(cast(datefrom as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(dateto as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"'");
 				if(rdr.Read())
 				{
 					localper=rdr["DiscountType"].ToString();
@@ -846,7 +848,7 @@ namespace Servosms.Module.Reports
 					sw.WriteLine("                             Sales Return                                        ");
 					sw.WriteLine("---------------------------------------------------------------------------------");
 					//sql="select substring(cast(Invoice_No as varchar),4,10) as Invoice_No, invoice_date,Grand_Total, (case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end) as Cash_Disc, VAT_Amount, (case when discount_type = 'Per' then ((Grand_Total-(case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end))+VAT_Amount)*Discount/100 else Discount end) as Disc, Net_Amount, c.Cust_Name, c.City, c.Tin_No from Sales_Master s, Customer c where c.Cust_ID = s.Cust_ID and VAT_Amount != 0 and cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'";
-					sql="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Cust_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Net_Amount,VAT_Amount from View_Sales_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(entry_time as float)) as datetime)<='"+ToMMddYYYY(txtDateTo.Text.ToString())+"' order by invoice_no";
+					sql="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Cust_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Net_Amount,VAT_Amount from View_Sales_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(entry_time as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' order by invoice_no";
 					sql=sql+" order by "+Cache["strorderby1"];
 					dbobj.SelectQuery(sql,ref SqlDtr);
 					//dbobj.SelectQuery("select invoice_no, invoice_date,Grand_Total, (case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end) as Cash_Disc, VAT_Amount, (case when discount_type = 'Per' then ((Grand_Total-(case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end))+VAT_Amount)*Discount/100 else Discount end) as Disc, Net_Amount, c.Cust_Name, c.City, c.Tin_No from Sales_Master s, Customer c where c.Cust_ID = s.Cust_ID and VAT_Amount != 0 and cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'",ref SqlDtr);
@@ -908,7 +910,7 @@ namespace Servosms.Module.Reports
 					
 					sw.WriteLine("                             Purchase Return                                        ");
 					sw.WriteLine("------------------------------------------------------------------------------------");
-					sql1="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Supp_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Vndr_Invoice_No,Net_Amount,VAT_Amount from View_Purchase_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(entry_time as float)) as datetime)<='"+ToMMddYYYY(txtDateTo.Text.ToString())+"' order by invoice_no";
+					sql1="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Supp_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Vndr_Invoice_No,Net_Amount,VAT_Amount from View_Purchase_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(entry_time as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' order by invoice_no";
 					sql1=sql1+" order by "+Cache["strorderby2"];
 					dbobj.SelectQuery(sql1,ref SqlDtr);
 						
@@ -992,7 +994,7 @@ namespace Servosms.Module.Reports
 			if(DropReportType.SelectedItem.Text == "Sales Report" || DropReportType.SelectedItem.Text == "Both")
 			{
 				sw.WriteLine("                             Sales Return\t\t\t\t\t\t\t\t\t");
-				sql="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Cust_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Net_Amount,VAT_Amount from View_Sales_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(entry_time as float)) as datetime)<='"+ToMMddYYYY(txtDateTo.Text.ToString())+"' order by invoice_no";
+				sql="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Cust_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Net_Amount,VAT_Amount from View_Sales_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(entry_time as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' order by invoice_no";
 				sql=sql+" order by "+Cache["strorderby1"];
 				dbobj.SelectQuery(sql,ref SqlDtr);
 				if(SqlDtr.HasRows)
@@ -1029,7 +1031,7 @@ namespace Servosms.Module.Reports
 				sw.WriteLine("");
 					
 				sw.WriteLine("                Purchase Return");
-				sql1="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Supp_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Vndr_Invoice_No,Net_Amount,VAT_Amount from View_Purchase_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+ToMMddYYYY(txtDateFrom.Text.ToString())+"' and cast(floor(cast(entry_time as float)) as datetime)<='"+ToMMddYYYY(txtDateTo.Text.ToString())+"' order by invoice_no";
+				sql1="select Prod_Name+':'+Pack_Type Product ,Invoice_No,Supp_Name,qty,(qty*total_qty) Ltr,Rate,entry_time,Vndr_Invoice_No,Net_Amount,VAT_Amount from View_Purchase_Return where cast(floor(cast(entry_time as float)) as datetime)>='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) +"' and cast(floor(cast(entry_time as float)) as datetime)<='"+GenUtil.str2MMDDYYYY(Request.Form["txtDateTo"].ToString()) +"' order by invoice_no";
 				sql1=sql1+" order by "+Cache["strorderby2"];
 				dbobj.SelectQuery(sql1,ref SqlDtr);
 				//dbobj.SelectQuery("select invoice_no, invoice_date,Grand_Total, (case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end) as Cash_Disc, VAT_Amount, (case when discount_type = 'Per' then ((Grand_Total-(case when cash_disc_type = 'Per' then (Grand_Total*Cash_Discount/100) else Cash_Discount end))+VAT_Amount)*Discount/100 else Discount end) as Disc, Net_Amount, s.Supp_Name, s.City, s.Tin_No from Purchase_Master p, Supplier s where s.Supp_ID = p.Vendor_ID and VAT_Amount != 0 and cast(floor(cast(Invoice_date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(txtDateFrom.Text.Trim())+"' and cast(floor(cast(invoice_date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(txtDateTo.Text.Trim()) +"'",ref SqlDtr);

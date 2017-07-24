@@ -136,7 +136,10 @@ namespace Servosms.Module.Reports
 					#endregion
 					GetMultiValue();
 				}
-			}
+
+                txtDateFrom.Text = Request.Form["txtDateFrom"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateFrom"].ToString().Trim();
+                Textbox1.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:CustomerwiseSalesReport.aspx,Method:page_load"+ "  EXCEPTION "+ex.Message+"  userid  "+uid);
@@ -252,9 +255,10 @@ namespace Servosms.Module.Reports
 		{
 			string cust_type="";
 			SqlConnection sqlcon=new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
-			//string sqlstr="select * from vw_PriceList order by Prod_id";
-			//string sql="select * from vw_CustWiseSales where rate<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
-			string sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+            //string sqlstr="select * from vw_PriceList order by Prod_id";
+            //string sql="select * from vw_CustWiseSales where rate<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(Request.Form["txtDateFrom"].ToString()).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
+          //string sql = "select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '" + ToMMddYYYY(txtDateFrom.Text).ToShortDateString() + "' and cast(floor(cast(invoice_date as float)) as datetime) <='" + ToMMddYYYY(Textbox1.Text).ToShortDateString() + "'";
+            string sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) +"'";
 				
 			//			if(DropCategory.SelectedIndex!=0)
 			//				sql=sql+ " and Prod_Type='"+ DropCategory.SelectedItem.Value +"'"; 
@@ -268,12 +272,12 @@ namespace Servosms.Module.Reports
 				if(DropSearchBy.SelectedIndex==1)
 				{
 					if(DropValue.Value!="All")
-						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				}
 				else if(DropSearchBy.SelectedIndex==2)
 				{
 					if(DropValue.Value!="All")
-						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.sub_group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.sub_group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				}/********end********************/
 				else if(DropSearchBy.SelectedIndex==3)
 				{
@@ -338,8 +342,10 @@ namespace Servosms.Module.Reports
 		{  
 			try
 			{
-				if(DateTime.Compare(ToMMddYYYY(txtDateFrom.Text),ToMMddYYYY(Textbox1.Text))>0)
-				{
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["Textbox1"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
+                {                  
 					MessageBox.Show("Date From Should be less than Date To");
 					GridReport.Visible=false;
 				}
@@ -350,7 +356,7 @@ namespace Servosms.Module.Reports
 					//string sql;
 
 					#region Bind DataGrid
-					//**		sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+					//**		sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(Request.Form["txtDateFrom"].ToString()).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				
 					//**		if(DropCategory.SelectedIndex!=0)
 					//**			sql=sql+ " and Prod_Type='"+ DropCategory.SelectedItem.Value +"'"; 
@@ -399,8 +405,8 @@ namespace Servosms.Module.Reports
 			Directory.CreateDirectory(strExcelPath);
 			string path = home_drive+@"\Servosms_ExcelFile\Export\MonthWiseCustomerSecondarySales.xls";
 			StreamWriter sw = new StreamWriter(path);
-			//string sql="select * from vw_CustWiseSales where rate<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
-			string sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+			//string sql="select * from vw_CustWiseSales where rate<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(Request.Form["txtDateFrom"].ToString()).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
+			string sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(Request.Form["txtDateFrom"].ToString()).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				
 			//			if(DropCategory.SelectedIndex!=0)
 			//				sql=sql+ " and Prod_Type='"+ DropCategory.SelectedItem.Value +"'"; 
@@ -417,12 +423,12 @@ namespace Servosms.Module.Reports
 				if(DropSearchBy.SelectedIndex==1)
 				{
 					if(DropValue.Value!="All")
-						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				}
 				else if(DropSearchBy.SelectedIndex==2)
 				{
 					if(DropValue.Value!="All")
-						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.sub_group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.sub_group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				}/********end********************/
 				else if(DropSearchBy.SelectedIndex==3)
 				{
@@ -498,8 +504,8 @@ namespace Servosms.Module.Reports
 			string strDate = "";
 			string info ="";
 			string cust_type="";
-			//sql="select * from vw_CustWiseSales where rate<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
-			sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(txtDateFrom.Text).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+			//sql="select * from vw_CustWiseSales where rate<>0 and cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(Request.Form["txtDateFrom"].ToString()).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
+			sql="select * from vw_CustWiseSales where cast(floor(cast(invoice_date as float)) as datetime) >= '"+ ToMMddYYYY(Request.Form["txtDateFrom"].ToString()).ToShortDateString() +"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				
 			//			if(DropCategory.SelectedIndex!=0)
 			//				sql=sql+ " and Prod_Type='"+ DropCategory.SelectedItem.Value +"'"; 
@@ -516,12 +522,12 @@ namespace Servosms.Module.Reports
 				if(DropSearchBy.SelectedIndex==1)
 				{
 					if(DropValue.Value!="All")
-						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				}
 				else if(DropSearchBy.SelectedIndex==2)
 				{
 					if(DropValue.Value!="All")
-						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.sub_group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ToMMddYYYY(txtDateFrom.Text).ToShortDateString()+"' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ ToMMddYYYY(Textbox1.Text).ToShortDateString() +"'";
+						sql="select * from vw_CustWiseSales cws,customertype ct where cws.cust_type=ct.customertypename and ct.sub_group_name='"+DropValue.Value.ToString().Trim()+"' and  cast(floor(cast(invoice_date as float)) as datetime) >= '"+ GenUtil.str2MMDDYYYY(Request.Form["txtDateFrom"].ToString()) + "' and cast(floor(cast(invoice_date as float)) as datetime) <='"+ GenUtil.str2MMDDYYYY(Request.Form["Textbox1"].ToString()) + "'";
 				}/********end********************/
 				else if(DropSearchBy.SelectedIndex==3)
 				{
@@ -789,7 +795,7 @@ namespace Servosms.Module.Reports
 			string schemetype="",cashtype="",disctype="";
 			double scheme=0,foe=0,cashdisc=0,vat=0,disc=0;
 			
-			dbobj.SelectQuery("select discount from foe where prodid='"+Prod_ID+"' and custid='"+cust_id+"' and datefrom<='"+GenUtil.trimDate(In_Date)+"' and dateto>='"+GenUtil.trimDate(In_Date)+"'",ref rdr);
+			dbobj.SelectQuery("select discount from foe where prodid='"+Prod_ID+"' and custid='"+cust_id+"' and datefrom<='"+GenUtil.str2MMDDYYYY(In_Date)+"' and dateto>='"+GenUtil.str2MMDDYYYY(In_Date)+"'",ref rdr);
 			while(rdr.Read())
 			{
 				foe=double.Parse(rdr.GetValue(0).ToString());
@@ -798,7 +804,7 @@ namespace Servosms.Module.Reports
 			foe=foe*double.Parse(totqty);
 			if(foe==0)
 			{
-				dbobj.SelectQuery("select discount,discounttype from oilscheme where prodid='"+Prod_ID+"' and datefrom<='"+GenUtil.trimDate(In_Date)+"' and dateto>='"+GenUtil.trimDate(In_Date)+"'",ref rdr);
+				dbobj.SelectQuery("select discount,discounttype from oilscheme where prodid='"+Prod_ID+"' and datefrom<='"+GenUtil.str2MMDDYYYY(In_Date)+"' and dateto>='"+GenUtil.str2MMDDYYYY(In_Date)+"'",ref rdr);
 				if(rdr.Read())
 				{
 					scheme=double.Parse(rdr.GetValue(0).ToString());

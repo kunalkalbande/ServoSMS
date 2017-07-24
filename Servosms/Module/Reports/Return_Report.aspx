@@ -106,15 +106,15 @@
       <TABLE width="100%" border=0>
         <TR>
           <TD>Date From</TD>
-          <TD><asp:textbox id=txtDateFrom runat="server" Width="100px" BorderStyle="Groove" ReadOnly="True" CssClass="fontstyle"></asp:textbox><A 
+          <TD><asp:textbox id=txtDateFrom runat="server" Width="110px" BorderStyle="Groove" ReadOnly="True" CssClass="fontstyle"></asp:textbox><A 
             onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateFrom);return false;" 
             ><IMG class=PopcalTrigger alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align=absMiddle border=0 ></A></TD>
           <TD align=center>To</TD>
-          <TD><asp:textbox id=txtDateTo runat="server" Width="90px" BorderStyle="Groove" ReadOnly="True" CssClass="fontstyle"></asp:textbox><A 
+          <TD><asp:textbox id=txtDateTo runat="server" Width="110px" BorderStyle="Groove" ReadOnly="True" CssClass="fontstyle"></asp:textbox><A 
             onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.txtDateTo);return false;" 
             ><IMG class=PopcalTrigger alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg" align=absMiddle border=0 ></A></TD>
           <TD>Report Type</TD>
-          <TD><asp:dropdownlist id=DropReportType runat="server" Width="125px" CssClass="fontstyle">
+          <TD><asp:dropdownlist id=DropReportType runat="server" Width="90px" CssClass="fontstyle">
 											<asp:ListItem Value="Both" Selected="True">Both</asp:ListItem>
 											<asp:ListItem Value="Sales Return">Sales Return</asp:ListItem>
 											<asp:ListItem Value="Purchase Return">Purchase Return</asp:ListItem>
