@@ -45,13 +45,13 @@
 									<TD colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 										Scheme ID&nbsp;<asp:requiredfieldvalidator id="rfv1" InitialValue="Select" ErrorMessage="Please Select The Scheme ID" ControlToValidate="dropschid"
 											Runat="server">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:dropdownlist id="dropschid" runat="server" Width="296px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropschid_SelectedIndexChanged"></asp:dropdownlist>&nbsp;<asp:label id="lblschid" runat="server" Width="50px"></asp:label>&nbsp;&nbsp;&nbsp;
-										<asp:button id="btschid" runat="server" Width="20px" Text="..." CausesValidation="False" 
-											 onclick="btschid_Click"></asp:button></TD>
+										<asp:button id="btschid" runat="server" Width="30px" Text="..." CausesValidation="False" 
+											 onclick="btschid_Click" Height="23px"></asp:button></TD>
 								</TR>
 								<TR>
 									<TD align="left" colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Scheme 
-										Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										Name&nbsp;&nbsp;&nbsp;&nbsp;
 										<asp:textbox id="txtschname" runat="server" Width="110px" CssClass="dropdownlist" BorderStyle="Groove"></asp:textbox></TD>
 								<tr>
 									<td vAlign="top" colSpan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -92,6 +92,9 @@
 									<TD align="center" colSpan="3"><asp:button id="btnSubmit" runat="server" Width="60px" Text="Submit" 
 											 onclick="btnSubmit_Click"></asp:button><asp:button id="btnupdate" runat="server" Width="60px" Text="Update" 
 											 onclick="btnupdate_Click"></asp:button></TD>
+								</TR>
+								<TR>
+									<TD align="center" colSpan="3">&nbsp;</TD>
 								</TR>
 								<TR>
 									<TD colSpan="3"><asp:validationsummary id="vsShiftAssignment" runat="server" ShowSummary="False" ShowMessageBox="True"></asp:validationsummary></TD>
