@@ -88,7 +88,7 @@
 								<asp:ListItem Value="SRSM 10 & 12">SRSM 10 & 12</asp:ListItem>
 								<asp:ListItem Value="SRSM 14">SRSM 14</asp:ListItem>
 							</asp:dropdownlist>&nbsp;&nbsp;<asp:button id="btnShow" Runat="server" Width="60px" 
-								Text="Show" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;<asp:textbox id="txtvalue" runat="server" CssClass="fontstyle" Width="30px" BorderStyle="Groove"
+								Text="Show" onclick="btnShow_Click"></asp:button>&nbsp;&nbsp;<asp:textbox id="txtvalue" runat="server" CssClass="fontstyle" Width="130px" BorderStyle="Groove"
 								Visible="False"></asp:textbox>
 							&nbsp;&nbsp;<asp:button id="btnSave" Runat="server" Width="60px" 
 								Text="Update" Visible="False" CausesValidation="False" onclick="btnSave_Click"></asp:button>
