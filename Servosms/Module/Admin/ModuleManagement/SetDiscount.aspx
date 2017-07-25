@@ -237,7 +237,7 @@
 														<asp:CheckBox id="chkPurDis" Runat="server"></asp:CheckBox></TD>
 												</TR>
 												<TR>
-													<TD style="HEIGHT: 23px">&nbsp;Vat</TD>
+													<TD style="HEIGHT: 23px">&nbsp;IGST</TD>
 													<TD style="HEIGHT: 23px">
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurVat" Runat="server"
 															CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
@@ -247,6 +247,30 @@
 														</asp:DropDownList></TD>
 													<TD style="HEIGHT: 23px" align="center">
 														<asp:CheckBox id="chkPurVat" Runat="server"></asp:CheckBox></TD>
+												</TR>
+                                                <TR>
+													<TD style="HEIGHT: 23px">&nbsp;CGST</TD>
+													<TD style="HEIGHT: 23px">
+														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="TextBoxcgst" Runat="server"
+															CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
+													<TD style="HEIGHT: 23px">
+														<asp:DropDownList id="DropDownListcgst" Runat="server" CssClass="fontstyle" Width="90%">
+															<asp:ListItem Value="%">%</asp:ListItem>
+														</asp:DropDownList></TD>
+													<TD style="HEIGHT: 23px" align="center">
+														<asp:CheckBox id="CheckBoxcgst" Runat="server"></asp:CheckBox></TD>
+												</TR>
+                                                <TR>
+													<TD style="HEIGHT: 23px">&nbsp;SGST</TD>
+													<TD style="HEIGHT: 23px">
+														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="TextBoxsgst" Runat="server"
+															CssClass="FontStyle" BorderStyle="Groove" Width="140px" MaxLength="6"></asp:TextBox></TD>
+													<TD style="HEIGHT: 23px">
+														<asp:DropDownList id="DropDownListsgst" Runat="server" CssClass="fontstyle" Width="90%">
+															<asp:ListItem Value="%">%</asp:ListItem>
+														</asp:DropDownList></TD>
+													<TD style="HEIGHT: 23px" align="center">
+														<asp:CheckBox id="CheckBoxsgst" Runat="server"></asp:CheckBox></TD>
 												</TR>
 											</TABLE>
 										</TD>
@@ -309,7 +333,7 @@
 										<asp:CheckBox id="chkSalesCashDis" Runat="server"></asp:CheckBox></TD>
 								</TR>
 								<TR>
-									<TD>&nbsp;Vat</TD>
+									<TD>&nbsp;IGST</TD>
 									<TD>
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtSalesVat" Runat="server"
 											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
@@ -319,6 +343,30 @@
 										</asp:DropDownList></TD>
 									<TD align="center">
 										<asp:CheckBox id="chkSalesVat" Runat="server"></asp:CheckBox></TD>
+								</TR>
+                                <TR>
+									<TD>&nbsp;CGST</TD>
+									<TD>
+										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="TextBoxCGST2" Runat="server"
+											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
+									<TD>
+										<asp:DropDownList id="DropDownListCGST2" Runat="server" CssClass="fontstyle" >
+											<asp:ListItem Value="%">%</asp:ListItem>
+										</asp:DropDownList></TD>
+									<TD align="center">
+										<asp:CheckBox id="CheckBoxCGST2" Runat="server"></asp:CheckBox></TD>
+								</TR>
+                                <TR>
+									<TD>&nbsp;SGST</TD>
+									<TD>
+										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="TextBoxSGST2" Runat="server"
+											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
+									<TD>
+										<asp:DropDownList id="DropDownListSGST2" Runat="server" CssClass="fontstyle" >
+											<asp:ListItem Value="%">%</asp:ListItem>
+										</asp:DropDownList></TD>
+									<TD align="center">
+										<asp:CheckBox id="CheckBoxSGST2" Runat="server"></asp:CheckBox></TD>
 								</TR>
 							</asp:panel>
 							<!--Modvat/ Cenvat Invoice Penal -->
@@ -380,7 +428,7 @@
 										<asp:CheckBox id="chkModCashDis" Runat="server"></asp:CheckBox></TD>
 								</TR>
 								<TR>
-									<TD>&nbsp;Vat</TD>
+									<TD>&nbsp;IGST</TD>
 									<TD>
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtModVat" Runat="server"
 											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
@@ -390,6 +438,30 @@
 										</asp:DropDownList></TD>
 									<TD align="center">
 										<asp:CheckBox id="chkModVat" Runat="server"></asp:CheckBox></TD>
+								</TR>
+                                <TR>
+									<TD>&nbsp;CGST</TD>
+									<TD>
+										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="TextBoxCGST1" Runat="server"
+											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
+									<TD>
+										<asp:DropDownList id="DropDownListCGST1" Runat="server" CssClass="fontstyle" Width="90%">
+											<asp:ListItem Value="%">%</asp:ListItem>
+										</asp:DropDownList></TD>
+									<TD align="center">
+										<asp:CheckBox id="CheckBoxCGST1" Runat="server"></asp:CheckBox></TD>
+								</TR>
+                                <TR>
+									<TD>&nbsp;SGST</TD>
+									<TD>
+										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="TextBoxSGST1" Runat="server"
+											CssClass="FontStyle" BorderStyle="Groove" Width="100%" MaxLength="6"></asp:TextBox></TD>
+									<TD>
+										<asp:DropDownList id="DropDownListSGST1" Runat="server" CssClass="fontstyle" Width="90%">
+											<asp:ListItem Value="%">%</asp:ListItem>
+										</asp:DropDownList></TD>
+									<TD align="center">
+										<asp:CheckBox id="CheckBoxSGST1" Runat="server"></asp:CheckBox></TD>
 								</TR>
 								<TR>
 									<TD width="100%">&nbsp;Excise Duty</TD>

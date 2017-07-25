@@ -330,8 +330,8 @@ namespace Servosms.Module.Admin.ModuleManagement
 						txtPurServostk.Text = SqlDtr["Servostk"].ToString();
 						txtPurFixed.Text = SqlDtr["FixedDis"].ToString();
 						txtPurDis.Text = SqlDtr["DiscountPurchase"].ToString();
-						txtPurVat.Text = SqlDtr["VatPurchase"].ToString();
-						txtPurCashDis.Text = SqlDtr["CashDisPurchase"].ToString();
+                        //txtPurVat.Text = SqlDtr["VatPurchase"].ToString();//TOdo replace with new Value
+                        txtPurCashDis.Text = SqlDtr["CashDisPurchase"].ToString();
 						DropPurCashDisRs.SelectedIndex=DropPurCashDisRs.Items.IndexOf(DropPurCashDisRs.Items.FindByValue(SqlDtr["CashDisLtrPurchase"].ToString()));
 						DropPurDisRs.SelectedIndex=DropPurDisRs.Items.IndexOf(DropPurDisRs.Items.FindByValue(SqlDtr["DisLtrPurchase"].ToString()));
 						if(SqlDtr["EarlyStatus"].ToString()=="1")
@@ -386,8 +386,8 @@ namespace Servosms.Module.Admin.ModuleManagement
 						txtSalesSchDis.Text = SqlDtr["SchDis"].ToString();
 						txtSalesFleetOe.Text = SqlDtr["FleetOe"].ToString();
 						txtSalesDis.Text = SqlDtr["DiscountSales"].ToString();
-						txtSalesVat.Text = SqlDtr["VatSales"].ToString();
-						txtSalesCashDis.Text = SqlDtr["CashDisSales"].ToString();
+                        //txtSalesVat.Text = SqlDtr["VatSales"].ToString();//TOdo replace with new Value
+                        txtSalesCashDis.Text = SqlDtr["CashDisSales"].ToString();
 						DropSalesCashDisRs.SelectedIndex=DropSalesCashDisRs.Items.IndexOf(DropSalesCashDisRs.Items.FindByValue(SqlDtr["CashDisLtrSales"].ToString()));
 						DropSalesDisRs.SelectedIndex=DropSalesDisRs.Items.IndexOf(DropSalesDisRs.Items.FindByValue(SqlDtr["DisLtrSales"].ToString()));
 						if(SqlDtr["SchDisStatus"].ToString()=="1")
@@ -419,7 +419,7 @@ namespace Servosms.Module.Admin.ModuleManagement
 						txtModSchDis.Text = SqlDtr["SchDis"].ToString();
 						txtModFleetOe.Text = SqlDtr["FleetOe"].ToString();
 						txtModDis.Text = SqlDtr["DiscountModVat"].ToString();
-						txtModVat.Text = SqlDtr["VatModVat"].ToString();
+					//	txtModVat.Text = SqlDtr["VatModVat"].ToString();//TOdo replace with new Value
 						txtModCashDis.Text = SqlDtr["CashDisModvat"].ToString();
 						DropModCashDisRs.SelectedIndex=DropModCashDisRs.Items.IndexOf(DropModCashDisRs.Items.FindByValue(SqlDtr["CashDisLtrModVat"].ToString()));
 						DropModDisRs.SelectedIndex=DropModDisRs.Items.IndexOf(DropModDisRs.Items.FindByValue(SqlDtr["DisLtrModVat"].ToString()));
