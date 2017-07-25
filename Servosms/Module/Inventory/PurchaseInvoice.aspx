@@ -1161,7 +1161,7 @@
 										<TR>
 											<TD>Vendor&nbsp;Name&nbsp;<FONT color="#ff0000">*</FONT>
 											</TD>
-											<TD colSpan="2"><asp:dropdownlist id="DropVendorID" runat="server" Width="100px" CssClass="dropdownlist" AutoPostBack="False"
+											<TD colSpan="2"><asp:dropdownlist id="DropVendorID" runat="server" Width="125px" CssClass="dropdownlist" AutoPostBack="False"
 													onChange="getCity(this,document.Form1.lblPlace);" onselectedindexchanged="DropVendorID_SelectedIndexChanged">
 													<asp:ListItem Value="Select">Select</asp:ListItem>
 												</asp:dropdownlist>&nbsp;<asp:comparevalidator id="CompareValidator1" runat="server" ErrorMessage="Please Select The Vendor Name"
