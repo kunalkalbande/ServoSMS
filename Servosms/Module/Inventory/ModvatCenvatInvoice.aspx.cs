@@ -209,7 +209,9 @@ namespace Servosms.Module.Inventory
 					CreateLogFiles.ErrorLog("Form:ModvatCenvatInvoice.aspx,Method:pageload.   EXCEPTION: "+ ex.Message+"  User_ID: "+uid);   
 				}
 			}
-		}
+            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
+            txtChallanDate.Text = Request.Form["txtChallanDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtChallanDate"].ToString().Trim();
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
