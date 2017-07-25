@@ -50,20 +50,18 @@ if (restore) selObj.selectedIndex=0;
 	</HEAD>
 	<body style="MARGIN: 0px">
 		<form id="Form1" runat="server">
-			<table cellSpacing="0" cellPadding="0" width="780" align="center" bgColor="#ffffff" border="0">
+			<table cellSpacing="0" cellPadding="0" width="1350" align="center" bgColor="#ffffff" border="0">
 				<tr>
-					<td vAlign="top" width="709"><IMG height="88" src="../HeaderFooter/images/headersms.jpg" width="780"></td>
-				</tr>
-				<tr>
+					<td vAlign="top" width="1350"><IMG height="88" src="../HeaderFooter/images/headersms.jpg" width="1350"></td>
 				</tr>
 				<tr>
 					<td>
-						<table height="314" cellSpacing="0" cellPadding="0" width="757" border="0">
+						<table height="490" cellSpacing="0" cellPadding="0" width="1350" border="0">
 							<tr>
 								<td width="31">&nbsp;</td>
-								<td vAlign="top" width="356">
+								<td vAlign="top" width="500">
 									<OBJECT codeBase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0"
-										height="311" width="250" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" VIEWASTEXT>
+										height="450" width="500" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" VIEWASTEXT>
 										<PARAM NAME="_cx" VALUE="6615">
 										<PARAM NAME="_cy" VALUE="8229">
 										<PARAM NAME="FlashVars" VALUE="6615">
@@ -83,11 +81,11 @@ if (restore) selObj.selectedIndex=0;
 										<PARAM NAME="BGColor" VALUE="">
 										<PARAM NAME="SWRemote" VALUE="">
 										<embed src="../HeaderFooter/images/Servosmsbannar.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer"
-											type="application/x-shockwave-flash" width="250" height="311"> </embed>
+											type="application/x-shockwave-flash" width="500" height="490"> </embed>
 									</OBJECT>
 								</td>
-								<td width="23">&nbsp;</td>
-								<td vAlign="top" width="347">
+								
+								<td vAlign="middle" align="center" width="700" style="padding-bottom:50">
 									<table align="center" border="0">
 										<tr>
 											<td align="center" height="30"><asp:label id="lblMessage" CssClass="fontstyle" Runat="server" ForeColor="#CE4848" Font-Bold="True"></asp:label></td>
@@ -163,12 +161,12 @@ if (restore) selObj.selectedIndex=0;
 					<td vAlign="top">
 						<TABLE cellSpacing="0" cellPadding="0" width="780" border="0">
 							<TR>
-								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_01.jpg" width="521"></TD>
+								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_01.jpg" width="1100"></TD>
 								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_02.jpg" width="237"></TD>
 								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_03.jpg" width="22"></TD>
 							</TR>
 							<TR>
-								<TD><IMG height="28" alt="" src="../HeaderFooter/images/footersms_04.jpg" width="521"></TD>
+								<TD><IMG height="28" alt="" src="../HeaderFooter/images/footersms_04.jpg" width="1100"></TD>
 								<TD><A href="#"><IMG height="28" alt="" src="../HeaderFooter/images/footersms_05.jpg" width="237" border="0"></A></TD>
 								<TD><IMG height="28" alt="" src="../HeaderFooter/images/footersms_06.jpg" width="22"></TD>
 							</TR>

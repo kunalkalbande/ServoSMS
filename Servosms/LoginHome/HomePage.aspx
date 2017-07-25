@@ -1,5 +1,5 @@
-<%@ Register TagPrefix="uc1" TagName="Footer" Src="../HeaderFooter/Footer.ascx" %>
-<%@ Register TagPrefix="uc1" TagName="Header1" Src="../HeaderFooter/Header1.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="Footer" Src="../HeaderFooter/HomeFooter.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="Header1" Src="../HeaderFooter/HomeHeader.ascx" %>
 <%@ Page language="c#" Inherits="Servosms.Module.LoginHome.HomePage" smartNavigation="False" CodeFile="HomePage.aspx.cs" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
@@ -37,7 +37,7 @@
 	<body onkeydown="change(event)">
 		<form method="post" runat="server">
 			<uc1:header1 id="Header11" runat="server"></uc1:header1>
-			<TABLE height="270" cellSpacing="0" cellPadding="0" width="778" align="center">
+			<TABLE height="490" cellSpacing="0" cellPadding="0" width="1300" align="center">
 				<TR>
 					<TH align="center" colSpan="12">
 						<hr>
