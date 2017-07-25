@@ -131,7 +131,7 @@
 								<TD style="WIDTH: 266px"><asp:dropdownlist id="Dropvehicleroute" runat="server" Width="188px" CssClass="fontstyle"></asp:dropdownlist></TD>
 								<!--td style="WIDTH: 122px">Fuel Used</td-->
 								<TD style="WIDTH: 350px" colSpan="2">&nbsp;Fuel Used <FONT color="#ff0000">*</FONT><asp:requiredfieldvalidator id="RequiredFieldValidator3" runat="server" ErrorMessage="Please select Fuel Used"
-										ControlToValidate="Dropfuelused" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;&nbsp;<asp:dropdownlist id="Dropfuelused" runat="server" Width="136px" CssClass="fontstyle">
+										ControlToValidate="Dropfuelused" InitialValue="Select">*</asp:requiredfieldvalidator>&nbsp;&nbsp;&nbsp;&nbsp;<asp:dropdownlist id="Dropfuelused" runat="server" Width="188px" CssClass="fontstyle">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Petrol(MS)">Petrol(MS)</asp:ListItem>
 										<asp:ListItem Value="Deisel(HSD)">Deisel(HSD)</asp:ListItem>
@@ -147,7 +147,7 @@
 										Width="49px" Height="20px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 								<!--td style="WIDTH: 122px" >GearOil</td-->
 								<TD style="WIDTH: 350px" vAlign="top" colSpan="2">&nbsp;GearOil&nbsp;
-									<asp:dropdownlist id="Dropgearoil" runat="server" Width="192px" CssClass="fontstyle"></asp:dropdownlist>Qty:&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtGearqty" runat="server"
+									<asp:dropdownlist id="Dropgearoil" runat="server" Width="245px" CssClass="fontstyle"></asp:dropdownlist>Qty:&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtGearqty" runat="server"
 										Width="50" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<TR>
@@ -156,7 +156,7 @@
 										Width="49px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox>&nbsp;&nbsp;&nbsp;</TD>
 								<!--td style="WIDTH: 122px">Coolent</td-->
 								<TD style="WIDTH: 350px" vAlign="top" colSpan="2">&nbsp;Coolent&nbsp;
-									<asp:dropdownlist id="Dropcoolent" runat="server" Width="192px" CssClass="fontstyle"></asp:dropdownlist>Qty:&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtCoolentqty"
+									<asp:dropdownlist id="Dropcoolent" runat="server" Width="245px" CssClass="fontstyle"></asp:dropdownlist>Qty:&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtCoolentqty"
 										runat="server" Width="49px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></TD>
 							</TR>
 							<tr>
@@ -166,7 +166,7 @@
 								</td>
 								<!--td  style="WIDTH: 122px">Trans.Oil</td-->
 								<td style="WIDTH: 350px" vAlign="top" colSpan="2">&nbsp;Trans.Oil&nbsp;
-									<asp:dropdownlist id="Droptranoil" runat="server" Width="186px" CssClass="fontstyle"></asp:dropdownlist>Qty:&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtTranqty" runat="server"
+									<asp:dropdownlist id="Droptranoil" runat="server" Width="237px" CssClass="fontstyle"></asp:dropdownlist>Qty:&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtTranqty" runat="server"
 										Width="49px" BorderStyle="Groove" CssClass="fontstyle"></asp:textbox></td>
 							</tr>
 							<TR>
