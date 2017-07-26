@@ -314,15 +314,67 @@ namespace Servosms.Module.Inventory
 				//getscheme1();
 				//getschemefoe();
 			}
-            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
-            txtChallanDate.Text = Request.Form["txtChallanDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtChallanDate"].ToString().Trim();
+
+            SaveDataInControlsOnPageLoad();            
             txtVehicleNo.Attributes.Add("onmousemove","getScheme_New();");
 		}
 
-		/// <summary>
-		/// This method returns the next Order No from Order_Master table.
-		/// </summary>
-		public void GetOrderInvoice()
+        public void SaveDataInControlsOnPageLoad()
+        {
+            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
+            txtChallanDate.Text = Request.Form["txtChallanDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtChallanDate"].ToString().Trim();
+
+            txtChallanNo.Text = Request.Form["txtChallanNo"] == null ? null : Request.Form["txtChallanNo"].ToString().Trim();
+            txtVehicleNo.Text = Request.Form["txtVehicleNo"] == null ? null : Request.Form["txtVehicleNo"].ToString().Trim();
+
+            txtPromoScheme.Text = Request.Form["txtPromoScheme"] == null ? null : Request.Form["txtPromoScheme"].ToString().Trim();
+            txtschemetotal.Text = Request.Form["txtschemetotal"] == null ? null : Request.Form["txtschemetotal"].ToString().Trim();
+            txtliter.Text = Request.Form["txtliter"] == null ? null : Request.Form["txtliter"].ToString().Trim();
+            txtfleetoediscount.Text = Request.Form["txtfleetoediscount"] == null ? null : Request.Form["txtfleetoediscount"].ToString().Trim();
+            txtfleetoediscountRs.Text = Request.Form["txtfleetoediscountRs"] == null ? null : Request.Form["txtfleetoediscountRs"].ToString().Trim();
+            txtSecondrySpDisc.Text = Request.Form["txtSecondrySpDisc"] == null ? null : Request.Form["txtSecondrySpDisc"].ToString().Trim();
+            txtMessage.Text = Request.Form["txtMessage"] == null ? null : Request.Form["txtMessage"].ToString().Trim();
+            txtRemark.Text = Request.Form["txtRemark"] == null ? null : Request.Form["txtRemark"].ToString().Trim();
+            
+            txtGrandTotal.Text = Request.Form["txtGrandTotal"] == null ? null : Request.Form["txtGrandTotal"].ToString().Trim();
+            txtDisc.Text = Request.Form["txtDisc"] == null ? null : Request.Form["txtDisc"].ToString().Trim();
+            txtDiscount.Text = Request.Form["txtDiscount"] == null ? null : Request.Form["txtDiscount"].ToString().Trim();
+            txtCashDisc.Text = Request.Form["txtCashDisc"] == null ? null : Request.Form["txtCashDisc"].ToString().Trim();
+            txtCashDiscount.Text = Request.Form["txtCashDiscount"] == null ? null : Request.Form["txtCashDiscount"].ToString().Trim();
+            txtVAT.Text = Request.Form["txtVAT"] == null ? null : Request.Form["txtVAT"].ToString().Trim();
+            txtNetAmount.Text = Request.Form["txtNetAmount"] == null ? null : Request.Form["txtNetAmount"].ToString().Trim();            
+
+            txtRate1.Text = Request.Form["txtRate1"] == null ? null : Request.Form["txtRate1"].ToString().Trim();
+            txtRate2.Text = Request.Form["txtRate2"] == null ? null : Request.Form["txtRate2"].ToString().Trim();
+            txtRate3.Text = Request.Form["txtRate3"] == null ? null : Request.Form["txtRate3"].ToString().Trim();
+            txtRate4.Text = Request.Form["txtRate4"] == null ? null : Request.Form["txtRate4"].ToString().Trim();
+            txtRate5.Text = Request.Form["txtRate5"] == null ? null : Request.Form["txtRate5"].ToString().Trim();
+            txtRate6.Text = Request.Form["txtRate6"] == null ? null : Request.Form["txtRate6"].ToString().Trim();
+            txtRate7.Text = Request.Form["txtRate7"] == null ? null : Request.Form["txtRate7"].ToString().Trim();
+            txtRate8.Text = Request.Form["txtRate8"] == null ? null : Request.Form["txtRate8"].ToString().Trim();
+            txtRate9.Text = Request.Form["txtRate9"] == null ? null : Request.Form["txtRate9"].ToString().Trim();
+            txtRate10.Text = Request.Form["txtRate10"] == null ? null : Request.Form["txtRate10"].ToString().Trim();
+            txtRate11.Text = Request.Form["txtRate11"] == null ? null : Request.Form["txtRate11"].ToString().Trim();
+            txtRate12.Text = Request.Form["txtRate12"] == null ? null : Request.Form["txtRate12"].ToString().Trim();            
+
+            txtAmount1.Text = Request.Form["txtAmount1"] == null ? null : Request.Form["txtAmount1"].ToString().Trim();
+            txtAmount2.Text = Request.Form["txtAmount2"] == null ? null : Request.Form["txtAmount2"].ToString().Trim();
+            txtAmount3.Text = Request.Form["txtAmount3"] == null ? null : Request.Form["txtAmount3"].ToString().Trim();
+            txtAmount4.Text = Request.Form["txtAmount4"] == null ? null : Request.Form["txtAmount4"].ToString().Trim();
+            txtAmount5.Text = Request.Form["txtAmount5"] == null ? null : Request.Form["txtAmount5"].ToString().Trim();
+            txtAmount6.Text = Request.Form["txtAmount6"] == null ? null : Request.Form["txtAmount6"].ToString().Trim();
+            txtAmount7.Text = Request.Form["txtAmount7"] == null ? null : Request.Form["txtAmount7"].ToString().Trim();
+            txtAmount8.Text = Request.Form["txtAmount8"] == null ? null : Request.Form["txtAmount8"].ToString().Trim();
+            txtAmount9.Text = Request.Form["txtAmount9"] == null ? null : Request.Form["txtAmount9"].ToString().Trim();
+            txtAmount10.Text = Request.Form["txtAmount10"] == null ? null : Request.Form["txtAmount10"].ToString().Trim();
+            txtAmount11.Text = Request.Form["txtAmount11"] == null ? null : Request.Form["txtAmount11"].ToString().Trim();
+            txtAmount12.Text = Request.Form["txtAmount12"] == null ? null : Request.Form["txtAmount12"].ToString().Trim();            
+        }
+
+        /// <summary>
+        /// This method returns the next Order No from Order_Master table.
+        /// </summary>
+        public void GetOrderInvoice()
 		{
 			try
 			{
