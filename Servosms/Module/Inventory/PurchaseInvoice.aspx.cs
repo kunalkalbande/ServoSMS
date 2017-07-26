@@ -3320,8 +3320,8 @@ namespace Servosms.Module.Inventory
 						chkfoc[i].Enabled=true;
 						ProdType[i].Value=SqlDtr.GetValue(7).ToString ()+":"+SqlDtr.GetValue(1).ToString ()+":"+SqlDtr.GetValue(2).ToString ();
 						Qty[i].Text=SqlDtr.GetValue(3).ToString();
-						if(Request.Form[Qty[i].ID.ToString()].ToString() != "")
-							TotalQty+=System.Convert.ToInt32(Request.Form[Qty[i].ID.ToString()].ToString());
+                        if (Qty[i].Text != "")
+                            TotalQty += System.Convert.ToInt32(Qty[i].Text);
 
                         Quantity[i].Text = Request.Form[Qty[i].ID.ToString()].ToString();
 

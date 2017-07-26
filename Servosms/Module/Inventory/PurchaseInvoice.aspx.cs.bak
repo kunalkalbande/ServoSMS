@@ -405,11 +405,85 @@ namespace Servosms.Module.Inventory
 					CreateLogFiles.ErrorLog("Form:PurchaceInvice.aspx,Method:pageload.  EXCEPTION: "+ex.Message+" User_ID: "+uid);
 				}
 			}
-            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
-            txtVInvoiceDate.Text = Request.Form["txtVInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtVInvoiceDate"].ToString().Trim();
+            SaveDataInControlsOnPageLoad();
         }
 
-		public void Earlybird_dis()
+        public void SaveDataInControlsOnPageLoad()
+        {
+            lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
+            txtVInvoiceDate.Text = Request.Form["txtVInvoiceDate"] == null ? null : Request.Form["txtVInvoiceDate"].ToString().Trim();
+
+            txttotalqtyltr1.Text = Request.Form["txttotalqtyltr1"] == null ? null : Request.Form["txttotalqtyltr1"].ToString().Trim();
+            txttotalqtyltr.Text = Request.Form["txttotalqtyltr"] == null ? null : Request.Form["txttotalqtyltr"].ToString().Trim();
+            txttotalqty.Text = Request.Form["txttotalqty"] == null ? null : Request.Form["txttotalqty"].ToString().Trim();
+
+            txtPromoScheme.Text = Request.Form["txtPromoScheme"] == null ? null : Request.Form["txtPromoScheme"].ToString().Trim();
+            txtfoc.Text = Request.Form["txtfoc"] == null ? null : Request.Form["txtfoc"].ToString().Trim();
+            txtentry.Text = Request.Form["txtentry"] == null ? null : Request.Form["txtentry"].ToString().Trim();
+            txtfixedamt.Text = Request.Form["txtfixedamt"] == null ? null : Request.Form["txtfixedamt"].ToString().Trim();
+            txtAddDis.Text = Request.Form["txtAddDis"] == null ? null : Request.Form["txtAddDis"].ToString().Trim();
+            txtfixdisc.Text = Request.Form["txtfixdisc"] == null ? null : Request.Form["txtfixdisc"].ToString().Trim();
+            txtfixdiscamount.Text = Request.Form["txtfixdiscamount"] == null ? null : Request.Form["txtfixdiscamount"].ToString().Trim();
+
+            txtGrandTotal.Text = Request.Form["txtGrandTotal"] == null ? null : Request.Form["txtGrandTotal"].ToString().Trim();
+            txtebird.Text = Request.Form["txtebird"] == null ? null : Request.Form["txtebird"].ToString().Trim();
+            txtebirdamt.Text = Request.Form["txtebirdamt"] == null ? null : Request.Form["txtebirdamt"].ToString().Trim();
+            txtbirdless.Text = Request.Form["txtbirdless"] == null ? null : Request.Form["txtbirdless"].ToString().Trim();
+            txttradedisamt.Text = Request.Form["txttradedisamt"] == null ? null : Request.Form["txttradedisamt"].ToString().Trim();
+            txttradeless.Text = Request.Form["txttradeless"] == null ? null : Request.Form["txttradeless"].ToString().Trim();
+            txtCashDisc.Text = Request.Form["txtCashDisc"] == null ? null : Request.Form["txtCashDisc"].ToString().Trim();
+            txtTotalCashDisc.Text = Request.Form["txtTotalCashDisc"] == null ? null : Request.Form["txtTotalCashDisc"].ToString().Trim();
+
+            txtDisc.Text = Request.Form["txtDisc"] == null ? null : Request.Form["txtDisc"].ToString().Trim();
+            txtTotalDisc.Text = Request.Form["txtTotalDisc"] == null ? null : Request.Form["txtTotalDisc"].ToString().Trim();
+            txtVAT.Text = Request.Form["txtVAT"] == null ? null : Request.Form["txtVAT"].ToString().Trim();
+            txtNetAmount.Text = Request.Form["txtNetAmount"] == null ? null : Request.Form["txtNetAmount"].ToString().Trim();
+
+            txtRate1.Text = Request.Form["txtRate1"] == null ? null : Request.Form["txtRate1"].ToString().Trim();
+            txtRate2.Text = Request.Form["txtRate2"] == null ? null : Request.Form["txtRate2"].ToString().Trim();
+            txtRate3.Text = Request.Form["txtRate3"] == null ? null : Request.Form["txtRate3"].ToString().Trim();
+            txtRate4.Text = Request.Form["txtRate4"] == null ? null : Request.Form["txtRate4"].ToString().Trim();
+            txtRate5.Text = Request.Form["txtRate5"] == null ? null : Request.Form["txtRate5"].ToString().Trim();
+            txtRate6.Text = Request.Form["txtRate6"] == null ? null : Request.Form["txtRate6"].ToString().Trim();
+            txtRate7.Text = Request.Form["txtRate7"] == null ? null : Request.Form["txtRate7"].ToString().Trim();
+            txtRate8.Text = Request.Form["txtRate8"] == null ? null : Request.Form["txtRate8"].ToString().Trim();
+            txtRate9.Text = Request.Form["txtRate9"] == null ? null : Request.Form["txtRate9"].ToString().Trim();
+            txtRate10.Text = Request.Form["txtRate10"] == null ? null : Request.Form["txtRate10"].ToString().Trim();
+            txtRate11.Text = Request.Form["txtRate11"] == null ? null : Request.Form["txtRate11"].ToString().Trim();
+            txtRate12.Text = Request.Form["txtRate12"] == null ? null : Request.Form["txtRate12"].ToString().Trim();
+            txtRate13.Text = Request.Form["txtRate13"] == null ? null : Request.Form["txtRate13"].ToString().Trim();
+            txtRate14.Text = Request.Form["txtRate14"] == null ? null : Request.Form["txtRate14"].ToString().Trim();
+            txtRate15.Text = Request.Form["txtRate15"] == null ? null : Request.Form["txtRate15"].ToString().Trim();
+            txtRate16.Text = Request.Form["txtRate16"] == null ? null : Request.Form["txtRate16"].ToString().Trim();
+            txtRate17.Text = Request.Form["txtRate17"] == null ? null : Request.Form["txtRate17"].ToString().Trim();
+            txtRate18.Text = Request.Form["txtRate18"] == null ? null : Request.Form["txtRate18"].ToString().Trim();
+            txtRate19.Text = Request.Form["txtRate19"] == null ? null : Request.Form["txtRate19"].ToString().Trim();
+            txtRate20.Text = Request.Form["txtRate20"] == null ? null : Request.Form["txtRate20"].ToString().Trim();
+
+            txtAmount1.Text = Request.Form["txtAmount1"] == null ? null : Request.Form["txtAmount1"].ToString().Trim();
+            txtAmount2.Text = Request.Form["txtAmount2"] == null ? null : Request.Form["txtAmount2"].ToString().Trim();
+            txtAmount3.Text = Request.Form["txtAmount3"] == null ? null : Request.Form["txtAmount3"].ToString().Trim();
+            txtAmount4.Text = Request.Form["txtAmount4"] == null ? null : Request.Form["txtAmount4"].ToString().Trim();
+            txtAmount5.Text = Request.Form["txtAmount5"] == null ? null : Request.Form["txtAmount5"].ToString().Trim();
+            txtAmount6.Text = Request.Form["txtAmount6"] == null ? null : Request.Form["txtAmount6"].ToString().Trim();
+            txtAmount7.Text = Request.Form["txtAmount7"] == null ? null : Request.Form["txtAmount7"].ToString().Trim();
+            txtAmount8.Text = Request.Form["txtAmount8"] == null ? null : Request.Form["txtAmount8"].ToString().Trim();
+            txtAmount9.Text = Request.Form["txtAmount9"] == null ? null : Request.Form["txtAmount9"].ToString().Trim();
+            txtAmount10.Text = Request.Form["txtAmount10"] == null ? null : Request.Form["txtAmount10"].ToString().Trim();
+            txtAmount11.Text = Request.Form["txtAmount11"] == null ? null : Request.Form["txtAmount11"].ToString().Trim();
+            txtAmount12.Text = Request.Form["txtAmount12"] == null ? null : Request.Form["txtAmount12"].ToString().Trim();
+            txtAmount13.Text = Request.Form["txtAmount13"] == null ? null : Request.Form["txtAmount13"].ToString().Trim();
+            txtAmount14.Text = Request.Form["txtAmount14"] == null ? null : Request.Form["txtAmount14"].ToString().Trim();
+            txtAmount15.Text = Request.Form["txtAmount15"] == null ? null : Request.Form["txtAmount15"].ToString().Trim();
+            txtAmount16.Text = Request.Form["txtAmount16"] == null ? null : Request.Form["txtAmount16"].ToString().Trim();
+            txtAmount17.Text = Request.Form["txtAmount17"] == null ? null : Request.Form["txtAmount17"].ToString().Trim();
+            txtAmount18.Text = Request.Form["txtAmount18"] == null ? null : Request.Form["txtAmount18"].ToString().Trim();
+            txtAmount19.Text = Request.Form["txtAmount19"] == null ? null : Request.Form["txtAmount19"].ToString().Trim();
+            txtAmount20.Text = Request.Form["txtAmount20"] == null ? null : Request.Form["txtAmount20"].ToString().Trim();
+
+        }
+
+        public void Earlybird_dis()
 		{
 			try
 			{
