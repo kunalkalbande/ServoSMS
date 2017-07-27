@@ -949,7 +949,7 @@ function MoveFocus(t,drop,e)
 					<th align="center" colSpan="3">
 						<font color="#ce4848">Order Collection</font>
 						<hr>
-						<asp:label id="lblMessage" runat="server" Font-Size="8pt" ForeColor="DarkGreen"></asp:label></th></tr>
+						<asp:label id="lblMessage" runat="server" Font-Size="8pt" ForeColor="DarkGreen">Price updation not available for some products</asp:label></th></tr>
 				<tr>
 					<td align="center" width="40%">
 						<TABLE border="1">
