@@ -128,6 +128,10 @@ namespace Servosms.Module.Admin.ModuleManagement
 				chkModVat.Checked=true;
 				chkSalesVat.Checked=true;
 				chkPurVat.Checked=true;
+                CheckBoxCGST2.Checked = true;
+                CheckBoxSGST2.Checked = true;
+                CheckBoxcgst.Checked = true;
+                CheckBoxsgst.Checked = true;  
 			}
 			rdr.Close();
 		}
@@ -144,7 +148,7 @@ namespace Servosms.Module.Admin.ModuleManagement
 				SqlConnection con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 				SqlCommand cmd = null;
 				InventoryClass obj=new InventoryClass();
-				int Early=0,Servo=0,FixedDis=0,SalesSchDis=0,SalesFleetOe=0,ModSchDis=0,ModFleetOe=0,ModExcise=0,ModEntry=0,DisSales=0,DisPurchase=0,DisModVat=0,VatSales=0,VatPurchase=0,VatModVat=0,CashDisSales=0,CashDisPurchase=0,CashDisModVat=0;
+                int Early = 0, Servo = 0, FixedDis = 0, SalesSchDis = 0, SalesFleetOe = 0, ModSchDis = 0, ModFleetOe = 0, ModExcise = 0, ModEntry = 0, DisSales = 0, DisPurchase = 0, DisModVat = 0, VatSales = 0, VatPurchase = 0, VatModVat = 0, CashDisSales = 0, CashDisPurchase = 0, CashDisModVat = 0, cgstsales = 0, sgstsales = 0, cgstpur = 0,sgstpur=0 ;
 				int SSRInc=0; //by vikas 02.06.09 
 				double vatRate=0;
 				string Tot_EBD="";
@@ -161,6 +165,10 @@ namespace Servosms.Module.Admin.ModuleManagement
 						DisPurchase=1;
 					if(chkPurVat.Checked)
 						VatPurchase=1;
+                    if (CheckBoxcgst.Checked)
+                        cgstpur = 1;
+                    if (CheckBoxsgst.Checked)
+                        sgstpur = 1;
 					if(chkPurCashDis.Checked)
 						CashDisPurchase=1;
 					if(txtPurVat.Text.Trim()!="")
@@ -212,6 +220,10 @@ namespace Servosms.Module.Admin.ModuleManagement
 						DisSales=1;
 					if(chkSalesVat.Checked)
 						VatSales=1;
+                    if (CheckBoxCGST2.Checked)
+                        cgstsales = 1;
+                    if (CheckBoxSGST2.Checked)
+                        sgstsales = 1;
 					if(chkSalesCashDis.Checked)
 						CashDisSales=1;
 					if(txtSalesVat.Text.Trim()!="")
@@ -249,9 +261,9 @@ namespace Servosms.Module.Admin.ModuleManagement
 					if(RadPurchase.Checked)
 						// Comment By vikas sharma 24.04.09 cmd = new SqlCommand("update SetDis set EarlyBird='"+txtPurEarlyBird.Text+"',EarlyStatus='"+Early+"',Servostk='"+txtPurServostk.Text+"',ServoStatus='"+Servo+"',Fixeddis='"+txtPurFixed.Text+"',FixedStatus='"+FixedDis+"',DiscountPurchase='"+txtPurDis.Text+"',DiscountPurchaseStatus='"+DisPurchase+"',VatPurchase='"+txtPurVat.Text+"',VatPurchaseStatus='"+VatPurchase+"',CashDisPurchase='"+txtPurCashDis.Text+"',CashDisPurchaseStatus='"+CashDisPurchase+"',CashDisLtrPurchase='"+DropPurCashDisRs.SelectedItem.Text+"',DisLtrPurchase='"+DropPurDisRs.SelectedItem.Text+"'",con);
 						//coment by vikas 6.11.2012  cmd = new SqlCommand("update SetDis set EarlyBird='"+Tot_EBD+"',EarlyStatus='"+Early+"',Servostk='"+txtPurServostk.Text+"',ServoStatus='"+Servo+"',Fixeddis='"+txtPurFixed.Text+"',FixedStatus='"+FixedDis+"',DiscountPurchase='"+txtPurDis.Text+"',DiscountPurchaseStatus='"+DisPurchase+"',VatPurchase='"+txtPurVat.Text+"',VatPurchaseStatus='"+VatPurchase+"',CashDisPurchase='"+txtPurCashDis.Text+"',CashDisPurchaseStatus='"+CashDisPurchase+"',CashDisLtrPurchase='"+DropPurCashDisRs.SelectedItem.Text+"',DisLtrPurchase='"+DropPurDisRs.SelectedItem.Text+"',EarlyDisLtrPurchase='"+DropPurEarlyRs.SelectedItem.Text+"'",con);
-						cmd = new SqlCommand("update SetDis set EarlyBird='"+Tot_EBD+"',EarlyStatus='"+Early+"',Servostk='"+txtPurServostk.Text+"',ServoStatus='"+Servo+"',Fixeddis='"+txtPurFixed.Text+"',FixedStatus='"+FixedDis+"',DiscountPurchase='"+txtPurDis.Text+"',DiscountPurchaseStatus='"+DisPurchase+"',VatPurchase='"+txtPurVat.Text+"',VatPurchaseStatus='"+VatPurchase+"',CashDisPurchase='"+txtPurCashDis.Text+"',CashDisPurchaseStatus='"+CashDisPurchase+"',CashDisLtrPurchase='"+DropPurCashDisRs.SelectedItem.Text+"',DisLtrPurchase='"+DropPurDisRs.SelectedItem.Text+"',EarlyDisLtrPurchase='"+DropPurEarlyRs.SelectedItem.Text+"',EarlyBird_Period= '"+Period+"'",con);
+						cmd = new SqlCommand("update SetDis set EarlyBird='"+Tot_EBD+"',EarlyStatus='"+Early+"',Servostk='"+txtPurServostk.Text+"',ServoStatus='"+Servo+"',Fixeddis='"+txtPurFixed.Text+"',FixedStatus='"+FixedDis+"',DiscountPurchase='"+txtPurDis.Text+"',DiscountPurchaseStatus='"+DisPurchase+"',IGSTPurchase='"+txtPurVat.Text+"',VatPurchaseStatus='"+VatPurchase+"',CashDisPurchase='"+txtPurCashDis.Text+"',CashDisPurchaseStatus='"+CashDisPurchase+"',CashDisLtrPurchase='"+DropPurCashDisRs.SelectedItem.Text+"',DisLtrPurchase='"+DropPurDisRs.SelectedItem.Text+"',EarlyDisLtrPurchase='"+DropPurEarlyRs.SelectedItem.Text+"',EarlyBird_Period= '"+Period+"',CGSTPurchase='"+TextBoxcgst.Text+"',SGSTPurchase='"+TextBoxsgst.Text+"'",con);
 					else if(RadSales.Checked)
-						cmd = new SqlCommand("update SetDis set SchDis='"+txtSalesSchDis.Text+"',SchDisStatus='"+SalesSchDis+"',FleetOe='"+txtSalesFleetOe.Text+"',FleetOeStatus='"+SalesFleetOe+"',DiscountSales='"+txtSalesDis.Text+"',DiscountSalesStatus='"+DisSales+"',VatSales='"+txtSalesVat.Text+"',VatSalesStatus='"+VatSales+"',CashDisSales='"+txtSalesCashDis.Text+"',CashDisSalesStatus='"+CashDisSales+"',CashDisLtrSales='"+DropSalesCashDisRs.SelectedItem.Text+"',DisLtrSales='"+DropSalesDisRs.SelectedItem.Text+"'",con);
+						cmd = new SqlCommand("update SetDis set SchDis='"+txtSalesSchDis.Text+"',SchDisStatus='"+SalesSchDis+"',FleetOe='"+txtSalesFleetOe.Text+"',FleetOeStatus='"+SalesFleetOe+"',DiscountSales='"+txtSalesDis.Text+"',DiscountSalesStatus='"+DisSales+"',IGSTSales='"+txtSalesVat.Text+"',VatSalesStatus='"+VatSales+"',CashDisSales='"+txtSalesCashDis.Text+"',CashDisSalesStatus='"+CashDisSales+"',CashDisLtrSales='"+DropSalesCashDisRs.SelectedItem.Text+"',DisLtrSales='"+DropSalesDisRs.SelectedItem.Text+"',CGSTSales='"+TextBoxCGST2.Text+"',SGSTSales='"+TextBoxSGST2.Text+"'",con);
 					//else //coment by vikas 2.06.09 
 					else if(RadModCen.Checked)
 						cmd = new SqlCommand("update SetDis set SchDis='"+txtModSchDis.Text+"',SchDisStatus='"+ModSchDis+"',FleetOe='"+txtModFleetOe.Text+"',FleetOeStatus='"+ModFleetOe+"',Excise='"+txtModExcise.Text+"',ExciseStatus='"+ModExcise+"',EntryTax='"+txtModEntryTax.Text+"',EntrytaxStatus='"+ModEntry+"',DiscountModVat='"+txtModDis.Text+"',DiscountModVatStatus='"+DisModVat+"',VatModVat='"+txtModVat.Text+"',VatModVatStatus='"+VatModVat+"',CashDismodvat='"+txtModCashDis.Text+"',CashDismodvatStatus='"+CashDisModVat+"',CashDisLtrmodvat='"+DropModCashDisRs.SelectedItem.Text+"',DisLtrModVat='"+DropModDisRs.SelectedItem.Text+"',ExciseLtr='"+DropModExciseRs.SelectedItem.Text+"',EntryTaxLtr='"+DropModEntryTaxRs.SelectedItem.Text+"'",con);
@@ -268,9 +280,9 @@ namespace Servosms.Module.Admin.ModuleManagement
 					if(RadPurchase.Checked)
 						//Comment by vikas sharma 24.04.09 cmd = new SqlCommand("insert into SetDis(EarlyBird,EarlyStatus,servostk,servostatus,Fixeddis,fixedstatus,discountPurchase,discountPurchasestatus,vatPurchase,vatpurchasestatus,cashdispurchase,cashdisPurchasestatus,CashDisLtrpurchase,DisLtrPurchase) values('"+txtPurEarlyBird.Text+"','"+Early+"','"+txtPurServostk.Text+"','"+Servo+"','"+txtPurFixed.Text+"','"+FixedDis+"','"+txtPurDis.Text+"','"+DisPurchase+"','"+txtPurVat.Text+"','"+VatPurchase+"','"+txtPurCashDis.Text+"','"+CashDisPurchase+"','"+DropPurCashDisRs.SelectedItem.Text+"','"+DropPurDisRs.SelectedItem.Text+"')",con);
 						//coment by vikas 6.11.2012 cmd = new SqlCommand("insert into SetDis(EarlyBird,EarlyStatus,servostk,servostatus,Fixeddis,fixedstatus,discountPurchase,discountPurchasestatus,vatPurchase,vatpurchasestatus,cashdispurchase,cashdisPurchasestatus,CashDisLtrpurchase,DisLtrPurchase,EarlyDisLtrPurchase) values('"+Tot_EBD+"','"+Early+"','"+txtPurServostk.Text+"','"+Servo+"','"+txtPurFixed.Text+"','"+FixedDis+"','"+txtPurDis.Text+"','"+DisPurchase+"','"+txtPurVat.Text+"','"+VatPurchase+"','"+txtPurCashDis.Text+"','"+CashDisPurchase+"','"+DropPurCashDisRs.SelectedItem.Text+"','"+DropPurDisRs.SelectedItem.Text+"','"+DropPurEarlyRs.SelectedItem.Text+"')",con);
-						cmd = new SqlCommand("insert into SetDis(EarlyBird,EarlyStatus,servostk,servostatus,Fixeddis,fixedstatus,discountPurchase,discountPurchasestatus,vatPurchase,vatpurchasestatus,cashdispurchase,cashdisPurchasestatus,CashDisLtrpurchase,DisLtrPurchase,EarlyDisLtrPurchase,EarlyBird_Period) values('"+Tot_EBD+"','"+Early+"','"+txtPurServostk.Text+"','"+Servo+"','"+txtPurFixed.Text+"','"+FixedDis+"','"+txtPurDis.Text+"','"+DisPurchase+"','"+txtPurVat.Text+"','"+VatPurchase+"','"+txtPurCashDis.Text+"','"+CashDisPurchase+"','"+DropPurCashDisRs.SelectedItem.Text+"','"+DropPurDisRs.SelectedItem.Text+"','"+DropPurEarlyRs.SelectedItem.Text+"','"+Period+"')",con);
+						cmd = new SqlCommand("insert into SetDis(EarlyBird,EarlyStatus,servostk,servostatus,Fixeddis,fixedstatus,discountPurchase,discountPurchasestatus,IGSTPurchase,vatpurchasestatus,cashdispurchase,cashdisPurchasestatus,CashDisLtrpurchase,DisLtrPurchase,EarlyDisLtrPurchase,EarlyBird_Period,CGSTPurchase,SGSTPurchase) values('" + Tot_EBD+"','"+Early+"','"+txtPurServostk.Text+"','"+Servo+"','"+txtPurFixed.Text+"','"+FixedDis+"','"+txtPurDis.Text+"','"+DisPurchase+"','"+txtPurVat.Text+"','"+VatPurchase+"','"+txtPurCashDis.Text+"','"+CashDisPurchase+"','"+DropPurCashDisRs.SelectedItem.Text+"','"+DropPurDisRs.SelectedItem.Text+"','"+DropPurEarlyRs.SelectedItem.Text+"','"+Period+"','"+TextBoxcgst.Text+"','"+TextBoxsgst.Text+"')",con);
 					else if(RadSales.Checked)
-						cmd = new SqlCommand("insert into SetDis(schdis,schdisstatus,fleetoe,fleetoestatus,discountsales,discountsalesstatus,vatsales,vatsalesstatus,cashdissales,cashdissalesstatus,CashDisLtrsales,DisLtrSales) values('"+txtSalesSchDis.Text+"','"+SalesSchDis+"','"+txtSalesFleetOe.Text+"','"+SalesFleetOe+"','"+txtSalesDis.Text+"','"+DisSales+"','"+txtSalesVat.Text+"','"+VatSales+"','"+txtSalesCashDis.Text+"','"+CashDisSales+"','"+DropSalesCashDisRs.SelectedItem.Text+"','"+DropSalesDisRs.SelectedItem.Text+"')",con);
+						cmd = new SqlCommand("insert into SetDis(schdis,schdisstatus,fleetoe,fleetoestatus,discountsales,discountsalesstatus,IGSTSales,vatsalesstatus,cashdissales,cashdissalesstatus,CashDisLtrsales,DisLtrSales,CGSTSales,SGSTSales) values('"+txtSalesSchDis.Text+"','"+SalesSchDis+"','"+txtSalesFleetOe.Text+"','"+SalesFleetOe+"','"+txtSalesDis.Text+"','"+DisSales+"','"+txtSalesVat.Text+"','"+VatSales+"','"+txtSalesCashDis.Text+"','"+CashDisSales+"','"+DropSalesCashDisRs.SelectedItem.Text+"','"+DropSalesDisRs.SelectedItem.Text+"','"+TextBoxCGST2.Text+"','"+TextBoxSGST2.Text+"')",con);
 					// else //coment by vikas 02.06.09 
 					else if(RadModCen.Checked)
 						cmd = new SqlCommand("insert into SetDis(schdis,schdisstatus,fleetoe,fleetoestatus,Excise,ExciseStatus,EntryTax,EntryTaxStatus,discountmodvat,discountmodvatstatus,vatmodvat,vatmodvatstatus,cashdisModvat,cashdismodvatstatus,CashDisLtrmodvat,DisLtrModVat,ExciseLtr,EntryTaxLtr) values('"+txtModSchDis.Text+"','"+ModSchDis+"','"+txtModFleetOe.Text+"','"+ModFleetOe+"','"+txtModExcise.Text+"','"+ModExcise+"','"+txtModEntryTax.Text+"','"+ModEntry+"','"+txtModDis.Text+"','"+DisModVat+"','"+txtModVat.Text+"','"+VatModVat+"','"+txtModCashDis.Text+"','"+CashDisModVat+"','"+DropModCashDisRs.SelectedItem.Text+"','"+DropModDisRs.SelectedItem.Text+"','"+DropModExciseRs.SelectedItem.Text+"','"+DropModEntryTaxRs.SelectedItem.Text+"')",con);
@@ -330,7 +342,9 @@ namespace Servosms.Module.Admin.ModuleManagement
 						txtPurServostk.Text = SqlDtr["Servostk"].ToString();
 						txtPurFixed.Text = SqlDtr["FixedDis"].ToString();
 						txtPurDis.Text = SqlDtr["DiscountPurchase"].ToString();
-                        //txtPurVat.Text = SqlDtr["VatPurchase"].ToString();//TOdo replace with new Value
+                        txtPurVat.Text = SqlDtr["IGSTPurchase"].ToString();
+                        TextBoxcgst.Text = SqlDtr["CGSTPurchase"].ToString();
+                        TextBoxsgst.Text = SqlDtr["SGSTPurchase"].ToString();
                         txtPurCashDis.Text = SqlDtr["CashDisPurchase"].ToString();
 						DropPurCashDisRs.SelectedIndex=DropPurCashDisRs.Items.IndexOf(DropPurCashDisRs.Items.FindByValue(SqlDtr["CashDisLtrPurchase"].ToString()));
 						DropPurDisRs.SelectedIndex=DropPurDisRs.Items.IndexOf(DropPurDisRs.Items.FindByValue(SqlDtr["DisLtrPurchase"].ToString()));
@@ -386,7 +400,9 @@ namespace Servosms.Module.Admin.ModuleManagement
 						txtSalesSchDis.Text = SqlDtr["SchDis"].ToString();
 						txtSalesFleetOe.Text = SqlDtr["FleetOe"].ToString();
 						txtSalesDis.Text = SqlDtr["DiscountSales"].ToString();
-                        //txtSalesVat.Text = SqlDtr["VatSales"].ToString();//TOdo replace with new Value
+                        txtSalesVat.Text = SqlDtr["IGSTSales"].ToString();
+                        TextBoxCGST2.Text = SqlDtr["CGSTSales"].ToString();
+                        TextBoxSGST2.Text = SqlDtr["SGSTSales"].ToString();
                         txtSalesCashDis.Text = SqlDtr["CashDisSales"].ToString();
 						DropSalesCashDisRs.SelectedIndex=DropSalesCashDisRs.Items.IndexOf(DropSalesCashDisRs.Items.FindByValue(SqlDtr["CashDisLtrSales"].ToString()));
 						DropSalesDisRs.SelectedIndex=DropSalesDisRs.Items.IndexOf(DropSalesDisRs.Items.FindByValue(SqlDtr["DisLtrSales"].ToString()));

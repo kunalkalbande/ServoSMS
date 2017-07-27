@@ -2652,17 +2652,64 @@ function MoveFocus(t,drop,e)
 										<asp:ListItem Value="Per">%</asp:ListItem>
 									</asp:dropdownlist><asp:textbox id="txtCashDiscount" runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
+
 							<TR>
 								<TD>Message</TD>
 								<TD><asp:textbox id="txtMessage" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
-								<TD>VAT
-									<asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"
-										Checked="false" GroupName="VAT" oncheckedchanged="No_CheckedChanged"></asp:radiobutton>&nbsp;<asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply"
-										Checked="True" GroupName="VAT" oncheckedchanged="Yes_CheckedChanged"></asp:radiobutton></TD>
+								<TD align="left">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="2px">IGST</td>
+                                            <td width="80px">
+                                                <asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied" Checked="false" GroupName="VAT" oncheckedchanged="No_CheckedChanged"></asp:radiobutton>
+                                                <asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply" Checked="True" GroupName="VAT" oncheckedchanged="Yes_CheckedChanged"></asp:radiobutton>
+                                            </td>
+                                        </tr>
+                                    </table>
+									</TD>
 								<TD><asp:textbox id="txtVAT" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist" ontextchanged="txtVAT_TextChanged"></asp:textbox></TD>
 							</TR>
+
+                            <TR>
+                                <TD></TD>
+                                <TD></TD>
+                                <TD></TD>
+                                <TD align="left">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="2px">CGST</td>
+                                            <td width="95px">
+                                               <asp:RadioButton ID="RadioButton1" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="RadioButton2" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    </TD>
+                                <TD><asp:TextBox ID="Textcgst" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
+                            </TR>
+
+                            <TR>
+                                <TD></TD>
+                                <TD></TD>
+                                <TD></TD>
+                                <TD align="left">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="2px">SGST</td>
+                                            <td width="95px">
+                                                <asp:RadioButton ID="RadioButton3" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="RadioButton4" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    </TD>
+                                <TD><asp:TextBox ID="Textsgst" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
+                            </TR>
+
+
+
 							<TR>
 								<TD>&nbsp;Remark</TD>
 								<TD>

@@ -78,17 +78,19 @@
 		
 		return true;
 		}
-	function enableText(t,t1,t2)
+	function enableText(t,t1,t2,t3)
 	{
 	  if(t.checked)
 	  {
 	    t1.disabled=false
 	    t2.disabled=false
+	    t3.disabled=false
 	  }
 	  else
 	  {
 	    t1.disabled=true
 	    t2.disabled=true
+	    t3.disabled=true
 	  }
 	}	
 	
@@ -166,9 +168,11 @@
 								<th align="center" bgcolor=#CE4848><font color=white>Product Code</font></th>
 								<th align="center" bgcolor=#CE4848><font color=white>Product Name</font></th>
 								<th align="center" bgcolor=#CE4848><font color=white>Pack Type</font></th>
-								<th align="center" bgcolor=#CE4848><font color=white>Purchase Rate</font></th>
-								<th align="center" bgcolor=#CE4848><font color=white>Sales Rate</font></th>
-								<th align="center" bgcolor=#CE4848><font color=white>Select</font></th>
+								<th align="center" bgcolor=#CE4848><font color=white>RSP</font></th>
+								<th align="center" bgcolor=#CE4848><font color=white>MRP</font></th>
+                                <th align="center" bgcolor=#CE4848><font color=white>HSN</font></th>
+                                <th align="center" bgcolor=#CE4848><font color=white>Select</font></th>
+                                
 							</tr>
 							<%
 								DBUtil dbobj=new DBUtil(System.Configuration.ConfigurationSettings.AppSettings["Servosms"],true);
@@ -192,8 +196,9 @@
 								<% if(rdr.Read())
 								   {
 								%>
-									<td bgcolor="#FFF7E7"><input  maxlength=8 value=<%=rdr["Pur_Rate"].ToString()%>  disabled type=text size=10 name=txtPurRate<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);"></td> 
+									<td bgcolor="#FFF7E7"><input maxlength=8 value=<%=rdr["Pur_Rate"].ToString()%>  disabled type=text size=10 name=txtPurRate<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);"></td> 
 									<td bgcolor="#FFF7E7"><input maxlength=8 value=<%=rdr["Sal_Rate"].ToString()%>   disabled type=text size=10 name=txtSaleRate<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onBlur ="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td> 
+                                    <td bgcolor="#FFF7E7"><input maxlength=8 disabled type=text size=10 name=txtHSN<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);"></td>
 								<% }
 								%>
 								<% else
@@ -201,15 +206,16 @@
 								%>
 									<td bgcolor="#FFF7E7"><input maxlength=8 disabled type=text size=10 name=txtPurRate<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);"></td> 
 									<td bgcolor="#FFF7E7"><input maxlength=8 disabled type=text size=10 name=txtSaleRate<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onBlur ="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td> 
+                                    <td bgcolor="#FFF7E7"><input maxlength=8 disabled type=text size=10 name=txtHSN<%=Prod_No%> style="border-style:Groove; FONT-SIZE: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);"></td>
 								<% }
 								%>
-								<td align=center bgcolor="#FFF7E7"><input type=checkbox name=chk<%=Prod_No%> onclick="enableText(this,document.f1.txtPurRate<%=Prod_No%>,document.f1.txtSaleRate<%=Prod_No%>);"></td>
+								<td align=center bgcolor="#FFF7E7"><input type=checkbox name=chk<%=Prod_No%> onclick="enableText(this,document.f1.txtPurRate<%=Prod_No%>,document.f1.txtSaleRate<%=Prod_No%>,document.f1.txtHSN<%=Prod_No%>);"></td>
 							</tr>
 							<%	Prod_No++;
 								}
 							%>
 							<tr><td bgcolor="#FFF7E7"><input type=hidden name=Total_Prod value=<%=Prod_No%>></td></tr>
-							<tr><th colspan=5 align=right bgcolor="#CE4848"><font color=white>Select All</font></th><td align=center bgcolor="#CE4848"><input type=checkbox name=chkSelectAll onclick="selectAll();"></td></tr>
+							<tr><th></th><th colspan=5 align=right bgcolor="#CE4848"><font color=white>Select All</font></th><td align=center bgcolor="#CE4848"><input type=checkbox name=chkSelectAll onclick="selectAll();"></td></tr>
 						</table>
 					</td>
 				</tr>
