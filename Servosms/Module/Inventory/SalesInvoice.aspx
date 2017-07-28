@@ -436,19 +436,19 @@
 			for(int k=1; k<=12; k++) 
 			{
 				%>
-				if(tempint==<%=k%>)
-					getscheme(document.Form1.DropType<%=k%>,document.Form1.txtProdName<%=k%>,document.Form1.txtPack<%=k%>,document.Form1.txtQty<%=k%>,document.Form1.txtTypesch<%=k%>,document.Form1.txtProdsch<%=k%>,document.Form1.txtPacksch<%=k%>,document.Form1.txtQtysch<%=k%>,document.Form1.lblInvoiceDate,document.Form1.txtstk<%=k%>,document.Form1.txtsch<%=k%>,document.Form1.txtfoe<%=k%>)
-				<%
+		    if(tempint==<%=k%>)
+                getscheme(document.Form1.DropType<%=k%>,document.Form1.txtProdName<%=k%>,document.Form1.txtPack<%=k%>,document.Form1.txtQty<%=k%>,document.Form1.txtTypesch<%=k%>,document.Form1.txtProdsch<%=k%>,document.Form1.txtPacksch<%=k%>,document.Form1.txtQtysch<%=k%>,document.Form1.lblInvoiceDate,document.Form1.txtstk<%=k%>,document.Form1.txtsch<%=k%>,document.Form1.txtfoe<%=k%>)
+		        <%
 			}
 			%>	
-			changescheme()
-			GetGrandTotal()
+		    changescheme()
+		    GetGrandTotal()
 			GetNetAmount()
 		}	
 	
 		function calc2(txtQty,txtAvstock,txtRate,txtTempQty,tempint,ProdType)
 		{	
-			
+		    
 			
 			/***************Add by vikas sharma 21.04.09************************/
 			if(ProdType.value!="Type")
@@ -583,7 +583,8 @@
 		changescheme()
 		GetGrandTotal()
 		GetNetAmount()
-		
+		Getcgstamt()
+		Getsgstamt()
 	}
 	
 	function GetGrandTotal()
@@ -600,7 +601,8 @@
 	 		}
 	 	%>
 	 	document.Form1.txtGrandTotal.value=GTotal ;
-		makeRound(document.Form1.txtGrandTotal);
+	 	makeRound(document.Form1.txtGrandTotal);
+	 
 	}	
 	
 	function TotalLiter()
@@ -665,11 +667,99 @@
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc) - eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP);	
 		//************************************
 	}
-	
-	function GetVatAmount()
+	function GetSGSTAmount()
+	{
+	    GetCashDiscount()
+	    if(document.Form1.Noo.checked)
+	    {
+	        document.Form1.Textsgst.value="";
+	    }
+	    else
+	    {
+	        var sgst_rate=document.Form1.Tempsgstrate.value
+	        if(sgst_rate == "")
+	            sgst_rate=0;
+	        var sgst= document.Form1.txtVatValue.value;
+	        if(sgst == "" || isNaN(sgst))
+	            sgst = 0;
+	        var sgst_amount = sgst * sgst_rate/100
+	        document.Form1.Textsgst.value = sgst_amount
+	        makeRound(document.Form1.Textsgst)
+	     
+	        document.Form1.txtVatValue.value = eval(sgst) + eval(sgst_amount)
+	    }
+	}
+	function Getsgstamt()
+	{
+	    //debugger;
+	    var sgst_value=0;
+	    if(document.Form1.Noo.checked)
+	    {
+	        GetCashDiscount()
+	        sgst_value=document.Form1.Textsgst.value;
+	        document.Form1.Textsgst.value="";
+	    }
+	    else
+	    {
+	        GetSGSTAmount()
+	        sgst_value=document.Form1.txtVatValue.value;
+	    }
+	    if(sgst_value=="" || isNaN(sgst_value))
+	        sgst_value=0
+	    document.Form1.txtNetAmount.value=eval(sgst_value);
+	    var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+	    netamount=netamount+".00";
+	    document.Form1.txtNetAmount.value=netamount;
+	}
+	function GetCGSTAmount()
 	{
 	    GetCashDiscount()
 	    
+	    if(document.Form1.N.checked)
+	    {
+	        document.Form1.Textcgst.value = "";
+	    } 
+	    else
+	    {
+	        var cgst_rate = document.Form1.Tempcgstrate.value
+	        if(cgst_rate == "")
+	            cgst_rate = 0;
+	        var cgst = document.Form1.txtVatValue.value    
+	        if(cgst == "" || isNaN(cgst))
+	            cgst = 0;
+	        var cgst_amount = cgst * cgst_rate/100
+	        document.Form1.Textcgst.value = cgst_amount
+	        makeRound(document.Form1.Textcgst)
+	     
+	        document.Form1.txtVatValue.value = eval(cgst) + eval(cgst_amount)
+	    }
+	}
+	
+	function Getcgstamt()
+	{
+	    //debugger;
+	    var cgst_value=0;
+	    if(document.Form1.N.checked)
+	    {
+	        GetCashDiscount()
+	        cgst_value=document.Form1.Textcgst.value;
+	        document.Form1.Textcgst.value="";
+	    }
+	    else
+	    {
+	        GetCGSTAmount()
+	        cgst_value=document.Form1.txtVatValue.value;
+	    }
+	    if(cgst_value=="" || isNaN(cgst_value))
+	        cgst_value=0
+	    document.Form1.txtNetAmount.value=eval(cgst_value);
+	    var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+	    netamount=netamount+".00";
+	    document.Form1.txtNetAmount.value=netamount;
+	}
+	function GetVatAmount()
+	{
+	    GetCashDiscount()
 	    if(document.Form1.No.checked)
 	    {
 	       document.Form1.txtVAT.value = "";
@@ -692,12 +782,13 @@
 	
 	function GetNetAmount()
 	{
+	    //debugger;
 		var vat_value = 0;
 		if(document.Form1.No.checked)
 	    {
 			GetCashDiscount()
 			vat_value = document.Form1.txtVatValue.value;
-			document.Form1.txtVAT.value = "";
+           	document.Form1.txtVAT.value = "";
 	    }
 	    else
 	    {
@@ -1861,7 +1952,7 @@ function MoveFocus(t,drop,e)
 				size="3" name="TxtEnd" runat="server"> <INPUT id="Txtstart" style="Z-INDEX: 103; LEFT: -336px; WIDTH: 83px; POSITION: absolute; TOP: -16px; HEIGHT: 20px"
 				size="8" name="Txtstart" runat="server"> <INPUT id="TxtCrLimit" style="Z-INDEX: 104; LEFT: -448px; WIDTH: 70px; POSITION: absolute; TOP: -16px; HEIGHT: 20px"
 				accessKey="TxtEnd" size="6" name="TxtCrLimit" runat="server">
-			<asp:textbox id="TxtCrLimit1" style="Z-INDEX: 107; LEFT: 176px; POSITION: absolute; TOP: 0px"
+			<asp:textbox id="TxtCrLimit1" style="Z-INDEX: 107; LEFT: 176px; POSITION: absolute; TOP: 0px; right: 1293px;"
 				runat="server" Height="20" Width="16px" Visible="False" BorderStyle="Groove" ReadOnly="True"></asp:textbox><INPUT id="temptext" style="Z-INDEX: 108; LEFT: 152px; WIDTH: 16px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="2" name="temptext" runat="server"> <INPUT id="tempminmax" style="Z-INDEX: 108; LEFT: 152px; WIDTH: 16px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="2" name="tempminmax" runat="server"> <INPUT id="temptextfoe" style="Z-INDEX: 108; LEFT: 152px; WIDTH: 16px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
@@ -1919,7 +2010,7 @@ function MoveFocus(t,drop,e)
 				type="hidden" size="1" name="tmpQtysch11" runat="server"> <INPUT id="tmpQtysch12" style="Z-INDEX: 125; LEFT: 428px; WIDTH: 2px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tmpQtysch12" runat="server"> <INPUT id="txtVatRate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="txtVatRate" runat="server"> <INPUT id="txtVatValue" style="Z-INDEX: 127; LEFT: 452px; WIDTH: 5px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
-				type="hidden" size="1" name="txtVatValue" runat="server"> <INPUT id="txtSlipTemp" style="Z-INDEX: 128; LEFT: 462px; WIDTH: 6px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="" size="1" name="txtVatValue" runat="server"> <INPUT id="txtSlipTemp" style="Z-INDEX: 128; LEFT: 462px; WIDTH: 6px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="txtSlipTemp" runat="server"> <INPUT id="SlipNo" style="Z-INDEX: 129; LEFT: 478px; WIDTH: 5px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="SlipNo" runat="server"> <INPUT id="tempcashdis" style="Z-INDEX: 129; LEFT: 478px; WIDTH: 5px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempcashdis" runat="server"> <INPUT id="tempdiscount" style="Z-INDEX: 129; LEFT: 478px; WIDTH: 5px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
@@ -2006,6 +2097,10 @@ function MoveFocus(t,drop,e)
 				type="hidden" name="tempschID10" runat="server"><INPUT id="tempschID11" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="tempschID11" runat="server"><INPUT id="tempschID12" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="tempschID12" runat="server">
+            <INPUT id="Tempcgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="Tempcgstrate" runat="server"/>
+            <INPUT id="Tempsgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="Tempsgstrate" runat="server"/>
 				
 			<table height="278" width="778" align="center">
 				<tr>
@@ -2681,8 +2776,8 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">CGST</td>
                                             <td width="95px">
-                                               <asp:RadioButton ID="RadioButton1" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
-                                               <asp:RadioButton ID="RadioButton2" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="N" onclick="return Getcgstamt();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="Y" onclick="return Getcgstamt();" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>
@@ -2699,8 +2794,8 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">SGST</td>
                                             <td width="95px">
-                                                <asp:RadioButton ID="RadioButton3" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
-                                                <asp:RadioButton ID="RadioButton4" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="Noo" onclick="return Getsgstamt();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="Yess" onclick="return Getsgstamt();" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>

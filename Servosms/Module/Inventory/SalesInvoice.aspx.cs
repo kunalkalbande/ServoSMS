@@ -118,23 +118,26 @@ namespace Servosms.Module.Inventory
 		/// </summary>
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
-			try
-			{
-				//DropCustName.Attributes.Add("onkeypress", "DropCustName_onkeypress(this);");
-				uid=(Session["User_Name"].ToString());
-				txtMessage.Text =(Session["Message"].ToString());
-				txtVatRate.Value  = (Session["VAT_Rate"].ToString());
-				/****add-bhal*****///lblInvoiceDate.Text=(Session["CurrentDate"].ToString());
-				//getSlips(); 
-				//GetProducts();
-				//FetchData();
-			}
-			catch(Exception ex)
-			{				
-				CreateLogFiles.ErrorLog("Form:SalesInvoice.aspx,Method:pageload"+ ex.Message+"  EXCEPTION "+"   "+uid);
-				Response.Redirect("../../Sysitem/ErrorPage.aspx",false);
-				return;
-			}
+            try
+            {
+                //DropCustName.Attributes.Add("onkeypress", "DropCustName_onkeypress(this);");
+                uid = (Session["User_Name"].ToString());
+                txtMessage.Text = (Session["Message"].ToString());
+                txtVatRate.Value  = (Session["VAT_Rate"].ToString());
+
+                /****add-bhal*****///lblInvoiceDate.Text=(Session["CurrentDate"].ToString());
+                                   //getSlips(); 
+                                   //GetProducts();
+                                   //FetchData();
+
+            }
+
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:SalesInvoice.aspx,Method:pageload" + ex.Message + "  EXCEPTION " + "   " + uid);
+                Response.Redirect("../../Sysitem/ErrorPage.aspx", false);
+                return;
+            }
 			//if click the delete button then fire the function
 			if(tempDelinfo.Value=="Yes")
 			{
@@ -273,10 +276,11 @@ namespace Servosms.Module.Inventory
 						DropCashDiscType.SelectedIndex=0;
 						DropDiscType.SelectedIndex=0;
 					}
-					SqlDtr.Close ();		
-					#endregion
+					SqlDtr.Close ();
+                    #endregion
+                    getvalue();
 
-					GetProducts();
+                    GetProducts();
 					FetchData();
 					GetFOECust();
 					getscheme();
@@ -318,7 +322,18 @@ namespace Servosms.Module.Inventory
             SaveDataInControlsOnPageLoad();            
             txtVehicleNo.Attributes.Add("onmousemove","getScheme_New();");
 		}
+        public void getvalue()
+        {
+            InventoryClass obj = new InventoryClass();
+            SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
+            if (SqlDtr.Read())
+            {
+                //txtVAT.Text = SqlDtr["IGSTPurchase"].ToString();
+                Tempcgstrate.Value = SqlDtr["CGSTSales"].ToString();
+                Tempsgstrate.Value = SqlDtr["SGSTSales"].ToString();
 
+            }
+        }
         public void SaveDataInControlsOnPageLoad()
         {
             lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();
