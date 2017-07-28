@@ -448,7 +448,7 @@
 	
 		function calc2(txtQty,txtAvstock,txtRate,txtTempQty,tempint,ProdType)
 		{	
-		    
+		   // debugger; 
 			
 			/***************Add by vikas sharma 21.04.09************************/
 			if(ProdType.value!="Type")
@@ -585,6 +585,8 @@
 		GetNetAmount()
 		Getcgstamt()
 		Getsgstamt()
+		document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst),0);
+		totalAmountAfterGst=0;
 	}
 	
 	function GetGrandTotal()
@@ -683,12 +685,23 @@
 	        if(sgst == "" || isNaN(sgst))
 	            sgst = 0;
 	        var sgst_amount = sgst * sgst_rate/100
-	        document.Form1.Textsgst.value = sgst_amount
+	
 	        makeRound(document.Form1.Textsgst)
 	     
-	        document.Form1.txtVatValue.value = eval(sgst) + eval(sgst_amount)
+	        document.Form1.txtVatValue.value = Math.round(eval(sgst) +Math.round(eval(sgst_amount),0),0);
+
+            
+	        if(document.Form1.Textsgst.value=="")
+	        {
+	            document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)+Math.round((sgst_amount),0),0);
+	        }
+	        document.Form1.Textsgst.value =  Math.round(sgst_amount,0);
 	    }
 	}
+	var persistedCgstNetAmount=0;
+	var persistedIgstNetAmount=0;
+	var persistedSgstNetAmount=0;
+	var totalAmountAfterGst=0;
 	function Getsgstamt()
 	{
 	    //debugger;
@@ -696,7 +709,9 @@
 	    if(document.Form1.Noo.checked)
 	    {
 	        GetCashDiscount()
-	        sgst_value=document.Form1.Textsgst.value;
+	        sgst_value=document.Form1.txtVatValue.value;
+	        if(document.Form1.Textsgst.value!="")
+	            document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.Textsgst.value),0);
 	        document.Form1.Textsgst.value="";
 	    }
 	    else
@@ -706,11 +721,16 @@
 	    }
 	    if(sgst_value=="" || isNaN(sgst_value))
 	        sgst_value=0
-	    document.Form1.txtNetAmount.value=eval(sgst_value);
+	   // document.Form1.txtNetAmount.value=eval(sgst_value);
 	    var netamount=Math.round(document.Form1.txtNetAmount.value,0);
 	    netamount=netamount+".00";
-	    document.Form1.txtNetAmount.value=netamount;
+	    if (document.Form1.txtNetAmount.value!='')
+	        persistedSgstNetAmount=  document.Form1.txtNetAmount.value;
+	    totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
+	 //   document.Form1.txtNetAmount.value=persistedSgstNetAmount+netamount;
+
 	}
+
 	function GetCGSTAmount()
 	{
 	    GetCashDiscount()
@@ -728,13 +748,19 @@
 	        if(cgst == "" || isNaN(cgst))
 	            cgst = 0;
 	        var cgst_amount = cgst * cgst_rate/100
-	        document.Form1.Textcgst.value = cgst_amount
+	      
 	        makeRound(document.Form1.Textcgst)
 	     
 	        document.Form1.txtVatValue.value = eval(cgst) + eval(cgst_amount)
+
+	        if(document.Form1.Textcgst.value=="")
+	        {
+	            document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)+eval(cgst_amount),0);
+	        }
+	        document.Form1.Textcgst.value =Math.round(cgst_amount,0);
 	    }
 	}
-	
+
 	function Getcgstamt()
 	{
 	    //debugger;
@@ -742,7 +768,9 @@
 	    if(document.Form1.N.checked)
 	    {
 	        GetCashDiscount()
-	        cgst_value=document.Form1.Textcgst.value;
+	        cgst_value=document.Form1.txtVatValue.value;
+	        if(document.Form1.Textcgst.value!="")
+	            document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.Textcgst.value),0);
 	        document.Form1.Textcgst.value="";
 	    }
 	    else
@@ -752,10 +780,14 @@
 	    }
 	    if(cgst_value=="" || isNaN(cgst_value))
 	        cgst_value=0
-	    document.Form1.txtNetAmount.value=eval(cgst_value);
+	 //   document.Form1.txtNetAmount.value=eval(cgst_value);
 	    var netamount=Math.round(document.Form1.txtNetAmount.value,0);
 	    netamount=netamount+".00";
-	    document.Form1.txtNetAmount.value=netamount;
+	    if (document.Form1.txtNetAmount.value!='')
+	        persistedCgstNetAmount= document.Form1.txtNetAmount.value;
+	    totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
+	  //  document.Form1.txtNetAmount.value=persistedCgstNetAmount+netamount;
+
 	}
 	function GetVatAmount()
 	{
@@ -773,34 +805,45 @@
 	         if(vat == "" || isNaN(vat))
 	       vat = 0;
 	     var vat_amount = vat * vat_rate/100
-	     document.Form1.txtVAT.value = vat_amount
+	
 	     makeRound(document.Form1.txtVAT)
 	     
-	     document.Form1.txtVatValue.value = eval(vat) + eval(vat_amount)
+	     document.Form1.txtVatValue.value = eval(vat) + eval(vat_amount);
+	     if(document.Form1.txtVAT.value=="")
+	     {
+	         document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)+Math.round(eval(vat_amount),0),0);
+	     }
+	     document.Form1.txtVAT.value = Math.round(vat_amount,0);
 	    }
 	}
-	
+     //Calculate IGST
 	function GetNetAmount()
 	{
-	    //debugger;
 		var vat_value = 0;
 		if(document.Form1.No.checked)
 	    {
 			GetCashDiscount()
 			vat_value = document.Form1.txtVatValue.value;
-           	document.Form1.txtVAT.value = "";
+		
+			if(document.Form1.txtVAT.value!="")
+			    document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
+			document.Form1.txtVAT.value = "";   
 	    }
-	    else
-	    {
+	    else		{
+		   
 			GetVatAmount()
 			vat_value = document.Form1.txtVatValue.value;
+		
 	    }
 		if(vat_value=="" || isNaN(vat_value))
 		vat_value=0
-		document.Form1.txtNetAmount.value=eval(vat_value);
-		var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+	//	document.Form1.txtNetAmount.value=eval(vat_value);
+		var netamount=Math.round(eval(vat_value),0);
 		netamount=netamount+".00";
-		document.Form1.txtNetAmount.value=netamount;
+		if (document.Form1.txtNetAmount.value!='')
+		    persistedIgstNetAmount = document.Form1.txtNetAmount.value;
+		totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
+		//document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
 		
 		/**************Add by vikas 14.07.09***************************/
 		var curr_bal=document.Form1.lblCurrBalance.value;
