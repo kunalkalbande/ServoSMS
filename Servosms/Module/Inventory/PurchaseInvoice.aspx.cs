@@ -389,10 +389,12 @@ namespace Servosms.Module.Inventory
 					{
 						DropVendorID.Items.Add (SqlDtr.GetValue(0).ToString ());				
 					}
-					SqlDtr.Close ();		
-					#endregion
+					SqlDtr.Close ();
+                    #endregion
 
-					GetProducts();
+                    getvalue();
+
+                    GetProducts();
 					FetchCity();
 					FatchInvoiceNo();
 					getscheme();
@@ -407,7 +409,18 @@ namespace Servosms.Module.Inventory
 			}
             SaveDataInControlsOnPageLoad();
         }
+        public void getvalue()
+        {
+            InventoryClass obj = new InventoryClass();
+            SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
+            if (SqlDtr.Read())
+            {
+                txtVatRate.Value = SqlDtr["IGSTPurchase"].ToString();
+                Tempcgstrate.Value = SqlDtr["CGSTPurchase"].ToString();
+                Tempsgstrate.Value = SqlDtr["SGSTPurchase"].ToString();
 
+            }
+        }
         public void SaveDataInControlsOnPageLoad()
         {
             lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();

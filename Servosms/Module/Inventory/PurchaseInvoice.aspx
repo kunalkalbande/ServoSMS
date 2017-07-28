@@ -276,6 +276,8 @@
             // alert("hello");
             //Comment by Vikas  2.1.2013 get_fixdisc()        //add by vikas 31.10.2012
             GetNetAmountEtaxnew()
+            Getcgstamt()
+            Getsgstamt()
 			
 			
         }	
@@ -645,7 +647,128 @@
             //document.Form1.txtVatValue.value = CashDisc-(eval(bird)-eval(birdless))
             //alert(document.Form1.txtVatValue.value);
         }
-				    
+        function GetCGSTAmount()
+        {
+            GetEtaxnew()
+            if(document.Form1.N.checked)
+            {
+                document.Form1.Textcgst.value = "";
+            } 
+            else
+            {
+                var cgst_rate = document.Form1.Tempcgstrate.value
+                //
+                if(cgst_rate == "")
+                    cgst_rate = 0;
+                var cgst = document.Form1.txtVatValue.value ;
+			
+                if(cgst == "" || cgst == null || isNaN(cgst))
+                {
+                    // alert("if");
+                    cgst = 0;
+                }
+                // alert("disc: "+vat)
+                //mahesh** var vat_amount = vat * vat_rate/100
+                var cgst_amount = (cgst * cgst_rate)/100
+                // alert("vat_amt : "+vat_amount)
+	    
+                document.Form1.Textcgst.value = cgst_amount
+                makeRound(document.Form1.Textcgst)
+	    
+                document.Form1.txtVatValue.value = eval(cgst) + eval(cgst_amount)
+                // alert("total :"+document.Form1.txtVatValue.value)
+            }
+        }
+        function Getcgstamt()
+        {
+            
+            GetGrandTotal1();
+            var cgst_value = 0;
+            if(document.Form1.N.checked)
+            {
+                GetEtaxnew()
+                cgst_value = document.Form1.txtVatValue.value;
+                document.Form1.Textcgst.value = "";
+            }
+            else
+            {
+                GetCGSTAmount()
+                cgst_value = document.Form1.txtVatValue.value;
+            }
+            if(cgst_value=="" || isNaN(cgst_value))
+                cgst_value=0
+            document.Form1.txtNetAmount.value=eval(cgst_value);
+            //**	makeRound(document.Form1.txtNetAmount);
+     
+            var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+            netamount=netamount+".00";
+            document.Form1.txtNetAmount.value=netamount;
+		
+            if(document.Form1.txtNetAmount.value==0.00 )
+                document.Form1.txtNetAmount.value==""
+            GetEBT()
+        }
+        function GetSGSTAmount()
+        {
+            GetEtaxnew()
+            if(document.Form1.Noo.checked)
+            {
+                document.Form1.Textsgst.value = "";
+            } 
+            else
+            {
+                var sgst_rate = document.Form1.Tempsgstrate.value
+                //
+                if(sgst_rate == "")
+                    sgst_rate = 0;
+                var sgst = document.Form1.txtVatValue.value ;
+			
+                if(sgst == "" || sgst == null || isNaN(sgst))
+                {
+                    // alert("if");
+                    sgst = 0;
+                }
+                // alert("disc: "+vat)
+                //mahesh** var vat_amount = vat * vat_rate/100
+                var sgst_amount = (sgst * sgst_rate)/100
+                // alert("vat_amt : "+vat_amount)
+	    
+                document.Form1.Textsgst.value = sgst_amount
+                makeRound(document.Form1.Textsgst)
+	    
+                document.Form1.txtVatValue.value = eval(sgst) + eval(sgst_amount)
+                // alert("total :"+document.Form1.txtVatValue.value)
+            }
+        }
+        function Getsgstamt()
+        {
+            
+            GetGrandTotal1();
+            var sgst_value = 0;
+            if(document.Form1.Noo.checked)
+            {
+                GetEtaxnew()
+                sgst_value = document.Form1.txtVatValue.value;
+                document.Form1.Textsgst.value = "";
+            }
+            else
+            {
+                GetSGSTAmount()
+                sgst_value = document.Form1.txtVatValue.value;
+            }
+            if(sgst_value=="" || isNaN(sgst_value))
+                sgst_value=0
+            document.Form1.txtNetAmount.value=eval(sgst_value);
+            //**	makeRound(document.Form1.txtNetAmount);
+     
+            var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+            netamount=netamount+".00";
+            document.Form1.txtNetAmount.value=netamount;
+		
+            if(document.Form1.txtNetAmount.value==0.00 )
+                document.Form1.txtNetAmount.value==""
+            GetEBT()
+        }
         function GetVatAmountetaxnew()
         {
             GetEtaxnew()
@@ -1203,6 +1326,8 @@
         <input id="tempFixedDisc19" style="width: 1px" type="hidden" name="tempFixedDisc19" runat="server">
         <input id="tempFixedDisc20" style="width: 1px" type="hidden" name="tempFixedDisc20" runat="server">
         <input id="tempFixedDisc" style="width: 1px" type="hidden" name="tempFixedDisc" runat="server">
+        <input id="Tempcgstrate" style="width: 1px" type="hidden" name="Tempcgstrate" runat="server"/>
+        <input id="Tempsgstrate" style="width: 1px" type="hidden" name="Tempsgstrate" runat="server"/>
         <table style="width: 778px" align="center">
             <tr>
                 <th align="center" colspan="3">
@@ -2157,8 +2282,8 @@
                                     <tr>
                                     <td width="2px">CGST</td>
                                     <td width="95px">
-                                        <asp:RadioButton ID="CGST" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
-                                        <asp:RadioButton ID="Y" runat="server" Width="75px" ToolTip="Not Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="N"  onclick="return Getcgstamt()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="Y" onclick="return Getcgstamt()" runat="server" Width="75px" ToolTip="Not Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
                                     </td>
                                     </tr>
                                 </table>
@@ -2173,8 +2298,8 @@
                                     <tr>
                                         <td width="2px">SGST</td>
                                         <td width="95px">
-                                            <asp:RadioButton  runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
-                                            <asp:RadioButton ID="Yess" runat="server" Width="75px" ToolTip="Not Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton  ID="Noo" onclick="return Getsgstamt()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton ID="Yess" onclick="return Getsgstamt()" runat="server" Width="75px" ToolTip="Not Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
                                         </td>
                                     </tr>
                                 </table>
