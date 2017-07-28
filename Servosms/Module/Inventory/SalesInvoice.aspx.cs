@@ -328,7 +328,7 @@ namespace Servosms.Module.Inventory
             SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
             if (SqlDtr.Read())
             {
-                //txtVAT.Text = SqlDtr["IGSTPurchase"].ToString();
+                txtVatRate.Value = SqlDtr["IGSTSales"].ToString();
                 Tempcgstrate.Value = SqlDtr["CGSTSales"].ToString();
                 Tempsgstrate.Value = SqlDtr["SGSTSales"].ToString();
 
