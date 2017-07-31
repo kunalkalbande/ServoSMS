@@ -449,17 +449,17 @@ namespace Servosms.Module.Inventory
             txtfixdiscamount.Text = Request.Form["txtfixdiscamount"] == null ? null : Request.Form["txtfixdiscamount"].ToString().Trim();
 
             txtGrandTotal.Text = Request.Form["txtGrandTotal"] == null ? null : Request.Form["txtGrandTotal"].ToString().Trim();
-            txtebird.Text = Request.Form["txtebird"] == null ? null : Request.Form["txtebird"].ToString().Trim();
-            txtebirdamt.Text = Request.Form["txtebirdamt"] == null ? null : Request.Form["txtebirdamt"].ToString().Trim();
-            txtbirdless.Text = Request.Form["txtbirdless"] == null ? null : Request.Form["txtbirdless"].ToString().Trim();
-            txttradedisamt.Text = Request.Form["txttradedisamt"] == null ? null : Request.Form["txttradedisamt"].ToString().Trim();
-            txttradeless.Text = Request.Form["txttradeless"] == null ? null : Request.Form["txttradeless"].ToString().Trim();
-            txtCashDisc.Text = Request.Form["txtCashDisc"] == null ? null : Request.Form["txtCashDisc"].ToString().Trim();
-            txtTotalCashDisc.Text = Request.Form["txtTotalCashDisc"] == null ? null : Request.Form["txtTotalCashDisc"].ToString().Trim();
+            txtebird.Text = txtebird.Text;
+            txtebirdamt.Text = txtebirdamt.Text;
+            txtbirdless.Text = txtbirdless.Text;
+            txttradedisamt.Text = txttradedisamt.Text;
+            txttradeless.Text = txttradeless.Text;
+            txtCashDisc.Text = txtCashDisc.Text;
+            txtTotalCashDisc.Text = txtTotalCashDisc.Text;
 
-            txtDisc.Text = Request.Form["txtDisc"] == null ? null : Request.Form["txtDisc"].ToString().Trim();
-            txtTotalDisc.Text = Request.Form["txtTotalDisc"] == null ? null : Request.Form["txtTotalDisc"].ToString().Trim();
-            txtVAT.Text = Request.Form["txtVAT"] == null ? null : Request.Form["txtVAT"].ToString().Trim();
+            txtDisc.Text = txtDisc.Text;
+            txtTotalDisc.Text = txtTotalDisc.Text;
+            txtVAT.Text = txtVAT.Text;
             txtNetAmount.Text = Request.Form["txtNetAmount"] == null ? null : Request.Form["txtNetAmount"].ToString().Trim();
 
             txtRate1.Text = Request.Form["txtRate1"] == null ? null : Request.Form["txtRate1"].ToString().Trim();
