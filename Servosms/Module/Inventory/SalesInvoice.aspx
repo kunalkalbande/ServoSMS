@@ -583,10 +583,10 @@
 		changescheme()
 		GetGrandTotal()
 		GetNetAmount()
-		Getcgstamt()
-		Getsgstamt()
-		document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst),0);
-		totalAmountAfterGst=0;
+		//Getcgstamt()
+		//Getsgstamt()
+		//document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst),0);
+		//totalAmountAfterGst=0;
 	}
 	
 	function GetGrandTotal()
@@ -612,9 +612,11 @@
 		changeschemefoe()
 		document.Form1.txtliter.value=qtyfoe
 	}
-	
+	var totaldisc=0;
 	function GetCashDiscount()
 	{
+	    //debugger;
+	    totaldisc=0;
 		changescheme()
 		changeschemefoe()
 		changeschemeSecondrySP()
@@ -667,7 +669,8 @@
 		makeRound(document.Form1.txtCashDiscount)
 		document.Form1.txtVatValue.value = "";
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc) - eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP);	
-		//************************************
+	    //************************************
+		totaldisc=eval(CashDisc) + eval(Disc)+eval(Scheme)+eval(foe)+eval(SchSP)
 	}
 	function GetSGSTAmount()
 	{
@@ -704,7 +707,7 @@
 	var totalAmountAfterGst=0;
 	function Getsgstamt()
 	{
-	    //debugger;
+	   // debugger;
 	    var sgst_value=0;
 	    if(document.Form1.Noo.checked)
 	    {
@@ -726,6 +729,7 @@
 	    netamount=netamount+".00";
 	    if (document.Form1.txtNetAmount.value!='')
 	        persistedSgstNetAmount=  document.Form1.txtNetAmount.value;
+	    if(document.Form1.Textsgst.value!='')
 	    totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
 	 //   document.Form1.txtNetAmount.value=persistedSgstNetAmount+netamount;
 
@@ -785,6 +789,7 @@
 	    netamount=netamount+".00";
 	    if (document.Form1.txtNetAmount.value!='')
 	        persistedCgstNetAmount= document.Form1.txtNetAmount.value;
+	    if(document.Form1.Textcgst.value!='')
 	    totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
 	  //  document.Form1.txtNetAmount.value=persistedCgstNetAmount+netamount;
 
@@ -816,35 +821,71 @@
 	     document.Form1.txtVAT.value = Math.round(vat_amount,0);
 	    }
 	}
-     //Calculate IGST
-	function GetNetAmount()
+		    //Calculate IGST
+	function Getigstamt()
 	{
-		var vat_value = 0;
-		if(document.Form1.No.checked)
+	   // debugger;
+	    var vat_value = 0;
+	    if(document.Form1.No.checked)
 	    {
-			GetCashDiscount()
-			vat_value = document.Form1.txtVatValue.value;
+	        GetCashDiscount()
+	        vat_value = document.Form1.txtVatValue.value;
 		
-			if(document.Form1.txtVAT.value!="")
-			    document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
-			document.Form1.txtVAT.value = "";   
+	        if(document.Form1.txtVAT.value!="")
+	            document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
+	        document.Form1.txtVAT.value = "";   
 	    }
 	    else		{
 		   
-			GetVatAmount()
-			vat_value = document.Form1.txtVatValue.value;
+	        GetVatAmount()
+	        vat_value = document.Form1.txtVatValue.value;
 		
 	    }
-		if(vat_value=="" || isNaN(vat_value))
-		vat_value=0
-	//	document.Form1.txtNetAmount.value=eval(vat_value);
-		var netamount=Math.round(eval(vat_value),0);
-		netamount=netamount+".00";
-		if (document.Form1.txtNetAmount.value!='')
-		    persistedIgstNetAmount = document.Form1.txtNetAmount.value;
-		totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
-		//document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
+	    if(vat_value=="" || isNaN(vat_value))
+	        vat_value=0
+	    //	document.Form1.txtNetAmount.value=eval(vat_value);
+	    var netamount=Math.round(eval(vat_value),0);
+	    netamount=netamount+".00";
+	    if (document.Form1.txtNetAmount.value!='')
+	        persistedIgstNetAmount = document.Form1.txtNetAmount.value;
+	    if(document.Form1.txtVAT.value!='')
+	    totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
+	    //document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
 		
+
+	}
+	function GetNetAmount()
+	{
+	  //  debugger;
+	//	var vat_value = 0;
+	//	if(document.Form1.No.checked)
+	//    {
+	//		GetCashDiscount()
+	//		vat_value = document.Form1.txtVatValue.value;
+		
+	//		if(document.Form1.txtVAT.value!="")
+	//		    document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
+	//		document.Form1.txtVAT.value = "";   
+	//    }
+	//    else		{
+		   
+	//		GetVatAmount()
+	//		vat_value = document.Form1.txtVatValue.value;
+		
+	//    }
+	//	if(vat_value=="" || isNaN(vat_value))
+	//	vat_value=0
+	////	document.Form1.txtNetAmount.value=eval(vat_value);
+	//	var netamount=Math.round(eval(vat_value),0);
+	//	netamount=netamount+".00";
+	//	if (document.Form1.txtNetAmount.value!='')
+	//	    persistedIgstNetAmount = document.Form1.txtNetAmount.value;
+	//	totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
+	    //document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
+	    totalAmountAfterGst=0;
+	    Getigstamt()
+	    Getsgstamt()
+	    Getcgstamt()
 		/**************Add by vikas 14.07.09***************************/
 		var curr_bal=document.Form1.lblCurrBalance.value;
 		var curr_limit=document.Form1.lblCreditLimit.value;
@@ -956,9 +997,12 @@
 				document.Form1.lblCreditLimit.value = Tot_credit
 			}
 		}
-		
+		//debugger;
+		document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
 		if(document.Form1.txtNetAmount.value==0)
-			document.Form1.txtNetAmount.value==""
+		    document.Form1.txtNetAmount.value==""
+		
+	
 	}
 	function changescheme()
 	{
@@ -2819,8 +2863,8 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">CGST</td>
                                             <td width="95px">
-                                               <asp:RadioButton ID="N" onclick="return Getcgstamt();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
-                                               <asp:RadioButton ID="Y" onclick="return Getcgstamt();" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="N" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="Y" onclick="return GetNetAmount();" runat="server" ToolTip="Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>
@@ -2837,8 +2881,8 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">SGST</td>
                                             <td width="95px">
-                                                <asp:RadioButton ID="Noo" onclick="return Getsgstamt();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
-                                                <asp:RadioButton ID="Yess" onclick="return Getsgstamt();" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="Noo" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="Yess" onclick="return GetNetAmount();" runat="server" ToolTip="Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>
