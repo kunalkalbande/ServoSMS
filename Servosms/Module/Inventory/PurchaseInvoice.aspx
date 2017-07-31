@@ -278,7 +278,8 @@
             GetNetAmountEtaxnew()
             Getcgstamt()
             Getsgstamt()
-			
+            document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst),0);
+            totalAmountAfterGst=0;
 			
         }	
 	
@@ -297,11 +298,12 @@
             document.Form1.txtGrandTotal.value=GTotal;
             makeRound(document.Form1.txtGrandTotal);
         }	
-	 
+      
         function GetGrandTotal1()
         {   
             changeqtyltr();
             //alert("hello");
+           
             var fixdiscTot=0;      //Add by vikas 2.1.2013
             var GTotal1=0
             var GTotal2=0
@@ -641,12 +643,17 @@
 		
             //coment by vikas 22.12.2012 document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc))   //Add by vikas 31.10.2012
             document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))   //Add by vikas 22.12.2012
-		
+           
             //coment by vikas 30.06.09  document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc))
 		
             //document.Form1.txtVatValue.value = CashDisc-(eval(bird)-eval(birdless))
             //alert(document.Form1.txtVatValue.value);
         }
+
+        var persistedCgstNetAmount=0;
+        var persistedIgstNetAmount=0;
+        var persistedSgstNetAmount=0;
+        var totalAmountAfterGst=0;
         function GetCGSTAmount()
         {
             GetEtaxnew()
@@ -664,21 +671,21 @@
 			
                 if(cgst == "" || cgst == null || isNaN(cgst))
                 {
-                    // alert("if");
-                    cgst = 0;
+                   cgst = 0;
                 }
-                // alert("disc: "+vat)
-                //mahesh** var vat_amount = vat * vat_rate/100
                 var cgst_amount = (cgst * cgst_rate)/100
-                // alert("vat_amt : "+vat_amount)
-	    
-                document.Form1.Textcgst.value = cgst_amount
                 makeRound(document.Form1.Textcgst)
 	    
                 document.Form1.txtVatValue.value = eval(cgst) + eval(cgst_amount)
-                // alert("total :"+document.Form1.txtVatValue.value)
+                if(document.Form1.Textcgst.value=="")
+                {
+                    document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)+eval(cgst_amount),0);
+                }
+                document.Form1.Textcgst.value =Math.round(cgst_amount,0);
+               
             }
         }
+        //Calculate CGST
         function Getcgstamt()
         {
             
@@ -688,6 +695,8 @@
             {
                 GetEtaxnew()
                 cgst_value = document.Form1.txtVatValue.value;
+                if(document.Form1.Textcgst.value!="")
+                    document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.Textcgst.value),0);
                 document.Form1.Textcgst.value = "";
             }
             else
@@ -697,17 +706,19 @@
             }
             if(cgst_value=="" || isNaN(cgst_value))
                 cgst_value=0
-            document.Form1.txtNetAmount.value=eval(cgst_value);
+          //document.Form1.txtNetAmount.value=eval(cgst_value);
             //**	makeRound(document.Form1.txtNetAmount);
      
             var netamount=Math.round(document.Form1.txtNetAmount.value,0);
             netamount=netamount+".00";
-            document.Form1.txtNetAmount.value=netamount;
-		
-            if(document.Form1.txtNetAmount.value==0.00 )
-                document.Form1.txtNetAmount.value==""
+            if(document.Form1.txtNetAmount.value!='')
+                persistedCgstNetAmount= document.Form1.txtNetAmount.value;
+           
+            totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
+            
             GetEBT()
         }
+       
         function GetSGSTAmount()
         {
             GetEtaxnew()
@@ -725,21 +736,21 @@
 			
                 if(sgst == "" || sgst == null || isNaN(sgst))
                 {
-                    // alert("if");
                     sgst = 0;
                 }
-                // alert("disc: "+vat)
-                //mahesh** var vat_amount = vat * vat_rate/100
-                var sgst_amount = (sgst * sgst_rate)/100
-                // alert("vat_amt : "+vat_amount)
+               var sgst_amount = (sgst * sgst_rate)/100
+               makeRound(document.Form1.Textsgst)
 	    
-                document.Form1.Textsgst.value = sgst_amount
-                makeRound(document.Form1.Textsgst)
-	    
-                document.Form1.txtVatValue.value = eval(sgst) + eval(sgst_amount)
-                // alert("total :"+document.Form1.txtVatValue.value)
+               document.Form1.txtVatValue.value = eval(sgst) + eval(sgst_amount)
+               if(document.Form1.Textsgst.value=="")
+               {
+                   document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)+Math.round((sgst_amount),0),0);
+               }
+               document.Form1.Textsgst.value =  Math.round(sgst_amount,0);
+                
             }
         }
+        //calculate SGST
         function Getsgstamt()
         {
             
@@ -749,6 +760,8 @@
             {
                 GetEtaxnew()
                 sgst_value = document.Form1.txtVatValue.value;
+                if(document.Form1.Textsgst.value!="")
+                    document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.Textsgst.value),0);
                 document.Form1.Textsgst.value = "";
             }
             else
@@ -758,15 +771,17 @@
             }
             if(sgst_value=="" || isNaN(sgst_value))
                 sgst_value=0
-            document.Form1.txtNetAmount.value=eval(sgst_value);
+            //document.Form1.txtNetAmount.value=eval(sgst_value);
             //**	makeRound(document.Form1.txtNetAmount);
      
             var netamount=Math.round(document.Form1.txtNetAmount.value,0);
             netamount=netamount+".00";
-            document.Form1.txtNetAmount.value=netamount;
+            
 		
-            if(document.Form1.txtNetAmount.value==0.00 )
-                document.Form1.txtNetAmount.value==""
+            if(document.Form1.txtNetAmount.value!='' )
+                persistedSgstNetAmount=  document.Form1.txtNetAmount.value;
+            
+            totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
             GetEBT()
         }
         function GetVatAmountetaxnew()
@@ -786,19 +801,17 @@
 			
                 if(vat == "" || vat == null || isNaN(vat))
                 {
-                    // alert("if");
                     vat = 0;
                 }
-                // alert("disc: "+vat)
-                //mahesh** var vat_amount = vat * vat_rate/100
                 var vat_amount = (vat * vat_rate)/100
-                // alert("vat_amt : "+vat_amount)
-	    
-                document.Form1.txtVAT.value = vat_amount
                 makeRound(document.Form1.txtVAT)
-	    
-                document.Form1.txtVatValue.value = eval(vat) + eval(vat_amount)
-                // alert("total :"+document.Form1.txtVatValue.value)
+	            document.Form1.txtVatValue.value = eval(vat) + eval(vat_amount)
+                if(document.Form1.txtVAT.value=="")
+                {
+                    document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)+Math.round(eval(vat_amount),0),0);
+                }
+                document.Form1.txtVAT.value = Math.round(vat_amount,0);
+               
             }
         }
 	
@@ -814,15 +827,18 @@
                 document.Form1.txttradedisamt.value=eval(document.Form1.txttradedisamt.value)-eval(document.Form1.txttradeless.value)
             }
         }
-	
+	//calculat IGST
         function GetNetAmountEtaxnew()
         {
+            
             GetGrandTotal1();
             var vat_value = 0;
             if(document.Form1.No.checked)
             {
                 GetEtaxnew()
                 vat_value = document.Form1.txtVatValue.value;
+                if(document.Form1.txtVAT.value!="")
+                    document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
                 document.Form1.txtVAT.value = "";
             }
             else
@@ -832,15 +848,17 @@
             }
             if(vat_value=="" || isNaN(vat_value))
                 vat_value=0
-            document.Form1.txtNetAmount.value=eval(vat_value);
+            //document.Form1.txtNetAmount.value=eval(vat_value);
             //**	makeRound(document.Form1.txtNetAmount);
      
             var netamount=Math.round(document.Form1.txtNetAmount.value,0);
             netamount=netamount+".00";
-            document.Form1.txtNetAmount.value=netamount;
+            //document.Form1.txtNetAmount.value=netamount;
 		
-            if(document.Form1.txtNetAmount.value==0.00 )
-                document.Form1.txtNetAmount.value==""
+            if(document.Form1.txtNetAmount.value!='' )
+                persistedIgstNetAmount = document.Form1.txtNetAmount.value;
+            
+            totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
             GetEBT()
         }
 	
