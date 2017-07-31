@@ -415,9 +415,19 @@ namespace Servosms.Module.Inventory
             SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
             if (SqlDtr.Read())
             {
-                txtVatRate.Value = SqlDtr["IGSTPurchase"].ToString();
-                Tempcgstrate.Value = SqlDtr["CGSTPurchase"].ToString();
-                Tempsgstrate.Value = SqlDtr["SGSTPurchase"].ToString();
+                if (SqlDtr["IGSTPurchaseStatus"].ToString()=="1")
+                   txtVatRate.Value = SqlDtr["IGSTPurchase"].ToString();
+                else
+                   txtVatRate.Value = "0";
+                if (SqlDtr["CGSTPurchaseStatus"].ToString() == "1")
+                    Tempcgstrate.Value = SqlDtr["CGSTPurchase"].ToString();
+                else
+                    Tempcgstrate.Value = "0";
+                if (SqlDtr["SGSTPurchaseStatus"].ToString() == "1")
+                    Tempsgstrate.Value = SqlDtr["SGSTPurchase"].ToString();
+                else
+                    Tempsgstrate.Value = "0";
+                
 
             }
         }
