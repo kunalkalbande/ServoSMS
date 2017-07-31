@@ -352,11 +352,11 @@ namespace Servosms.Module.Inventory
             txtRemark.Text = Request.Form["txtRemark"] == null ? null : Request.Form["txtRemark"].ToString().Trim();
             
             txtGrandTotal.Text = Request.Form["txtGrandTotal"] == null ? null : Request.Form["txtGrandTotal"].ToString().Trim();
-            txtDisc.Text = Request.Form["txtDisc"] == null ? null : Request.Form["txtDisc"].ToString().Trim();
-            txtDiscount.Text = Request.Form["txtDiscount"] == null ? null : Request.Form["txtDiscount"].ToString().Trim();
-            txtCashDisc.Text = Request.Form["txtCashDisc"] == null ? null : Request.Form["txtCashDisc"].ToString().Trim();
-            txtCashDiscount.Text = Request.Form["txtCashDiscount"] == null ? null : Request.Form["txtCashDiscount"].ToString().Trim();
-            txtVAT.Text = Request.Form["txtVAT"] == null ? null : Request.Form["txtVAT"].ToString().Trim();
+            txtDisc.Text = txtDisc.Text;
+            txtDiscount.Text = txtDiscount.Text;
+            txtCashDisc.Text = txtCashDisc.Text;
+            txtCashDiscount.Text = txtCashDiscount.Text;
+            txtVAT.Text = txtVAT.Text;
             txtNetAmount.Text = Request.Form["txtNetAmount"] == null ? null : Request.Form["txtNetAmount"].ToString().Trim();            
 
             txtRate1.Text = Request.Form["txtRate1"] == null ? null : Request.Form["txtRate1"].ToString().Trim();
