@@ -89,6 +89,7 @@ namespace Servosms.Sysitem.Classes
 		string _Eff_Date;
 		string _Pur_Rate;
 		string _Sal_Rate;
+        string _HSN;
 		string _Slip_No;
 		string _Pack_Unit;
 		string _Rec_No;
@@ -3313,7 +3314,18 @@ namespace Servosms.Sysitem.Classes
 				_Sal_Rate =value;
 			}
 		}
-		public string Invoice_No
+        public string HSN
+        {
+            get
+            {
+                return _HSN;
+            }
+            set
+            {
+                _HSN = value;
+            }
+        }
+        public string Invoice_No
 		{
 			get
 			{
@@ -5178,6 +5190,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Pack_Type",Package_Type);
 			SqlCmd.Parameters .Add("@Pur_Rate",Pur_Rate);
 			SqlCmd.Parameters .Add("@Sal_Rate",Sal_Rate);
+            SqlCmd.Parameters.Add("@HSN",HSN);
 			SqlCmd.ExecuteNonQuery();
 		}
 		//********bhal add****************
