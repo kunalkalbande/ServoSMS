@@ -276,10 +276,10 @@
             // alert("hello");
             //Comment by Vikas  2.1.2013 get_fixdisc()        //add by vikas 31.10.2012
             GetNetAmountEtaxnew()
-            Getcgstamt()
-            Getsgstamt()
-            document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst),0);
-            totalAmountAfterGst=0;
+            //Getcgstamt()
+            //Getsgstamt()
+            //document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst),0);
+            //totalAmountAfterGst=0;
 			
         }	
 	
@@ -462,10 +462,12 @@
                 t.value = str;
             }
         }
-	
+        var totaldisc=0;
+        var entrytax=0;
         //this coment add by vikas Grand total and Net Total in GetEtaxnew() function 31.10.2012
         function GetEtaxnew()    //         
         {
+            totaldisc=0;
             var fixedDisc=0
             //fixedDisc=document.Form1.txtfixed.value
             fixedDisc=document.Form1.txtfixedamt.value
@@ -643,7 +645,8 @@
 		
             //coment by vikas 22.12.2012 document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc))   //Add by vikas 31.10.2012
             document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))   //Add by vikas 22.12.2012
-           
+            totaldisc=((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+            entrytax=eval(Et)
             //coment by vikas 30.06.09  document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc))
 		
             //document.Form1.txtVatValue.value = CashDisc-(eval(bird)-eval(birdless))
@@ -713,8 +716,8 @@
             netamount=netamount+".00";
             if(document.Form1.txtNetAmount.value!='')
                 persistedCgstNetAmount= document.Form1.txtNetAmount.value;
-           
-            totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
+            if(document.Form1.Textcgst.value!="")
+             totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
             
             GetEBT()
         }
@@ -780,8 +783,8 @@
 		
             if(document.Form1.txtNetAmount.value!='' )
                 persistedSgstNetAmount=  document.Form1.txtNetAmount.value;
-            
-            totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
+            if(document.Form1.Textsgst.value!="")
+              totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
             GetEBT()
         }
         function GetVatAmountetaxnew()
@@ -827,10 +830,9 @@
                 document.Form1.txttradedisamt.value=eval(document.Form1.txttradedisamt.value)-eval(document.Form1.txttradeless.value)
             }
         }
-	//calculat IGST
-        function GetNetAmountEtaxnew()
+        //calculat IGST
+        function GetIgstamt()
         {
-            
             GetGrandTotal1();
             var vat_value = 0;
             if(document.Form1.No.checked)
@@ -857,9 +859,48 @@
 		
             if(document.Form1.txtNetAmount.value!='' )
                 persistedIgstNetAmount = document.Form1.txtNetAmount.value;
-            
+            if(document.Form1.txtVAT.value!="")
             totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
             GetEBT()
+        }
+        function GetNetAmountEtaxnew()
+        {
+          //  debugger;
+            totalAmountAfterGst=0;
+            GetIgstamt()
+            Getcgstamt()
+            Getsgstamt()
+            document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value)+eval(entrytax) +eval(totalAmountAfterGst)-eval(totaldisc),0);
+            //GetGrandTotal1();
+            //var vat_value = 0;
+            //if(document.Form1.No.checked)
+            //{
+            //    GetEtaxnew()
+            //    vat_value = document.Form1.txtVatValue.value;
+            //    if(document.Form1.txtVAT.value!="")
+            //        document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
+            //    document.Form1.txtVAT.value = "";
+            //}
+            //else
+            //{
+            //    GetVatAmountetaxnew()
+            //    vat_value = document.Form1.txtVatValue.value;
+            //}
+            //if(vat_value=="" || isNaN(vat_value))
+            //    vat_value=0
+            ////document.Form1.txtNetAmount.value=eval(vat_value);
+            ////**	makeRound(document.Form1.txtNetAmount);
+     
+            //var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+            //netamount=netamount+".00";
+            ////document.Form1.txtNetAmount.value=netamount;
+		
+            //if(document.Form1.txtNetAmount.value!='' )
+            //    persistedIgstNetAmount = document.Form1.txtNetAmount.value;
+            
+            //totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
+            //GetEBT()
+         
         }
 	
         function changeqtyltr()
@@ -2300,8 +2341,8 @@
                                     <tr>
                                     <td width="2px">CGST</td>
                                     <td width="95px">
-                                        <asp:RadioButton ID="N"  onclick="return Getcgstamt()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
-                                        <asp:RadioButton ID="Y" onclick="return Getcgstamt()" runat="server" Width="75px" ToolTip="Not Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="N"  onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="Y" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
                                     </td>
                                     </tr>
                                 </table>
@@ -2316,8 +2357,8 @@
                                     <tr>
                                         <td width="2px">SGST</td>
                                         <td width="95px">
-                                            <asp:RadioButton  ID="Noo" onclick="return Getsgstamt()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
-                                            <asp:RadioButton ID="Yess" onclick="return Getsgstamt()" runat="server" Width="75px" ToolTip="Not Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton  ID="Noo" onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton ID="Yess" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
                                         </td>
                                     </tr>
                                 </table>
