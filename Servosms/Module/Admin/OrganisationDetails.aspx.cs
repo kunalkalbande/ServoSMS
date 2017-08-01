@@ -82,11 +82,14 @@ namespace Servosms.Module.Admin
 						#endregion
 						txtDateFrom.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 						txtDateTo.Text=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
-						LblCompanyID.Text ="1001";
+						LblCompanyID.Text = "1001";
 						showdealer();
 						getbeat();
 						city();
-					}
+                        nextid();
+                        //GetNextCustomerID();
+
+                    }
 					catch(Exception ex)
 					{
 						CreateLogFiles.ErrorLog("Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:page_load"+ ex.Message+"  EXCEPTION" +"  "  +uid);
@@ -323,7 +326,7 @@ namespace Servosms.Module.Admin
 				}
 				if(LblCompanyID.Visible==true)
 				{
-					if(LblCompanyID.Text=="1002")
+					if(LblCompanyID.Text=="")
 					{
 						MessageBox.Show("Organisation Details Already Stored ");
 						return;
@@ -398,7 +401,7 @@ namespace Servosms.Module.Admin
 					conMyData.Open ();
 				
 					//strInsert = "Insert Organisation (CompanyID,DealerName,DealerShip,Address,City,State,Country ,PhoneNo ,FaxNo ,Email,Website,TinNo,ExplosiveNo ,FoodLicNO,WM,Logo,Div_Office,Message,VAT_Rate,Acc_Date_from,Acc_Date_to) " +      "Values (@CompanyID,@DealerName,@DealerShip,@Address,@City,@State,@Country ,@PhoneNo,@FaxNo ,@Email,@Website,@TinNo,@ExplosiveNo,@FoodLicNO,@WM,@Logo,@Div_Office,@Message,@VAT_Rate,@Acc_date_from,@Acc_date_To)";
-					strInsert = "Insert Organisation (CompanyID,DealerName,DealerShip,Address,City,State,Country ,PhoneNo ,FaxNo ,Email,Website,TinNo,Entrytax ,FoodLicNO,WM,Logo,Div_Office,Message,VAT_Rate,Acc_Date_from,Acc_Date_to,startinvoice) " +      "Values (@CompanyID,@DealerName,@DealerShip,@Address,@City,@State,@Country ,@PhoneNo,@FaxNo ,@Email,@Website,@TinNo,@Entrytax,@FoodLicNO,@WM,@Logo,@Div_Office,@Message,@VAT_Rate,@Acc_date_from,@Acc_date_To,@StartInvoice)";
+					strInsert = "Insert Into Organisation (CompanyID,DealerName,DealerShip,Address,City,State,Country ,PhoneNo ,FaxNo ,Email,Website,TinNo,Entrytax ,FoodLicNO,WM,Logo,Div_Office,Message,VAT_Rate,Acc_Date_from,Acc_Date_to,startinvoice) " +      "Values (@CompanyID,@DealerName,@DealerShip,@Address,@City,@State,@Country ,@PhoneNo,@FaxNo ,@Email,@Website,@TinNo,@Entrytax,@FoodLicNO,@WM,@Logo,@Div_Office,@Message,@VAT_Rate,@Acc_date_from,@Acc_date_To,@StartInvoice)";
 					cmdInsert = new SqlCommand( strInsert, conMyData );
 				
 					cmdInsert.Parameters.Add( "@StartInvoice", txtStartInvoiceNo.Text);
@@ -508,7 +511,7 @@ namespace Servosms.Module.Admin
 				conMyData.Open();
 				//strInsert = "update Organisation set CompanyID=@CompanyID,DealerName=@DealerName,DealerShip=@DealerShip,Address=@Address,City=@City,State=@State,Country=@Country  ,PhoneNo=@PhoneNo ,FaxNo=@FaxNo ,Email=@Email,Website=@Website,TinNo=@TinNo,ExplosiveNo=@ExplosiveNo ,FoodLicNO=@FoodLicNO,WM=@WM ,Logo=@Logo,Div_Office=@Div_Office,Message=@Message,VAT_Rate = @VAT_Rate,Acc_Date_From = @Acc_date_From,Acc_Date_To = @Acc_date_to where CompanyID=@CompanyID";
 				strInsert = "update Organisation set CompanyID=@CompanyID,DealerName=@DealerName,DealerShip=@DealerShip,Address=@Address,City=@City,State=@State,Country=@Country  ,PhoneNo=@PhoneNo ,FaxNo=@FaxNo ,Email=@Email,Website=@Website,TinNo=@TinNo,Entrytax=@Entrytax ,FoodLicNO=@FoodLicNO,WM=@WM ,Logo=@Logo,Div_Office=@Div_Office,Message=@Message,VAT_Rate = @VAT_Rate,Acc_Date_From = @Acc_date_From,Acc_Date_To = @Acc_date_to, StartInvoice=@StartInvoice where CompanyID=@CompanyID";
-				cmdInsert = new SqlCommand( strInsert, conMyData );
+                cmdInsert = new SqlCommand( strInsert, conMyData );
 				cmdInsert.Parameters.Add( "@StartInvoice", txtStartInvoiceNo.Text.ToString());
 				cmdInsert.Parameters.Add( "@document", txtFileContents.Value.ToString());
 				cmdInsert.Parameters.Add( "@CompanyID", Drop.SelectedItem.Value.ToString());
@@ -585,7 +588,7 @@ namespace Servosms.Module.Admin
 		{
 			try
 			{
-				txtdumy .Text=Drop.SelectedItem.Value.ToString();
+				txtdumy.Text=Drop.SelectedItem.Value.ToString();
 				if(txtdumy.Text=="Select")
 				{
 					MessageBox.Show("Please Select Company ID ");
