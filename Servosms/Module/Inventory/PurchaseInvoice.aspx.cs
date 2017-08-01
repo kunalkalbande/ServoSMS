@@ -249,7 +249,7 @@ namespace Servosms.Module.Inventory
 			{
 				uid=(Session["User_Name"].ToString());
 				txtMessage.Text = (Session["Message"].ToString());
-				txtVatRate.Value = (Session["VAT_Rate"].ToString());
+				//txtVatRate.Value = (Session["VAT_Rate"].ToString());
 				txtentrytax.Value = (Session["Entrytax"].ToString());
 				BtnEdit.Visible=true; 
 			}
