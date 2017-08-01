@@ -4683,7 +4683,9 @@ namespace Servosms.Module.Inventory
 			txtNetAmount.Text="";
 			DropDiscType.SelectedIndex=0;
 			txtVAT.Text = "";
-			txtCashDisc.Text = "";
+            Textcgst.Text = "";
+            Textsgst.Text = "";
+            txtCashDisc.Text = "";
 			DropCashDiscType.SelectedIndex = 0;
 			Yes.Checked = true;
 			No.Checked = false;

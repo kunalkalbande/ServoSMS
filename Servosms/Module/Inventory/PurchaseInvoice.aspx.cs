@@ -1142,6 +1142,8 @@ namespace Servosms.Module.Inventory
 
                         obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value;
 						obj.VAT_Amount = Request.Form["txtVAT"].ToString().Trim();
+                        obj.SGST_Amount = Request.Form["Textsgst"].ToString().Trim();
+                        obj.CGST_Amount = Request.Form["Textcgst"].ToString().Trim();
                         /////////////******Save*****************
 
                         /*****Coment by vikas 30.06.09****************************
@@ -1500,7 +1502,9 @@ namespace Servosms.Module.Inventory
 							obj.Cash_Discount  = Request.Form["txtCashDisc"].ToString().Trim();
 
                         obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value;
-						obj.VAT_Amount = Request.Form["txtVAT"].ToString().Trim();
+                        obj.VAT_Amount = Request.Form["txtVAT"].ToString().Trim();
+                        obj.SGST_Amount = Request.Form["Textsgst"].ToString().Trim();
+                        obj.CGST_Amount = Request.Form["Textcgst"].ToString().Trim();
 
                         /*****Coment by vikas 30.06.09************************
 						if(txtfixed.Text.Trim() =="")
@@ -2509,6 +2513,8 @@ namespace Servosms.Module.Inventory
 			txttotalqtyltr1.Text="";
 			txtbirdless.Text="";
 			txttradeless.Text="";
+            Textcgst.Text = "";
+            Textsgst.Text = "";
 			#region Clear All Products Details
 			/*DropType1.SelectedIndex=0;
 			DropType2.SelectedIndex=0;
@@ -3210,7 +3216,8 @@ namespace Servosms.Module.Inventory
 
                         DropCashDiscType.SelectedIndex= DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
 						txtVAT.Text =  SqlDtr.GetValue(17).ToString();
-						
+                        Textcgst.Text = SqlDtr.GetValue(32).ToString();
+                        Textsgst.Text = SqlDtr.GetValue(31).ToString();
 						
 						//03.07.09 double TotalCashDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount_Type"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC);
 						

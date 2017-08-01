@@ -4875,7 +4875,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Entry_Time",Entry_Time);
 			SqlCmd.Parameters .Add("@Cash_Discount",Cash_Discount );
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
-			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
+			SqlCmd.Parameters .Add("@IGST_Amount",VAT_Amount);
 			//****************************
 			SqlCmd.Parameters .Add("@Foc_Discount",Foc_Discount);
 			SqlCmd.Parameters .Add("@Foc_Discount_Type",Foc_Discount_Type);
@@ -4892,12 +4892,15 @@ namespace Servosms.Sysitem.Classes
 			/*******Add by vikas 5.11.2012****************/
 			SqlCmd.Parameters.Add("@New_fixdisc",New_fixeddisc);
 			SqlCmd.Parameters.Add("@New_fixdamount",New_fixeddiscAmount);
-			/********end***************/
+            SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
+            SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
 
-			//			SqlCmd.Parameters .Add("@Birdless",Birdless);
-			
-			//**************************************
-			SqlCmd.ExecuteNonQuery();
+            /********end***************/
+
+            //			SqlCmd.Parameters .Add("@Birdless",Birdless);
+
+            //**************************************
+            SqlCmd.ExecuteNonQuery();
 		}
 
 		/// <summary>
@@ -4927,7 +4930,9 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Remark",Remerk);
 			SqlCmd.Parameters .Add("@Entry_By",Entry_By);
 			SqlCmd.Parameters .Add("@Entry_Time",Entry_Time);
-			SqlCmd.ExecuteNonQuery();
+            SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
+            SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            SqlCmd.ExecuteNonQuery();
 		}
 
 		/// <summary>
@@ -4953,7 +4958,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add ("@Net_Amount",Net_Amount);
 			SqlCmd.Parameters .Add("@Cash_Discount",Cash_Discount );
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
-			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
+			SqlCmd.Parameters .Add("@IGST_Amount",VAT_Amount);
 			SqlCmd.Parameters .Add("@Vendor_Name",Vendor_Name);
 			SqlCmd.Parameters .Add("@City",City);
 			//*************************
@@ -4974,10 +4979,12 @@ namespace Servosms.Sysitem.Classes
 			/*******Add by vikas 5.11.2012****************/
 			SqlCmd.Parameters.Add("@New_fixdisc",New_fixeddisc);
 			SqlCmd.Parameters.Add("@New_fixdamount",New_fixeddiscAmount);
-			/********end***************/
+            SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
+            SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            /********end***************/
 
-			//***************************	
-			SqlCmd.ExecuteNonQuery(); 
+            //***************************	
+            SqlCmd.ExecuteNonQuery(); 
 		}
 
 		/// <summary>
