@@ -357,7 +357,7 @@ namespace Servosms.Module.Inventory
             txtfleetoediscount.Text = Request.Form["txtfleetoediscount"] == null ? null : Request.Form["txtfleetoediscount"].ToString().Trim();
             txtfleetoediscountRs.Text = Request.Form["txtfleetoediscountRs"] == null ? null : Request.Form["txtfleetoediscountRs"].ToString().Trim();
             txtSecondrySpDisc.Text = Request.Form["txtSecondrySpDisc"] == null ? null : Request.Form["txtSecondrySpDisc"].ToString().Trim();
-            txtMessage.Text = Request.Form["txtMessage"] == null ? null : Request.Form["txtMessage"].ToString().Trim();
+            txtMessage.Text = txtMessage.Text;// Request.Form["txtMessage"] == null ? null : Request.Form["txtMessage"].ToString().Trim();
             txtRemark.Text = Request.Form["txtRemark"] == null ? null : Request.Form["txtRemark"].ToString().Trim();
             
             txtGrandTotal.Text = Request.Form["txtGrandTotal"] == null ? null : Request.Form["txtGrandTotal"].ToString().Trim();
