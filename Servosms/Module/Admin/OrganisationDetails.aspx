@@ -81,7 +81,7 @@
 							</TR>
 							<TR>
 								<TD>Stockist Type</TD>
-								<TD colSpan="3"><asp:dropdownlist id="DropDealerShip" runat="server" Width="130px" CssClass="DropDownlist" onselectedindexchanged="DropDealerShip_SelectedIndexChanged">
+								<TD colSpan="3"><asp:dropdownlist id="DropDealerShip" runat="server" Width="150px" CssClass="DropDownlist" onselectedindexchanged="DropDealerShip_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 										<asp:ListItem Value="Servo Stockist(Auto)">Servo Stockist(Auto)</asp:ListItem>
 										<asp:ListItem Value="Servo Stockist(Industrial)">Servo Stockist(Industrial)</asp:ListItem>
