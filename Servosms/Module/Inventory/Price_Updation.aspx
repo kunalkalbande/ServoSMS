@@ -79,22 +79,21 @@
         }
 
         function check2(t)
-        {
+        {           
             var currentHsn=t.value;
             var dbHSNCodes =document.f1.lblHSNCodes.value;
-            var arrHsnCodes =dbHSNCodes.split("|");
+            var arrHsnCodes =dbHSNCodes.split("|");           
             for (i=0;i<arrHsnCodes.length;i++)
             {   
                 if(currentHsn!= 0 )
                 {
                     if(currentHsn == arrHsnCodes[i])
                     {
-                        alert("The HSN Code already exists. Please enter different values.")
-                        return false;
+                        alert("The HSN Code already exists. Please enter different values.")    
+                        t.value=0;
+                        return false;                         
                     }
-                }
-
-                
+                }                
             }
         }
         function enableText(t,t1,t2,t3)
