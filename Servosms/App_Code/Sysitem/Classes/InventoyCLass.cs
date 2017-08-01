@@ -60,6 +60,8 @@ namespace Servosms.Sysitem.Classes
 		string _Cash_Discount;
 		string _Cash_Disc_Type;
 		string _VAT_Amount;
+        string _SGST_Amount;
+        string _CGST_Amount;
 		string _Net_Amount;
 		string _Promo_Scheme;
 		string _Remark;
@@ -3483,6 +3485,29 @@ namespace Servosms.Sysitem.Classes
 				_VAT_Amount =value;
 			}
 		}
+
+        public string SGST_Amount
+        {
+            get
+            {
+                return _SGST_Amount;
+            }
+            set
+            {
+                _SGST_Amount = value;
+            }
+        }
+        public string CGST_Amount
+        {
+            get
+            {
+                return _CGST_Amount;
+            }
+            set
+            {
+                _CGST_Amount = value;
+            }
+        }
 		public string Tradeval
 		{
 			get
@@ -4318,7 +4343,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Slip_No",Slip_No);
 			SqlCmd.Parameters .Add("@Cash_Discount",Cash_Discount );
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
-			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
+			SqlCmd.Parameters .Add("@IGST_Amount",VAT_Amount);
 			SqlCmd.Parameters .Add("@ChallanNo",ChallanNo);
 			SqlCmd.Parameters .Add("@ChallanDate",System.Convert.ToDateTime(ChallanDate));
 			SqlCmd.Parameters .Add("@Credit_Limit",Credit_Limit);
@@ -4332,7 +4357,9 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@totalqtyltr",totalqtyltr);
 			SqlCmd.Parameters .Add("@Order_No",Order_No);
 			SqlCmd.Parameters .Add("@SecSPDisc",SecSPDisc);
-			SqlCmd.ExecuteNonQuery();
+            SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
+            SqlCmd.ExecuteNonQuery();
 		}
 
 		/// <summary>
@@ -4580,7 +4607,7 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@ChallanDate", System.Convert.ToDateTime(ChallanDate));
 			SqlCmd.Parameters .Add("@Cash_Discount",Cash_Discount );
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
-			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
+			SqlCmd.Parameters .Add("@IGST_Amount",VAT_Amount);
 			SqlCmd.Parameters .Add("@Credit_Limit",Credit_Limit);
 			/*bhal*/SqlCmd.Parameters .Add("@schdiscount",schdiscount);
 			//SqlCmd.Parameters .Add("@foediscount",float.Parse(foediscount));
@@ -4591,7 +4618,9 @@ namespace Servosms.Sysitem.Classes
 			//SqlCmd.Parameters .Add("@totalqtyltr",float.Parse(totalqtyltr));
 			SqlCmd.Parameters .Add("@totalqtyltr",totalqtyltr);
 			SqlCmd.Parameters .Add("@SecSPDisc",SecSPDisc);
-			SqlCmd.ExecuteNonQuery();
+            SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
+            SqlCmd.ExecuteNonQuery();
 		}
 
 		/// <summary>
