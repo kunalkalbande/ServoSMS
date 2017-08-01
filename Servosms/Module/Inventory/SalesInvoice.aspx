@@ -226,28 +226,29 @@
 		
 		changescheme()
 		GetGrandTotal()
-		//GetNetAmount()
+		GetNetAmount()
 		
 		/******************************/
-			var vat_value = 0;
-			if(document.Form1.No.checked)
-			{
-				GetCashDiscount()
-				vat_value = document.Form1.txtVatValue.value;
-				document.Form1.txtVAT.value = "";
-			}
-		    else
-			{
-				GetVatAmount()
-				vat_value = document.Form1.txtVatValue.value;
-			}
-			if(vat_value=="" || isNaN(vat_value))
-				vat_value=0
-			document.Form1.txtNetAmount.value=eval(vat_value);
+			//var vat_value = 0;
+			//if(document.Form1.No.checked)
+			//{
+			//	GetCashDiscount()
+			//	vat_value = document.Form1.txtVatValue.value;
+			//	document.Form1.txtVAT.value = "";
+			//}
+		    //else
+			//{
+			//	GetVatAmount()
+			//	vat_value = document.Form1.txtVatValue.value;
+			//}
+			//if(vat_value=="" || isNaN(vat_value))
+			//	vat_value=0
+			//document.Form1.txtNetAmount.value=eval(vat_value);
 			var netamount=Math.round(document.Form1.txtNetAmount.value,0);
 			netamount=netamount+".00";
 			document.Form1.txtNetAmount.value=netamount;
 			var curr_bal=document.Form1.lblCurrBalance.value;
+			
 			var curr_limit=document.Form1.lblCreditLimit.value;
 			var cur_bal_arr=curr_bal.split(' ')
 			var Tot_credit="";
@@ -304,6 +305,7 @@
 			{
 				if(val == "Credit")
 				{
+				   
 					Tot_credit=(eval(Tot_credit)+eval(cur_bal_arr[0]))
 					if(!(eval(document.Form1.txtNetAmount.value) > eval(Tot_credit)))
 					{
@@ -448,7 +450,7 @@
 	
 		function calc2(txtQty,txtAvstock,txtRate,txtTempQty,tempint,ProdType)
 		{	
-		   // debugger; 
+		   // ; 
 			
 			/***************Add by vikas sharma 21.04.09************************/
 			if(ProdType.value!="Type")
@@ -615,7 +617,7 @@
 	var totaldisc=0;
 	function GetCashDiscount()
 	{
-	    //debugger;
+	    //;
 	    totaldisc=0;
 		changescheme()
 		changeschemefoe()
@@ -707,7 +709,7 @@
 	var totalAmountAfterGst=0;
 	function Getsgstamt()
 	{
-	   // debugger;
+	   // ;
 	    var sgst_value=0;
 	    if(document.Form1.Noo.checked)
 	    {
@@ -767,7 +769,7 @@
 
 	function Getcgstamt()
 	{
-	    //debugger;
+	    //;
 	    var cgst_value=0;
 	    if(document.Form1.N.checked)
 	    {
@@ -824,7 +826,7 @@
 		    //Calculate IGST
 	function Getigstamt()
 	{
-	   // debugger;
+	  
 	    var vat_value = 0;
 	    if(document.Form1.No.checked)
 	    {
@@ -856,7 +858,7 @@
 	}
 	function GetNetAmount()
 	{
-	  //  debugger;
+	  //  ;
 	//	var vat_value = 0;
 	//	if(document.Form1.No.checked)
 	//    {
@@ -886,6 +888,8 @@
 	    Getigstamt()
 	    Getsgstamt()
 	    Getcgstamt()
+	    document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
+	    document.Form1.txtNetAmount.value=Math.round(document.Form1.txtNetAmount.value,0)
 		/**************Add by vikas 14.07.09***************************/
 		var curr_bal=document.Form1.lblCurrBalance.value;
 		var curr_limit=document.Form1.lblCreditLimit.value;
@@ -969,12 +973,14 @@
 				}
 				else
 				{
+				    ;
 					//Coment by vikas 12.09.09 document.Form1.lblCreditLimit.value = eval(document.Form1.TxtCrLimit.value) - eval(document.Form1.txtNetAmount.value)
 					document.Form1.lblCreditLimit.value = eval(Tot_credit) - eval(document.Form1.txtNetAmount.value)
 				}
 			}
 			else
 			{
+			    ;
 				//15.09.09 document.Form1.lblCreditLimit.value = document.Form1.TxtCrLimit.value
 				document.Form1.lblCreditLimit.value = Tot_credit
 			}
@@ -983,7 +989,7 @@
 		{
 			if(val == "Credit")
 			{
-				
+			    ;	
 				Tot_credit=(eval(Tot_credit)+eval(cur_bal_arr[0]))     //Add by vikas sharma 15.09.09
 				if(!(eval(document.Form1.txtNetAmount.value) > eval(Tot_credit)))
 				{
@@ -997,8 +1003,8 @@
 				document.Form1.lblCreditLimit.value = Tot_credit
 			}
 		}
-		//debugger;
-		document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
+		//;
+		
 		if(document.Form1.txtNetAmount.value==0)
 		    document.Form1.txtNetAmount.value==""
 		
