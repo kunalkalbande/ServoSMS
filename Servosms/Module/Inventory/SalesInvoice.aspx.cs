@@ -365,7 +365,7 @@ namespace Servosms.Module.Inventory
             txtDiscount.Text = txtDiscount.Text;
             txtCashDisc.Text = txtCashDisc.Text;
             txtCashDiscount.Text = txtCashDiscount.Text;
-            txtVAT.Text = txtVAT.Text;
+            txtVAT.Text = Request.Form["txtVAT"] == null ? null : Request.Form["txtVAT"].ToString().Trim();
             txtNetAmount.Text = Request.Form["txtNetAmount"] == null ? null : Request.Form["txtNetAmount"].ToString().Trim();            
 
             txtRate1.Text = Request.Form["txtRate1"] == null ? null : Request.Form["txtRate1"].ToString().Trim();
@@ -1585,6 +1585,8 @@ namespace Servosms.Module.Inventory
 					obj.Cash_Discount = txtCashDisc.Text.Trim() ;
 				obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value ;
 				obj.VAT_Amount = txtVAT.Text.Trim();
+                obj.CGST_Amount = Request.Form["Textcgst"];
+                obj.SGST_Amount = Request.Form["Textsgst"];
 				obj.Slip_No="0"; 
 				obj.Cr_Plus="0";
 				obj.Dr_Plus= Request.Form["txtNetAmount"].ToString();
@@ -4094,6 +4096,8 @@ namespace Servosms.Module.Inventory
 						dropfleetoediscount.SelectedIndex= dropfleetoediscount.Items.IndexOf((dropfleetoediscount.Items.FindByValue(SqlDtr.GetValue(20).ToString())));
 						txtfleetoediscountRs.Text=SqlDtr.GetValue(21).ToString();
 						txtliter.Text=SqlDtr.GetValue(22).ToString();
+                        Textcgst.Text = SqlDtr.GetValue(27).ToString();
+                        Textsgst.Text = SqlDtr.GetValue(26).ToString();
 						if(SqlDtr["ChallanNo"].ToString()=="0")
 							txtChallanNo.Text="";
 						else
