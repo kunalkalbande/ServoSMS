@@ -225,7 +225,7 @@
                             <td bgcolor="#FFF7E7">
                                 <input maxlength="8" value='<%=rdr["Sal_Rate"].ToString()%>' disabled type="text" size="10" name="txtSaleRate<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td>
                             <td bgcolor="#FFF7E7">
-                                <input maxlength="8" value='<%=rdr["HSN"].ToString()%>' disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check2(this)"></td>
+                                <input maxlength="10" value='<%=rdr["HSN"].ToString()%>' disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check2(this)"></td>
 
                             <% }
                             %>
@@ -237,7 +237,7 @@
                             <td bgcolor="#FFF7E7">
                                 <input maxlength="8" disabled type="text" size="10" name="txtSaleRate<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td>
                             <td bgcolor="#FFF7E7">
-                                <input maxlength="8" disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check2(this)"></td>
+                                <input maxlength="10" disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check2(this)"></td>
                             <% }
                             %>
                             <td align="center" bgcolor="#FFF7E7">
