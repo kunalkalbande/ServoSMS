@@ -592,7 +592,8 @@
                     }
                 }	
             }
-		
+            if(Disc==""||isNaN(Disc))
+                Disc=0
             /****Add by vikas 22.12.2012 ***************/
             var Sch_Disc=0
             Sch_Disc=document.Form1.txtPromoScheme.value
@@ -2246,7 +2247,7 @@
                             </td>
                         </tr>
                     </table>
-                    <table style="width: 600px" cellspacing="0" cellpadding="0" >
+                    <table style="width: 770px" cellspacing="0" cellpadding="0" >
                         <tr>
                             <td>Sch. Discount</td>
                             <td>
@@ -2268,9 +2269,9 @@
                             <td>&nbsp;EarlyBird Discount &nbsp;</td>
                             <td>
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtebird" onblur="GetNetAmountEtaxnew(),get_EBD()"
-                                    runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:TextBox><asp:TextBox ID="txtebirdamt" onblur="GetNetAmountEtaxnew(),get_EBD()" runat="server" Width="140px"
-                                        ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox><font color="#990066">Minus</font><asp:TextBox onkeypress="return GetOnlyNumbers(this, event, true,true);" ID="txtbirdless" onblur="GetNetAmountEtaxnew(),get_EBD()"
-                                            runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox></td>
+                                    runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:TextBox>&nbsp;<asp:TextBox ID="txtebirdamt" onblur="GetNetAmountEtaxnew(),get_EBD()" runat="server" Width="80px"
+                                        ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox>&nbsp;<font color="#990066">Minus</font>&nbsp;<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, true,true);" ID="txtbirdless" onblur="GetNetAmountEtaxnew(),get_EBD()"
+                                            runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>Entry Tax</td>
@@ -2281,25 +2282,25 @@
                             <td>&nbsp;Servo Stk. Discount&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </td>
                             <td>
-                                <asp:TextBox ID="txttradedisamt" runat="server" Width="140px" ReadOnly="True" BorderStyle="Groove"
-                                    CssClass="dropdownlist"></asp:TextBox><font color="#990066">Minus</font><asp:TextBox onkeypress="return GetOnlyNumbers(this, event, true,true);" ID="txttradeless" onblur="GetNetAmountEtaxnew()"
+                                <asp:TextBox ID="txttradedisamt" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove"
+                                    CssClass="dropdownlist"></asp:TextBox>&nbsp;<font color="#990066">Minus</font>&nbsp;<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, true,true);" ID="txttradeless" onblur="GetNetAmountEtaxnew()"
                                         runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td style="height: 21px">Discount(%)</td>
                             <td style="height: 21px">
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtfixed" runat="server"
-                                    Visible="False" Width="1px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox><asp:TextBox ID="txtfixedamt" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
+                                    Visible="False" Width="1px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox><asp:TextBox ID="txtfixedamt" runat="server" Width="70px" ReadOnly="True" BorderStyle="Groove"
                                         CssClass="dropdownlist" OnTextChanged="txtfixed_TextChanged"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addl. 
 									Discount(%)&nbsp;&nbsp;<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtAddDis" runat="server"
-                                        Width="120px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
+                                        Width="60px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
                             <td style="height: 21px">&nbsp;Credit/Cash Discount</td>
                             <td style="height: 21px">
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtCashDisc" onblur="GetNetAmountEtaxnew()"
-                                    runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:TextBox><asp:DropDownList ID="DropCashDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
+                                    runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:TextBox>&nbsp;<asp:DropDownList ID="DropCashDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
                                         <asp:ListItem Value="Rs">Rs.</asp:ListItem>
                                         <asp:ListItem Value="Per" Selected="True">%</asp:ListItem>
-                                    </asp:DropDownList><asp:TextBox ID="txtTotalCashDisc" onblur="GetNetAmountEtaxnew()" runat="server" Width="140px"
+                                    </asp:DropDownList>&nbsp;<asp:TextBox ID="txtTotalCashDisc" onblur="GetNetAmountEtaxnew()" runat="server" Width="80px"
                                         BorderStyle="Groove" CssClass="dropdownlist" OnTextChanged="txtTotalCashDisc_TextChanged"></asp:TextBox></td>
                         </tr>
                         <tr>
@@ -2310,11 +2311,11 @@
                             <td>&nbsp;Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                             <td>
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, true,true);" ID="txtDisc" onblur="GetNetAmountEtaxnew()"
-                                    runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox><asp:DropDownList ID="DropDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
+                                    runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox>&nbsp;<asp:DropDownList ID="DropDiscType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()">
                                         <asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
                                         <asp:ListItem Value="Per">%</asp:ListItem>
-                                    </asp:DropDownList><asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtTotalDisc" onblur="GetNetAmountEtaxnew()"
-                                        runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
+                                    </asp:DropDownList>&nbsp;<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtTotalDisc" onblur="GetNetAmountEtaxnew()"
+                                        runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>&nbsp;Remark</td>
@@ -2373,12 +2374,12 @@
                             <td>&nbsp;Fixed Discount&nbsp;</td>
                             <td>
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, true,true);" ID="txtfixdisc" runat="server"
-                                    Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox><asp:DropDownList ID="DropFixDisType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()"
+                                    Width="80px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox><asp:DropDownList ID="DropFixDisType" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()"
                                         Enabled="false">
                                         <asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
                                         <asp:ListItem Value="Per">%</asp:ListItem>
-                                    </asp:DropDownList><asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtfixdiscamount"
-                                        onblur="GetNetAmountEtaxnew()" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
+                                    </asp:DropDownList>&nbsp;<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtfixdiscamount"
+                                        onblur="GetNetAmountEtaxnew()" runat="server" Width="80px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
                             <td>&nbsp;Net Amount</td>
                             <td>
                                 <asp:TextBox ID="txtNetAmount" runat="server" Width="140px" ReadOnly="True" BorderStyle="Groove"
