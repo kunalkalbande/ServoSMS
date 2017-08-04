@@ -78,24 +78,24 @@
             return true;
         }
 
-        function check2(t)
-        {           
-            var currentHsn=t.value;
-            var dbHSNCodes =document.f1.lblHSNCodes.value;
-            var arrHsnCodes =dbHSNCodes.split("|");           
-            for (i=0;i<arrHsnCodes.length;i++)
-            {   
-                if(currentHsn!= 0 )
-                {
-                    if(currentHsn == arrHsnCodes[i])
-                    {
-                        alert("The HSN Code already exists. Please enter different values.")    
-                        t.value=0;
-                        return false;                         
-                    }
-                }                
-            }
-        }
+        //function check2(t)
+        //{           
+        //    var currentHsn=t.value;
+        //    var dbHSNCodes =document.f1.lblHSNCodes.value;
+        //    var arrHsnCodes =dbHSNCodes.split("|");           
+        //    for (i=0;i<arrHsnCodes.length;i++)
+        //    {   
+        //        if(currentHsn!= 0 )
+        //        {
+        //            if(currentHsn == arrHsnCodes[i])
+        //            {
+        //                alert("The HSN Code already exists. Please enter different values.")    
+        //                t.value=0;
+        //                return false;                         
+        //            }
+        //        }                
+        //    }
+        //}
         function enableText(t,t1,t2,t3)
         {
             if(t.checked)
@@ -114,6 +114,7 @@
 	
         function selectAll()
         {
+            debugger;
             var f=document.f1
             if(f.chkSelectAll.checked)
             {
@@ -224,7 +225,7 @@
                             <td bgcolor="#FFF7E7">
                                 <input maxlength="8" value='<%=rdr["Sal_Rate"].ToString()%>' disabled type="text" size="10" name="txtSaleRate<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td>
                             <td bgcolor="#FFF7E7">
-                                <input maxlength="10" value='<%=rdr["HSN"].ToString()%>' disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check2(this)"></td>
+                                <input maxlength="10" value='<%=rdr["HSN"].ToString()%>' disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" <%--onblur="check2(this)"--%>></td>
 
                             <% }
                             %>
@@ -236,7 +237,7 @@
                             <td bgcolor="#FFF7E7">
                                 <input maxlength="8" disabled type="text" size="10" name="txtSaleRate<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td>
                             <td bgcolor="#FFF7E7">
-                                <input maxlength="10" disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check2(this)"></td>
+                                <input maxlength="10" disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" <%--onblur="check2(this)"--%>></td>
                             <% }
                             %>
                             <td align="center" bgcolor="#FFF7E7">
