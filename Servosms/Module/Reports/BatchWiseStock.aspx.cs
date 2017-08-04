@@ -120,7 +120,8 @@ namespace Servosms.Module.Reports
 					CreateLogFiles.ErrorLog("Form:BatchWiseStock.aspx,Method:page_load EXCEPTION  "+ex.Message+" userid "+ uid);
 				}
 			}
-		}
+            txtDateTo.Text = Request.Form["txtDateTo"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["txtDateTo"].ToString().Trim();           
+        }
 
 		#region Web Form Designer generated code
 		override protected void OnInit(EventArgs e)
@@ -182,169 +183,176 @@ namespace Servosms.Module.Reports
 		/// </summary>
 		public void Bindthedata()
 		{
-			SqlConnection sqlcon=new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
-			//***********
-			grdLeg.Visible=true;
-			//System.Data.SqlClient.SqlDataReader rdr=null;
-			string sql="";
-			object op= null;
-			int flage=0;
-			/****Add by vikas 26.06.09****************/
-			dbobj.ExecProc(OprType.Insert,"sp_stock",ref op,"@fromdate",System.Convert.ToDateTime(ToMMddYYYY(txtDateTo.Text)).ToShortDateString());
-			/*****end***************/
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
+                //***********
+                grdLeg.Visible = true;
+                //System.Data.SqlClient.SqlDataReader rdr=null;
+                string sql = "";
+                object op = null;
+                int flage = 0;
+                /****Add by vikas 26.06.09****************/
+                dbobj.ExecProc(OprType.Insert, "sp_stock", ref op, "@fromdate", GenUtil.str2DDMMYYYY(txtDateTo.Text));
+                /*****end***************/
 
-			//call the procedure and create the temp table. stk1.
-			dbobj.ExecProc(OprType.Insert,"sp_batchstock",ref op,"@fromdate",System.Convert.ToDateTime(ToMMddYYYY(txtDateTo.Text)).ToShortDateString());
-			if(txtDateTo.Text==System.DateTime.Now.ToShortDateString())
-			{
-				if(drpstore.SelectedIndex>0)
-				{
-					if(drpstore.SelectedItem.Text.IndexOf(":")>0)
-					{
-						string[] stor=drpstore.SelectedItem.Text.Split(new char []{':'},drpstore.SelectedItem.Text.Length);
-						string tid="";
-						//** Mahesh dbobj.SelectQuery("select tank_id from tank where tank_name='"+stor[0]+"' and prod_name like '"+stor[1]+"'","tank_id",ref tid);
-						if(DropPackType.SelectedItem.Text.Equals("All"))
-							sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ tid  +"'";
-						else
-							sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ tid  +"' and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-					}
-					else 
-					{
-						if(DropPackType.SelectedItem.Text.Equals("All"))
-							sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"'";
-						else
-							sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"' and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-					}
-				}
-				else
-				{
-					//sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate order by a.store_in";
-					if(DropPackType.SelectedItem.Text.Equals("All"))
-						sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
-					else
-						sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-				}
-			}
-			else if(drpstore.SelectedIndex>0)
-			{
-				if(drpstore.SelectedItem.Text.IndexOf(":")>0)
-				{
-					string[] stor=drpstore.SelectedItem.Text.Split(new char []{':'},drpstore.SelectedItem.Text.Length);
-					string tid="";
-					//** Mahesh dbobj.SelectQuery("select tank_id from tank where tank_name='"+stor[0]+"' and prod_name like '"+stor[1]+"'","tank_id",ref tid);
-					if(DropPackType.SelectedItem.Text.Equals("All"))
-						sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ tid  +"'";
-					else
-						sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ tid  +"' a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
+                //call the procedure and create the temp table. stk1.
+                dbobj.ExecProc(OprType.Insert, "sp_batchstock", ref op, "@fromdate", GenUtil.str2DDMMYYYY(txtDateTo.Text));
+                if (txtDateTo.Text == System.DateTime.Now.ToShortDateString())
+                {
+                    if (drpstore.SelectedIndex > 0)
+                    {
+                        if (drpstore.SelectedItem.Text.IndexOf(":") > 0)
+                        {
+                            string[] stor = drpstore.SelectedItem.Text.Split(new char[] { ':' }, drpstore.SelectedItem.Text.Length);
+                            string tid = "";
+                            //** Mahesh dbobj.SelectQuery("select tank_id from tank where tank_name='"+stor[0]+"' and prod_name like '"+stor[1]+"'","tank_id",ref tid);
+                            if (DropPackType.SelectedItem.Text.Equals("All"))
+                                sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + tid + "'";
+                            else
+                                sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + tid + "' and a.Pack_Type='" + DropPackType.SelectedItem.Text.ToString() + "'";
+                        }
+                        else
+                        {
+                            if (DropPackType.SelectedItem.Text.Equals("All"))
+                                sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + drpstore.SelectedItem.Text + "'";
+                            else
+                                sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + drpstore.SelectedItem.Text + "' and a.Pack_Type='" + DropPackType.SelectedItem.Text.ToString() + "'";
+                        }
+                    }
+                    else
+                    {
+                        //sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate order by a.store_in";
+                        if (DropPackType.SelectedItem.Text.Equals("All"))
+                            sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
+                        else
+                            sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and a.Pack_Type='" + DropPackType.SelectedItem.Text.ToString() + "'";
+                    }
+                }
+                else if (drpstore.SelectedIndex > 0)
+                {
+                    if (drpstore.SelectedItem.Text.IndexOf(":") > 0)
+                    {
+                        string[] stor = drpstore.SelectedItem.Text.Split(new char[] { ':' }, drpstore.SelectedItem.Text.Length);
+                        string tid = "";
+                        //** Mahesh dbobj.SelectQuery("select tank_id from tank where tank_name='"+stor[0]+"' and prod_name like '"+stor[1]+"'","tank_id",ref tid);
+                        if (DropPackType.SelectedItem.Text.Equals("All"))
+                            sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + tid + "'";
+                        else
+                            sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + tid + "' a.Pack_Type='" + DropPackType.SelectedItem.Text.ToString() + "'";
 
-				}
-				else 
-				{
-					if(DropPackType.SelectedItem.Text.Equals("All"))
-					{
-						//27.06.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"'";
-						sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"'";
-						flage=1;
-					}
-					else
-					{
-						//2706.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"' and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-						sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"' and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-						flage=1;
-					}
-				}
-				
-			}
-			else 
-			{
-				if(DropPackType.SelectedItem.Text.Equals("All"))
-				{
-					//coment by vikas 26.06.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
-					//coment by vikas 01.07.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
-					sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
-					flage=1;
-				}
-				else
-				{
-					// 27.06.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-					sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
-					flage=1; 
-				}
-				//sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate order by a.store_in";
-				Trace.Write(sql);
+                    }
+                    else
+                    {
+                        if (DropPackType.SelectedItem.Text.Equals("All"))
+                        {
+                            //27.06.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"'";
+                            sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + drpstore.SelectedItem.Text + "'";
+                            flage = 1;
+                        }
+                        else
+                        {
+                            //2706.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='"+ drpstore.SelectedItem.Text  +"' and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
+                            sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and Store_in='" + drpstore.SelectedItem.Text + "' and a.Pack_Type='" + DropPackType.SelectedItem.Text.ToString() + "'";
+                            flage = 1;
+                        }
+                    }
 
-				//sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id from vw_stockreport a , stk b where a.product=b.product and a.stock_date=b.sdate";
-			}
-		/*//27.06.09 	if(chkZeroStock.Checked==false)
-			{*/
-				if(flage!=1)
-					sql+=" and a.Closing_Stock!=0";
-				else
-					sql+=" and a.Closing_Stock!=0  group by a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id order by product,batch_id desc";
-			//}
-			//***********
-			SqlDataAdapter da=new SqlDataAdapter(sql,sqlcon);
-			DataSet ds=new DataSet();	
-			da.Fill(ds,"vw_batchstock");
-			DataTable dtcustomer=ds.Tables["vw_batchstock"];
-			DataView dv=new DataView(dtcustomer);
-			dv.Sort=strorderby;
-			Cache["strorderby"]=strorderby;
-			//27.06.09 if(chkAll.Checked)
-			//27.06.09grdMRPAmount.DataSource=dv;
-			//27.06.09else if(chkMRP.Checked)
-			//27.06.09	grdMRP.DataSource=dv;
-			//27.06.09else if(chkAmount.Checked)
-			//27.06.09	grdAmount.DataSource=dv;
-			//27.06.09else
-			grdLeg.DataSource=dv;
-			if(dv.Count!=0)
-			{
-				//start27.06.09 				if(chkAll.Checked)
-				//				{
-				//					grdMRPAmount.DataBind();
-				//					grdMRPAmount.Visible=true;
-				//					grdLeg.Visible=false;
-				//					grdMRP.Visible=false;
-				//					grdAmount.Visible=false;
-				//				}
-				//				else if(chkMRP.Checked)
-				//				{
-				//					grdMRP.DataBind();
-				//					grdMRP.Visible=true;
-				//					grdMRPAmount.Visible=false;
-				//					grdLeg.Visible=false;
-				//					grdAmount.Visible=false;
-				//				}
-				//				else if(chkAmount.Checked)
-				//				{
-				//					grdAmount.DataBind();
-				//					grdAmount.Visible=true;
-				//					grdLeg.Visible=false;
-				//					grdMRP.Visible=false;
-				//					grdMRPAmount.Visible=false;
-				//				}
-				//				else 
-				//end27.06.09 				{
-				grdLeg.DataBind();
-				grdAmount.Visible=false;
-				grdLeg.Visible=true;
-				grdMRP.Visible=false;
-				grdMRPAmount.Visible=false;
-				//start 27.06.09 				}
-				//			}
-				//			else
-				//			{
-				//				grdLeg.Visible=false;
-				//				grdMRP.Visible=false;
-				//				grdMRPAmount.Visible=false;
-				//				grdAmount.Visible=false;
-				//				MessageBox.Show("Data Not Available");
-				//end 27.06.09 			}
-				sqlcon.Dispose();
-			}
-		}
+                }
+                else
+                {
+                    if (DropPackType.SelectedItem.Text.Equals("All"))
+                    {
+                        //coment by vikas 26.06.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
+                        //coment by vikas 01.07.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
+                        sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id";
+                        flage = 1;
+                    }
+                    else
+                    {
+                        // 27.06.09 sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_no from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and a.Pack_Type='"+DropPackType.SelectedItem.Text.ToString()+"'";
+                        sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate and a.batch_id=b.batch_id and a.Pack_Type='" + DropPackType.SelectedItem.Text.ToString() + "'";
+                        flage = 1;
+                    }
+                    //sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty from vw_batchstock a , stk1 b where a.product=b.product and a.stock_date=b.sdate order by a.store_in";
+                    Trace.Write(sql);
+
+                    //sql = "select a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id from vw_stockreport a , stk b where a.product=b.product and a.stock_date=b.sdate";
+                }
+                /*//27.06.09 	if(chkZeroStock.Checked==false)
+                    {*/
+                if (flage != 1)
+                    sql += " and a.Closing_Stock!=0";
+                else
+                    sql += " and a.Closing_Stock!=0  group by a.stock_date,a.product, a.pack_type, a.store_in, a.closing_stock, a.category, a.totalqty,a.Prod_Code,a.mrp,a.prod_id,a.batch_id order by product,batch_id desc";
+                //}
+                //***********
+                SqlDataAdapter da = new SqlDataAdapter(sql, sqlcon);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "vw_batchstock");
+                DataTable dtcustomer = ds.Tables["vw_batchstock"];
+                DataView dv = new DataView(dtcustomer);
+                dv.Sort = strorderby;
+                Cache["strorderby"] = strorderby;
+                //27.06.09 if(chkAll.Checked)
+                //27.06.09grdMRPAmount.DataSource=dv;
+                //27.06.09else if(chkMRP.Checked)
+                //27.06.09	grdMRP.DataSource=dv;
+                //27.06.09else if(chkAmount.Checked)
+                //27.06.09	grdAmount.DataSource=dv;
+                //27.06.09else
+                grdLeg.DataSource = dv;
+                if (dv.Count != 0)
+                {
+                    //start27.06.09 				if(chkAll.Checked)
+                    //				{
+                    //					grdMRPAmount.DataBind();
+                    //					grdMRPAmount.Visible=true;
+                    //					grdLeg.Visible=false;
+                    //					grdMRP.Visible=false;
+                    //					grdAmount.Visible=false;
+                    //				}
+                    //				else if(chkMRP.Checked)
+                    //				{
+                    //					grdMRP.DataBind();
+                    //					grdMRP.Visible=true;
+                    //					grdMRPAmount.Visible=false;
+                    //					grdLeg.Visible=false;
+                    //					grdAmount.Visible=false;
+                    //				}
+                    //				else if(chkAmount.Checked)
+                    //				{
+                    //					grdAmount.DataBind();
+                    //					grdAmount.Visible=true;
+                    //					grdLeg.Visible=false;
+                    //					grdMRP.Visible=false;
+                    //					grdMRPAmount.Visible=false;
+                    //				}
+                    //				else 
+                    //end27.06.09 				{
+                    grdLeg.DataBind();
+                    grdAmount.Visible = false;
+                    grdLeg.Visible = true;
+                    grdMRP.Visible = false;
+                    grdMRPAmount.Visible = false;
+                    //start 27.06.09 				}
+                    //			}
+                    //			else
+                    //			{
+                    //				grdLeg.Visible=false;
+                    //				grdMRP.Visible=false;
+                    //				grdMRPAmount.Visible=false;
+                    //				grdAmount.Visible=false;
+                    //				MessageBox.Show("Data Not Available");
+                    //end 27.06.09 			}
+                    sqlcon.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:BatchWiseStock.aspx,Method:Bindthedata" + "EXCEPTION  " + ex.Message + uid);
+            }
+        }
 
 		/// <summary>
 		/// This method is used to view the report with the help of Bindthedata() function and also set the session variable.
@@ -353,11 +361,17 @@ namespace Servosms.Module.Reports
 		/// <param name="e"></param>
 		protected void cmdrpt_Click(object sender, System.EventArgs e)
 		{
-			strorderby="Prod_Code ASC";
-			Session["Column"]="Prod_Code";
-			Session["order"]="ASC";
-			Bindthedata();
-			CreateLogFiles.ErrorLog("Form:BatchStokReport,Class:DBoperation_LETEST + Method:cmdrpt_Click  Batch WiseStock Report Viewed   userid  "+uid);
+            try
+            {
+                strorderby = "Prod_Code ASC";
+                Session["Column"] = "Prod_Code";
+                Session["order"] = "ASC";
+                Bindthedata();
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:BatchStokReport,Class:DBoperation_LETEST + Method:cmdrpt_Click  Batch WiseStock Report Viewed   userid  " + uid);
+            }            
 		}
 
 		/// <summary>
@@ -371,7 +385,7 @@ namespace Servosms.Module.Reports
 			string info="",infoAll="",infoAmount="",infoMRP="";
 			int flage=0;
 			object op= null;
-			dbobj.ExecProc(OprType.Insert,"sp_batchstock",ref op,"@fromdate",System.Convert.ToDateTime(ToMMddYYYY(txtDateTo.Text)).ToShortDateString());
+			dbobj.ExecProc(OprType.Insert,"sp_batchstock",ref op,"@fromdate",GenUtil.str2DDMMYYYY(txtDateTo.Text));
 			if(txtDateTo.Text==System.DateTime.Now.ToShortDateString())
 			{
 				if(drpstore.SelectedIndex>0)
@@ -654,7 +668,7 @@ namespace Servosms.Module.Reports
 			string sql="";
 			object op= null;
 			int flage=0;
-			dbobj.ExecProc(OprType.Insert,"sp_batchstock",ref op,"@fromdate",System.Convert.ToDateTime(ToMMddYYYY(txtDateTo.Text)).ToShortDateString());
+			dbobj.ExecProc(OprType.Insert,"sp_batchstock",ref op,"@fromdate",GenUtil.str2DDMMYYYY(txtDateTo.Text));
 			if(txtDateTo.Text==System.DateTime.Now.ToShortDateString())
 			{
 				if(drpstore.SelectedIndex>0)

@@ -160,16 +160,13 @@ namespace Servosms.Module.Employee
 			EmployeeClass obj=new EmployeeClass();
 			try
 			{
-				#region Check Validation
-				if(DateTime.Compare(ToMMddYYYY(Request.Form["txtDateFrom"]),ToMMddYYYY(Request.Form["txtDateTO"]))>0)
-				{
-					MessageBox.Show("Date From Should Be Less Than Date To");
-					return;
-				}
-				if(DateTime.Compare(ToMMddYYYY(GenUtil.str2DDMMYYYY(GenUtil.trimDate(DateTime.Now.ToString()))),ToMMddYYYY(Request.Form["txtDateFrom"]))>0)
-				{
-					MessageBox.Show("Date From Should Be Gratter Or Equal to Date To");
-					return;
+				#region Check Validation				
+                var dt1 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString()));
+                var dt2 = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["txtDateTO"].ToString()));
+                if (DateTime.Compare(dt1, dt2) > 0)
+                {
+                    MessageBox.Show("Date From Should be less than Date To");
+                    return;
 				}
 				int Count=0;
 				string str ="";
@@ -193,15 +190,15 @@ namespace Servosms.Module.Employee
 				
 				string Emp_id=DropEmpName.SelectedItem.Value.Substring(0,DropEmpName.SelectedItem.Value.LastIndexOf(":")) ;
 
-				obj.Date_From  =ToMMddYYYY(Request.Form["txtDateFrom"]).ToShortDateString(); 
-				obj.Date_To  = ToMMddYYYY(Request.Form["txtDateTo"]).ToShortDateString();
+				obj.Date_From  = GenUtil.str2MMDDYYYY(txtDateFrom.Text); 
+				obj.Date_To  = GenUtil.str2MMDDYYYY(txtDateTO.Text);
 				string todate=DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year;
 				//obj.Reason =StringUtil.FirstCharUpper(txtReason.Text.ToString());
 				//obj.Days = txtleaveday.Text.ToString().Trim();           //add by vikas 17.11.2012
 				// calls fuction to insert the leave
 				//obj.InsertLeave();
 				x=0;
-				dbobj.Insert_or_Update("Insert into OverTime_Register (OT_ID,OT_Date,Emp_Id,OT_From,Ot_To) values("+obj.Leave_ID+",'"+ToMMddYYYY(todate)+"',"+Emp_id+",'"+ToMMddYYYY(Request.Form["txtDateFrom"]).ToShortDateString()+"','"+ToMMddYYYY(Request.Form["txtDateTo"]).ToShortDateString()+"')",ref x);
+				dbobj.Insert_or_Update("Insert into OverTime_Register (OT_ID,OT_Date,Emp_Id,OT_From,Ot_To) values("+ Convert.ToInt32(obj.Leave_ID)+",'"+ GenUtil.str2MMDDYYYY(todate)+"',"+Emp_id+",'"+ GenUtil.str2MMDDYYYY(txtDateFrom.Text) + "','"+ GenUtil.str2MMDDYYYY(txtDateTO.Text)+"')",ref x);
 				MessageBox.Show("OverTime Information Saved");
 				Clear();
 				
@@ -220,19 +217,21 @@ namespace Servosms.Module.Employee
 				Next_id="1";
 				EmployeeClass obj=new EmployeeClass();
 				SqlDataReader rdr=null;
-				string str = "select max(ot_id) from OverTime_Register";
+				string str = "select max(OT_ID) from OverTime_Register";
 				rdr=obj.GetRecordSet(str);
 				while(rdr.Read())
 				{
 					if(rdr.GetValue(0).ToString()!=null && rdr.GetValue(0).ToString()!="")
 					{
-						Next_id=rdr.GetValue(0).ToString();
+						Next_id=rdr.GetValue(0).ToString();                       
 					}
 					else
 						Next_id="1";
 				}
 				rdr.Close();
-				return Next_id;
+                int newID = Convert.ToInt32(Next_id) + 1;
+                Next_id = newID.ToString();
+                return Next_id;
 			}
 			catch(Exception ex)
 			{
