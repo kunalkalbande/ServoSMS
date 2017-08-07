@@ -632,7 +632,9 @@
 			Disc=0
 	
 		if(document.Form1.DropDiscType.value=="Per")
-		Disc=(document.Form1.txtGrandTotal.value-eval(Scheme))*Disc/100 
+		    Disc=(document.Form1.txtGrandTotal.value-eval(Scheme))*Disc/100 
+		else
+		    Disc=qtyfoe*Disc
 		document.Form1.tempdiscount.value=eval(Disc)
 		makeRound(document.Form1.tempdiscount)
 		document.Form1.txtDiscount.value = document.Form1.tempdiscount.value;
