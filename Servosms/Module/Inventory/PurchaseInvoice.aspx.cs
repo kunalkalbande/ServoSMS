@@ -1476,16 +1476,16 @@ namespace Servosms.Module.Inventory
 
                                 obj.Discount ="0.0";
 						}
-						else
-						{
-							if(Request.Form["txtTotalDisc"].ToString()!="")
-								obj.Discount = Request.Form["txtTotalDisc"].ToString();
-							else
+                        else
+                        {
+                            if (Request.Form["txtDisc"].ToString() != "")
+                                obj.Discount = Request.Form["txtDisc"].ToString();
+                            else
 
-                                obj.Discount ="0.0";
-						}
-						/*******End*******************/
-						obj.Discount_Type=DropDiscType.SelectedItem.Value;
+                                obj.Discount = "0.0";
+                        }
+                        /*******End*******************/
+                        obj.Discount_Type=DropDiscType.SelectedItem.Value;
 						obj.Net_Amount = Request.Form["txtNetAmount"].ToString();
 
                         obj.Promo_Scheme= Request.Form["txtPromoScheme"].ToString();
@@ -3253,13 +3253,13 @@ namespace Servosms.Module.Inventory
 						
 
 						 double TotalDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC-TotalCashDiscount+Fixed_Disc_Amount);
-						if(DropDiscType.SelectedIndex==0)
-						{
-							txtTotalDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString()); 
-							TotalDiscount=double.Parse(GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString()))/double.Parse(GenUtil.strNumericFormat(SqlDtr["totalqtyltr"].ToString()));
-							txtDisc.Text= Convert.ToString(Math.Round(TotalDiscount));
-						}
-						else
+                        if (DropDiscType.SelectedIndex == 0)
+                        {
+                            txtDisc.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString());
+                            TotalDiscount = double.Parse(GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString())) * double.Parse(GenUtil.strNumericFormat(SqlDtr["totalqtyltr"].ToString()));
+                            txtTotalDisc.Text = Convert.ToString(Math.Round(TotalDiscount));
+                        }
+                        else
 						{
 							txtDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString()); 
 							if(SqlDtr["Discount_Type"].ToString()=="Per")
