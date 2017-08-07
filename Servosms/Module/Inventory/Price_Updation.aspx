@@ -96,25 +96,30 @@
         //        }                
         //    }
         //}
-        function enableText(t,t1,t2,t3)
+        function enableText(t,t1,t2,t3,t4,t5,t6)
         {
             if(t.checked)
             {
                 t1.disabled=false
                 t2.disabled=false
                 t3.disabled=false
+                t4.disabled=false
+                t5.disabled=false
+                t6.disabled=false
             }
             else
             {
                 t1.disabled=true
                 t2.disabled=true
                 t3.disabled=true
+                t4.disabled=true
+                t5.disabled=true
+                t6.disabled=true
             }
         }	
 	
         function selectAll()
         {
-            debugger;
             var f=document.f1
             if(f.chkSelectAll.checked)
             {
@@ -192,6 +197,9 @@
                             <th align="center" bgcolor="#CE4848"><font color="white">RSP</font></th>
                             <th align="center" bgcolor="#CE4848"><font color="white">MRP</font></th>
                             <th align="center" bgcolor="#CE4848"><font color="white">HSN</font></th>
+                            <th align="center" bgcolor="#CE4848"><font color="white">IGST</font></th>
+                            <th align="center" bgcolor="#CE4848"><font color="white">CGST</font></th>
+                            <th align="center" bgcolor="#CE4848"><font color="white">SGST</font></th>
                             <th align="center" bgcolor="#CE4848"><font color="white">Select</font></th>
 
                         </tr>
@@ -209,7 +217,7 @@
                             SqlDtr = obj.GetRecordSet(sql);
                             while (SqlDtr.Read())
                             {
-                                dbobj.SelectQuery("select top 1 Pur_Rate, Sal_Rate,HSN from Price_Updation where Prod_ID=(select Prod_ID from Products where Prod_Name='" + SqlDtr.GetValue(1).ToString() + "' and Category='" + SqlDtr.GetValue(0).ToString() + "' and Pack_Type='" + SqlDtr.GetValue(2).ToString() + "') order by Eff_Date desc", ref rdr);
+                                dbobj.SelectQuery("select top 1 Pur_Rate, Sal_Rate,HSN,IGST,CGST,SGST from Price_Updation where Prod_ID=(select Prod_ID from Products where Prod_Name='" + SqlDtr.GetValue(1).ToString() + "' and Category='" + SqlDtr.GetValue(0).ToString() + "' and Pack_Type='" + SqlDtr.GetValue(2).ToString() + "') order by Eff_Date desc", ref rdr);
                         %>
                         <tr>
 
@@ -226,6 +234,13 @@
                                 <input maxlength="8" value='<%=rdr["Sal_Rate"].ToString()%>' disabled type="text" size="10" name="txtSaleRate<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td>
                             <td bgcolor="#FFF7E7">
                                 <input maxlength="10" value='<%=rdr["HSN"].ToString()%>' disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" <%--onblur="check2(this)"--%>></td>
+                            <td bgcolor="#FFF7E7">
+                                <input maxlength="10" value='<%=rdr["IGST"].ToString()%>' disabled type="text" size="10" name="txtIgst<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" ></td>
+                            <td bgcolor="#FFF7E7">
+                                <input maxlength="10" value='<%=rdr["CGST"].ToString()%>' disabled type="text" size="10" name="txtCgst<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" ></td>
+                            <td bgcolor="#FFF7E7">
+                                <input maxlength="10" value='<%=rdr["SGST"].ToString()%>' disabled type="text" size="10" name="txtSgst<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" ></td>
+
 
                             <% }
                             %>
@@ -238,10 +253,17 @@
                                 <input maxlength="8" disabled type="text" size="10" name="txtSaleRate<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" onblur="check1(this,txtPurRate<%=Prod_No%>,lblCat<%=Prod_No%>,lblProd_Name<%=Prod_No%>,chk<%=Prod_No%> );"></td>
                             <td bgcolor="#FFF7E7">
                                 <input maxlength="10" disabled type="text" size="10" name="txtHSN<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" <%--onblur="check2(this)"--%>></td>
+                            <td bgcolor="#FFF7E7">
+                                <input maxlength="10" disabled type="text" size="10" name="txtIgst<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" ></td>
+                            <td bgcolor="#FFF7E7">
+                                <input maxlength="10" disabled type="text" size="10" name="txtCgst<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" ></td>
+                            <td bgcolor="#FFF7E7">
+                                <input maxlength="10" disabled type="text" size="10" name="txtSgst<%=Prod_No%>" style="border-style: Groove; font-size: 8pt;" onkeypress="return GetOnlyNumbers(this, event, false,true);" ></td>
+
                             <% }
                             %>
                             <td align="center" bgcolor="#FFF7E7">
-                                <input type="checkbox" name="chk<%=Prod_No%>" onclick="enableText(this,document.f1.txtPurRate<%=Prod_No%>,document.f1.txtSaleRate<%=Prod_No%>,document.f1.txtHSN<%=Prod_No%>);"></td>
+                                <input type="checkbox" name="chk<%=Prod_No%>" onclick="enableText(this,document.f1.txtPurRate<%=Prod_No%>,document.f1.txtSaleRate<%=Prod_No%>,document.f1.txtHSN<%=Prod_No%>,document.f1.txtIgst<%=Prod_No%>,document.f1.txtCgst<%=Prod_No%>,document.f1.txtSgst<%=Prod_No%>);"></td>
                         </tr>
                         <%	Prod_No++;
                             }
@@ -310,6 +332,10 @@
                     obj.Pur_Rate = Request.Params.Get("txtPurRate" + i);
                     obj.Sal_Rate = Request.Params.Get("txtSaleRate" + i);
                     obj.HSN = Request.Params.Get("txtHSN" + i);
+                    obj.IGST = Request.Params.Get("txtIgst" + i);
+                    obj.CGST = Request.Params.Get("txtCgst" + i);
+                    obj.SGST = Request.Params.Get("txtSgst" + i);
+                    
 
 
                     obj.InsertPriceUpdation();
