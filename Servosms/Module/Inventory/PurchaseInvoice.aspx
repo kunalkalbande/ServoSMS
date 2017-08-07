@@ -537,12 +537,21 @@
 			
             if(DiscStatus==0)
             {
-                Dt=eval(document.Form1.txtGrandTotal.value)
-                Disc=Dt*Disc/100 
-                document.Form1.txtTotalDisc.value=Disc
-                makeRound(document.Form1.txtTotalDisc,2)
-                if(isNaN(document.Form1.txtTotalDisc.value))
-                    document.Form1.txtTotalDisc.value=""
+                if(document.Form1.DropDiscType.value=="Per")
+                {
+                    Dt=eval(document.Form1.txtGrandTotal.value)
+                    Disc=Dt*Disc/100 
+                    document.Form1.txtTotalDisc.value=Disc
+                    makeRound(document.Form1.txtTotalDisc,2)
+                    if(isNaN(document.Form1.txtTotalDisc.value))
+                        document.Form1.txtTotalDisc.value=""
+                }
+                else
+                {
+                    document.Form1.txtTotalDisc.value=document.Form1.txttotalqtyltr.value*document.Form1.txtDisc.value
+                    makeRound(document.Form1.txtTotalDisc.value)
+                }
+
             }
             else
             {
