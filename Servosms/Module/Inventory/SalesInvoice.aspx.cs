@@ -278,7 +278,8 @@ namespace Servosms.Module.Inventory
 					}
 					SqlDtr.Close ();
                     #endregion
-                    getvalue();
+                    //getvalue();
+                    PriceUpdation();
 
                     GetProducts();
 					FetchData();
@@ -328,8 +329,8 @@ namespace Servosms.Module.Inventory
             SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
             if (SqlDtr.Read())
             {
-                if (SqlDtr["IGSTSalesStatus"].ToString() == "1")
-                    txtVatRate.Value = SqlDtr["IGSTSales"].ToString();
+                if (SqlDtr["IGSTSalesStatus"].ToString() == "1") { }
+                    //txtVatRate.Value = SqlDtr["IGSTSales"].ToString();
                 else
                     txtVatRate.Value = "0";
                 if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
@@ -343,6 +344,28 @@ namespace Servosms.Module.Inventory
 
             }
         }
+        public void PriceUpdation()
+        {            
+            InventoryClass obj = new InventoryClass();         
+           var dsPriceUpdation= obj.ProPriceUpdation();
+            var dtTable = dsPriceUpdation.Tables[0];
+            for (int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                txtMainIGST.Value = txtMainIGST.Value+ dtTable.Rows[i][0].ToString();//ProductCode
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][1];//ProductName 
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][2];//ProductId
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][3];//IGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][4];//cGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainIGST.Value = txtMainIGST.Value + "~";
+
+
+            }
+            txtMainIGST.Value= txtMainIGST.Value.Substring(0,txtMainIGST.Value.LastIndexOf("~"));
+
+
+        }
+
         public void SaveDataInControlsOnPageLoad()
         {
             lblInvoiceDate.Text = Request.Form["lblInvoiceDate"] == null ? GenUtil.str2DDMMYYYY(System.DateTime.Now.ToShortDateString()) : Request.Form["lblInvoiceDate"].ToString().Trim();

@@ -236,7 +236,7 @@
 													<TD align="center">
 														<asp:CheckBox id="chkPurDis" Runat="server"></asp:CheckBox></TD>
 												</TR>
-												<TR>
+												<%--<TR>
 													<TD style="HEIGHT: 23px">&nbsp;IGST</TD>
 													<TD style="HEIGHT: 23px">
 														<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtPurVat" Runat="server"
@@ -271,10 +271,11 @@
 														</asp:DropDownList></TD>
 													<TD style="HEIGHT: 23px" align="center">
 														<asp:CheckBox id="CheckBoxsgst" Runat="server"></asp:CheckBox></TD>
-												</TR>
+												</TR>--%>
 											</TABLE>
 										</TD>
 									</TR>
+                                    <!--Sales Invoice -->
 							</asp:panel><asp:panel id="PanSales" Runat="server">
 								<TR bgColor="#ce4848">
 									<TD align="center"><FONT color="white"><B>Discount Name</B></FONT></TD>
@@ -332,7 +333,7 @@
 									<TD align="center">
 										<asp:CheckBox id="chkSalesCashDis" Runat="server"></asp:CheckBox></TD>
 								</TR>
-								<TR>
+								<%--<TR>
 									<TD>&nbsp;IGST</TD>
 									<TD>
 										<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtSalesVat" Runat="server"
@@ -367,7 +368,7 @@
 										</asp:DropDownList></TD>
 									<TD align="center">
 										<asp:CheckBox id="CheckBoxSGST2" Runat="server"></asp:CheckBox></TD>
-								</TR>
+								</TR>--%>
 							</asp:panel>
 							<!--Modvat/ Cenvat Invoice Penal -->
 							<asp:panel id="PanModCen" Runat="server">

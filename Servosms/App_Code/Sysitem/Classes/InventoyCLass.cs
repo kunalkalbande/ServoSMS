@@ -24,6 +24,8 @@ namespace Servosms.Sysitem.Classes
 		SqlConnection SqlCon1;
 		SqlCommand SqlCmd;
 		SqlDataReader SqlDtr;
+        SqlDataAdapter da;
+        DataSet ds;
 
 		#region Vars & Prop
 		string _scheme;
@@ -92,7 +94,10 @@ namespace Servosms.Sysitem.Classes
 		string _Pur_Rate;
 		string _Sal_Rate;
         string _HSN;
-		string _Slip_No;
+        string _IGST;
+        string _CGST;
+        string _SGST;
+        string _Slip_No;
 		string _Pack_Unit;
 		string _Rec_No;
 		string _SubRec_No;
@@ -3327,6 +3332,39 @@ namespace Servosms.Sysitem.Classes
                 _HSN = value;
             }
         }
+        public string IGST
+        {
+            get
+            {
+                return _IGST;
+            }
+            set
+            {
+                _IGST = value;
+            }
+        }
+        public string CGST
+        {
+            get
+            {
+                return _CGST;
+            }
+            set
+            {
+                _CGST = value;
+            }
+        }
+        public string SGST
+        {
+            get
+            {
+                return _SGST;
+            }
+            set
+            {
+                _SGST = value;
+            }
+        }
         public string Invoice_No
 		{
 			get
@@ -5227,8 +5265,21 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Pur_Rate",Pur_Rate);
 			SqlCmd.Parameters .Add("@Sal_Rate",Sal_Rate);
             SqlCmd.Parameters.Add("@HSN",HSN);
+            SqlCmd.Parameters.Add("@IGST",IGST);
+            SqlCmd.Parameters.Add("@CGST",CGST);
+            SqlCmd.Parameters.Add("@SGST",SGST);
 			SqlCmd.ExecuteNonQuery();
 		}
+        public DataSet ProPriceUpdation()
+        {
+            SqlCmd = new SqlCommand("ProPriceUpdation",SqlCon);
+            SqlCmd.CommandType = CommandType.StoredProcedure;           
+            da =new SqlDataAdapter(SqlCmd);
+            ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+
+        }
 		//********bhal add****************
 		public string custname
 		{

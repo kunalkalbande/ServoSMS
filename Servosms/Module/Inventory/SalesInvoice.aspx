@@ -354,7 +354,7 @@
 				}
 			} 
 		}
-	 
+		
 		function calc(txtQty,txtAvstock,txtRate,txtTempQty,tempint,ProdName,PackType)
 		{
 			var sarr = new Array()
@@ -686,6 +686,7 @@
 	    else
 	    {
 	        var sgst_rate=document.Form1.Tempsgstrate.value
+	        
 	        if(sgst_rate == "")
 	            sgst_rate=0;
 	        var sgst= document.Form1.txtVatValue.value;
@@ -750,6 +751,7 @@
 	    else
 	    {
 	        var cgst_rate = document.Form1.Tempcgstrate.value
+	        
 	        if(cgst_rate == "")
 	            cgst_rate = 0;
 	        var cgst = document.Form1.txtVatValue.value    
@@ -800,6 +802,7 @@
 	}
 	function GetVatAmount()
 	{
+	    //debugger;
 	    GetCashDiscount()
 	    if(document.Form1.No.checked)
 	    {
@@ -807,7 +810,8 @@
 	    } 
 	    else
 	    {
-	    var vat_rate = document.Form1.txtVatRate.value
+	        var vat_rate = document.Form1.txtVatRate.value
+	       
 	    if(vat_rate == "")
 	       vat_rate = 0;
 	     var vat = document.Form1.txtVatValue.value    
@@ -860,6 +864,36 @@
 	}
 	function GetNetAmount()
 	{
+	    //debugger;
+	    var dbValues =  document.Form1.txtMainIGST.value;
+	    var selectedProduct =  document.Form1.DropType1.value;
+	    var mainarr = new Array()
+	    var taxarr = new Array()
+	    var selarr = new Array()
+	    
+	    document.Form1.txtVatRate.value=""
+	    document.Form1.Tempcgstrate.value
+	    document.Form1.Tempsgstrate.value
+        
+        selarr=selectedProduct.split(":");
+        mainarr =dbValues.split("~");
+
+	    for(i=0;i<mainarr.length-1;i++)
+	    {
+	        taxarr = mainarr[i].split("|")
+	        for(var j=0;j<taxarr.length;j++ )
+	        {
+	            if(taxarr[0]==selarr[0])
+	            {
+	                document.Form1.txtVatRate.value=taxarr[3];
+	                document.Form1.Tempcgstrate.value=taxarr[4];
+	                document.Form1.Tempsgstrate.value=taxarr[5];
+	            }
+	        }
+	    }
+	  
+
+
 	  //  ;
 	//	var vat_value = 0;
 	//	if(document.Form1.No.checked)
@@ -2192,6 +2226,7 @@ function MoveFocus(t,drop,e)
 				type="hidden" name="tempschID10" runat="server"><INPUT id="tempschID11" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="tempschID11" runat="server"><INPUT id="tempschID12" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="tempschID12" runat="server">
+            <INPUT id="txtMainIGST" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px" type="hidden" name="txtMainIGST" runat="server">
             <INPUT id="Tempcgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="Tempcgstrate" runat="server"/>
             <INPUT id="Tempsgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
@@ -2330,7 +2365,7 @@ function MoveFocus(t,drop,e)
 												<TD align="center"><FONT color="#990066">Amount</FONT></TD>
 											</TR>
 											<TR>
-												<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType1"
+												<TD colSpan="3"><input class="TextBoxStyle" onkeypress="return GetAnyNumber(this, event);" id="DropType1" 
 														onkeyup="search3(this,document.Form1.DropProdName1,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName1,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName1,event,document.Form1.DropType1,document.Form1.txtQty1),getStock1(this,document.Form1.txtAvStock1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1,1)"
 														style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 310px; HEIGHT: 19px" onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1)"
 														value="Type" name="DropType1" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
