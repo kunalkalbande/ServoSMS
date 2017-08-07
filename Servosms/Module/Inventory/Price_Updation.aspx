@@ -274,6 +274,9 @@
                         </tr>
                         <tr>
                             <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th colspan="5" align="right" bgcolor="#CE4848"><font color="white">Select All</font></th>
                             <td align="center" bgcolor="#CE4848">
                                 <input type="checkbox" name="chkSelectAll" onclick="selectAll();"></td>
