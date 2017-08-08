@@ -392,8 +392,8 @@ namespace Servosms.Module.Inventory
 					SqlDtr.Close ();
                     #endregion
 
-                    getvalue();
-
+                    //getvalue();
+                    PriceUpdation();
                     GetProducts();
 					FetchCity();
 					FatchInvoiceNo();
@@ -409,27 +409,46 @@ namespace Servosms.Module.Inventory
 			}
             SaveDataInControlsOnPageLoad();
         }
-        public void getvalue()
-        {
-            InventoryClass obj = new InventoryClass();
-            SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
-            if (SqlDtr.Read())
-            {
-                if (SqlDtr["IGSTPurchaseStatus"].ToString()=="1")
-                   txtVatRate.Value = SqlDtr["IGSTPurchase"].ToString();
-                else
-                   txtVatRate.Value = "0";
-                if (SqlDtr["CGSTPurchaseStatus"].ToString() == "1")
-                    Tempcgstrate.Value = SqlDtr["CGSTPurchase"].ToString();
-                else
-                    Tempcgstrate.Value = "0";
-                if (SqlDtr["SGSTPurchaseStatus"].ToString() == "1")
-                    Tempsgstrate.Value = SqlDtr["SGSTPurchase"].ToString();
-                else
-                    Tempsgstrate.Value = "0";
+        //public void getvalue()
+        //{
+        //    InventoryClass obj = new InventoryClass();
+        //    SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
+        //    if (SqlDtr.Read())
+        //    {
+        //        if (SqlDtr["IGSTPurchaseStatus"].ToString()=="1")
+        //           txtVatRate.Value = SqlDtr["IGSTPurchase"].ToString();
+        //        else
+        //           txtVatRate.Value = "0";
+        //        if (SqlDtr["CGSTPurchaseStatus"].ToString() == "1")
+        //            Tempcgstrate.Value = SqlDtr["CGSTPurchase"].ToString();
+        //        else
+        //            Tempcgstrate.Value = "0";
+        //        if (SqlDtr["SGSTPurchaseStatus"].ToString() == "1")
+        //            Tempsgstrate.Value = SqlDtr["SGSTPurchase"].ToString();
+        //        else
+        //            Tempsgstrate.Value = "0";
                 
 
+        //    }
+        //}
+        public void PriceUpdation()
+        {
+            InventoryClass obj = new InventoryClass();
+            var dsPriceUpdation=obj.ProPriceUpdation();
+            var dtTable = dsPriceUpdation.Tables[0];
+            for(int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                txtMainGST.Value = txtMainGST.Value + dtTable.Rows[i][0].ToString();//ProductCode
+                txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][1];//ProductName 
+                txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][2];//ProductId
+                txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][3];//IGST
+                txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][4];//cGST
+                txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainGST.Value = txtMainGST.Value + "~";
+
+
             }
+            txtMainGST.Value = txtMainGST.Value.Substring(0, txtMainGST.Value.LastIndexOf("~"));
         }
         public void SaveDataInControlsOnPageLoad()
         {

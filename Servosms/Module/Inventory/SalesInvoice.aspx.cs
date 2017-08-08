@@ -323,27 +323,27 @@ namespace Servosms.Module.Inventory
             SaveDataInControlsOnPageLoad();            
             txtVehicleNo.Attributes.Add("onmousemove","getScheme_New();");
 		}
-        public void getvalue()
-        {
-            InventoryClass obj = new InventoryClass();
-            SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
-            if (SqlDtr.Read())
-            {
-                if (SqlDtr["IGSTSalesStatus"].ToString() == "1") { }
-                    //txtVatRate.Value = SqlDtr["IGSTSales"].ToString();
-                else
-                    txtVatRate.Value = "0";
-                if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
-                    Tempcgstrate.Value = SqlDtr["CGSTSales"].ToString();
-                else
-                    Tempcgstrate.Value = "0";
-                if (SqlDtr["SGSTSalesStatus"].ToString() == "1")
-                    Tempsgstrate.Value = SqlDtr["SGSTSales"].ToString();
-                else
-                    Tempsgstrate.Value = "0";
+        //public void getvalue()
+        //{
+        //    InventoryClass obj = new InventoryClass();
+        //    SqlDataReader SqlDtr = obj.GetRecordSet("select * from SetDis");
+        //    if (SqlDtr.Read())
+        //    {
+        //        if (SqlDtr["IGSTSalesStatus"].ToString() == "1") { }
+        //            //txtVatRate.Value = SqlDtr["IGSTSales"].ToString();
+        //        else
+        //            txtVatRate.Value = "0";
+        //        if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
+        //            Tempcgstrate.Value = SqlDtr["CGSTSales"].ToString();
+        //        else
+        //            Tempcgstrate.Value = "0";
+        //        if (SqlDtr["SGSTSalesStatus"].ToString() == "1")
+        //            Tempsgstrate.Value = SqlDtr["SGSTSales"].ToString();
+        //        else
+        //            Tempsgstrate.Value = "0";
 
-            }
-        }
+        //    }
+        //}
         public void PriceUpdation()
         {            
             InventoryClass obj = new InventoryClass();         
@@ -362,8 +362,6 @@ namespace Servosms.Module.Inventory
 
             }
             txtMainIGST.Value= txtMainIGST.Value.Substring(0,txtMainIGST.Value.LastIndexOf("~"));
-
-
         }
 
         public void SaveDataInControlsOnPageLoad()

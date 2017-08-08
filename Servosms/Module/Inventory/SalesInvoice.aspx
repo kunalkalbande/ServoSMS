@@ -872,8 +872,8 @@
 	    var selarr = new Array()
 	    
 	    document.Form1.txtVatRate.value=""
-	    document.Form1.Tempcgstrate.value
-	    document.Form1.Tempsgstrate.value
+	    document.Form1.Tempcgstrate.value=""
+	    document.Form1.Tempsgstrate.value=""
         
         selarr=selectedProduct.split(":");
         mainarr =dbValues.split("~");

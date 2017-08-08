@@ -875,7 +875,35 @@
         }
         function GetNetAmountEtaxnew()
         {
-          //  debugger;
+            // debugger;
+
+            var dbValues=document.Form1.txtMainGST.value;
+            var selectedProduct =  document.Form1.DropType1.value;
+            var mainarr = new Array()
+            var taxarr = new Array()
+            var selarr = new Array()
+            document.Form1.txtVatRate.value=""
+            document.Form1.Tempcgstrate.value=""
+            document.Form1.Tempsgstrate.value=""
+
+            selarr=selectedProduct.split(":");
+            mainarr =dbValues.split("~");
+
+            for(i=0;i<mainarr.length-1;i++)
+            {
+                taxarr = mainarr[i].split("|")
+                for(var j=0;j<taxarr.length;j++ )
+                {
+                    if(taxarr[0]==selarr[0])
+                    {
+                        document.Form1.txtVatRate.value=taxarr[3];
+                        document.Form1.Tempcgstrate.value=taxarr[4];
+                        document.Form1.Tempsgstrate.value=taxarr[5];
+                    }
+                }
+            }
+
+
             totalAmountAfterGst=0;
             GetIgstamt()
             Getcgstamt()
@@ -1397,6 +1425,7 @@
         <input id="tempFixedDisc" style="width: 1px" type="hidden" name="tempFixedDisc" runat="server">
         <input id="Tempcgstrate" style="width: 1px" type="hidden" name="Tempcgstrate" runat="server"/>
         <input id="Tempsgstrate" style="width: 1px" type="hidden" name="Tempsgstrate" runat="server"/>
+        <input id="txtMainGST" style="width: 1px" type="hidden" name="txtMainGST" runat="server"/>
         <table style="width: 778px" align="center">
             <tr>
                 <th align="center" colspan="3">
@@ -2334,8 +2363,8 @@
                                     <tr>
                                         <td width="2px">IGST</td>
                                         <td width="80px">
-                                            <asp:RadioButton ID="No"   onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Not Applied" Checked="false" GroupName="VAT"></asp:RadioButton>
-                                            <asp:RadioButton ID="Yes" onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Apply" Checked="true" GroupName="VAT"></asp:RadioButton>
+                                            <asp:RadioButton ID="No"   onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Not Applied" Checked="true" GroupName="VAT"></asp:RadioButton>
+                                            <asp:RadioButton ID="Yes" onclick="return GetNetAmountEtaxnew();" runat="server" ToolTip="Apply" Checked="false" GroupName="VAT"></asp:RadioButton>
                                         </td>
                                      </tr>
                                 </table>
@@ -2351,8 +2380,8 @@
                                     <tr>
                                     <td width="2px">CGST</td>
                                     <td width="95px">
-                                        <asp:RadioButton ID="N"  onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
-                                        <asp:RadioButton ID="Y" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="N"  onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="Y" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
                                     </td>
                                     </tr>
                                 </table>
@@ -2367,8 +2396,8 @@
                                     <tr>
                                         <td width="2px">SGST</td>
                                         <td width="95px">
-                                            <asp:RadioButton  ID="Noo" onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
-                                            <asp:RadioButton ID="Yess" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton  ID="Noo" onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton ID="Yess" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
                                         </td>
                                     </tr>
                                 </table>
