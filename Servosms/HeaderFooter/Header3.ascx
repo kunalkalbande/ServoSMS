@@ -19,7 +19,7 @@
 		<table cellSpacing="0" cellPadding="0" align="center" border="0">
 			<tr>
 				<td colspan="2"><div style="LEFT: 0px; POSITION: relative; TOP: 0px">
-						<IMG src="/Servosms/HeaderFooter/images/headersms.jpg" width="778" height=75></div>
+						<IMG src="/Servosms/HeaderFooter/images/eLDMS Header.png" width="778" height=75></div>
 					<table cellSpacing="0" cellPadding="0" border="0" width="100%">
 						<%try{%>
 						<tr>

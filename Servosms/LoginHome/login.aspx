@@ -52,7 +52,7 @@ if (restore) selObj.selectedIndex=0;
 		<form id="Form1" runat="server">
 			<table cellSpacing="0" cellPadding="0" width="1350" align="center" bgColor="#ffffff" border="0">
 				<tr>
-					<td vAlign="top" width="1350"><IMG height="88" src="../HeaderFooter/images/headersms.jpg" width="1350"></td>
+					<td vAlign="top" width="1350"><IMG height="88" src="../HeaderFooter/images/eLDMS Header.png" width="1350"></td>
 				</tr>
 				<tr>
 					<td>
@@ -160,15 +160,15 @@ if (restore) selObj.selectedIndex=0;
 				<tr>
 					<td vAlign="top">
 						<TABLE cellSpacing="0" cellPadding="0" width="780" border="0">
-							<TR>
+							<%--<TR>
 								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_01.jpg" width="1100"></TD>
 								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_02.jpg" width="237"></TD>
 								<TD><IMG height="15" alt="" src="../HeaderFooter/images/footersms_03.jpg" width="22"></TD>
-							</TR>
+							</TR>--%>
 							<TR>
-								<TD><IMG height="28" alt="" src="../HeaderFooter/images/footersms_04.jpg" width="1100"></TD>
-								<TD><A href="#"><IMG height="28" alt="" src="../HeaderFooter/images/footersms_05.jpg" width="237" border="0"></A></TD>
-								<TD><IMG height="28" alt="" src="../HeaderFooter/images/footersms_06.jpg" width="22"></TD>
+								<TD><IMG height="55" alt="" src="../HeaderFooter/images/eLDMS Footer.png" width="1350"></TD>
+								<%--<TD><A href="#"><IMG height="28" alt="" src="../HeaderFooter/images/footersms_05.jpg" width="237" border="0"></A></TD>--%>
+								<%--<TD><IMG height="28" alt="" src="../HeaderFooter/images/footersms_06.jpg" width="22"></TD>--%>
 							</TR>
 						</TABLE>
 					</td>
