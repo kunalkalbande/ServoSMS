@@ -645,6 +645,11 @@
                     document.Form1.txtTotalCashDisc.value=""
                 //alert(CashDisc) 
             }
+            else
+            {
+                document.Form1.txtTotalCashDisc.value=document.Form1.txtCashDisc.value*document.Form1.txttotalqtyltr.value
+                makeRound(document.Form1.txtTotalCashDisc)
+            }
 			
 			
             document.Form1.txtVatValue.value = "";	

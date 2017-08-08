@@ -1127,25 +1127,24 @@ namespace Servosms.Module.Inventory
 							obj.Discount =txtDisc.Text;*/
 
                         /*******Add by vikas 23.11.2012*******************/
-                        if (DropDiscType.SelectedValue.ToString()=="Rs")
-						{
-							if(Request.Form["txtDisc"].ToString()!="")
-								obj.Discount= Request.Form["txtDisc"].ToString();
-							else
-								obj.Discount ="0.0";
-						}
-						else
-						{
-							if(Request.Form["txtTotalDisc"].ToString()!="")
-								obj.Discount = Request.Form["txtTotalDisc"].ToString();
-							else
+                        if (DropDiscType.SelectedValue.ToString() == "Rs")
+                        {
+                            if (Request.Form["txtDisc"].ToString() != "")
+                                obj.Discount = Request.Form["txtDisc"].ToString();
+                            else
+                                obj.Discount = "0.0";
+                        }
+                        else
+                        {
+                            if (Request.Form["txtDisc"].ToString() != "")
+                                obj.Discount = Request.Form["txtDisc"].ToString();
+                            else
 
-                                obj.Discount ="0.0";
-							
-						}
-						/*******End*******************/
+                                obj.Discount = "0.0";
+                        }
+                        /*******End*******************/
 
-						obj.Discount_Type=DropDiscType.SelectedItem.Value;
+                        obj.Discount_Type=DropDiscType.SelectedItem.Value;
 						obj.Net_Amount = Request.Form["txtNetAmount"].ToString();
                         obj.Promo_Scheme = Request.Form["txtPromoScheme"].ToString();
                         obj.Remerk = Request.Form["txtRemark"].ToString();
@@ -3231,7 +3230,7 @@ namespace Servosms.Module.Inventory
 						lblEntryBy.Text=SqlDtr.GetValue(13).ToString();  
 						lblEntryTime.Text= SqlDtr.GetValue(14).ToString();  
 						txtCashDisc.Text=SqlDtr.GetValue(15).ToString(); 
-						txtCashDisc.Text = GenUtil.strNumericFormat(Request.Form["txtCashDisc"].ToString()); 
+						//txtCashDisc.Text = GenUtil.strNumericFormat(Request.Form["txtCashDisc"].ToString()); 
 
                         DropCashDiscType.SelectedIndex= DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
 						txtVAT.Text =  SqlDtr.GetValue(17).ToString();
@@ -3261,17 +3260,22 @@ namespace Servosms.Module.Inventory
 
 						//Coment by vikas 2.1.2013 double TotalCashDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount_Type"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC);
 						double TotalCashDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC+Fixed_Disc_Amount);
-						
-						if(SqlDtr["Cash_Disc_Type"].ToString()=="Per")
-							TotalCashDiscount=TotalCashDiscount*double.Parse(SqlDtr["Cash_Discount"].ToString())/100;
-						txtTotalCashDisc.Text=GenUtil.strNumericFormat(TotalCashDiscount.ToString());
 
-						/******Add by vikas 23.11.2012****************/
-						//coment by vikas 6.12.2012 double TotalDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC-TotalCashDiscount+double.Parse(SqlDtr["Fixed_Disc_Amount"].ToString()));
-						
-						
+                        if (SqlDtr["Cash_Disc_Type"].ToString() == "Per")
+                            TotalCashDiscount = TotalCashDiscount * double.Parse(SqlDtr["Cash_Discount"].ToString()) / 100;
+                        else
+                        {
+                            TotalCashDiscount = double.Parse(GenUtil.strNumericFormat(SqlDtr.GetValue(15).ToString())) * double.Parse(GenUtil.strNumericFormat(SqlDtr["totalqtyltr"].ToString()));
+                            txtTotalCashDisc.Text = GenUtil.strNumericFormat(TotalCashDiscount.ToString());
+                        }
+                           
 
-						 double TotalDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC-TotalCashDiscount+Fixed_Disc_Amount);
+                        /******Add by vikas 23.11.2012****************/
+                        //coment by vikas 6.12.2012 double TotalDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC-TotalCashDiscount+double.Parse(SqlDtr["Fixed_Disc_Amount"].ToString()));
+
+
+
+                        double TotalDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC-TotalCashDiscount+Fixed_Disc_Amount);
                         if (DropDiscType.SelectedIndex == 0)
                         {
                             txtDisc.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString());

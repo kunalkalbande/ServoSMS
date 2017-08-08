@@ -4080,35 +4080,43 @@ namespace Servosms.Module.Inventory
 						lblEntryBy.Text=SqlDtr.GetValue(12).ToString();  
 						lblEntryTime.Text= SqlDtr.GetValue(13).ToString();  
 						txtSecondrySpDisc.Text=SqlDtr["SecSPDisc"].ToString();
-						//******************
-						if(SqlDtr["Discount_type"].ToString()=="Per")
-						{
-							txtDiscount.Text=System.Convert.ToString((double.Parse(SqlDtr["Grand_Total"].ToString())-double.Parse(SqlDtr["schdiscount"].ToString()))*double.Parse(SqlDtr["discount"].ToString())/100);
-							txtDiscount.Text=System.Convert.ToString(Math.Round(double.Parse(txtDiscount.Text),2));
-						}
-						else
-							txtDiscount.Text="";
-						if(SqlDtr["cash_Disc_type"].ToString()=="Per")
-						{
-							double tot =0;
-							if(txtDiscount.Text!="")
-								tot = double.Parse(SqlDtr["Grand_Total"].ToString())-(double.Parse(SqlDtr["schdiscount"].ToString())+double.Parse(SqlDtr["foediscount"].ToString())+double.Parse(txtDiscount.Text));
-							else
-								tot = double.Parse(SqlDtr["Grand_Total"].ToString())-(double.Parse(SqlDtr["schdiscount"].ToString())+double.Parse(SqlDtr["foediscount"].ToString()));
-							txtCashDiscount.Text=System.Convert.ToString(tot*double.Parse(SqlDtr["Cash_Discount"].ToString())/100);
-							txtCashDiscount.Text=System.Convert.ToString(Math.Round(double.Parse(txtCashDiscount.Text),2));
-							tempcashdis.Value=txtCashDiscount.Text;
-						}
-						else
-							txtCashDiscount.Text="";
-						//******************
-						//Mahesh if(SqlDtr.GetValue(2).ToString().Equals("Credit"))
-						//Mahesh txtSlipNo.Visible = true;
-						//Mahesh else
-						//Mahesh txtSlipNo.Visible = false;
-						//Mahesh txtSlipNo.Text= SqlDtr.GetValue(14).ToString();
-						//Mahesh SlipNo.Value = txtSlipNo.Text;
-						txtCashDisc.Text=SqlDtr.GetValue(15).ToString();
+                        //******************
+                        if (SqlDtr["Discount_type"].ToString() == "Per")
+                        {
+                            txtDiscount.Text = System.Convert.ToString((double.Parse(SqlDtr["Grand_Total"].ToString()) - double.Parse(SqlDtr["schdiscount"].ToString())) * double.Parse(SqlDtr["discount"].ToString()) / 100);
+                            txtDiscount.Text = System.Convert.ToString(Math.Round(double.Parse(txtDiscount.Text), 2));
+                        }
+                        else
+                        {
+                            double Discount = double.Parse(GenUtil.strNumericFormat(SqlDtr["Discount"].ToString())) * double.Parse(GenUtil.strNumericFormat(SqlDtr["totalqtyltr"].ToString()));
+                            txtDiscount.Text = GenUtil.strNumericFormat(Discount.ToString());
+                        }
+
+
+                        if (SqlDtr["cash_Disc_type"].ToString() == "Per")
+                        {
+                            double tot = 0;
+                            if (txtDiscount.Text != "")
+                                tot = double.Parse(SqlDtr["Grand_Total"].ToString()) - (double.Parse(SqlDtr["schdiscount"].ToString()) + double.Parse(SqlDtr["foediscount"].ToString()) + double.Parse(txtDiscount.Text));
+                            else
+                                tot = double.Parse(SqlDtr["Grand_Total"].ToString()) - (double.Parse(SqlDtr["schdiscount"].ToString()) + double.Parse(SqlDtr["foediscount"].ToString()));
+                            txtCashDiscount.Text = System.Convert.ToString(tot * double.Parse(SqlDtr["Cash_Discount"].ToString()) / 100);
+                            txtCashDiscount.Text = System.Convert.ToString(Math.Round(double.Parse(txtCashDiscount.Text), 2));
+                            tempcashdis.Value = txtCashDiscount.Text;
+                        }
+                        else
+                        {
+                            double cashDiscount = double.Parse(GenUtil.strNumericFormat(SqlDtr["Cash_Discount"].ToString())) * double.Parse(GenUtil.strNumericFormat(SqlDtr["totalqtyltr"].ToString()));
+                            txtCashDiscount.Text = GenUtil.strNumericFormat(cashDiscount.ToString());
+                        }
+                        //******************
+                        //Mahesh if(SqlDtr.GetValue(2).ToString().Equals("Credit"))
+                        //Mahesh txtSlipNo.Visible = true;
+                        //Mahesh else
+                        //Mahesh txtSlipNo.Visible = false;
+                        //Mahesh txtSlipNo.Text= SqlDtr.GetValue(14).ToString();
+                        //Mahesh SlipNo.Value = txtSlipNo.Text;
+                        txtCashDisc.Text=SqlDtr.GetValue(15).ToString();
 						txtCashDisc.Text = GenUtil.strNumericFormat(txtCashDisc.Text.ToString());
 						DropCashDiscType.SelectedIndex= DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
 						txtVAT.Text =  SqlDtr.GetValue(17).ToString();

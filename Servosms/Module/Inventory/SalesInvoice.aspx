@@ -658,19 +658,23 @@
 	  
 		var CashDisc=document.Form1.txtCashDisc.value
 		if(CashDisc=="" || isNaN(CashDisc))
-			CashDisc=0
+		    CashDisc=0
 		if(document.Form1.DropCashDiscType.value=="Per")
 		{    
-			var CashDiscount=document.Form1.txtGrandTotal.value-eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP)
-			CashDisc=eval(CashDiscount)*CashDisc/100 
-			//********
-			document.Form1.tempcashdis.value=eval(CashDisc)
-			makeRound(document.Form1.tempcashdis)
-			
-			//********
+		    var CashDiscount=document.Form1.txtGrandTotal.value-eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP)
+		    CashDisc=eval(CashDiscount)*CashDisc/100 
+		    //********
+		    document.Form1.tempcashdis.value=eval(CashDisc)
+		    makeRound(document.Form1.tempcashdis)
+		    document.Form1.txtCashDiscount.value = eval(CashDisc);
+		    makeRound(document.Form1.txtCashDiscount)
+		    //********
 		}
-		document.Form1.txtCashDiscount.value = eval(CashDisc);
-		makeRound(document.Form1.txtCashDiscount)
+		else
+		{
+		    document.Form1.txtCashDiscount.value=qtyfoe*CashDisc
+		    makeRound(document.Form1.txtCashDisc)
+		}
 		document.Form1.txtVatValue.value = "";
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc) - eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP);	
 	    //************************************
