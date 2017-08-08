@@ -149,6 +149,7 @@ namespace Servosms.Module.Inventory
 			{
 				try
 				{
+                    lblInvoiceDate.Attributes.Add("readonly", "readonly");
 					tempEdit.Value="True";           //Add by vikas 14.07.09
 					//jk=0;
 					//Cache["CustName"]="";
@@ -667,7 +668,7 @@ namespace Servosms.Module.Inventory
 			 
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack free,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis  from products p,oilscheme o where p.prod_id=o.prodid and";
 				//Mahesh11.04.007 
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from products p,foe o where p.prod_id=o.prodid  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from products p,foe o where p.prod_id=o.prodid  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust  from products p,foe o where p.prod_id=o.prodid  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				SqlDtr=obj.GetRecordSet(sql);
 				if(SqlDtr.HasRows)
@@ -690,7 +691,7 @@ namespace Servosms.Module.Inventory
 				}
 			
 				//Mahesh11.04.007 
-				string sql2="select p.cust_name cust,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from customer p,foe o where p.cust_id=o.custid and o.prodid='0'  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";
+				string sql2="select p.cust_name cust,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from customer p,foe o where p.cust_id=o.custid and o.prodid='0'  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";
 				//string sql2="select p.cust_name cust,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust  from customer p,foe o where p.cust_id=o.custid and o.prodid='0'  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				//SqlDtr=obj.GetRecordSet(sql2);
 				dbobj.SelectQuery(sql2,ref rdr);
@@ -1548,7 +1549,7 @@ namespace Servosms.Module.Inventory
 					}
 				}
 				
-				obj.Invoice_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()));//GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString())
+				obj.Invoice_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()));//GenUtil.str2DDMMYYYY(Request.Form["txtDateFrom"].ToString())
 
                 //Coment by vikas 11.12.2012 if(DropOrderInvoice.SelectedItem.Text=="Select")
                 //Coment by vikas 11.12.2012 	obj.Order_No="0";
@@ -1800,7 +1801,7 @@ namespace Servosms.Module.Inventory
 					
 					//**Save(ProdName[j].Value,PackType[j].Value,Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j);
 					//vikas sharma 22.04.09 Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
-					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()), scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
+					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
 					//for(int i=0;i<ProdName1.Length ;i++)
 					//{
 					//****************
@@ -1823,7 +1824,7 @@ namespace Servosms.Module.Inventory
 						arrschName[0]="";
 						arrschName[1]="";
 					}
-					Save1(arrschName[0].ToString(),arrschName[1].ToString(), Request.Form[Qty1[j].ID].ToString(), GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()), scheme[j].Text.ToString (),j,Schtemp);
+					Save1(arrschName[0].ToString(),arrschName[1].ToString(), Request.Form[Qty1[j].ID].ToString(), GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), scheme[j].Text.ToString (),j,Schtemp);
 					InsertBatchNo(arrschName[0].ToString(),arrschName[1].ToString(), Request.Form[Qty1[j].ID].ToString());
 					//}
 					
@@ -3089,7 +3090,7 @@ namespace Servosms.Module.Inventory
 								//Mahesh 05.11.007 cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",0,0,'"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()))+"')",con1);
 								
 								//Comment by vikas 1.05.09 cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							else if(cat.StartsWith("2t") || cat.StartsWith("2T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+","+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+",0,'"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text))+"')",con1);
@@ -3098,14 +3099,14 @@ namespace Servosms.Module.Inventory
 								//**cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
 								
 								//Comment by vikas 1.05.09cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							else if(cat.StartsWith("4t") || cat.StartsWith("4T"))
 								// cmd=new SqlCommand("insert into Sales_Oil values("+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+",0,"+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+",'"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text))+"')",con1);
 								//cmd=new SqlCommand("insert into Sales_Oil values("+invoice+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",'"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()))+"')",con1);
 								
 								// Comment by vikas 1.05.09 cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							cmd.ExecuteNonQuery();
 							con1.Close();
@@ -3120,21 +3121,21 @@ namespace Servosms.Module.Inventory
 								//**cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
 								
 								// Comment by vikas 1.05.09 cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							else if(cat.StartsWith("2t") || cat.StartsWith("2T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+","+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+",0,'"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text))+"')",con1);
 								//**cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
 								
 								//Comment by vikas 1.05.09 cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+","+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							else if(cat.StartsWith("4t") || cat.StartsWith("4T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+",0,"+GenUtil.changeqty(txtPack1.Value,int.Parse(txtQty1.Text))+",'"+System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text))+"')",con1);
 								//**cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(PackType[cc].Value,int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
 								
 								//Comment by vikas 1.05.09cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(arrProdName[1].ToString(),int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",0,"+GenUtil.changeqty(arrProdName[2].ToString(),int.Parse(Qty[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							cmd.ExecuteNonQuery();
 							con1.Close();
@@ -3164,14 +3165,14 @@ namespace Servosms.Module.Inventory
 								//cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
 								
 								//Comment By vikas 1.05.09 cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 
 							else if(cat.StartsWith("2t") || cat.StartsWith("2T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+","+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+","+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+","+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 							else if(cat.StartsWith("4t") || cat.StartsWith("4T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",0,"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+dropInvoiceNo.SelectedItem.Text.Trim()+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 							cmd.ExecuteNonQuery();
 							con1.Close();
 							cmd.Dispose();
@@ -3181,13 +3182,13 @@ namespace Servosms.Module.Inventory
 							con1.Open ();
 							if(cat=="")
 								//cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+","+prod_id+",'"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 							else if(cat.StartsWith("2t") || cat.StartsWith("2T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+","+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+","+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+","+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 							else if(cat.StartsWith("4t") || cat.StartsWith("4T"))
 								//cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",0,"+GenUtil.changeqty(PackType1[cc].Text,int.Parse(Qty1[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
-								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103))",con1);
+								cmd=new SqlCommand("insert into Sales_Oil values("+FromDate+ToDate+lblInvoiceNo.Text+",'"+prod_id+"','"+txtcusttype.Text+"',"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",0,"+GenUtil.changeqty(arrProdschName1[1].ToString(),int.Parse(Qty1[cc].Text))+",Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103))",con1);
 							cmd.ExecuteNonQuery();
 							con1.Close();
 							cmd.Dispose();
@@ -5382,7 +5383,7 @@ namespace Servosms.Module.Inventory
 
 				//Coment by vikas 27.7.2013 sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') order by prod_name desc";        //Add by vikas 7.11.2012
 
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype,sch_id from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') order by prod_name desc";  //Add by vikas 25.7.2013
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype,sch_id from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') order by prod_name desc";  //Add by vikas 25.7.2013
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') and o.prodid=1029";       
 				
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"' and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)')";
@@ -5463,7 +5464,7 @@ namespace Servosms.Module.Inventory
 
 		/// <summary>
 		/// This method stored only liter scheme information.
-		/// </summary>
+		/// </summarytemptextSecSP
 		public void getscheme1()
 		{
 			try
@@ -5480,7 +5481,7 @@ namespace Servosms.Module.Inventory
 				
 				//coment by vikas 25.10.2012 sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";
 				
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";    //Add by vikas 25.10.2012
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";    //Add by vikas 25.10.2012
 
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				SqlDtr=obj.GetRecordSet(sql);
@@ -5543,7 +5544,7 @@ namespace Servosms.Module.Inventory
 				//Mahesh11.04.007 
 				
 				//coment by vikas 26.10.2012 sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";       //add by vikas 26.10.2012
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";       //add by vikas 26.10.2012
 				
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				SqlDtr=obj.GetRecordSet(sql);
@@ -7894,7 +7895,7 @@ namespace Servosms.Module.Inventory
 
 								//07.07.09 dbobj1.Insert_or_Update("update stockmaster_batch set sales=sales+"+count+",closing_stock=closing_stock-"+count+" where productid='"+rdr["productid"].ToString()+"' and batch_id='"+rdr["batch_id"].ToString()+"'",ref x);
 
-								dbobj1.Insert_or_Update("update stockmaster_batch set stock_date=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103), sales=sales+"+count+",closing_stock=closing_stock-"+count+" where productid='"+rdr["productid"].ToString()+"' and batch_id='"+rdr["batch_id"].ToString()+"'",ref x);  
+								dbobj1.Insert_or_Update("update stockmaster_batch set stock_date=Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103), sales=sales+"+count+",closing_stock=closing_stock-"+count+" where productid='"+rdr["productid"].ToString()+"' and batch_id='"+rdr["batch_id"].ToString()+"'",ref x);  
 								
 								/***************Add by vikas 15.09.09******************************
 								if(lblInvoiceNo.Visible!=true)
@@ -7908,9 +7909,9 @@ namespace Servosms.Module.Inventory
 								********************************End*******************************/
 								
 								if(lblInvoiceNo.Visible==true)
-									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+count+"',"+cl_sk.ToString()+")",ref x);
+									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+count+"',"+cl_sk.ToString()+")",ref x);
 								else
-									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+count+"',"+cl_sk.ToString()+")",ref x);	
+									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+count+"',"+cl_sk.ToString()+")",ref x);	
 								
 								/***********add by vikas 19.06.09 *****************/
 								dbobj1.Insert_or_Update("update batchno set qty=qty-"+count+" where prod_id='"+rdr["productid"].ToString()+"' and batch_id='"+rdr["batch_id"].ToString()+"'",ref x);
@@ -7933,12 +7934,12 @@ namespace Servosms.Module.Inventory
 								}
 								**********End***************************************************/
 
-								dbobj1.Insert_or_Update("update stockmaster_batch set stock_date=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103), sales=sales+"+double.Parse(rdr["closing_stock"].ToString())+",closing_stock=closing_stock-"+double.Parse(rdr["closing_stock"].ToString())+" where productid='"+rdr["productid"].ToString()+"' and batch_id='"+rdr["batch_id"].ToString()+"'",ref x);
+								dbobj1.Insert_or_Update("update stockmaster_batch set stock_date=Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103), sales=sales+"+double.Parse(rdr["closing_stock"].ToString())+",closing_stock=closing_stock-"+double.Parse(rdr["closing_stock"].ToString())+" where productid='"+rdr["productid"].ToString()+"' and batch_id='"+rdr["batch_id"].ToString()+"'",ref x);
 								
 								if(lblInvoiceNo.Visible==true)
-									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["closing_stock"].ToString()+"',"+cl_sk.ToString()+")",ref x);
+									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+lblInvoiceNo.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["closing_stock"].ToString()+"',"+cl_sk.ToString()+")",ref x);
 								else
-									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["closing_stock"].ToString()+"',"+cl_sk.ToString()+")",ref x);
+									dbobj1.Insert_or_Update("insert into batch_transaction values("+(SNo++)+",'"+dropInvoiceNo.SelectedItem.Text+"','Sales Invoice',Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103),'"+rdr["ProductID"].ToString()+"','"+rdr["Batch_ID"].ToString()+"','"+rdr["closing_stock"].ToString()+"',"+cl_sk.ToString()+")",ref x);
 									
 								//dbobj1.Insert_or_Update("update batch_transaction set trans_date=Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103),qty='"+rdr["closing_stock"].ToString()+"',closing_stock="+cl_sk.ToString()+" where trans_id='"+dropInvoiceNo.SelectedItem.Text+"' and trans_type='Sales Invoice' and prod_id='"+rdr["ProductID"].ToString()+"'",ref x);	
 								

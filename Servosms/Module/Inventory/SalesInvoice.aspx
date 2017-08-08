@@ -2260,7 +2260,7 @@ function MoveFocus(t,drop,e)
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
-												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="Groove" ReadOnly="True"
+												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="Groove"
 														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 															align="absMiddle" border="0"></A></TD>
 											</TR>
