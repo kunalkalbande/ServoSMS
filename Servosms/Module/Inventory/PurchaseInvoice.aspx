@@ -612,7 +612,7 @@
 			
 			
             var tot_fixdisc=document.Form1.txtfixdiscamount.value           //Add by vikas 31.10.2012
-		
+            var Disc=document.Form1.txtTotalDisc.value
             var CashDisc=document.Form1.txtCashDisc.value
             if(CashDisc=="" || isNaN(CashDisc))
                 CashDisc=0
@@ -2385,8 +2385,8 @@
                                     <tr>
                                     <td width="2px">CGST</td>
                                     <td width="95px">
-                                        <asp:RadioButton ID="N"  onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
-                                        <asp:RadioButton ID="Y" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="N"  onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="cgst"></asp:RadioButton>
+                                        <asp:RadioButton ID="Y" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="true" GroupName="cgst"></asp:RadioButton>
                                     </td>
                                     </tr>
                                 </table>
@@ -2401,8 +2401,8 @@
                                     <tr>
                                         <td width="2px">SGST</td>
                                         <td width="95px">
-                                            <asp:RadioButton  ID="Noo" onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
-                                            <asp:RadioButton ID="Yess" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton  ID="Noo" onclick="return GetNetAmountEtaxnew()" runat="server" Width="39px" ToolTip="Not Applied" Checked="false" GroupName="sgst"></asp:RadioButton>
+                                            <asp:RadioButton ID="Yess" onclick="return GetNetAmountEtaxnew()" runat="server" Width="75px" ToolTip="Applied" Checked="true" GroupName="sgst"></asp:RadioButton>
                                         </td>
                                     </tr>
                                 </table>

@@ -2910,8 +2910,8 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">CGST</td>
                                             <td width="95px">
-                                               <asp:RadioButton ID="N" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
-                                               <asp:RadioButton ID="Y" onclick="return GetNetAmount();" runat="server" ToolTip="Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="N" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="cgst"></asp:radiobutton>
+                                               <asp:RadioButton ID="Y" onclick="return GetNetAmount();" runat="server" ToolTip="Applied"	Checked="true" GroupName="cgst"></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>
@@ -2928,8 +2928,8 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">SGST</td>
                                             <td width="95px">
-                                                <asp:RadioButton ID="Noo" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
-                                                <asp:RadioButton ID="Yess" onclick="return GetNetAmount();" runat="server" ToolTip="Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="Noo" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied"	Checked="false" GroupName="sgst" ></asp:radiobutton>
+                                                <asp:RadioButton ID="Yess" onclick="return GetNetAmount();" runat="server" ToolTip="Applied"	Checked="true" GroupName="sgst" ></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>
