@@ -894,18 +894,16 @@
             selarr=selectedProduct.split(":");
             mainarr =dbValues.split("~");
 
-            for(i=0;i<mainarr.length-1;i++)
+            for(i=0;i<mainarr.length;i++)
             {
-                taxarr = mainarr[i].split("|")
-                for(var j=0;j<taxarr.length;j++ )
-                {
+                taxarr = mainarr[i].split("|");                
                     if(taxarr[0]==selarr[0])
                     {
                         document.Form1.txtVatRate.value=taxarr[3];
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
                     }
-                }
+               
             }
 
 

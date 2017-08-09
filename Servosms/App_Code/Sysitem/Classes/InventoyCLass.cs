@@ -5260,10 +5260,10 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd=new SqlCommand("ProPriceUpdateEntry",SqlCon);
 			SqlCmd.CommandType = CommandType.StoredProcedure;
             SqlCmd.Parameters.Add("@Eff_Date", System.Convert.ToDateTime(Eff_Date));
-			SqlCmd.Parameters .Add("@Prod_Name",Product_Name);
-			SqlCmd.Parameters .Add("@Pack_Type",Package_Type);
-			SqlCmd.Parameters .Add("@Pur_Rate",Pur_Rate);
-			SqlCmd.Parameters .Add("@Sal_Rate",Sal_Rate);
+			SqlCmd.Parameters.Add("@Prod_Name",Product_Name);
+			SqlCmd.Parameters.Add("@Pack_Type",Package_Type);
+			SqlCmd.Parameters.Add("@Pur_Rate",Pur_Rate);
+			SqlCmd.Parameters.Add("@Sal_Rate",Sal_Rate);
             SqlCmd.Parameters.Add("@HSN",HSN);
             SqlCmd.Parameters.Add("@IGST",IGST);
             SqlCmd.Parameters.Add("@CGST",CGST);

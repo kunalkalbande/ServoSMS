@@ -658,23 +658,26 @@
 	  
 		var CashDisc=document.Form1.txtCashDisc.value
 		if(CashDisc=="" || isNaN(CashDisc))
-		    CashDisc=0
+			CashDisc=0
 		if(document.Form1.DropCashDiscType.value=="Per")
 		{    
-		    var CashDiscount=document.Form1.txtGrandTotal.value-eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP)
-		    CashDisc=eval(CashDiscount)*CashDisc/100 
-		    //********
-		    document.Form1.tempcashdis.value=eval(CashDisc)
-		    makeRound(document.Form1.tempcashdis)
-		    document.Form1.txtCashDiscount.value = eval(CashDisc);
-		    makeRound(document.Form1.txtCashDiscount)
-		    //********
+			var CashDiscount=document.Form1.txtGrandTotal.value-eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP)
+			CashDisc=eval(CashDiscount)*CashDisc/100 
+			//********
+			document.Form1.tempcashdis.value=eval(CashDisc)
+			makeRound(document.Form1.tempcashdis)
+			document.Form1.txtCashDiscount.value = eval(CashDisc);
+			makeRound(document.Form1.txtCashDiscount)
+			//********
 		}
+		
 		else
 		{
 		    document.Form1.txtCashDiscount.value=qtyfoe*CashDisc
 		    makeRound(document.Form1.txtCashDisc)
 		}
+
+		
 		document.Form1.txtVatValue.value = "";
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc) - eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP);	
 	    //************************************
@@ -882,18 +885,16 @@
         selarr=selectedProduct.split(":");
         mainarr =dbValues.split("~");
 
-	    for(i=0;i<mainarr.length-1;i++)
+	    for(i=0;i<mainarr.length;i++)
 	    {
-	        taxarr = mainarr[i].split("|")
-	        for(var j=0;j<taxarr.length;j++ )
+	        taxarr = mainarr[i].split("|");	       
+	        if(taxarr[0]==selarr[0])
 	        {
-	            if(taxarr[0]==selarr[0])
-	            {
-	                document.Form1.txtVatRate.value=taxarr[3];
-	                document.Form1.Tempcgstrate.value=taxarr[4];
-	                document.Form1.Tempsgstrate.value=taxarr[5];
-	            }
+	            document.Form1.txtVatRate.value=taxarr[3];
+	            document.Form1.Tempcgstrate.value=taxarr[4];
+	            document.Form1.Tempsgstrate.value=taxarr[5];
 	        }
+	        
 	    }
 	  
 
@@ -2260,7 +2261,7 @@ function MoveFocus(t,drop,e)
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
-												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="Groove"
+												<TD><asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="Groove" 
 														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 															align="absMiddle" border="0"></A></TD>
 											</TR>
