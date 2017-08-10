@@ -327,7 +327,8 @@
             {
                 if (Request.Params.Get("Chk" + i) != null)
                 {
-                    obj.Eff_Date = DateTime.Now.Date.ToShortDateString();
+                    //obj.Eff_Date = DateTime.Now.Date.ToShortDateString();
+                    obj.Eff_Date = DateTime.Now.ToString("dd'/'MM'/'yyyy hh:mm:ss");
 
                     obj.Product_Name = Request.Params.Get("lblProd_Name" + i);
                     obj.Package_Type = Request.Params.Get("lblPack_Type" + i);
