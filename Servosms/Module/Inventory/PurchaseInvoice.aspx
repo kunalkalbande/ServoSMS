@@ -648,6 +648,7 @@
             else
             {
                 document.Form1.txtTotalCashDisc.value=document.Form1.txtCashDisc.value*document.Form1.txttotalqtyltr.value
+                CashDisc=document.Form1.txtTotalCashDisc.value
                 makeRound(document.Form1.txtTotalCashDisc)
             }
 			
@@ -883,7 +884,6 @@
         function GetNetAmountEtaxnew()
         {
             // debugger;
-
             var dbValues=document.Form1.txtMainGST.value;
             var selectedProduct =  document.Form1.DropType1.value;
             var mainarr = new Array()
