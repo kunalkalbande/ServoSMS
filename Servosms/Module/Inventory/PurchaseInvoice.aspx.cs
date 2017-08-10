@@ -335,7 +335,7 @@ namespace Servosms.Module.Inventory
 								DropCashDiscType.SelectedIndex=1;
 						}
 						else
-							txtCashDisc.Text="";
+							txtCashDisc.Text="0";
 						
 						txtDiscStatus.Value=SqlDtr["DiscountPurchaseStatus"].ToString();
 

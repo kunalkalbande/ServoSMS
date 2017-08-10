@@ -258,7 +258,7 @@ namespace Servosms.Module.Inventory
 								DropCashDiscType.SelectedIndex=1;
 						}
 						else
-							txtCashDisc.Text="";
+							txtCashDisc.Text="0";
 						if(SqlDtr["DiscountSalesStatus"].ToString()=="1")
 						{
 							txtDisc.Text=SqlDtr["DiscountSales"].ToString();
@@ -268,12 +268,12 @@ namespace Servosms.Module.Inventory
 								DropDiscType.SelectedIndex=1;
 						}
 						else
-							txtDisc.Text="";
+							txtDisc.Text="0";
 					}
 					else
 					{
-						txtDisc.Text="";
-						txtCashDisc.Text="";
+						txtDisc.Text="0";
+						txtCashDisc.Text="0";
 						DropCashDiscType.SelectedIndex=0;
 						DropDiscType.SelectedIndex=0;
 					}

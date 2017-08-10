@@ -559,7 +559,7 @@
                 {
                     //old Dt=eval(document.Form1.txtGrandTotal.value)-(eval(bird)+eval(tradeDisc)+eval(focDisc))
                     //		Dt=eval(document.Form1.txtGrandTotal.value)-((eval(bird)-eval(birdless))+(eval(tradeDisc)-eval(tradeless))+eval(focDisc))
-                    if(Disc>0)
+                    //if(Disc>0)
                     {
                         Dt=eval(document.Form1.txtGrandTotal.value)
                         Disc=Dt*Disc/100 
@@ -568,11 +568,11 @@
                         if(isNaN(document.Form1.txtTotalDisc.value))
                             document.Form1.txtTotalDisc.value=""
                     }
-                    else
-                    {
-                        Disc=document.Form1.txtTotalDisc.value
-                        makeRound(Disc)
-                    }
+                   // else
+                    //{
+                    //    Disc=document.Form1.txtTotalDisc.value
+                    //    makeRound(Disc)
+                    //}
                 }
                 else
                 {
@@ -585,7 +585,7 @@
 					var fixdiscTot=eval(disRate)*eval(tot_qty)
 					document.Form1.txtfixdisc.value=disRate
 					document.Form1.txtfixdiscamount.value=fixdiscTot*/
-                    if(Disc>0)
+                    //if(Disc>0)
                     {
                         Dt=eval(document.Form1.txttotalqtyltr1.value)
                         Disc=Dt*Disc 
@@ -594,11 +594,11 @@
                         if(isNaN(document.Form1.txtTotalDisc.value))
                             document.Form1.txtTotalDisc.value=""
                     }
-                    else
-                    {
-                        Disc=document.Form1.txtTotalDisc.value
-                        makeRound(Disc)
-                    }
+                    //else
+                    //{
+                    //    Disc=document.Form1.txtTotalDisc.value
+                    //    makeRound(Disc)
+                    //}
                 }	
             }
             if(Disc==""||isNaN(Disc))
@@ -661,6 +661,8 @@
             //coment by vikas 22.12.2012 document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc))   //Add by vikas 31.10.2012
             document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))   //Add by vikas 22.12.2012
             totaldisc=((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+            if(isNaN(totaldisc))
+                totaldisc=0
             entrytax=eval(Et)
             //coment by vikas 30.06.09  document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc))
 		
@@ -911,7 +913,11 @@
             GetIgstamt()
             Getcgstamt()
             Getsgstamt()
-            document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value)+eval(entrytax) +eval(totalAmountAfterGst)-eval(totaldisc),0);
+            if(document.Form1.txtGrandTotal.value == "" || isNaN(document.Form1.txtGrandTotal.value))
+                document.Form1.txtGrandTotal.value = 0;
+            document.Form1.txtNetAmount.value =   Math.round(eval(document.Form1.txtGrandTotal.value)+eval(entrytax) +eval(totalAmountAfterGst)-eval(totaldisc),0);
+            //if(document.Form1.txtNetAmount.value = ""|| isNaN(document.Form1.txtNetAmount.value))
+            //    document.Form1.txtNetAmount.value=0;
             //GetGrandTotal1();
             //var vat_value = 0;
             //if(document.Form1.No.checked)

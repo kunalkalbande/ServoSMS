@@ -163,20 +163,20 @@ namespace Servosms.Module.Admin.ModuleManagement
 						FixedDis=1;
 					if(chkPurDis.Checked)
 						DisPurchase=1;
-					//if(chkPurVat.Checked)
-					//	VatPurchase=1;
-     //               if (CheckBoxcgst.Checked)
-     //                   cgstpur = 1;
-     //               if (CheckBoxsgst.Checked)
-     //                   sgstpur = 1;
-					//if(chkPurCashDis.Checked)
-					//	CashDisPurchase=1;
-					//if(txtPurVat.Text.Trim()!="")
-					//	vatRate=double.Parse(txtPurVat.Text);
-					
-					/* **************Add by vikas sharma ** date on 24.04.09*********/
-					
-					if(txtPurEarlyBird.Text!="")
+                    //if(chkPurVat.Checked)
+                    //	VatPurchase=1;
+                    //               if (CheckBoxcgst.Checked)
+                    //                   cgstpur = 1;
+                    //               if (CheckBoxsgst.Checked)
+                    //                   sgstpur = 1;
+                    if (chkPurCashDis.Checked)
+                        CashDisPurchase = 1;
+                    //if(txtPurVat.Text.Trim()!="")
+                    //	vatRate=double.Parse(txtPurVat.Text);
+
+                    /* **************Add by vikas sharma ** date on 24.04.09*********/
+
+                    if (txtPurEarlyBird.Text!="")
 						Tot_EBD=txtPurEarlyBird.Text;
 					else
 						Tot_EBD="0.0";
@@ -218,19 +218,19 @@ namespace Servosms.Module.Admin.ModuleManagement
 						SalesFleetOe=1;
 					if(chkSalesDis.Checked)
 						DisSales=1;
-					//if(chkSalesVat.Checked)
-					//	VatSales=1;
-     //               if (CheckBoxCGST2.Checked)
-     //                   cgstsales = 1;
-     //               if (CheckBoxSGST2.Checked)
-     //                   sgstsales = 1;
-					//if(chkSalesCashDis.Checked)
-					//	CashDisSales=1;
-					//if(txtSalesVat.Text.Trim()!="")
-					//	vatRate=double.Parse(txtSalesVat.Text);
+                    //if(chkSalesVat.Checked)
+                    //	VatSales=1;
+                    //               if (CheckBoxCGST2.Checked)
+                    //                   cgstsales = 1;
+                    //               if (CheckBoxSGST2.Checked)
+                    //                   sgstsales = 1;
+                    if (chkSalesCashDis.Checked)
+                        CashDisSales = 1;
+                    //if(txtSalesVat.Text.Trim()!="")
+                    //	vatRate=double.Parse(txtSalesVat.Text);
 
-                    
-				}
+
+                }
 					//coment by vikas 02.06.09 else
 				else if(RadModCen.Checked)  //add by vikas 02.06.09 
 				{
@@ -370,22 +370,23 @@ namespace Servosms.Module.Admin.ModuleManagement
 							chkPurDis.Checked=true;
 						else
 							chkPurDis.Checked=false;
-						//if(SqlDtr["IGSTPurchaseStatus"].ToString()=="1")
-						//	chkPurVat.Checked=true;
-						//else
-						//	chkPurVat.Checked=false;
-						//if(SqlDtr["CashDisPurchaseStatus"].ToString()=="1")
-						//	chkPurCashDis.Checked=true;
-						//else
-						//	chkPurCashDis.Checked=false;
-      //                  if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
-      //                      CheckBoxcgst.Checked = true;
-      //                  else
-      //                      CheckBoxcgst.Checked = false;
-      //                  if (SqlDtr["SGSTSalesStatus"].ToString() == "1")
-      //                      CheckBoxsgst.Checked = true;
-      //                  else
-      //                      CheckBoxsgst.Checked = false;
+                        if (SqlDtr["CashDisPurchaseStatus"].ToString() == "1")
+                            chkPurCashDis.Checked = true;
+                        else
+                            chkPurCashDis.Checked = false;
+                        //if(SqlDtr["IGSTPurchaseStatus"].ToString()=="1")
+                        //	chkPurVat.Checked=true;
+                        //else
+                        //	chkPurVat.Checked=false;
+
+                        //                  if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
+                        //                      CheckBoxcgst.Checked = true;
+                        //                  else
+                        //                      CheckBoxcgst.Checked = false;
+                        //                  if (SqlDtr["SGSTSalesStatus"].ToString() == "1")
+                        //                      CheckBoxsgst.Checked = true;
+                        //                  else
+                        //                      CheckBoxsgst.Checked = false;
 
                         /***********Add by vikas 5.11.2012*******************/
                         string EB_period="";
@@ -432,25 +433,25 @@ namespace Servosms.Module.Admin.ModuleManagement
 							chkSalesDis.Checked=true;
 						else
 							chkSalesDis.Checked=false;
-						//if(SqlDtr["IGSTSalesStatus"].ToString()=="1")
-						//	chkSalesVat.Checked=true;
-						//else
-						//	chkSalesVat.Checked=false;
-						//if(SqlDtr["CashDisSalesStatus"].ToString()=="1")
-						//	chkSalesCashDis.Checked=true;
-						//else
-						//	chkSalesCashDis.Checked=false;
-      //                  if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
-      //                      CheckBoxCGST2.Checked = true;
-      //                  else
-      //                      CheckBoxCGST2.Checked = false;
-      //                  if (SqlDtr["SGSTSalesStatus"].ToString() == "1")
-      //                      CheckBoxSGST2.Checked = true;
-      //                  else
-      //                      CheckBoxSGST2.Checked = false;
+                        //if(SqlDtr["IGSTSalesStatus"].ToString()=="1")
+                        //	chkSalesVat.Checked=true;
+                        //else
+                        //	chkSalesVat.Checked=false;
+                        if (SqlDtr["CashDisSalesStatus"].ToString() == "1")
+                            chkSalesCashDis.Checked = true;
+                        else
+                            chkSalesCashDis.Checked = false;
+                        //                  if (SqlDtr["CGSTSalesStatus"].ToString() == "1")
+                        //                      CheckBoxCGST2.Checked = true;
+                        //                  else
+                        //                      CheckBoxCGST2.Checked = false;
+                        //                  if (SqlDtr["SGSTSalesStatus"].ToString() == "1")
+                        //                      CheckBoxSGST2.Checked = true;
+                        //                  else
+                        //                      CheckBoxSGST2.Checked = false;
                     }
-						// else //coment by vikas 02.06.09 
-					else if(RadModCen.Checked)
+                    // else //coment by vikas 02.06.09 
+                    else if(RadModCen.Checked)
 					{
 						txtModExcise.Text = SqlDtr["Excise"].ToString();
 						txtModEntryTax.Text = SqlDtr["EntryTax"].ToString();
