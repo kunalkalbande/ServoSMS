@@ -697,7 +697,7 @@
 	        
 	        if(sgst_rate == "")
 	            sgst_rate=0;
-	        var sgst= document.Form1.txtVatValue.value;
+	        var sgst= totalValue;
 	        if(sgst == "" || isNaN(sgst))
 	            sgst = 0;
 	        var sgst_amount = sgst * sgst_rate/100
@@ -713,6 +713,7 @@
 	        }
 	        document.Form1.Textsgst.value =  Math.round(sgst_amount,0);
 	    }
+	    return sgst_amount;
 	}
 	var persistedCgstNetAmount=0;
 	var persistedIgstNetAmount=0;
@@ -722,6 +723,7 @@
 	{
 	   // ;
 	    var sgst_value=0;
+	    var sgst = 0;
 	    if(document.Form1.Noo.checked)
 	    {
 	        GetCashDiscount()
@@ -732,7 +734,7 @@
 	    }
 	    else
 	    {
-	        GetSGSTAmount()
+	        sgst = GetSGSTAmount()
 	        sgst_value=document.Form1.txtVatValue.value;
 	    }
 	    if(sgst_value=="" || isNaN(sgst_value))
@@ -745,7 +747,7 @@
 	    if(document.Form1.Textsgst.value!='')
 	    totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
 	 //   document.Form1.txtNetAmount.value=persistedSgstNetAmount+netamount;
-
+	    return sgst;
 	}
 
 	function GetCGSTAmount()
@@ -762,7 +764,7 @@
 	        
 	        if(cgst_rate == "")
 	            cgst_rate = 0;
-	        var cgst = document.Form1.txtVatValue.value    
+	        var cgst = totalValue
 	        if(cgst == "" || isNaN(cgst))
 	            cgst = 0;
 	        var cgst_amount = cgst * cgst_rate/100
@@ -777,12 +779,14 @@
 	        }
 	        document.Form1.Textcgst.value =Math.round(cgst_amount,0);
 	    }
+        return cgst_amount
 	}
 
 	function Getcgstamt()
 	{
 	    //;
 	    var cgst_value=0;
+	    var cgst = 0;
 	    if(document.Form1.N.checked)
 	    {
 	        GetCashDiscount()
@@ -793,7 +797,7 @@
 	    }
 	    else
 	    {
-	        GetCGSTAmount()
+	        cgst =  GetCGSTAmount()
 	        cgst_value=document.Form1.txtVatValue.value;
 	    }
 	    if(cgst_value=="" || isNaN(cgst_value))
@@ -806,7 +810,7 @@
 	    if(document.Form1.Textcgst.value!='')
 	    totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
 	  //  document.Form1.txtNetAmount.value=persistedCgstNetAmount+netamount;
-
+	    return cgst;
 	}
 	function GetVatAmount()
 	{
@@ -822,7 +826,7 @@
 	       
 	    if(vat_rate == "")
 	       vat_rate = 0;
-	     var vat = document.Form1.txtVatValue.value    
+	     var vat = totalValue   
 	         if(vat == "" || isNaN(vat))
 	       vat = 0;
 	     var vat_amount = vat * vat_rate/100
@@ -836,12 +840,14 @@
 	     }
 	     document.Form1.txtVAT.value = Math.round(vat_amount,0);
 	    }
+	    return vat_amount
 	}
 		    //Calculate IGST
 	function Getigstamt()
 	{
 	  
 	    var vat_value = 0;
+	    var vat = 0;
 	    if(document.Form1.No.checked)
 	    {
 	        GetCashDiscount()
@@ -853,7 +859,7 @@
 	    }
 	    else		{
 		   
-	        GetVatAmount()
+	        vat= GetVatAmount()
 	        vat_value = document.Form1.txtVatValue.value;
 		
 	    }
@@ -867,69 +873,192 @@
 	    if(document.Form1.txtVAT.value!='')
 	    totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
 	    //document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
-		
+	    return vat;
 
 	}
+	var totalValue = 0;
 	function GetNetAmount()
 	{
 	    //debugger;
-	    var dbValues =  document.Form1.txtMainIGST.value;
-	    var selectedProduct =  document.Form1.DropType1.value;
+	    var dbValues =  document.Form1.txtMainIGST.value;	    
 	    var mainarr = new Array()
 	    var taxarr = new Array()
 	    var selarr = new Array()
-	    
+	    var totol= 0
+	    var qtyfoe=0
+	    var qt=0
+	    var SchSP=0
+	    var f1=document.Form1
 	    document.Form1.txtVatRate.value=""
 	    document.Form1.Tempcgstrate.value=""
 	    document.Form1.Tempsgstrate.value=""
-        
-        selarr=selectedProduct.split(":");
-        mainarr =dbValues.split("~");
+	    var cgstamount1=0,cgstamount2 = 0,cgstamount3=0,cgstamount4=0,cgstamount5=0,cgstamount6=0,cgstamount7=0,cgstamount8=0,cgstamount9=0,cgstamount10=0,cgstamount11=0,cgstamount12 = 0
+	    var sgstamount1=0,sgstamount2 = 0,sgstamount3=0,sgstamount4=0,sgstamount5=0,sgstamount6=0,sgstamount7=0,sgstamount8=0,sgstamount9=0,sgstamount10=0,sgstamount11=0,sgstamount12 = 0
+	    var igstamount1=0,igstamount2 = 0,igstamount3=0,igstamount4=0,igstamount5=0,igstamount6=0,igstamount7=0,igstamount8=0,igstamount9=0,igstamount10=0,igstamount11=0,igstamount12 = 0
 
-	    for(i=0;i<mainarr.length;i++)
+        <% for (int i = 1; i <= 12; i++)
+        {
+				%>
+	    if(document.Form1.DropType<%=i%>.value !="Type")
 	    {
-	        taxarr = mainarr[i].split("|");	       
-	        if(taxarr[0]==selarr[0])
+            var selectedProduct = document.Form1.DropType<%=i%>.value
+	        selarr=selectedProduct.split(":");
+	        mainarr =dbValues.split("~");
+	        var selproduct=selectedProduct.split(":");
+	        var ltrs=selproduct[2].split("X")
+	        var calcLtrs=ltrs[0]*ltrs[1]
+	        if(f1.DropType<%=i%>.value.indexOf(":")>0)
+	            arrType = f1.DropType<%=i%>.value.split(":")
+	        else
 	        {
-	            document.Form1.txtVatRate.value=taxarr[3];
-	            document.Form1.Tempcgstrate.value=taxarr[4];
-	            document.Form1.Tempsgstrate.value=taxarr[5];
+	            arrType[0]=""
+	            arrType[1]=""
+	            arrType[2]=""				
 	        }
+			if(arrType[2] != "")
+			{
+				var mainarr1 = new Array()
+				var hidarr1  = arrType[2]
+										
+				if(arrType[2] == "Loose Oil" || arrType[2] == "Loose oil")
+				{
+				
+					totol=f1.txtQty<%=i%>.value*f1.txtsch<%=i%>.value
+					total_fleetoe=f1.txtQty<%=i%>.value*f1.txtfoe<%=i%>.value
+					totolSP=f1.txtQty<%=i%>.value*f1.txtTempschSP<%=i%>.value
+				}
+				else
+				{
+				
+					mainarr1 = hidarr1.split("X")
+					if(document.Form1.tmpSchType<%=i%>.value=="%")
+					{
+						totol=(document.Form1.txtAmount<%=i%>.value*f1.txtsch<%=i%>.value)/100
+						
+					}
+					else 
+					{
+						totol=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value*f1.txtsch<%=i%>.value
+					}
+				}
+			}
+	        if(arrType[2] != "")
+	        {
+	            var mainarr1 = new Array()
+	            var hidarr1  = arrType[2]
+	            if(arrType[2] == "Loose Oil" || arrType[2] == "Loose oil")
+	            {
+	                qtyfoe=f1.txtQty<%=i%>.value
+	                qt=f1.txtQty<%=i%>.value*f1.txtfoe<%=i%>.value 
+	            }
+	            else
+	            {
+	                mainarr1 = hidarr1.split("X")				
+	                qtyfoe=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value
+	                if(document.Form1.tmpFoeType<%=i%>.value=="Rs.")
+	                {
+	                    qt=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value*f1.txtfoe<%=i%>.value
+	                }
+	                else
+	                {
+	                    qt=(document.Form1.txtAmount<%=i%>.value*f1.txtfoe<%=i%>.value)/100
+	                }
+	            }
+	        }
+	        var foe=qt
 	        
+            if(arrType[2] != "")
+			{
+				var mainarr1 = new Array()
+				var hidarr1  = arrType[2]
+			
+				if(arrType[2] == "Loose Oil" || arrType[2] == "Loose oil")
+				{
+					qtSP+=f1.txtQty<%=i%>.value*f1.txtTempSecSP<%=i%>.value   //comment by Mahesh on 19.11.008
+				}
+				else
+				{
+					mainarr1 = hidarr1.split("X")				
+					if(document.Form1.tmpSecSPType<%=i%>.value=="Rs")
+					{
+						qtSP+=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value*f1.txtTempSecSP<%=i%>.value
+					}
+					else if(document.Form1.tmpSecSPType<%=i%>.value=="Unit")         //Add by vikas 23.11. 2012
+					{
+						qtSP+=mainarr1[0]*f1.txtQty<%=i%>.value*f1.txtTempSecSP<%=i%>.value      //Add by vikas 23.11. 2012
+					}
+					else
+					{
+						qtSP+=(document.Form1.txtAmount<%=i%>.value*f1.txtTempSecSP<%=i%>.value)/100
+					}
+				}
+            }
+	        SchSP =qtSP
+
+	        var Disc=document.Form1.txtDisc.value
+	        if(Disc=="" || isNaN(Disc))
+	            Disc=0
+	
+	        if(document.Form1.DropDiscType.value=="Per")
+	            Disc=(document.Form1.txtAmount<%=i%>.value-eval(totol))*Disc/100 
+	        else
+	            Disc=calcLtrs*Disc
+	        document.Form1.tempdiscount.value=eval(Disc)
+	        makeRound(document.Form1.tempdiscount)
+	        
+	        var CashDisc=document.Form1.txtCashDisc.value
+	        if(CashDisc=="" || isNaN(CashDisc))
+	            CashDisc=0
+	        if(document.Form1.DropCashDiscType.value=="Per")
+	        {    
+	            var CashDiscount=document.Form1.txtAmount<%=i%>.value-eval(Disc)-eval(totol)-eval(foe)-eval(SchSP)
+	            CashDisc=eval(CashDiscount)*CashDisc/100 
+	            //********
+	            document.Form1.tempcashdis.value=eval(CashDisc)
+	            makeRound(document.Form1.tempcashdis)
+	            document.Form1.txtCashDiscount.value = eval(CashDisc);
+	            makeRound(document.Form1.txtCashDiscount)
+	            //********
+	        }
+		
+	        else
+	        {
+	            document.Form1.txtCashDiscount.value=qtyfoe*CashDisc
+	            CashDisc=document.Form1.txtCashDiscount.value
+	            makeRound(document.Form1.txtCashDisc)
+	        }
+
+	        for(i=0;i<mainarr.length;i++)
+	        {
+	            taxarr = mainarr[i].split("|");	       
+	            if(taxarr[0]==selarr[0])
+	            {
+	                document.Form1.txtVatRate.value=taxarr[3];
+	                document.Form1.Tempcgstrate.value=taxarr[4];
+	                document.Form1.Tempsgstrate.value=taxarr[5];
+	                totalValue = eval(document.Form1.txtAmount<%=i%>.value) - eval(CashDisc) - eval(Disc)-eval(totol)-eval(foe)-eval(SchSP);	
+
+	                totalAmountAfterGst=0;
+	                var igstamount<%=i%> = Getigstamt()
+	                var sgstamount<%=i%> = Getsgstamt()
+	                var cgstamount<%=i%> = Getcgstamt()
+	            }
+	        }
 	    }
+         <%
+        }
+			%>
 	  
+	    document.Form1.txtVAT.value=Math.round(igstamount1)+Math.round(igstamount2)+Math.round(igstamount3)+Math.round(igstamount4)+Math.round(igstamount5)+Math.round(igstamount6)+Math.round(igstamount7)+Math.round(igstamount8)
+        +Math.round(igstamount9)+Math.round(igstamount10)+Math.round(igstamount11)+Math.round(igstamount12);
+	    document.Form1.Textcgst.value = Math.round(cgstamount1)+Math.round(cgstamount2)+Math.round(cgstamount3)+Math.round(cgstamount4)+Math.round(cgstamount5)+Math.round(cgstamount6)+Math.round(cgstamount7)+Math.round(cgstamount8)
+        +Math.round(cgstamount9)+Math.round(cgstamount10)+Math.round(cgstamount11)+Math.round(cgstamount12);
+	    document.Form1.Textsgst.value = Math.round(sgstamount1)+Math.round(sgstamount2)+Math.round(sgstamount3)+Math.round(sgstamount4)+Math.round(sgstamount5)+Math.round(sgstamount6)+Math.round(sgstamount7)+Math.round(sgstamount8)
+        +Math.round(sgstamount9)+Math.round(sgstamount10)+Math.round(sgstamount11)+Math.round(sgstamount12);
+	    if(document.Form1.txtGrandTotal.value==""|| isNaN(document.Form1.txtGrandTotal.value))
+	        document.Form1.txtGrandTotal.value=0;
+	    totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
 
-
-	  //  ;
-	//	var vat_value = 0;
-	//	if(document.Form1.No.checked)
-	//    {
-	//		GetCashDiscount()
-	//		vat_value = document.Form1.txtVatValue.value;
-		
-	//		if(document.Form1.txtVAT.value!="")
-	//		    document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
-	//		document.Form1.txtVAT.value = "";   
-	//    }
-	//    else		{
-		   
-	//		GetVatAmount()
-	//		vat_value = document.Form1.txtVatValue.value;
-		
-	//    }
-	//	if(vat_value=="" || isNaN(vat_value))
-	//	vat_value=0
-	////	document.Form1.txtNetAmount.value=eval(vat_value);
-	//	var netamount=Math.round(eval(vat_value),0);
-	//	netamount=netamount+".00";
-	//	if (document.Form1.txtNetAmount.value!='')
-	//	    persistedIgstNetAmount = document.Form1.txtNetAmount.value;
-	//	totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
-	    //document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
-	    totalAmountAfterGst=0;
-	    Getigstamt()
-	    Getsgstamt()
-	    Getcgstamt()
 	    document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
 	    document.Form1.txtNetAmount.value=Math.round(document.Form1.txtNetAmount.value,0)
 		/**************Add by vikas 14.07.09***************************/
