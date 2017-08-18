@@ -922,6 +922,7 @@
                 var tot_fixdisc=document.Form1.txtfixdiscamount.value 
                 var focDisc=document.Form1.txtfoc.value
                 var schdistot=0
+                var stktdistot=0
                 if(focDisc=="" || isNaN(focDisc))
                     focDisc=0
                 if(document.Form1.dropfoc.value=="Per")
@@ -988,7 +989,7 @@
                     }
                     else
                     {
-                        var stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                        stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
                     }
                 } 
 
