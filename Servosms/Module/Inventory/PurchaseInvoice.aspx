@@ -782,6 +782,7 @@
             
             GetGrandTotal1();
             var sgst_value = 0;
+            var sgst = 0;
             if(document.Form1.Noo.checked)
             {
                 GetEtaxnew()
@@ -792,7 +793,7 @@
             }
             else
             {
-                var sgst = GetSGSTAmount()
+                sgst = GetSGSTAmount()
                 sgst_value = document.Form1.txtVatValue.value;
             }
             if(sgst_value=="" || isNaN(sgst_value))
@@ -862,6 +863,7 @@
         {
             GetGrandTotal1();
             var vat_value = 0;
+            var vat=0;
             if(document.Form1.No.checked)
             {
                 GetEtaxnew()
@@ -872,7 +874,7 @@
             }
             else
             {
-                var vat = GetVatAmountetaxnew()
+                vat = GetVatAmountetaxnew()
                 vat_value = document.Form1.txtVatValue.value;
             }
             if(vat_value=="" || isNaN(vat_value))
@@ -888,7 +890,7 @@
                 persistedIgstNetAmount = document.Form1.txtNetAmount.value;
             if(document.Form1.txtVAT.value!="")
                 totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
-            GetEBT()
+            GetEBT()            
             return vat;
         }
         var totalValue = 0;
@@ -992,9 +994,10 @@
                 if(tradeDisc=="" || isNaN(tradeDisc))
                     tradeDisc=0
                 var Et=document.Form1.txtentrytax.value
+                
                 if(Et=="" || isNaN(Et))
                     Et=0
-                Et=document.Form1.txtAmount<%=i%>.value*Et/100
+                Et=(document.Form1.txtAmount<%=i%>.value-document.Form1.txtfixedamt.value)*Et/100
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
                     GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
