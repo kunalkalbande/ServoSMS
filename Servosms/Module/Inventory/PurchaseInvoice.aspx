@@ -921,6 +921,7 @@
                 var fixeddisc=document.Form1.txtfixedamt.value
                 var tot_fixdisc=document.Form1.txtfixdiscamount.value 
                 var focDisc=document.Form1.txtfoc.value
+                var schdistot=0
                 if(focDisc=="" || isNaN(focDisc))
                     focDisc=0
                 if(document.Form1.dropfoc.value=="Per")
@@ -989,7 +990,22 @@
                     {
                         var stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
                     }
-                }     
+                } 
+
+                if(document.Form1.tempSchDis<%=i%>.value!="")
+                {
+                    var dis = document.Form1.tempSchDis<%=i%>.value
+                    schdis = dis.split(":")
+                    if(schdis[1]=="%")
+                    {
+                        schdistot=eval(document.Form1.txtAmount<%=i%>.value)*eval(schdis[0])/100
+                    }
+                    else
+                    {
+                        schdistot=schdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*schdis[0];
+                    }
+                }
+
                 var tradeDisc=stktdistot
                 if(tradeDisc=="" || isNaN(tradeDisc))
                     tradeDisc=0
@@ -997,10 +1013,10 @@
                 
                 if(Et=="" || isNaN(Et))
                     Et=0
-                Et=(document.Form1.txtAmount<%=i%>.value-document.Form1.txtfixedamt.value)*Et/100
+                Et=(document.Form1.txtAmount<%=i%>.value-eval(schdistot))*Et/100
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
-                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(schdistot)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
                     var cashdiscount=(GT*CashDisc)/100
                     //document.Form1.txtTotalCashDisc.value=eval(CashDisc)
                     makeRound(cashdiscount,2)
@@ -1028,7 +1044,7 @@
                         document.Form1.txtVatRate.value=taxarr[3];
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
-                        totalValue =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(fixeddisc)-Math.round(discount)-Math.round(cashdiscount);
+                        totalValue =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
                         totalAmountAfterGst=0;
                         var igstamount<%=i%> = GetIgstamt()
                         var cgstamount<%=i%> = Getcgstamt()
