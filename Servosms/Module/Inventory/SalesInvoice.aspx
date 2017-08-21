@@ -1002,7 +1002,7 @@
 	        if(document.Form1.DropDiscType.value=="Per")
 	            Disc=(document.Form1.txtAmount<%=i%>.value-eval(totol))*Disc/100 
 	        else
-	            Disc=calcLtrs*Disc
+	            Disc=(calcLtrs*f1.txtQty<%=i%>.value)*Disc
 	        document.Form1.tempdiscount.value=eval(Disc)
 	        makeRound(document.Form1.tempdiscount)
 	        
@@ -1023,7 +1023,7 @@
 		
 	        else
 	        {
-	            document.Form1.txtCashDiscount.value=qtyfoe*CashDisc
+	            document.Form1.txtCashDiscount.value=(qtyfoe*f1.txtQty<%=i%>.value)*CashDisc
 	            CashDisc=document.Form1.txtCashDiscount.value
 	            makeRound(document.Form1.txtCashDisc)
 	        }

@@ -549,7 +549,7 @@
                 }
                 else
                 {
-                    document.Form1.txtTotalDisc.value=document.Form1.txttotalqtyltr.value*document.Form1.txtDisc.value
+                    document.Form1.txtTotalDisc.value=document.Form1.txttotalqtyltr1.value*document.Form1.txtDisc.value
                     makeRound(document.Form1.txtTotalDisc.value)
                 }
 
@@ -648,7 +648,7 @@
             }
             else
             {
-                document.Form1.txtTotalCashDisc.value=document.Form1.txtCashDisc.value*document.Form1.txttotalqtyltr.value
+                document.Form1.txtTotalCashDisc.value=document.Form1.txtCashDisc.value*document.Form1.txttotalqtyltr1.value
                 CashDisc=document.Form1.txtTotalCashDisc.value
                 makeRound(document.Form1.txtTotalCashDisc)
             }
@@ -1031,7 +1031,7 @@
                 }
                 else
                 {
-                    var cashdiscount=document.Form1.txtCashDisc.value*calcLtrs
+                    var cashdiscount=document.Form1.txtCashDisc.value*(calcLtrs*document.Form1.txtQty<%=i%>.value)
                     //CashDisc=document.Form1.txtTotalCashDisc.value
                     makeRound(cashdiscount)
                 }
