@@ -1050,8 +1050,8 @@
                         document.Form1.txtVatRate.value=taxarr[3];
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
-                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
-                        //totalValue =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
+                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+                        //var totalValue1 =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
                         totalAmountAfterGst=0;
                         var igstamount<%=i%> = GetIgstamt()
                         var cgstamount<%=i%> = Getcgstamt()
