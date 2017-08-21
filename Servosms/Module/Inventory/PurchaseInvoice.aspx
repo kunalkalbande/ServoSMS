@@ -961,7 +961,7 @@
                 }
                 else
                 {
-                    Disc=calcLtrs*document.Form1.txtDisc.value
+                    Disc=(calcLtrs*document.Form1.txtQty<%=i%>.value)*document.Form1.txtDisc.value
                     makeRound(Disc)
                 }
 
