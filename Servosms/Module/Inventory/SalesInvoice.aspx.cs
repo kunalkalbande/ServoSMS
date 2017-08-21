@@ -668,7 +668,7 @@ namespace Servosms.Module.Inventory
 			 
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack free,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis  from products p,oilscheme o where p.prod_id=o.prodid and";
 				//Mahesh11.04.007 
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from products p,foe o where p.prod_id=o.prodid  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from products p,foe o where p.prod_id=o.prodid  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust  from products p,foe o where p.prod_id=o.prodid  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				SqlDtr=obj.GetRecordSet(sql);
 				if(SqlDtr.HasRows)
@@ -691,7 +691,7 @@ namespace Servosms.Module.Inventory
 				}
 			
 				//Mahesh11.04.007 
-				string sql2="select p.cust_name cust,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from customer p,foe o where p.cust_id=o.custid and o.prodid='0'  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";
+				string sql2="select p.cust_name cust,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust,o.distype  from customer p,foe o where p.cust_id=o.custid and o.prodid='0'  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";
 				//string sql2="select p.cust_name cust,o.datefrom df,o.dateto dt,o.discount dis,o.custid cust  from customer p,foe o where p.cust_id=o.custid and o.prodid='0'  and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				//SqlDtr=obj.GetRecordSet(sql2);
 				dbobj.SelectQuery(sql2,ref rdr);
@@ -5383,7 +5383,7 @@ namespace Servosms.Module.Inventory
 
 				//Coment by vikas 27.7.2013 sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') order by prod_name desc";        //Add by vikas 7.11.2012
 
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype,sch_id from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') order by prod_name desc";  //Add by vikas 25.7.2013
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype,sch_id from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') order by prod_name desc";  //Add by vikas 25.7.2013
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,Group_Name GName,o.Unit Unit,o.Pack_Type Packtype from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103) and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)') and o.prodid=1029";       
 				
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.onevery one,o.freepack freep,o.schprodid sch,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"' and schname in ('Primary(Free Scheme)','Secondry(Free Scheme)')";
@@ -5481,7 +5481,7 @@ namespace Servosms.Module.Inventory
 				
 				//coment by vikas 25.10.2012 sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";
 				
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";    //Add by vikas 25.10.2012
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";    //Add by vikas 25.10.2012
 
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				SqlDtr=obj.GetRecordSet(sql);
@@ -5544,7 +5544,7 @@ namespace Servosms.Module.Inventory
 				//Mahesh11.04.007 
 				
 				//coment by vikas 26.10.2012 sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(Request.Form["lblInvoiceDate"].ToString()) + "',103)";
-				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";       //add by vikas 26.10.2012
+				sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype,o.group_name gname,o.unit from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= Convert(datetime,'" + GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()) + "',103)";       //add by vikas 26.10.2012
 				
 				//sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme  from products p,oilscheme o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2DDMMYYYY(Session["CurrentDate"].ToString()) +"'";
 				SqlDtr=obj.GetRecordSet(sql);
@@ -7987,9 +7987,9 @@ namespace Servosms.Module.Inventory
 				string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
 				if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(lblInvoiceDate.Text)))>0)
 					Invoice_Date=GenUtil.str2DDMMYYYY(lblInvoiceDate.Text);
-				rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,Customer c where Cust_Name=Ledger_Name and Cust_ID='"+CustID+"') and Entry_Date<='"+Invoice_Date+"' order by entry_date desc");
+				rdr = obj.GetRecordSet("select top 1 Entry_Date from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,Customer c where Cust_Name=Ledger_Name and Cust_ID='"+CustID+"') and Entry_Date<='"+ GenUtil.str2MMDDYYYY(Invoice_Date) + "' order by entry_date desc");
 				if(rdr.Read())
-					str="select * from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,Customer c where Cust_Name=Ledger_Name and Cust_ID='"+CustID+"') and Entry_Date>='"+rdr.GetValue(0).ToString()+"' order by entry_date";
+					str="select * from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,Customer c where Cust_Name=Ledger_Name and Cust_ID='"+CustID+ "') and Entry_Date>='" + GenUtil.str2MMDDYYYY(rdr.GetValue(0).ToString()) + "' order by entry_date";
 				else
 					str="select * from AccountsLedgerTable where Ledger_ID=(select Ledger_ID from Ledger_Master l,Customer c where Cust_Name=Ledger_Name and Cust_ID='"+CustID+"') order by entry_date";
 				rdr.Close();
@@ -8065,9 +8065,9 @@ namespace Servosms.Module.Inventory
 				*/
 				//string str1="select * from CustomerLedgerTable where CustID='"+CustID+"' order by entrydate";
 				//*************************
-				rdr = obj.GetRecordSet("select top 1 EntryDate from CustomerLedgerTable where CustID='"+CustID.ToString()+"' and EntryDate<='"+Invoice_Date+"' order by entrydate desc");
+				rdr = obj.GetRecordSet("select top 1 EntryDate from CustomerLedgerTable where CustID='"+CustID.ToString()+ "' and EntryDate<='" + GenUtil.str2MMDDYYYY(Invoice_Date) + "' order by entrydate desc");
 				if(rdr.Read())
-					str="select * from CustomerLedgerTable where CustID='"+CustID+"' and EntryDate>='"+rdr.GetValue(0).ToString()+"' order by entrydate";
+					str="select * from CustomerLedgerTable where CustID='"+CustID+"' and EntryDate>='"+ GenUtil.str2MMDDYYYY(rdr.GetValue(0).ToString())+"' order by entrydate";
 				else
 					str="select * from CustomerLedgerTable where CustID='"+CustID+"' order by entrydate";
 				rdr.Close();
@@ -8133,7 +8133,7 @@ namespace Servosms.Module.Inventory
 			}
 			catch(Exception ex)
 			{
-				CreateLogFiles.ErrorLog("Form : SalesInvoice.aspx, Method : InsertBatchNo() EXCEPTION :  "+ ex.Message+"   "+uid);		
+				CreateLogFiles.ErrorLog("Form : SalesInvoice.aspx, Method : CustomerUpdate() EXCEPTION :  " + ex.Message+"   "+uid);		
 			}
 		}
 
