@@ -900,6 +900,7 @@
             var dbValues=document.Form1.txtMainGST.value;
             var mainarr = new Array()
             var taxarr = new Array()
+            var focDisc=0
             var cgstamount1=0,cgstamount2 = 0,cgstamount3=0,cgstamount4=0,cgstamount5=0,cgstamount6=0,cgstamount7=0,cgstamount8=0,cgstamount9=0,cgstamount10=0,cgstamount11=0,cgstamount12 = 0
             var sgstamount1=0,sgstamount2 = 0,sgstamount3=0,sgstamount4=0,sgstamount5=0,sgstamount6=0,sgstamount7=0,sgstamount8=0,sgstamount9=0,sgstamount10=0,sgstamount11=0,sgstamount12 = 0
             var igstamount1=0,igstamount2 = 0,igstamount3=0,igstamount4=0,igstamount5=0,igstamount6=0,igstamount7=0,igstamount8=0,igstamount9=0,igstamount10=0,igstamount11=0,igstamount12 = 0
@@ -918,15 +919,18 @@
                 var selectedProduct = document.Form1.DropType<%=i%>.value
                 var amount = document.Form1.txtAmount<%=i%>.value
                 var stckDisc= document.Form1.tempStktSchDis<%=i%>.value 
-                var fixeddisc=document.Form1.txtfixedamt.value
+                var fixedDisc=0
                 var tot_fixdisc=document.Form1.txtfixdiscamount.value 
-                var focDisc=document.Form1.txtfoc.value
+                document.Form1.txtfoc.value="0";
+                if(document.Form1.chkfoc<%=i%>.checked)
+                    document.Form1.txtfoc.value=eval(document.Form1.txtfoc.value)+eval(document.Form1.txtAmount<%=i%>.value)
+                focDisc=document.Form1.txtfoc.value
                 var schdistot=0
                 var stktdistot=0
                 if(focDisc=="" || isNaN(focDisc))
                     focDisc=0
                 if(document.Form1.dropfoc.value=="Per")
-                    focDisc=document.Form1.txtGrandTotal.value*focDisc/100
+                    focDisc=document.Form1.txtAmount<%=i%>.value*focDisc/100
                 //**********
                 var ETFOC=(eval(document.Form1.txtfoc.value)*2)/100
                 if(isNaN(ETFOC))
@@ -966,11 +970,10 @@
                     CashDisc=0
                 var GT=0
                 document.Form1.txtTotalCashDisc.value=""
-                var fixedDisc=0
-                //fixedDisc=document.Form1.txtfixed.value
-                fixedDisc=document.Form1.txtfixedamt.value
-                if(fixedDisc=="" || isNaN(fixedDisc))
-                    fixedDisc=0
+                //var fixedDisc=0
+                ////fixedDisc=document.Form1.txtfixed.value
+                //fixedDisc=document.Form1.txtfixedamt.value
+                
                 var fixedDisc_Add=0
                 fixedDisc_Add=document.Form1.txtAddDis.value
                 if(fixedDisc_Add=="" || isNaN(fixedDisc_Add))
@@ -979,7 +982,7 @@
                 Sch_Disc=document.Form1.txtPromoScheme.value
                 if(Sch_Disc=="" || isNaN(Sch_Disc))
                     Sch_Disc=0
-                 stktdis = stckDisc.split(":")
+                stktdis = stckDisc.split(":")
 
                 if(!document.Form1.chkfoc<%=i%>.checked)
                 {
@@ -1006,7 +1009,9 @@
                         schdistot=schdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*schdis[0];
                     }
                 }
-
+                fixedDisc=schdistot
+                if(fixedDisc=="" || isNaN(fixedDisc))
+                    fixedDisc=0
                 var tradeDisc=stktdistot
                 if(tradeDisc=="" || isNaN(tradeDisc))
                     tradeDisc=0
@@ -1045,7 +1050,8 @@
                         document.Form1.txtVatRate.value=taxarr[3];
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
-                        totalValue =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
+                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+                        //totalValue =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
                         totalAmountAfterGst=0;
                         var igstamount<%=i%> = GetIgstamt()
                         var cgstamount<%=i%> = Getcgstamt()
