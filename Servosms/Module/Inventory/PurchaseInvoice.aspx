@@ -901,10 +901,14 @@
             var mainarr = new Array()
             var taxarr = new Array()
             var focDisc=0
-            var cgstamount1=0,cgstamount2 = 0,cgstamount3=0,cgstamount4=0,cgstamount5=0,cgstamount6=0,cgstamount7=0,cgstamount8=0,cgstamount9=0,cgstamount10=0,cgstamount11=0,cgstamount12 = 0
-            var sgstamount1=0,sgstamount2 = 0,sgstamount3=0,sgstamount4=0,sgstamount5=0,sgstamount6=0,sgstamount7=0,sgstamount8=0,sgstamount9=0,sgstamount10=0,sgstamount11=0,sgstamount12 = 0
-            var igstamount1=0,igstamount2 = 0,igstamount3=0,igstamount4=0,igstamount5=0,igstamount6=0,igstamount7=0,igstamount8=0,igstamount9=0,igstamount10=0,igstamount11=0,igstamount12 = 0
+            var cgstamount1=0,cgstamount2 = 0,cgstamount3=0,cgstamount4=0,cgstamount5=0,cgstamount6=0,cgstamount7=0,cgstamount8=0,cgstamount9=0,cgstamount10=0,cgstamount11=0,cgstamount12 = 0,
+                cgstamount13=0,cgstamount14 = 0,cgstamount15=0,cgstamount16=0,cgstamount17=0,cgstamount18=0,cgstamount19=0,cgstamount20=0
+            var sgstamount1=0,sgstamount2 = 0,sgstamount3=0,sgstamount4=0,sgstamount5=0,sgstamount6=0,sgstamount7=0,sgstamount8=0,sgstamount9=0,sgstamount10=0,sgstamount11=0,sgstamount12 = 0,
+                sgstamount13=0,sgstamount14 = 0,sgstamount15=0,sgstamount16=0,sgstamount17=0,sgstamount18=0,sgstamount19=0,sgstamount20=0
+            var igstamount1=0,igstamount2 = 0,igstamount3=0,igstamount4=0,igstamount5=0,igstamount6=0,igstamount7=0,igstamount8=0,igstamount9=0,igstamount10=0,igstamount11=0,igstamount12 = 0,
+                igstamount13=0,igstamount14 = 0,igstamount15=0,igstamount16=0,igstamount17=0,igstamount18=0,igstamount19=0,igstamount20=0
              
+            var focDisc1=0,focDisc2=0,focDisc3=0,focDisc4=0,focDisc5=0,focDisc6=0,focDisc7=0,focDisc8=0,focDisc9=0,focDisc10=0,focDisc11=0,focDisc12=0,focDisc13=0,focDisc14=0,focDisc15=0,focDisc16=0,focDisc17=0,focDisc18=0,focDisc19=0,focDisc20=0;
             document.Form1.txtVatRate.value=""
             document.Form1.Tempcgstrate.value=""
             document.Form1.Tempsgstrate.value=""
@@ -923,8 +927,9 @@
                 var tot_fixdisc=document.Form1.txtfixdiscamount.value 
                 document.Form1.txtfoc.value="0";
                 if(document.Form1.chkfoc<%=i%>.checked)
-                    document.Form1.txtfoc.value=eval(document.Form1.txtfoc.value)+eval(document.Form1.txtAmount<%=i%>.value)
-                focDisc=document.Form1.txtfoc.value
+                    focDisc<%=i%>=eval(document.Form1.txtfoc.value)+eval(document.Form1.txtAmount<%=i%>.value)
+                document.Form1.txtfoc.value= Math.round(focDisc1)+ Math.round(focDisc2)+ Math.round(focDisc3)+Math.round(focDisc4)+Math.round(focDisc5)+Math.round(focDisc6)+Math.round(focDisc7)+Math.round(focDisc8)+ Math.round(focDisc9)+ Math.round(focDisc10)+Math.round(focDisc11)+Math.round(focDisc12)+Math.round(focDisc13)+Math.round(focDisc14)+Math.round(focDisc15)+ Math.round(focDisc16)+ Math.round(focDisc17)+Math.round(focDisc18)+Math.round(focDisc19)+Math.round(focDisc20)
+                focDisc= document.Form1.txtfoc.value
                 var schdistot=0
                 var stktdistot=0
                 if(focDisc=="" || isNaN(focDisc))
@@ -932,7 +937,7 @@
                 if(document.Form1.dropfoc.value=="Per")
                     focDisc=document.Form1.txtAmount<%=i%>.value*focDisc/100
                 //**********
-                var ETFOC=(eval(document.Form1.txtfoc.value)*2)/100
+                var ETFOC=(eval(focDisc<%=i%>)*2)/100
                 if(isNaN(ETFOC))
                     ETFOC=0
                 //**********
@@ -970,16 +975,14 @@
                     CashDisc=0
                 var GT=0
                 document.Form1.txtTotalCashDisc.value=""
-                //var fixedDisc=0
-                ////fixedDisc=document.Form1.txtfixed.value
-                //fixedDisc=document.Form1.txtfixedamt.value
-                
                 var fixedDisc_Add=0
                 fixedDisc_Add=document.Form1.txtAddDis.value
                 if(fixedDisc_Add=="" || isNaN(fixedDisc_Add))
                     fixedDisc_Add=0
                 var Sch_Disc=0
-                Sch_Disc=document.Form1.txtPromoScheme.value
+                //Sch_Disc=document.Form1.txtPromoScheme.value
+                if(document.Form1.tempSchDiscount<%=i%>.value!="")
+                    Sch_Disc=eval(document.Form1.tempSchDiscount<%=i%>.value);
                 if(Sch_Disc=="" || isNaN(Sch_Disc))
                     Sch_Disc=0
                 stktdis = stckDisc.split(":")
@@ -1022,7 +1025,7 @@
                 Et=(document.Form1.txtAmount<%=i%>.value-eval(schdistot))*Et/100
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
-                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(schdistot)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
                     var cashdiscount=(GT*CashDisc)/100
                     //document.Form1.txtTotalCashDisc.value=eval(CashDisc)
                     makeRound(cashdiscount,2)
@@ -1038,10 +1041,6 @@
 
                 var discount = Disc
                 var cashdiscount = cashdiscount
-                
-               
-                
-                
                 for(i=0;i<mainarr.length-1;i++)
                 {
                     taxarr = mainarr[i].split("|")
@@ -1050,7 +1049,7 @@
                         document.Form1.txtVatRate.value=taxarr[3];
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
-                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+(eval(bird)-eval(birdless))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
                         //var totalValue1 =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
                         totalAmountAfterGst=0;
                         var igstamount<%=i%> = GetIgstamt()
@@ -1065,11 +1064,14 @@
 			%>
             
             document.Form1.txtVAT.value=Math.round(igstamount1)+Math.round(igstamount2)+Math.round(igstamount3)+Math.round(igstamount4)+Math.round(igstamount5)+Math.round(igstamount6)+Math.round(igstamount7)+Math.round(igstamount8)
-            +Math.round(igstamount9)+Math.round(igstamount10)+Math.round(igstamount11)+Math.round(igstamount12);
+            +Math.round(igstamount9)+Math.round(igstamount10)+Math.round(igstamount11)+Math.round(igstamount12)+Math.round(igstamount13)+Math.round(igstamount14)+Math.round(igstamount15)+Math.round(igstamount16)+Math.round(igstamount17)+Math.round(igstamount18)+Math.round(igstamount19)+Math.round(igstamount20)
+            
             document.Form1.Textcgst.value = Math.round(cgstamount1)+Math.round(cgstamount2)+Math.round(cgstamount3)+Math.round(cgstamount4)+Math.round(cgstamount5)+Math.round(cgstamount6)+Math.round(cgstamount7)+Math.round(cgstamount8)
-            +Math.round(cgstamount9)+Math.round(cgstamount10)+Math.round(cgstamount11)+Math.round(cgstamount12);
+            +Math.round(cgstamount9)+Math.round(cgstamount10)+Math.round(cgstamount11)+Math.round(cgstamount12)+Math.round(cgstamount13)+Math.round(cgstamount14)+Math.round(cgstamount15)+Math.round(cgstamount16)+Math.round(cgstamount17)+Math.round(cgstamount18)+Math.round(cgstamount19)+Math.round(cgstamount20)
+            
             document.Form1.Textsgst.value = Math.round(sgstamount1)+Math.round(sgstamount2)+Math.round(sgstamount3)+Math.round(sgstamount4)+Math.round(sgstamount5)+Math.round(sgstamount6)+Math.round(sgstamount7)+Math.round(sgstamount8)
-            +Math.round(sgstamount9)+Math.round(sgstamount10)+Math.round(sgstamount11)+Math.round(sgstamount12);
+            +Math.round(sgstamount9)+Math.round(sgstamount10)+Math.round(sgstamount11)+Math.round(sgstamount12)+Math.round(sgstamount13)+Math.round(sgstamount14)+Math.round(sgstamount15)+Math.round(sgstamount16)+Math.round(sgstamount17)+Math.round(sgstamount18)+Math.round(sgstamount19)+Math.round(sgstamount20)
+            
             if(document.Form1.txtGrandTotal.value==""|| isNaN(document.Form1.txtGrandTotal.value))
                 document.Form1.txtGrandTotal.value=0;
             totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
