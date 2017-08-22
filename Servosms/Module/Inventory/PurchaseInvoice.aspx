@@ -1657,7 +1657,7 @@
                                                     readonly type="text" size="38" width="420px" name="lblPlace" runat="server"></td>
                                         </tr>
                                         <tr>
-                                            <td>Vehicle No&nbsp;*
+                                            <td>Vehicle No&nbsp;<font color="#ff0000">*</font>
                                             </td>
                                             <td colspan="2">
                                                 <asp:TextBox onkeypress="return GetAnyNumber(this, event);" ID="txtVehicleNo" onkeyup="MoveFocus(this,document.Form1.txtVInnvoiceNo,event)"
