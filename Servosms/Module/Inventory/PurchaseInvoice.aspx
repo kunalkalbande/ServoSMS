@@ -1039,10 +1039,10 @@
                                     }
                                 }
                                 var vat_rate = document.Form1.txtVatRate.value;
-                                var entrytax=eval(document.Form1.txtAmount<%=i%>.value)*2/100;  
-                                var dealer_vat=eval(entrytax)+ eval(document.Form1.txtAmount<%=i%>.value);
+                                var tax=eval(document.Form1.txtAmount<%=i%>.value)*2/100;  
+                                var dealer_vat=eval(tax)+ eval(document.Form1.txtAmount<%=i%>.value);
                                 dealer_vat=(eval(dealer_vat)* eval(vat_rate))/100;
-                                stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)+eval(entrytax)+ eval(dealer_vat))*eval(stktdis[0])/100;
+                                stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)+eval(tax)+ eval(dealer_vat))*eval(stktdis[0])/100;
                                 /***************End**************************/
                             }
                         }
