@@ -362,15 +362,15 @@
                             /*********Add by vikas 5.11.2012*******************/
                             var vat_rate = document.Form1.txtVatRate.value;
                             var entrytax=eval(document.Form1.txtAmount<%=i%>.value)*2/100;  
-                                var dealer_vat=eval(entrytax)+ eval(document.Form1.txtAmount<%=i%>.value);
+                            var dealer_vat=eval(entrytax)+ eval(document.Form1.txtAmount<%=i%>.value);
                             dealer_vat=(eval(dealer_vat)* eval(vat_rate))/100;
                             stktdistot+=(eval(document.Form1.txtAmount<%=i%>.value)+eval(entrytax)+ eval(dealer_vat))*eval(stktdis[0])/100;
                             /***************End**************************/
-                            }
                         }
-                        else
-                        {
-                            stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                    }
+                    else
+                    {
+                        stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
                     }
                 }
             }
@@ -925,7 +925,7 @@
                 var stckDisc= document.Form1.tempStktSchDis<%=i%>.value 
                 var fixedDisc=0
                 var schdistot_Add=0
-                var tot_fixdisc=document.Form1.txtfixdiscamount.value 
+                var tot_fixdisc= 0
                 //FOC
                 document.Form1.txtfoc.value="0";
                 if(document.Form1.chkfoc<%=i%>.checked)
@@ -1009,17 +1009,66 @@
                 //servo stock discount
                 stktdis = stckDisc.split(":")
 
-                if(!document.Form1.chkfoc<%=i%>.checked)
+
+                if(document.Form1.tempStktSchDis<%=i%>.value!="")
                 {
+                    var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                    stktdis = stkt.split(":")
+                    if(!document.Form1.chkfoc<%=i%>.checked)
+                    {
+                        if(stktdis[1]=="%")
+                        {
+                            //alert(document.Form1.txtqPack<%=i%>.value)
+                            var Tot_Ltr=document.Form1.txtqPack<%=i%>.value
+                            if(Tot_Ltr>=50)
+                            {
+                                /*********Add by vikas 29.12.2012*******************/
+                                stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
+                                /**********************End**************************/
+                            }
+                            else
+                            {
+                                //coment by vikas 5.11.2012 stktdistot+=eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0])/100
+                                /*********Add by vikas 5.11.2012*******************/
+                                for(i=0;i<mainarr.length-1;i++)
+                                {
+                                    taxarr = mainarr[i].split("|")
+                                    if(taxarr[0]==selproduct[0])
+                                    {
+                                        document.Form1.txtVatRate.value=taxarr[3];
+                                    }
+                                }
+                                var vat_rate = document.Form1.txtVatRate.value;
+                                var entrytax=eval(document.Form1.txtAmount<%=i%>.value)*2/100;  
+                                var dealer_vat=eval(entrytax)+ eval(document.Form1.txtAmount<%=i%>.value);
+                                dealer_vat=(eval(dealer_vat)* eval(vat_rate))/100;
+                                stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)+eval(entrytax)+ eval(dealer_vat))*eval(stktdis[0])/100;
+                                /***************End**************************/
+                            }
+                        }
+                        else
+                        {
+                            stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                        }
+                    }
+                }
+
+                if(document.Form1.tempFixedDisc<%=i%>.value!="")
+                {
+                    var stkt = document.Form1.tempFixedDisc<%=i%>.value
+                    stktdis = stkt.split(":")
+					
                     if(stktdis[1]=="%")
                     {
-                        stktdistot=eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0])/100
+							
                     }
                     else
                     {
-                        stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                        tot_fixdisc=tot_fixdisc+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                        //document.Form1.txtfixdisc.value=stktdis[0]
                     }
-                } 
+					
+                }
 
                 //fixed discount
                 if(document.Form1.tempSchDis<%=i%>.value!="")
