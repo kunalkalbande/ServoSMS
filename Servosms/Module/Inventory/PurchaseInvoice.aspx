@@ -924,7 +924,9 @@
                 var amount = document.Form1.txtAmount<%=i%>.value
                 var stckDisc= document.Form1.tempStktSchDis<%=i%>.value 
                 var fixedDisc=0
+                var schdistot_Add=0
                 var tot_fixdisc=document.Form1.txtfixdiscamount.value 
+                //FOC
                 document.Form1.txtfoc.value="0";
                 if(document.Form1.chkfoc<%=i%>.checked)
                     focDisc<%=i%>=eval(document.Form1.txtfoc.value)+eval(document.Form1.txtAmount<%=i%>.value)
@@ -935,7 +937,7 @@
                 if(focDisc=="" || isNaN(focDisc))
                     focDisc=0
                 if(document.Form1.dropfoc.value=="Per")
-                    focDisc=document.Form1.txtAmount<%=i%>.value*focDisc/100
+                    focDisc<%=i%>=document.Form1.txtAmount<%=i%>.value*focDisc<%=i%>/100
                 //**********
                 var ETFOC=(eval(focDisc<%=i%>)*2)/100
                 if(isNaN(ETFOC))
@@ -975,16 +977,36 @@
                     CashDisc=0
                 var GT=0
                 document.Form1.txtTotalCashDisc.value=""
+                //additional discount
+                if(document.Form1.tempSchAddDis<%=i%>.value!="")
+                {
+                    var dis = document.Form1.tempSchAddDis<%=i%>.value
+                    schdis_Add = dis.split(":")
+                    
+                    if(schdis_Add[1]=="%")
+                    {
+                        schdistot_Add=eval(document.Form1.txtAmount<%=i%>.value)*eval(schdis_Add[0])/100
+                    }
+                    else
+                    {
+                        schdistot_Add=schdistot_Add+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*schdis_Add[0];
+                    }
+                }
                 var fixedDisc_Add=0
-                fixedDisc_Add=document.Form1.txtAddDis.value
+                fixedDisc_Add=schdistot_Add
                 if(fixedDisc_Add=="" || isNaN(fixedDisc_Add))
                     fixedDisc_Add=0
+                //*****
+
+                //schDiscount
                 var Sch_Disc=0
                 //Sch_Disc=document.Form1.txtPromoScheme.value
                 if(document.Form1.tempSchDiscount<%=i%>.value!="")
                     Sch_Disc=eval(document.Form1.tempSchDiscount<%=i%>.value);
                 if(Sch_Disc=="" || isNaN(Sch_Disc))
                     Sch_Disc=0
+
+                //servo stock discount
                 stktdis = stckDisc.split(":")
 
                 if(!document.Form1.chkfoc<%=i%>.checked)
@@ -999,6 +1021,7 @@
                     }
                 } 
 
+                //fixed discount
                 if(document.Form1.tempSchDis<%=i%>.value!="")
                 {
                     var dis = document.Form1.tempSchDis<%=i%>.value
@@ -1015,14 +1038,17 @@
                 fixedDisc=schdistot
                 if(fixedDisc=="" || isNaN(fixedDisc))
                     fixedDisc=0
+                //trade discount
                 var tradeDisc=stktdistot
                 if(tradeDisc=="" || isNaN(tradeDisc))
                     tradeDisc=0
+                //entry tax
                 var Et=document.Form1.txtentrytax.value
                 
                 if(Et=="" || isNaN(Et))
                     Et=0
                 Et=(document.Form1.txtAmount<%=i%>.value-eval(schdistot))*Et/100
+                //cashdiscount
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
                     GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
