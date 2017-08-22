@@ -1764,7 +1764,7 @@ namespace Servosms.Module.Inventory
 					/**********Add by vikas 16.11.2012*********************/
 					//if(DropOrderInvoice.SelectedIndex!=0)
 					//{
-						if((ProdType[j].Value.ToString()!="Type" && Qty[j].Text!=""))
+						if(ProdType[j].Value.ToString()!="Type" && Qty[j].Text!="" && DropOrderInvoice.SelectedValue.ToString() != "Select")
 							Insert_Ovd(ProdType[j].Value.ToString(),Qty[j].Text.ToString());			
 					//}
 					/*********End**********************/
@@ -1952,7 +1952,7 @@ namespace Servosms.Module.Inventory
 			}
 			catch(Exception ex)
 			{
-				CreateLogFiles.ErrorLog("Form: OrderCollection.aspx,Method: Insert_Ovd(), EXCEPTION  "+ex.Message+" userid "+"   "+"   "+uid);
+				CreateLogFiles.ErrorLog("Form: SalesInvoice.aspx,Method: Insert_Ovd(), EXCEPTION  " + ex.Message+" userid "+"   "+"   "+uid);
 			}
 		}
 		
