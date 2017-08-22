@@ -1026,7 +1026,7 @@
 		
 	        else
 	        {
-	            document.Form1.txtCashDiscount.value=(qtyfoe*f1.txtQty<%=i%>.value)*CashDisc
+	            document.Form1.txtCashDiscount.value=(qtyfoe)*CashDisc
 	            CashDisc=document.Form1.txtCashDiscount.value
 	            makeRound(document.Form1.txtCashDisc)
 	        }
