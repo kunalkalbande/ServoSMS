@@ -5272,9 +5272,9 @@ namespace Servosms.Module.Inventory
 					rdr.Close();
 					***********/
 					//str=str+ SqlDtr["Category"]+":"+SqlDtr["Prod_Name"]+":"+SqlDtr["Pack_Type"];
-					sql= "select top 1 Sal_Rate from Price_Updation where Prod_ID="+SqlDtr["Prod_ID"]+" order by eff_date desc";
-					//dbobj.SelectQuery(sql,ref rdr); 
-					rdr = obj1.GetRecordSet(sql);
+					sql= "select top 1 Sal_Rate from Price_Updation where Prod_ID="+SqlDtr["Prod_ID"]+ " and Sal_Rate<>0 order by eff_date desc";
+                    //dbobj.SelectQuery(sql,ref rdr); 
+                    rdr = obj1.GetRecordSet(sql);
 					if(rdr.Read())
 					{
 						if(double.Parse(rdr["Sal_Rate"].ToString())!=0)
