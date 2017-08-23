@@ -350,13 +350,13 @@
                     {
                         //alert(document.Form1.txtqPack<%=i%>.value)
                         var Tot_Ltr=document.Form1.txtqPack<%=i%>.value
-                        if(Tot_Ltr>=50)
-                        {
+                        //if(Tot_Ltr>=50)
+                        //{
                             /*********Add by vikas 29.12.2012*******************/
                             stktdistot+=(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
                             /**********************End**************************/
-                        }
-                        else
+                       // }
+                       <%-- else
                         {
                             //coment by vikas 5.11.2012 stktdistot+=eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0])/100
                             /*********Add by vikas 5.11.2012*******************/
@@ -366,7 +366,7 @@
                             dealer_vat=(eval(dealer_vat)* eval(vat_rate))/100;
                             stktdistot+=(eval(document.Form1.txtAmount<%=i%>.value)+eval(entrytax)+ eval(dealer_vat))*eval(stktdis[0])/100;
                             /***************End**************************/
-                        }
+                        }--%>
                     }
                     else
                     {
@@ -1018,33 +1018,7 @@
                     {
                         if(stktdis[1]=="%")
                         {
-                            //alert(document.Form1.txtqPack<%=i%>.value)
-                            var Tot_Ltr=document.Form1.txtqPack<%=i%>.value
-                            if(Tot_Ltr>=50)
-                            {
-                                /*********Add by vikas 29.12.2012*******************/
-                                stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
-                                /**********************End**************************/
-                            }
-                            else
-                            {
-                                //coment by vikas 5.11.2012 stktdistot+=eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0])/100
-                                /*********Add by vikas 5.11.2012*******************/
-                                for(i=0;i<mainarr.length-1;i++)
-                                {
-                                    taxarr = mainarr[i].split("|")
-                                    if(taxarr[0]==selproduct[0])
-                                    {
-                                        document.Form1.txtVatRate.value=taxarr[3];
-                                    }
-                                }
-                                var vat_rate = document.Form1.txtVatRate.value;
-                                var tax=eval(document.Form1.txtAmount<%=i%>.value)*2/100;  
-                                var dealer_vat=eval(tax)+ eval(document.Form1.txtAmount<%=i%>.value);
-                                dealer_vat=(eval(dealer_vat)* eval(vat_rate))/100;
-                                stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)+eval(tax)+ eval(dealer_vat))*eval(stktdis[0])/100;
-                                /***************End**************************/
-                            }
+                            stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
                         }
                         else
                         {
