@@ -4077,17 +4077,21 @@ namespace Servosms.Module.Inventory
 			InventoryClass obj=new InventoryClass();
 			SqlDataReader SqlDtr=null;
 			string home_drive = Environment.SystemDirectory;
-			home_drive = home_drive.Substring(0,2); 
-			string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\PurchaseInvoicePrePrintReport.txt";
-			StreamWriter sw = new StreamWriter(path);
+			home_drive = home_drive.Substring(0,2);
+            string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\PurchaseInvoicePrePrintReport.txt";
+            StreamWriter sw = new StreamWriter(path);
 			//DropDownList[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12,DropType13,DropType14,DropType15,DropType16,DropType17,DropType18,DropType19,DropType20}; 
 			HtmlInputText[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12,DropType13,DropType14,DropType15,DropType16,DropType17,DropType18,DropType19,DropType20}; 
 			CheckBox[] foe = {chkfoc1,chkfoc2,chkfoc3,chkfoc4,chkfoc5,chkfoc6,chkfoc7,chkfoc8,chkfoc9,chkfoc10,chkfoc11,chkfoc12,chkfoc13,chkfoc14,chkfoc15,chkfoc16,chkfoc17,chkfoc18,chkfoc19,chkfoc20};
 			TextBox[] Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12, txtQty13, txtQty14, txtQty15, txtQty16, txtQty17, txtQty18, txtQty19, txtQty20}; 
 			TextBox[] Rate={txtRate1, txtRate2, txtRate3, txtRate4, txtRate5, txtRate6, txtRate7, txtRate8, txtRate9, txtRate10, txtRate11, txtRate12, txtRate13, txtRate14, txtRate15, txtRate16, txtRate17, txtRate18, txtRate19, txtRate20}; 
 			TextBox[] Amount={txtAmount1, txtAmount2, txtAmount3, txtAmount4, txtAmount5, txtAmount6, txtAmount7, txtAmount8, txtAmount9, txtAmount10, txtAmount11, txtAmount12, txtAmount13, txtAmount14, txtAmount15, txtAmount16, txtAmount17, txtAmount18, txtAmount19, txtAmount20};
-			
-			string[] DespQty=new string[20];
+            HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+            HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+            HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+
+
+            string[] DespQty=new string[20];
 			string[] freeDespQty=new string[20];
 			string[] ProdCode=new string[20];
 			string[] PackType=new string[20];
@@ -4099,7 +4103,7 @@ namespace Servosms.Module.Inventory
 			info2=" {0,-14:S} {1,-50:S} {2,20:S} {3,-46:S}";//Party Name & Address
 			info4=" {0,-20:S} {1,20:S} {2,20:S} {3,55:S} {4,15:S}";//Party Name & Address
 			//info3=" {0,-12:S} {1,-35:S} {2,10:S} {3,10:S} {4,10:S} {5,12:S} {6,12:S} {7,10:S} {8,15:S}";//Item Code
-			info3=" {0,-12:S} {1,-19:S} {2,-35:S} {3,7:S} {4,7:S} {5,7:S} {6,10:S} {7,12:S} {8,15:S}";//Item Code
+			info3=" {0,-12:S} {1,-19:S} {2,-35:S} {3,7:S} {4,7:S} {5,7:S} {6,10:S} {7,12:S} {8,15:S} {9,12:S} {10,12:S} {11,12:S}";//Item Code
 			info5=" {0,16:S} {1,-114:S}";
 			info7=" {0,46:S} {1,-88:S}";
 			//info6=" {0,44:S} {1,-10:S} {2,-76:S}";
@@ -4196,9 +4200,12 @@ namespace Servosms.Module.Inventory
 			ArrayList arrProdRate = new ArrayList();
 			//ArrayList arrProdScheme = new ArrayList();
 			ArrayList arrProdAmount = new ArrayList();
-			
-			//int q=0;
-			for(int p=0;p<=Qty.Length-1;p++)
+            ArrayList arrCgst = new ArrayList();
+            ArrayList arrSgst = new ArrayList();
+            ArrayList arrIgst = new ArrayList();
+
+            //int q=0;
+            for (int p=0;p<=Qty.Length-1;p++)
 			{
 				if(Request.Form[Qty[p].ID.ToString()].ToString()!="")
 				{
@@ -4268,7 +4275,10 @@ namespace Servosms.Module.Inventory
                         }
 					}
 					SqlDtr.Close();
-				}
+                    arrCgst.Add(tmpCgst[p].Value);
+                    arrSgst.Add(tmpSgst[p].Value);
+                    arrIgst.Add(tmpIgst[p].Value);
+                }
 			}
 			
 			// Condensed
@@ -4330,12 +4340,12 @@ namespace Servosms.Module.Inventory
 
                 sw.WriteLine("");
 				sw.WriteLine("");
-				sw.WriteLine(info3,"P-Code","  Batch No"," Grade/Package Name "," B-Qty"," F-Qty"," R-Qty","  Ltr/Kg","  Rate Rs.","    Amount (Rs.)");
+				sw.WriteLine(info3,"P-Code","  HSN"," Grade/Package Name "," B-Qty"," F-Qty"," R-Qty","  Ltr/Kg","  Rate Rs.","    Amount (Rs.)"," CGST (Rs.)"," SGST (Rs.)"," IGST(Rs.)");
 				sw.WriteLine("");
 				//arrCount++;
 				for(k=arrCount;k<arrBillQty.Count;k++,arrCount++)
 				{
-					sw.WriteLine(info3,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdAmount[k].ToString());
+					sw.WriteLine(info3,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdAmount[k].ToString(),arrCgst[k].ToString(),arrSgst[k].ToString(),arrIgst[k].ToString());
 					if(k==15 && arrBillQty.Count<25)
 						FlagCount = true;
 					if(k==25)
@@ -4437,7 +4447,9 @@ namespace Servosms.Module.Inventory
 				sw.WriteLine(info4,"","----------","----------","Cash Discount        : ","0");
 			sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(Request.Form["txttotalqtyltr1"].ToString())+TotalfoeLtr),"EBird Dis("+ Request.Form["txtebird"].ToString()+")      : ","-"+ Request.Form["txtebirdamt"].ToString());
 
-            sw.WriteLine(info4,"","","","Vat Amount(@"+txtVatRate.Value+")    : ", Request.Form["txtVAT"].ToString());
+            sw.WriteLine(info4,"","","","Total CGST         : ", tempTotalCgst.Value);
+            sw.WriteLine(info4, "", "", "", "Total SGST         : ", tempTotalSgst.Value);
+            sw.WriteLine(info4, "", "", "", "Total IGST         : ", tempTotalIgst.Value);
 
             sw.WriteLine(info4,"","","","Net Amount           : ",string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString());
 

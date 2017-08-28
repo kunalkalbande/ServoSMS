@@ -53,7 +53,10 @@ namespace Servosms.Module.Inventory
 		public float RateRs = 0;
 		public float BillQty = 0;
 		public float AmountRs = 0;
-		public float BatchNo = 0;
+        public float Igst = 0;
+        public float Cgst = 0;
+        public float Sgst = 0;
+        public float BatchNo = 0;
 		public float GradePackName = 0;
 		public float FreeQty = 0;
 		public float DisQty = 0;
@@ -1758,7 +1761,8 @@ namespace Servosms.Module.Inventory
 				HtmlInputHidden[] tmpSecSPType={tmpSecSPType1, tmpSecSPType2, tmpSecSPType3, tmpSecSPType4, tmpSecSPType5, tmpSecSPType6, tmpSecSPType7, tmpSecSPType8, tmpSecSPType9, tmpSecSPType10, tmpSecSPType11, tmpSecSPType12}; 
 				HtmlInputHidden[] tmpSchType={tmpSchType1, tmpSchType2, tmpSchType3, tmpSchType4, tmpSchType5, tmpSchType6, tmpSchType7, tmpSchType8, tmpSchType9, tmpSchType10, tmpSchType11, tmpSchType12}; 
 				HtmlInputHidden[] tmpFoeType={tmpFoeType1, tmpFoeType2, tmpFoeType3, tmpFoeType4, tmpFoeType5, tmpFoeType6, tmpFoeType7, tmpFoeType8, tmpFoeType9, tmpFoeType10, tmpFoeType11, tmpFoeType12};
-				for(int j=0;j<ProdType.Length;j++)
+               
+                for (int j=0;j<ProdType.Length;j++)
 				{
 
 					/**********Add by vikas 16.11.2012*********************/
@@ -5585,8 +5589,8 @@ namespace Servosms.Module.Inventory
 				getTemplateDetails();
 				string home_drive = Environment.SystemDirectory;
 				home_drive = home_drive.Substring(0,2);
-				string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesInvoicePrePrintReport1.txt";
-				StreamWriter sw = new StreamWriter(path);
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesInvoicePrePrintReport1.txt";
+                StreamWriter sw = new StreamWriter(path);
 				HtmlInputText[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12}; 
 				TextBox[] foe = {txtfoe1,txtfoe2,txtfoe3,txtfoe4,txtfoe5,txtfoe6,txtfoe7,txtfoe8,txtfoe9,txtfoe10,txtfoe11,txtfoe12};
 				TextBox[] Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12}; 
@@ -5597,7 +5601,11 @@ namespace Servosms.Module.Inventory
 				TextBox[] schProdType={txtTypesch1,txtTypesch2,txtTypesch3,txtTypesch4,txtTypesch5,txtTypesch6,txtTypesch7,txtTypesch8,txtTypesch9,txtTypesch10,txtTypesch11,txtTypesch12};
 				TextBox[] schQty={txtQtysch1,txtQtysch2,txtQtysch3,txtQtysch4,txtQtysch5,txtQtysch6,txtQtysch7,txtQtysch8,txtQtysch9,txtQtysch10,txtQtysch11,txtQtysch12};
 				HtmlInputHidden[] tmpSchType = {tmpSchType1, tmpSchType2, tmpSchType3, tmpSchType4, tmpSchType5, tmpSchType6, tmpSchType7, tmpSchType8, tmpSchType9, tmpSchType10, tmpSchType11, tmpSchType12};
-				string[] DespQty=new string[12];
+                HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+                HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+                HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+
+                string[] DespQty=new string[12];
 				string[] freeDespQty=new string[12];
 				string[] ProdCode=new string[12];
 				string[] schProdCode=new string[12];
@@ -5628,7 +5636,10 @@ namespace Servosms.Module.Inventory
 				int rt = System.Convert.ToInt32(Math.Floor((RateRs * 25)/1.53));
 				int sd = System.Convert.ToInt32(Math.Floor((SchDis * 25)/1.53));
 				int am = System.Convert.ToInt32(Math.Floor((AmountRs * 25)/1.53));
-				string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + dq + ":F} {4," + lkg + ":F} {5," + rt + ":F} {6," + sd + ":F} {7," + SSpDis + ":F} {8," + am + ":F}";
+                int igst = System.Convert.ToInt32(Math.Floor((Igst * 25) / 1.53));
+                int cgst = System.Convert.ToInt32(Math.Floor((Cgst * 25) / 1.53));
+                int sgst = System.Convert.ToInt32(Math.Floor((Sgst * 25) / 1.53));
+                string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + dq + ":F} {4," + lkg + ":F} {5," + rt + ":F} {6," + sd + ":F} {7," + SSpDis + ":F} {8," + am + ":F}  {9," + cgst + ":F} {10," + sgst + ":F} {11," + igst + ":F}";
 				int rinw = System.Convert.ToInt32(Math.Floor((RupeesinWords * 25)/1.53));
 				int pb = System.Convert.ToInt32(Math.Floor((ProvisionalBalance * 25)/1.53));
 				int rem = System.Convert.ToInt32(Math.Floor((Remarks * 25)/1.53));
@@ -5638,7 +5649,7 @@ namespace Servosms.Module.Inventory
 				Double TotalQtyPack=0,TotalQtyfoe=0,TotalfoeLtr=0;
 				int k=0;
 				string info4="",str="",InDate="";
-				info4=" {0,-20:S} {1,20:S} {2,20:S} {3,55:S} {4,15:S}";
+				info4= " {0,-20:S} {1,20:S} {2,20:S} {3,55:S} {4,15:S} ";
 				string curbal=lblCurrBalance.Value;
 				string[] CurrBal=new string[2];
 				string[] InvoiceDate=new string[2];
@@ -5804,8 +5815,11 @@ namespace Servosms.Module.Inventory
 				ArrayList arrProdScheme = new ArrayList();
 				ArrayList arrProdAmount = new ArrayList();
 				ArrayList arrSecSP = new ArrayList();
-			
-				for(int p=0;p<=Qty.Length-1;p++)
+                ArrayList arrCgst = new ArrayList();
+                ArrayList arrSgst = new ArrayList();
+                ArrayList arrIgst = new ArrayList();
+
+                for (int p=0;p<=Qty.Length-1;p++)
 				{
 					//InsertBatchNo(arrName[1].ToString(),arrName[2].ToString(),Qty[j].Text);  //hide this code for some time
 					if(Qty[p].Text!="")
@@ -5835,10 +5849,13 @@ namespace Servosms.Module.Inventory
 								string[] Prod_NT1=Prod_NT.Split(new char[] {':'});
 								Prod_NT=Prod_NT1[1]+":"+Prod_NT1[2];
 								arrProdName.Add(Prod_NT);
-								/********************************************/
-								//arrProdName.Add(ProdCat[p].Value);
-								
-								arrBatchNo.Add(SqlDtr.GetValue(0).ToString());
+                                arrCgst.Add(tmpCgst[p].Value);
+                                arrSgst.Add(tmpSgst[p].Value);
+                                arrIgst.Add(tmpIgst[p].Value);
+                                /********************************************/
+                                //arrProdName.Add(ProdCat[p].Value);
+
+                                arrBatchNo.Add(SqlDtr.GetValue(0).ToString());
 								arrBillQty.Add(SqlDtr.GetValue(1).ToString());
 								arrDespQty.Add(SqlDtr.GetValue(1).ToString());
 								arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(SqlDtr.GetValue(1).ToString())));
@@ -5875,8 +5892,8 @@ namespace Servosms.Module.Inventory
 									GenUtil.strNumericFormat(arrProdAmount.Add(System.Convert.ToString(Ope_stk*double.Parse(Rate[p].Text))).ToString());
 									arrFreeQty.Add("");
 								}
-								/********End******************************/
-								
+                                /********End******************************/
+                               
 							}
 						}
 						else
@@ -5889,9 +5906,11 @@ namespace Servosms.Module.Inventory
 							string[] Prod_NT1=Prod_NT.Split(new char[] {':'});
 							Prod_NT=Prod_NT1[1]+":"+Prod_NT1[2];
 							arrProdName.Add(Prod_NT);
-							/********************************************/
-
-							arrBatchNo.Add("");
+                            /********************************************/
+                            arrCgst.Add(tmpCgst[p].Value);
+                            arrSgst.Add(tmpSgst[p].Value);
+                            arrIgst.Add(tmpIgst[p].Value);
+                            arrBatchNo.Add("");
 							arrBillQty.Add(Qty[p].Text);
 							arrDespQty.Add(DespQty[p].ToString());
 							arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(Qty[p].Text)));
@@ -5904,7 +5923,8 @@ namespace Servosms.Module.Inventory
 							arrSecSP.Add(SecSP[p].Value);
 							GenUtil.strNumericFormat(arrProdAmount.Add(Amount[p].Text).ToString());
 							arrFreeQty.Add("");
-						}
+                            
+                        }
 						SqlDtr.Close();
 					}
 				}
@@ -5933,7 +5953,10 @@ namespace Servosms.Module.Inventory
 							arrSecSP.Add("");
 							arrProdAmount.Add("");
 							arrBillQty.Add("");
-						}
+                            arrCgst.Add("");
+                            arrSgst.Add("");
+                            arrIgst.Add("");
+                        }
 						if(SqlDtr.HasRows)
 						{
 							while(SqlDtr.Read())
@@ -5975,7 +5998,10 @@ namespace Servosms.Module.Inventory
 							arrFreeQty.Add(schPQty[p].ToString());
 						}
 						SqlDtr.Close();
-					}
+                        arrCgst.Add(tmpCgst[p].Value);
+                        arrSgst.Add(tmpSgst[p].Value);
+                        arrIgst.Add(tmpIgst[p].Value);
+                    }
 				}
 				//***********************************************************************
 				// Condensed
@@ -6108,7 +6134,7 @@ namespace Servosms.Module.Inventory
 //					if(Blank == true && Blank1 == true)
 //						sw.WriteLine();
 					//sw.WriteLine(info31,"P-Code","  Batch No"," Grade/Package Name","B-Qty","F-Qty"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc."," Amount (Rs.)");
-					sw.WriteLine(info31,"P-Code","  Batch No"," Grade/Package Name"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc.","SP Disc."," Amount (Rs.)");
+					sw.WriteLine(info31,"P-Code","  HSN"," Grade/Package Name"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc.","SP Disc."," Amount (Rs.)","CGST (Rs.)","SGST (Rs.)","IGST (Rs.)");
 					sw.WriteLine("");
 
 					//add by vikas 10.06.09 for(k=arrCount;k<arrBillQty.Count;k++,arrCount++)
@@ -6116,7 +6142,7 @@ namespace Servosms.Module.Inventory
 					for(k=arrCount;k<arrProdName.Count;k++,arrCount++)
 					{
 						//sw.WriteLine(info31,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdScheme[k].ToString(),arrProdAmount[k].ToString());
-						  sw.WriteLine(info31,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),GenUtil.strNumericFormat(arrProdRate[k].ToString()),arrProdScheme[k].ToString(),arrSecSP[k].ToString(),GenUtil.strNumericFormat(arrProdAmount[k].ToString()));
+						  sw.WriteLine(info31,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),GenUtil.strNumericFormat(arrProdRate[k].ToString()),arrProdScheme[k].ToString(),arrSecSP[k].ToString(),GenUtil.strNumericFormat(arrProdAmount[k].ToString()), GenUtil.strNumericFormat(arrCgst[k].ToString()), GenUtil.strNumericFormat(arrSgst[k].ToString()), GenUtil.strNumericFormat(arrIgst[k].ToString()));
 
 						//if(k==31 && arrBillQty.Count<39)
 						if(k==bh-10 && arrBillQty.Count<bh-2)
@@ -6196,7 +6222,7 @@ namespace Servosms.Module.Inventory
 						sw.WriteLine(info4,"","","","Discount("+txtDisc.Text+DropDiscType.SelectedItem.Text+")      : ","-"+tempdiscount.Value);
 						//sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Discount("+txtDisc.Text+DropDiscType.SelectedItem.Text+")      : ","-"+tempdiscount.Value);
 					else
-						sw.WriteLine(info4,"","","","Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+txtDisc.Text);
+						sw.WriteLine(info4,"","","","Discount("+ txtDisc.Text + DropDiscType.SelectedItem.Text+")        : ","-"+ txtDiscount.Text);
 						//sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+txtDisc.Text);
 				}
 				if(txtCashDisc.Text=="" || txtCashDisc.Text=="0")
@@ -6208,11 +6234,13 @@ namespace Servosms.Module.Inventory
 						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+") : ","-"+tempcashdis.Value);
 						//sw.WriteLine(info4,"","----------","----------","Cash Discount("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+") : ","-"+tempcashdis.Value);
 					else
-						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+txtCashDisc.Text);
+						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount(" + txtCashDisc.Text + DropCashDiscType.SelectedItem.Text+")   : ","-"+ txtCashDiscount.Text);
 						//sw.WriteLine(info4,"","----------","----------","Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+txtCashDisc.Text);
 				}
-				sw.WriteLine(info4,"","----------","----------","Vat Amount(@"+txtVatRate.Value+")    : ",txtVAT.Text);
-				sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
+				sw.WriteLine(info4,"","----------","----------","Total CGST          : ", tempTotalCgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total SGST          : ", tempTotalSgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total IGST          : ", tempTotalIgst.Value);
+                sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
 				sw.WriteLine(info51,"",GenUtil.ConvertNoToWord(txtNetAmount.Text));
 				sw.WriteLine(info61,"",CurrBal[0],"(INCLUDING CURRENT INVOICE AMOUNT)");
 				sw.WriteLine(info71,"",txtRemark.Text);
@@ -6319,10 +6347,10 @@ namespace Servosms.Module.Inventory
 			try
 			{
 				string home_drive = Environment.SystemDirectory;
-				home_drive = home_drive.Substring(0,2); 
-				//string path = home_drive+@"\Inetpub\wwwroot\Servosms\PrePrintTemplate.INI";
-				string path = home_drive+@"\Inetpub\wwwroot\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
-				StreamReader  sr = new StreamReader(path);
+				home_drive = home_drive.Substring(0,2);
+                //string path = home_drive+@"\Inetpub\wwwroot\Servosms\PrePrintTemplate.INI";
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
+                StreamReader  sr = new StreamReader(path);
 				string[] data = new string[40];
 				int n = 0;
 				string info = "";
@@ -6457,7 +6485,10 @@ namespace Servosms.Module.Inventory
 				{
 					Time = false;
 				}
-			}
+                Cgst = float.Parse(data[31].Trim());
+                Sgst = float.Parse(data[32].Trim());
+                Igst = float.Parse(data[33].Trim());
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form : SalesInvoice.aspx, Method : getTemplateDetails() EXCEPTION :  "+ ex.Message+"   "+uid);
@@ -6635,10 +6666,10 @@ namespace Servosms.Module.Inventory
 			{
 				//Response.Write(txtAvStock1.Text);  
 				string home_drive = Environment.SystemDirectory;
-				home_drive = home_drive.Substring(0,2); 
-				string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesInvoicePrePrintReport.txt";
-				//string info = "";
-				string strInvNo="";
+				home_drive = home_drive.Substring(0,2);
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesInvoicePrePrintReport.txt";
+                //string info = "";
+                string strInvNo="";
 				string strDiscType="";
 				StreamWriter sw = new StreamWriter(path);
 				sw.WriteLine("           =============");
@@ -6740,9 +6771,9 @@ namespace Servosms.Module.Inventory
 			try
 			{
 				string home_drive = Environment.SystemDirectory;
-				home_drive = home_drive.Substring(0,2); 
-				string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesInvoiceReport.txt";
-				StreamWriter sw = new StreamWriter(path);
+				home_drive = home_drive.Substring(0,2);
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesInvoiceReport.txt";
+                StreamWriter sw = new StreamWriter(path);
 				System.Data.SqlClient.SqlDataReader rdr=null;
 				string sql="";
 				string str1="";
