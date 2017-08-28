@@ -1047,7 +1047,9 @@
 	                var sgstamount<%=i%> = Getsgstamt()
 	                document.Form1.tempSgst<%=i%>.value=sgstamount<%=i%>
 	                var cgstamount<%=i%> = Getcgstamt()
-                    document.Form1.tempCgst<%=i%>.value=cgstamount<%=i%>
+	                document.Form1.tempCgst<%=i%>.value=cgstamount<%=i%>
+
+	                document.Form1.tempHsn<%=i%>.value=taxarr[6];
 	            }
 	        }
 	    }
@@ -2441,6 +2443,29 @@ function MoveFocus(t,drop,e)
 				type="hidden" size="1" name="tempIgst18" runat="server"/> <INPUT id="tempIgst19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempIgst19" runat="server"/> <INPUT id="tempIgst20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempIgst20" runat="server"/>
+
+            <INPUT id="tempHsn1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn1" runat="server"/> <INPUT id="tempHsn2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn2" runat="server"/> <INPUT id="tempHsn3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn3" runat="server"/> <INPUT id="tempHsn4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn4" runat="server"/> <INPUT id="tempHsn5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn5" runat="server"/> <INPUT id="tempHsn6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn6" runat="server"/> <INPUT id="tempHsn7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn7" runat="server"/> <INPUT id="tempHsn8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn8" runat="server"/> <INPUT id="tempHsn9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn9" runat="server"/> <INPUT id="tempHsn10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn10" runat="server"/> <INPUT id="tempHsn11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn11" runat="server"/> <INPUT id="tempHsn12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn12" runat="server"/> <INPUT id="tempHsn13" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn13" runat="server"/> <INPUT id="tempHsn14" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn14" runat="server"/> <INPUT id="tempHsn15" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn15" runat="server"/> <INPUT id="tempHsn16" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn16" runat="server"/> <INPUT id="tempHsn17" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn17" runat="server"/> <INPUT id="tempHsn18" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn18" runat="server"/> <INPUT id="tempHsn19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn19" runat="server"/> <INPUT id="tempHsn20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn20" runat="server"/>
+
             <INPUT id="tempTotalCgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempTotalCgst" runat="server"/>
             <INPUT id="tempTotalSgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"

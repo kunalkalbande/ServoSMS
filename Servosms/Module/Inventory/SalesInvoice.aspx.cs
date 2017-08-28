@@ -361,6 +361,7 @@ namespace Servosms.Module.Inventory
                 txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][3];//IGST
                 txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][4];//cGST
                 txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][6];//HSN
                 txtMainIGST.Value = txtMainIGST.Value + "~";
 
 
@@ -5604,6 +5605,8 @@ namespace Servosms.Module.Inventory
                 HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
                 HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
                 HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+                HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
+
 
                 string[] DespQty=new string[12];
 				string[] freeDespQty=new string[12];
@@ -5855,8 +5858,8 @@ namespace Servosms.Module.Inventory
                                 /********************************************/
                                 //arrProdName.Add(ProdCat[p].Value);
 
-                                arrBatchNo.Add(SqlDtr.GetValue(0).ToString());
-								arrBillQty.Add(SqlDtr.GetValue(1).ToString());
+                                arrBatchNo.Add(tmpHsn[p].Value);
+                                arrBillQty.Add(SqlDtr.GetValue(1).ToString());
 								arrDespQty.Add(SqlDtr.GetValue(1).ToString());
 								arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(SqlDtr.GetValue(1).ToString())));
 								GenUtil.strNumericFormat(arrProdRate.Add(Rate[p].Text).ToString());
@@ -5878,8 +5881,8 @@ namespace Servosms.Module.Inventory
 								if(sale_qty>qty)
 								{
 									arrProdCode.Add(ProdCode[p].ToString());
-									arrBatchNo.Add("");
-									arrProdName.Add(Prod_NT);
+                                    arrBatchNo.Add(tmpHsn[p].Value);
+                                    arrProdName.Add(Prod_NT);
 									arrDespQty.Add(Ope_stk.ToString());
 									arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*Ope_stk));
 									GenUtil.strNumericFormat(arrProdRate.Add(Rate[p].Text).ToString());
@@ -5910,8 +5913,8 @@ namespace Servosms.Module.Inventory
                             arrCgst.Add(tmpCgst[p].Value);
                             arrSgst.Add(tmpSgst[p].Value);
                             arrIgst.Add(tmpIgst[p].Value);
-                            arrBatchNo.Add("");
-							arrBillQty.Add(Qty[p].Text);
+                            arrBatchNo.Add(tmpHsn[p].Value);
+                            arrBillQty.Add(Qty[p].Text);
 							arrDespQty.Add(DespQty[p].ToString());
 							arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(Qty[p].Text)));
 							GenUtil.strNumericFormat(arrProdRate.Add(Rate[p].Text).ToString());
@@ -5963,8 +5966,8 @@ namespace Servosms.Module.Inventory
 							{
 								arrProdCode.Add(schProdCode[p].ToString());
 								arrProdName.Add("(FREE) "+schProdType[p].Text);
-								arrBatchNo.Add(SqlDtr.GetValue(0).ToString());
-								arrBillQty.Add("");
+                                arrBatchNo.Add(tmpHsn[p].Value);
+                                arrBillQty.Add("");
 								if(SqlDtr.GetValue(1).ToString()=="" || SqlDtr.GetValue(1).ToString()==null)
 									totalqty=0;
 								else

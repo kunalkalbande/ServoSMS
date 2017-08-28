@@ -444,6 +444,7 @@ namespace Servosms.Module.Inventory
                 txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][3];//IGST
                 txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][4];//cGST
                 txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainGST.Value = txtMainGST.Value + "|" + dtTable.Rows[i][6];//HSN
                 txtMainGST.Value = txtMainGST.Value + "~";
 
 
@@ -4074,392 +4075,400 @@ namespace Servosms.Module.Inventory
 		/// </summary>
 		public void PrePrintReport()
 		{
-			InventoryClass obj=new InventoryClass();
-			SqlDataReader SqlDtr=null;
-			string home_drive = Environment.SystemDirectory;
-			home_drive = home_drive.Substring(0,2);
-            string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\PurchaseInvoicePrePrintReport.txt";
-            StreamWriter sw = new StreamWriter(path);
-			//DropDownList[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12,DropType13,DropType14,DropType15,DropType16,DropType17,DropType18,DropType19,DropType20}; 
-			HtmlInputText[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12,DropType13,DropType14,DropType15,DropType16,DropType17,DropType18,DropType19,DropType20}; 
-			CheckBox[] foe = {chkfoc1,chkfoc2,chkfoc3,chkfoc4,chkfoc5,chkfoc6,chkfoc7,chkfoc8,chkfoc9,chkfoc10,chkfoc11,chkfoc12,chkfoc13,chkfoc14,chkfoc15,chkfoc16,chkfoc17,chkfoc18,chkfoc19,chkfoc20};
-			TextBox[] Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12, txtQty13, txtQty14, txtQty15, txtQty16, txtQty17, txtQty18, txtQty19, txtQty20}; 
-			TextBox[] Rate={txtRate1, txtRate2, txtRate3, txtRate4, txtRate5, txtRate6, txtRate7, txtRate8, txtRate9, txtRate10, txtRate11, txtRate12, txtRate13, txtRate14, txtRate15, txtRate16, txtRate17, txtRate18, txtRate19, txtRate20}; 
-			TextBox[] Amount={txtAmount1, txtAmount2, txtAmount3, txtAmount4, txtAmount5, txtAmount6, txtAmount7, txtAmount8, txtAmount9, txtAmount10, txtAmount11, txtAmount12, txtAmount13, txtAmount14, txtAmount15, txtAmount16, txtAmount17, txtAmount18, txtAmount19, txtAmount20};
-            HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
-            HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
-            HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+            try {
+                InventoryClass obj = new InventoryClass();
+                SqlDataReader SqlDtr = null;
+                string home_drive = Environment.SystemDirectory;
+                home_drive = home_drive.Substring(0, 2);
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\PurchaseInvoicePrePrintReport.txt";
+                StreamWriter sw = new StreamWriter(path);
+                //DropDownList[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12,DropType13,DropType14,DropType15,DropType16,DropType17,DropType18,DropType19,DropType20}; 
+                HtmlInputText[] ProdCat = { DropType1, DropType2, DropType3, DropType4, DropType5, DropType6, DropType7, DropType8, DropType9, DropType10, DropType11, DropType12, DropType13, DropType14, DropType15, DropType16, DropType17, DropType18, DropType19, DropType20 };
+                CheckBox[] foe = { chkfoc1, chkfoc2, chkfoc3, chkfoc4, chkfoc5, chkfoc6, chkfoc7, chkfoc8, chkfoc9, chkfoc10, chkfoc11, chkfoc12, chkfoc13, chkfoc14, chkfoc15, chkfoc16, chkfoc17, chkfoc18, chkfoc19, chkfoc20 };
+                TextBox[] Qty = { txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12, txtQty13, txtQty14, txtQty15, txtQty16, txtQty17, txtQty18, txtQty19, txtQty20 };
+                TextBox[] Rate = { txtRate1, txtRate2, txtRate3, txtRate4, txtRate5, txtRate6, txtRate7, txtRate8, txtRate9, txtRate10, txtRate11, txtRate12, txtRate13, txtRate14, txtRate15, txtRate16, txtRate17, txtRate18, txtRate19, txtRate20 };
+                TextBox[] Amount = { txtAmount1, txtAmount2, txtAmount3, txtAmount4, txtAmount5, txtAmount6, txtAmount7, txtAmount8, txtAmount9, txtAmount10, txtAmount11, txtAmount12, txtAmount13, txtAmount14, txtAmount15, txtAmount16, txtAmount17, txtAmount18, txtAmount19, txtAmount20 };
+                HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+                HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+                HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+                HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
 
 
-            string[] DespQty=new string[20];
-			string[] freeDespQty=new string[20];
-			string[] ProdCode=new string[20];
-			string[] PackType=new string[20];
-			string[] ProdName=new string[20];
-			
-			Double TotalQtyPack=0,TotalQtyfoe=0,TotalfoeLtr=0,TotalQtyPackLtr=0,TotalQtyFoeLtr=0;
-			int k=0;
-			string info2="",info3="",info4="",info5="",info7="",str="",InDate="";//,info6="";
-			info2=" {0,-14:S} {1,-50:S} {2,20:S} {3,-46:S}";//Party Name & Address
-			info4=" {0,-20:S} {1,20:S} {2,20:S} {3,55:S} {4,15:S}";//Party Name & Address
-			//info3=" {0,-12:S} {1,-35:S} {2,10:S} {3,10:S} {4,10:S} {5,12:S} {6,12:S} {7,10:S} {8,15:S}";//Item Code
-			info3=" {0,-12:S} {1,-19:S} {2,-35:S} {3,7:S} {4,7:S} {5,7:S} {6,10:S} {7,12:S} {8,15:S} {9,12:S} {10,12:S} {11,12:S}";//Item Code
-			info5=" {0,16:S} {1,-114:S}";
-			info7=" {0,46:S} {1,-88:S}";
-			//info6=" {0,44:S} {1,-10:S} {2,-76:S}";
-			//string curbal=lblCurrBalance.Value;
-			string[] CurrBal=new string[2];
-			string[] InvoiceDate=new string[2];
-			string[] arrInvoiceNo=DropInvoiceNo.SelectedItem.Text.Split(new char[] {':'},DropInvoiceNo.SelectedItem.Text.Length);
-			if(lblInvoiceNo.Visible==true)
-				str="select invoice_date from purchase_master where invoice_no="+ Request.Form["lblInvoiceNo"].ToString()+"";
-			else
-				//str="select invoice_date from purchase_master where vndr_invoice_no="+DropInvoiceNo.SelectedItem.Text.Trim()+"";
-				str="select invoice_date from purchase_master where invoice_no="+arrInvoiceNo[0]+"";
-			SqlDtr=obj.GetRecordSet(str);
-			if(SqlDtr.Read())
-				InDate=SqlDtr.GetValue(0).ToString();
-			else
-				InDate="";
-			SqlDtr.Close();
-			if(InDate!="")
-				InvoiceDate=InDate.Split(new char[] {' '},InDate.Length);
-			else
-				InvoiceDate[1]="";
+                string[] DespQty = new string[20];
+                string[] freeDespQty = new string[20];
+                string[] ProdCode = new string[20];
+                string[] PackType = new string[20];
+                string[] ProdName = new string[20];
 
-			string[] arrProdType = new string[3];
-			for(int p=0;p<20;p++)
-			{
-				//if(ProdCat[p].SelectedItem.Text.IndexOf(":")>0)
-				if(ProdCat[p].Value.IndexOf(":")>0)
-					arrProdType=ProdCat[p].Value.Split(new char[] {':'},ProdCat[p].Value.Length);
-				else
-				{
-					arrProdType[0]="";
-					arrProdType[1]="";
-					arrProdType[2]="";
-				}
-				str="select Prod_Code,Total_Qty from Products where Prod_Name='"+arrProdType[1].ToString()+"' and Pack_Type='"+arrProdType[2].ToString()+"'";
-				SqlDtr = obj.GetRecordSet(str);
-				if(SqlDtr.Read())
-				{
-					ProdCode[p]=SqlDtr.GetValue(0).ToString();
-					PackType[p]=SqlDtr.GetValue(1).ToString();
-					ProdName[p]=arrProdType[1]+":"+arrProdType[2];
-				}
-				else
-				{
-					ProdCode[p]="";
-					PackType[p]="";
-					ProdName[p]="";
-				}
-				SqlDtr.Close();
-			}
-			//int p1=0;
-			for(int j=0;j<20;j++)
-			{
-				if(!foe[j].Checked)
-				{
-					if(!Request.Form[Qty[j].ID.ToString()].Equals(""))
-					{
-						TotalQtyPack=TotalQtyPack+System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()].ToString());
+                Double TotalQtyPack = 0, TotalQtyfoe = 0, TotalfoeLtr = 0, TotalQtyPackLtr = 0, TotalQtyFoeLtr = 0;
+                int k = 0;
+                string info2 = "", info3 = "", info4 = "", info5 = "", info7 = "", str = "", InDate = "";//,info6="";
+                info2 = " {0,-14:S} {1,-50:S} {2,20:S} {3,-46:S}";//Party Name & Address
+                info4 = " {0,-20:S} {1,20:S} {2,20:S} {3,55:S} {4,15:S}";//Party Name & Address
+                                                                         //info3=" {0,-12:S} {1,-35:S} {2,10:S} {3,10:S} {4,10:S} {5,12:S} {6,12:S} {7,10:S} {8,15:S}";//Item Code
+                info3 = " {0,-12:S} {1,-19:S} {2,-35:S} {3,7:S} {4,7:S} {5,7:S} {6,10:S} {7,12:S} {8,15:S} {9,12:S} {10,12:S} {11,12:S}";//Item Code
+                info5 = " {0,16:S} {1,-114:S}";
+                info7 = " {0,46:S} {1,-88:S}";
+                //info6=" {0,44:S} {1,-10:S} {2,-76:S}";
+                //string curbal=lblCurrBalance.Value;
+                string[] CurrBal = new string[2];
+                string[] InvoiceDate = new string[2];
+                string[] arrInvoiceNo = DropInvoiceNo.SelectedItem.Text.Split(new char[] { ':' }, DropInvoiceNo.SelectedItem.Text.Length);
+                if (lblInvoiceNo.Visible == true)
+                    str = "select invoice_date from purchase_master where invoice_no=" + Request.Form["lblInvoiceNo"].ToString() + "";
+                else
+                    //str="select invoice_date from purchase_master where vndr_invoice_no="+DropInvoiceNo.SelectedItem.Text.Trim()+"";
+                    str = "select invoice_date from purchase_master where invoice_no=" + arrInvoiceNo[0] + "";
+                SqlDtr = obj.GetRecordSet(str);
+                if (SqlDtr.Read())
+                    InDate = SqlDtr.GetValue(0).ToString();
+                else
+                    InDate = "";
+                SqlDtr.Close();
+                if (InDate != "")
+                    InvoiceDate = InDate.Split(new char[] { ' ' }, InDate.Length);
+                else
+                    InvoiceDate[1] = "";
 
-                        TotalQtyPackLtr +=System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()].ToString())*System.Convert.ToDouble(PackType[j].ToString());
-
-                        DespQty[j]= Request.Form[Qty[j].ID.ToString()].ToString();
-
+                string[] arrProdType = new string[3];
+                for (int p = 0; p < 20; p++)
+                {
+                    //if(ProdCat[p].SelectedItem.Text.IndexOf(":")>0)
+                    if (ProdCat[p].Value.IndexOf(":") > 0)
+                        arrProdType = ProdCat[p].Value.Split(new char[] { ':' }, ProdCat[p].Value.Length);
+                    else
+                    {
+                        arrProdType[0] = "";
+                        arrProdType[1] = "";
+                        arrProdType[2] = "";
                     }
-					else
-						DespQty[j]="";
-					freeDespQty[j]="";
-				}
-				else
-				{
-					if(!Request.Form[Qty[j].ID.ToString()].ToString().Equals(""))
-					{
-						TotalQtyfoe=TotalQtyfoe+System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()]);
-
-                        TotalQtyFoeLtr +=System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()])*System.Convert.ToDouble(PackType[j].ToString());
-
-                        freeDespQty[j]= Request.Form[Qty[j].ID.ToString()].ToString();
-
+                    str = "select Prod_Code,Total_Qty from Products where Prod_Name='" + arrProdType[1].ToString() + "' and Pack_Type='" + arrProdType[2].ToString() + "'";
+                    SqlDtr = obj.GetRecordSet(str);
+                    if (SqlDtr.Read())
+                    {
+                        ProdCode[p] = SqlDtr.GetValue(0).ToString();
+                        PackType[p] = SqlDtr.GetValue(1).ToString();
+                        ProdName[p] = arrProdType[1] + ":" + arrProdType[2];
                     }
-					else
-						freeDespQty[j]="";
-					DespQty[j]="";
-				}
-			}
-			//***********************************************************************
-			ArrayList arrProdCode = new ArrayList();
-			ArrayList arrProdName = new ArrayList();
-			ArrayList arrBatchNo = new ArrayList();
-			ArrayList arrBillQty = new ArrayList();
-			ArrayList arrFreeQty = new ArrayList();
-			ArrayList arrDespQty = new ArrayList();
-			ArrayList arrLtrkg = new ArrayList();
-			ArrayList arrProdRate = new ArrayList();
-			//ArrayList arrProdScheme = new ArrayList();
-			ArrayList arrProdAmount = new ArrayList();
-            ArrayList arrCgst = new ArrayList();
-            ArrayList arrSgst = new ArrayList();
-            ArrayList arrIgst = new ArrayList();
+                    else
+                    {
+                        ProdCode[p] = "";
+                        PackType[p] = "";
+                        ProdName[p] = "";
+                    }
+                    SqlDtr.Close();
+                }
+                //int p1=0;
+                for (int j = 0; j < 20; j++)
+                {
+                    if (!foe[j].Checked)
+                    {
+                        if (!Request.Form[Qty[j].ID.ToString()].Equals(""))
+                        {
+                            TotalQtyPack = TotalQtyPack + System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()].ToString());
 
-            //int q=0;
-            for (int p=0;p<=Qty.Length-1;p++)
-			{
-				if(Request.Form[Qty[p].ID.ToString()].ToString()!="")
-				{
-					string[] arrProdCat = ProdCat[p].Value.Split(new char[] {':'},ProdCat[p].Value.Length);
-					if(lblInvoiceNo.Visible==true)
-						str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+ Request.Form["lblInvoiceNo"].ToString()+"' and trans_type='Purchase Invoice'";
-					else
-						//str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+DropInvoiceNo.SelectedItem.Text+"' and trans_type='Purchase Invoice'";
-						str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+arrInvoiceNo[0]+"' and trans_type='Purchase Invoice'";
-					SqlDtr = obj.GetRecordSet(str);
-					if(SqlDtr.HasRows)
-					{
-						while(SqlDtr.Read())
-						{
-							arrProdCode.Add(ProdCode[p].ToString());
-							//arrProdName.Add(ProdCat[p].SelectedItem.Text);
-							if(!foe[p].Checked)
-							{
-								arrProdName.Add(ProdName[p].ToString());
-								arrBillQty.Add(SqlDtr.GetValue(1).ToString());
-								arrProdRate.Add(Request.Form[Rate[p].ID.ToString()].ToString());
+                            TotalQtyPackLtr += System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()].ToString()) * System.Convert.ToDouble(PackType[j].ToString());
 
-                                arrProdAmount.Add(System.Convert.ToString(double.Parse(SqlDtr.GetValue(1).ToString())*double.Parse(Request.Form[Rate[p].ID.ToString()].ToString())));
-
-                                arrFreeQty.Add("");
-							}
-							else
-							{
-								arrProdName.Add("Free "+ProdName[p].ToString());
-								arrBillQty.Add("");
-								arrProdRate.Add("");
-								arrProdAmount.Add("");
-								arrFreeQty.Add(SqlDtr.GetValue(1).ToString());
-							}
-							arrBatchNo.Add(SqlDtr.GetValue(0).ToString());
-							arrDespQty.Add(SqlDtr.GetValue(1).ToString());
-							arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(SqlDtr.GetValue(1).ToString())));
-							//arrProdScheme.Add(scheme[p].Text);
-						}
-					}
-					else
-					{
-						arrProdCode.Add(ProdCode[p].ToString());
-						arrBatchNo.Add("");
-						arrDespQty.Add(DespQty[p].ToString());
-						arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString())*double.Parse(Request.Form[Qty[p].ID.ToString()].ToString())));
-
-                        if (!foe[p].Checked)
-						{
-							arrProdName.Add(ProdName[p].ToString());
-							arrBillQty.Add(Request.Form[Qty[p].ID].ToString());
-
-                            arrProdRate.Add(Request.Form[Rate[p].ID].ToString());
-
-                            arrProdAmount.Add(Request.Form[Amount[p].ID].ToString());
-
-                            arrFreeQty.Add("");
-						}
-						else
-						{
-							arrProdName.Add("Free "+ProdName[p].ToString());
-							arrBillQty.Add("");
-							arrProdRate.Add("");
-							arrProdAmount.Add("");
-							arrFreeQty.Add(Request.Form[Qty[p].ID].ToString());
+                            DespQty[j] = Request.Form[Qty[j].ID.ToString()].ToString();
 
                         }
-					}
-					SqlDtr.Close();
-                    arrCgst.Add(tmpCgst[p].Value);
-                    arrSgst.Add(tmpSgst[p].Value);
-                    arrIgst.Add(tmpIgst[p].Value);
+                        else
+                            DespQty[j] = "";
+                        freeDespQty[j] = "";
+                    }
+                    else
+                    {
+                        if (!Request.Form[Qty[j].ID.ToString()].ToString().Equals(""))
+                        {
+                            TotalQtyfoe = TotalQtyfoe + System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()]);
+
+                            TotalQtyFoeLtr += System.Convert.ToDouble(Request.Form[Qty[j].ID.ToString()]) * System.Convert.ToDouble(PackType[j].ToString());
+
+                            freeDespQty[j] = Request.Form[Qty[j].ID.ToString()].ToString();
+
+                        }
+                        else
+                            freeDespQty[j] = "";
+                        DespQty[j] = "";
+                    }
                 }
-			}
-			
-			// Condensed
-			sw.Write((char)27);//added by vishnu
-			sw.Write((char)67);//added by vishnu
-			sw.Write((char)0);//added by vishnu
-			sw.Write((char)12);//added by vishnu
-			
-			sw.Write((char)27);//added by vishnu
-			sw.Write((char)78);//added by vishnu
-			sw.Write((char)5);//added by vishnu
-							
-			sw.Write((char)27);//added by vishnu
-			sw.Write((char)15);
-			int arrCount=0;//,arrCon=0;
-			double Space=0,SpaceCount=arrBillQty.Count;
-			bool FlagCount=false;
-			
-			do 
-			{
-				FlagCount=false;
-				sw.WriteLine("                                                DELIVERY CHALLAN COM INVOICE");
-				for(int i=0;i<14;i++)
-				{
-					sw.WriteLine("");
-				}
+                //***********************************************************************
+                ArrayList arrProdCode = new ArrayList();
+                ArrayList arrProdName = new ArrayList();
+                ArrayList arrBatchNo = new ArrayList();
+                ArrayList arrBillQty = new ArrayList();
+                ArrayList arrFreeQty = new ArrayList();
+                ArrayList arrDespQty = new ArrayList();
+                ArrayList arrLtrkg = new ArrayList();
+                ArrayList arrProdRate = new ArrayList();
+                //ArrayList arrProdScheme = new ArrayList();
+                ArrayList arrProdAmount = new ArrayList();
+                ArrayList arrCgst = new ArrayList();
+                ArrayList arrSgst = new ArrayList();
+                ArrayList arrIgst = new ArrayList();
 
-				string addr="",TinNo="";//,ssc="";
-				//dbobj.SelectQuery("select * from customer where cust_name='"+Request.Params.Get("text1")+"'",ref SqlDtr);
-				dbobj.SelectQuery("select * from supplier where supp_name='"+DropVendorID.SelectedItem.Text+"'",ref SqlDtr);
-				if(SqlDtr.Read())
-				{
-					addr=SqlDtr["City"].ToString();
-					//ssc=SqlDtr["sadbhavnacd"].ToString();
-					TinNo=SqlDtr["Tin_No"].ToString();
-				}
-				addr=addr.ToUpper();
-				SqlDataReader rdr=null;
-				if(lblInvoiceNo.Visible==true)
-					sw.WriteLine(info2,"",DropVendorID.SelectedItem.Text.ToUpper(),"", Request.Form["lblInvoiceNo"].ToString());
-				else
-
+                //int q=0;
+                for (int p = 0; p <= Qty.Length - 1; p++)
                 {
-					//dbobj.SelectQuery("select invoice_no from purchase_master where vndr_invoice_no='"+DropInvoiceNo.SelectedItem.Text+"'",ref rdr);
-					dbobj.SelectQuery("select invoice_no from purchase_master where invoice_no='"+arrInvoiceNo[0]+"'",ref rdr);
-					if(rdr.Read())
-					{
-						sw.WriteLine(info2,"",DropVendorID.SelectedItem.Text.ToUpper(),"",rdr["Invoice_No"].ToString());
-					}
-				}
-				if(addr!="")
-					sw.WriteLine(info2,"",GenUtil.TrimLength(addr,50),"", Request.Form["lblInvoiceDate"].ToString());
-				else
+                    if (Request.Form[Qty[p].ID.ToString()].ToString() != "")
+                    {
+                        string[] arrProdCat = ProdCat[p].Value.Split(new char[] { ':' }, ProdCat[p].Value.Length);
+                        if (lblInvoiceNo.Visible == true)
+                            str = "select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='" + ProdCode[p].ToString() + "' and Prod_Name='" + arrProdCat[1].ToString() + "' and Pack_Type='" + arrProdCat[2].ToString() + "') and b.batch_id=bt.batch_id and bt.trans_id='" + Request.Form["lblInvoiceNo"].ToString() + "' and trans_type='Purchase Invoice'";
+                        else
+                            //str="select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='"+ProdCode[p].ToString()+"' and Prod_Name='"+arrProdCat[1].ToString()+"' and Pack_Type='"+arrProdCat[2].ToString()+"') and b.batch_id=bt.batch_id and bt.trans_id='"+DropInvoiceNo.SelectedItem.Text+"' and trans_type='Purchase Invoice'";
+                            str = "select b.batch_no,bt.qty from batch_transaction bt,batchno b where b.prod_id=bt.prod_id and b.prod_id=(select prod_id from products where Prod_Code='" + ProdCode[p].ToString() + "' and Prod_Name='" + arrProdCat[1].ToString() + "' and Pack_Type='" + arrProdCat[2].ToString() + "') and b.batch_id=bt.batch_id and bt.trans_id='" + arrInvoiceNo[0] + "' and trans_type='Purchase Invoice'";
+                        SqlDtr = obj.GetRecordSet(str);
+                        if (SqlDtr.HasRows)
+                        {
+                            while (SqlDtr.Read())
+                            {
+                                arrProdCode.Add(ProdCode[p].ToString());
+                                //arrProdName.Add(ProdCat[p].SelectedItem.Text);
+                                if (!foe[p].Checked)
+                                {
+                                    arrProdName.Add(ProdName[p].ToString());
+                                    arrBillQty.Add(SqlDtr.GetValue(1).ToString());
+                                    arrProdRate.Add(Request.Form[Rate[p].ID.ToString()].ToString());
 
-                    sw.WriteLine(info2,"","","", Request.Form["lblInvoiceDate"].ToString());
-                sw.WriteLine(info2,"V_Inv_No/DT", Request.Form["txtVInnvoiceNo"].ToString()+" / "+ Request.Form["txtVInvoiceDate"].ToString(),"",InvoiceDate[1]);
-				sw.WriteLine(info2,"Tin No",TinNo,"","");
-				sw.WriteLine(info2,"","","", Request.Form["txtVehicleNo"].ToString());
+                                    arrProdAmount.Add(System.Convert.ToString(double.Parse(SqlDtr.GetValue(1).ToString()) * double.Parse(Request.Form[Rate[p].ID.ToString()].ToString())));
 
-                sw.WriteLine("");
-				sw.WriteLine("");
-				sw.WriteLine(info3,"P-Code","  HSN"," Grade/Package Name "," B-Qty"," F-Qty"," R-Qty","  Ltr/Kg","  Rate Rs.","    Amount (Rs.)"," CGST (Rs.)"," SGST (Rs.)"," IGST(Rs.)");
-				sw.WriteLine("");
-				//arrCount++;
-				for(k=arrCount;k<arrBillQty.Count;k++,arrCount++)
-				{
-					sw.WriteLine(info3,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdAmount[k].ToString(),arrCgst[k].ToString(),arrSgst[k].ToString(),arrIgst[k].ToString());
-					if(k==15 && arrBillQty.Count<25)
-						FlagCount = true;
-					if(k==25)
-					{
-						FlagCount = true;
-						arrCount++;
-						break;
-					}
-					if(k==51)
-					{
-						FlagCount = true;
-						arrCount++;
-						break;
-					}
-					if(k==77)
-					{
-						FlagCount = true;
-						arrCount++;
-						break;
-					}
-					if(k==103)
-					{
-						FlagCount = true;
-						arrCount++;
-						break;
-					}
-				}
-				Space=SpaceCount-25;
-				if(Space>0)
-				{
-					SpaceCount-=25;
-					for(int r=0;r<=15;r++)
-					{
-						sw.WriteLine();
-					}
-				}
-				else
-				{
-					Space=Math.Abs(Space);
-					if(Space>=10)
-					{
-						for(int r=10;r<=Space;r++)
-						{
-							sw.WriteLine();
-						}
-					}
-					else
-					{
-						for(int r=0;r<=Space+17;r++)
-						{
-							sw.WriteLine();
-						}
-					}
-					SpaceCount=0;
-				}
-			}
-			while(FlagCount==true);
-			sw.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------");
-			sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ", Request.Form["txtGrandTotal"].ToString());
+                                    arrFreeQty.Add("");
+                                }
+                                else
+                                {
+                                    arrProdName.Add("Free " + ProdName[p].ToString());
+                                    arrBillQty.Add("");
+                                    arrProdRate.Add("");
+                                    arrProdAmount.Add("");
+                                    arrFreeQty.Add(SqlDtr.GetValue(1).ToString());
+                                }
+                                arrBatchNo.Add(tmpHsn[p].Value);
+                                arrDespQty.Add(SqlDtr.GetValue(1).ToString());
+                                arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString()) * double.Parse(SqlDtr.GetValue(1).ToString())));
+                                //arrProdScheme.Add(scheme[p].Text);
+                            }
+                        }
+                        else
+                        {
+                            arrProdCode.Add(ProdCode[p].ToString());
+                            arrBatchNo.Add(tmpHsn[p].Value);
+                            arrDespQty.Add(DespQty[p].ToString());
+                            arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString()) * double.Parse(Request.Form[Qty[p].ID.ToString()].ToString())));
 
-            sw.WriteLine(info4,"","----------","----------","Entry Tax(.Rs)       : ", Request.Form["txtentry"].ToString());
+                            if (!foe[p].Checked)
+                            {
+                                arrProdName.Add(ProdName[p].ToString());
+                                arrBillQty.Add(Request.Form[Qty[p].ID].ToString());
 
-            if (Request.Form["txtfoc"].ToString()!="")
-                //sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","-"+txtfoc.Text);
-				sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),TotalQtyPackLtr.ToString(),"FOC Discount         : ","-"+ Request.Form["txtfoc"].ToString());
-			else
-                //sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","0");
-                sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),TotalQtyPackLtr.ToString(),"FOC Discount         : ","0");
-			/*if(txttradedisamt.Text!="")
-                sw.WriteLine(info4,"","","","Trade Dis("+txttradedis.Text+")      : ","-"+txttradedisamt.Text);
-			else
-				sw.WriteLine(info4,"","","","Trade Dis("+txttradedis.Text+")      : ","0");*/
-			if(Request.Form["txttradedisamt"].ToString()!="")
-				sw.WriteLine(info4,"","","","Trade Discount       : ","-"+ Request.Form["txttradedisamt"].ToString());
-			else
+                                arrProdRate.Add(Request.Form[Rate[p].ID].ToString());
 
-                sw.WriteLine(info4,"","","","Trade Discount       : ","0");
-			if(Request.Form["txtTotalDisc"].ToString()!="")
-			{
-				if(DropDiscType.SelectedIndex==0)
-					sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+ Request.Form["txtTotalDisc"].ToString());
-				else
+                                arrProdAmount.Add(Request.Form[Amount[p].ID].ToString());
 
-                    sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")       : ","-"+ Request.Form["txtTotalDisc"].ToString());
+                                arrFreeQty.Add("");
+                            }
+                            else
+                            {
+                                arrProdName.Add("Free " + ProdName[p].ToString());
+                                arrBillQty.Add("");
+                                arrProdRate.Add("");
+                                arrProdAmount.Add("");
+                                arrFreeQty.Add(Request.Form[Qty[p].ID].ToString());
+
+                            }
+                        }
+                        SqlDtr.Close();
+                        arrCgst.Add(tmpCgst[p].Value);
+                        arrSgst.Add(tmpSgst[p].Value);
+                        arrIgst.Add(tmpIgst[p].Value);
+                    }
+                }
+
+                // Condensed
+                sw.Write((char)27);//added by vishnu
+                sw.Write((char)67);//added by vishnu
+                sw.Write((char)0);//added by vishnu
+                sw.Write((char)12);//added by vishnu
+
+                sw.Write((char)27);//added by vishnu
+                sw.Write((char)78);//added by vishnu
+                sw.Write((char)5);//added by vishnu
+
+                sw.Write((char)27);//added by vishnu
+                sw.Write((char)15);
+                int arrCount = 0;//,arrCon=0;
+                double Space = 0, SpaceCount = arrBillQty.Count;
+                bool FlagCount = false;
+
+                do
+                {
+                    FlagCount = false;
+                    sw.WriteLine("                                                DELIVERY CHALLAN COM INVOICE");
+                    for (int i = 0; i < 14; i++)
+                    {
+                        sw.WriteLine("");
+                    }
+
+                    string addr = "", TinNo = "";//,ssc="";
+                                                 //dbobj.SelectQuery("select * from customer where cust_name='"+Request.Params.Get("text1")+"'",ref SqlDtr);
+                    dbobj.SelectQuery("select * from supplier where supp_name='" + DropVendorID.SelectedItem.Text + "'", ref SqlDtr);
+                    if (SqlDtr.Read())
+                    {
+                        addr = SqlDtr["City"].ToString();
+                        //ssc=SqlDtr["sadbhavnacd"].ToString();
+                        TinNo = SqlDtr["Tin_No"].ToString();
+                    }
+                    addr = addr.ToUpper();
+                    SqlDataReader rdr = null;
+                    if (lblInvoiceNo.Visible == true)
+                        sw.WriteLine(info2, "", DropVendorID.SelectedItem.Text.ToUpper(), "", Request.Form["lblInvoiceNo"].ToString());
+                    else
+
+                    {
+                        //dbobj.SelectQuery("select invoice_no from purchase_master where vndr_invoice_no='"+DropInvoiceNo.SelectedItem.Text+"'",ref rdr);
+                        dbobj.SelectQuery("select invoice_no from purchase_master where invoice_no='" + arrInvoiceNo[0] + "'", ref rdr);
+                        if (rdr.Read())
+                        {
+                            sw.WriteLine(info2, "", DropVendorID.SelectedItem.Text.ToUpper(), "", rdr["Invoice_No"].ToString());
+                        }
+                    }
+                    if (addr != "")
+                        sw.WriteLine(info2, "", GenUtil.TrimLength(addr, 50), "", Request.Form["lblInvoiceDate"].ToString());
+                    else
+
+                        sw.WriteLine(info2, "", "", "", Request.Form["lblInvoiceDate"].ToString());
+                    sw.WriteLine(info2, "V_Inv_No/DT", Request.Form["txtVInnvoiceNo"].ToString() + " / " + Request.Form["txtVInvoiceDate"].ToString(), "", InvoiceDate[1]);
+                    sw.WriteLine(info2, "Tin No", TinNo, "", "");
+                    sw.WriteLine(info2, "", "", "", Request.Form["txtVehicleNo"].ToString());
+
+                    sw.WriteLine("");
+                    sw.WriteLine("");
+                    sw.WriteLine(info3, "P-Code", "  HSN", " Grade/Package Name ", " B-Qty", " F-Qty", " R-Qty", "  Ltr/Kg", "  Rate Rs.", "    Amount (Rs.)", " CGST (Rs.)", " SGST (Rs.)", " IGST(Rs.)");
+                    sw.WriteLine("");
+                    //arrCount++;
+                    for (k = arrCount; k < arrBillQty.Count; k++, arrCount++)
+                    {
+                        sw.WriteLine(info3, arrProdCode[k].ToString(), arrBatchNo[k].ToString(), GenUtil.TrimLength(arrProdName[k].ToString(), 34), arrBillQty[k].ToString(), arrFreeQty[k].ToString(), arrDespQty[k].ToString(), arrLtrkg[k].ToString(), arrProdRate[k].ToString(), arrProdAmount[k].ToString(), arrCgst[k].ToString(), arrSgst[k].ToString(), arrIgst[k].ToString());
+                        if (k == 15 && arrBillQty.Count < 25)
+                            FlagCount = true;
+                        if (k == 25)
+                        {
+                            FlagCount = true;
+                            arrCount++;
+                            break;
+                        }
+                        if (k == 51)
+                        {
+                            FlagCount = true;
+                            arrCount++;
+                            break;
+                        }
+                        if (k == 77)
+                        {
+                            FlagCount = true;
+                            arrCount++;
+                            break;
+                        }
+                        if (k == 103)
+                        {
+                            FlagCount = true;
+                            arrCount++;
+                            break;
+                        }
+                    }
+                    Space = SpaceCount - 25;
+                    if (Space > 0)
+                    {
+                        SpaceCount -= 25;
+                        for (int r = 0; r <= 15; r++)
+                        {
+                            sw.WriteLine();
+                        }
+                    }
+                    else
+                    {
+                        Space = Math.Abs(Space);
+                        if (Space >= 10)
+                        {
+                            for (int r = 10; r <= Space; r++)
+                            {
+                                sw.WriteLine();
+                            }
+                        }
+                        else
+                        {
+                            for (int r = 0; r <= Space + 17; r++)
+                            {
+                                sw.WriteLine();
+                            }
+                        }
+                        SpaceCount = 0;
+                    }
+                }
+                while (FlagCount == true);
+                sw.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------");
+                sw.WriteLine(info4, "", "Packs", "Ltrs", "GROSS AMOUNT         : ", Request.Form["txtGrandTotal"].ToString());
+
+                sw.WriteLine(info4, "", "----------", "----------", "Entry Tax(.Rs)       : ", Request.Form["txtentry"].ToString());
+
+                if (Request.Form["txtfoc"].ToString() != "")
+                    //sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","-"+txtfoc.Text);
+                    sw.WriteLine(info4, "Act Qty", TotalQtyPack.ToString(), TotalQtyPackLtr.ToString(), "FOC Discount         : ", "-" + Request.Form["txtfoc"].ToString());
+                else
+                    //sw.WriteLine(info4,"Act Qty",TotalQtyPack.ToString(),txttotalqtyltr1.Text,"FOC Discount         : ","0");
+                    sw.WriteLine(info4, "Act Qty", TotalQtyPack.ToString(), TotalQtyPackLtr.ToString(), "FOC Discount         : ", "0");
+                /*if(txttradedisamt.Text!="")
+                    sw.WriteLine(info4,"","","","Trade Dis("+txttradedis.Text+")      : ","-"+txttradedisamt.Text);
+                else
+                    sw.WriteLine(info4,"","","","Trade Dis("+txttradedis.Text+")      : ","0");*/
+                if (Request.Form["txttradedisamt"].ToString() != "")
+                    sw.WriteLine(info4, "", "", "", "Trade Discount       : ", "-" + Request.Form["txttradedisamt"].ToString());
+                else
+
+                    sw.WriteLine(info4, "", "", "", "Trade Discount       : ", "0");
+                if (Request.Form["txtTotalDisc"].ToString() != "")
+                {
+                    if (DropDiscType.SelectedIndex == 0)
+                        sw.WriteLine(info4, "FOC Qty", TotalQtyfoe.ToString(), TotalQtyFoeLtr.ToString(), "Discount(" + DropDiscType.SelectedItem.Text + ")        : ", "-" + Request.Form["txtTotalDisc"].ToString());
+                    else
+
+                        sw.WriteLine(info4, "FOC Qty", TotalQtyfoe.ToString(), TotalQtyFoeLtr.ToString(), "Discount(" + DropDiscType.SelectedItem.Text + ")       : ", "-" + Request.Form["txtTotalDisc"].ToString());
+
+                }
+                else
+                    sw.WriteLine(info4, "FOC Qty", TotalQtyfoe.ToString(), TotalQtyFoeLtr.ToString(), "Discount(" + DropDiscType.SelectedItem.Text + ")       : ", "0");
+                if (Request.Form["txtTotalCashDisc"].ToString() != "")
+                {
+                    if (DropCashDiscType.SelectedIndex == 0)
+                        sw.WriteLine(info4, "", "----------", "----------", "Cash Dis(" + Request.Form["txtCashDisc"].ToString() + DropCashDiscType.SelectedItem.Text + ")    : ", "-" + Request.Form["txtTotalCashDisc"].ToString());
+                    else
+
+                        sw.WriteLine(info4, "", "----------", "----------", "Cash Dis(" + Request.Form["txtCashDisc"].ToString() + DropCashDiscType.SelectedItem.Text + ")      : ", "-" + Request.Form["txtTotalCashDisc"].ToString());
+
+                }
+                else
+                    sw.WriteLine(info4, "", "----------", "----------", "Cash Discount        : ", "0");
+                sw.WriteLine(info4, "Total Qty", System.Convert.ToString(TotalQtyfoe + TotalQtyPack), System.Convert.ToString(System.Convert.ToDouble(Request.Form["txttotalqtyltr1"].ToString()) + TotalfoeLtr), "EBird Dis(" + Request.Form["txtebird"].ToString() + ")      : ", "-" + Request.Form["txtebirdamt"].ToString());
+
+                sw.WriteLine(info4, "", "", "", "Total CGST         : ", tempTotalCgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total SGST         : ", tempTotalSgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total IGST         : ", tempTotalIgst.Value);
+
+                sw.WriteLine(info4, "", "", "", "Net Amount           : ", string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString()) ? txtNetAmount.Text.ToString() : Request.Form["txtNetAmount"].ToString());
+
+                sw.WriteLine(info5, "", GenUtil.ConvertNoToWord(string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString()) ? txtNetAmount.Text.ToString() : Request.Form["txtNetAmount"].ToString()));
+
+                sw.WriteLine();
+                sw.WriteLine(info7, "", Request.Form["txtRemark"].ToString());
+
+                sw.Close();
+            }
+            catch(Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:PurchaseInvoice.aspx,Method:PrePrintReport().  EXCEPTION: " + ex.Message + "  user " + uid);
 
             }
-			else
-				sw.WriteLine(info4,"FOC Qty",TotalQtyfoe.ToString(),TotalQtyFoeLtr.ToString(),"Discount("+DropDiscType.SelectedItem.Text+")       : ","0");
-			if(Request.Form["txtTotalCashDisc"].ToString()!="")
-			{
-				if(DropCashDiscType.SelectedIndex==0)
-					sw.WriteLine(info4,"","----------","----------","Cash Dis("+ Request.Form["txtCashDisc"].ToString()+DropCashDiscType.SelectedItem.Text+")    : ","-"+ Request.Form["txtTotalCashDisc"].ToString());
-				else
-
-                    sw.WriteLine(info4,"","----------","----------","Cash Dis("+ Request.Form["txtCashDisc"].ToString()+DropCashDiscType.SelectedItem.Text+")      : ","-"+ Request.Form["txtTotalCashDisc"].ToString());
-
-            }
-			else
-				sw.WriteLine(info4,"","----------","----------","Cash Discount        : ","0");
-			sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(Request.Form["txttotalqtyltr1"].ToString())+TotalfoeLtr),"EBird Dis("+ Request.Form["txtebird"].ToString()+")      : ","-"+ Request.Form["txtebirdamt"].ToString());
-
-            sw.WriteLine(info4,"","","","Total CGST         : ", tempTotalCgst.Value);
-            sw.WriteLine(info4, "", "", "", "Total SGST         : ", tempTotalSgst.Value);
-            sw.WriteLine(info4, "", "", "", "Total IGST         : ", tempTotalIgst.Value);
-
-            sw.WriteLine(info4,"","","","Net Amount           : ",string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString());
-
-            sw.WriteLine(info5,"",GenUtil.ConvertNoToWord(string.IsNullOrEmpty(Request.Form["txtNetAmount"].ToString())? txtNetAmount.Text.ToString(): Request.Form["txtNetAmount"].ToString()));
-
-            sw.WriteLine();
-			sw.WriteLine(info7,"", Request.Form["txtRemark"].ToString());
-
-            sw.Close();
-		}
+        }
 
 //		public void getscheme()
 //		{
