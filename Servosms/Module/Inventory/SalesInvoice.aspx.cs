@@ -1072,7 +1072,7 @@ namespace Servosms.Module.Inventory
 				#endregion
 
 				#region Fetch Sales Rate Regarding Product Name		
-				sql= "select top 1 Sal_Rate from Price_Updation where Prod_ID=(select  Prod_ID from Products where Prod_Name='"+ ddProd.SelectedItem.Value +"' and Pack_Type='"+ ddPack.SelectedItem.Value +"') order by eff_date desc";
+				sql= "select top 1 Pur_Rate from Price_Updation where Prod_ID=(select  Prod_ID from Products where Prod_Name='"+ ddProd.SelectedItem.Value +"' and Pack_Type='"+ ddPack.SelectedItem.Value +"') order by eff_date desc";
 				SqlDtr = obj.GetRecordSet(sql);
 				while(SqlDtr.Read ())
 				{
@@ -4505,7 +4505,7 @@ namespace Servosms.Module.Inventory
 				SqlDataReader  SqlDtr;
 				string sql;
 				#region Fetch Sales Rate Regarding Product Name		
-				sql= "select top 1 Sal_Rate from Price_Updation where Prod_ID=(select  Prod_ID from Products where Prod_Name='"+ ddProd.SelectedItem.Value +"' and Pack_Type='"+ ddPack.SelectedItem.Value +"') order by eff_date desc";
+				sql= "select top 1 Pur_Rate from Price_Updation where Prod_ID=(select  Prod_ID from Products where Prod_Name='"+ ddProd.SelectedItem.Value +"' and Pack_Type='"+ ddPack.SelectedItem.Value +"') order by eff_date desc";
 				SqlDtr = obj.GetRecordSet(sql);
 				while(SqlDtr.Read ())
 				{
@@ -5277,15 +5277,15 @@ namespace Servosms.Module.Inventory
 					rdr.Close();
 					***********/
 					//str=str+ SqlDtr["Category"]+":"+SqlDtr["Prod_Name"]+":"+SqlDtr["Pack_Type"];
-					sql= "select top 1 Sal_Rate from Price_Updation where Prod_ID="+SqlDtr["Prod_ID"]+ " and Sal_Rate<>0 order by eff_date desc";
+					sql= "select top 1 Pur_Rate from Price_Updation where Prod_ID="+SqlDtr["Prod_ID"]+ " and Pur_Rate<>0 order by eff_date desc";
                     //dbobj.SelectQuery(sql,ref rdr); 
                     rdr = obj1.GetRecordSet(sql);
 					if(rdr.Read())
 					{
-						if(double.Parse(rdr["Sal_Rate"].ToString())!=0)
+						if(double.Parse(rdr["Pur_Rate"].ToString())!=0)
 						{
 							str=str+ SqlDtr["Category"]+":"+SqlDtr["Prod_Name"]+":"+SqlDtr["Pack_Type"];
-							str=str+":"+rdr["Sal_Rate"];
+							str=str+":"+rdr["Pur_Rate"];
 						}
 						else
 						{
