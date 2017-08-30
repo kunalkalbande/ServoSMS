@@ -5617,7 +5617,11 @@ namespace Servosms.Module.Inventory
 				string[] schPQty=new string[12];
 				string[] PackType=new string[12];
 				string[] schProdName=new string[12];
-				int h1 = System.Convert.ToInt32(Math.Floor((Header1Height * 25)/4.05));
+                string[] IGST = new string[20];
+                string[] CGST = new string[20];
+                string[] SGST = new string[20];
+                string[] Hsn = new string[20];
+                int h1 = System.Convert.ToInt32(Math.Floor((Header1Height * 25)/4.05));
 				int h2 = System.Convert.ToInt32(Math.Floor((Header2Height * 25)/4.05));
 				//Coment by vikas 4.11.09 int bh = System.Convert.ToInt32(Math.Floor((BodyHeight * 24)/4.05));
 				int bh = System.Convert.ToInt32(Math.Floor((BodyHeight * 24)/4.18));          //Add by vikas 4.11.09 becouse message show in print

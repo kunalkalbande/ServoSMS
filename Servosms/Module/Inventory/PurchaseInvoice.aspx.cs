@@ -3168,8 +3168,15 @@ namespace Servosms.Module.Inventory
 					CheckBox[] chkfoc={chkfoc1,chkfoc2,chkfoc3,chkfoc4,chkfoc5,chkfoc6,chkfoc7,chkfoc8,chkfoc9,chkfoc10,chkfoc11,chkfoc12,chkfoc13,chkfoc14,chkfoc15,chkfoc16,chkfoc17,chkfoc18,chkfoc19,chkfoc20};
 
 					HtmlInputHidden[] tempFixdDisc={tempFixedDisc1,tempFixedDisc2,tempFixedDisc3,tempFixedDisc4,tempFixedDisc5,tempFixedDisc6,tempFixedDisc7,tempFixedDisc8,tempFixedDisc9,tempFixedDisc10,tempFixedDisc11,tempFixedDisc12,tempFixedDisc13,tempFixedDisc14,tempFixedDisc15,tempFixedDisc16,tempFixedDisc17,tempFixedDisc18,tempFixedDisc19,tempFixedDisc20};             //Add by vikas 16.05.13
-					//***
-					SqlDataReader SqlDtr,rdr;
+
+                    HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+                    HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+                    HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+                    HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
+
+
+                    //***
+                    SqlDataReader SqlDtr,rdr;
 					string sql;
 					string strDate,strDate1;
 					int i=0;
@@ -4099,6 +4106,10 @@ namespace Servosms.Module.Inventory
                 string[] ProdCode = new string[20];
                 string[] PackType = new string[20];
                 string[] ProdName = new string[20];
+                string[] Igst = new string[20];
+                string[] Cgst = new string[20];
+                string[] Sgst = new string[20];
+                string[] BatchNo = new string[20];
 
                 Double TotalQtyPack = 0, TotalQtyfoe = 0, TotalfoeLtr = 0, TotalQtyPackLtr = 0, TotalQtyFoeLtr = 0;
                 int k = 0;
@@ -4149,6 +4160,10 @@ namespace Servosms.Module.Inventory
                         ProdCode[p] = SqlDtr.GetValue(0).ToString();
                         PackType[p] = SqlDtr.GetValue(1).ToString();
                         ProdName[p] = arrProdType[1] + ":" + arrProdType[2];
+                        Igst[p] = tmpIgst[p].Value.ToString();
+                        Cgst[p] = tmpCgst[p].Value.ToString();
+                        Sgst[p] = tmpSgst[p].Value.ToString();
+                        BatchNo[p] = tmpHsn[p].Value.ToString();
                     }
                     else
                     {
@@ -4244,6 +4259,9 @@ namespace Servosms.Module.Inventory
                                     arrFreeQty.Add(SqlDtr.GetValue(1).ToString());
                                 }
                                 arrBatchNo.Add(tmpHsn[p].Value);
+                                arrCgst.Add(Cgst[p].ToString());
+                                arrSgst.Add(Sgst[p].ToString());
+                                arrIgst.Add(Igst[p].ToString());
                                 arrDespQty.Add(SqlDtr.GetValue(1).ToString());
                                 arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString()) * double.Parse(SqlDtr.GetValue(1).ToString())));
                                 //arrProdScheme.Add(scheme[p].Text);
@@ -4252,8 +4270,11 @@ namespace Servosms.Module.Inventory
                         else
                         {
                             arrProdCode.Add(ProdCode[p].ToString());
-                            arrBatchNo.Add(tmpHsn[p].Value);
+                            arrBatchNo.Add(BatchNo[p].ToString());
                             arrDespQty.Add(DespQty[p].ToString());
+                            arrCgst.Add(Cgst[p].ToString());
+                            arrSgst.Add(Sgst[p].ToString());
+                            arrIgst.Add(Igst[p].ToString());
                             arrLtrkg.Add(System.Convert.ToString(double.Parse(PackType[p].ToString()) * double.Parse(Request.Form[Qty[p].ID.ToString()].ToString())));
 
                             if (!foe[p].Checked)
@@ -4278,9 +4299,7 @@ namespace Servosms.Module.Inventory
                             }
                         }
                         SqlDtr.Close();
-                        arrCgst.Add(tmpCgst[p].Value);
-                        arrSgst.Add(tmpSgst[p].Value);
-                        arrIgst.Add(tmpIgst[p].Value);
+                       
                     }
                 }
 
@@ -4775,7 +4794,13 @@ namespace Servosms.Module.Inventory
 
 				HtmlInputHidden[] tempFixdDisc={tempFixedDisc1,tempFixedDisc2,tempFixedDisc3,tempFixedDisc4,tempFixedDisc5,tempFixedDisc6,tempFixedDisc7,tempFixedDisc8,tempFixedDisc9,tempFixedDisc10,tempFixedDisc11,tempFixedDisc12,tempFixedDisc13,tempFixedDisc14,tempFixedDisc15,tempFixedDisc16,tempFixedDisc17,tempFixedDisc18,tempFixedDisc19,tempFixedDisc20};             //Add by vikas 30.06.09
 
-				StreamWriter sw=null;
+                HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+                HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+                HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+                HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
+
+
+                StreamWriter sw =null;
 				double TotalInvoiceAmount=0;
 				for(int i=0;i<ProdType.Length;i++)
 				{

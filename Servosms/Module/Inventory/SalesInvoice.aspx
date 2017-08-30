@@ -3199,7 +3199,7 @@ function MoveFocus(t,drop,e)
 								<TD><asp:label id="lblEntryTime" runat="server"></asp:label></TD-->
 								<TD align="right" colSpan="5"><asp:button id="btnSave" runat="server" Width="80px" 
 										Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="Button1" runat="server" Width="80px" 
-										Text="Print" onclick="Button1_Click"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
+										Text="Print" onclick="Button1_Click" onmouseup="GetNetAmount()"></asp:button>&nbsp;&nbsp;<asp:button onmouseup="checkDelRec();" id="btnDelete" runat="server" Width="80px" 
 										CausesValidation="False" Text="Delete" onclick="btnDelete_Click"></asp:button></TD>
 							</TR>
 						</TABLE>
