@@ -907,6 +907,7 @@
         var totalValue = 0;
         function GetNetAmountEtaxnew()
         {
+            checkProd()
             var selarr = new Array()
             var dbValues=document.Form1.txtMainGST.value;
             var mainarr = new Array()
@@ -1801,7 +1802,7 @@
                                         <td>&nbsp;&nbsp;&nbsp;Invoice No</td>
                                         <td>
                                             <asp:TextBox ID="lblInvoiceNo" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove"
-                                                CssClass="fontstyle" Height="16px"></asp:TextBox><asp:DropDownList ID="DropInvoiceNo" runat="server" Width="114px" CssClass="dropdownlist" AutoPostBack="True" OnSelectedIndexChanged="DropInvoiceNo_SelectedIndexChanged">
+                                                CssClass="fontstyle" Height="16px"></asp:TextBox><asp:DropDownList ID="DropInvoiceNo" runat="server" Width="114px" CssClass="dropdownlist" AutoPostBack="True" OnSelectedIndexChanged="DropInvoiceNo_SelectedIndexChanged" onmouseup="checkProd(),GetNetAmountEtaxnew()">
                                                     <asp:ListItem Value="Select">Select</asp:ListItem>
                                                 </asp:DropDownList><asp:Button ID="BtnEdit" TabIndex="200" runat="server" Text="..." ToolTip="Edit Existing Record "
                                                     CausesValidation="False" OnClick="BtnEdit_Click"></asp:Button></td>
