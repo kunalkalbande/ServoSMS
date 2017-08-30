@@ -108,9 +108,12 @@
             window.onload=change();
     </script>
     <script language="javascript">
+        
+        var prodCount=0;
         function checkProd()
         {
-            var packArray = new Array();		
+            var packArray = new Array();
+            prodCount=0;	
             packArray[0]=document.Form1.DropType1.value
             packArray[1]=document.Form1.DropType2.value
             packArray[2]=document.Form1.DropType3.value
@@ -124,13 +127,13 @@
             packArray[10]=document.Form1.DropType11.value
             packArray[11]=document.Form1.DropType12.value
             packArray[12]=document.Form1.DropType13.value
-            packArray[14]=document.Form1.DropType14.value
-            packArray[15]=document.Form1.DropType15.value
-            packArray[16]=document.Form1.DropType16.value
-            packArray[17]=document.Form1.DropType17.value
-            packArray[18]=document.Form1.DropType18.value
-            packArray[19]=document.Form1.DropType19.value
-            packArray[20]=document.Form1.DropType20.value
+            packArray[13]=document.Form1.DropType14.value
+            packArray[14]=document.Form1.DropType15.value
+            packArray[15]=document.Form1.DropType16.value
+            packArray[16]=document.Form1.DropType17.value
+            packArray[17]=document.Form1.DropType18.value
+            packArray[18]=document.Form1.DropType19.value
+            packArray[19]=document.Form1.DropType20.value
             var count = 0;
             for(var i=0;i<20;i++)
             {
@@ -150,7 +153,14 @@
                         continue;
                 }
                 count = 0;
+
             }
+            for(var m=0;m<20;m++)
+            {
+                if( packArray[m]!="Type")
+                    prodCount=prodCount+1
+            }
+
             return true;
         }
 	
@@ -465,6 +475,7 @@
         }
         var totaldisc=0;
         var entrytax=0;
+        var bird=0;
         //this coment add by vikas Grand total and Net Total in GetEtaxnew() function 31.10.2012
         function GetEtaxnew()    //         
         {
@@ -519,7 +530,7 @@
             var tradeless=document.Form1.txttradeless.value
             if(tradeless=="" || isNaN(tradeless) || tradeless=="-")
                 tradeless=0	
-            var bird=document.Form1.txtebirdamt.value
+            bird=document.Form1.txtebirdamt.value
             if(bird=="" || isNaN(bird))
                 bird=0
             var birdless=document.Form1.txtbirdless.value
@@ -901,6 +912,7 @@
             var mainarr = new Array()
             var taxarr = new Array()
             var focDisc=0
+            var birdperProd=0
             var cgstamount1=0,cgstamount2 = 0,cgstamount3=0,cgstamount4=0,cgstamount5=0,cgstamount6=0,cgstamount7=0,cgstamount8=0,cgstamount9=0,cgstamount10=0,cgstamount11=0,cgstamount12 = 0,
                 cgstamount13=0,cgstamount14 = 0,cgstamount15=0,cgstamount16=0,cgstamount17=0,cgstamount18=0,cgstamount19=0,cgstamount20=0
             var sgstamount1=0,sgstamount2 = 0,sgstamount3=0,sgstamount4=0,sgstamount5=0,sgstamount6=0,sgstamount7=0,sgstamount8=0,sgstamount9=0,sgstamount10=0,sgstamount11=0,sgstamount12 = 0,
@@ -913,7 +925,9 @@
             document.Form1.Tempcgstrate.value=""
             document.Form1.Tempsgstrate.value=""
             var stktdis=0
+           
             mainarr =dbValues.split("~");
+            
             // debugger;
             <% for (int i = 1; i <= 20; i++)
         {
@@ -945,12 +959,31 @@
                 //**********
                
                 var tradeless=document.Form1.txttradeless.value
+                if(prodCount!=0 && prodCount>=1)
+                {
+                    tradeless=tradeless/prodCount
+                }
                 if(tradeless=="" || isNaN(tradeless) || tradeless=="-")
                     tradeless=0	
-                var bird=document.Form1.txtebirdamt.value
-                if(bird=="" || isNaN(bird))
-                    bird=0
+                //var bird=document.Form1.txtebirdamt.value
+                //if(bird=="" || isNaN(bird))
+                //    bird=0
+                var EarlyDisType=document.Form1.tempEarlyDisType.value;
+                if(EarlyDisType!="%")
+                {
+                    birdperProd=(eval(document.Form1.txtqPack<%=i%>.value)*eval(document.Form1.txtQty<%=i%>.value))*document.Form1.txtebird.value;
+                }
+                else
+                {
+                    var early=document.Form1.txtAmount<%=i%>.value*document.Form1.txtebird.value;
+                    birdperProd=early/100;
+                }
+
                 var birdless=document.Form1.txtbirdless.value
+                if(prodCount!=0 && prodCount>=1)
+                {
+                    birdless=birdless/prodCount
+                }
                 if(birdless=="" || isNaN(birdless) || birdless=="-")
                     birdless=0
                 selarr.push(selectedProduct) 
@@ -1074,7 +1107,7 @@
                 //cashdiscount
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
-                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
                     var cashdiscount=(GT*CashDisc)/100
                     //document.Form1.txtTotalCashDisc.value=eval(CashDisc)
                     makeRound(cashdiscount,2)
@@ -1098,19 +1131,21 @@
                         document.Form1.txtVatRate.value=taxarr[3];
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
-                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+(eval(bird)-eval(birdless))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+                        var earbird=eval(birdperProd)-eval(birdless);
+                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+(eval(earbird))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
                         //var totalValue1 =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
                         totalAmountAfterGst=0;
                         var igstamount<%=i%> = GetIgstamt()
                         document.Form1.tempIgst<%=i%>.value=igstamount<%=i%>
+                        makeRound(document.Form1.tempIgst<%=i%>)
                         var cgstamount<%=i%> = Getcgstamt()
                         document.Form1.tempCgst<%=i%>.value=cgstamount<%=i%>
+                        makeRound(document.Form1.tempCgst<%=i%>)
                         var sgstamount<%=i%> = Getsgstamt()
                         document.Form1.tempSgst<%=i%>.value=sgstamount<%=i%>
-
+                        makeRound(document.Form1.tempSgst<%=i%>)
                         document.Form1.tempHsn<%=i%>.value=taxarr[6];
                     }
-                       
                 }
             }
             <%
