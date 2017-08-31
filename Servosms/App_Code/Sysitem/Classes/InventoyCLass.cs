@@ -4932,6 +4932,8 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters.Add("@New_fixdamount",New_fixeddiscAmount);
             SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
             SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            SqlCmd.Parameters.Add("@Tradeless", Tradeless);
+            SqlCmd.Parameters.Add("@Birdless", Birdless);
 
             /********end***************/
 
@@ -5019,6 +5021,8 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters.Add("@New_fixdamount",New_fixeddiscAmount);
             SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
             SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            SqlCmd.Parameters.Add("@Tradeless", Tradeless);
+            SqlCmd.Parameters.Add("@Birdless", Birdless);
             /********end***************/
 
             //***************************	

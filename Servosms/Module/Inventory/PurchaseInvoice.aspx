@@ -2794,7 +2794,7 @@
                             <td align="right" colspan="4">
                                 <asp:Button ID="btnSave" runat="server" Width="75px" Text="Save"
                                     OnClick="btnSave_Click"></asp:Button>&nbsp;&nbsp;<asp:Button ID="btnPrint" runat="server" Width="75px" Text="Print" CausesValidation="False"
-                                        OnClick="btnPrint_Click" onmouseup="checkProd(),GetNetAmountEtaxnew()"></asp:Button>&nbsp;&nbsp;<asp:Button onmouseup="checkDelRec()" Text="Delete" ID="btnDelete" runat="server" Width="75px"
+                                        OnClick="btnPrint_Click" onmouseup="GetNetAmountEtaxnew()"></asp:Button>&nbsp;&nbsp;<asp:Button onmouseup="checkDelRec()" Text="Delete" ID="btnDelete" runat="server" Width="75px"
                                             OnClick="btnDelete_Click"></asp:Button>&nbsp;&nbsp;<asp:Button ID="btnPreview" runat="server" Width="75px" Text="Preview"
                                                 OnClick="btnPreview_Click"></asp:Button></td>
                         </tr>

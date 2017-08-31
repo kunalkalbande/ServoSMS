@@ -1198,6 +1198,8 @@ namespace Servosms.Module.Inventory
 						else
 							obj.Ebird  = Request.Form["txtebird"].ToString().Trim();
 
+                        obj.Tradeless = txttradeless.Text.ToString();
+                        obj.Birdless = txtbirdless.Text.ToString();
 
                         if (Request.Form["txtebirdamt"].ToString().Trim() =="")
 							obj.Ebird_Discount  ="0.0";
@@ -1563,7 +1565,8 @@ namespace Servosms.Module.Inventory
 						else
 							obj.Ebird_Discount  = Request.Form["txtebirdamt"].ToString().Trim() ;
 
-
+                        obj.Tradeless = txttradeless.Text.ToString();
+                        obj.Birdless = txtbirdless.Text.ToString();
                         obj.Tradeval="0";
 						if(Request.Form["txttradedisamt"].ToString().Trim() =="")
 							obj.Trade_Discount  ="0.0";
@@ -3244,6 +3247,8 @@ namespace Servosms.Module.Inventory
 						txtVAT.Text =  SqlDtr.GetValue(17).ToString();
                         Textcgst.Text = SqlDtr.GetValue(32).ToString();
                         Textsgst.Text = SqlDtr.GetValue(31).ToString();
+                        txtbirdless.Text = SqlDtr.GetValue(33).ToString();
+                        txttradeless.Text = SqlDtr.GetValue(34).ToString();
 						
 						//03.07.09 double TotalCashDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount_Type"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC);
 						
