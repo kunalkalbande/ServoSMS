@@ -1901,12 +1901,12 @@
                                                 onkeyup="search3(this,document.Form1.DropProdName1,document.Form1.texthiddenprod.value),arrowkeydown(this,event,document.Form1.DropProdName1,document.Form1.texthiddenprod),Selectbyenter(document.Form1.DropProdName1,event,document.Form1.DropType1,document.Form1.txtQty1),getStock1(this,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
                                                 style="z-index: 10; visibility: visible; width: 285px; height: 19px" onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1)"
                                                 value="Type" name="DropType1" runat="server"><input class="ComboBoxSearchButtonStyle" onkeypress="return GetAnyNumber(this, event);"
-                                                    onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1),get_EBD()" readonly
-                                                    type="text" name="temp4"><br>
-                                            <div id="Layer2" style="z-index: 2; position: absolute">
+                                                    onclick="search1(document.Form1.DropProdName1,document.Form1.texthiddenprod),dropshow(document.Form1.DropProdName1),get_EBD()" readOnly type="text" name="temp4"><br>
+                                            <div id="Layer2" style="Z-INDEX: 2; POSITION: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType1,document.Form1.txtQty1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
                                                     id="DropProdName1" ondblclick="select(this,document.Form1.DropType1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty1,document.Form1.DropType1)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty1,document.Form1.DropType1)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType1),getStock1(document.Form1.DropType1,document.Form1.txtRate1,document.Form1.txtQty1,document.Form1.txtAmount1)"
                                                     multiple name="DropProdName1">
                                                 </select>
@@ -1942,7 +1942,8 @@
                                             <div id="Layer3" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType2,document.Form1.txtQty2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
                                                     id="DropProdName2" ondblclick="select(this,document.Form1.DropType2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty2,document.Form1.DropType2)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty2,document.Form1.DropType2)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType2),getStock1(document.Form1.DropType2,document.Form1.txtRate2,document.Form1.txtQty2,document.Form1.txtAmount2)"
                                                     multiple name="DropProdName2">
                                                 </select>
@@ -1978,7 +1979,8 @@
                                             <div id="Layer4" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType3,document.Form1.txtQty3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
                                                     id="DropProdName3" ondblclick="select(this,document.Form1.DropType3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty3,document.Form1.DropType3)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty3,document.Form1.DropType3)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType3),getStock1(document.Form1.DropType3,document.Form1.txtRate3,document.Form1.txtQty3,document.Form1.txtAmount3)"
                                                     multiple name="DropProdName3">
                                                 </select>
@@ -2014,7 +2016,8 @@
                                             <div id="Layer5" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType4,document.Form1.txtQty4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
                                                     id="DropProdName4" ondblclick="select(this,document.Form1.DropType4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty4,document.Form1.DropType4)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty4,document.Form1.DropType4)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType4),getStock1(document.Form1.DropType4,document.Form1.txtRate4,document.Form1.txtQty4,document.Form1.txtAmount4)"
                                                     multiple name="DropProdName4">
                                                 </select>
@@ -2050,7 +2053,8 @@
                                             <div id="Layer6" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType5,document.Form1.txtQty5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
                                                     id="DropProdName5" ondblclick="select(this,document.Form1.DropType5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty5,document.Form1.DropType5)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty5,document.Form1.DropType5)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType5),getStock1(document.Form1.DropType5,document.Form1.txtRate5,document.Form1.txtQty5,document.Form1.txtAmount5)"
                                                     multiple name="DropProdName5">
                                                 </select>
@@ -2086,7 +2090,8 @@
                                             <div id="Layer7" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType6,document.Form1.txtQty6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
                                                     id="DropProdName6" ondblclick="select(this,document.Form1.DropType6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty6,document.Form1.DropType6)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty6,document.Form1.DropType6)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType6),getStock1(document.Form1.DropType6,document.Form1.txtRate6,document.Form1.txtQty6,document.Form1.txtAmount6)"
                                                     multiple name="DropProdName6">
                                                 </select>
@@ -2122,7 +2127,8 @@
                                             <div id="Layer8" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType7,document.Form1.txtQty7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
                                                     id="DropProdName7" ondblclick="select(this,document.Form1.DropType7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty7,document.Form1.DropType7)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty7,document.Form1.DropType7)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType7),getStock1(document.Form1.DropType7,document.Form1.txtRate7,document.Form1.txtQty7,document.Form1.txtAmount7)"
                                                     multiple name="DropProdName7">
                                                 </select>
@@ -2158,7 +2164,8 @@
                                             <div id="Layer9" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType8,document.Form1.txtQty8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
                                                     id="DropProdName8" ondblclick="select(this,document.Form1.DropType8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty8,document.Form1.DropType8)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty8,document.Form1.DropType8)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType8),getStock1(document.Form1.DropType8,document.Form1.txtRate8,document.Form1.txtQty8,document.Form1.txtAmount8)"
                                                     multiple name="DropProdName8">
                                                 </select>
@@ -2194,7 +2201,8 @@
                                             <div id="Layer10" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType9,document.Form1.txtQty9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
                                                     id="DropProdName9" ondblclick="select(this,document.Form1.DropType9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty9,document.Form1.DropType9)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty9,document.Form1.DropType9)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType9),getStock1(document.Form1.DropType9,document.Form1.txtRate9,document.Form1.txtQty9,document.Form1.txtAmount9)"
                                                     multiple name="DropProdName9">
                                                 </select>
@@ -2230,7 +2238,8 @@
                                             <div id="Layer11" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType10,document.Form1.txtQty10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
                                                     id="DropProdName10" ondblclick="select(this,document.Form1.DropType10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty10,document.Form1.DropType10)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty10,document.Form1.DropType10)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType10),getStock1(document.Form1.DropType10,document.Form1.txtRate10,document.Form1.txtQty10,document.Form1.txtAmount10)"
                                                     multiple name="DropProdName10">
                                                 </select>
@@ -2266,7 +2275,8 @@
                                             <div id="Layer12" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType11,document.Form1.txtQty11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
                                                     id="DropProdName11" ondblclick="select(this,document.Form1.DropType11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty11,document.Form1.DropType11)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty11,document.Form1.DropType11)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType11),getStock1(document.Form1.DropType11,document.Form1.txtRate11,document.Form1.txtQty11,document.Form1.txtAmount11)"
                                                     multiple name="DropProdName11">
                                                 </select>
@@ -2302,7 +2312,8 @@
                                             <div id="Layer13" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType12,document.Form1.txtQty12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
                                                     id="DropProdName12" ondblclick="select(this,document.Form1.DropType12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty12,document.Form1.DropType12)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty12,document.Form1.DropType12)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType12),getStock1(document.Form1.DropType12,document.Form1.txtRate12,document.Form1.txtQty12,document.Form1.txtAmount12)"
                                                     multiple name="DropProdName12">
                                                 </select>
@@ -2338,7 +2349,8 @@
                                             <div id="Layer14" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType13,document.Form1.txtQty13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
                                                     id="DropProdName13" ondblclick="select(this,document.Form1.DropType13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty13,document.Form1.DropType13)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty13,document.Form1.DropType13)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType13),getStock1(document.Form1.DropType13,document.Form1.txtRate13,document.Form1.txtQty13,document.Form1.txtAmount13)"
                                                     multiple name="DropProdName13">
                                                 </select>
@@ -2374,7 +2386,8 @@
                                             <div id="Layer15" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType14,document.Form1.txtQty14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
                                                     id="DropProdName14" ondblclick="select(this,document.Form1.DropType14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty14,document.Form1.DropType14)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty14,document.Form1.DropType14)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType14),getStock1(document.Form1.DropType14,document.Form1.txtRate14,document.Form1.txtQty14,document.Form1.txtAmount14)"
                                                     multiple name="DropProdName14">
                                                 </select>
@@ -2410,7 +2423,8 @@
                                             <div id="Layer16" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType15,document.Form1.txtQty15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
                                                     id="DropProdName15" ondblclick="select(this,document.Form1.DropType15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty15,document.Form1.DropType15)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty15,document.Form1.DropType15)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType15),getStock1(document.Form1.DropType15,document.Form1.txtRate15,document.Form1.txtQty15,document.Form1.txtAmount15)"
                                                     multiple name="DropProdName15">
                                                 </select>
@@ -2446,7 +2460,8 @@
                                             <div id="Layer17" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType16,document.Form1.txtQty16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
                                                     id="DropProdName16" ondblclick="select(this,document.Form1.DropType16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty16,document.Form1.DropType16)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty16,document.Form1.DropType16)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType16),getStock1(document.Form1.DropType16,document.Form1.txtRate16,document.Form1.txtQty16,document.Form1.txtAmount16)"
                                                     multiple name="DropProdName16">
                                                 </select>
@@ -2482,7 +2497,8 @@
                                             <div id="Layer18" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType17,document.Form1.txtQty17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
                                                     id="DropProdName17" ondblclick="select(this,document.Form1.DropType17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty17,document.Form1.DropType17)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty17,document.Form1.DropType17)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType17),getStock1(document.Form1.DropType17,document.Form1.txtRate17,document.Form1.txtQty17,document.Form1.txtAmount17)"
                                                     multiple name="DropProdName17">
                                                 </select>
@@ -2518,7 +2534,8 @@
                                             <div id="Layer19" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType18,document.Form1.txtQty18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
                                                     id="DropProdName18" ondblclick="select(this,document.Form1.DropType18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.DropType19,document.Form1.DropType18)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.DropType19,document.Form1.DropType18)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType18),getStock1(document.Form1.DropType18,document.Form1.txtRate18,document.Form1.txtQty18,document.Form1.txtAmount18)"
                                                     multiple name="DropProdName18">
                                                 </select>
@@ -2554,7 +2571,8 @@
                                             <div id="Layer20" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType19,document.Form1.txtQty19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
                                                     id="DropProdName19" ondblclick="select(this,document.Form1.DropType19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty19,document.Form1.DropType19)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty19,document.Form1.DropType19)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType19),getStock1(document.Form1.DropType19,document.Form1.txtRate19,document.Form1.txtQty19,document.Form1.txtAmount19)"
                                                     multiple name="DropProdName19">
                                                 </select>
@@ -2590,7 +2608,8 @@
                                             <div id="Layer21" style="z-index: 2; position: absolute">
                                                 <select class="ListBoxborderstyle" onkeypress="Selectbyenter(this,event,document.Form1.DropType20,document.Form1.txtQty20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
                                                     id="DropProdName20" ondblclick="select(this,document.Form1.DropType20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
-                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty20,document.Form1.DropType20)" style="z-index: 10; visibility: hidden; width: 285px; height: 19px"
+                                                    onkeyup="arrowkeyselect(this,event,document.Form1.txtQty20,document.Form1.DropType20)" 
+                                                    style="Z-INDEX: 10; VISIBILITY: hidden; WIDTH: 310px; HEIGHT: 0px"
                                                     onfocusout="HideList(this,document.Form1.DropType20),getStock1(document.Form1.DropType20,document.Form1.txtRate20,document.Form1.txtQty20,document.Form1.txtAmount20)"
                                                     multiple name="DropProdName20">
                                                 </select>
