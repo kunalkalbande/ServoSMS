@@ -149,49 +149,64 @@
 											A</b></font></td>
 							</tr>
 							<%
-									DBUtil dbobj=new DBUtil(System.Configuration.ConfigurationSettings.AppSettings["Servosms"],true);
-									string[] arr1 = new string[Day];
-									string[] arr2 = new string[Day];
-									string FromDate=DropMonth.SelectedIndex+"/1/"+DropYear.SelectedItem.Text;
-									string ToDate=DropMonth.SelectedIndex+"/"+Day.ToString()+"/"+DropYear.SelectedItem.Text;
-									InventoryClass obj = new InventoryClass();
-									SqlDataReader rdr,rdr1=null;
-									for(int i=0,j=1;i<Day;i++,j++)
-									{
-										arr1[i]=DropMonth.SelectedIndex+"/"+j+"/"+DropYear.SelectedItem.Text;
-										//arr2[i]="A";
-									}
-									string emp="";
-									//coment by vikas 21.11.2012 dbobj.SelectQuery("select emp_id,emp_name from employee",ref rdr1);
-									dbobj.SelectQuery("select emp_id,emp_name from employee where status=1",ref rdr1);
-									while(rdr1.Read())
-									{
-										for(int i=0;i<Day;i++)
-										{
-											//arr1[i]=DropMonth.SelectedIndex+"/"+j+"/"+DropYear.SelectedItem.Text;
-											//coment by vikas 20.12.2012 arr2[i]="A";
-											if(DayName[i]=="Sunday")
-												arr2[i]="S";
-											else
-												arr2[i]="A";
-										}
-										int countP=0,countA=0;
-										emp=rdr1.GetValue(1).ToString();
-										rdr = obj.GetRecordSet("select * from attandance_register where att_date>='"+FromDate+"' and att_date<='"+ToDate+"' and emp_id='"+rdr1.GetValue(0).ToString()+"' and status=1 order by att_date");
-										while(rdr.Read())
-										{
-											for(int i=0;i<arr1.Length;i++)
-											{
-												if(GenUtil.trimDate(rdr.GetValue(0).ToString()).Equals(arr1[i].ToString()))
-												{
-													arr2[i]="P";
-													countP++;
-													break;
-												}
-											}
-										}
-										rdr.Close();
-										countA=Day-countP;
+                                DBUtil dbobj=new DBUtil(System.Configuration.ConfigurationSettings.AppSettings["Servosms"],true);
+                                string[] arr1 = new string[Day];
+                                string[] arr2 = new string[Day];
+                                string FromDate=DropMonth.SelectedIndex+"/1/"+DropYear.SelectedItem.Text;
+                                string ToDate=DropMonth.SelectedIndex+"/"+Day.ToString()+"/"+DropYear.SelectedItem.Text;
+                                InventoryClass obj = new InventoryClass();
+                                SqlDataReader rdr,rdr1=null;
+                                for(int i=0,j=1;i<Day;i++,j++)
+                                {
+                                    if (j > 9)
+                                    {
+                                        arr1[i] = DropMonth.SelectedIndex + "/" + j + "/" + DropYear.SelectedItem.Text;
+                                    }
+                                    else
+                                    {
+                                        arr1[i] = DropMonth.SelectedIndex + "/" + "0" + j + "/" + DropYear.SelectedItem.Text;
+                                    }
+                                    //arr2[i]="A";
+                                }
+                                string emp="";
+                                //coment by vikas 21.11.2012 dbobj.SelectQuery("select emp_id,emp_name from employee",ref rdr1);
+                                dbobj.SelectQuery("select emp_id,emp_name from employee where status=1",ref rdr1);
+                                while(rdr1.Read())
+                                {
+                                    for(int i=0;i<Day;i++)
+                                    {
+                                        //arr1[i]=DropMonth.SelectedIndex+"/"+j+"/"+DropYear.SelectedItem.Text;
+                                        //coment by vikas 20.12.2012 arr2[i]="A";
+                                        if(DayName[i]=="Sunday")
+                                            arr2[i]="S";
+                                        else
+                                            arr2[i]="A";
+                                    }
+                                    int countP=0,countA=0;
+                                    emp=rdr1.GetValue(1).ToString();
+                                    rdr = obj.GetRecordSet("select * from attandance_register where att_date>='"+FromDate+"' and att_date<='"+ToDate+"' and emp_id='"+rdr1.GetValue(0).ToString()+"' and status=1 order by att_date");
+                                    while(rdr.Read())
+                                    {
+                                        for(int i=0;i<arr1.Length;i++)
+                                        {
+                                            string strTrimDate = GenUtil.trimDate(rdr.GetValue(0).ToString());
+                                            string strDate = GenUtil.str2MMDDYYYY(strTrimDate);
+                                            if(strDate.StartsWith("0"))
+                                            {
+                                                strDate = strDate.Remove(0, 1);
+                                            }
+
+
+                                            if(GenUtil.trimDate(strDate).Equals(arr1[i].ToString()))
+                                            {
+                                                arr2[i]="P";
+                                                countP++;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    rdr.Close();
+                                    countA=Day-countP;
 										%>
 							<tr>
 								<td>&nbsp;<%=emp%></td>

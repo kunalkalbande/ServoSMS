@@ -108,7 +108,7 @@
 								<%
 									SqlConnection SqlCon =new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 									SqlCon.Open();
-									sql="select status from attandance_register where emp_id='"+SqlDtr.GetValue(0).ToString()+"' and att_date='"+str1+"'";
+									sql="select status from attandance_register where emp_id='"+SqlDtr.GetValue(0).ToString()+"' and att_date='"+GenUtil.str2MMDDYYYY(str1)+"'";
 									SqlCommand SqlCmd=new SqlCommand (sql,SqlCon );
 									SqlDataReader SqlDtRed  = SqlCmd.ExecuteReader();
 									if(SqlDtRed.HasRows)
