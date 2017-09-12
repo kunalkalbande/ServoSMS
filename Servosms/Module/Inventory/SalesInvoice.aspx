@@ -969,7 +969,7 @@
 	            }
 	        }
 	        var foe=qt
-	        
+	        document.Form1.temfoe<%=i%>.value=f1.txtfoe<%=i%>.value
             if(arrType[2] != "")
 			{
 				var mainarr1 = new Array()
@@ -2465,7 +2465,30 @@ function MoveFocus(t,drop,e)
 				type="hidden" size="1" name="tempHsn18" runat="server"/> <INPUT id="tempHsn19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempHsn19" runat="server"/> <INPUT id="tempHsn20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempHsn20" runat="server"/>
-
+            <INPUT id="temfoe1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
             <INPUT id="tempTotalCgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempTotalCgst" runat="server"/>
             <INPUT id="tempTotalSgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"

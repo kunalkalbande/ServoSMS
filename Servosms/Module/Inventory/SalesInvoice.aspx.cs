@@ -1756,9 +1756,9 @@ namespace Servosms.Module.Inventory
 				TextBox[]  Quantity = {txtTempQty1,txtTempQty2,txtTempQty3,txtTempQty4,txtTempQty5,txtTempQty6,txtTempQty7,txtTempQty8 ,txtTempQty9,txtTempQty10,txtTempQty11,txtTempQty12};
 				TextBox[]  SchQuantity = {txtTempSchQty1,txtTempSchQty2,txtTempSchQty3,txtTempSchQty4,txtTempSchQty5,txtTempSchQty6,txtTempSchQty7,txtTempSchQty8 ,txtTempSchQty9,txtTempSchQty10,txtTempSchQty11,txtTempSchQty12};
 				TextBox[] ProdType1={txtTypesch1, txtTypesch2, txtTypesch3, txtTypesch4, txtTypesch5, txtTypesch6, txtTypesch7, txtTypesch8, txtTypesch9, txtTypesch10, txtTypesch11, txtTypesch12}; 
-				TextBox[] Qty1={txtQtysch1, txtQtysch2, txtQtysch3, txtQtysch4, txtQtysch5, txtQtysch6, txtQtysch7, txtQtysch8, txtQtysch9, txtQtysch10, txtQtysch11, txtQtysch12}; 
-				TextBox[]  foe = {txtfoe1,txtfoe2,txtfoe3,txtfoe4,txtfoe5,txtfoe6,txtfoe7,txtfoe8,txtfoe9,txtfoe10,txtfoe11,txtfoe12};
-				HtmlInputHidden[] SecSP = {txtTempSecSP1,txtTempSecSP2,txtTempSecSP3,txtTempSecSP4,txtTempSecSP5,txtTempSecSP6,txtTempSecSP7,txtTempSecSP8,txtTempSecSP9,txtTempSecSP10,txtTempSecSP11,txtTempSecSP12};
+				TextBox[] Qty1={txtQtysch1, txtQtysch2, txtQtysch3, txtQtysch4, txtQtysch5, txtQtysch6, txtQtysch7, txtQtysch8, txtQtysch9, txtQtysch10, txtQtysch11, txtQtysch12};
+                HtmlInputHidden[] foe = { temfoe1, temfoe2, temfoe3, temfoe4, temfoe5, temfoe6, temfoe7, temfoe8, temfoe9, temfoe10, temfoe11, temfoe12 };
+                HtmlInputHidden[] SecSP = {txtTempSecSP1,txtTempSecSP2,txtTempSecSP3,txtTempSecSP4,txtTempSecSP5,txtTempSecSP6,txtTempSecSP7,txtTempSecSP8,txtTempSecSP9,txtTempSecSP10,txtTempSecSP11,txtTempSecSP12};
 				HtmlInputHidden[] tmpSecSPType={tmpSecSPType1, tmpSecSPType2, tmpSecSPType3, tmpSecSPType4, tmpSecSPType5, tmpSecSPType6, tmpSecSPType7, tmpSecSPType8, tmpSecSPType9, tmpSecSPType10, tmpSecSPType11, tmpSecSPType12}; 
 				HtmlInputHidden[] tmpSchType={tmpSchType1, tmpSchType2, tmpSchType3, tmpSchType4, tmpSchType5, tmpSchType6, tmpSchType7, tmpSchType8, tmpSchType9, tmpSchType10, tmpSchType11, tmpSchType12}; 
 				HtmlInputHidden[] tmpFoeType={tmpFoeType1, tmpFoeType2, tmpFoeType3, tmpFoeType4, tmpFoeType5, tmpFoeType6, tmpFoeType7, tmpFoeType8, tmpFoeType9, tmpFoeType10, tmpFoeType11, tmpFoeType12};
@@ -1806,7 +1806,7 @@ namespace Servosms.Module.Inventory
 					
 					//**Save(ProdName[j].Value,PackType[j].Value,Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j);
 					//vikas sharma 22.04.09 Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
-					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
+					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), scheme[j].Text.ToString (),foe[j].Value.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
 					//for(int i=0;i<ProdName1.Length ;i++)
 					//{
 					//****************
