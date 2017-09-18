@@ -85,14 +85,14 @@
 										<asp:ListItem Value="Lubricants">Lubricants</asp:ListItem>
 										<asp:ListItem Value="Misc.">Misc.</asp:ListItem>
 									</asp:dropdownlist></TD>
-								<TD>Tin No.<FONT color="#ff0033"> *</FONT>&nbsp;<asp:RegularExpressionValidator id="Regularexpressionvalidator2" runat="server" ErrorMessage="Tin No. must be of 11 Digits"
-										ControlToValidate="txtTinNo" ValidationExpression="\d{11,11}">*</asp:RegularExpressionValidator>
+								<TD>GSTIN No.<FONT color="#ff0033"> *</FONT>&nbsp;<asp:RegularExpressionValidator id="Regularexpressionvalidator2" runat="server" ErrorMessage="Tin No. must be of 15 Digits"
+										ControlToValidate="txtTinNo" ValidationExpression="^[a-zA-Z0-9]+$">*</asp:RegularExpressionValidator>
 									<asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server" ErrorMessage="Please Enter The Tin No"
 										ControlToValidate="txtTinNo">*</asp:RequiredFieldValidator>
 								</TD>
 								<TD>
-									<asp:textbox onkeypress="return GetOnlyNumbers(this, event);" id="txtTinNo" runat="server" Width="130px"
-										BorderStyle="Groove" MaxLength="11" CssClass="DropDownList"></asp:textbox></TD>
+									<asp:textbox  id="txtTinNo" runat="server" Width="130px"
+										BorderStyle="Groove" MaxLength="15" CssClass="DropDownList"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>

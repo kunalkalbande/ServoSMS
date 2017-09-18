@@ -87,9 +87,9 @@
 										AutoPostBack="false" CssClass="dropdownlist" onselectedindexchanged="DropCity_SelectedIndexChanged">
 										<asp:ListItem Value="Select">Select</asp:ListItem>
 									</asp:dropdownlist></TD>
-								<TD align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tin 
+								<TD align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GSTIN 
 									No.&nbsp;</TD>
-								<TD><asp:textbox id="txtTinNo" runat="server" Width="100%" BorderStyle="Groove" MaxLength="11" CssClass="dropdownlist"></asp:textbox></TD>
+								<TD><asp:textbox id="txtTinNo" runat="server" Width="100%" BorderStyle="Groove" MaxLength="15" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>District</TD>

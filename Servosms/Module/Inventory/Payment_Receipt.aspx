@@ -288,6 +288,9 @@ function CheckReceipt(t)
 													<asp:ListItem Value="Cheque">Cheque</asp:ListItem>
 													<asp:ListItem Value="DD">DD</asp:ListItem>
 													<asp:ListItem Value="Pay Order">Pay Order</asp:ListItem>
+                                                    <asp:ListItem Value="NEFT">NEFT</asp:ListItem>
+                                                    <asp:ListItem Value="RTGS">RTGS</asp:ListItem>
+                                                    <asp:ListItem Value="IMPS">IMPS</asp:ListItem>
 												</asp:dropdownlist></TD>
 											<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtRecAmount" onblur="GetFinalDues()"
 													runat="server" Width="100%" CssClass="FontStyle" BorderStyle="Groove" MaxLength="8"></asp:textbox></TD>

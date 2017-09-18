@@ -74,12 +74,10 @@
 										<asp:ListItem Value="Lubricants">Lubricants</asp:ListItem>
 										<asp:ListItem Value="Misc.">Misc.</asp:ListItem>
 									</asp:dropdownlist></TD>
-								<TD align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tin No.&nbsp;<FONT color="#ff0033">
-										*</FONT>
+								<TD align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GSTin No.&nbsp;<FONT color="#ff0033">*</FONT>
 									<asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server" ControlToValidate="txtTinNo" ErrorMessage="Please enter Tin No.">*</asp:RequiredFieldValidator></TD>
 								<TD>
-									<asp:textbox id="txtTinNo" runat="server" Width="130px" BorderStyle="Groove" MaxLength="11" CssClass="DropDownList"
-										onkeypress="return GetOnlyNumbers(this, event);"></asp:textbox></TD>
+									<asp:textbox id="txtTinNo" runat="server" Width="130px" BorderStyle="Groove" MaxLength="15" CssClass="DropDownList"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>&nbsp;City <FONT color="#ff0000">*</FONT> &nbsp;

@@ -23,6 +23,7 @@ using Servosms.Sysitem.Classes;
 using DBOperations;
 using RMG;
 using System.IO;
+using System.Text;
 
 namespace Servosms.Module.Admin
 {
@@ -314,7 +315,22 @@ namespace Servosms.Module.Admin
 		{
 			try
 			{
-				CreateLogFiles.ErrorLog("Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:btnupdate_click"+ "  "  +uid);
+                StringBuilder errorMessage = new StringBuilder();
+                if (TxtTinno.Text != string.Empty)
+                {
+                    string sPattern = "^[a-zA-Z0-9]+$";
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(TxtTinno.Text, sPattern))
+                    {
+                        errorMessage.Append("- Please Enter Tin No. in Alpha Numeric");
+                        errorMessage.Append("\n");
+                    }
+                }
+                if (errorMessage.Length > 0)
+                {
+                    MessageBox.Show(errorMessage.ToString());
+                    return;
+                }
+                CreateLogFiles.ErrorLog("Form:OrganisationDetails.aspx,Class:InventoryClass.cs ,Method:btnupdate_click"+ "  "  +uid);
 				if(DropDealerShip.SelectedIndex == 0)
 				{
 					MessageBox.Show("Please select the Dealership");

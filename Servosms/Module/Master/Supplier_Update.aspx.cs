@@ -19,9 +19,10 @@ using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using Servosms.Sysitem.Classes ;
+using Servosms.Sysitem.Classes;
 using RMG;
 using DBOperations;
+using System.Text;
 
 namespace Servosms.Module.Master
 {
@@ -220,7 +221,22 @@ namespace Servosms.Module.Master
 			SqlDataReader SqlDtr = null;
 			try
 			{
-				string sql1="";
+                StringBuilder errorMessage = new StringBuilder();
+                if (txtTinNo.Text != string.Empty)
+                {
+                    string sPattern = "^[a-zA-Z0-9]+$";
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtTinNo.Text, sPattern))
+                    {
+                        errorMessage.Append("- Please Enter Tin No. in Alpha Numeric");
+                        errorMessage.Append("\n");
+                    }
+                }
+                if (errorMessage.Length > 0)
+                {
+                    MessageBox.Show(errorMessage.ToString());
+                    return;
+                }
+                string sql1="";
 				if(!TempVenderName.Text.ToLower().Trim().Equals(lblName.Text.ToLower().Trim()))
 				{
 					string sname=lblName.Text.Trim();

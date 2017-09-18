@@ -22,6 +22,7 @@ using System.Data.SqlClient;
 using Servosms.Sysitem.Classes;
 using DBOperations;
 using RMG;
+using System.Text;
 
 namespace Servosms.Module.Master
 {
@@ -213,8 +214,23 @@ namespace Servosms.Module.Master
 		{
 			PartiesClass obj=new PartiesClass();
 			try
-			{
-				if(!checkAcc_Period())
+            {
+                StringBuilder errorMessage = new StringBuilder();
+                if (txtTinNo.Text != string.Empty)
+                {
+                    string sPattern = "^[a-zA-Z0-9]+$";
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(txtTinNo.Text, sPattern))
+                    {
+                        errorMessage.Append("- Please Enter Tin No. in Alpha Numeric");
+                        errorMessage.Append("\n");
+                    }
+                }
+                if (errorMessage.Length > 0)
+                {
+                    MessageBox.Show(errorMessage.ToString());
+                    return;
+                }
+                if (!checkAcc_Period())
 				{
 					MessageBox.Show("Please enter the Accounts Period from Organization Details");
 					return;

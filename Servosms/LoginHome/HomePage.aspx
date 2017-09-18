@@ -152,9 +152,7 @@
 					<TD></TD>
 					<TD><STRONG><FONT color="#ce4848">Logistics</FONT></STRONG></TD>
 					<TD></TD>
-					<td><asp:hyperlink id="Hyperlink10" runat="server" NavigateUrl="../Module/Inventory/Fleet_OEDiscountEntry.aspx">Fleet/OE Discount Entry</asp:hyperlink></td>
-					<TD></TD>
-					<TD><asp:hyperlink id="Hyperlink61" runat="server" NavigateUrl="../Module/Inventory/ModvatCenvatInvoice.aspx">ModVat/CenVat Invoice</asp:hyperlink></TD>
+					<td><asp:hyperlink id="Hyperlink10" runat="server" NavigateUrl="../Module/Inventory/Fleet_OEDiscountEntry.aspx">Fleet/OE Discount Entry</asp:hyperlink></td>					
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink82" runat="server" NavigateUrl="../Module/Reports/ClaimAnalysis.aspx">Claim Analysis</asp:hyperlink></TD>
 					<TD></TD>

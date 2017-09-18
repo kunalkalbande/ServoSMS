@@ -91,9 +91,9 @@
 								<TD>Address</TD>
 								<TD colSpan="1"><asp:textbox id="TxtAddress" runat="server" Width="150px"  BorderStyle="Groove" TextMode="MultiLine"
 										Font-Names="Verdana" CssClass="DropDownlist"></asp:textbox></TD>
-                                <TD align="center">Tin No.</TD>
-								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,false);" id="TxtTinno" runat="server"
-										Width="130px" BorderStyle="Groove" MaxLength="11" CssClass="DropDownlist"></asp:textbox></TD>
+                                <TD align="center">GSTIN No.</TD>
+								<TD><asp:textbox  id="TxtTinno" runat="server"
+										Width="130px" BorderStyle="Groove" MaxLength="15" CssClass="DropDownlist"></asp:textbox></TD>
 							</TR>
 							<!--TR>
 								<TD></TD>

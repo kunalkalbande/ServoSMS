@@ -70,9 +70,9 @@
 										<asp:comparevalidator id="CompareValidator1" runat="server" ControlToValidate="DropType" ErrorMessage="Please Select Customer Type"
 											ValueToCompare="Select" Operator="NotEqual">*</asp:comparevalidator></FONT></TD>
 								<TD style="HEIGHT: 3px"><asp:dropdownlist id="DropType" runat="server" CssClass="dropdownlist" Width="130px" onselectedindexchanged="DropType_SelectedIndexChanged"></asp:dropdownlist></TD>
-								<TD align="center" style="HEIGHT: 3px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tin 
+								<TD align="center" style="HEIGHT: 3px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GSTIN 
 									No.<FONT color="#ff0033">&nbsp;</FONT></TD>
-								<TD style="HEIGHT: 3px"><asp:textbox id="txtTinNo" runat="server" CssClass="dropdownlist" Width="130px" MaxLength="11"
+								<TD style="HEIGHT: 3px"><asp:textbox id="txtTinNo" runat="server" CssClass="dropdownlist" Width="130px" MaxLength="15"
 										BorderStyle="Groove"></asp:textbox></TD>
 							</TR>
 							<TR>
