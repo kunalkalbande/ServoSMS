@@ -4917,8 +4917,8 @@ namespace Servosms.Sysitem.Classes
 			//****************************
 			SqlCmd.Parameters .Add("@Foc_Discount",Foc_Discount);
 			SqlCmd.Parameters .Add("@Foc_Discount_Type",Foc_Discount_Type);
-			SqlCmd.Parameters .Add("@Entry_Tax1",Entry_Tax1);
-			SqlCmd.Parameters .Add("@Entry_Tax_Type",Entry_Tax_Type);
+			//SqlCmd.Parameters .Add("@Entry_Tax1",Entry_Tax1);
+			//SqlCmd.Parameters .Add("@Entry_Tax_Type",Entry_Tax_Type);
 			SqlCmd.Parameters .Add("@Ebird",Ebird);
 			SqlCmd.Parameters .Add("@Ebird_Discount",Ebird_Discount);
 			SqlCmd.Parameters .Add("@Tradeval",Tradeval);

@@ -474,7 +474,7 @@
             }
         }
         var totaldisc=0;
-        var entrytax=0;
+        //var entrytax=0;
         var bird=0;
         //this coment add by vikas Grand total and Net Total in GetEtaxnew() function 31.10.2012
         function GetEtaxnew()    //         
@@ -504,15 +504,15 @@
 			Et=document.Form1.txtGrandTotal.value*Et/100     */
             //**********old**********
             //******new*****
-            var Et=document.Form1.txtentrytax.value
-            if(Et=="" || isNaN(Et))
-                Et=0
+            //var Et=document.Form1.txtentrytax.value
+            //if(Et=="" || isNaN(Et))
+            //    Et=0
             //if(document.Form1.dropentry.value=="Per")
             //Et=document.Form1.txtGrandTotal.value*Et/100
             //alert(document.Form1.tempGrandTotal.value)
-            Et=document.Form1.tempGrandTotal.value*Et/100
-            document.Form1.txtentry.value=Et
-            makeRound(document.Form1.txtentry)
+            //Et=document.Form1.tempGrandTotal.value*Et/100
+            //document.Form1.txtentry.value=Et
+            //makeRound(document.Form1.txtentry)
             //****new*********
             var focDisc=document.Form1.txtfoc.value
             if(focDisc=="" || isNaN(focDisc))
@@ -647,7 +647,7 @@
                 //coment by vikas 31.10.2012 GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless))+ETFOC)
 				
                 //coment by vikas 22.12.2012 GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless))+ETFOC)
-                GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                GT=eval(document.Form1.txtGrandTotal.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
                 //GT=GT-eval(fixedDisc_Add)
 				 				
                 CashDisc=(GT*CashDisc)/100
@@ -672,11 +672,11 @@
 		
 		
             //coment by vikas 22.12.2012 document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc))   //Add by vikas 31.10.2012
-            document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))   //Add by vikas 22.12.2012
+            document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))   //Add by vikas 22.12.2012
             totaldisc=((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
             if(isNaN(totaldisc))
                 totaldisc=0
-            entrytax=eval(Et)
+            //entrytax=eval(Et)
             //coment by vikas 30.06.09  document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+(eval(bird)-eval(birdless))+eval(CashDisc)+eval(Disc)+eval(fixedDisc))
 		
             //document.Form1.txtVatValue.value = CashDisc-(eval(bird)-eval(birdless))
@@ -935,6 +935,7 @@
 				%>
             if(document.Form1.DropType<%=i%>.value !="Type")
             {
+               
                 var selectedProduct = document.Form1.DropType<%=i%>.value
                 var amount = document.Form1.txtAmount<%=i%>.value
                 var stckDisc= document.Form1.tempStktSchDis<%=i%>.value 
@@ -1100,15 +1101,15 @@
                 if(tradeDisc=="" || isNaN(tradeDisc))
                     tradeDisc=0
                 //entry tax
-                var Et=document.Form1.txtentrytax.value
+                //var Et=document.Form1.txtentrytax.value
                 
-                if(Et=="" || isNaN(Et))
-                    Et=0
-                Et=(document.Form1.txtAmount<%=i%>.value-eval(schdistot))*Et/100
+                //if(Et=="" || isNaN(Et))
+                    //Et=0
+                //Et=(document.Form1.txtAmount<%=i%>.value-eval(schdistot))*Et/100
                 //cashdiscount
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
-                    GT=eval(document.Form1.txtAmount<%=i%>.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                    GT=eval(document.Form1.txtAmount<%=i%>.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
                     var cashdiscount=(GT*CashDisc)/100
                     //document.Form1.txtTotalCashDisc.value=eval(CashDisc)
                     makeRound(cashdiscount,2)
@@ -1133,7 +1134,7 @@
                         document.Form1.Tempcgstrate.value=taxarr[4];
                         document.Form1.Tempsgstrate.value=taxarr[5];
                         var earbird=eval(birdperProd)-eval(birdless);
-                        totalValue=eval(document.Form1.txtAmount<%=i%>.value) + eval(Et)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+(eval(earbird))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
+                        totalValue=eval(document.Form1.txtAmount<%=i%>.value)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+(eval(earbird))+eval(cashdiscount)+eval(Disc)+eval(fixedDisc)+eval(fixedDisc_Add)+eval(tot_fixdisc)+eval(Sch_Disc))
                         //var totalValue1 =(Math.round(amount)+Math.round(Et))-Math.round(stktdistot)-Math.round(schdistot)-Math.round(discount)-Math.round(cashdiscount);
                         totalAmountAfterGst=0;
                         var igstamount<%=i%> = GetIgstamt()
@@ -1169,7 +1170,7 @@
             if(document.Form1.txtGrandTotal.value==""|| isNaN(document.Form1.txtGrandTotal.value))
                 document.Form1.txtGrandTotal.value=0;
             totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
-            document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value)+eval(entrytax) +eval(totalAmountAfterGst)-eval(totaldisc),0);
+            document.Form1.txtNetAmount.value=   Math.round(eval(document.Form1.txtGrandTotal.value) +eval(totalAmountAfterGst)-eval(totaldisc),0);
 
             
             //if(document.Form1.txtNetAmount.value = ""|| isNaN(document.Form1.txtNetAmount.value))
@@ -1417,6 +1418,11 @@
     <script language="javascript" id="Fuel" src="../../Sysitem/JS/Fuel.js"></script>
     <meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
     <link href="../../Sysitem/Styles.css" type="text/css" rel="StyleSheet">
+    <style type="text/css">
+        .auto-style1 {
+            height: 21px;
+        }
+    </style>
 </head>
 <body onkeydown="change(event)">
     <form id="Form1" name="Form1" method="post" runat="server">
@@ -1513,8 +1519,8 @@
             runat="server" Visible="False" Width="8px"></asp:TextBox>
         <asp:TextBox ID="txtTempQty20" Style="z-index: 115; left: 232px; position: absolute; top: 16px"
             runat="server" Visible="False" Width="8px"></asp:TextBox>
-        <input id="txtentrytax" style="z-index: 132; left: 432px; width: 12px; position: absolute; top: 16px; height: 22px"
-            type="hidden" size="1" name="txtentrytax" runat="server">
+       <%-- <input id="txtentrytax" style="z-index: 132; left: 432px; width: 12px; position: absolute; top: 16px; height: 22px"
+            type="hidden" size="1" name="txtentrytax" runat="server">--%>
         <input id="tempDelinfo" style="width: 1px" type="hidden" name="tempDelinfo" runat="server">
         <input id="tempInvoiceInfo" style="width: 1px" type="hidden" name="tempInvoiceInfo" runat="server">
         <input id="temp_erly_bird" style="width: 1px" type="hidden" name="temp_erly_bird" runat="server">
@@ -2690,11 +2696,10 @@
                                             runat="server" Width="80px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox></td>
                         </tr>
                         <tr>
-                            <td>Entry Tax</td>
-                            <td>
-                                <asp:TextBox ID="txtentry" runat="server" Width="120px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist" OnTextChanged="txtentry_TextChanged"></asp:TextBox><asp:DropDownList ID="dropentry" runat="server" Width="45px" CssClass="dropdownlist" onchange="GetNetAmountEtaxnew()" OnSelectedIndexChanged="Dropdownlist1_SelectedIndexChanged">
-                                    <asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
-                                </asp:DropDownList></td>
+                            <td class="auto-style1">Discount(%)</td>
+                            <td style="height: 21px">
+                                <asp:TextBox ID="txtfixedamt" runat="server" Width="70px" ReadOnly="True" BorderStyle="Groove"
+                                        CssClass="dropdownlist" OnTextChanged="txtfixed_TextChanged"></asp:TextBox></td>
                             <td>&nbsp;Servo Stk. Discount&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </td>
                             <td>
@@ -2703,13 +2708,11 @@
                                         runat="server" Width="140px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="6"></asp:TextBox></td>
                         </tr>
                         <tr>
-                            <td style="height: 21px">Discount(%)</td>
                             <td style="height: 21px">
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtfixed" runat="server"
-                                    Visible="False" Width="1px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox><asp:TextBox ID="txtfixedamt" runat="server" Width="70px" ReadOnly="True" BorderStyle="Groove"
-                                        CssClass="dropdownlist" OnTextChanged="txtfixed_TextChanged"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Addl. 
-									Discount(%)&nbsp;&nbsp;<asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtAddDis" runat="server"
-                                        Width="60px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td>
+                                    Visible="False" Width="1px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox>Addl. 
+									Discount(%)&nbsp;&nbsp;<td><asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtAddDis" runat="server"
+                                        Width="60px" BorderStyle="Groove" CssClass="dropdownlist"></asp:TextBox></td></td>
                             <td style="height: 21px">&nbsp;Credit/Cash Discount</td>
                             <td style="height: 21px">
                                 <asp:TextBox onkeypress="return GetOnlyNumbers(this, event, false,true);" ID="txtCashDisc" onblur="GetNetAmountEtaxnew()"
