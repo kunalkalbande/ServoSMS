@@ -123,6 +123,15 @@ namespace Servosms.Module.Inventory
 		{
             try
             {
+                if (Session["FromDate"] != null)
+                { 
+                    string strFromDate = Session["FromDate"].ToString();
+                }
+                if (Session["ToDate"] != null)
+                {
+                    string strToDate = Session["ToDate"].ToString();
+                }
+
                 //DropCustName.Attributes.Add("onkeypress", "DropCustName_onkeypress(this);");
                 uid = (Session["User_Name"].ToString());
                 txtMessage.Text = (Session["Message"].ToString());
@@ -8613,5 +8622,11 @@ namespace Servosms.Module.Inventory
 		{
 		
 		}
-	}
+
+        protected void txtToDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    }
 }

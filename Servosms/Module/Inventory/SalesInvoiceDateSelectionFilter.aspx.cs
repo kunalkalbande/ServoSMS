@@ -11,4 +11,13 @@ public partial class Module_Inventory_SalesInvoiceDateSelectionFilter : System.W
     {
 
     }
+
+
+    //protected void btnSubmit_Click(object sender, EventArgs e)
+    //{
+    //    Session["FromDate"] = lblInvoiceFromDate.Text;
+    //    Session["ToDate"] = lblInvoiceToDate.Text;
+    //    btnSubmit.Attributes.Add("OnClick", "closeWindow();");
+    //    //Response.Redirect("~/Module/Inventory/SalesInvoice.aspx");
+    //}
 }

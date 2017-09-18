@@ -5,6 +5,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    		<meta content="Microsoft Visual Studio .NET 7.1" name="GENERATOR">
+		<meta content="C#" name="CODE_LANGUAGE">
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<LINK href="../../Sysitem/Styles.css" type="text/css" rel="stylesheet">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<script language="javascript" id="Searchdrop" src="../../Sysitem/JS/Searchdrop.js"></script>
+		<script language="javascript" id="Validations" src="../../Sysitem/JS/Validations.js"></script>
+
+    <script type = "text/javascript">
+        function closeWindow()
+        {
+            debugger;
+            window.close();
+        }
+        </script>
+
+    <script type="text/javascript">
+    function SetDates() {
+        if (window.opener != null && !window.opener.closed) {
+            debugger;
+            //window.opener.document.getElementById('text1').value = document.getElementById("lblInvoiceFromDate").value;
+            var txtFromDate = window.opener.document.getElementById("dropInvoiceNo");
+            txtFromDate.value = document.getElementById("lblInvoiceFromDate").value;
+
+            var txtToDate = window.opener.document.getElementById("txtToDate");
+            txtToDate.value = document.getElementById("lblInvoiceToDate").value;
+
+            //var list = getInvoices();
+        }
+        window.close();
+    }
+</script>
+
     <style type="text/css">
 	
 	
@@ -60,10 +93,15 @@
 	}
 	
 	    .auto-style3 {
-            width: 250px;
+            width: 470px;
+        }
+	
+	    .auto-style4 {
+            width: 140px;
         }
 	
 	</style>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -75,10 +113,14 @@
 						<th class="fontstyle" colSpan="3">
 							<span class="auto-style2">Sales Invoice Date Filter</span><hr size="0">
 						</th>
+						<th class="fontstyle">
+							&nbsp;</th>
 					</tr>
-					<%int i=0,j=1;%>
+                    
 					<tr>
 						<th class="fontstyle">
+							&nbsp;</th>
+						<th class="auto-style4">
 							&nbsp;</th>
 						<th class="fontstyle">
 							&nbsp;</th>
@@ -87,32 +129,39 @@
 					</tr>
 					<tr>
 						<td align="center">From Date</td>
-						<td>&nbsp;<asp:textbox id="lblInvoiceDate" runat="server" Width="125px" BorderStyle="Groove" 
-														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
+						<td class="auto-style4">&nbsp;<asp:textbox id="lblInvoiceFromDate" runat="server" Width="100px" BorderStyle="Groove" 
+														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.lblInvoiceFromDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 															align="absMiddle" border="0"></A></td>
-						<td>&nbsp;</td>
+						<td>To Date</td>
+						<td><asp:textbox id="lblInvoiceToDate" runat="server" Width="100px" BorderStyle="Groove" 
+														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.lblInvoiceToDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
+															align="absMiddle" border="0"></A></td>
 					</tr>
 					<tr>
-						<td align="center">To Date</td>
-						<td><asp:textbox id="lblInvoiceDate0" runat="server" Width="125px" BorderStyle="Groove" 
-														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.Form1.lblInvoiceDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
-															align="absMiddle" border="0"></A></td>
+						<td align="center">&nbsp;</td>
+						<td class="auto-style4">&nbsp;</td>
+						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					</tr>
 					<tr>
 						<td align="center"></td>
+						<td class="auto-style4">&nbsp;</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					</tr>
 					<tr>
-						<td colspan="3"><hr size="0">
-						</td>
+						<td colspan="3">&nbsp;</td>
+						<td>&nbsp;</td>
 					</tr>
 					<tr>
-						<td align="center" colSpan="3"><asp:button id="btnBatch" Runat="server" Text="Submit" 
+						<td align="center" colSpan="3"><asp:button id="btnSubmit" Runat="server" Text="Submit" onClientClick="return SetDates()"
 								 ></asp:button></td>
+						<td align="center">&nbsp;</td>
 					</tr>
 				</table>
+                	<IFRAME id="gToday:contrast:agenda.js" style="Z-INDEX: 101; LEFT: -500px; VISIBILITY: visible; POSITION: absolute; TOP: 0px"
+				name="gToday:contrast:agenda.js" src="../../HeaderFooter/DTPicker/ipopeng.htm" frameBorder="0"
+				width="174" scrolling="no" height="189"></IFRAME>
 			</div>
     
     </div>

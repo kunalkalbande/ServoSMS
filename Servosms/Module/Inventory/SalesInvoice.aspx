@@ -40,11 +40,31 @@
 
         <script type = "text/javascript">
         //function getDateFilter()
-		function getDateFilter(t)
-		{		     
-		    childWin=window.open("SalesInvoiceDateSelectionFilter.aspx", "ChildWin", "toolbar=no,status=no,menubar=no,scrollbars=no,width=365,height=300");	
-		    childWin.focus();
-        }
+            function getDateFilter(windowWidth,windowHeight)
+            {	                                
+                var centerLeft = parseInt((window.screen.availWidth - windowWidth) / 2);
+                var centerTop = parseInt(((window.screen.availHeight - windowHeight) / 2) - 500);
+                var misc_features = 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no';
+
+                var windowFeatures = 'width=' + windowWidth + ',height=' + windowHeight + ',left=' + centerLeft + ',top=' + centerTop + misc_features;
+                var controlDrop = document.getElementById('dropInvoiceNo');
+                document.getElementById('dropInvoiceNo').style.visibility='visible';
+                document.getElementById('lblInvoiceNo').style.visibility='hidden';
+		    
+                //var theControl  = document.getElementById("dropInvoiceNo"); 
+                //if (theControl.style.display = 'none')
+                //{
+                //    theControl.style.display = 'inherit';
+                //}
+                //else
+                //{
+                //    theControl.style.display = 'none';
+                //}
+                childWin=window.open("SalesInvoiceDateSelectionFilter.aspx", "ChildWin", windowFeatures);	
+                //childWin=window.open('SalesInvoiceDateSelectionFilter.aspx','ChildWin','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left+');
+                
+                childWin.focus();
+            }            
         </script>
 
 		<script language="javascript">		            	    
@@ -2209,8 +2229,10 @@ function MoveFocus(t,drop,e)
 				runat="server" Height="20" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname11" style="Z-INDEX: 149; LEFT: 752px; POSITION: absolute; TOP: 0px"
 				runat="server" Height="0px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname10" style="Z-INDEX: 149; LEFT: 752px; POSITION: absolute; TOP: 0px"
 				runat="server" Height="0px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname9" style="Z-INDEX: 149; LEFT: 752px; POSITION: absolute; TOP: 0px" runat="server"
-				Height="16px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname8" style="Z-INDEX: 148; LEFT: 752px; POSITION: absolute; TOP: 8px" runat="server"
-				Height="20px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname7" style="Z-INDEX: 147; LEFT: 728px; POSITION: absolute; TOP: 0px" runat="server"
+				Height="16px" Width="0px"></asp:textbox><asp:textbox id="txtpname8" style="Z-INDEX: 148; LEFT: 752px; POSITION: absolute; TOP: 8px" runat="server"
+				Height="20px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtFromDate" style="Z-INDEX: 148; LEFT: 752px; POSITION: absolute; TOP: 8px" runat="server"
+				Height="20px" Width="0px" Visible="true"></asp:textbox><asp:textbox id="txtToDate" style="Z-INDEX: 148; LEFT: 752px; POSITION: absolute; TOP: 8px" runat="server"
+				Height="20px" Width="0px" Visible="true" OnTextChanged="txtToDate_TextChanged"></asp:textbox><asp:textbox id="txtpname7" style="Z-INDEX: 147; LEFT: 728px; POSITION: absolute; TOP: 0px" runat="server"
 				Height="20px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname6" style="Z-INDEX: 146; LEFT: 696px; POSITION: absolute; TOP: 0px" runat="server"
 				Height="20px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname5" style="Z-INDEX: 145; LEFT: 672px; POSITION: absolute; TOP: -8px"
 				runat="server" Height="20px" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname4" style="Z-INDEX: 144; LEFT: 656px; POSITION: absolute; TOP: 0px" runat="server"
@@ -2520,13 +2542,13 @@ function MoveFocus(t,drop,e)
 										<TABLE cellSpacing="0" cellPadding="0">
 											<TR>
 												<TD>Invoice No</TD>
-												<TD noWrap><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="125px" Visible="False" AutoPostBack="True"
+												<TD noWrap><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="125px" AutoPostBack="True"
 														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="Groove" ReadOnly="True"
 														 CssClass="fontstyle"></asp:textbox>
                                                     <asp:button id="btnEdit" runat="server" Width="25px" 
-														CausesValidation="False" Text="..." ToolTip="Click For Edit" onClientClick="return getDateFilter()"></asp:button></TD>
+														CausesValidation="False" Text="..." ToolTip="Click For Edit" onClientClick="return getDateFilter(500, 500)"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>
