@@ -37,8 +37,17 @@
 		if(document.getElementById("STM0_0__0___")!=null)
 			window.onload=change();
 		</script>
-		<script language="javascript">
-			
+
+        <script type = "text/javascript">
+        //function getDateFilter()
+		function getDateFilter(t)
+		{		     
+		    childWin=window.open("SalesInvoiceDateSelectionFilter.aspx", "ChildWin", "toolbar=no,status=no,menubar=no,scrollbars=no,width=365,height=300");	
+		    childWin.focus();
+        }
+        </script>
+
+		<script language="javascript">		            	    
 		function checkProd()
 		{
 			var packArray = new Array();		
@@ -2515,8 +2524,9 @@ function MoveFocus(t,drop,e)
 														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="Groove" ReadOnly="True"
-														 CssClass="fontstyle"></asp:textbox><asp:button id="btnEdit" runat="server" Width="25px" 
-														CausesValidation="False" Text="..." ToolTip="Click For Edit" onclick="btnEdit_Click"></asp:button></TD>
+														 CssClass="fontstyle"></asp:textbox>
+                                                    <asp:button id="btnEdit" runat="server" Width="25px" 
+														CausesValidation="False" Text="..." ToolTip="Click For Edit" onClientClick="return getDateFilter()"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>

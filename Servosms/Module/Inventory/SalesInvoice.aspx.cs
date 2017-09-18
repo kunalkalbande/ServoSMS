@@ -3903,60 +3903,60 @@ namespace Servosms.Module.Inventory
 			//			}
 		}
 		
-		/// <summary>
-		/// This method fatching all invoice no and fill into the dropdownlist.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		protected void btnEdit_Click(object sender, System.EventArgs e)
-		{
-			try
-			{
+		///// <summary>
+		///// This method fatching all invoice no and fill into the dropdownlist.
+		///// </summary>
+		///// <param name="sender"></param>
+		///// <param name="e"></param>
+		//protected void btnEdit_Click(object sender, System.EventArgs e)
+		//{           
+  //          //try
+  //          //{
 
-				tempEdit.Value="False";          //Add by vikas 14.07.09
+  //          //	tempEdit.Value="False";          //Add by vikas 14.07.09
 
-				lblInvoiceNo.Visible=false;
-				btnEdit.Visible=false;
-				dropInvoiceNo.Visible=true;
-				btnSave.Enabled = true;
-				Button1.Enabled = true;
-				//Coment by vikas 06.09 DropSalesType.Enabled=false;
-				DropOrderInvoice.SelectedIndex=0;
-				DropOrderInvoice.Enabled=false;
-				//checkPrePrint();
-				InventoryClass obj=new InventoryClass();
-				SqlDataReader SqlDtr;
-				string sql;
-				#region Fetch the All Invoice Number and fill in Combo
-				dropInvoiceNo.Items.Clear();
-				dropInvoiceNo.Items.Add("Select");
-				if(FromDate!="")
-				{
-					sql="select Invoice_No from Sales_Master where Invoice_No like '"+FromDate+ToDate+"%' order by Invoice_No";
-					SqlDtr=obj.GetRecordSet(sql);
-					while(SqlDtr.Read())
-					{
-						if(FromDate.StartsWith("0"))
-							dropInvoiceNo.Items.Add(SqlDtr.GetValue(0).ToString().Substring(2));
-						else
-							dropInvoiceNo.Items.Add(SqlDtr.GetValue(0).ToString().Substring(3));
-					}
-					SqlDtr.Close ();
-				}
-				#endregion
-			}
-			catch(Exception ex)
-			{
-				CreateLogFiles.ErrorLog("Form : SalesInvoice.aspx, Method : btnEdit_Click  EXCEPTION :  "+ ex.Message+"   "+uid);
-			}
-		}
+  //          //	lblInvoiceNo.Visible=false;
+  //          //	btnEdit.Visible=false;
+  //          //	dropInvoiceNo.Visible=true;
+  //          //	btnSave.Enabled = true;
+  //          //	Button1.Enabled = true;
+  //          //	//Coment by vikas 06.09 DropSalesType.Enabled=false;
+  //          //	DropOrderInvoice.SelectedIndex=0;
+  //          //	DropOrderInvoice.Enabled=false;
+  //          //	//checkPrePrint();
+  //          //	InventoryClass obj=new InventoryClass();
+  //          //	SqlDataReader SqlDtr;
+  //          //	string sql;
+  //          //	#region Fetch the All Invoice Number and fill in Combo
+  //          //	dropInvoiceNo.Items.Clear();
+  //          //	dropInvoiceNo.Items.Add("Select");
+  //          //	if(FromDate!="")
+  //          //	{
+  //          //		sql="select Invoice_No from Sales_Master where Invoice_No like '"+FromDate+ToDate+"%' order by Invoice_No";
+  //          //		SqlDtr=obj.GetRecordSet(sql);
+  //          //		while(SqlDtr.Read())
+  //          //		{
+  //          //			if(FromDate.StartsWith("0"))
+  //          //				dropInvoiceNo.Items.Add(SqlDtr.GetValue(0).ToString().Substring(2));
+  //          //			else
+  //          //				dropInvoiceNo.Items.Add(SqlDtr.GetValue(0).ToString().Substring(3));
+  //          //		}
+  //          //		SqlDtr.Close ();
+  //          //	}
+  //          //	#endregion
+  //          //}
+  //          //catch(Exception ex)
+  //          //{
+  //          //	CreateLogFiles.ErrorLog("Form : SalesInvoice.aspx, Method : btnEdit_Click  EXCEPTION :  "+ ex.Message+"   "+uid);
+  //          //}
+  //      }
 
-		/// <summary>
-		/// This method fatch the all required information according to invoice no who select from dropdownlist.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		protected void dropInvoiceNo_SelectedIndexChanged(object sender, System.EventArgs e)
+        /// <summary>
+        /// This method fatch the all required information according to invoice no who select from dropdownlist.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void dropInvoiceNo_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			TextSelect.Text=dropInvoiceNo.SelectedItem.Value.ToString();
 			try
