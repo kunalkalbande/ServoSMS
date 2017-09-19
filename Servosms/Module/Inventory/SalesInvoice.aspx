@@ -48,18 +48,7 @@
 
                 var windowFeatures = 'width=' + windowWidth + ',height=' + windowHeight + ',left=' + centerLeft + ',top=' + centerTop + misc_features;
                 var controlDrop = document.getElementById('dropInvoiceNo');
-                document.getElementById('dropInvoiceNo').style.visibility='visible';
-                document.getElementById('lblInvoiceNo').style.visibility='hidden';
-		    
-                //var theControl  = document.getElementById("dropInvoiceNo"); 
-                //if (theControl.style.display = 'none')
-                //{
-                //    theControl.style.display = 'inherit';
-                //}
-                //else
-                //{
-                //    theControl.style.display = 'none';
-                //}
+                
                 childWin=window.open("SalesInvoiceDateSelectionFilter.aspx", "ChildWin", windowFeatures);	
                 //childWin=window.open('SalesInvoiceDateSelectionFilter.aspx','ChildWin','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left+');
                 
@@ -842,8 +831,7 @@
 	    return cgst;
 	}
 	function GetVatAmount()
-	{
-	    //debugger;
+	{	    
 	    GetCashDiscount()
 	    if(document.Form1.No.checked)
 	    {
@@ -907,8 +895,7 @@
 	}
 	var totalValue = 0;
 	function GetNetAmount()
-	{
-	    //debugger;
+	{	    
 	    var dbValues =  document.Form1.txtMainIGST.value;	    
 	    var mainarr = new Array()
 	    var taxarr = new Array()
@@ -2224,6 +2211,8 @@ function MoveFocus(t,drop,e)
 	</HEAD>
 	<BODY onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
+			<asp:HiddenField ID="hidInvoiceFromDate" runat="server" />
+            <asp:HiddenField ID="hidInvoiceToDate" runat="server" />
 			<uc1:header id="Header1" runat="server"></uc1:header><INPUT id="tmpQty4" style="Z-INDEX: 121; LEFT: 390px; WIDTH: 0px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="0" name="tmpQty4" runat="server"><asp:textbox id="txtpname12" style="Z-INDEX: 149; LEFT: 752px; POSITION: absolute; TOP: 0px"
 				runat="server" Height="20" Width="0px" Visible="False"></asp:textbox><asp:textbox id="txtpname11" style="Z-INDEX: 149; LEFT: 752px; POSITION: absolute; TOP: 0px"
@@ -2543,12 +2532,12 @@ function MoveFocus(t,drop,e)
 											<TR>
 												<TD>Invoice No</TD>
 												<TD noWrap><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="125px" AutoPostBack="True"
-														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
+														CssClass="dropdownlist" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged" Visible="False">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
 													</asp:dropdownlist><asp:textbox id="lblInvoiceNo" runat="server" Width="107px" BorderStyle="Groove" ReadOnly="True"
 														 CssClass="fontstyle"></asp:textbox>
                                                     <asp:button id="btnEdit" runat="server" Width="25px" 
-														CausesValidation="False" Text="..." ToolTip="Click For Edit" onClientClick="return getDateFilter(500, 500)"></asp:button></TD>
+														CausesValidation="False" Text="..." ToolTip="Click For Edit" onClientClick="return getDateFilter(450, 300)"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>

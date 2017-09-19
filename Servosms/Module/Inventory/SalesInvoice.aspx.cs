@@ -93,7 +93,9 @@ namespace Servosms.Module.Inventory
 		public bool  address = false;
 		static string NetAmount = "0";
 		static string FromDate="",ToDate="";
-		static string CustID="";
+        string strInvoiceFromDate = string.Empty;
+        string strInvoiceToDate = string.Empty;
+        static string CustID="";
 		public static string val="";
 		//public static int jk=0;
 		protected System.Web.UI.HtmlControls.HtmlButton btndrop;
@@ -121,8 +123,14 @@ namespace Servosms.Module.Inventory
 		/// </summary>
 		protected void Page_Load(object sender, System.EventArgs e)
 		{
+            string str = string.Empty;
             try
             {
+                if(hidInvoiceFromDate.Value != "" && hidInvoiceToDate.Value != "")
+                {
+                    fillInvoceNoDropdown();
+                }
+                    
                 if (Session["FromDate"] != null)
                 { 
                     string strFromDate = Session["FromDate"].ToString();
@@ -161,6 +169,7 @@ namespace Servosms.Module.Inventory
 			{
 				try
 				{
+                    str = hidInvoiceFromDate.Value;
                     lblInvoiceDate.Attributes.Add("readonly", "readonly");
 					tempEdit.Value="True";           //Add by vikas 14.07.09
 					//jk=0;
@@ -336,6 +345,51 @@ namespace Servosms.Module.Inventory
             SaveDataInControlsOnPageLoad();            
             txtVehicleNo.Attributes.Add("onmousemove","getScheme_New();");
 		}
+
+        public void fillInvoceNoDropdown()
+        {          
+            try
+            {
+                strInvoiceFromDate = hidInvoiceFromDate.Value;
+                strInvoiceToDate = hidInvoiceToDate.Value;
+                
+                lblInvoiceNo.Visible = false;
+                //btnEdit.Visible = false;
+                dropInvoiceNo.Visible = true;
+                btnSave.Enabled = true;
+                Button1.Enabled = true;
+                //Coment by vikas 06.09 DropSalesType.Enabled=false;
+                DropOrderInvoice.SelectedIndex = 0;
+                DropOrderInvoice.Enabled = false;
+                //checkPrePrint();
+                InventoryClass obj = new InventoryClass();
+                SqlDataReader SqlDtr;
+                string sql;
+                #region Fetch the All Invoice Number and fill in Combo
+                dropInvoiceNo.Items.Clear();
+                dropInvoiceNo.Items.Add("Select");
+                if (FromDate != "")
+                {
+                    sql = "select Invoice_No from Sales_Master where cast(floor(cast(Invoice_Date as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(strInvoiceFromDate) +"' and cast(floor(cast(Invoice_Date as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(strInvoiceToDate) + "' and Invoice_No like '" + FromDate + ToDate + "%' order by Invoice_No";
+                    SqlDtr = obj.GetRecordSet(sql);
+                    while (SqlDtr.Read())
+                    {
+                        if (FromDate.StartsWith("0"))
+                            dropInvoiceNo.Items.Add(SqlDtr.GetValue(0).ToString().Substring(2));
+                        else
+                            dropInvoiceNo.Items.Add(SqlDtr.GetValue(0).ToString().Substring(3));
+                    }
+                    SqlDtr.Close();
+                    hidInvoiceFromDate.Value = "";
+                    hidInvoiceToDate.Value = "";
+                }
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form : SalesInvoice.aspx, Method : fillInvoceNoDropdown  EXCEPTION :  " + ex.Message + "   " + uid);
+            }
+        }
         //public void getvalue()
         //{
         //    InventoryClass obj = new InventoryClass();

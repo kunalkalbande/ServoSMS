@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SalesInvoiceDateSelectionFilter.aspx.cs" Inherits="Module_Inventory_SalesInvoiceDateSelectionFilter" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SalesInvoiceDateSelectionFilter.aspx.cs" Inherits="SalesInvoiceDateSelectionFilter" %>
 
 <!DOCTYPE html>
 
@@ -13,24 +13,31 @@
 		<script language="javascript" id="Searchdrop" src="../../Sysitem/JS/Searchdrop.js"></script>
 		<script language="javascript" id="Validations" src="../../Sysitem/JS/Validations.js"></script>
 
-    <script type = "text/javascript">
-        function closeWindow()
-        {
-            debugger;
-            window.close();
-        }
-        </script>
-
     <script type="text/javascript">
-    function SetDates() {
+        function SetDates() {       
+            //var date1 = document.getElementById("lblInvoiceFromDate").value;
+            //date1 = new Date(date1.split('/')[2],date1.split('/')[1]-1,date1.split('/')[0]);
+            //var date2 = document.getElementById("lblInvoiceToDate").value;
+            //date2 = new Date(date2.split('/')[2],date2.split('/')[1]-1,date2.split('/')[0]);
+            //var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            //var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+            //alert(diffDays)​;        
+
+        //var date1 = new Date(document.getElementById("lblInvoiceFromDate").value);
+        //var date2 = new Date(document.getElementById("lblInvoiceToDate").value);
+        //var diffDays = parseInt((date2 - date1) / (1000 * 60 * 60 * 24));
+
+        //alert(diffDays)
+
         if (window.opener != null && !window.opener.closed) {            
             
-            var txtFromDate = window.opener.document.getElementById("txtFromDate");
+            var txtFromDate = window.opener.document.getElementById("hidInvoiceFromDate");
             txtFromDate.value = document.getElementById("lblInvoiceFromDate").value;
 
-            var txtToDate = window.opener.document.getElementById("txtToDate");
+            var txtToDate = window.opener.document.getElementById("hidInvoiceToDate");
             txtToDate.value = document.getElementById("lblInvoiceToDate").value;
         }
+        window.parent.opener.document.forms[0].submit();
         window.close();
     }
 </script>
@@ -90,7 +97,7 @@
 	}
 	
 	    .auto-style3 {
-            width: 470px;
+            width: 373px;
         }
 	
 	    .auto-style4 {
@@ -125,12 +132,12 @@
 							&nbsp;</th>
 					</tr>
 					<tr>
-						<td align="center">From Date</td>
-						<td class="auto-style4">&nbsp;<asp:textbox id="lblInvoiceFromDate" runat="server" Width="100px" BorderStyle="Groove" 
+						<td align="left">From Date</td>
+						<td align="left" class="auto-style4">&nbsp;<asp:textbox id="lblInvoiceFromDate" runat="server" Width="80px" BorderStyle="Groove" 
 														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.lblInvoiceFromDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 															align="absMiddle" border="0"></A></td>
 						<td>To Date</td>
-						<td><asp:textbox id="lblInvoiceToDate" runat="server" Width="100px" BorderStyle="Groove" 
+						<td><asp:textbox id="lblInvoiceToDate" runat="server" Width="80px" BorderStyle="Groove" 
 														CssClass="dropdownlist"></asp:textbox><A onclick="if(self.gfPop)gfPop.fPopCalendar(document.all.lblInvoiceToDate);return false;"><IMG class="PopcalTrigger" alt="" src="../../HeaderFooter/DTPicker/calender_icon.jpg"
 															align="absMiddle" border="0"></A></td>
 					</tr>
@@ -141,17 +148,7 @@
 						<td>&nbsp;</td>
 					</tr>
 					<tr>
-						<td align="center"></td>
-						<td class="auto-style4">&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-						<td colspan="3">&nbsp;</td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-						<td align="center" colSpan="3"><asp:button id="btnSubmit" Runat="server" Text="Submit" onClientClick="return SetDates()"
+						<td align="center" colSpan="4"><asp:button id="btnSubmit" Runat="server" Text="Submit" onClientClick="return SetDates()"
 								 ></asp:button></td>
 						<td align="center">&nbsp;</td>
 					</tr>
