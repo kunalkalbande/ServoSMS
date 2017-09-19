@@ -23,16 +23,13 @@
 
     <script type="text/javascript">
     function SetDates() {
-        if (window.opener != null && !window.opener.closed) {
-            debugger;
-            //window.opener.document.getElementById('text1').value = document.getElementById("lblInvoiceFromDate").value;
-            var txtFromDate = window.opener.document.getElementById("dropInvoiceNo");
+        if (window.opener != null && !window.opener.closed) {            
+            
+            var txtFromDate = window.opener.document.getElementById("txtFromDate");
             txtFromDate.value = document.getElementById("lblInvoiceFromDate").value;
 
             var txtToDate = window.opener.document.getElementById("txtToDate");
             txtToDate.value = document.getElementById("lblInvoiceToDate").value;
-
-            //var list = getInvoices();
         }
         window.close();
     }
