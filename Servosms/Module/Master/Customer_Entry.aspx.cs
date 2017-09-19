@@ -260,7 +260,7 @@ namespace Servosms.Module.Master
                     string sPattern = "^[a-zA-Z0-9]+$";
                     if (!System.Text.RegularExpressions.Regex.IsMatch(txtTinNo.Text, sPattern))
                     {
-                        errorMessage.Append("- Please Enter Tin No. in Alpha Numeric");
+                        errorMessage.Append("- Please Enter GSTin No. in Alpha Numeric");
                         errorMessage.Append("\n");
                     }
                 }
