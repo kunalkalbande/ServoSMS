@@ -14,32 +14,34 @@
 		<script language="javascript" id="Validations" src="../../Sysitem/JS/Validations.js"></script>
 
     <script type="text/javascript">
-        function SetDates() {       
-            //var date1 = document.getElementById("lblInvoiceFromDate").value;
-            //date1 = new Date(date1.split('/')[2],date1.split('/')[1]-1,date1.split('/')[0]);
-            //var date2 = document.getElementById("lblInvoiceToDate").value;
-            //date2 = new Date(date2.split('/')[2],date2.split('/')[1]-1,date2.split('/')[0]);
-            //var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-            //var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-            //alert(diffDays)​;        
-
-        //var date1 = new Date(document.getElementById("lblInvoiceFromDate").value);
-        //var date2 = new Date(document.getElementById("lblInvoiceToDate").value);
-        //var diffDays = parseInt((date2 - date1) / (1000 * 60 * 60 * 24));
-
-        //alert(diffDays)
-
-        if (window.opener != null && !window.opener.closed) {            
+        function SetDates() {     
             
-            var txtFromDate = window.opener.document.getElementById("hidInvoiceFromDate");
-            txtFromDate.value = document.getElementById("lblInvoiceFromDate").value;
+            var today = document.getElementById("lblInvoiceFromDate").value;
+            today = new Date(today.split('/')[2],today.split('/')[1]-1,today.split('/')[0]);
+            var date2 = document.getElementById("lblInvoiceToDate").value;
+            date2 = new Date(date2.split('/')[2],date2.split('/')[1]-1,date2.split('/')[0]);
+            var timeDiff = Math.abs(date2.getTime() - today.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            var days = 30;
 
-            var txtToDate = window.opener.document.getElementById("hidInvoiceToDate");
-            txtToDate.value = document.getElementById("lblInvoiceToDate").value;
+            var greater = parseInt(diffDays) > parseInt(days);
+            if (greater)
+            {
+                alert("Maximum Difference between From Date and To Date should be 30 days.");
+                return;
+            }
+            
+            if (window.opener != null && !window.opener.closed) {            
+            
+                var txtFromDate = window.opener.document.getElementById("hidInvoiceFromDate");
+                txtFromDate.value = document.getElementById("lblInvoiceFromDate").value;
+
+                var txtToDate = window.opener.document.getElementById("hidInvoiceToDate");
+                txtToDate.value = document.getElementById("lblInvoiceToDate").value;
+            }
+            window.parent.opener.document.forms[0].submit();
+            window.close();
         }
-        window.parent.opener.document.forms[0].submit();
-        window.close();
-    }
 </script>
 
     <style type="text/css">
