@@ -13,6 +13,22 @@
    any  purpose  without the express  written  permission of
    bbnisys Technologies.
 -->
+        <script type = "text/javascript">
+        //function getDateFilter()
+            function getDateFilter(windowWidth,windowHeight)
+            {	                                
+                var centerLeft = parseInt((window.screen.availWidth - windowWidth) / 2);
+                var centerTop = parseInt(((window.screen.availHeight - windowHeight) / 2) - 500);
+                var misc_features = 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no';
+
+                var windowFeatures = 'width=' + windowWidth + ',height=' + windowHeight + ',left=' + centerLeft + ',top=' + centerTop + misc_features;
+                var controlDrop = document.getElementById('dropInvoiceNo');
+                
+                childWin=window.open("Payment_ReceiptDateFilter.aspx", "ChildWin", windowFeatures);	                                
+                childWin.focus();
+            }            
+        </script>
+
 		<script language="javascript">
 		function change(e)
 		{
@@ -189,6 +205,8 @@ function CheckReceipt(t)
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
+			<asp:HiddenField ID="hidReceiptFromDate" runat="server" />
+            <asp:HiddenField ID="hidReceiptToDate" runat="server" />
 			<uc1:header id="Header1" runat="server"></uc1:header><asp:textbox id="TextBox4" style="Z-INDEX: 101; LEFT: 144px; POSITION: absolute; TOP: 16px" runat="server"
 				Visible="False" Width="8px"></asp:textbox><INPUT id="texthiddenprod" style="Z-INDEX: 103; VISIBILITY: hidden; WIDTH: 5px; POSITION: absolute; TOP: 0px; HEIGHT: 10px"
 				type="text" name="texthiddenprod" runat="server">
@@ -383,7 +401,7 @@ function CheckReceipt(t)
 				<TR>
 					<TD></TD>
 					<TD align="right" colSpan="3"><asp:button id="btnSave" runat="server" Width="70px" Text="Save" onclick="btnSave_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnEdit" runat="server" Width="70px" 
-							 Text="Edit" CausesValidation="False" onclick="btnEdit_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="70px" 
+							 Text="Edit" CausesValidation="False" onClientClick="return getDateFilter(450, 300)"></asp:button>&nbsp;&nbsp;<asp:button id="btnPrint" runat="server" Width="70px" 
 							 Text="Print" onclick="btnPrint_Click"></asp:button>&nbsp;&nbsp;<asp:button id="btnDel" runat="server" Width="70px" 
 							 Text="Delete" onclick="btnDel_Click"></asp:button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 					<TD></TD>

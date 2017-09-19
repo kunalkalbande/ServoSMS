@@ -39,7 +39,7 @@
 		</script>
 
         <script type = "text/javascript">
-        //function getDateFilter()
+        
             function getDateFilter(windowWidth,windowHeight)
             {	                                
                 var centerLeft = parseInt((window.screen.availWidth - windowWidth) / 2);
@@ -49,9 +49,7 @@
                 var windowFeatures = 'width=' + windowWidth + ',height=' + windowHeight + ',left=' + centerLeft + ',top=' + centerTop + misc_features;
                 var controlDrop = document.getElementById('dropInvoiceNo');
                 
-                childWin=window.open("SalesInvoiceDateSelectionFilter.aspx", "ChildWin", windowFeatures);	
-                //childWin=window.open('SalesInvoiceDateSelectionFilter.aspx','ChildWin','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left+');
-                
+                childWin=window.open("SalesInvoiceDateSelectionFilter.aspx", "ChildWin", windowFeatures);	                
                 childWin.focus();
             }            
         </script>

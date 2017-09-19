@@ -45,20 +45,27 @@ namespace Servosms.Module.Inventory
 		static double Tot_Rec=0;
 		int f2 = 0;
 
-		/// <summary>
-		/// This method is used for setting the Session variable for userId and 
-		/// after that filling the required dropdowns with database values 
-		/// and also check accessing priviledges for particular user
-		/// and generate the next ID also.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		protected void Page_Load(object sender, System.EventArgs e)
+        string strReceiptFromDate = string.Empty;
+        string strReceiptToDate = string.Empty;
+
+        /// <summary>
+        /// This method is used for setting the Session variable for userId and 
+        /// after that filling the required dropdowns with database values 
+        /// and also check accessing priviledges for particular user
+        /// and generate the next ID also.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Load(object sender, System.EventArgs e)
 		{   
 			try
 			{
-				//string pass;
-				uid=(Session["User_Name"].ToString());
+                if (hidReceiptFromDate.Value != "" && hidReceiptToDate.Value != "")
+                {
+                    fillReceiptNoDropdown();
+                }
+                //string pass;
+                uid =(Session["User_Name"].ToString());
 				Last_ID();
 			}
 			catch(Exception ex)
@@ -1543,20 +1550,20 @@ namespace Servosms.Module.Inventory
 			}
 		}
 
-		/// <summary>
-		/// This method is used to fill the Receipt No in dropdownlist.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		protected void btnEdit_Click(object sender, System.EventArgs e)
-		{
-			Clear();
+        /// <summary>
+        /// This method is used to fill the Receipt No in dropdownlist.
+        /// </summary>
+        public void fillReceiptNoDropdown()
+        {
+            strReceiptFromDate = hidReceiptFromDate.Value;
+            strReceiptToDate = hidReceiptToDate.Value;
+            Clear();
 			GridDuePayment.DataSource = null;
 			GridDuePayment.DataBind(); 
 			PanReceiptNo.Visible=true;
 			InventoryClass  obj=new InventoryClass ();
 			SqlDataReader SqlDtr=null;
-			string	sql="select distinct Receipt_No  from Payment_Receipt order by Receipt_No";  
+			string	sql= "select distinct Receipt_No from Payment_Receipt where cast(floor(cast(Receipt_Date as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(strReceiptFromDate) + "' and cast(floor(cast(Receipt_Date as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(strReceiptToDate) + "' order by Receipt_No";  
 			SqlDtr = obj.GetRecordSet(sql);
 			DropReceiptNo.Items.Clear();
 			DropReceiptNo.Items.Add("Select");
@@ -1568,7 +1575,9 @@ namespace Servosms.Module.Inventory
 			DropCustName.Disabled=true;
 			btnPrint.CausesValidation=true;
 			Last_ID();
-		}
+            hidReceiptFromDate.Value = "";
+            hidReceiptToDate.Value = "";
+        }
 		
 		public void Last_ID()
 		{

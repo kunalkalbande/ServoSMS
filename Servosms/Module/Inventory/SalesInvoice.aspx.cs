@@ -122,8 +122,7 @@ namespace Servosms.Module.Inventory
 		/// and generate the next ID also.
 		/// </summary>
 		protected void Page_Load(object sender, System.EventArgs e)
-		{
-            string str = string.Empty;
+		{          
             try
             {
                 if(hidInvoiceFromDate.Value != "" && hidInvoiceToDate.Value != "")
@@ -168,8 +167,7 @@ namespace Servosms.Module.Inventory
 			if(!IsPostBack)
 			{
 				try
-				{
-                    str = hidInvoiceFromDate.Value;
+				{                   
                     lblInvoiceDate.Attributes.Add("readonly", "readonly");
 					tempEdit.Value="True";           //Add by vikas 14.07.09
 					//jk=0;

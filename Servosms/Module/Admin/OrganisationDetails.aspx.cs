@@ -321,7 +321,7 @@ namespace Servosms.Module.Admin
                     string sPattern = "^[a-zA-Z0-9]+$";
                     if (!System.Text.RegularExpressions.Regex.IsMatch(TxtTinno.Text, sPattern))
                     {
-                        errorMessage.Append("- Please Enter GSTin No. in Alpha Numeric");
+                        errorMessage.Append("- Please Enter GSTIN No. in Alpha Numeric");
                         errorMessage.Append("\n");
                     }
                 }

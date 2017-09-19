@@ -16,14 +16,20 @@
     <script type="text/javascript">
         function SetDates() {     
             
-            var today = document.getElementById("lblInvoiceFromDate").value;
-            today = new Date(today.split('/')[2],today.split('/')[1]-1,today.split('/')[0]);
-            var date2 = document.getElementById("lblInvoiceToDate").value;
-            date2 = new Date(date2.split('/')[2],date2.split('/')[1]-1,date2.split('/')[0]);
-            var timeDiff = Math.abs(date2.getTime() - today.getTime());
+            var fromDate = document.getElementById("lblInvoiceFromDate").value;
+            fromDate = new Date(fromDate.split('/')[2],fromDate.split('/')[1]-1,fromDate.split('/')[0]);
+            var toDate = document.getElementById("lblInvoiceToDate").value;
+            toDate = new Date(toDate.split('/')[2],toDate.split('/')[1]-1,toDate.split('/')[0]);
+            var timeDiff = Math.abs(toDate.getTime() - fromDate.getTime());
             var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
             var days = 30;
 
+            var diff = 0;
+            if (fromDate > toDate) {
+                alert("To Date should be greater than From Date.");
+                return;
+            }
+            
             var greater = parseInt(diffDays) > parseInt(days);
             if (greater)
             {
