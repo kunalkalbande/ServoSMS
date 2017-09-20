@@ -1373,7 +1373,7 @@ namespace Servosms.Module.Inventory
                             dbobj.SelectQuery("select cust_id from customer,ledger_master where Cust_Name=Ledger_Name and Ledger_ID='" + UpdateLedgerID[p].ToString() + "'", ref SqlDtr);
                             if (SqlDtr.Read())
                             {
-                                dbobj.ExecProc(OprType.Update, "UpdateCustomerLedgerForCustomer", ref op, "@Cust_ID", SqlDtr["Cust_ID"].ToString(), "@Invoice_Date", Invoice_Date);
+                                dbobj.ExecProc(OprType.Update, "UpdateCustomerLedgerForCustomer", ref op, "@Cust_ID", SqlDtr["Cust_ID"].ToString(), "@Invoice_Date", GenUtil.str2MMDDYYYY(Invoice_Date));
                             }
                         }
 
