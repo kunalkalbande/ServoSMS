@@ -20,21 +20,11 @@
             fromDate = new Date(fromDate.split('/')[2], fromDate.split('/')[1] - 1, fromDate.split('/')[0]);
             var toDate = document.getElementById("lblReceiptToDate").value;
             toDate = new Date(toDate.split('/')[2], toDate.split('/')[1] - 1, toDate.split('/')[0]);
-            var timeDiff = Math.abs(toDate.getTime() - fromDate.getTime());
-            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-            var days = 30;
-
-            var diff = 0;
+            
             if (fromDate > toDate) {
                 alert("To Date should be greater than From Date.");
                 return;
-            }
-
-            var greater = parseInt(diffDays) > parseInt(days);
-            if (greater) {
-                alert("Maximum Difference between From Date and To Date should be 30 days.");
-                return;
-            }
+            }            
 
             if (window.opener != null && !window.opener.closed) {
 
