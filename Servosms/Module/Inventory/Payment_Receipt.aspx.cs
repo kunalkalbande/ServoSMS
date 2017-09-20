@@ -959,458 +959,465 @@ namespace Servosms.Module.Inventory
 		/// </summary>
 		public void SaveUpdate()
 		{
-			//string[] arrSubReceipt={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-			InventoryClass  obj=new InventoryClass ();
-			SqlDataReader SqlDtr=null;
-			ArrayList UpdateLedgerID = new ArrayList();
-			ArrayList UpdateCustomerID = new ArrayList();
-			double rec_amount;
-			//double Amount=0;
-			//double balance;
-			string Receipt="Save";
-			string Acc_Type = "";
-			string _CustName;
-			string _City;
-			string Cust_ID="";
-			//int f = 0;
-			//int z=0;
-			//_CustName=DropCustName.Value; //Comment by vikas sharma 30.04.09
-			_CustName=DropCustName.Value.Substring(0,DropCustName.Value.IndexOf(";"));
-			_City=txtCity.Text; 
-			checkAccount(); 
-			if(DropMode.SelectedItem.Text.Equals("Cash"))
-			{
-				Acc_Type = "Cash in hand";
-				if(f1 == 0)
-				{
-					MessageBox.Show("Cash Account not created");
-					return;
-				}
-			}
-			else
-			{
-				Acc_Type = "Bank";
-				if(f2 == 0)
-				{
-					MessageBox.Show("Bank Account not created");
-					return;
-				}
-			}
-			if(f1 == 0 && f2==0)
-			{
-				MessageBox.Show("Cash and Bank Accounts are not created");
-				return;
-			}
-			string	sql="";
-			string[] strName=new string[2];
-			if(_CustName.IndexOf(":")>0)
-			{
-				strName=_CustName.Split(new char[] {':'},_CustName.Length);
-				Cust_ID=strName[1].ToString();
-				UpdateLedgerID.Add(strName[1].ToString());
-			}
-			else
-			{
-				strName[0]=_CustName;
-				sql="select Ledger_ID from Ledger_Master where Ledger_Name='"+strName[0].ToString()+"'";
-				SqlDtr = obj.GetRecordSet(sql);
-				if(SqlDtr.Read())
-				{
-					Cust_ID = SqlDtr.GetValue(0).ToString();
-					UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
-				}
-				else
-					Cust_ID = "0";
-				SqlDtr.Close ();
-			}
-			if(PanReceiptNo.Visible==true)
-			{
-				sql="select Cust_ID from Customer where Cust_Name='"+strName[0].ToString()+"'";
-				SqlDtr = obj.GetRecordSet(sql);
-				if(SqlDtr.Read())
-				{
-					UpdateCustomerID.Add(SqlDtr.GetValue(0).ToString());
-				}
-				SqlDtr.Close ();
-			}
-			obj.Receipt="Save";
-			if(PanBankInfo.Visible==true)
-			{
-				sql="Select Ledger_ID from Ledger_Master lm,Ledger_Master_sub_grp lmsg where lmsg.sub_grp_id = lm.sub_grp_id and lmsg.sub_grp_name like 'Bank%' and ledger_Name='"+DropBankName.SelectedItem.Text+"'";
-				SqlDtr = obj.GetRecordSet(sql);
-				if(SqlDtr.Read())
-				{
-					obj.BankName = SqlDtr.GetValue(0).ToString();
-					Acc_Type = SqlDtr.GetValue(0).ToString();
-					UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
-				}
-				else
-					obj.BankName = "";
-				SqlDtr.Close ();
-			}
-			else
-			{
-				obj.BankName="";
-			}
-			dbobj.SelectQuery("select Ledger_ID from Ledger_Master lm, Ledger_Master_sub_grp lmsg where lm.sub_grp_id = lmsg.sub_grp_id and  lmsg.sub_grp_name = 'Cash in hand'",ref SqlDtr); 
-			if(SqlDtr.Read())
-			{
-				UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
-			}
-			SqlDtr.Close();
-				
-			//obj.BankName=txtBankName.Text.Trim().ToString();
-			obj.ChequeNo=txtChequeno.Text.Trim().ToString();
-			obj.Mode=DropMode.SelectedItem.Text;
-			obj.ChequeDate=GenUtil.str2DDMMYYYY(txtDate.Text.Trim().ToString());            
-            obj.cust_id=Cust_ID;
-			obj.Narration=txtNar.Text;
-			obj.discount=txtDisc1.Text;
-			obj.Discount=txtDisc2.Text;
-			obj.CustBankName=txtCustBankName.Text;
-			obj.Invoice_Date=System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString());
-			string DiscID1="0",DiscID2="0";
-			
-			
-			if(DropDiscount1.SelectedIndex==0)
-				obj.discountid1="";
-			else
-			{
-				SqlDtr = obj.GetRecordSet("Select ledger_id from ledger_master lm,ledger_master_sub_grp lmsg where ledger_name='"+DropDiscount1.SelectedItem.Text+"' and lm.sub_grp_id=lmsg.sub_grp_id and sub_grp_name='discount'");
-				if(SqlDtr.Read())
-				{
-					obj.discountid1=SqlDtr.GetValue(0).ToString();
-					DiscID1=SqlDtr.GetValue(0).ToString();
-					if(txtDisc1.Text!="")
-						UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
-				}
-				else
-					obj.discountid1="";
-				SqlDtr.Close();
-			}
+            try
+            {
+                //string[] arrSubReceipt={"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+                InventoryClass obj = new InventoryClass();
+                SqlDataReader SqlDtr = null;
+                ArrayList UpdateLedgerID = new ArrayList();
+                ArrayList UpdateCustomerID = new ArrayList();
+                double rec_amount;
+                //double Amount=0;
+                //double balance;
+                string Receipt = "Save";
+                string Acc_Type = "";
+                string _CustName;
+                string _City;
+                string Cust_ID = "";
+                //int f = 0;
+                //int z=0;
+                //_CustName=DropCustName.Value; //Comment by vikas sharma 30.04.09
+                _CustName = DropCustName.Value.Substring(0, DropCustName.Value.IndexOf(";"));
+                _City = txtCity.Text;
+                checkAccount();
+                if (DropMode.SelectedItem.Text.Equals("Cash"))
+                {
+                    Acc_Type = "Cash in hand";
+                    if (f1 == 0)
+                    {
+                        MessageBox.Show("Cash Account not created");
+                        return;
+                    }
+                }
+                else
+                {
+                    Acc_Type = "Bank";
+                    if (f2 == 0)
+                    {
+                        MessageBox.Show("Bank Account not created");
+                        return;
+                    }
+                }
+                if (f1 == 0 && f2 == 0)
+                {
+                    MessageBox.Show("Cash and Bank Accounts are not created");
+                    return;
+                }
+                string sql = "";
+                string[] strName = new string[2];
+                if (_CustName.IndexOf(":") > 0)
+                {
+                    strName = _CustName.Split(new char[] { ':' }, _CustName.Length);
+                    Cust_ID = strName[1].ToString();
+                    UpdateLedgerID.Add(strName[1].ToString());
+                }
+                else
+                {
+                    strName[0] = _CustName;
+                    sql = "select Ledger_ID from Ledger_Master where Ledger_Name='" + strName[0].ToString() + "'";
+                    SqlDtr = obj.GetRecordSet(sql);
+                    if (SqlDtr.Read())
+                    {
+                        Cust_ID = SqlDtr.GetValue(0).ToString();
+                        UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
+                    }
+                    else
+                        Cust_ID = "0";
+                    SqlDtr.Close();
+                }
+                if (PanReceiptNo.Visible == true)
+                {
+                    sql = "select Cust_ID from Customer where Cust_Name='" + strName[0].ToString() + "'";
+                    SqlDtr = obj.GetRecordSet(sql);
+                    if (SqlDtr.Read())
+                    {
+                        UpdateCustomerID.Add(SqlDtr.GetValue(0).ToString());
+                    }
+                    SqlDtr.Close();
+                }
+                obj.Receipt = "Save";
+                if (PanBankInfo.Visible == true)
+                {
+                    sql = "Select Ledger_ID from Ledger_Master lm,Ledger_Master_sub_grp lmsg where lmsg.sub_grp_id = lm.sub_grp_id and lmsg.sub_grp_name like 'Bank%' and ledger_Name='" + DropBankName.SelectedItem.Text + "'";
+                    SqlDtr = obj.GetRecordSet(sql);
+                    if (SqlDtr.Read())
+                    {
+                        obj.BankName = SqlDtr.GetValue(0).ToString();
+                        Acc_Type = SqlDtr.GetValue(0).ToString();
+                        UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
+                    }
+                    else
+                        obj.BankName = "";
+                    SqlDtr.Close();
+                }
+                else
+                {
+                    obj.BankName = "";
+                }
+                dbobj.SelectQuery("select Ledger_ID from Ledger_Master lm, Ledger_Master_sub_grp lmsg where lm.sub_grp_id = lmsg.sub_grp_id and  lmsg.sub_grp_name = 'Cash in hand'", ref SqlDtr);
+                if (SqlDtr.Read())
+                {
+                    UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
+                }
+                SqlDtr.Close();
 
-			if(DropDiscount2.SelectedIndex==0)
-				obj.discountid2="";
-			else
-			{
-				SqlDtr = obj.GetRecordSet("Select ledger_id from ledger_master where ledger_name='"+DropDiscount2.SelectedItem.Text+"'");
-				if(SqlDtr.Read())
-				{
-					obj.discountid2=SqlDtr.GetValue(0).ToString();
-					DiscID2=SqlDtr.GetValue(0).ToString();
-					if(txtDisc2.Text!="")
-						UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
-				}
-				else
-					obj.discountid2="";
-				SqlDtr.Close();
-			}
-			
-
-			if(txtDisc1.Text=="")
-				obj.discountid1="";
-			if(txtDisc2.Text=="")
-				obj.discountid2="";
-			//********** Add This code by Mahesh On 05.07.008 **********************************
-			
-			/*Coment by vikas 12.4.2013 string DisType1 = "", DisType2 = "";
-			if(DropDiscount1.SelectedIndex!=0)
-			{
-				DisType1 = DropDiscount1.SelectedItem.Text.Substring(0,1);
-				DisType1 +="D";
-			}
-			if(DropDiscount2.SelectedIndex!=0)
-			{
-				DisType2 = DropDiscount2.SelectedItem.Text.Substring(0,1);
-				DisType2 +="D";
-			}
-			*/
-			
-			/******Add by vikas 12.4.2013*******************/
-			string DisType1 = "", DisType2 = "";
-			if(DropDiscount1.SelectedIndex!=0)
-			{
-				DisType1 = DropDiscount1.SelectedItem.Text.Substring(0,1);
-				DisType1 +="D";
-			}
-			else
-			{
-				if(DiscLedgerName1!="")
-				{
-					DisType1 = DiscLedgerName1.Substring(0,1);
-					DisType1 +="D";
-				}
-				
-			}
-			
-			if(DropDiscount2.SelectedIndex!=0)
-			{
-				DisType2 = DropDiscount2.SelectedItem.Text.Substring(0,1);
-				DisType2 +="D";
-			}
-			else
-			{
-				if(DiscLedgerName2!="")
-				{
-					DisType2 = DiscLedgerName2.Substring(0,1);
-					DisType2 +="D";
-				}
-								
-			}
-			/*********end****************/
-
-			double TotalAmt = 0;
-			if(txtRecAmount.Text!="")
-				TotalAmt+=double.Parse(txtRecAmount.Text);
-			if(txtDisc1.Text!="")
-				TotalAmt+=double.Parse(txtDisc1.Text);
-			if(txtDisc2.Text!="")
-				TotalAmt+=double.Parse(txtDisc2.Text);
-			int OldCustID = 0;
-			if(PanReceiptNo.Visible==true)
-			{
-				dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_id = '"+customerID+"')",ref OldCustID);
-				customerID=OldCustID.ToString();                    //Add by vikas 12.09.09
-			}
-			
-			/****************Add by vikas 12.09.09 ********************************/
-			else
-			{
-				string cust_name2=strName[0].ToString();
-				dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_name= '"+cust_name2+"')",ref OldCustID);
-				customerID=OldCustID.ToString();
-			}
-			/****************End***************************************************/
-
-			//*********************************************************************************
-			GetNextReceiptNo();
-			//*********************************************
-			// Check Amount payment from Ledger Account or from Customer.
-			//*****dbobj.SelectQuery("select Ledger_ID from Cust_Ledger where Party_Name  = '"+_CustName+"' and Ledger_Id != ''",ref SqlDtr);// Comment by Mahesh b'coz can not use Cust_Ledger table.
-			//*****if(SqlDtr.HasRows)
-			if(_CustName.IndexOf(":")>0)
-			{
-				//					string Ledger_ID = "";
-				rec_amount = 0;
-				//					if(SqlDtr.Read())
-				//					{
-				//						Ledger_ID = SqlDtr["Ledger_ID"].ToString();
-				//					}
-				rec_amount=System.Convert.ToDouble(txtRecAmount.Text);
-				object op = null;
-				//f= 2;
-				//MakingReport(f);
-				MakingReport();
-				//print();
-				//call procedure to insert the record into payment_Receipt and voucher_transaction tables.
-				
-				if(PanReceiptNo.Visible==true)
-				{
-					//************* Add This code by Mahesh on 05.07.008 ******************
-					int x = 0;
-					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_"+DisType1+" ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_"+DisType2+" ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					dbobj1.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Payment Received("+DropReceiptNo.SelectedItem.Text+")' and CustID='"+OldCustID+"'",ref x);
-					dbobj1.Insert_or_Update("delete from Payment_Receipt where Receipt_No='"+DropReceiptNo.SelectedItem.Text+"'",ref x);
-					//*********************************************************************
-					//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Ledger_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",txtDate.Text,"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text);
-					if(DropMode.SelectedItem.Text=="Cash")
-						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Update","@Receipt_No",DropReceiptNo.SelectedItem.Text);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text);
-					else
-						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Update","@Receipt_No",DropReceiptNo.SelectedItem.Text);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text);
-				}
-				else
-				{
-					//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Ledger_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","");
-					if(DropMode.SelectedItem.Text=="Cash")
-						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
-					else
-						//dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
-						dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",TotalAmt,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
-				}
-				//MessageBox.Show("Payment Receipt Saved");
-				//Clear();
-			}
-			else
-			{
-				//f = 1 ;
-				//MakingReport(f);
-				MakingReport();
-				
-			
-				object op=null;
-				
-				if(PanReceiptNo.Visible==true)
-				{
-					int x = 0;
-					//dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_id = '"+customerID+"')",ref OldCustID);
-					if(customerID!=Cust_ID)
-					{
-						UpdateLedgerID.Add(customerID);
-						UpdateCustomerID.Add(OldCustID);
-					}
-					//dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt ("+DropReceiptNo.SelectedItem.Text+")' and Ledger_ID = '"+customerID+"'",ref x);
-					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_"+DisType1+" ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_"+DisType2+" ("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					//dbobj1.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Payment Received("+DropReceiptNo.SelectedItem.Text+")' and CustID='"+OldCustID+"'",ref x);
-					dbobj1.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Payment Received("+DropReceiptNo.SelectedItem.Text+")'",ref x);
-					dbobj1.Insert_or_Update("delete from Payment_Receipt where Receipt_No='"+DropReceiptNo.SelectedItem.Text+"'",ref x);
-					
-					int Curr_Credit = 0;
-					int Credit_Limit = 0;
-					dbobj.ExecuteScalar("Select Cr_Limit from customer where Cust_ID = '"+OldCustID+"'",ref Credit_Limit);
-					dbobj.ExecuteScalar("Select Curr_Credit from customer where Cust_ID = '"+OldCustID+"'",ref Curr_Credit);
-					//12.09.09 coment by vikas if(Curr_Credit < Credit_Limit)
-					if(Curr_Credit <= Credit_Limit)
-					{
-						Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);
-
-						Curr_Credit = Curr_Credit - int.Parse(Tot_Rec.ToString());         //Add by vikas 12.09.09
-
-						if(@Curr_Credit >= @Credit_Limit)
-							dbobj1.Insert_or_Update("update customer set Curr_Credit = '"+Credit_Limit+"' where Cust_ID  = '"+customerID+"'",ref x);
-						else
-							dbobj1.Insert_or_Update("update customer set Curr_Credit = '"+Curr_Credit+"' where Cust_ID  = '"+customerID+"'",ref x);
-					}
-					/****************** Add by vikas 12.09.09 **************************************************/
-					else
-					{
-						Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);									//Add by vikas 12.09.09
-						Curr_Credit = Curr_Credit - int.Parse(Tot_Rec.ToString());									//Add by vikas 12.09.09
-						dbobj1.Insert_or_Update("update customer set Cr_Limit = '"+Curr_Credit+"' where Cust_ID  = '"+customerID+"'",ref x);
-					}
-					/*******************************************************************************************/
-
-					obj.Received_No = DropReceiptNo.SelectedItem.Text;
-					obj.SubReceived_No="A"+DropReceiptNo.SelectedItem.Text;
-					obj.Invoice_No="";
-					obj.Received_Amount=TotalAmt.ToString();
-					obj.Actual_Amount = System.Convert.ToString(double.Parse(txtRecAmount.Text));
-					obj.InsertPaymentReceived();
-					
-					//dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",DropCustName.Value,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",DropReceiptNo.SelectedItem.Text,"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())); //Comment by vikas sharma 30.04.09
-					dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",_CustName,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",DropReceiptNo.SelectedItem.Text,"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()));
-					if(txtDisc1.Text!="" && txtDisc1.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text,"@Amount",txtDisc1.Text,"@Ledger_ID",DiscID1,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType1);
-					if(txtDisc2.Text!="" && txtDisc2.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",DropReceiptNo.SelectedItem.Text,"@Amount",txtDisc2.Text,"@Ledger_ID",DiscID2,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType2);
-				}
-				else
-				{
-					obj.Received_No = ReceiptNo.ToString();
-					obj.SubReceived_No="A"+ReceiptNo.ToString();
-					obj.Invoice_No="";
-					obj.Received_Amount=TotalAmt.ToString();
-					obj.Actual_Amount = System.Convert.ToString(double.Parse(txtRecAmount.Text));
-					obj.InsertPaymentReceived();
-
-					//dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",DropCustName.Value,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",ReceiptNo.ToString(),"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())); //Comment by Vikas sharma 30.04.09
-					dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",_CustName,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",ReceiptNo.ToString(),"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()));
-					if(txtDisc1.Text!="" && txtDisc1.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo.ToString(),"@Amount",txtDisc1.Text,"@Ledger_ID",DiscID1,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType1);
-					if(txtDisc2.Text!="" && txtDisc2.Text!="0")
-						dbobj.ExecProc(OprType.Insert,"ProSpacialDiscountEntry",ref op,"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo.ToString(),"@Amount",txtDisc2.Text,"@Ledger_ID",DiscID2,"@RecDate",System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@DisType",DisType2);
-
-					/******************Add by vikas Sharma 12.09.09**********************************************/
-					int x = 0;
-					int Curr_Credit = 0;
-					int Credit_Limit = 0;
-					dbobj.ExecuteScalar("Select Cr_Limit from customer where Cust_ID = '"+OldCustID+"'",ref Credit_Limit);
-					dbobj.ExecuteScalar("Select Curr_Credit from customer where Cust_ID = '"+OldCustID+"'",ref Curr_Credit);
-					//12.09.09 coment by vikas if(Curr_Credit < Credit_Limit)
-					if(Curr_Credit < Credit_Limit)
-					{
-						Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);
-						if(@Curr_Credit >= @Credit_Limit)
-							dbobj1.Insert_or_Update("update customer set Curr_Credit = '"+Credit_Limit+"' where Cust_ID  = '"+customerID+"'",ref x);
-						else
-							dbobj1.Insert_or_Update("update customer set Curr_Credit = '"+Curr_Credit+"' where Cust_ID  = '"+customerID+"'",ref x);
-					}
-					else
-					{
-						Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);          //Add by vikas 12.09.09
-						Curr_Credit = Curr_Credit - int.Parse(Tot_Rec.ToString());         //Add by vikas 12.09.09
-						dbobj1.Insert_or_Update("update customer set Cr_Limit = '"+Curr_Credit+"' where Cust_ID  = '"+customerID+"'",ref x);
-					}
-					/********************End******************************************************/
+                //obj.BankName=txtBankName.Text.Trim().ToString();
+                obj.ChequeNo = txtChequeno.Text.Trim().ToString();
+                obj.Mode = DropMode.SelectedItem.Text;
+                obj.ChequeDate = GenUtil.str2DDMMYYYY(txtDate.Text.Trim().ToString());
+                obj.cust_id = Cust_ID;
+                obj.Narration = txtNar.Text;
+                obj.discount = txtDisc1.Text;
+                obj.Discount = txtDisc2.Text;
+                obj.CustBankName = txtCustBankName.Text;
+                obj.Invoice_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString());
+                string DiscID1 = "0", DiscID2 = "0";
 
 
+                if (DropDiscount1.SelectedIndex == 0)
+                    obj.discountid1 = "";
+                else
+                {
+                    SqlDtr = obj.GetRecordSet("Select ledger_id from ledger_master lm,ledger_master_sub_grp lmsg where ledger_name='" + DropDiscount1.SelectedItem.Text + "' and lm.sub_grp_id=lmsg.sub_grp_id and sub_grp_name='discount'");
+                    if (SqlDtr.Read())
+                    {
+                        obj.discountid1 = SqlDtr.GetValue(0).ToString();
+                        DiscID1 = SqlDtr.GetValue(0).ToString();
+                        if (txtDisc1.Text != "")
+                            UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
+                    }
+                    else
+                        obj.discountid1 = "";
+                    SqlDtr.Close();
+                }
 
-				}
-				
-				
-				//**************************************** End *******************************************
-				//				
-				//***********************
+                if (DropDiscount2.SelectedIndex == 0)
+                    obj.discountid2 = "";
+                else
+                {
+                    SqlDtr = obj.GetRecordSet("Select ledger_id from ledger_master where ledger_name='" + DropDiscount2.SelectedItem.Text + "'");
+                    if (SqlDtr.Read())
+                    {
+                        obj.discountid2 = SqlDtr.GetValue(0).ToString();
+                        DiscID2 = SqlDtr.GetValue(0).ToString();
+                        if (txtDisc2.Text != "")
+                            UpdateLedgerID.Add(SqlDtr.GetValue(0).ToString());
+                    }
+                    else
+                        obj.discountid2 = "";
+                    SqlDtr.Close();
+                }
 
-				if(PanReceiptNo.Visible==true)//Comment by Mahesh on 25.10.008 b'coz this condition is allow insert time also b'coz balance update in insert or update time both.
-				{
-					
-					SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
-					
-					if(Invoice_Date.IndexOf(" ")>0)
-					{
-						string[] CheckDate = Invoice_Date.Split(new char[] {' '},Invoice_Date.Length);
-						if(DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()),System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)))>0)
-							Invoice_Date=GenUtil.str2DDMMYYYY(txtReceivedDate.Text);
-						else
-							Invoice_Date=CheckDate[0].ToString();
-					}
-					else
-						Invoice_Date=GenUtil.str2DDMMYYYY(txtReceivedDate.Text);
-					
-					for(int p=0;p<UpdateLedgerID.Count;p++)
-					{
-						string ss=UpdateLedgerID[p].ToString();
-						dbobj.ExecProc(OprType.Update,"UpdateAccountsLedgerForCustomer",ref op,"@Ledger_ID",UpdateLedgerID[p].ToString(),"@Invoice_Date",Invoice_Date);
-						dbobj.SelectQuery("select cust_id from customer,ledger_master where Cust_Name=Ledger_Name and Ledger_ID='"+UpdateLedgerID[p].ToString()+"'",ref SqlDtr);
-						if(SqlDtr.Read())
-						{
-							dbobj.ExecProc(OprType.Update,"UpdateCustomerLedgerForCustomer",ref op,"@Cust_ID",SqlDtr["Cust_ID"].ToString(),"@Invoice_Date",Invoice_Date);
-						}
-					}
-					
-				}//Comment by Mahesh on 25.10.008 b'coz this condition is allow insert time also b'coz balance update in insert or update time both.
-				else
-				{
-					object opp = null;
-					for(int i=0;i<UpdateLedgerID.Count;i++)
-					{
-						string ss=UpdateLedgerID[i].ToString();
-						dbobj.ExecProc(OprType.Update,"UpdateAccountsLedgerForCustomer",ref opp,"@Ledger_ID",UpdateLedgerID[i].ToString(),"@Invoice_Date",GenUtil.str2DDMMYYYY(txtReceivedDate.Text));
-						dbobj.SelectQuery("select cust_id from customer,ledger_master where Cust_Name=Ledger_Name and Ledger_ID='"+UpdateLedgerID[i].ToString()+"'",ref SqlDtr);
-						if(SqlDtr.Read())
-						{
-							dbobj.ExecProc(OprType.Update,"UpdateCustomerLedgerForCustomer",ref opp,"@Cust_ID",SqlDtr["Cust_ID"].ToString(),"@Invoice_Date", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)));
-						}
-					}
 
-				}
-			}
-			//*********************add by Mahesh on 16.01.008
-			if(DropReceiptNo.Visible==true)
-				MessageBox.Show("Payment Receipt Updated");
-			else
-				MessageBox.Show("Payment Receipt Saved");
-			Clear();
-			CreateLogFiles.ErrorLog("Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:btnSaved_Clicked  Payment receipt saved. User_ID: " +uid);
-			GridDuePayment.DataSource = null;
-			GridDuePayment.DataBind(); 
-			//***********************
-			//checkPrevileges();
-			PanBankInfo.Visible=false;
-			PanReceiptNo.Visible=false;
-			btnSave.Text="Save";
-			DropMode.Enabled=true;
-			DropBankName.Enabled=true;
-			btnPrint.CausesValidation=false;
-			PrintFlag=true;
-		}
+                if (txtDisc1.Text == "")
+                    obj.discountid1 = "";
+                if (txtDisc2.Text == "")
+                    obj.discountid2 = "";
+                //********** Add This code by Mahesh On 05.07.008 **********************************
+
+                /*Coment by vikas 12.4.2013 string DisType1 = "", DisType2 = "";
+                if(DropDiscount1.SelectedIndex!=0)
+                {
+                    DisType1 = DropDiscount1.SelectedItem.Text.Substring(0,1);
+                    DisType1 +="D";
+                }
+                if(DropDiscount2.SelectedIndex!=0)
+                {
+                    DisType2 = DropDiscount2.SelectedItem.Text.Substring(0,1);
+                    DisType2 +="D";
+                }
+                */
+
+                /******Add by vikas 12.4.2013*******************/
+                string DisType1 = "", DisType2 = "";
+                if (DropDiscount1.SelectedIndex != 0)
+                {
+                    DisType1 = DropDiscount1.SelectedItem.Text.Substring(0, 1);
+                    DisType1 += "D";
+                }
+                else
+                {
+                    if (DiscLedgerName1 != "")
+                    {
+                        DisType1 = DiscLedgerName1.Substring(0, 1);
+                        DisType1 += "D";
+                    }
+
+                }
+
+                if (DropDiscount2.SelectedIndex != 0)
+                {
+                    DisType2 = DropDiscount2.SelectedItem.Text.Substring(0, 1);
+                    DisType2 += "D";
+                }
+                else
+                {
+                    if (DiscLedgerName2 != "")
+                    {
+                        DisType2 = DiscLedgerName2.Substring(0, 1);
+                        DisType2 += "D";
+                    }
+
+                }
+                /*********end****************/
+
+                double TotalAmt = 0;
+                if (txtRecAmount.Text != "")
+                    TotalAmt += double.Parse(txtRecAmount.Text);
+                if (txtDisc1.Text != "")
+                    TotalAmt += double.Parse(txtDisc1.Text);
+                if (txtDisc2.Text != "")
+                    TotalAmt += double.Parse(txtDisc2.Text);
+                int OldCustID = 0;
+                if (PanReceiptNo.Visible == true)
+                {
+                    dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_id = '" + customerID + "')", ref OldCustID);
+                    customerID = OldCustID.ToString();                    //Add by vikas 12.09.09
+                }
+
+                /****************Add by vikas 12.09.09 ********************************/
+                else
+                {
+                    string cust_name2 = strName[0].ToString();
+                    dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_name= '" + cust_name2 + "')", ref OldCustID);
+                    customerID = OldCustID.ToString();
+                }
+                /****************End***************************************************/
+
+                //*********************************************************************************
+                GetNextReceiptNo();
+                //*********************************************
+                // Check Amount payment from Ledger Account or from Customer.
+                //*****dbobj.SelectQuery("select Ledger_ID from Cust_Ledger where Party_Name  = '"+_CustName+"' and Ledger_Id != ''",ref SqlDtr);// Comment by Mahesh b'coz can not use Cust_Ledger table.
+                //*****if(SqlDtr.HasRows)
+                if (_CustName.IndexOf(":") > 0)
+                {
+                    //					string Ledger_ID = "";
+                    rec_amount = 0;
+                    //					if(SqlDtr.Read())
+                    //					{
+                    //						Ledger_ID = SqlDtr["Ledger_ID"].ToString();
+                    //					}
+                    rec_amount = System.Convert.ToDouble(txtRecAmount.Text);
+                    object op = null;
+                    //f= 2;
+                    //MakingReport(f);
+                    MakingReport();
+                    //print();
+                    //call procedure to insert the record into payment_Receipt and voucher_transaction tables.
+
+                    if (PanReceiptNo.Visible == true)
+                    {
+                        //************* Add This code by Mahesh on 05.07.008 ******************
+                        int x = 0;
+                        dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt (" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_" + DisType1 + " (" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_" + DisType2 + " (" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        dbobj1.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Payment Received(" + DropReceiptNo.SelectedItem.Text + ")' and CustID='" + OldCustID + "'", ref x);
+                        dbobj1.Insert_or_Update("delete from Payment_Receipt where Receipt_No='" + DropReceiptNo.SelectedItem.Text + "'", ref x);
+                        //*********************************************************************
+                        //dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Ledger_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",txtDate.Text,"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text);
+                        if (DropMode.SelectedItem.Text == "Cash")
+                            //dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Update","@Receipt_No",DropReceiptNo.SelectedItem.Text);
+                            dbobj.ExecProc(OprType.Insert, "InsertPayment", ref op, "@Ledger_ID", Cust_ID, "@amount", TotalAmt, "@Acc_Type", Acc_Type, "@BankName", "", "@ChNo", "", "@ChDate", "", "@Mode", DropMode.SelectedItem.Text, "@Narration", "", "@CustBankName", "", "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", DropReceiptNo.SelectedItem.Text);
+                        else
+                            //dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",Amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Update","@Receipt_No",DropReceiptNo.SelectedItem.Text);
+                            dbobj.ExecProc(OprType.Insert, "InsertPayment", ref op, "@Ledger_ID", Cust_ID, "@amount", TotalAmt, "@Acc_Type", Acc_Type, "@BankName", Acc_Type, "@ChNo", txtChequeno.Text, "@ChDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)), "@Mode", DropMode.SelectedItem.Text, "@Narration", txtNar.Text, "@CustBankName", txtCustBankName.Text, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", DropReceiptNo.SelectedItem.Text);
+                    }
+                    else
+                    {
+                        //dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Ledger_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","");
+                        if (DropMode.SelectedItem.Text == "Cash")
+                            //dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName","","@ChNo","","@ChDate","","@Mode",DropMode.SelectedItem.Text,"@Narration","","@CustBankName","","@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
+                            dbobj.ExecProc(OprType.Insert, "InsertPayment", ref op, "@Ledger_ID", Cust_ID, "@amount", TotalAmt, "@Acc_Type", Acc_Type, "@BankName", "", "@ChNo", "", "@ChDate", "", "@Mode", DropMode.SelectedItem.Text, "@Narration", "", "@CustBankName", "", "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", ReceiptNo);
+                        else
+                            //dbobj.ExecProc(OprType.Insert,"InsertPayment",ref op,"@Ledger_ID",Cust_ID,"@amount",rec_amount,"@Acc_Type",Acc_Type,"@BankName",Acc_Type,"@ChNo",txtChequeno.Text,"@ChDate",GenUtil.str2MMDDYYYY(txtDate.Text),"@Mode",DropMode.SelectedItem.Text,"@Narration",txtNar.Text,"@CustBankName",txtCustBankName.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString()),"@Cust_ID",Cust_ID,"@Receipt","Save","@Receipt_No",ReceiptNo);
+                            dbobj.ExecProc(OprType.Insert, "InsertPayment", ref op, "@Ledger_ID", Cust_ID, "@amount", TotalAmt, "@Acc_Type", Acc_Type, "@BankName", Acc_Type, "@ChNo", txtChequeno.Text, "@ChDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtDate.Text)), "@Mode", DropMode.SelectedItem.Text, "@Narration", txtNar.Text, "@CustBankName", txtCustBankName.Text, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", ReceiptNo);
+                    }
+                    //MessageBox.Show("Payment Receipt Saved");
+                    //Clear();
+                }
+                else
+                {
+                    //f = 1 ;
+                    //MakingReport(f);
+                    MakingReport();
+
+
+                    object op = null;
+
+                    if (PanReceiptNo.Visible == true)
+                    {
+                        int x = 0;
+                        //dbobj.ExecuteScalar("select cust_id from customer where cust_name=(select ledger_name from ledger_master where ledger_id = '"+customerID+"')",ref OldCustID);
+                        if (customerID != Cust_ID)
+                        {
+                            UpdateLedgerID.Add(customerID);
+                            UpdateCustomerID.Add(OldCustID);
+                        }
+                        //dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt ("+DropReceiptNo.SelectedItem.Text+")' and Ledger_ID = '"+customerID+"'",ref x);
+                        dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt (" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_" + DisType1 + " (" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        dbobj1.Insert_or_Update("delete from AccountsLedgerTable where Particulars = 'Receipt_" + DisType2 + " (" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        //dbobj1.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Payment Received("+DropReceiptNo.SelectedItem.Text+")' and CustID='"+OldCustID+"'",ref x);
+                        dbobj1.Insert_or_Update("delete from CustomerLedgerTable where Particular = 'Payment Received(" + DropReceiptNo.SelectedItem.Text + ")'", ref x);
+                        dbobj1.Insert_or_Update("delete from Payment_Receipt where Receipt_No='" + DropReceiptNo.SelectedItem.Text + "'", ref x);
+
+                        int Curr_Credit = 0;
+                        int Credit_Limit = 0;
+                        dbobj.ExecuteScalar("Select Cr_Limit from customer where Cust_ID = '" + OldCustID + "'", ref Credit_Limit);
+                        dbobj.ExecuteScalar("Select Curr_Credit from customer where Cust_ID = '" + OldCustID + "'", ref Curr_Credit);
+                        //12.09.09 coment by vikas if(Curr_Credit < Credit_Limit)
+                        if (Curr_Credit <= Credit_Limit)
+                        {
+                            Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);
+
+                            Curr_Credit = Curr_Credit - int.Parse(Tot_Rec.ToString());         //Add by vikas 12.09.09
+
+                            if (@Curr_Credit >= @Credit_Limit)
+                                dbobj1.Insert_or_Update("update customer set Curr_Credit = '" + Credit_Limit + "' where Cust_ID  = '" + customerID + "'", ref x);
+                            else
+                                dbobj1.Insert_or_Update("update customer set Curr_Credit = '" + Curr_Credit + "' where Cust_ID  = '" + customerID + "'", ref x);
+                        }
+                        /****************** Add by vikas 12.09.09 **************************************************/
+                        else
+                        {
+                            Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);                                   //Add by vikas 12.09.09
+                            Curr_Credit = Curr_Credit - int.Parse(Tot_Rec.ToString());                                  //Add by vikas 12.09.09
+                            dbobj1.Insert_or_Update("update customer set Cr_Limit = '" + Curr_Credit + "' where Cust_ID  = '" + customerID + "'", ref x);
+                        }
+                        /*******************************************************************************************/
+
+                        obj.Received_No = DropReceiptNo.SelectedItem.Text;
+                        obj.SubReceived_No = "A" + DropReceiptNo.SelectedItem.Text;
+                        obj.Invoice_No = "";
+                        obj.Received_Amount = TotalAmt.ToString();
+                        obj.Actual_Amount = System.Convert.ToString(double.Parse(txtRecAmount.Text));
+                        obj.InsertPaymentReceived();
+
+                        //dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",DropCustName.Value,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",DropReceiptNo.SelectedItem.Text,"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())); //Comment by vikas sharma 30.04.09
+                        dbobj.ExecProc(OprType.Insert, "ProCustLedgerEntry", ref op, "@Cust_Name", _CustName, "@City", txtCity.Text.ToString(), "@Amount", TotalAmt, "@Rec_Acc_Type", Acc_Type, "@Receipt", Receipt, "@Receipt_No", DropReceiptNo.SelectedItem.Text, "@ActualAmount", txtRecAmount.Text, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()));
+                        if (txtDisc1.Text != "" && txtDisc1.Text != "0")
+                            dbobj.ExecProc(OprType.Insert, "ProSpacialDiscountEntry", ref op, "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", DropReceiptNo.SelectedItem.Text, "@Amount", txtDisc1.Text, "@Ledger_ID", DiscID1, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@DisType", DisType1);
+                        if (txtDisc2.Text != "" && txtDisc2.Text != "0")
+                            dbobj.ExecProc(OprType.Insert, "ProSpacialDiscountEntry", ref op, "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", DropReceiptNo.SelectedItem.Text, "@Amount", txtDisc2.Text, "@Ledger_ID", DiscID2, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@DisType", DisType2);
+                    }
+                    else
+                    {
+                        obj.Received_No = ReceiptNo.ToString();
+                        obj.SubReceived_No = "A" + ReceiptNo.ToString();
+                        obj.Invoice_No = "";
+                        obj.Received_Amount = TotalAmt.ToString();
+                        obj.Actual_Amount = System.Convert.ToString(double.Parse(txtRecAmount.Text));
+                        obj.InsertPaymentReceived();
+
+                        //dbobj.ExecProc(OprType.Insert,"ProCustLedgerEntry",ref op,"@Cust_Name",DropCustName.Value,"@City",txtCity.Text.ToString(),"@Amount", TotalAmt,"@Rec_Acc_Type",Acc_Type,"@Receipt",Receipt,"@Receipt_No",ReceiptNo.ToString(),"@ActualAmount",txtRecAmount.Text,"@RecDate",System.Convert.ToDateTime(GenUtil.str2MMDDYYYY(txtReceivedDate.Text)+" "+DateTime.Now.TimeOfDay.ToString())); //Comment by Vikas sharma 30.04.09
+                        dbobj.ExecProc(OprType.Insert, "ProCustLedgerEntry", ref op, "@Cust_Name", _CustName, "@City", txtCity.Text.ToString(), "@Amount", TotalAmt, "@Rec_Acc_Type", Acc_Type, "@Receipt", Receipt, "@Receipt_No", ReceiptNo.ToString(), "@ActualAmount", txtRecAmount.Text, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()));
+                        if (txtDisc1.Text != "" && txtDisc1.Text != "0")
+                            dbobj.ExecProc(OprType.Insert, "ProSpacialDiscountEntry", ref op, "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", ReceiptNo.ToString(), "@Amount", txtDisc1.Text, "@Ledger_ID", DiscID1, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@DisType", DisType1);
+                        if (txtDisc2.Text != "" && txtDisc2.Text != "0")
+                            dbobj.ExecProc(OprType.Insert, "ProSpacialDiscountEntry", ref op, "@Cust_ID", Cust_ID, "@Receipt", "Save", "@Receipt_No", ReceiptNo.ToString(), "@Amount", txtDisc2.Text, "@Ledger_ID", DiscID2, "@RecDate", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text) + " " + DateTime.Now.TimeOfDay.ToString()), "@DisType", DisType2);
+
+                        /******************Add by vikas Sharma 12.09.09**********************************************/
+                        int x = 0;
+                        int Curr_Credit = 0;
+                        int Credit_Limit = 0;
+                        dbobj.ExecuteScalar("Select Cr_Limit from customer where Cust_ID = '" + OldCustID + "'", ref Credit_Limit);
+                        dbobj.ExecuteScalar("Select Curr_Credit from customer where Cust_ID = '" + OldCustID + "'", ref Curr_Credit);
+                        //12.09.09 coment by vikas if(Curr_Credit < Credit_Limit)
+                        if (Curr_Credit < Credit_Limit)
+                        {
+                            Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);
+                            if (@Curr_Credit >= @Credit_Limit)
+                                dbobj1.Insert_or_Update("update customer set Curr_Credit = '" + Credit_Limit + "' where Cust_ID  = '" + customerID + "'", ref x);
+                            else
+                                dbobj1.Insert_or_Update("update customer set Curr_Credit = '" + Curr_Credit + "' where Cust_ID  = '" + customerID + "'", ref x);
+                        }
+                        else
+                        {
+                            Curr_Credit = Curr_Credit + int.Parse(txtRecAmount.Text);          //Add by vikas 12.09.09
+                            Curr_Credit = Curr_Credit - int.Parse(Tot_Rec.ToString());         //Add by vikas 12.09.09
+                            dbobj1.Insert_or_Update("update customer set Cr_Limit = '" + Curr_Credit + "' where Cust_ID  = '" + customerID + "'", ref x);
+                        }
+                        /********************End******************************************************/
+
+
+
+                    }
+
+
+                    //**************************************** End *******************************************
+                    //				
+                    //***********************
+
+                    if (PanReceiptNo.Visible == true)//Comment by Mahesh on 25.10.008 b'coz this condition is allow insert time also b'coz balance update in insert or update time both.
+                    {
+
+                        SqlConnection Con = new SqlConnection(System.Configuration.ConfigurationSettings.AppSettings["Servosms"]);
+
+                        if (Invoice_Date.IndexOf(" ") > 0)
+                        {
+                            string[] CheckDate = Invoice_Date.Split(new char[] { ' ' }, Invoice_Date.Length);
+                            if (DateTime.Compare(System.Convert.ToDateTime(CheckDate[0].ToString()), System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text))) > 0)
+                                Invoice_Date = GenUtil.str2DDMMYYYY(txtReceivedDate.Text);
+                            else
+                                Invoice_Date = CheckDate[0].ToString();
+                        }
+                        else
+                            Invoice_Date = GenUtil.str2DDMMYYYY(txtReceivedDate.Text);
+
+                        for (int p = 0; p < UpdateLedgerID.Count; p++)
+                        {
+                            string ss = UpdateLedgerID[p].ToString();
+                            dbobj.ExecProc(OprType.Update, "UpdateAccountsLedgerForCustomer", ref op, "@Ledger_ID", UpdateLedgerID[p].ToString(), "@Invoice_Date", Invoice_Date);
+                            dbobj.SelectQuery("select cust_id from customer,ledger_master where Cust_Name=Ledger_Name and Ledger_ID='" + UpdateLedgerID[p].ToString() + "'", ref SqlDtr);
+                            if (SqlDtr.Read())
+                            {
+                                dbobj.ExecProc(OprType.Update, "UpdateCustomerLedgerForCustomer", ref op, "@Cust_ID", SqlDtr["Cust_ID"].ToString(), "@Invoice_Date", Invoice_Date);
+                            }
+                        }
+
+                    }//Comment by Mahesh on 25.10.008 b'coz this condition is allow insert time also b'coz balance update in insert or update time both.
+                    else
+                    {
+                        object opp = null;
+                        for (int i = 0; i < UpdateLedgerID.Count; i++)
+                        {
+                            string ss = UpdateLedgerID[i].ToString();
+                            dbobj.ExecProc(OprType.Update, "UpdateAccountsLedgerForCustomer", ref opp, "@Ledger_ID", UpdateLedgerID[i].ToString(), "@Invoice_Date", GenUtil.str2DDMMYYYY(txtReceivedDate.Text));
+                            dbobj.SelectQuery("select cust_id from customer,ledger_master where Cust_Name=Ledger_Name and Ledger_ID='" + UpdateLedgerID[i].ToString() + "'", ref SqlDtr);
+                            if (SqlDtr.Read())
+                            {
+                                dbobj.ExecProc(OprType.Update, "UpdateCustomerLedgerForCustomer", ref opp, "@Cust_ID", SqlDtr["Cust_ID"].ToString(), "@Invoice_Date", System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(txtReceivedDate.Text)));
+                            }
+                        }
+
+                    }
+                }
+                //*********************add by Mahesh on 16.01.008
+                if (DropReceiptNo.Visible == true)
+                    MessageBox.Show("Payment Receipt Updated");
+                else
+                    MessageBox.Show("Payment Receipt Saved");
+                Clear();
+                CreateLogFiles.ErrorLog("Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:btnSaved_Clicked  Payment receipt saved. User_ID: " + uid);
+                GridDuePayment.DataSource = null;
+                GridDuePayment.DataBind();
+                //***********************
+                //checkPrevileges();
+                PanBankInfo.Visible = false;
+                PanReceiptNo.Visible = false;
+                btnSave.Text = "Save";
+                DropMode.Enabled = true;
+                DropBankName.Enabled = true;
+                btnPrint.CausesValidation = false;
+                PrintFlag = true;
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:Payment_Receipt.aspx,Class:InventoryClass.cs,Method:SaveUpdate " + "   EXCEPTION " + ex.Message + " " + ex.StackTrace + uid);
+            }
+        }
 		
 		/// <summary>
 		/// Clears whole form.
