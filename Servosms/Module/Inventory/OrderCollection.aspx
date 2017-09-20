@@ -1573,13 +1573,13 @@ function MoveFocus(t,drop,e)
                                         <tr>
                                             <td width="2px">IGST</td>
                                             <td width="80px">
-                                                <asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied" Checked="true" GroupName="VAT" oncheckedchanged="No_CheckedChanged"></asp:radiobutton>
-                                                <asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply" Checked="false" GroupName="VAT" oncheckedchanged="Yes_CheckedChanged"></asp:radiobutton>
+                                                <asp:radiobutton id="No" onclick="return GetNetAmount();" runat="server" ToolTip="Not Applied" Checked="true" GroupName="VAT" ></asp:radiobutton>
+                                                <asp:radiobutton id="Yes" onclick="return GetNetAmount();" runat="server" ToolTip="Apply" Checked="false" GroupName="VAT" ></asp:radiobutton>
                                             </td>
                                         </tr>
                                     </table>
 									</TD>
-								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist" ontextchanged="txtVAT_TextChanged"></asp:textbox></TD>
+								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist" ></asp:textbox></TD>
 							</TR>
 
                             <TR>
