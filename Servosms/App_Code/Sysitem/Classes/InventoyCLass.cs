@@ -4464,7 +4464,9 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.Parameters .Add("@Cash_Discount",Cash_Discount );
 			SqlCmd.Parameters .Add("@Cash_Disc_Type",Cash_Disc_Type );
 			SqlCmd.Parameters .Add("@VAT_Amount",VAT_Amount);
-			SqlCmd.Parameters .Add("@Discount",Discount);
+            SqlCmd.Parameters.Add("@CGST_Amount", CGST_Amount);
+            SqlCmd.Parameters.Add("@SGST_Amount", SGST_Amount);
+            SqlCmd.Parameters .Add("@Discount",Discount);
 			SqlCmd.Parameters .Add("@Disc_Type",Discount_Type );
 			SqlCmd.Parameters .Add("@Net_Amount",Net_Amount);
 			SqlCmd.Parameters .Add("@Entry_By",Entry_By);
@@ -5004,8 +5006,8 @@ namespace Servosms.Sysitem.Classes
 			//*************************
 			SqlCmd.Parameters .Add("@Foc_Discount",Foc_Discount);
 			SqlCmd.Parameters .Add("@Foc_Discount_Type",Foc_Discount_Type);
-			SqlCmd.Parameters .Add("@Entry_Tax1",Entry_Tax1);
-			SqlCmd.Parameters .Add("@Entry_Tax_Type",Entry_Tax_Type);
+			//SqlCmd.Parameters .Add("@Entry_Tax1",Entry_Tax1);
+			//SqlCmd.Parameters .Add("@Entry_Tax_Type",Entry_Tax_Type);
 			SqlCmd.Parameters .Add("@Ebird",Ebird);
 			SqlCmd.Parameters .Add("@Ebird_Discount",Ebird_Discount);
 			SqlCmd.Parameters .Add("@Tradeval",Tradeval);
