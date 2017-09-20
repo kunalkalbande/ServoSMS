@@ -17,6 +17,21 @@
 		<script language="javascript" id="sales" src="../../Sysitem/JS/Sales.js"></script>
 		<script language="javascript" id="Fuel" src="../../Sysitem/JS/Fuel.js"></script>
 		<meta content="False" name="vs_snapToGrid">
+        <script type = "text/javascript">
+        
+            function getDateFilter(windowWidth,windowHeight)
+            {	                                
+                var centerLeft = parseInt((window.screen.availWidth - windowWidth) / 2);
+                var centerTop = parseInt(((window.screen.availHeight - windowHeight) / 2) - 500);
+                var misc_features = 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no';
+
+                var windowFeatures = 'width=' + windowWidth + ',height=' + windowHeight + ',left=' + centerLeft + ',top=' + centerTop + misc_features;
+                                
+                childWin = window.open("SalesReturnDatefilter.aspx", "ChildWin", windowFeatures);
+                childWin.focus();
+            }            
+        </script>
+
 		<script language="javascript">
 		function change(e)
 		{
@@ -773,6 +788,8 @@ function calc1(txtQty,txtRate)
 	</HEAD>
 	<body onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
+			<asp:HiddenField ID="hidInvoiceFromDate" runat="server" />
+            <asp:HiddenField ID="hidInvoiceToDate" runat="server" />
 			<INPUT id="tmpQty4" style="Z-INDEX: 122; LEFT: 390px; WIDTH: 7px; POSITION: absolute; TOP: -3px"
 				type="hidden" size="1" name="tmpQty4" runat="server"><INPUT id="tmpQty5" style="Z-INDEX: 123; LEFT: 399px; WIDTH: 7px; POSITION: absolute; TOP: -1px; HEIGHT: 22px"
 				type="hidden" size="1" name="tmpQty5" runat="server">
@@ -836,9 +853,11 @@ function calc1(txtQty,txtRate)
 											<TR>
 												<TD vAlign="middle">Invoice No&nbsp;<asp:requiredfieldvalidator id="rfv1" InitialValue="Select" Runat="server" ControlToValidate="dropInvoiceNo"
 														ErrorMessage="Please Select the Invoice No">*</asp:requiredfieldvalidator></TD>
-												<TD vAlign="middle"><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="60px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
+												<TD vAlign="middle"><asp:dropdownlist id="dropInvoiceNo" runat="server" Width="70px" CssClass="dropdownlist" AutoPostBack="True" onselectedindexchanged="dropInvoiceNo_SelectedIndexChanged">
 														<asp:ListItem Value="Select">Select</asp:ListItem>
-													</asp:dropdownlist></TD>
+													</asp:dropdownlist>
+                                                    <asp:button id="btnEdit" runat="server" Width="25px" 
+														CausesValidation="False" Text="..." ToolTip="Click For Edit" onClientClick="return getDateFilter(450, 300)"></asp:button></TD>
 											</TR>
 											<TR>
 												<TD>Invoice Date</TD>

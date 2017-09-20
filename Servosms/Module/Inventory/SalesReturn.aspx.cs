@@ -39,19 +39,27 @@ namespace Servosms.Module.Inventory
 		string uid= "";
 		static string FromDate="",ToDate="";
 
-		/// <summary>
-		/// This method is used for setting the Session variable for userId and 
-		/// after that filling the required dropdowns with database values 
-		/// and also check accessing priviledges for particular user
-		/// and generate the next ID also.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		protected void Page_Load(object sender, System.EventArgs e)
+        string strInvoiceFromDate = string.Empty;
+        string strInvoiceToDate = string.Empty;
+
+        /// <summary>
+        /// This method is used for setting the Session variable for userId and 
+        /// after that filling the required dropdowns with database values 
+        /// and also check accessing priviledges for particular user
+        /// and generate the next ID also.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Page_Load(object sender, System.EventArgs e)
 		{
 			try
 			{
-				uid=(Session["User_Name"].ToString());
+                if (hidInvoiceFromDate.Value != "" && hidInvoiceToDate.Value != "")
+                {
+                    getInvoiceNo();
+                }
+
+                uid =(Session["User_Name"].ToString());
 				txtMessage.Text =(Session["Message"].ToString());
 				txtVatRate.Value  = (Session["VAT_Rate"].ToString()); 
 				
@@ -69,7 +77,7 @@ namespace Servosms.Module.Inventory
 					}
 					#endregion
 					checkPrevileges(); 
-					getInvoiceNo();
+					//getInvoiceNo();
 					//getscheme();
 					GetFOECust();
 				}
@@ -122,16 +130,20 @@ namespace Servosms.Module.Inventory
 		{
 			try
 			{
-				SqlDataReader SqlDtr = null;
+                strInvoiceFromDate = hidInvoiceFromDate.Value;
+                strInvoiceToDate = hidInvoiceToDate.Value;
+                SqlDataReader SqlDtr = null;
 				dropInvoiceNo.Items.Clear();
 				dropInvoiceNo.Items.Add("Select");  
-				dbobj.SelectQuery("Select SUBSTRING(CAST(sm.Invoice_No AS varchar), 4, 9) as Invoice_No from Sales_Master sm where sm.Invoice_No not in (Select Invoice_No from Sales_Return_Master)",ref SqlDtr);
+				dbobj.SelectQuery("Select SUBSTRING(CAST(sm.Invoice_No AS varchar), 4, 9) as Invoice_No from Sales_Master sm where cast(floor(cast(Invoice_Date as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(strInvoiceFromDate) + "' and cast(floor(cast(Invoice_Date as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(strInvoiceToDate) + "' and sm.Invoice_No not in (Select Invoice_No from Sales_Return_Master)", ref SqlDtr);
 				while(SqlDtr.Read())
 				{
 					dropInvoiceNo.Items.Add(SqlDtr["Invoice_No"].ToString());   
 				}
 				SqlDtr.Close();
-			}
+                hidInvoiceFromDate.Value = "";
+                hidInvoiceToDate.Value = "";
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:SalesReturn.aspx,Method:getInvoiceNo()  EXCEPTION: "+ ex.Message+"  User: "+uid);	

@@ -121,11 +121,10 @@
 			<div class="auto-style1">
 				<table cellSpacing="0" cellPadding="0" onblur="check11()" class="auto-style3">
 					<tr>
-						<th class="fontstyle" colSpan="3">
+						<th class="fontstyle" colSpan="5">
 							<span class="auto-style2">Receipt Date Filter</span><hr size="0">
 						</th>
-						<th class="fontstyle">
-							&nbsp;</th>
+						
 					</tr>
                     
 					<tr>
