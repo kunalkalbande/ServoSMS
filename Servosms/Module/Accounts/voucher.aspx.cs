@@ -41,7 +41,7 @@ namespace Servosms.Module.Accounts
 		string View_flag="0", Add_Flag="0", Edit_Flag="0", Del_Flag="0";
 		static ArrayList LedgerID= new ArrayList();
 		static string Invoice_Date = "", Acc_Date = "";
-			
+        bool isEditButtonClick = false;
 		/// <summary>
 		/// Put user code to initialize the page here
 		/// This method is used for setting the Session variable for userId and 
@@ -902,7 +902,11 @@ namespace Servosms.Module.Accounts
 		/// </summary>
 		public void clear()
 		{
-			DropVoucherName.SelectedIndex = 0; 
+            if(!isEditButtonClick)
+            {
+                DropVoucherName.SelectedIndex = 0;
+            }
+			
 			HtmlInputText[] dropAccName ={dropAccName1, dropAccName2, dropAccName3, dropAccName4, dropAccName5, dropAccName6, dropAccName7, dropAccName8};
 			HtmlInputHidden[] txtAccName ={txtAccName1, txtAccName2, txtAccName3, txtAccName4, txtAccName5,txtAccName6, txtAccName7, txtAccName8}; 
 			TextBox[] Amount = {txtAmount1,txtAmount2,txtAmount3,txtAmount4,txtAmount5,txtAmount6,txtAmount7,txtAmount8};
@@ -931,10 +935,17 @@ namespace Servosms.Module.Accounts
 		{
 			try
 			{
-				clear();
+                if (DropVoucherName.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Please select Voucher Type.");
+                    return;
+                }
+                isEditButtonClick = true;
+
+                clear();
 				DropDownID.Items.Clear();
 				DropDownID.Items.Add("Select");
-				DropVoucherName.Enabled = false; 
+				//DropVoucherName.Enabled = false; 
 				txtVouchID.Visible  = false;
 				DropDownID.Visible = true;
 				btnEdit1.Visible = false;
@@ -942,7 +953,7 @@ namespace Servosms.Module.Accounts
 				btnEdit.Enabled = true;
 				btnDelete.Enabled =  true;
 				SqlDataReader SqlDtr = null;
-				dbobj.SelectQuery("select voucher_id from voucher_transaction where voucher_type != 'Payment' order by Voucher_ID,Voucher_type",ref SqlDtr);
+				dbobj.SelectQuery("select voucher_id from voucher_transaction where voucher_type != 'Payment' and voucher_type='" + DropVoucherName.SelectedValue.ToString() + "' order by Voucher_ID,Voucher_type", ref SqlDtr);
 				while(SqlDtr.Read())
 				{
 					DropDownID.Items.Add(SqlDtr["voucher_id"].ToString());
@@ -951,7 +962,8 @@ namespace Servosms.Module.Accounts
 				checkPrevileges();
 				btnPrint.CausesValidation=true;
 				PrintFlag=false;
-			}
+                isEditButtonClick = false;
+            }
 			catch(Exception ex)
 			{
 				CreateLogFiles.ErrorLog("Form:voucher.aspx.cs,Method:btnEdit1_Click EXCEPTION: "+ ex.Message+" userid :"+ uid);
