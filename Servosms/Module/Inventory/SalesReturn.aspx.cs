@@ -76,10 +76,11 @@ namespace Servosms.Module.Inventory
 						ToDate=GetYear(GenUtil.trimDate(rdr["Acc_date_To"].ToString()));
 					}
 					#endregion
-					checkPrevileges(); 
-					//getInvoiceNo();
-					//getscheme();
-					GetFOECust();
+					checkPrevileges();
+                    PriceUpdation();
+                    //getInvoiceNo();
+                    //getscheme();
+                    GetFOECust();
 				}
 			}
 			catch(Exception ex)
@@ -90,8 +91,29 @@ namespace Servosms.Module.Inventory
 			}
 		}
 
-		// Its Cheks the users privilegs.
-		public void checkPrevileges()
+        public void PriceUpdation()
+        {
+            InventoryClass obj = new InventoryClass();
+            var dsPriceUpdation = obj.ProPriceUpdation();
+            var dtTable = dsPriceUpdation.Tables[0];
+            for (int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                txtMainIGST.Value = txtMainIGST.Value + dtTable.Rows[i][0].ToString();//ProductCode
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][1];//ProductName 
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][2];//ProductId
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][3];//IGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][4];//cGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][6];//HSN
+                txtMainIGST.Value = txtMainIGST.Value + "~";
+
+
+            }
+            txtMainIGST.Value = txtMainIGST.Value.Substring(0, txtMainIGST.Value.LastIndexOf("~"));
+        }
+
+        // Its Cheks the users privilegs.
+        public void checkPrevileges()
 		{
 			#region Check Privileges
 			int i;
@@ -255,7 +277,9 @@ namespace Servosms.Module.Inventory
 						if(txtCashDiscType.Text == "Per")
 							txtCashDiscType.Text = "%";
 						txtVAT.Text =  SqlDtr.GetValue(17).ToString();
-						txtschemetotal.Text=SqlDtr.GetValue(18).ToString();
+                        Textcgst.Text = SqlDtr["CGST_Amount"].ToString();
+                        Textsgst.Text = SqlDtr["SGST_Amount"].ToString();
+                        txtschemetotal.Text=SqlDtr.GetValue(18).ToString();
 						txtfleetoedis.Text=SqlDtr.GetValue(19).ToString();
 						txtlitertotal.Text=SqlDtr["totalqtyltr"].ToString();
 						tmpVatAmount.Value = txtVAT.Text;
@@ -423,7 +447,9 @@ namespace Servosms.Module.Inventory
 					obj.Cash_Discount  = txtCashDisc.Text.Trim();
 				obj.Cash_Disc_Type = txtCashDiscType.Text;
 				obj.VAT_Amount = Request.Form["txtVAT"];
-				obj.Cr_Plus="0";
+                obj.CGST_Amount = Textcgst.Text;
+                obj.SGST_Amount = Textsgst.Text;
+                obj.Cr_Plus="0";
 				double amount = System.Convert.ToDouble(Request.Form["txtNetAmount"]) *-1;
 				obj.Dr_Plus= amount.ToString();
 		        //obj.Pre_Amount = tmpNetAmount.Value;
