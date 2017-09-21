@@ -361,7 +361,10 @@
 			Disc=0
 
 		if(document.Form1.DropDiscType.value=="Per")
-		Disc=(document.Form1.txtGrandTotal.value-eval(Scheme))*Disc/100 
+		    Disc=(document.Form1.txtGrandTotal.value-eval(Scheme))*Disc/100
+		else
+		    Disc=qtyfoe*Disc
+
 		document.Form1.tempdiscount.value=eval(Disc)
 		makeRound(document.Form1.tempdiscount)
 		document.Form1.txtDiscount.value = document.Form1.tempdiscount.value;
@@ -393,52 +396,407 @@
 			document.Form1.tempcashdis.value=eval(CashDisc)
 			makeRound(document.Form1.tempcashdis)
 		}
+		else
+		{
+		    document.Form1.txtCashDiscount.value=qtyfoe*CashDisc
+		    CashDisc=document.Form1.txtCashDiscount.value
+		    makeRound(document.Form1.txtCashDisc)
+		}
 		document.Form1.txtCashDiscount.value = eval(CashDisc);
 		makeRound(document.Form1.txtCashDiscount)
 		document.Form1.txtVatValue.value = "";
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc) - eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP);	
 	}
 	
-	function GetVatAmount()
+	function GetSGSTAmount()
 	{
 	    GetCashDiscount()
-	    if(document.Form1.No.checked)
-	       document.Form1.txtVAT.value = "";
+	    if(document.Form1.Noo.checked)
+	    {
+	        document.Form1.Textsgst.value="";
+	    }
 	    else
 	    {
-			var vat_rate = document.Form1.txtVatRate.value
-			if(vat_rate == "")
-				vat_rate = 0;
-			var vat = document.Form1.txtVatValue.value    
-	        if(vat == "" || isNaN(vat))
-				vat = 0;
-			var vat_amount = vat * vat_rate/100
-			document.Form1.txtVAT.value = vat_amount
-			makeRound(document.Form1.txtVAT)
-	        document.Form1.txtVatValue.value = eval(vat) + eval(vat_amount)
+	        var sgst_rate=document.Form1.Tempsgstrate.value
+	        
+	        if(sgst_rate == "")
+	            sgst_rate=0;
+	        var sgst= totalValue;
+	        if(sgst == "" || isNaN(sgst))
+	            sgst = 0;
+	        var sgst_amount = sgst * sgst_rate/100
+	
+	        makeRound(document.Form1.Textsgst)
+	     
+	        document.Form1.txtVatValue.value = Math.round(eval(sgst) +Math.round(eval(sgst_amount),0),0);
+
+            
+	        if(document.Form1.Textsgst.value=="")
+	        {
+	            document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)+Math.round((sgst_amount),0),0);
+	        }
+	        document.Form1.Textsgst.value =  Math.round(sgst_amount,0);
 	    }
+	    return sgst_amount;
+	}
+	var persistedCgstNetAmount=0;
+	var persistedIgstNetAmount=0;
+	var persistedSgstNetAmount=0;
+	var totalAmountAfterGst=0;
+	function Getsgstamt()
+	{
+	    // ;
+	    var sgst_value=0;
+	    var sgst = 0;
+	    if(document.Form1.Noo.checked)
+	    {
+	        GetCashDiscount()
+	        sgst_value=document.Form1.txtVatValue.value;
+	        if(document.Form1.Textsgst.value!="")
+	            document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.Textsgst.value),0);
+	        document.Form1.Textsgst.value="";
+	    }
+	    else
+	    {
+	        sgst = GetSGSTAmount()
+	        sgst_value=document.Form1.txtVatValue.value;
+	    }
+	    if(sgst_value=="" || isNaN(sgst_value))
+	        sgst_value=0
+	    // document.Form1.txtNetAmount.value=eval(sgst_value);
+	    var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+	    netamount=netamount+".00";
+	    if (document.Form1.txtNetAmount.value!='')
+	        persistedSgstNetAmount=  document.Form1.txtNetAmount.value;
+	    if(document.Form1.Textsgst.value!='')
+	        totalAmountAfterGst=totalAmountAfterGst+Math.round(eval(document.Form1.Textsgst.value),0);
+	    //   document.Form1.txtNetAmount.value=persistedSgstNetAmount+netamount;
+	    return sgst;
+	}
+
+	function GetCGSTAmount()
+	{
+	    GetCashDiscount()
+	    
+	    if(document.Form1.N.checked)
+	    {
+	        document.Form1.Textcgst.value = "";
+	    } 
+	    else
+	    {
+	        var cgst_rate = document.Form1.Tempcgstrate.value
+	        
+	        if(cgst_rate == "")
+	            cgst_rate = 0;
+	        var cgst = totalValue
+	        if(cgst == "" || isNaN(cgst))
+	            cgst = 0;
+	        var cgst_amount = cgst * cgst_rate/100
+	      
+	        makeRound(document.Form1.Textcgst)
+	     
+	        document.Form1.txtVatValue.value = eval(cgst) + eval(cgst_amount)
+
+	        if(document.Form1.Textcgst.value=="")
+	        {
+	            document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)+eval(cgst_amount),0);
+	        }
+	        document.Form1.Textcgst.value =Math.round(cgst_amount,0);
+	    }
+	    return cgst_amount
+	}
+
+	function Getcgstamt()
+	{
+	    //;
+	    var cgst_value=0;
+	    var cgst = 0;
+	    if(document.Form1.N.checked)
+	    {
+	        GetCashDiscount()
+	        cgst_value=document.Form1.txtVatValue.value;
+	        if(document.Form1.Textcgst.value!="")
+	            document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.Textcgst.value),0);
+	        document.Form1.Textcgst.value="";
+	    }
+	    else
+	    {
+	        cgst =  GetCGSTAmount()
+	        cgst_value=document.Form1.txtVatValue.value;
+	    }
+	    if(cgst_value=="" || isNaN(cgst_value))
+	        cgst_value=0
+	    //   document.Form1.txtNetAmount.value=eval(cgst_value);
+	    var netamount=Math.round(document.Form1.txtNetAmount.value,0);
+	    netamount=netamount+".00";
+	    if (document.Form1.txtNetAmount.value!='')
+	        persistedCgstNetAmount= document.Form1.txtNetAmount.value;
+	    if(document.Form1.Textcgst.value!='')
+	        totalAmountAfterGst=totalAmountAfterGst+eval(document.Form1.Textcgst.value);
+	    //  document.Form1.txtNetAmount.value=persistedCgstNetAmount+netamount;
+	    return cgst;
+	}
+	function GetVatAmount()
+	{	    
+	    GetCashDiscount()
+	    if(document.Form1.No.checked)
+	    {
+	        document.Form1.txtVAT.value = "";
+	    } 
+	    else
+	    {
+	        var vat_rate = document.Form1.txtVatRate.value
+	       
+	        if(vat_rate == "")
+	            vat_rate = 0;
+	        var vat = totalValue   
+	        if(vat == "" || isNaN(vat))
+	            vat = 0;
+	        var vat_amount = vat * vat_rate/100
+	
+	        makeRound(document.Form1.txtVAT)
+	     
+	        document.Form1.txtVatValue.value = eval(vat) + eval(vat_amount);
+	        if(document.Form1.txtVAT.value=="")
+	        {
+	            document.Form1.txtNetAmount.value =Math.round(eval(document.Form1.txtNetAmount.value)+Math.round(eval(vat_amount),0),0);
+	        }
+	        document.Form1.txtVAT.value = Math.round(vat_amount,0);
+	    }
+	    return vat_amount
+	}
+	//Calculate IGST
+	function Getigstamt()
+	{
+	  
+	    var vat_value = 0;
+	    var vat = 0;
+	    if(document.Form1.No.checked)
+	    {
+	        GetCashDiscount()
+	        vat_value = document.Form1.txtVatValue.value;
+		
+	        if(document.Form1.txtVAT.value!="")
+	            document.Form1.txtNetAmount.value = Math.round(eval(document.Form1.txtNetAmount.value)-eval(document.Form1.txtVAT.value),0);
+	        document.Form1.txtVAT.value = "";   
+	    }
+	    else		{
+		   
+	        vat= GetVatAmount()
+	        vat_value = document.Form1.txtVatValue.value;
+		
+	    }
+	    if(vat_value=="" || isNaN(vat_value))
+	        vat_value=0
+	    //	document.Form1.txtNetAmount.value=eval(vat_value);
+	    var netamount=Math.round(eval(vat_value),0);
+	    netamount=netamount+".00";
+	    if (document.Form1.txtNetAmount.value!='')
+	        persistedIgstNetAmount = document.Form1.txtNetAmount.value;
+	    if(document.Form1.txtVAT.value!='')
+	        totalAmountAfterGst+=Math.round(eval(document.Form1.txtVAT.value),0);
+	    //document.Form1.txtNetAmount.value=eval(persistedIgstNetAmount)+eval(Math.round(eval(vat_value),0));
+	    return vat;
+
 	}
 	
+    var totalValue = 0;
 	function GetNetAmount()
-	{
-		var vat_value = 0;
-		if(document.Form1.No.checked)
+	{	    
+	    var dbValues =  document.Form1.txtMainIGST.value;	    	    
+	    var mainarr = new Array()
+	    var taxarr = new Array()
+	    var selarr = new Array()
+	    var totol= 0
+	    var qtyfoe=0
+	    var qt=0
+	    var SchSP=0
+	    var f1=document.Form1
+	    document.Form1.txtVatRate.value=""
+	    document.Form1.Tempcgstrate.value=""
+	    document.Form1.Tempsgstrate.value=""
+	    var cgstamount1=0,cgstamount2 = 0,cgstamount3=0,cgstamount4=0,cgstamount5=0,cgstamount6=0,cgstamount7=0,cgstamount8=0,cgstamount9=0,cgstamount10=0,cgstamount11=0,cgstamount12 = 0,
+            cgstamount13=0,cgstamount14 = 0,cgstamount15=0,cgstamount16=0,cgstamount17=0,cgstamount18=0,cgstamount19=0,cgstamount20=0
+	    var sgstamount1=0,sgstamount2 = 0,sgstamount3=0,sgstamount4=0,sgstamount5=0,sgstamount6=0,sgstamount7=0,sgstamount8=0,sgstamount9=0,sgstamount10=0,sgstamount11=0,sgstamount12 = 0,
+            sgstamount13=0,sgstamount14 = 0,sgstamount15=0,sgstamount16=0,sgstamount17=0,sgstamount18=0,sgstamount19=0,sgstamount20=0
+	    var igstamount1=0,igstamount2 = 0,igstamount3=0,igstamount4=0,igstamount5=0,igstamount6=0,igstamount7=0,igstamount8=0,igstamount9=0,igstamount10=0,igstamount11=0,igstamount12 = 0,
+            igstamount13=0,igstamount14 = 0,igstamount15=0,igstamount16=0,igstamount17=0,igstamount18=0,igstamount19=0,igstamount20=0
+
+        <% for (int i = 1; i <= 12; i++)
+        {
+				%>
+	    if(document.Form1.DropType<%=i%>.value !="Type")
 	    {
-			GetCashDiscount()
-			vat_value = document.Form1.txtVatValue.value;
-			document.Form1.txtVAT.value = "";
+            var selectedProduct = document.Form1.DropType<%=i%>.value
+	        selarr=selectedProduct.split(":");
+	        mainarr =dbValues.split("~");
+	        var selproduct=selectedProduct.split(":");
+	        var ltrs=selproduct[2].split("X")
+	        var calcLtrs=ltrs[0]*ltrs[1]
+	        if(f1.DropType<%=i%>.value.indexOf(":")>0)
+	            arrType = f1.DropType<%=i%>.value.split(":")
+	        else
+	        {
+	            arrType[0]=""
+	            arrType[1]=""
+	            arrType[2]=""				
+	        }
+			if(arrType[2] != "")
+			{
+				var mainarr1 = new Array()
+				var hidarr1  = arrType[2]
+										
+				if(arrType[2] == "Loose Oil" || arrType[2] == "Loose oil")
+				{
+				
+					totol=f1.txtQty<%=i%>.value*f1.txtsch<%=i%>.value
+					total_fleetoe=f1.txtQty<%=i%>.value*f1.txtfoe<%=i%>.value
+					totolSP=f1.txtQty<%=i%>.value*f1.txtTempschSP<%=i%>.value
+				}
+				else
+				{
+				
+					mainarr1 = hidarr1.split("X")
+					if(document.Form1.tmpSchType<%=i%>.value=="%")
+					{
+						totol=(document.Form1.txtAmount<%=i%>.value*f1.txtsch<%=i%>.value)/100
+						
+					}
+					else 
+					{
+						totol=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value*f1.txtsch<%=i%>.value
+					}
+				}
+			}
+	        if(arrType[2] != "")
+	        {
+	            var mainarr1 = new Array()
+	            var hidarr1  = arrType[2]
+	            if(arrType[2] == "Loose Oil" || arrType[2] == "Loose oil")
+	            {
+	                qtyfoe=f1.txtQty<%=i%>.value
+	                qt=f1.txtQty<%=i%>.value*f1.txtfoe<%=i%>.value 
+	            }
+	            else
+	            {
+	                mainarr1 = hidarr1.split("X")				
+	                qtyfoe=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value
+	                if(document.Form1.tmpFoeType<%=i%>.value=="Rs.")
+	                {
+	                    qt=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value*f1.txtfoe<%=i%>.value
+	                }
+	                else
+	                {
+	                    qt=(document.Form1.txtAmount<%=i%>.value*f1.txtfoe<%=i%>.value)/100
+	                }
+	            }
+	        }
+	        var foe=qt
+	        document.Form1.temfoe<%=i%>.value=f1.txtfoe<%=i%>.value
+            if(arrType[2] != "")
+			{
+				var mainarr1 = new Array()
+				var hidarr1  = arrType[2]
+			
+				if(arrType[2] == "Loose Oil" || arrType[2] == "Loose oil")
+				{
+					qtSP+=f1.txtQty<%=i%>.value*f1.txtTempSecSP<%=i%>.value   //comment by Mahesh on 19.11.008
+				}
+				else
+				{
+					mainarr1 = hidarr1.split("X")				
+					if(document.Form1.tmpSecSPType<%=i%>.value=="Rs")
+					{
+						qtSP+=mainarr1[0]* mainarr1[1]*f1.txtQty<%=i%>.value*f1.txtTempSecSP<%=i%>.value
+					}
+					else if(document.Form1.tmpSecSPType<%=i%>.value=="Unit")         //Add by vikas 23.11. 2012
+					{
+						qtSP+=mainarr1[0]*f1.txtQty<%=i%>.value*f1.txtTempSecSP<%=i%>.value      //Add by vikas 23.11. 2012
+					}
+					else
+					{
+						qtSP+=(document.Form1.txtAmount<%=i%>.value*f1.txtTempSecSP<%=i%>.value)/100
+					}
+				}
+            }
+	        SchSP =qtSP
+
+	        var Disc=document.Form1.txtDisc.value
+	        if(Disc=="" || isNaN(Disc))
+	            Disc=0
+	
+	        if(document.Form1.DropDiscType.value=="Per")
+	            Disc=(document.Form1.txtAmount<%=i%>.value-eval(totol))*Disc/100 
+	        else
+	            Disc=(calcLtrs*f1.txtQty<%=i%>.value)*Disc
+	        document.Form1.tempdiscount.value=eval(Disc)
+	        makeRound(document.Form1.tempdiscount)
+	        
+	        var CashDisc=document.Form1.txtCashDisc.value
+	        if(CashDisc=="" || isNaN(CashDisc))
+	            CashDisc=0
+	        if(document.Form1.DropCashDiscType.value=="Per")
+	        {    
+	            var CashDiscount=document.Form1.txtAmount<%=i%>.value-eval(Disc)-eval(totol)-eval(foe)-eval(SchSP)
+	            CashDisc=eval(CashDiscount)*CashDisc/100 
+	            //********
+	            document.Form1.tempcashdis.value=eval(CashDisc)
+	            makeRound(document.Form1.tempcashdis)
+	            document.Form1.txtCashDiscount.value = eval(CashDisc);
+	            makeRound(document.Form1.txtCashDiscount)
+	            //********
+	        }
+		
+	        else
+	        {
+	            document.Form1.txtCashDiscount.value=(qtyfoe)*CashDisc
+	            CashDisc=document.Form1.txtCashDiscount.value
+	            makeRound(document.Form1.txtCashDisc)
+	        }
+
+	        for(i=0;i<mainarr.length;i++)
+	        {
+	            taxarr = mainarr[i].split("|");	  
+	            if(taxarr[0]==selarr[0])
+	            {
+	                document.Form1.txtVatRate.value=taxarr[3];
+	                document.Form1.Tempcgstrate.value=taxarr[4];
+	                document.Form1.Tempsgstrate.value=taxarr[5];
+	                totalValue = eval(document.Form1.txtAmount<%=i%>.value) - eval(CashDisc) - eval(Disc)-eval(totol)-eval(foe)-eval(SchSP);	
+
+	                totalAmountAfterGst=0;
+	                var igstamount<%=i%> = Getigstamt()
+	                document.Form1.tempIgst<%=i%>.value=igstamount<%=i%>
+	                var sgstamount<%=i%> = Getsgstamt()
+	                document.Form1.tempSgst<%=i%>.value=sgstamount<%=i%>
+	                var cgstamount<%=i%> = Getcgstamt()
+	                document.Form1.tempCgst<%=i%>.value=cgstamount<%=i%>
+	            }
+	        }
 	    }
-	    else
-	    {
-			GetVatAmount()
-			vat_value = document.Form1.txtVatValue.value;
-	    }
-		if(vat_value=="" || isNaN(vat_value))
-		vat_value=0
-		document.Form1.txtNetAmount.value=eval(vat_value);
-		var netamount=Math.round(document.Form1.txtNetAmount.value,0);
-		netamount=netamount+".00";
-		document.Form1.txtNetAmount.value=netamount;
+	    <%
+        }
+			%>
+
+	    document.Form1.txtVAT.value=Math.round(igstamount1)+Math.round(igstamount2)+Math.round(igstamount3)+Math.round(igstamount4)+Math.round(igstamount5)+Math.round(igstamount6)+Math.round(igstamount7)+Math.round(igstamount8)
+            +Math.round(igstamount9)+Math.round(igstamount10)+Math.round(igstamount11)+Math.round(igstamount12)+Math.round(igstamount13)+Math.round(igstamount14)+Math.round(igstamount15)+Math.round(igstamount16)+Math.round(igstamount17)+Math.round(igstamount18)+Math.round(igstamount19)+Math.round(igstamount20)
+	    document.Form1.tempTotalIgst.value=document.Form1.txtVAT.value     
+
+	    document.Form1.Textcgst.value = Math.round(cgstamount1)+Math.round(cgstamount2)+Math.round(cgstamount3)+Math.round(cgstamount4)+Math.round(cgstamount5)+Math.round(cgstamount6)+Math.round(cgstamount7)+Math.round(cgstamount8)
+        +Math.round(cgstamount9)+Math.round(cgstamount10)+Math.round(cgstamount11)+Math.round(cgstamount12)+Math.round(cgstamount13)+Math.round(cgstamount14)+Math.round(cgstamount15)+Math.round(cgstamount16)+Math.round(cgstamount17)+Math.round(cgstamount18)+Math.round(cgstamount19)+Math.round(cgstamount20)
+	    document.Form1.tempTotalCgst.value=document.Form1.Textcgst.value
+        
+	    document.Form1.Textsgst.value = Math.round(sgstamount1)+Math.round(sgstamount2)+Math.round(sgstamount3)+Math.round(sgstamount4)+Math.round(sgstamount5)+Math.round(sgstamount6)+Math.round(sgstamount7)+Math.round(sgstamount8)
+        +Math.round(sgstamount9)+Math.round(sgstamount10)+Math.round(sgstamount11)+Math.round(sgstamount12)+Math.round(sgstamount13)+Math.round(sgstamount14)+Math.round(sgstamount15)+Math.round(sgstamount16)+Math.round(sgstamount17)+Math.round(sgstamount18)+Math.round(sgstamount19)+Math.round(sgstamount20)
+	    document.Form1.tempTotalSgst.value=document.Form1.Textsgst.value
+
+	    if(document.Form1.txtGrandTotal.value==""|| isNaN(document.Form1.txtGrandTotal.value))
+	        document.Form1.txtGrandTotal.value=0;
+	    var Scheme = document.Form1.txtschemetotal.value;
+	    totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
+	    var totaldisc = eval(CashDisc) + eval(Disc) + eval(Scheme) + eval(foe) + eval(SchSP)
+	    document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
+	    document.Form1.txtNetAmount.value=Math.round(document.Form1.txtNetAmount.value,0)
 		
 		var index = document.Form1.DropSalesType.selectedIndex;
 		var val =  document.Form1.DropSalesType.options[index].text;
@@ -944,6 +1302,106 @@ function MoveFocus(t,drop,e)
 				type="hidden" name="temcombo10" runat="server"><INPUT id="temcombo11" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="temcombo11" runat="server"><INPUT id="temcombo12" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="temcombo12" runat="server">
+                        <INPUT id="txtMainIGST" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px" type="hidden" name="txtMainIGST" runat="server"/>
+
+             <INPUT id="Tempcgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="Tempcgstrate" runat="server"/>
+            <INPUT id="Tempsgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="Tempsgstrate" runat="server"/>
+            <INPUT id="temfoe1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="temfoe12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+    type="hidden" size="1" name="tempHsn20" runat="server"/>
+            <INPUT id="tempTotalCgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempTotalCgst" runat="server"/>
+            <INPUT id="tempTotalSgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempTotalSgst" runat="server"/>
+            <INPUT id="tempTotalIgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempTotalIgst" runat="server"/>
+            <INPUT id="tempCgst1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst1" runat="server"/> <INPUT id="tempCgst2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst2" runat="server"/> <INPUT id="tempCgst3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst3" runat="server"/> <INPUT id="tempCgst4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst4" runat="server"/> <INPUT id="tempCgst5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst5" runat="server"/> <INPUT id="tempCgst6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst6" runat="server"/> <INPUT id="tempCgst7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst7" runat="server"/> <INPUT id="tempCgst8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst8" runat="server"/> <INPUT id="tempCgst9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst9" runat="server"/> <INPUT id="tempCgst10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst10" runat="server"/> <INPUT id="tempCgst11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst11" runat="server"/> <INPUT id="tempCgst12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst12" runat="server"/> <INPUT id="tempCgst13" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst13" runat="server"/> <INPUT id="tempCgst14" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst14" runat="server"/> <INPUT id="tempCgst15" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst15" runat="server"/> <INPUT id="tempCgst16" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst16" runat="server"/> <INPUT id="tempCgst17" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst17" runat="server"/> <INPUT id="tempCgst18" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst18" runat="server"/> <INPUT id="tempCgst19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst19" runat="server"/> <INPUT id="tempCgst20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempCgst20" runat="server"/>
+                        <INPUT id="tempSgst1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst1" runat="server"/> <INPUT id="tempSgst2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst2" runat="server"/> <INPUT id="tempSgst3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst3" runat="server"/> <INPUT id="tempSgst4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst4" runat="server"/> <INPUT id="tempSgst5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst5" runat="server"/> <INPUT id="tempSgst6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst6" runat="server"/> <INPUT id="tempSgst7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst7" runat="server"/> <INPUT id="tempSgst8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst8" runat="server"/> <INPUT id="tempSgst9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst9" runat="server"/> <INPUT id="tempSgst10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst10" runat="server"/> <INPUT id="tempSgst11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst11" runat="server"/> <INPUT id="tempSgst12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst12" runat="server"/> <INPUT id="tempSgst13" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst13" runat="server"/> <INPUT id="tempSgst14" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst14" runat="server"/> <INPUT id="tempSgst15" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst15" runat="server"/> <INPUT id="tempSgst16" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst16" runat="server"/> <INPUT id="tempSgst17" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst17" runat="server"/> <INPUT id="tempSgst18" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst18" runat="server"/> <INPUT id="tempSgst19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst19" runat="server"/> <INPUT id="tempSgst20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempSgst20" runat="server"/>
+             <INPUT id="tempIgst1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst1" runat="server"/> <INPUT id="tempIgst2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst2" runat="server"/> <INPUT id="tempIgst3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst3" runat="server"/> <INPUT id="tempIgst4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst4" runat="server"/> <INPUT id="tempIgst5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst5" runat="server"/> <INPUT id="tempIgst6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst6" runat="server"/> <INPUT id="tempIgst7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst7" runat="server"/> <INPUT id="tempIgst8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst8" runat="server"/> <INPUT id="tempIgst9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst9" runat="server"/> <INPUT id="tempIgst10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst10" runat="server"/> <INPUT id="tempIgst11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst11" runat="server"/> <INPUT id="tempIgst12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst12" runat="server"/> <INPUT id="tempIgst13" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst13" runat="server"/> <INPUT id="tempIgst14" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst14" runat="server"/> <INPUT id="tempIgst15" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst15" runat="server"/> <INPUT id="tempIgst16" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst16" runat="server"/> <INPUT id="tempIgst17" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst17" runat="server"/> <INPUT id="tempIgst18" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst18" runat="server"/> <INPUT id="tempIgst19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst19" runat="server"/> <INPUT id="tempIgst20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempIgst20" runat="server"/>
+
 			<table height="278" width="778" align="center">
 				<tr>
 					<th align="center" colSpan="3">

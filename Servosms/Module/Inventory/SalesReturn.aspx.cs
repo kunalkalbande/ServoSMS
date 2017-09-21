@@ -217,7 +217,8 @@ namespace Servosms.Module.Inventory
 					TextBox[]  Amount={txtAmount1, txtAmount2, txtAmount3, txtAmount4, txtAmount5, txtAmount6, txtAmount7, txtAmount8, txtAmount9, txtAmount10, txtAmount11, txtAmount12}; 			
 					TextBox[]  tempQty = {txtTempQty1, txtTempQty2,txtTempQty3,txtTempQty4,txtTempQty5,txtTempQty6,txtTempQty7,txtTempQty8,txtTempQty9,txtTempQty10,txtTempQty11,txtTempQty12}; 
 					HtmlInputHidden[] tmpQty = {tmpQty1,tmpQty2,tmpQty3,tmpQty4,tmpQty5,tmpQty6,tmpQty7,tmpQty8,tmpQty9,tmpQty10,tmpQty11,tmpQty12};
-					HtmlInputCheckBox[] Check = {Check1,Check2,Check3,Check4,Check5,Check6,Check7,Check8,Check9,Check10,Check11,Check12};
+                    HtmlInputHidden[] tmpProdCode = { tempProdCode1, tempProdCode2, tempProdCode3, tempProdCode4, tempProdCode5, tempProdCode6, tempProdCode7, tempProdCode8, tempProdCode9, tempProdCode10, tempProdCode11, tempProdCode12 };
+                    HtmlInputCheckBox[] Check = {Check1,Check2,Check3,Check4,Check5,Check6,Check7,Check8,Check9,Check10,Check11,Check12};
                     TextBox[]  Schreturn = {txtsch1, txtsch2,txtsch3,txtsch4,txtsch5,txtsch6,txtsch7,txtsch8,txtsch9,txtsch10,txtsch11,txtsch12}; 
 					TextBox[]  SchFOC = {txtfoc1, txtfoc2,txtfoc3,txtfoc4,txtfoc5,txtfoc6,txtfoc7,txtfoc8,txtfoc9,txtfoc10,txtfoc11,txtfoc12}; 
 					HtmlInputText[]  SchName = {txtProdsch1, txtProdsch2,txtProdsch3,txtProdsch4,txtProdsch5,txtProdsch6,txtProdsch7,txtProdsch8,txtProdsch9,txtProdsch10,txtProdsch11,txtProdsch12}; 
@@ -316,16 +317,16 @@ namespace Servosms.Module.Inventory
 					//sql="select	p.Category,p.Prod_Name,p.Pack_Type,	sd.qty,sd.rate,sd.amount,p.Prod_ID,p.unit,sd.scheme1"+
 					//	" from Products p, sales_Details sd"+
 					//	" where p.Prod_ID=sd.prod_id and sd.invoice_no='"+ dropInvoiceNo.SelectedItem.Value +"'" ;
-					sql="select	p.Category,p.Prod_Name,p.Pack_Type,	sd.qty,sd.rate,sd.amount,p.Prod_ID,p.unit,sd.scheme1,sd.foe"+
+					sql= "select p.Category,p.Prod_Name,p.Pack_Type,sd.qty,sd.rate,sd.amount,p.Prod_ID,p.unit,sd.scheme1,sd.foe,p.Prod_Code" +
 						" from Products p, sales_Details sd"+
 						" where p.Prod_ID=sd.prod_id and sd.Rate >0 and sd.Amount > 0 and sd.invoice_no='"+int.Parse(FromDate)+ToDate+dropInvoiceNo.SelectedItem.Value +"' order by sno" ;
 					SqlDtr=obj.GetRecordSet(sql);
 					while(SqlDtr.Read())
 					{
-						
-						//Qty[i].Enabled = true;
-						
-						Name[i].Value=SqlDtr.GetValue(1).ToString()+":"+SqlDtr.GetValue(2).ToString();
+
+                        //Qty[i].Enabled = true;
+                        tmpProdCode[i].Value = SqlDtr["Prod_Code"].ToString();
+                        Name[i].Value=SqlDtr.GetValue(1).ToString()+":"+SqlDtr.GetValue(2).ToString();
 						//Type[i].Value=SqlDtr.GetValue(2).ToString();   
 						Qty[i].Text=SqlDtr.GetValue(3).ToString();
 						tempQty[i].Text   = Qty[i].Text ;

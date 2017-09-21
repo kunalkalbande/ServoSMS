@@ -210,7 +210,8 @@ namespace Servosms.Module.Inventory
 					#endregion
 
 					GetProducts();
-					FetchData();
+                    PriceUpdation();
+                    FetchData();
 					GetFOECust();
 					getscheme();
 					getscheme1();
@@ -246,12 +247,33 @@ namespace Servosms.Module.Inventory
 		{    
 
 		}
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// This method delete the particular invoice no from all tables but some information contain in master table.
-		/// </summary>
-		public void DeleteTheRec()
+
+        public void PriceUpdation()
+        {
+            InventoryClass obj = new InventoryClass();
+            var dsPriceUpdation = obj.ProPriceUpdation();
+            var dtTable = dsPriceUpdation.Tables[0];
+            for (int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                txtMainIGST.Value = txtMainIGST.Value + dtTable.Rows[i][0].ToString();//ProductCode
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][1];//ProductName 
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][2];//ProductId
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][3];//IGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][4];//cGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][6];//HSN
+                txtMainIGST.Value = txtMainIGST.Value + "~";
+
+
+            }
+            txtMainIGST.Value = txtMainIGST.Value.Substring(0, txtMainIGST.Value.LastIndexOf("~"));
+        }
+        /// <summary>
+        /// This method delete the particular invoice no from all tables but some information contain in master table.
+        /// </summary>
+        public void DeleteTheRec()
 		{
 			try
 			{
@@ -704,6 +726,8 @@ namespace Servosms.Module.Inventory
 					obj.Cash_Discount = Request.Form["txtCashDisc"].ToString();
 				obj.Cash_Disc_Type =DropCashDiscType.SelectedItem.Value ;
 				obj.VAT_Amount = Request.Form["txtVAT"].ToString();
+                obj.CGST_Amount = Request.Form["Textcgst"];
+                obj.SGST_Amount = Request.Form["Textsgst"];
 				obj.Slip_No="0"; 
 				obj.Cr_Plus="0";
 				obj.Dr_Plus= Request.Form["txtNetAmount"].ToString();	

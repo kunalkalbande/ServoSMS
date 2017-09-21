@@ -953,6 +953,7 @@ function calc1(txtQty,txtRate)
 	    if (document.Form1.Check<%=i%>.checked)
 	    {
 	        var selectedProduct = document.Form1.txtProdName<%=i%>.value
+	        var selectedProductCode = document.Form1.tempProdCode<%=i%>.value
 	        selarr=selectedProduct.split(":");
 	        mainarr =dbValues.split("~");
 	        var selproduct=selectedProduct.split(":");
@@ -1074,8 +1075,7 @@ function calc1(txtQty,txtRate)
 	        for(i=0;i<mainarr.length;i++)
 	        {
 	            taxarr = mainarr[i].split("|");
-	            var ta = taxarr[1].split(":");
-	            if (ta [1] == selarr[0])
+	            if (taxarr[0] == selectedProductCode)
 	            {
 	                document.Form1.txtVatRate.value=taxarr[3];
 	                document.Form1.Tempcgstrate.value=taxarr[4];
@@ -1177,7 +1177,7 @@ function calc1(txtQty,txtRate)
 				type="hidden" size="1" name="Hidden1" runat="server"><INPUT id="temptext11" style="Z-INDEX: 108; LEFT: 152px; WIDTH: 16px; POSITION: absolute; TOP: 16px; HEIGHT: 22px"
 				type="hidden" size="1" name="temptext11" runat="server"><INPUT id="temptext13" style="Z-INDEX: 108; LEFT: 152px; WIDTH: 16px; POSITION: absolute; TOP: 16px; HEIGHT: 22px"
 				type="hidden" size="1" name="temptext13" runat="server">
-            <INPUT id="txtMainIGST" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px" type="hidden" name="txtMainIGST" runat="server">
+            <INPUT id="txtMainIGST" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px" type="hidden" name="txtMainIGST" runat="server"/>
                         <INPUT id="Tempcgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="Tempcgstrate" runat="server"/>
             <INPUT id="Tempsgstrate" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
@@ -1245,6 +1245,22 @@ function calc1(txtQty,txtRate)
 				type="hidden" size="1" name="tempIgst18" runat="server"/> <INPUT id="tempIgst19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempIgst19" runat="server"/> <INPUT id="tempIgst20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempIgst20" runat="server"/>
+
+             <INPUT id="tempProdCode1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode1" runat="server"/> <INPUT id="tempProdCode2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode2" runat="server"/> <INPUT id="tempProdCode3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode3" runat="server"/> <INPUT id="tempProdCode4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode4" runat="server"/> <INPUT id="tempProdCode5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode5" runat="server"/> <INPUT id="tempProdCode6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode6" runat="server"/> <INPUT id="tempProdCode7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode7" runat="server"/> <INPUT id="tempProdCode8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode8" runat="server"/> <INPUT id="tempProdCode9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode9" runat="server"/> <INPUT id="tempProdCode10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode10" runat="server"/> <INPUT id="tempProdCode11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode11" runat="server"/> <INPUT id="tempProdCode12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempProdCode12" runat="server"/> 
+
+
             <INPUT id="tmpSchType1" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="tmpSchType1" runat="server"> <INPUT id="tmpSchType2" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
 				type="hidden" name="tmpSchType2" runat="server"> <INPUT id="tmpSchType3" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
