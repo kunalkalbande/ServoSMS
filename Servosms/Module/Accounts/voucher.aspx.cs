@@ -1309,13 +1309,90 @@ namespace Servosms.Module.Accounts
 
 		protected void DropVoucherName_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
-		
-		}
+            try
+            {
+                isEditButtonClick = true;
+                if (DropDownID.Visible)
+                {
+                    clear();
+                    DropDownID.Items.Clear();
+                    DropDownID.Items.Add("Select");
+                    //DropVoucherName.Enabled = false; 
+                    txtVouchID.Visible = false;
+                    DropDownID.Visible = true;
+                    btnEdit1.Visible = false;
+                    btnAdd.Enabled = false;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                    SqlDataReader SqlDtr = null;
+                    dbobj.SelectQuery("select voucher_id from voucher_transaction where voucher_type != 'Payment' and voucher_type='" + DropVoucherName.SelectedValue.ToString() + "' order by Voucher_ID,Voucher_type", ref SqlDtr);
+                    while (SqlDtr.Read())
+                    {
+                        DropDownID.Items.Add(SqlDtr["voucher_id"].ToString());
+                    }
+                    SqlDtr.Close();
+                    getAcountName();
+                    checkPrevileges();
+                    btnPrint.CausesValidation = true;
+                    PrintFlag = false;
+                }
+                else
+                {
+                    clear();
+                    getAcountName();
+                }
+                isEditButtonClick = false;
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:voucher.aspx.cs,Method:DropVoucherName_SelectedIndexChanged EXCEPTION: " + ex.Message + " userid :" + uid);
+            }
+        }
 
-		/// <summary>
-		/// This method is used for update the customer balance after update the record.
-		/// </summary>
-		public void CustomerUpdate()
+        public void getAcountName()
+        {  
+            try
+            {                
+                string strVoucherType = DropVoucherName.SelectedValue.ToString();
+                
+                string temp = "";
+                string temp1 = "";
+                if (strVoucherType == "Contra")
+                {
+                    temp = txtTempContra.Value;
+                    temp1 = txtTempContra1.Value;                             
+                }
+                else if (strVoucherType == "Credit Note")
+                {
+                    temp = txTempCredit.Value;
+                    temp1 = txTempCredit1.Value;                           
+                }
+                else if (strVoucherType == "Debit Note")
+                {
+                    temp = txtTempDebit.Value;
+                    temp1 = txtTempDebit1.Value;                           
+                }
+                else
+                {
+                    temp = txtTempJournal.Value;
+                    temp1 = txtTempJournal1.Value;                    
+                }
+                
+                string[] strVouchID = temp.Split('~');
+                txtVouchID.Value = strVouchID[0];
+                txtID.Value = strVouchID[0];
+                texthiddenprod.Value = temp1;
+            }
+            catch (Exception ex)
+            {
+                CreateLogFiles.ErrorLog("Form:voucher.aspx.cs,Method:DropVoucherName_SelectedIndexChanged EXCEPTION: " + ex.Message + " userid :" + uid);
+            }            
+        }
+
+        /// <summary>
+        /// This method is used for update the customer balance after update the record.
+        /// </summary>
+        public void CustomerUpdate()
 		{
 			SqlDataReader rdr=null;
 			InventoryClass obj =new InventoryClass();

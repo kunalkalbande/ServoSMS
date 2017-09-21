@@ -38,6 +38,7 @@
 		<script language="javascript">
 function getAcountName(t,t1)
 {
+    debugger;
 	var index = t.selectedIndex;
 	var typetext  = t.options[index].text;
 	//alert(typetext)
@@ -402,8 +403,8 @@ function calcTotal()
 								<TR>
 									<TD>Voucher Type <FONT color="#ff0000">*</FONT>
 										<asp:comparevalidator id="Comparevalidator5" runat="server" ErrorMessage="Please Select Voucher type"
-											ControlToValidate="DropVoucherName" Operator="NotEqual" ValueToCompare="Select">*</asp:comparevalidator><asp:dropdownlist id="DropVoucherName" runat="server" Width="130px" onChange="return getAcountName(this,document.Form1.txtVouchID);"
-											CssClass="FontStyle" onselectedindexchanged="DropVoucherName_SelectedIndexChanged">
+											ControlToValidate="DropVoucherName" Operator="NotEqual" ValueToCompare="Select">*</asp:comparevalidator><asp:dropdownlist id="DropVoucherName" runat="server" Width="130px" 
+											CssClass="FontStyle" onselectedindexchanged="DropVoucherName_SelectedIndexChanged" AutoPostBack="True">
 											<asp:ListItem Value="Select">Select</asp:ListItem>
 											<asp:ListItem Value="Contra">Contra</asp:ListItem>
 											<asp:ListItem Value="Credit Note">Credit Note</asp:ListItem>
