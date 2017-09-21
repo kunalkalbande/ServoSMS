@@ -1415,7 +1415,9 @@ namespace Servosms.Module.Accounts
 				dbobj.SelectQuery("select cust_id from customer,ledger_master where ledger_name=cust_name and ledger_id='"+LedgerID[k].ToString()+"'",ref rdr);
 				if(rdr.Read())
 				{
-					dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj1,"@Cust_ID",rdr["Cust_ID"].ToString(),"@Invoice_Date",Invoice_Date);
+                    string strDate = GenUtil.str2DDMMYYYY(Invoice_Date).Trim();
+                    DateTime dtInvoice_Date = System.Convert.ToDateTime(strDate.ToString());
+                    dbobj.ExecProc(OprType.Insert,"UpdateCustomerLedgerForCustomer",ref obj1,"@Cust_ID",rdr["Cust_ID"].ToString(),"@Invoice_Date", dtInvoice_Date);
 				}
 				rdr.Close();
 			}

@@ -1774,14 +1774,14 @@ namespace Servosms.Module.Inventory
 				{
 					#region Fetch Sales Rate
 					
-					sql= "select top 1 Sal_Rate from Price_Updation where Prod_ID="+SqlDtr["Prod_ID"]+" order by eff_date desc";
+					sql= "select top 1 Pur_Rate from Price_Updation where Prod_ID=" + SqlDtr["Prod_ID"]+" order by eff_date desc";
 					rdr = obj1.GetRecordSet(sql);
 					if(rdr.Read())
 					{
-						if(double.Parse(rdr["Sal_Rate"].ToString())!=0)
+						if(double.Parse(rdr["Pur_Rate"].ToString())!=0)
 						{
 							str=str+ SqlDtr["Category"]+":"+SqlDtr["Prod_Name"]+":"+SqlDtr["Pack_Type"];
-							str=str+":"+rdr["Sal_Rate"];
+							str=str+":"+rdr["Pur_Rate"];
 						}
 						else
 						{
