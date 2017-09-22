@@ -347,7 +347,7 @@
 		changeschemefoe()
 		document.Form1.txtliter.value=qtyfoe
 	}
-	var totaldisc=0;
+	
 	function GetCashDiscount()
 	{
 		changescheme()
@@ -406,9 +406,7 @@
 		makeRound(document.Form1.txtCashDiscount)
 		document.Form1.txtVatValue.value = "";
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc) - eval(Disc)-eval(Scheme)-eval(foe)-eval(SchSP);	
-		totaldisc=eval(CashDisc) + eval(Disc)+eval(Scheme)+eval(foe)+eval(SchSP)
 	}
-
 	
 	function GetSGSTAmount()
 	{
@@ -794,7 +792,9 @@
 
 	    if(document.Form1.txtGrandTotal.value==""|| isNaN(document.Form1.txtGrandTotal.value))
 	        document.Form1.txtGrandTotal.value=0;
+	    var Scheme = document.Form1.txtschemetotal.value;
 	    totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
+	    var totaldisc = eval(CashDisc) + eval(Disc) + eval(Scheme) + eval(foe) + eval(SchSP)
 	    document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
 	    document.Form1.txtNetAmount.value=Math.round(document.Form1.txtNetAmount.value,0)
 		
