@@ -22,7 +22,7 @@
             function getDateFilter(windowWidth,windowHeight)
             {	                                
                 var centerLeft = parseInt((window.screen.availWidth - windowWidth) / 2);
-                var centerTop = parseInt(((window.screen.availHeight - windowHeight) / 2) - 500);
+                var centerTop = parseInt((window.screen.availHeight - windowHeight) / 2);
                 var misc_features = 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes, copyhistory=no';
 
                 var windowFeatures = 'width=' + windowWidth + ',height=' + windowHeight + ',left=' + centerLeft + ',top=' + centerTop + misc_features;
