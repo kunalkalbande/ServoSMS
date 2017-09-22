@@ -57,7 +57,10 @@ namespace Servosms.Module.Inventory
 		public float RateRs = 0;
 		public float BillQty = 0;
 		public float AmountRs = 0;
-		public float BatchNo = 0;
+        public float Igst = 0;
+        public float Cgst = 0;
+        public float Sgst = 0;
+        public float BatchNo = 0;
 		public float GradePackName = 0;
 		public float FreeQty = 0;
 		public float DisQty = 0;
@@ -203,10 +206,10 @@ namespace Servosms.Module.Inventory
 						DropCashDiscType.SelectedIndex=0;
 						DropDiscType.SelectedIndex=0;
 					}
-					SqlDtr.Close ();		
-					#endregion
-
-					GetProducts();
+					SqlDtr.Close ();
+                    #endregion
+                    PriceUpdation();
+                    GetProducts();
 					FetchData();
 					GetFOECust();
 					getscheme();
@@ -239,12 +242,34 @@ namespace Servosms.Module.Inventory
 		{    
 
 		}
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// This method store all foe discount in a hidden textbox.
-		/// </summary>
-		public void getschemefoe()
+        public void PriceUpdation()
+        {
+            InventoryClass obj = new InventoryClass();
+            var dsPriceUpdation = obj.ProPriceUpdation();
+            var dtTable = dsPriceUpdation.Tables[0];
+            for (int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                txtMainIGST.Value = txtMainIGST.Value + dtTable.Rows[i][0].ToString();//ProductCode
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][1];//ProductName 
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][2];//ProductId
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][3];//IGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][4];//cGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][5];//sGST
+                txtMainIGST.Value = txtMainIGST.Value + "|" + dtTable.Rows[i][6];//HSN
+                txtMainIGST.Value = txtMainIGST.Value + "~";
+
+
+            }
+            txtMainIGST.Value = txtMainIGST.Value.Substring(0, txtMainIGST.Value.LastIndexOf("~"));
+        }
+
+
+        /// <summary>
+        /// This method store all foe discount in a hidden textbox.
+        /// </summary>
+        public void getschemefoe()
 		{
 			InventoryClass  obj=new InventoryClass ();
 			SqlDataReader SqlDtr;
@@ -935,8 +960,9 @@ namespace Servosms.Module.Inventory
 				//getTemplateDetails();
 				string home_drive = Environment.SystemDirectory;
 				home_drive = home_drive.Substring(0,2);
-				string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\PerformaInvoiceReport.txt";
-				StreamWriter sw = new StreamWriter(path);
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\PerformaInvoiceReport.txt";
+                //string path = @"E:\ServoSMS\Servosms\Sysitem\ServosmsPrintServices\ReportView\PerformaInvoiceReport.txt";
+                StreamWriter sw = new StreamWriter(path);
 				HtmlInputText[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12}; 
 				TextBox[] foe = {txtfoe1,txtfoe2,txtfoe3,txtfoe4,txtfoe5,txtfoe6,txtfoe7,txtfoe8,txtfoe9,txtfoe10,txtfoe11,txtfoe12};
 				TextBox[] Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12}; 
@@ -945,9 +971,15 @@ namespace Servosms.Module.Inventory
 				TextBox[] scheme = {txtsch1,txtsch2,txtsch3,txtsch4,txtsch5,txtsch6,txtsch7,txtsch8,txtsch9,txtsch10,txtsch11,txtsch12};	
 				TextBox[] schProdType={txtTypesch1,txtTypesch2,txtTypesch3,txtTypesch4,txtTypesch5,txtTypesch6,txtTypesch7,txtTypesch8,txtTypesch9,txtTypesch10,txtTypesch11,txtTypesch12};
 				TextBox[] schQty={txtQtysch1,txtQtysch2,txtQtysch3,txtQtysch4,txtQtysch5,txtQtysch6,txtQtysch7,txtQtysch8,txtQtysch9,txtQtysch10,txtQtysch11,txtQtysch12};
-				HtmlInputHidden[] SecSP = {txtTempSecSP1,txtTempSecSP2,txtTempSecSP3,txtTempSecSP4,txtTempSecSP5,txtTempSecSP6,txtTempSecSP7,txtTempSecSP8,txtTempSecSP9,txtTempSecSP10,txtTempSecSP11,txtTempSecSP12};	
+				HtmlInputHidden[] SecSP = {txtTempSecSP1,txtTempSecSP2,txtTempSecSP3,txtTempSecSP4,txtTempSecSP5,txtTempSecSP6,txtTempSecSP7,txtTempSecSP8,txtTempSecSP9,txtTempSecSP10,txtTempSecSP11,txtTempSecSP12};
+                HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+                HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+                HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+                HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
+                HtmlInputHidden[] tmpAmount = { tmpAmount1, tmpAmount2, tmpAmount3, tmpAmount4, tmpAmount5, tmpAmount6, tmpAmount7, tmpAmount8, tmpAmount9, tmpAmount10, tmpAmount11, tmpAmount12 };
 
-				int h1 = System.Convert.ToInt32(Math.Floor((Header1Height * 25)/4.05));
+
+                int h1 = System.Convert.ToInt32(Math.Floor((Header1Height * 25)/4.05));
 				int h2 = System.Convert.ToInt32(Math.Floor((Header2Height * 25)/4.05));
 				int bh = System.Convert.ToInt32(Math.Floor((BodyHeight * 25)/4.05));
 				int f1 = System.Convert.ToInt32(Math.Floor((Footer1Height * 25)/4.05));
@@ -957,7 +989,7 @@ namespace Servosms.Module.Inventory
 				int dn = System.Convert.ToInt32(Math.Floor((Position2 * 25)/1.53));
 				dn = dn - (pn+50);
 				int sp1 = 10;
-				string info21 = " {0,-" + pn + ":S} {1,-" + sp + ":F} {2," + dn + ":F} {3,-" + sp1 + ":F}";
+				string info21 = " {0,-16:S} {1,-12:F} {2,-20:F} {3,5:F}";
 				int pc = 10;
 				int bn = System.Convert.ToInt32(Math.Floor((BatchNo * 25)/1.53));
 				int gpn = System.Convert.ToInt32(Math.Floor((GradePackName * 25)/1.53));
@@ -968,11 +1000,14 @@ namespace Servosms.Module.Inventory
 				int rt = System.Convert.ToInt32(Math.Floor((RateRs * 25)/1.53));
 				int sd = System.Convert.ToInt32(Math.Floor((SchDis * 25)/1.53));
 				int am = System.Convert.ToInt32(Math.Floor((AmountRs * 25)/1.53));
-				//string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + bq + ":F} {4," + fq + ":F} {5," + dq + ":F} {6," + lkg + ":F} {7," + rt + ":F} {8," + sd + ":F} {9," + am + ":F}";
-				
-				//Coment by vikas 14.08.09 string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + dq + ":F} {4," + lkg + ":F} {5," + rt + ":F} {6," + sd + ":F} {7," + SSpDis + ":F} {8," + am + ":F}";
-				
-				string info31 = " {0,-16:S} {1,-12:F} {2,-20:F} {3,5:F} {4,6:F} {5,8:F} {6,8:F} {7,8:F} {8,12:F} ";
+                int igst = System.Convert.ToInt32(Math.Floor((Igst * 25) / 1.53));
+                int cgst = System.Convert.ToInt32(Math.Floor((Cgst * 25) / 1.53));
+                int sgst = System.Convert.ToInt32(Math.Floor((Sgst * 25) / 1.53));
+                //string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + bq + ":F} {4," + fq + ":F} {5," + dq + ":F} {6," + lkg + ":F} {7," + rt + ":F} {8," + sd + ":F} {9," + am + ":F}";
+
+                //Coment by vikas 14.08.09 string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + dq + ":F} {4," + lkg + ":F} {5," + rt + ":F} {6," + sd + ":F} {7," + SSpDis + ":F} {8," + am + ":F}";
+
+                string info31 = " {0,-16:S} {1,-12:F} {2,-20:F} {3,5:F} {4,6:F} {5,8:F} {6,8:F} {7,8:F} {8,12:F} {9,12:F} {10,12:F} {11,12:F} ";
 				
 				int rinw = System.Convert.ToInt32(Math.Floor((RupeesinWords * 25)/1.53));
 				int pb = System.Convert.ToInt32(Math.Floor((ProvisionalBalance * 25)/1.53));
@@ -1059,8 +1094,9 @@ namespace Servosms.Module.Inventory
 					addr=addr.ToUpper();
 					if(addr.Length>50)
 						addr=addr.Substring(0,49);
-			
-					if(PartyName)
+                    PartyName = true;
+                    DocumentNo = true;
+                    if (PartyName)
 					{
 						if(DocumentNo)
 						{
@@ -1078,11 +1114,11 @@ namespace Servosms.Module.Inventory
 					{
 						sw.WriteLine(info21,"","","","");
 					}
-					if(Address)
+					//if(Address)
 					{
 						sw.WriteLine(info21,"",addr,"","");
 					}
-					if(City)
+					//if(City)
 					{
 						sw.WriteLine(info21,"City",lblPlace.Value.ToUpper(),"","");
 					}
@@ -1092,8 +1128,8 @@ namespace Servosms.Module.Inventory
 					if(Blank1)
 						sw.WriteLine();
 					//sw.WriteLine(info31,"P-Code","  Batch No"," Grade/Package Name","B-Qty","F-Qty"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc."," Amount (Rs.)");
-					sw.WriteLine(info31,"P-Code","  Batch No"," Grade/Package Name"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc.","SP Disc."," Amount (Rs.)");
-					sw.WriteLine("");
+					sw.WriteLine(info31,"P-Code","  HSN "," Grade/Package Name"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc.","SP Disc."," Amount (Rs.)", "CGST (Rs.)", "SGST (Rs.)", "IGST (Rs.)");
+                    sw.WriteLine("");
 					int rowCounter=0;
 					for(k=arrCount;k<Qty.Length;k++,arrCount++)
 					{
@@ -1113,7 +1149,7 @@ namespace Servosms.Module.Inventory
 							
 							//Coment by vikas 14.08.09 sw.WriteLine(info31,PCode,"",GenUtil.TrimLength(ProdCat[k].Value,35),Qty[k].Text,System.Convert.ToString(double.Parse(Qty[k].Text)*double.Parse(totalqty)),Rate[k].Text,scheme[k].Text,SecSP[k].Value,Amount[k].Text);
 							
-							sw.WriteLine(info31,PCode,"",GenUtil.TrimLength(pname[1]+":"+pname[2],35),Qty[k].Text,System.Convert.ToString(double.Parse(Qty[k].Text)*double.Parse(totalqty)),Rate[k].Text,scheme[k].Text,SecSP[k].Value,Amount[k].Text);
+							sw.WriteLine(info31,PCode,tmpHsn[k].Value.ToString(),GenUtil.TrimLength(pname[1]+":"+pname[2],35),Qty[k].Text,System.Convert.ToString(double.Parse(Qty[k].Text)*double.Parse(totalqty)),Rate[k].Text,scheme[k].Text,SecSP[k].Value, tmpAmount[k].Value.ToString(),tmpCgst[k].Value.ToString(),tmpSgst[k].Value.ToString(),tmpIgst[k].Value.ToString());
 
 							rowCounter++;
 							//if(k==bh-10 && Qty.Length<bh-2)
@@ -1147,7 +1183,7 @@ namespace Servosms.Module.Inventory
 							SqlDtr.Close();
 							//Coment by vikas 14.08.09 sw.WriteLine(info31,PCode,"",GenUtil.TrimLength("(Free) "+ProdCat[k].Value,35),"",schQty[k].Text,schQty[k].Text,System.Convert.ToString(double.Parse(schQty[k].Text)*double.Parse(totalqty)),"","","");
 
-							sw.WriteLine(info31,PCode,"",GenUtil.TrimLength(pname[1]+":"+pname[2],35),Qty[k].Text,System.Convert.ToString(double.Parse(Qty[k].Text)*double.Parse(totalqty)),Rate[k].Text,scheme[k].Text,SecSP[k].Value,Amount[k].Text);
+							sw.WriteLine(info31,PCode,tmpHsn[k].Value.ToString(),GenUtil.TrimLength(pname[1]+":"+pname[2],35),Qty[k].Text,System.Convert.ToString(double.Parse(Qty[k].Text)*double.Parse(totalqty)),Rate[k].Text,scheme[k].Text,SecSP[k].Value, tmpAmount[k].Value.ToString(), tmpCgst[k].Value.ToString(),tmpSgst[k].Value.ToString(),tmpIgst[k].Value.ToString());
 							rowCounter++;
 						}
 					}
@@ -1186,7 +1222,7 @@ namespace Servosms.Module.Inventory
 //					}
 				}while(FlagCount==true);
 				sw.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------");
-				sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ",txtGrandTotal.Text);
+				sw.WriteLine(info4,"","Packs","Ltrs","GROSS AMOUNT         : ", tmpGrandTotal.Value);
 				sw.WriteLine(info4,"","----------","----------","FREE/SCH DISC        : ","-"+txtschemetotal.Text);
 				sw.WriteLine(info4,"","","","Sec./Sp. Disc        : ","-"+txtSecondrySpDisc.Text);//add
 				if(txtfleetoediscountRs.Text=="" || txtfleetoediscountRs.Text=="0")
@@ -1200,7 +1236,7 @@ namespace Servosms.Module.Inventory
 					if(DropDiscType.SelectedItem.Text.Equals("%"))
 						sw.WriteLine(info4,"","","","Discount("+txtDisc.Text+DropDiscType.SelectedItem.Text+")      : ","-"+tempdiscount.Value);
 					else
-						sw.WriteLine(info4,"","","","Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+txtDisc.Text);
+						sw.WriteLine(info4,"","","","Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+ tempdiscount.Value);
 				}
 				if(txtCashDisc.Text=="" || txtCashDisc.Text=="0")
 					sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount        : ","0");
@@ -1209,11 +1245,23 @@ namespace Servosms.Module.Inventory
 					if(DropCashDiscType.SelectedItem.Text.Equals("%"))
 						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+") : ","-"+tempcashdis.Value);
 					else
-						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+txtCashDisc.Text);
-				}
-				sw.WriteLine(info4,"","----------","----------","Vat Amount(@"+txtVatRate.Value+")    : ",txtVAT.Text);
-				sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
-				sw.WriteLine();
+						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+ tempcashdis.Value); 
+
+                }
+				sw.WriteLine(info4,"","----------","----------","Total CGST          : ", tempTotalCgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total SGST          : ", tempTotalSgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total IGST          : ", tempTotalIgst.Value);
+
+                Double litre;
+                if (string.IsNullOrEmpty(txtliter.Text))
+                    litre = 0;
+                else
+                    litre = System.Convert.ToDouble(txtliter.Text);
+                
+                var lit = litre + TotalfoeLtr;
+                string litres = Convert.ToString(lit);
+                sw.WriteLine(info4, "Total Qty", Convert.ToString(TotalQtyfoe + TotalQtyPack), litres, "Net Amount           : ", tmpNetAmount.Value);
+                sw.WriteLine();
 				sw.WriteLine();
 				sw.WriteLine(info71,"",txtRemark.Text);
 				sw.Close();		
@@ -1240,9 +1288,9 @@ namespace Servosms.Module.Inventory
 			public void getTemplateDetails()
 			{
 			string home_drive = Environment.SystemDirectory;
-			home_drive = home_drive.Substring(0,2); 
-			string path = home_drive+@"\Inetpub\wwwroot\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
-			StreamReader  sr = new StreamReader(path);
+			home_drive = home_drive.Substring(0,2);
+            string path = home_drive + @"\Inetpub\wwwroot\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
+            StreamReader  sr = new StreamReader(path);
 			string[] data = new string[40];
 			int n = 0;
 			string info = "";
@@ -1375,7 +1423,11 @@ namespace Servosms.Module.Inventory
 			{
 				Time = false;
 			}
-		}
+            Cgst = float.Parse(data[31].Trim());
+            Sgst = float.Parse(data[32].Trim());
+            Igst = float.Parse(data[33].Trim());
+
+        }
 		
 		/// Its calls the PrePrintReport() fucntion to print Performa invoice.
 			protected void Button1_Click(object sender, System.EventArgs e)

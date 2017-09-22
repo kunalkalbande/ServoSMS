@@ -676,7 +676,9 @@ function calc1(txtQty,txtRate)
 			document.Form1.txtlitertotal.value=totalliter
 			
 		}
-	//**********
+		    //**********
+		    var cashanddisc = 0;
+		    var schemeDisc=0;
 	function GetCashDiscount()
 	{ 
 		var CheckBox = new Array(document.Form1.Check1,document.Form1.Check2,document.Form1.Check3,document.Form1.Check4,document.Form1.Check5,document.Form1.Check6,document.Form1.Check7,document.Form1.Check8,document.Form1.Check9,document.Form1.Check10,document.Form1.Check11,document.Form1.Check12);
@@ -700,9 +702,13 @@ function calc1(txtQty,txtRate)
 		if(CashDisc=="" || isNaN(CashDisc))
 			CashDisc=0
 		if(document.Form1.txtCashDiscType.value=="%")
-			CashDisc=document.Form1.txtGrandTotal.value*CashDisc/100 
+		    CashDisc = document.Form1.txtGrandTotal.value * CashDisc / 100
+		else
+		{
+		    CashDisc = document.Form1.txtlitertotal.value * CashDisc
+		}
 		//************
-		var schemeDisc=document.Form1.txtschemetotal.value
+		schemeDisc = document.Form1.txtschemetotal.value
 		if(schemeDisc=="" || isNaN(schemeDisc))
 			schemeDisc=0
 			
@@ -713,7 +719,11 @@ function calc1(txtQty,txtRate)
 		// var NetAmount
 		if(document.Form1.txtDiscType.value=="%")
 			//Disc=vat_value * Disc/100 
-			Disc=(document.Form1.txtGrandTotal.value-eval(schemeDisc))*Disc/100 
+		    Disc = (document.Form1.txtGrandTotal.value - eval(schemeDisc)) * Disc / 100
+		else
+		    Disc = document.Form1.txtlitertotal.value * Disc
+
+
 			//alert(Disc)
 		//document.Form1.txtNetAmount.value=eval(vat_value) - eval(Disc);
 		//************
@@ -721,7 +731,7 @@ function calc1(txtQty,txtRate)
 		//***bhalcom******document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - eval(CashDisc);	
 		document.Form1.txtVatValue.value = eval(document.Form1.txtGrandTotal.value) - (eval(CashDisc)+ eval(Disc)+eval(schemeDisc));
 		//alert(document.Form1.txtGrandTotal.value+":::"+CashDisc+":::"+Disc+":::"+schemeDisc)
-		
+		cashanddisc = eval(CashDisc) + eval(Disc) + eval(schemeDisc)
 	}
 	
 	function GetVatAmount()
@@ -1111,9 +1121,8 @@ function calc1(txtQty,txtRate)
 
 	    if(document.Form1.txtGrandTotal.value==""|| isNaN(document.Form1.txtGrandTotal.value))
 	        document.Form1.txtGrandTotal.value = 0;
-	    var Scheme = document.Form1.txtschemetotal.value;
 	    totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
-	    totaldisc = eval(CashDisc) + eval(Disc) + eval(Scheme) + eval(foe) + eval(SchSP)
+	    var totaldisc = cashanddisc + eval(foe) + eval(SchSP)
 	    document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
 	    document.Form1.txtNetAmount.value=Math.round(document.Form1.txtNetAmount.value,0)
 	
