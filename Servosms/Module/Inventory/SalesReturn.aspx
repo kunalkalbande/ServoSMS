@@ -1125,7 +1125,10 @@ function calc1(txtQty,txtRate)
 	    totalAmountAfterGst=Math.round(document.Form1.txtVAT.value)+Math.round(document.Form1.Textcgst.value)+Math.round(document.Form1.Textsgst.value)
 	    var totaldisc = cashanddisc + eval(foe) + eval(SchSP)
 	    document.Form1.txtNetAmount.value=eval(document.Form1.txtGrandTotal.value)+eval(totalAmountAfterGst)-eval(totaldisc)
-	    document.Form1.txtNetAmount.value=Math.round(document.Form1.txtNetAmount.value,0)
+	    if (document.Form1.txtNetAmount.value == "" || isNaN(document.Form1.txtNetAmount.value))
+	        document.Form1.txtNetAmount.value = 0;
+	    document.Form1.txtNetAmount.value = Math.round(document.Form1.txtNetAmount.value, 0)
+
 	    document.Form1.tempNetAmnt.value = document.Form1.txtNetAmount.value
 	}
 		</script>

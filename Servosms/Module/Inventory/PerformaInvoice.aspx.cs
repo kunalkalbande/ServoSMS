@@ -1223,12 +1223,13 @@ namespace Servosms.Module.Inventory
                 } while (FlagCount == true);
                 sw.WriteLine("---------------------------------------------------------------------------------------------------------------------------------------");
                 sw.WriteLine(info4, "", "Packs", "Ltrs", "GROSS AMOUNT         : ", tmpGrandTotal.Value);
-                sw.WriteLine(info4, "", "----------", "----------", "FREE/SCH DISC        : ", "-" + txtschemetotal.Text);
+                sw.WriteLine(info4, "", "----------", "----------", "FREE/SCH DISC        : ", "-" + Request.Form["txtschemetotal"].ToString());
                 sw.WriteLine(info4, "", "", "", "Sec./Sp. Disc        : ", "-" + txtSecondrySpDisc.Text);//add
-                if (txtfleetoediscountRs.Text == "" || txtfleetoediscountRs.Text == "0")
+                var fleetoe = Request.Form["txtfleetoediscountRs"].ToString();
+                if (string.IsNullOrEmpty(fleetoe))
                     sw.WriteLine(info4, "Act Qty", TotalQtyPack.ToString(), txtliter.Text, "", "");
                 else
-                    sw.WriteLine(info4, "Act Qty", TotalQtyPack.ToString(), txtliter.Text, "Oe/Fleet Discount    : ", "-" + txtfleetoediscountRs.Text);
+                    sw.WriteLine(info4, "Act Qty", TotalQtyPack.ToString(), txtliter.Text, "Oe/Fleet Discount    : ", "-" + Request.Form["txtfleetoediscountRs"].ToString());
                 if (txtDisc.Text == "" || txtDisc.Text == "0")
                     sw.WriteLine(info4, "", "", "", "Discount             : ", "0");
                 else
