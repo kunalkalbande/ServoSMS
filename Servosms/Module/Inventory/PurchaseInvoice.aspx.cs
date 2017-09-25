@@ -3357,7 +3357,7 @@ namespace Servosms.Module.Inventory
                         txttradedisamt.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(19).ToString());
                         txtebird.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(20).ToString());
                         txtebirdamt.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(21).ToString());
-                        txtfoc.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(24).ToString());
+                        txtfoc.Text = GenUtil.strNumericFormat(SqlDtr["Foc_Discount"].ToString());
                         dropfoc.SelectedIndex = dropfoc.Items.IndexOf((dropfoc.Items.FindByValue(SqlDtr.GetValue(25).ToString())));
                         //txtentry.Text = GenUtil.strNumericFormat(SqlDtr.GetValue(22).ToString()); 
                         //dropentry.SelectedIndex= dropentry.Items.IndexOf((dropentry.Items.FindByValue(SqlDtr.GetValue(23).ToString())));
