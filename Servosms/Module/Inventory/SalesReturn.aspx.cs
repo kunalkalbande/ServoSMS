@@ -581,6 +581,8 @@ namespace Servosms.Module.Inventory
 			txtCashDisc.Text = "";
 			txtCashDiscType.Text = "";
 			txtVAT.Text = "";
+            Textcgst.Text = "";
+            Textsgst.Text = "";
 			Yes.Checked = false;
 			No.Checked = true;
 			txtDisc.Text = "";
@@ -838,9 +840,10 @@ namespace Servosms.Module.Inventory
 			InventoryClass obj=new InventoryClass();
 			SqlDataReader SqlDtr=null;
 			string home_drive = Environment.SystemDirectory;
-			home_drive = home_drive.Substring(0,2); 
-			string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesReturnPrePrintReport.txt";
-			StreamWriter sw = new StreamWriter(path);
+			home_drive = home_drive.Substring(0,2);
+            string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesReturnPrePrintReport.txt";
+            //string path = @"E:\ServoSMS\Servosms\Sysitem\ServosmsPrintServices\ReportView\SalesReturnPrePrintReport.txt";
+            StreamWriter sw = new StreamWriter(path);
 			HtmlInputCheckBox[] Check = {Check1,Check2,Check3,Check4,Check5,Check6,Check7,Check8,Check9,Check10,Check11,Check12};
 			HtmlInputText[] ProdName={txtProdName1, txtProdName2, txtProdName3, txtProdName4, txtProdName5, txtProdName6, txtProdName7, txtProdName8, txtProdName9, txtProdName10, txtProdName11, txtProdName12}; 
 			TextBox[] foe = {txtfoc1,txtfoc2,txtfoc3,txtfoc4,txtfoc5,txtfoc6,txtfoc7,txtfoc8,txtfoc9,txtfoc10,txtfoc11,txtfoc12};
@@ -850,7 +853,14 @@ namespace Servosms.Module.Inventory
 			TextBox[] scheme = {txtsch1,txtsch2,txtsch3,txtsch4,txtsch5,txtsch6,txtsch7,txtsch8,txtsch9,txtsch10,txtsch11,txtsch12};	
 			HtmlInputText[] ProdSchName = {txtProdsch1,txtProdsch2,txtProdsch3,txtProdsch4,txtProdsch5,txtProdsch6,txtProdsch7,txtProdsch8,txtProdsch9,txtProdsch10,txtProdsch11,txtProdsch12};	
 			TextBox[] schQty={txtQtysch1,txtQtysch2,txtQtysch3,txtQtysch4,txtQtysch5,txtQtysch6,txtQtysch7,txtQtysch8,txtQtysch9,txtQtysch10,txtQtysch11,txtQtysch12};
-			string[] DespQty=new string[12];
+            HtmlInputHidden[] SecSP = { txtTempSecSP1, txtTempSecSP2, txtTempSecSP3, txtTempSecSP4, txtTempSecSP5, txtTempSecSP6, txtTempSecSP7, txtTempSecSP8, txtTempSecSP9, txtTempSecSP10, txtTempSecSP11, txtTempSecSP12 };
+            HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+            HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+            HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+            HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
+
+
+            string[] DespQty=new string[12];
 			string[] freeDespQty=new string[12];
 			string[] ProdCode=new string[12];
 			string[] schProdCode=new string[12];
@@ -865,7 +875,7 @@ namespace Servosms.Module.Inventory
 			string info2="",info3="",info4="",info5="",info6="",info7="",str="",InDate="";
 			info2=" {0,-14:S} {1,-50:S} {2,20:S} {3,-46:S}";//Party Name & Address
 			info4=" {0,-20:S} {1,20:S} {2,20:S} {3,55:S} {4,15:S}";//Party Name & Address
-			info3=" {0,-10:S} {1,-19:S} {2,-35:S} {3,5:S} {4,5:S} {5,5:S} {6,10:S} {7,12:S} {8,10:S} {9,15:S}";//Item Code
+			info3= " {0,-10:S} {1,-19:S} {2,-35:S} {3,5:S} {4,5:S} {5,5:S} {6,10:S} {7,12:S} {8,10:S} {9,15:S} {10,12:S} {11,10:S} {12,15:S}";//Item Code
 			info5=" {0,16:S} {1,-114:S}";
 			info7=" {0,46:S} {1,-88:S}";
 			info6=" {0,44:S} {1,-10:S} {2,-76:S}";
@@ -1190,12 +1200,12 @@ namespace Servosms.Module.Inventory
 				sw.WriteLine("");
 				sw.WriteLine("");
 				
-				sw.WriteLine(info3,"P-Code","  Batch No"," Grade/Package Name","B-Qty","F-Qty"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc."," Amount (Rs.)");
-				sw.WriteLine("");
+				sw.WriteLine(info3,"P-Code","  HSN"," Grade/Package Name","B-Qty","F-Qty"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc."," Amount (Rs.)", "CGST (Rs.)", "SGST (Rs.)", "IGST (Rs.)");
+                sw.WriteLine("");
 				
 				for(k=arrCount;k<arrBillQty.Count;k++,arrCount++)
 				{
-					sw.WriteLine(info3,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdScheme[k].ToString(),arrProdAmount[k].ToString());
+					sw.WriteLine(info3,arrProdCode[k].ToString(),tmpHsn[k].Value.ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdScheme[k].ToString(),arrProdAmount[k].ToString(),tmpCgst[k].Value.ToString(), tmpSgst[k].Value.ToString(), tmpIgst[k].Value.ToString());
 					if(k==17 && arrBillQty.Count<25)
 					{
 						FlagCount=true;
@@ -1260,7 +1270,7 @@ namespace Servosms.Module.Inventory
 //				if(DropDiscType.SelectedItem.Text.Equals("%"))
 //					sw.WriteLine(info4,"","","","Discount("+txtDisc.Text+DropDiscType.SelectedItem.Text+")      : ","-"+tempdiscount.Value);
 //				else
-				sw.WriteLine(info4,"","","","Discount("+txtDiscType.Text+")        : ","-"+txtDisc.Text);
+				sw.WriteLine(info4,"","","","Discount("+txtDiscType.Text+")        : ","-"+ tempdiscount.Value);
 			}
 			if(txtCashDisc.Text=="" || txtCashDisc.Text=="0")
 				sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount        : ","0");
@@ -1269,14 +1279,17 @@ namespace Servosms.Module.Inventory
 //				if(DropCashDiscType.SelectedItem.Text.Equals("%"))
 //					sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+") : ","-"+tempcashdis.Value);
 //				else
-				sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+txtCashDiscType.Text+")   : ","-"+txtCashDisc.Text);
+				sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+txtCashDiscType.Text+")   : ","-"+tempcashdis.Value);
 			}
-			sw.WriteLine(info4,"","----------","----------","Vat Amount(@"+txtVatRate.Value+")    : ",txtVAT.Text);
-			sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtlitertotal.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
+            sw.WriteLine(info4, "", "----------", "----------", "Total CGST          : ", tempTotalCgst.Value);
+            sw.WriteLine(info4, "", "", "", "Total SGST          : ", tempTotalSgst.Value);
+            sw.WriteLine(info4, "", "", "", "Total IGST          : ", tempTotalIgst.Value);
+            sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtlitertotal.Text)+TotalfoeLtr),"Net Amount           : ", tempNetAmnt.Value);
 			sw.WriteLine(info5,"",GenUtil.ConvertNoToWord(txtNetAmount.Text));
 			sw.WriteLine(info6,"",CurrBal[0],"(INCLUDING CURRENT INVOICE AMOUNT)");
 			sw.WriteLine(info7,"",txtRemark.Text);
 			sw.Close();
+            clear();
 		}
 
 		/// <summary>
@@ -1288,6 +1301,7 @@ namespace Servosms.Module.Inventory
 			// Connect to a remote device.
 			try 
 			{
+                PrePrintReport();
 				// Establish the remote endpoint for the socket.
 				// The name of the
 				// remote device is "host.contoso.com".
