@@ -50,7 +50,10 @@ namespace Servosms.Module.Inventory
 		public float RateRs = 0;
 		public float BillQty = 0;
 		public float AmountRs = 0;
-		public float BatchNo = 0;
+        public float Igst = 0;
+        public float Cgst = 0;
+        public float Sgst = 0;
+        public float BatchNo = 0;
 		public float GradePackName = 0;
 		public float FreeQty = 0;
 		public float DisQty = 0;
@@ -739,7 +742,7 @@ namespace Servosms.Module.Inventory
 					obj.foediscount=txtfleetoediscount.Text.Trim();
 				obj.foediscounttype=dropfleetoediscount.SelectedItem.Text.ToString();
 				obj.foediscountrs=txtfleetoediscountRs.Text.Trim();
-				obj.totalqtyltr=txtliter.Text.Trim().ToString();
+				obj.totalqtyltr= Request.Form["txtliter"].ToString();
 				if(txtChallanDate.Text=="")
 					obj.ChallanDate="";
 				else
@@ -998,8 +1001,9 @@ namespace Servosms.Module.Inventory
 				getTemplateDetails();
 				string home_drive = Environment.SystemDirectory;
 				home_drive = home_drive.Substring(0,2);
-				string path = home_drive+@"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\OrderCollection.txt";
-				StreamWriter sw = new StreamWriter(path);
+                string path = home_drive + @"\Inetpub\wwwroot\Servosms\Sysitem\ServosmsPrintServices\ReportView\OrderCollection.txt";
+                //string path = @"E:\ServoSMS\Servosms\Sysitem\ServosmsPrintServices\ReportView\OrderCollection.txt";
+                StreamWriter sw = new StreamWriter(path);
 				HtmlInputText[] ProdCat={DropType1,DropType2,DropType3,DropType4,DropType5,DropType6,DropType7,DropType8,DropType9,DropType10,DropType11,DropType12}; 
 				TextBox[] foe = {txtfoe1,txtfoe2,txtfoe3,txtfoe4,txtfoe5,txtfoe6,txtfoe7,txtfoe8,txtfoe9,txtfoe10,txtfoe11,txtfoe12};
 				TextBox[] Qty={txtQty1, txtQty2, txtQty3, txtQty4, txtQty5, txtQty6, txtQty7, txtQty8, txtQty9, txtQty10, txtQty11, txtQty12}; 
@@ -1008,8 +1012,14 @@ namespace Servosms.Module.Inventory
 				TextBox[] scheme = {txtsch1,txtsch2,txtsch3,txtsch4,txtsch5,txtsch6,txtsch7,txtsch8,txtsch9,txtsch10,txtsch11,txtsch12};	
 				TextBox[] schProdType={txtTypesch1,txtTypesch2,txtTypesch3,txtTypesch4,txtTypesch5,txtTypesch6,txtTypesch7,txtTypesch8,txtTypesch9,txtTypesch10,txtTypesch11,txtTypesch12};
 				TextBox[] schQty={txtQtysch1,txtQtysch2,txtQtysch3,txtQtysch4,txtQtysch5,txtQtysch6,txtQtysch7,txtQtysch8,txtQtysch9,txtQtysch10,txtQtysch11,txtQtysch12};
-				HtmlInputHidden[] SecSP = {txtTempSecSP1,txtTempSecSP2,txtTempSecSP3,txtTempSecSP4,txtTempSecSP5,txtTempSecSP6,txtTempSecSP7,txtTempSecSP8,txtTempSecSP9,txtTempSecSP10,txtTempSecSP11,txtTempSecSP12};	
-				string[] DespQty=new string[12];
+				HtmlInputHidden[] SecSP = {txtTempSecSP1,txtTempSecSP2,txtTempSecSP3,txtTempSecSP4,txtTempSecSP5,txtTempSecSP6,txtTempSecSP7,txtTempSecSP8,txtTempSecSP9,txtTempSecSP10,txtTempSecSP11,txtTempSecSP12};
+                HtmlInputHidden[] tmpCgst = { tempCgst1, tempCgst2, tempCgst3, tempCgst4, tempCgst5, tempCgst6, tempCgst7, tempCgst8, tempCgst9, tempCgst10, tempCgst11, tempCgst12, tempCgst13, tempCgst14, tempCgst15, tempCgst16, tempCgst17, tempCgst18, tempCgst19, tempCgst20 };
+                HtmlInputHidden[] tmpSgst = { tempSgst1, tempSgst2, tempSgst3, tempSgst4, tempSgst5, tempSgst6, tempSgst7, tempSgst8, tempSgst9, tempSgst10, tempSgst11, tempSgst12, tempSgst13, tempSgst14, tempSgst15, tempSgst16, tempSgst17, tempSgst18, tempSgst19, tempSgst20 };
+                HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
+                HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
+
+
+                string[] DespQty=new string[12];
 				string[] freeDespQty=new string[12];
 				string[] ProdCode=new string[12];
 				string[] schProdCode=new string[12];
@@ -1041,9 +1051,12 @@ namespace Servosms.Module.Inventory
 				int rt = System.Convert.ToInt32(Math.Floor((RateRs * 25)/1.53));
 				int sd = System.Convert.ToInt32(Math.Floor((SchDis * 25)/1.53));
 				int am = System.Convert.ToInt32(Math.Floor((AmountRs * 25)/1.53));
-				//string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + bq + ":F} {4," + fq + ":F} {5," + dq + ":F} {6," + lkg + ":F} {7," + rt + ":F} {8," + sd + ":F} {9," + am + ":F}";
-				string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + dq + ":F} {4," + lkg + ":F} {5," + rt + ":F} {6," + sd + ":F} {7," + SSpDis + ":F} {8," + am + ":F}";
-				int rinw = System.Convert.ToInt32(Math.Floor((RupeesinWords * 25)/1.53));
+                int igst = System.Convert.ToInt32(Math.Floor((Igst * 25) / 1.53));
+                int cgst = System.Convert.ToInt32(Math.Floor((Cgst * 25) / 1.53));
+                int sgst = System.Convert.ToInt32(Math.Floor((Sgst * 25) / 1.53));
+                //string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + bq + ":F} {4," + fq + ":F} {5," + dq + ":F} {6," + lkg + ":F} {7," + rt + ":F} {8," + sd + ":F} {9," + am + ":F}";
+                string info31 = " {0,-" + pc + ":S} {1,-" + bn + ":F} {2,-" + gpn + ":F} {3," + dq + ":F} {4," + lkg + ":F} {5," + rt + ":F} {6," + sd + ":F} {7," + SSpDis + ":F} {8," + am + ":F} {9," + cgst + ":F} {10," + sgst + ":F} {11," + igst + ":F}";
+                int rinw = System.Convert.ToInt32(Math.Floor((RupeesinWords * 25)/1.53));
 				int pb = System.Convert.ToInt32(Math.Floor((ProvisionalBalance * 25)/1.53));
 				int rem = System.Convert.ToInt32(Math.Floor((Remarks * 25)/1.53));
 				string info51 = " {0,-" + rinw + ":S} {1,-" + 100 + ":S}";
@@ -1435,12 +1448,12 @@ namespace Servosms.Module.Inventory
 					if(Blank1)
 						sw.WriteLine();
 					//sw.WriteLine(info31,"P-Code","  Batch No"," Grade/Package Name","B-Qty","F-Qty"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc."," Amount (Rs.)");
-					sw.WriteLine(info31,"P-Code","  Batch No"," Grade/Package Name"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc.","SP Disc."," Amount (Rs.)");
-					sw.WriteLine("");
+					sw.WriteLine(info31,"P-Code","  HSN"," Grade/Package Name"," D-Qty"," Ltr/Kg"," Rate Rs."," Sch Disc.","SP Disc."," Amount (Rs.)", "CGST (Rs.)", "SGST (Rs.)", "IGST (Rs.)");
+                    sw.WriteLine("");
 					for(k=arrCount;k<arrBillQty.Count;k++,arrCount++)
 					{
 						//sw.WriteLine(info31,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrBillQty[k].ToString(),arrFreeQty[k].ToString(),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdScheme[k].ToString(),arrProdAmount[k].ToString());
-						sw.WriteLine(info31,arrProdCode[k].ToString(),arrBatchNo[k].ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdScheme[k].ToString(),arrSecSP[k].ToString(),arrProdAmount[k].ToString());
+						sw.WriteLine(info31,arrProdCode[k].ToString(),tmpHsn[k].Value.ToString(),GenUtil.TrimLength(arrProdName[k].ToString(),34),arrDespQty[k].ToString(),arrLtrkg[k].ToString(),arrProdRate[k].ToString(),arrProdScheme[k].ToString(),arrSecSP[k].ToString(),arrProdAmount[k].ToString(),tmpCgst[k].Value.ToString(),tmpSgst[k].Value.ToString(),tmpIgst[k].Value.ToString());
 						if(k==bh-10 && arrBillQty.Count<bh-2)
 						{
 							FlagCount=true;
@@ -1503,7 +1516,7 @@ namespace Servosms.Module.Inventory
 					if(DropDiscType.SelectedItem.Text.Equals("%"))
 						sw.WriteLine(info4,"","","","Discount("+txtDisc.Text+DropDiscType.SelectedItem.Text+")      : ","-"+tempdiscount.Value);
 					else
-						sw.WriteLine(info4,"","","","Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+txtDisc.Text);
+						sw.WriteLine(info4,"","","","Discount("+DropDiscType.SelectedItem.Text+")        : ","-"+ tempdiscount.Value);
 				}
 				if(txtCashDisc.Text=="" || txtCashDisc.Text=="0")
 					sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount        : ","0");
@@ -1512,10 +1525,12 @@ namespace Servosms.Module.Inventory
 					if(DropCashDiscType.SelectedItem.Text.Equals("%"))
 						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+txtCashDisc.Text+DropCashDiscType.SelectedItem.Text+") : ","-"+tempcashdis.Value);
 					else
-						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+txtCashDisc.Text);
+						sw.WriteLine(info4,"Free Qty",TotalQtyfoe.ToString(),TotalfoeLtr.ToString(),"Cash Discount("+DropCashDiscType.SelectedItem.Text+")   : ","-"+ tempcashdis.Value);
 				}
-				sw.WriteLine(info4,"","----------","----------","Vat Amount(@"+txtVatRate.Value+")    : ",txtVAT.Text);
-				sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
+                sw.WriteLine(info4, "", "----------", "----------", "Total CGST          : ", tempTotalCgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total SGST          : ", tempTotalSgst.Value);
+                sw.WriteLine(info4, "", "", "", "Total IGST          : ", tempTotalIgst.Value);
+                sw.WriteLine(info4,"Total Qty",System.Convert.ToString(TotalQtyfoe+TotalQtyPack),System.Convert.ToString(System.Convert.ToDouble(txtliter.Text)+TotalfoeLtr),"Net Amount           : ",txtNetAmount.Text);
 				sw.WriteLine(info51,"",GenUtil.ConvertNoToWord(txtNetAmount.Text));
 				sw.WriteLine(info61,"",CurrBal[0],"(INCLUDING CURRENT INVOICE AMOUNT)");
 				sw.WriteLine(info71,"",txtRemark.Text);
@@ -1958,8 +1973,9 @@ namespace Servosms.Module.Inventory
 		{
 			string home_drive = Environment.SystemDirectory;
 			home_drive = home_drive.Substring(0,2);
-			string path = home_drive+@"\Inetpub\wwwroot\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
-			StreamReader  sr = new StreamReader(path);
+            string path = home_drive + @"\Inetpub\wwwroot\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
+            //string path = @"E:\ServoSMS\Servosms\InvoiceDesigner\SalesInvoicePrePrintTemplate.INI";
+            StreamReader  sr = new StreamReader(path);
 			string[] data = new string[40];
 			int n = 0;
 			string info = "";
@@ -2092,7 +2108,10 @@ namespace Servosms.Module.Inventory
 			{
 				Time = false;
 			}
-		}
+            Cgst = float.Parse(data[31].Trim());
+            Sgst = float.Parse(data[32].Trim());
+            Igst = float.Parse(data[33].Trim());
+        }
 
 		/// <summary>
 		/// This method fatch the only year according to passing date.
@@ -2187,94 +2206,102 @@ namespace Servosms.Module.Inventory
 					#region Get Data from Order_Col_Master Table regarding Invoice No.
 					//sql="select * from Order_Col_Master where Order_No='"+dropInvoiceNo.SelectedItem.Value +"'" ;
 					sql="select * from Order_Col_Master sm,employee e where sm.under_salesMan=e.Emp_ID and Order_No='"+dropInvoiceNo.SelectedItem.Value+"'" ;
-					SqlDtr=obj.GetRecordSet(sql); 
-					while(SqlDtr.Read())
-					{
-						Order_Date = SqlDtr.GetValue(1).ToString();
-						string strDate = SqlDtr.GetValue(1).ToString().Trim();
-						int pos = strDate.IndexOf(" ");
-				
-						if(pos != -1)
-						{
-							strDate = strDate.Substring(0,pos);
-						}
-						else
-						{
-							strDate = "";					
-						}
-						
-						lblInvoiceDate.Text =GenUtil.str2DDMMYYYY(strDate);  
-						tempInvoiceDate.Value=GenUtil.str2DDMMYYYY(strDate);
-						DropSalesType.SelectedIndex=(DropSalesType.Items.IndexOf((DropSalesType.Items.FindByValue (SqlDtr.GetValue(2).ToString()))));
-						//DropUnderSalesMan.SelectedIndex=(DropUnderSalesMan.Items.IndexOf((DropUnderSalesMan.Items.FindByValue(SqlDtr.GetValue(4).ToString()))));
-						DropUnderSalesMan.SelectedIndex=(DropUnderSalesMan.Items.IndexOf((DropUnderSalesMan.Items.FindByValue(SqlDtr["Emp_Name"].ToString()))));
-						if(getCustomerVehicles(SqlDtr["Cust_ID"].ToString()) == true)
-						{
-							DropVehicleNo.SelectedIndex = DropVehicleNo.Items.IndexOf(DropVehicleNo.Items.FindByValue(SqlDtr.GetValue(5).ToString().Trim()));   
-						}
-						else
-						{
-							txtVehicleNo.Text=SqlDtr.GetValue(5).ToString();
-						}
-						txtGrandTotal.Text=SqlDtr.GetValue(6).ToString();
-						txtGrandTotal.Text = GenUtil.strNumericFormat(txtGrandTotal.Text.ToString()); 
-						txtDisc.Text=SqlDtr.GetValue(7).ToString(); 
-						txtDisc.Text = GenUtil.strNumericFormat(txtDisc.Text.ToString()); 
-						DropDiscType.SelectedIndex= DropDiscType.Items.IndexOf((DropDiscType.Items.FindByValue(SqlDtr.GetValue(8).ToString())));
-						txtNetAmount.Text =SqlDtr.GetValue(9).ToString(); 
-						txtNetAmount.Text = GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
-						NetAmount=GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
-						txtPromoScheme.Text= SqlDtr.GetValue(10).ToString(); 
-						txtRemark.Text=SqlDtr.GetValue(11).ToString();
-						txtSecondrySpDisc.Text=SqlDtr["SecSPDisc"].ToString();
-						if(SqlDtr["Discount_type"].ToString()=="Per")
-						{
-							txtDiscount.Text=System.Convert.ToString((double.Parse(SqlDtr["Grand_Total"].ToString())-double.Parse(SqlDtr["schdiscount"].ToString()))*double.Parse(SqlDtr["discount"].ToString())/100);
-							txtDiscount.Text=System.Convert.ToString(Math.Round(double.Parse(txtDiscount.Text),2));
-						}
-						else
-							txtDiscount.Text="";
-						if(SqlDtr["cash_Disc_type"].ToString()=="Per")
-						{
-							double tot =0;
-							if(txtDiscount.Text!="")
-								tot = double.Parse(SqlDtr["Grand_Total"].ToString())-(double.Parse(SqlDtr["schdiscount"].ToString())+double.Parse(SqlDtr["foediscount"].ToString())+double.Parse(txtDiscount.Text));
-							else
-								tot = double.Parse(SqlDtr["Grand_Total"].ToString())-(double.Parse(SqlDtr["schdiscount"].ToString())+double.Parse(SqlDtr["foediscount"].ToString()));
-							txtCashDiscount.Text=System.Convert.ToString(tot*double.Parse(SqlDtr["Cash_Discount"].ToString())/100);
-							txtCashDiscount.Text=System.Convert.ToString(Math.Round(double.Parse(txtCashDiscount.Text),2));
-							tempcashdis.Value=txtCashDiscount.Text;
-						}
-						else
-							txtCashDiscount.Text="";
-						txtCashDisc.Text=SqlDtr.GetValue(15).ToString(); 
-						txtCashDisc.Text = GenUtil.strNumericFormat(txtCashDisc.Text.ToString()); 
-						DropCashDiscType.SelectedIndex= DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
-						txtVAT.Text =  SqlDtr.GetValue(17).ToString();
-						txtschemetotal.Text=SqlDtr.GetValue(18).ToString();
-						txtfleetoediscount.Text=SqlDtr.GetValue(19).ToString();
-						dropfleetoediscount.SelectedIndex= dropfleetoediscount.Items.IndexOf((dropfleetoediscount.Items.FindByValue(SqlDtr.GetValue(20).ToString())));
-						txtfleetoediscountRs.Text=SqlDtr.GetValue(21).ToString();
-						txtliter.Text=SqlDtr.GetValue(22).ToString();
-						if(SqlDtr["ChallanNo"].ToString()=="0")
-							txtChallanNo.Text="";
-						else
-							txtChallanNo.Text=SqlDtr["ChallanNo"].ToString();
-						if(GenUtil.trimDate(SqlDtr["ChallanDate"].ToString())=="1/1/1900")
-							txtChallanDate.Text="";
-						else
-							txtChallanDate.Text=GenUtil.str2DDMMYYYY(GenUtil.trimDate(SqlDtr["ChallanDate"].ToString()));
-						if(txtVAT.Text.Trim() == "0")
-						{
-							Yes.Checked = false;
-							No.Checked = true;
-						}
-						else
-						{
-							No.Checked = false;
-							Yes.Checked = true;
-						}
-					}
+					SqlDtr=obj.GetRecordSet(sql);
+                    while (SqlDtr.Read())
+                    {
+                        Order_Date = SqlDtr.GetValue(1).ToString();
+                        string strDate = SqlDtr.GetValue(1).ToString().Trim();
+                        int pos = strDate.IndexOf(" ");
+
+                        if (pos != -1)
+                        {
+                            strDate = strDate.Substring(0, pos);
+                        }
+                        else
+                        {
+                            strDate = "";
+                        }
+
+                        lblInvoiceDate.Text = GenUtil.str2DDMMYYYY(strDate);
+                        tempInvoiceDate.Value = GenUtil.str2DDMMYYYY(strDate);
+                        DropSalesType.SelectedIndex = (DropSalesType.Items.IndexOf((DropSalesType.Items.FindByValue(SqlDtr.GetValue(2).ToString()))));
+                        //DropUnderSalesMan.SelectedIndex=(DropUnderSalesMan.Items.IndexOf((DropUnderSalesMan.Items.FindByValue(SqlDtr.GetValue(4).ToString()))));
+                        DropUnderSalesMan.SelectedIndex = (DropUnderSalesMan.Items.IndexOf((DropUnderSalesMan.Items.FindByValue(SqlDtr["Emp_Name"].ToString()))));
+                        if (getCustomerVehicles(SqlDtr["Cust_ID"].ToString()) == true)
+                        {
+                            DropVehicleNo.SelectedIndex = DropVehicleNo.Items.IndexOf(DropVehicleNo.Items.FindByValue(SqlDtr.GetValue(5).ToString().Trim()));
+                        }
+                        else
+                        {
+                            txtVehicleNo.Text = SqlDtr.GetValue(5).ToString();
+                        }
+                        txtGrandTotal.Text = SqlDtr.GetValue(6).ToString();
+                        txtGrandTotal.Text = GenUtil.strNumericFormat(txtGrandTotal.Text.ToString());
+                        txtDisc.Text = SqlDtr.GetValue(7).ToString();
+                        txtDisc.Text = GenUtil.strNumericFormat(txtDisc.Text.ToString());
+                        DropDiscType.SelectedIndex = DropDiscType.Items.IndexOf((DropDiscType.Items.FindByValue(SqlDtr.GetValue(8).ToString())));
+                        txtNetAmount.Text = SqlDtr.GetValue(9).ToString();
+                        txtNetAmount.Text = GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
+                        NetAmount = GenUtil.strNumericFormat(txtNetAmount.Text.ToString());
+                        txtPromoScheme.Text = SqlDtr.GetValue(10).ToString();
+                        txtRemark.Text = SqlDtr.GetValue(11).ToString();
+                        txtSecondrySpDisc.Text = SqlDtr["SecSPDisc"].ToString();
+                        if (SqlDtr["Discount_type"].ToString() == "Per")
+                        {
+                            txtDiscount.Text = System.Convert.ToString((double.Parse(SqlDtr["Grand_Total"].ToString()) - double.Parse(SqlDtr["schdiscount"].ToString())) * double.Parse(SqlDtr["discount"].ToString()) / 100);
+                            txtDiscount.Text = System.Convert.ToString(Math.Round(double.Parse(txtDiscount.Text), 2));
+                        }
+                        else
+                        {
+                            txtDiscount.Text = System.Convert.ToString(double.Parse(SqlDtr["Discount"].ToString()) * double.Parse(SqlDtr["totalqtyltr"].ToString()));
+                            txtDiscount.Text = System.Convert.ToString(Math.Round(double.Parse(txtDiscount.Text), 2));
+                        }
+                        if (SqlDtr["cash_Disc_type"].ToString() == "Per")
+                        {
+                            double tot = 0;
+                            if (txtDiscount.Text != "")
+                                tot = double.Parse(SqlDtr["Grand_Total"].ToString()) - (double.Parse(SqlDtr["schdiscount"].ToString()) + double.Parse(SqlDtr["foediscount"].ToString()) + double.Parse(txtDiscount.Text));
+                            else
+                                tot = double.Parse(SqlDtr["Grand_Total"].ToString()) - (double.Parse(SqlDtr["schdiscount"].ToString()) + double.Parse(SqlDtr["foediscount"].ToString()));
+                            txtCashDiscount.Text = System.Convert.ToString(tot * double.Parse(SqlDtr["Cash_Discount"].ToString()) / 100);
+                            txtCashDiscount.Text = System.Convert.ToString(Math.Round(double.Parse(txtCashDiscount.Text), 2));
+                            tempcashdis.Value = txtCashDiscount.Text;
+                        }
+                        else
+                        {
+                            txtCashDiscount.Text = System.Convert.ToString(double.Parse(SqlDtr["Cash_Discount"].ToString()) * double.Parse(SqlDtr["totalqtyltr"].ToString()));
+                            txtCashDiscount.Text = System.Convert.ToString(Math.Round(double.Parse(txtCashDiscount.Text), 2));
+                        }
+                        txtCashDisc.Text = SqlDtr.GetValue(15).ToString();
+                        txtCashDisc.Text = GenUtil.strNumericFormat(txtCashDisc.Text.ToString());
+                        DropCashDiscType.SelectedIndex = DropCashDiscType.Items.IndexOf((DropCashDiscType.Items.FindByValue(SqlDtr.GetValue(16).ToString())));
+                        txtVAT.Text = SqlDtr.GetValue(17).ToString();
+                        Textcgst.Text = SqlDtr["CGST_Amount"].ToString();
+                        Textsgst.Text = SqlDtr["SGST_Amount"].ToString();
+                        txtschemetotal.Text = SqlDtr.GetValue(18).ToString();
+                        txtfleetoediscount.Text = SqlDtr.GetValue(19).ToString();
+                        dropfleetoediscount.SelectedIndex = dropfleetoediscount.Items.IndexOf((dropfleetoediscount.Items.FindByValue(SqlDtr.GetValue(20).ToString())));
+                        txtfleetoediscountRs.Text = SqlDtr.GetValue(21).ToString();
+                        txtliter.Text = SqlDtr.GetValue(22).ToString();
+                        if (SqlDtr["ChallanNo"].ToString() == "0")
+                            txtChallanNo.Text = "";
+                        else
+                            txtChallanNo.Text = SqlDtr["ChallanNo"].ToString();
+                        if (GenUtil.trimDate(SqlDtr["ChallanDate"].ToString()) == "1/1/1900")
+                            txtChallanDate.Text = "";
+                        else
+                            txtChallanDate.Text = GenUtil.str2DDMMYYYY(GenUtil.trimDate(SqlDtr["ChallanDate"].ToString()));
+                        if (txtVAT.Text.Trim() == "0")
+                        {
+                            Yes.Checked = false;
+                            No.Checked = true;
+                        }
+                        else
+                        {
+                            No.Checked = false;
+                            Yes.Checked = true;
+                        }
+                    }
 					SqlDtr.Close();
 					#endregion
 		
