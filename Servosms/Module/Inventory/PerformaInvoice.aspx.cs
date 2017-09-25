@@ -977,6 +977,7 @@ namespace Servosms.Module.Inventory
                 HtmlInputHidden[] tmpIgst = { tempIgst1, tempIgst2, tempIgst3, tempIgst4, tempIgst5, tempIgst6, tempIgst7, tempIgst8, tempIgst9, tempIgst10, tempIgst11, tempIgst12, tempIgst13, tempIgst14, tempIgst15, tempIgst16, tempIgst17, tempIgst18, tempIgst19, tempIgst20 };
                 HtmlInputHidden[] tmpHsn = { tempHsn1, tempHsn2, tempHsn3, tempHsn4, tempHsn5, tempHsn6, tempHsn7, tempHsn8, tempHsn9, tempHsn10, tempHsn11, tempHsn12, tempHsn13, tempHsn14, tempHsn15, tempHsn16, tempHsn17, tempHsn18, tempHsn19, tempHsn20 };
                 HtmlInputHidden[] tmpAmount = { tmpAmount1, tmpAmount2, tmpAmount3, tmpAmount4, tmpAmount5, tmpAmount6, tmpAmount7, tmpAmount8, tmpAmount9, tmpAmount10, tmpAmount11, tmpAmount12 };
+                HtmlInputHidden[] tmpscheme = { tmpSch1, tmpSch2, tmpSch3, tmpSch4, tmpSch5, tmpSch6, tmpSch7, tmpSch8, tmpSch9, tmpSch10, tmpSch11, tmpSch12 };
 
 
                 int h1 = System.Convert.ToInt32(Math.Floor((Header1Height * 25) / 4.05));
@@ -1149,7 +1150,7 @@ namespace Servosms.Module.Inventory
 
                             //Coment by vikas 14.08.09 sw.WriteLine(info31,PCode,"",GenUtil.TrimLength(ProdCat[k].Value,35),Qty[k].Text,System.Convert.ToString(double.Parse(Qty[k].Text)*double.Parse(totalqty)),Rate[k].Text,scheme[k].Text,SecSP[k].Value,Amount[k].Text);
 
-                            sw.WriteLine(info31, PCode, tmpHsn[k].Value.ToString(), GenUtil.TrimLength(pname[1] + ":" + pname[2], 35), Qty[k].Text, System.Convert.ToString(double.Parse(Qty[k].Text) * double.Parse(totalqty)), Rate[k].Text, scheme[k].Text, SecSP[k].Value, tmpAmount[k].Value.ToString(), tmpCgst[k].Value.ToString(), tmpSgst[k].Value.ToString(), tmpIgst[k].Value.ToString());
+                            sw.WriteLine(info31, PCode, tmpHsn[k].Value.ToString(), GenUtil.TrimLength(pname[1] + ":" + pname[2], 35), Qty[k].Text, System.Convert.ToString(double.Parse(Qty[k].Text) * double.Parse(totalqty)), Rate[k].Text, tmpscheme[k].Value.ToString(), SecSP[k].Value, tmpAmount[k].Value.ToString(), tmpCgst[k].Value.ToString(), tmpSgst[k].Value.ToString(), tmpIgst[k].Value.ToString());
 
                             rowCounter++;
                             //if(k==bh-10 && Qty.Length<bh-2)
@@ -1183,7 +1184,7 @@ namespace Servosms.Module.Inventory
                             SqlDtr.Close();
                             //Coment by vikas 14.08.09 sw.WriteLine(info31,PCode,"",GenUtil.TrimLength("(Free) "+ProdCat[k].Value,35),"",schQty[k].Text,schQty[k].Text,System.Convert.ToString(double.Parse(schQty[k].Text)*double.Parse(totalqty)),"","","");
 
-                            sw.WriteLine(info31, PCode, tmpHsn[k].Value.ToString(), GenUtil.TrimLength(pname[1] + ":" + pname[2], 35), Qty[k].Text, System.Convert.ToString(double.Parse(Qty[k].Text) * double.Parse(totalqty)), Rate[k].Text, scheme[k].Text, SecSP[k].Value, tmpAmount[k].Value.ToString(), tmpCgst[k].Value.ToString(), tmpSgst[k].Value.ToString(), tmpIgst[k].Value.ToString());
+                            sw.WriteLine(info31, PCode, tmpHsn[k].Value.ToString(), GenUtil.TrimLength(pname[1] + ":" + pname[2], 35), Qty[k].Text, System.Convert.ToString(double.Parse(Qty[k].Text) * double.Parse(totalqty)), Rate[k].Text, tmpscheme[k].Value.ToString(), SecSP[k].Value, tmpAmount[k].Value.ToString(), tmpCgst[k].Value.ToString(), tmpSgst[k].Value.ToString(), tmpIgst[k].Value.ToString());
                             rowCounter++;
                         }
                     }

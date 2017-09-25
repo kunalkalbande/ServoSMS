@@ -751,7 +751,7 @@
 				}
             }
 	        SchSP =qtSP
-
+            f1.tmpSch<%=i%>.value= f1.txtsch<%=i%>.value
 	        var Disc=document.Form1.txtDisc.value
 	        if(Disc=="" || isNaN(Disc))
 	            Disc=0
@@ -1445,6 +1445,28 @@
 				type="hidden" size="1" name="tempHsn17" runat="server"/> <INPUT id="tempHsn18" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempHsn18" runat="server"/> <INPUT id="tempHsn19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempHsn19" runat="server"/> <INPUT id="tempHsn20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn20" runat="server"/>
+
+            <INPUT id="tmpSch1" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tmpSch1" runat="server"/> <INPUT id="tmpSch2" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn2" runat="server"/> <INPUT id="tmpSch3" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn3" runat="server"/> <INPUT id="tmpSch4" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn4" runat="server"/> <INPUT id="tmpSch5" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn5" runat="server"/> <INPUT id="tmpSch6" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn6" runat="server"/> <INPUT id="tmpSch7" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn7" runat="server"/> <INPUT id="tmpSch8" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn8" runat="server"/> <INPUT id="tmpSch9" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn9" runat="server"/> <INPUT id="tmpSch10" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn10" runat="server"/> <INPUT id="tmpSch11" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn11" runat="server"/> <INPUT id="tmpSch12" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn12" runat="server"/> <INPUT id="tmpSch13" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn13" runat="server"/> <INPUT id="tmpSch14" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn14" runat="server"/> <INPUT id="tmpSch15" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn15" runat="server"/> <INPUT id="tmpSch16" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn16" runat="server"/> <INPUT id="tmpSch17" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn17" runat="server"/> <INPUT id="tmpSch18" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn18" runat="server"/> <INPUT id="tmpSch19" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
+				type="hidden" size="1" name="tempHsn19" runat="server"/> <INPUT id="tmpSch20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempHsn20" runat="server"/>
 
             <INPUT id="tmpAmount1" style="Z-INDEX: 118; LEFT: 350px; WIDTH: 1px; POSITION: absolute; TOP: 2px; HEIGHT: 20px"
