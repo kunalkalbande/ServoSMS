@@ -1858,7 +1858,7 @@ namespace Servosms.Module.Inventory
 					
 					//**Save(ProdName[j].Value,PackType[j].Value,Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j);
 					//vikas sharma 22.04.09 Save(arrName[0].ToString(),arrName[1].ToString(),Qty[j].Text.ToString(),Rate[j].Text.ToString (),Amount[j].Text.ToString (),temp,GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.ToString())+" "+DateTime.Now.TimeOfDay.ToString(),scheme[j].Text.ToString (),foe[j].Text.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
-					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), scheme[j].Text.ToString (),foe[j].Value.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
+					Save(arrName[1].ToString(),arrName[2].ToString(), Request.Form[Qty[j].ID].ToString(), Request.Form[Rate[j].ID].ToString(), Request.Form[Amount[j].ID].ToString(),temp, GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), Request.Form[scheme[j].ID].ToString(), foe[j].Value.ToString (),j,tmpSecSPType[j].Value,SecSP[j].Value,tmpFoeType[j].Value,tmpSchType[j].Value);
 					//for(int i=0;i<ProdName1.Length ;i++)
 					//{
 					//****************
@@ -1881,7 +1881,7 @@ namespace Servosms.Module.Inventory
 						arrschName[0]="";
 						arrschName[1]="";
 					}
-					Save1(arrschName[0].ToString(),arrschName[1].ToString(), Request.Form[Qty1[j].ID].ToString(), GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), scheme[j].Text.ToString (),j,Schtemp);
+					Save1(arrschName[0].ToString(),arrschName[1].ToString(), Request.Form[Qty1[j].ID].ToString(), GenUtil.str2DDMMYYYY(lblInvoiceDate.Text.Trim()), Request.Form[scheme[j].ID].ToString(),j,Schtemp);
 					InsertBatchNo(arrschName[0].ToString(),arrschName[1].ToString(), Request.Form[Qty1[j].ID].ToString());
 					//}
 					

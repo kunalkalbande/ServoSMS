@@ -269,7 +269,7 @@ function CheckReceipt(t)
 				<tr>
 					<td></td>
 					<td colSpan="3">
-						<TABLE cellSpacing="0" cellPadding="0" width="600" border="1">
+						<TABLE cellSpacing="0" cellPadding="0" width="700" border="1">
 							<TR>
 								<TD align="center" width="25%">Due Payment</TD>
 								<TD align="center" width="55%">Received Payment</TD>
@@ -284,7 +284,7 @@ function CheckReceipt(t)
 												<HeaderStyle Width="60px"></HeaderStyle>
 											</asp:BoundColumn>
 											<asp:BoundColumn DataField="invoice_date" HeaderText="Bill Date" DataFormatString="{0:dd-MM-yyyy}">
-												<HeaderStyle Width="100px"></HeaderStyle>
+												<HeaderStyle Width="150px"></HeaderStyle>
 											</asp:BoundColumn>
 											<asp:BoundColumn DataField="balance" HeaderText="Amount" DataFormatString="{0:N2}">
 												<HeaderStyle Width="75px"></HeaderStyle>
