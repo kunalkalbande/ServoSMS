@@ -154,6 +154,8 @@
 					<TD></TD>
 					<td><asp:hyperlink id="Hyperlink10" runat="server" NavigateUrl="../Module/Inventory/Fleet_OEDiscountEntry.aspx">Fleet/OE Discount Entry</asp:hyperlink></td>					
 					<TD></TD>
+                    <TD><asp:hyperlink id="Hyperlink17" runat="server" NavigateUrl="../Module/Inventory/SalesInvoice.aspx">Sales Invoice</asp:hyperlink></TD>
+                    <TD></TD>
 					<TD><asp:hyperlink id="Hyperlink82" runat="server" NavigateUrl="../Module/Reports/ClaimAnalysis.aspx">Claim Analysis</asp:hyperlink></TD>
 					<TD></TD>
 					<TD><b><asp:hyperlink id="Hyperlink11" runat="server" NavigateUrl="../Module/Reports/PurchaseBook.aspx">Purchase Book</asp:hyperlink></b></TD>
@@ -166,10 +168,10 @@
 					<TD></TD>
 					<td><asp:hyperlink id="Hyperlink75" runat="server" NavigateUrl="../Module/Master/MarketCustEntry.aspx">Market Customer Entry</asp:hyperlink></td>
 					<TD></TD>
-					<TD><asp:hyperlink id="Hyperlink17" runat="server" NavigateUrl="../Module/Inventory/SalesInvoice.aspx">Sales Invoice</asp:hyperlink></TD>
+					<TD><asp:hyperlink id="Hyperlink55" runat="server" NavigateUrl="../Module/Inventory/SalesReturn.aspx">Sales Return</asp:hyperlink></TD>
 					<TD></TD>
 					<TD><b><asp:hyperlink id="Hyperlink79" runat="server" NavigateUrl="../Module/Reports/CreditPeriodAnalysisSheetReport.aspx">Credit Analysis Sheet</asp:hyperlink></b></TD>
-					<TD></TD>
+					<TD></TD>                    
 					<TD><asp:hyperlink id="Hyperlink29" runat="server" NavigateUrl="../Module/Reports/PurchaseListIOCL.aspx">Purchase Statment IOCL</asp:hyperlink></TD>
 				</TR>
 				<TR>
@@ -180,7 +182,7 @@
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink100" runat="server" NavigateUrl="../Module/Master/Prod_Promo_Dis_Entry.aspx">Prod Promo Dis Entry</asp:hyperlink></TD>
 					<TD></TD>
-					<TD><asp:hyperlink id="Hyperlink55" runat="server" NavigateUrl="../Module/Inventory/SalesReturn.aspx">Sales Return</asp:hyperlink></TD>
+					<TD><asp:hyperlink id="Hyperlink59" runat="server" NavigateUrl="../Module/Inventory/StockAdjustment.aspx">Stock Adjustment</asp:hyperlink></TD>
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink43" runat="server" NavigateUrl="../Module/Reports/Customer_Bill_Ageing.aspx">Customer Bill Ageing</asp:hyperlink></TD>
 					<TD></TD>
@@ -194,7 +196,7 @@
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink93" runat="server" NavigateUrl="../Module/Master/salesPersonAssignment.aspx">Sales Person Assignment</asp:hyperlink></TD>
 					<TD></TD>
-					<TD><asp:hyperlink id="Hyperlink59" runat="server" NavigateUrl="../Module/Inventory/StockAdjustment.aspx">Stock Adjustment</asp:hyperlink></TD>
+					<TD><asp:hyperlink id="Hyperlink110" runat="server" NavigateUrl="../Module/Reports/Back_Order_Process.aspx">Back Order Process</asp:hyperlink></TD>
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink66" runat="server" NavigateUrl="../Module/Reports/CustomerDataMining.aspx">Customer Data Mining</asp:hyperlink></TD>
 					<TD></TD>
@@ -208,7 +210,7 @@
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink19" runat="server" NavigateUrl="../Module/Inventory/SchemeDiscountentry.aspx">Scheme/Discount Entry</asp:hyperlink></TD>
 					<TD></TD>
-					<TD><asp:hyperlink id="Hyperlink110" runat="server" NavigateUrl="../Module/Reports/Back_Order_Process.aspx">Back Order Process</asp:hyperlink></TD>
+					<TD>&nbsp;</TD>
 					<TD></TD>
 					<TD><b><asp:hyperlink id="Hyperlink42" runat="server" NavigateUrl="../Module/Reports/CustomerWiseOutstanding.aspx">Customer Outstanding</asp:hyperlink></b></TD>
 					<TD></TD>
