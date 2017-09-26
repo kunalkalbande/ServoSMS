@@ -2003,6 +2003,13 @@
 						</TABLE>
 						<TABLE cellPadding="0" border="0" cellspacing="0">
 							<TR>
+								<TD>&nbsp;</TD>
+								<TD>&nbsp;</TD>
+								<TD>&nbsp;</TD>
+								<TD>&nbsp;</TD>
+								<TD>&nbsp;</TD>
+							</TR>
+							<TR>
 								<TD>Promo Scheme</TD>
 								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -2013,10 +2020,9 @@
 							<TR>
 								<TD>Scheme&nbsp;Discount&nbsp;</TD>
 								<TD><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="110px" ReadOnly="True"
-										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-									Total Ltr.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Ltr.&nbsp;&nbsp;&nbsp;
                                     <asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
-										Width="59px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+										Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtDisc" onblur="GetNetAmount()"
@@ -2034,7 +2040,8 @@
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
 										<asp:ListItem Value="%">%</asp:ListItem>
 									</asp:dropdownlist><asp:textbox id="txtfleetoediscountRs" onblur="GetNetAmount()" runat="server" Width="110px" ReadOnly="True"
-										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox>
+									&nbsp;
 									Secondry Sp. Disc.&nbsp;&nbsp;<asp:textbox id="txtSecondrySpDisc" Width="60px" ReadOnly="True" BorderStyle="Groove" CssClass="dropdownlist"
 										Runat="server"></asp:textbox></TD>
 								<TD></TD>
@@ -2065,8 +2072,9 @@
 								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
                              <TR>
-                                <TD></TD>
-                                <TD></TD>
+                                <TD>&nbsp;Remark</TD>
+                                <TD><asp:textbox id="txtRemark" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"
+											MaxLength="49"></asp:textbox></TD>
                                 <TD></TD>
                                 <TD align="left">
                                     <table width="100%">
@@ -2100,10 +2108,9 @@
                                 <TD><asp:TextBox ID="Textsgst" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
                             </TR>
 							<TR>
-								<TD>&nbsp;Remark</TD>
+								<TD>&nbsp;</TD>
 								<TD>
-									<P><asp:textbox id="txtRemark" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"
-											MaxLength="49"></asp:textbox></P>
+									<P>&nbsp;</P>
 								</TD>
 								<TD></TD>
 								<TD>Net Amount</TD>
