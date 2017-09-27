@@ -396,6 +396,7 @@ namespace Servosms.Module.Inventory
                     //getvalue();
                     PriceUpdation();
                     GetProducts();
+                    GetProductsUnit();
                     FetchCity();
                     FatchInvoiceNo();
                     getscheme();
@@ -3088,7 +3089,7 @@ namespace Servosms.Module.Inventory
                 }
                 #region Fetch the Product Types and fill in the ComboBoxes
                 string str = "";
-                sql = "select distinct p.Prod_ID,Category,Prod_Name,Pack_Type,Prod_Code from products p,price_updation pu where Category!='Fuel' and p.prod_id =pu.prod_id order by Category,Prod_Name";
+                sql = "select distinct p.Prod_ID,Category,Prod_Name,Pack_Type,Prod_Code,Unit from products p,price_updation pu where Category!='Fuel' and p.prod_id =pu.prod_id order by Category,Prod_Name";
                 SqlDtr = obj.GetRecordSet(sql);
                 while (SqlDtr.Read())
                 {
@@ -3127,6 +3128,7 @@ namespace Servosms.Module.Inventory
                 CreateLogFiles.ErrorLog("Form:PurchaseInvoice.aspx,Method:GetProducts().  EXCEPTION   " + ex.Message + ". User_id " + uid);
             }
         }
+
 
         private void DropType1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -4621,22 +4623,66 @@ namespace Servosms.Module.Inventory
         /// <summary>
         /// This method is used to fatch the product stockist scheme and stored in hidden textbox.
         /// </summary>
+        /// <summary>
+        /// This method is used to fatch the product stockist scheme and stored in hidden textbox.
+        /// </summary>
         public void GetStockistScheme()
+        {
+            string strDiscount = GetStockistDiscount();
+            InventoryClass obj = new InventoryClass();
+            SqlDataReader SqlDtr;
+            string sql;
+            string str = "";
+            sql = "select p.prod_code cat,p.prod_name pname,p.pack_type ptype,o.discount dis,o.discounttype distype  from products p,StktSchDiscount o where p.prod_id=o.prodid and o.schtype in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)','Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim()) + "' and cast(floor(cast(o.dateto as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim()) + "'";
+            SqlDtr = obj.GetRecordSet(sql);
+            while (SqlDtr.Read())
+            {
+                //str=str+":"+SqlDtr["cat"]+":"+SqlDtr["pname"]+":"+SqlDtr["ptype"]+":"+SqlDtr["dis"]+":"+SqlDtr["scheme"]+":"+SqlDtr["distype"]+",";
+                //str = str + ":" + SqlDtr["cat"] + ":" + SqlDtr["pname"] + ":" + SqlDtr["ptype"] + ":" + SqlDtr["dis"] + ":" + SqlDtr["distype"] + ",";
+                str = str + ":" + SqlDtr["cat"] + ":" + SqlDtr["pname"] + ":" + SqlDtr["ptype"] + ":" + strDiscount + ":" + "%" + ",";
+            }
+            SqlDtr.Close();
+            tempStktSchDis.Value = str;
+        }
+
+        /// <summary>
+        /// This method retrives discount Servostk from SetDis table.
+        /// </summary>
+        /// <returns></returns>
+        public string GetStockistDiscount()
+        {
+            string strDiscount = "";
+            InventoryClass obj = new InventoryClass();
+            SqlDataReader SqlDtr;
+            string sql;
+            string str = "";
+            sql = "select Servostk from SetDis";
+            SqlDtr = obj.GetRecordSet(sql);
+            while (SqlDtr.Read())
+            {
+                strDiscount = SqlDtr["Servostk"].ToString();
+            }
+            SqlDtr.Close();
+            return strDiscount;
+        }
+
+
+        public void GetProductsUnit()
         {
             InventoryClass obj = new InventoryClass();
             SqlDataReader SqlDtr;
             string sql;
             string str = "";
             //sql="select p.category cat,p.prod_name pname,p.pack_type ptype,o.datefrom df,o.dateto dt,o.discount dis,o.schname scheme,o.discounttype distype  from products p,per_discount o where p.prod_id=o.prodid and o.schname in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim())+"' and cast(floor(cast(o.dateto as float)) as datetime) >= '"+GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim()) +"'";
-            sql = "select p.prod_code cat,p.prod_name pname,p.pack_type ptype,o.discount dis,o.discounttype distype  from products p,StktSchDiscount o where p.prod_id=o.prodid and o.schtype in ('Secondry(LTR Scheme)','Primary(LTR&% Scheme)','Secondry SP(LTRSP Scheme)') and cast(floor(cast(o.datefrom as float)) as datetime) <= '" + GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim()) + "' and cast(floor(cast(o.dateto as float)) as datetime) >= '" + GenUtil.str2MMDDYYYY(lblInvoiceDate.Text.Trim()) + "'";
+            sql = "select p.prod_code cat,p.prod_name pname,p.pack_type ptype,p.Unit unit from products p";
             SqlDtr = obj.GetRecordSet(sql);
             while (SqlDtr.Read())
             {
                 //str=str+":"+SqlDtr["cat"]+":"+SqlDtr["pname"]+":"+SqlDtr["ptype"]+":"+SqlDtr["dis"]+":"+SqlDtr["scheme"]+":"+SqlDtr["distype"]+",";
-                str = str + ":" + SqlDtr["cat"] + ":" + SqlDtr["pname"] + ":" + SqlDtr["ptype"] + ":" + SqlDtr["dis"] + ":" + SqlDtr["distype"] + ",";
+                str = str + ":" + SqlDtr["cat"] + ":" + SqlDtr["pname"] + ":" + SqlDtr["ptype"] + ":" + SqlDtr["unit"]  + ",";
             }
             SqlDtr.Close();
-            tempStktSchDis.Value = str;
+            tempUnit.Value = str;
         }
 
         public void GetFixedDiscount()
