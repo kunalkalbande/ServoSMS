@@ -1874,123 +1874,123 @@ function MoveFocus(t,drop,e)
 												<td colSpan="7">
 													<table cellSpacing="0" cellPadding="0">
 														<tr>
-															<TD colSpan="3"><asp:textbox id="txtTypesch1" runat="server" Width="326px" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch1" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch1" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch1" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td width="51">&nbsp;</td>
 															<td width="51">&nbsp;</td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk1" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk1" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</tr>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch2" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch2" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch2" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch2" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td>&nbsp;</td>
 															<td>&nbsp;</td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk2" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk2" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch3" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch3" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch3" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch3" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk3" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk3" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch4" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch4" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch4" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch4" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right"><asp:textbox id="txtstk4" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right"><asp:textbox id="txtstk4" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch5" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch5" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch5" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch5" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk5" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk5" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch6" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch6" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch6" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch6" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk6" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk6" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch7" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch7" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch7" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch7" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk7" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk7" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch8" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch8" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch8" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch8" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk8" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk8" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch9" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch9" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch9" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch9" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk9" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk9" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch10" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch10" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch10" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch10" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk10" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk10" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch11" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch11" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch11" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch11" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk11" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk11" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 														<TR>
-															<TD colSpan="3"><asp:textbox id="txtTypesch12" runat="server" Width="100%" BorderStyle="Groove" ReadOnly="True"
+															<TD colSpan="3"><asp:textbox id="txtTypesch12" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
-															<TD><asp:textbox id="txtQtysch12" runat="server" Width="52px" BorderStyle="Groove" ReadOnly="True"
+															<TD><asp:textbox id="txtQtysch12" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True"
 																	CssClass="dropdownlist"></asp:textbox></TD>
 															<td></td>
 															<td></td>
-															<TD align="right" colSpan="1"><asp:textbox id="txtstk12" runat="server" Width="80px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
+															<TD align="right" colSpan="1"><asp:textbox id="txtstk12" runat="server" Width="130px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"
 																	Enabled="False"></asp:textbox></TD>
 														</TR>
 													</table>
@@ -2020,7 +2020,7 @@ function MoveFocus(t,drop,e)
 							<TR>
 								<TD>Scheme&nbsp;Discount&nbsp;</TD>
 								<TD class="auto-style1"><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="110px" BorderStyle="Groove"
-										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Ltr.&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
+										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Ltr.&nbsp; <asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
 										Width="59px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
