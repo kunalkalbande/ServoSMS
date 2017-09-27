@@ -1086,6 +1086,14 @@ function MoveFocus(t,drop,e)
 }
 //-->
 		</SCRIPT>
+	    <style type="text/css">
+            .auto-style1 {
+                width: 372px;
+            }
+            .auto-style2 {
+                width: 195px;
+            }
+        </style>
 	</HEAD>
 	<BODY onkeydown="change(event)">
 		<form id="Form1" method="post" runat="server">
@@ -1425,7 +1433,7 @@ function MoveFocus(t,drop,e)
 				type="hidden" size="1" name="tempHsn19" runat="server"/> <INPUT id="tempHsn20" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempHsn20" runat="server"/>
 
-			<table height="278" width="778" align="center">
+			<table height="278" width="900" align="center">
 				<tr>
 					<th align="center" colSpan="3">
 						<font color="#ce4848">Order Collection</font>
@@ -2003,30 +2011,29 @@ function MoveFocus(t,drop,e)
 						<TABLE cellPadding="0" border="0">
 							<TR>
 								<TD>Promo Scheme</TD>
-								<TD><asp:textbox id="txtPromoScheme" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
+								<TD class="auto-style1"><asp:textbox id="txtPromoScheme" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD>&nbsp;</TD>
 								<TD>Grand Total</TD>
-								<TD><asp:textbox id="txtGrandTotal" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
+								<TD class="auto-style2"><asp:textbox id="txtGrandTotal" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Scheme&nbsp;Discount&nbsp;</TD>
-								<TD><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="110px" BorderStyle="Groove"
-										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-									Total Ltr.&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
+								<TD class="auto-style1"><asp:textbox id="txtschemetotal" onblur="GetNetAmount()" runat="server" Width="110px" BorderStyle="Groove"
+										ReadOnly="True" CssClass="dropdownlist"></asp:textbox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total Ltr.&nbsp;&nbsp;<asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtliter" runat="server"
 										Width="59px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Discount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtDisc" onblur="GetNetAmount()"
-										runat="server" Width="124px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropDiscType" runat="server" CssClass="dropdownlist" onchange="GetNetAmount()">
+								<TD class="auto-style2"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtDisc" onblur="GetNetAmount()"
+										runat="server" Width="70px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropDiscType" runat="server" CssClass="dropdownlist" onchange="GetNetAmount()">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtDiscount" runat="server" Width="110px" BorderStyle="Groove" ReadOnly="True"
+									</asp:dropdownlist><asp:textbox id="txtDiscount" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Fleet/OE Discount</TD>
-								<TD><asp:textbox id="txtfleetoediscount" onblur="GetNetAmount()" runat="server" Width="110px" Visible="False"
+								<TD class="auto-style1"><asp:textbox id="txtfleetoediscount" onblur="GetNetAmount()" runat="server" Width="50px" Visible="False"
 										BorderStyle="Groove" CssClass="dropdownlist"></asp:textbox><asp:dropdownlist id="dropfleetoediscount" onblur="GetNetAmount()" runat="server" Height="22px" Width="58px"
 										Visible="False" CssClass="dropdownlist">
 										<asp:ListItem Value="Rs.">Rs.</asp:ListItem>
@@ -2037,16 +2044,16 @@ function MoveFocus(t,drop,e)
 										Runat="server"></asp:textbox></TD>
 								<TD></TD>
 								<TD>Cash Discount</TD>
-								<TD><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtCashDisc" onblur="GetNetAmount()"
-										runat="server" Width="124px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropCashDiscType" runat="server" Height="22" CssClass="dropdownlist" onchange="GetNetAmount()">
+								<TD class="auto-style2"><asp:textbox onkeypress="return GetOnlyNumbers(this, event, false,true);" id="txtCashDisc" onblur="GetNetAmount()"
+										runat="server" Width="70px" BorderStyle="Groove" CssClass="dropdownlist" MaxLength="5"></asp:textbox><asp:dropdownlist id="DropCashDiscType" runat="server" Height="17px" CssClass="dropdownlist" onchange="GetNetAmount()">
 										<asp:ListItem Value="Rs" Selected="True">Rs.</asp:ListItem>
 										<asp:ListItem Value="Per">%</asp:ListItem>
-									</asp:dropdownlist><asp:textbox id="txtCashDiscount" runat="server" Width="110px" BorderStyle="Groove" ReadOnly="True"
+									</asp:dropdownlist><asp:textbox id="txtCashDiscount" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
 								<TD>Message</TD>
-								<TD><asp:textbox id="txtMessage" runat="server" Width="110px" BorderStyle="Groove" ReadOnly="True"
+								<TD class="auto-style1"><asp:textbox id="txtMessage" runat="server" Width="110px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 								<TD></TD>
 								<TD align="left">
@@ -2060,12 +2067,13 @@ function MoveFocus(t,drop,e)
                                         </tr>
                                     </table>
 									</TD>
-								<TD><asp:textbox id="txtVAT" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist" ></asp:textbox></TD>
+								<TD class="auto-style2"><asp:textbox id="txtVAT" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist" ></asp:textbox></TD>
 							</TR>
 
                             <TR>
-                                <TD></TD>
-                                <TD></TD>
+                                <TD>&nbsp;Remark</TD>
+                                <TD class="auto-style1"><asp:textbox id="txtRemark" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"
+											MaxLength="49"></asp:textbox></TD>
                                 <TD></TD>
                                 <TD align="left">
                                     <table width="100%">
@@ -2078,12 +2086,12 @@ function MoveFocus(t,drop,e)
                                         </tr>
                                     </table>
                                     </TD>
-                                <TD><asp:TextBox ID="Textcgst" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
+                                <TD class="auto-style2"><asp:TextBox ID="Textcgst" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
                             </TR>
 
                             <TR>
                                 <TD></TD>
-                                <TD></TD>
+                                <TD class="auto-style1"></TD>
                                 <TD></TD>
                                 <TD align="left">
                                     <table width="100%">
@@ -2096,18 +2104,17 @@ function MoveFocus(t,drop,e)
                                         </tr>
                                     </table>
                                     </TD>
-                                <TD><asp:TextBox ID="Textsgst" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
+                                <TD class="auto-style2"><asp:TextBox ID="Textsgst" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True" CssClass="dropdownlist"></asp:TextBox></TD>
                             </TR>
 							</TR>
 							<TR>
-								<TD>&nbsp;Remark</TD>
-								<TD>
-									<P><asp:textbox id="txtRemark" runat="server" Width="110px" BorderStyle="Groove" CssClass="dropdownlist"
-											MaxLength="49"></asp:textbox></P>
+								<TD>&nbsp;</TD>
+								<TD class="auto-style1">
+									<P>&nbsp;</P>
 								</TD>
 								<TD></TD>
 								<TD>Net Amount</TD>
-								<TD><asp:textbox id="txtNetAmount" runat="server" Width="124px" BorderStyle="Groove" ReadOnly="True"
+								<TD class="auto-style2"><asp:textbox id="txtNetAmount" runat="server" Width="70px" BorderStyle="Groove" ReadOnly="True"
 										CssClass="dropdownlist"></asp:textbox></TD>
 							</TR>
 							<TR>
