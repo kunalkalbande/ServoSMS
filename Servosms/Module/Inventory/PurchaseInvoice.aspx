@@ -256,13 +256,28 @@
                 {
                     if(document.Form1.tempStktSchDis<%=i%>.value!="")
                     {
+                        var dbValues=document.Form1.txtMainGST.value;
+                        var mainarr = new Array()
+                        mainarr =dbValues.split("~");
+                        var selproduct=document.Form1.DropType<%=i%>.value.split(":");
+                        var cgst=0;
+                        var sgst=0;
+                        for(i=0;i<mainarr.length-1;i++)
+                        {
+                            taxarr = mainarr[i].split("|")
+                            if(taxarr[0]==selproduct[0])
+                            {
+                                cgst=taxarr[4];
+                                sgst=taxarr[5];
+                            }
+                        }
                         var stkt = document.Form1.tempStktSchDis<%=i%>.value
                         stktdis = stkt.split(":")
                         if(!document.Form1.chkfoc<%=i%>.checked)
                         {
                             if(stktdis[1]=="%")
                             {
-                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*eval(18))/100;
+                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*(eval(cgst)+eval(sgst)))/100;
                                 var stckTot=eval(stckDis)+eval(document.Form1.txtAmount<%=i%>.value)
                                 stktdistot=stktdistot+(eval(stckTot)*eval(stktdis[0]))/100;
                             }
@@ -445,13 +460,28 @@
                 {
                     if(document.Form1.tempStktSchDis<%=i%>.value!="")
                     {
+                        var dbValues=document.Form1.txtMainGST.value;
+                        var mainarr = new Array()
+                        mainarr =dbValues.split("~");
+                        var selproduct=document.Form1.DropType<%=i%>.value.split(":");
+                        var cgst=0;
+                        var sgst=0;
+                        for(i=0;i<mainarr.length-1;i++)
+                        {
+                            taxarr = mainarr[i].split("|")
+                            if(taxarr[0]==selproduct[0])
+                            {
+                                cgst=taxarr[4];
+                                sgst=taxarr[5];
+                            }
+                        }
                         var stkt = document.Form1.tempStktSchDis<%=i%>.value
                         stktdis = stkt.split(":")
                         if(!document.Form1.chkfoc<%=i%>.checked)
                         {
                             if(stktdis[1]=="%")
                             {
-                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*eval(18))/100;
+                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*(eval(cgst)+eval(sgst)))/100;
                                 var stckTot=eval(stckDis)+eval(document.Form1.txtAmount<%=i%>.value)
                                 stktdistot=stktdistot+(eval(stckTot)*eval(stktdis[0]))/100;
                             }
@@ -1146,13 +1176,24 @@
                 {
                     if(document.Form1.tempStktSchDis<%=i%>.value!="")
                     {
+                        var cgst=0;
+                        var sgst=0;
+                        for(i=0;i<mainarr.length-1;i++)
+                        {
+                            taxarr = mainarr[i].split("|")
+                            if(taxarr[0]==selproduct[0])
+                            {
+                                cgst=taxarr[4];
+                                sgst=taxarr[5];
+                            }
+                        }
                         var stkt = document.Form1.tempStktSchDis<%=i%>.value
                         stktdis = stkt.split(":")
                         if(!document.Form1.chkfoc<%=i%>.checked)
                         {
                             if(stktdis[1]=="%")
                             {
-                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*eval(18))/100;
+                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*(eval(cgst)+eval(sgst)))/100;
                                 var stckTot=eval(stckDis)+eval(document.Form1.txtAmount<%=i%>.value)
                                 stktdistot=stktdistot+(eval(stckTot)*eval(stktdis[0]))/100;
                             }
