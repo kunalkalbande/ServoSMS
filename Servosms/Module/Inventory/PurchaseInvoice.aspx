@@ -755,7 +755,7 @@
                 //coment by vikas 31.10.2012 GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless))+ETFOC)
 				
                 //coment by vikas 22.12.2012 GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless))+ETFOC)
-                GT=eval(document.Form1.txtGrandTotal.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                GT=eval(document.Form1.txtGrandTotal.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc)))   // Add by vikas 22.12.2012
                 //GT=GT-eval(fixedDisc_Add)
 				 				
                 CashDisc=(GT*CashDisc)/100
@@ -1079,15 +1079,19 @@
                 //var bird=document.Form1.txtebirdamt.value
                 //if(bird=="" || isNaN(bird))
                 //    bird=0
+
                 var EarlyDisType=document.Form1.tempEarlyDisType.value;
-                if(EarlyDisType!="%")
+                if(!document.Form1.chkfoc<%=i%>.checked)
                 {
-                    birdperProd=(eval(document.Form1.txtqPack<%=i%>.value)*eval(document.Form1.txtQty<%=i%>.value))*document.Form1.txtebird.value;
-                }
-                else
-                {
-                    var early=document.Form1.txtAmount<%=i%>.value*document.Form1.txtebird.value;
-                    birdperProd=early/100;
+                    if(EarlyDisType!="%")
+                    {
+                        birdperProd=(eval(document.Form1.txtqPack<%=i%>.value)*eval(document.Form1.txtQty<%=i%>.value))*document.Form1.txtebird.value;
+                    }
+                    else
+                    {
+                        var early=document.Form1.txtAmount<%=i%>.value*document.Form1.txtebird.value;
+                        birdperProd=early/100;
+                    }
                 }
 
                 var birdless=document.Form1.txtbirdless.value
@@ -1253,7 +1257,7 @@
                 //cashdiscount
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
-                    GT=eval(document.Form1.txtAmount<%=i%>.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                    GT=eval(document.Form1.txtAmount<%=i%>.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc)))   // Add by vikas 22.12.2012
                     var cashdiscount=(GT*CashDisc)/100
                     //document.Form1.txtTotalCashDisc.value=eval(CashDisc)
                     makeRound(cashdiscount,2)
