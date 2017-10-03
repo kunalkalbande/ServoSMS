@@ -3272,7 +3272,7 @@ namespace Servosms.Module.Inventory
                         txtGrandTotal.Text = SqlDtr.GetValue(7).ToString();
 
 
-                        double ETFOC = double.Parse(SqlDtr["FOC_Discount"].ToString()) * 2 / 100;
+                        //double ETFOC = double.Parse(SqlDtr["FOC_Discount"].ToString()) * 2 / 100;
                         //coment by vikas 23.11.2012 txtDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString()); 
                         //txtDisc.Text=GenUtil.strNumericFormat(SqlDtr.GetValue(8).ToString());
                         DropDiscType.SelectedIndex = DropDiscType.Items.IndexOf((DropDiscType.Items.FindByValue(SqlDtr.GetValue(9).ToString())));
@@ -3335,7 +3335,7 @@ namespace Servosms.Module.Inventory
                         }
                         //Coment by vikas 2.1.2013 double TotalCashDiscount=double.Parse(SqlDtr["Grand_Total"].ToString())+double.Parse(SqlDtr["Entry_Tax1"].ToString())-(double.Parse(SqlDtr["Trade_Discount"].ToString())+double.Parse(SqlDtr["FOC_Discount"].ToString())+double.Parse(SqlDtr["Discount"].ToString())+double.Parse(SqlDtr["Fixed_Discount_Type"].ToString())+double.Parse(SqlDtr["Fixed_Discount"].ToString())+double.Parse(SqlDtr["Ebird_Discount"].ToString())+ETFOC);
                         var tradeDisc = double.Parse(SqlDtr["Trade_Discount"].ToString());
-                        double TotalCashDiscount = double.Parse(SqlDtr["Grand_Total"].ToString()) - tradeDisc + double.Parse(SqlDtr["FOC_Discount"].ToString()) - TotalDiscount + double.Parse(SqlDtr["Fixed_Discount"].ToString()) + double.Parse(SqlDtr["Ebird_Discount"].ToString()) + ETFOC + Fixed_Disc_Amount;
+                        double TotalCashDiscount = double.Parse(SqlDtr["Grand_Total"].ToString()) - tradeDisc + double.Parse(SqlDtr["FOC_Discount"].ToString()) - TotalDiscount + double.Parse(SqlDtr["Fixed_Discount"].ToString()) + double.Parse(SqlDtr["Ebird_Discount"].ToString()) + Fixed_Disc_Amount;
 
                         if (SqlDtr["Cash_Disc_Type"].ToString() == "Per")
                             TotalCashDiscount = TotalCashDiscount * double.Parse(SqlDtr["Cash_Discount"].ToString()) / 100;
@@ -3395,7 +3395,7 @@ namespace Servosms.Module.Inventory
                         Vendor_ID = SqlDtr["Vendor_ID"].ToString();
                         //CheckMode=SqlDtr["Mode_of_Payment"].ToString();
 
-                        txtAddDis.Text = SqlDtr.GetValue(26).ToString();   //Add by vikas 30.06.09
+                        //txtAddDis.Text = SqlDtr.GetValue(26).ToString();   //Add by vikas 30.06.09
 
                         /*************************
 						double Net_Amount=double.Parse(txtGrandTotal.Text.ToString())+ETFOC+Fixed_Disc_Amount+double.Parse(txtebirdamt.Text)+double.Parse(txttradedisamt.Text)+double.Parse(txtfixdiscamount.Text)+double.Parse(txtVAT.Text);
