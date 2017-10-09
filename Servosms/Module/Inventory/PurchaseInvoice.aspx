@@ -188,7 +188,8 @@
             if(document.Form1.DropType<%=i%>.value != "Type" && document.Form1.txtQty<%=i%>.value != "")
             {
                 getschemeprimary(document.Form1.DropType<%=i%>,document.Form1.tempSchDis<%=i%>);
-                GetStockistScheme(document.Form1.DropType<%=i%>,document.Form1.tempStktSchDis<%=i%>);    //add
+                GetStockistScheme(document.Form1.DropType<%=i%>,document.Form1.tempStktSchDis<%=i%>);
+                GetProductsUnit(document.Form1.DropType<%=i%>,document.Form1.tempUnit<%=i%>);//add
                 getschemeAddprimary(document.Form1.DropType<%=i%>,document.Form1.tempSchAddDis<%=i%>);   //Add by vikas 30.06.09
 					
                 GetFixedDiscount(document.Form1.DropType<%=i%>,document.Form1.tempFixedDisc<%=i%>);       //Add by Vikas 1.1.2013
@@ -232,24 +233,61 @@
                     schdistot=schdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*schdis[0];
                 }
             }
-            if(document.Form1.tempStktSchDis<%=i%>.value!="")
-            {
-				
-                var stkt = document.Form1.tempStktSchDis<%=i%>.value
-                stktdis = stkt.split(":")
-                if(!document.Form1.chkfoc<%=i%>.checked)
+            if(document.Form1.tempUnit<%=i%>.value =="Barrel"||document.Form1.tempUnit<%=i%>.value=="Drum")
                 {
-                    if(stktdis[1]=="%")
+                    if(document.Form1.tempStktSchDis<%=i%>.value!="")
                     {
-                        stktdistot+=eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0])/100
-                    }
-                    else
-                    {
-                        stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                        var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                        stktdis = stkt.split(":")
+                        if(!document.Form1.chkfoc<%=i%>.checked)
+                        {
+                            if(stktdis[1]=="%")
+                            {
+                                stktdistot=stktdistot+(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
+                            }
+                            else
+                            {
+                                stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            }
+                        }
                     }
                 }
-					
-            }
+                else
+                {
+                    if(document.Form1.tempStktSchDis<%=i%>.value!="")
+                    {
+                        var dbValues=document.Form1.txtMainGST.value;
+                        var mainarr = new Array()
+                        mainarr =dbValues.split("~");
+                        var selproduct=document.Form1.DropType<%=i%>.value.split(":");
+                        var cgst=0;
+                        var sgst=0;
+                        for(i=0;i<mainarr.length-1;i++)
+                        {
+                            taxarr = mainarr[i].split("|")
+                            if(taxarr[0]==selproduct[0])
+                            {
+                                cgst=taxarr[4];
+                                sgst=taxarr[5];
+                            }
+                        }
+                        var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                        stktdis = stkt.split(":")
+                        if(!document.Form1.chkfoc<%=i%>.checked)
+                        {
+                            if(stktdis[1]=="%")
+                            {
+                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*(eval(cgst)+eval(sgst)))/100;
+                                var stckTot=eval(stckDis)+eval(document.Form1.txtAmount<%=i%>.value)
+                                stktdistot=stktdistot+(eval(stckTot)*eval(stktdis[0]))/100;
+                            }
+                            else
+                            {
+                                stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            }
+                        }
+                    }
+                }
             /***Add by vikas 30.06.09************/
             if(document.Form1.tempSchAddDis<%=i%>.value!="")
             {
@@ -293,6 +331,55 @@
 			
         }	
 	
+        function GetProductsUnit(prodtype,prodUnit)
+        {
+	
+            var ProdName
+            var PackType 
+            var ProdCode
+            var mainarr = new Array()
+            var prodtext  = prodtype.value
+            var packindex;
+            var packtext;
+            var count1=0;
+            var hidarr  = document.Form1.tempUnit.value
+            mainarr = hidarr.split(",")
+            var prodarr = new Array()
+            var discountarr=new Array()
+            var DisTypearr=new Array()
+            var status="n"
+            var k = 0
+            prodUnit.value=""
+            for(var i=0;i<(mainarr.length);i++)
+            {
+                prodarr = mainarr[i].split(":")
+                if(ProdName==prodarr[2] && PackType==prodarr[3] && ProdCode==prodarr[1])
+                    status="y"; 
+                else
+                {	
+                    ProdName=prodarr[2]
+                    PackType=prodarr[3]
+                    ProdCode=prodarr[1]
+                    status="n"
+                }
+                for(var j=0;j<prodarr.length;j++ )
+                { 
+                    if(prodarr[1]+":"+prodarr[2]+":"+prodarr[3] == prodtext)
+                    {
+                        if(status!="y")
+                        {
+                            discountarr[k]=prodarr[4];
+                           // DisTypearr[k]=prodarr[5];
+                            k++;
+                        }
+                    } 
+                }
+            }
+            for(n=0;n<discountarr.length;n++)
+            {  
+                prodUnit.value=discountarr[n]
+            } 
+        }
 		
         function GetGrandTotal()
         {
@@ -350,40 +437,61 @@
                 /****end***************/
             }
             //*******************
-            if(document.Form1.tempStktSchDis<%=i%>.value!="")
-            {
-                var stkt = document.Form1.tempStktSchDis<%=i%>.value
-                stktdis = stkt.split(":")
-                if(!document.Form1.chkfoc<%=i%>.checked)
+            if(document.Form1.tempUnit<%=i%>.value=="Barrel"||document.Form1.tempUnit<%=i%>.value=="Drum")
                 {
-                    if(stktdis[1]=="%")
+                    if(document.Form1.tempStktSchDis<%=i%>.value!="")
                     {
-                        //alert(document.Form1.txtqPack<%=i%>.value)
-                        var Tot_Ltr=document.Form1.txtqPack<%=i%>.value
-                        //if(Tot_Ltr>=50)
-                        //{
-                            /*********Add by vikas 29.12.2012*******************/
-                            stktdistot+=(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
-                            /**********************End**************************/
-                       // }
-                       <%-- else
+                        var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                        stktdis = stkt.split(":")
+                        if(!document.Form1.chkfoc<%=i%>.checked)
                         {
-                            //coment by vikas 5.11.2012 stktdistot+=eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0])/100
-                            /*********Add by vikas 5.11.2012*******************/
-                            var vat_rate = document.Form1.txtVatRate.value;
-                            var entrytax=eval(document.Form1.txtAmount<%=i%>.value)*2/100;  
-                            var dealer_vat=eval(entrytax)+ eval(document.Form1.txtAmount<%=i%>.value);
-                            dealer_vat=(eval(dealer_vat)* eval(vat_rate))/100;
-                            stktdistot+=(eval(document.Form1.txtAmount<%=i%>.value)+eval(entrytax)+ eval(dealer_vat))*eval(stktdis[0])/100;
-                            /***************End**************************/
-                        }--%>
-                    }
-                    else
-                    {
-                        stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            if(stktdis[1]=="%")
+                            {
+                                stktdistot=stktdistot+(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
+                            }
+                            else
+                            {
+                                stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            }
+                        }
                     }
                 }
-            }
+                else
+                {
+                    if(document.Form1.tempStktSchDis<%=i%>.value!="")
+                    {
+                        var dbValues=document.Form1.txtMainGST.value;
+                        var mainarr = new Array()
+                        mainarr =dbValues.split("~");
+                        var selproduct=document.Form1.DropType<%=i%>.value.split(":");
+                        var cgst=0;
+                        var sgst=0;
+                        for(i=0;i<mainarr.length-1;i++)
+                        {
+                            taxarr = mainarr[i].split("|")
+                            if(taxarr[0]==selproduct[0])
+                            {
+                                cgst=taxarr[4];
+                                sgst=taxarr[5];
+                            }
+                        }
+                        var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                        stktdis = stkt.split(":")
+                        if(!document.Form1.chkfoc<%=i%>.checked)
+                        {
+                            if(stktdis[1]=="%")
+                            {
+                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*(eval(cgst)+eval(sgst)))/100;
+                                var stckTot=eval(stckDis)+eval(document.Form1.txtAmount<%=i%>.value)
+                                stktdistot=stktdistot+(eval(stckTot)*eval(stktdis[0]))/100;
+                            }
+                            else
+                            {
+                                stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            }
+                        }
+                    }
+                }
             //*******************
 				
             /**************Add By Vikas 2.1.2013************************/
@@ -647,7 +755,7 @@
                 //coment by vikas 31.10.2012 GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless))+ETFOC)
 				
                 //coment by vikas 22.12.2012 GT=eval(document.Form1.txtGrandTotal.value)+ eval(Et)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless))+ETFOC)
-                GT=eval(document.Form1.txtGrandTotal.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                GT=eval(document.Form1.txtGrandTotal.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc)+eval(Disc)+eval(fixedDisc)+(eval(bird)-eval(birdless)+eval(Sch_Disc)))   // Add by vikas 22.12.2012
                 //GT=GT-eval(fixedDisc_Add)
 				 				
                 CashDisc=(GT*CashDisc)/100
@@ -939,6 +1047,7 @@
                 var selectedProduct = document.Form1.DropType<%=i%>.value
                 var amount = document.Form1.txtAmount<%=i%>.value
                 var stckDisc= document.Form1.tempStktSchDis<%=i%>.value 
+                var prodUnit=document.Form1.tempUnit<%=i%>.value 
                 var fixedDisc=0
                 var schdistot_Add=0
                 var tot_fixdisc= 0
@@ -970,15 +1079,19 @@
                 //var bird=document.Form1.txtebirdamt.value
                 //if(bird=="" || isNaN(bird))
                 //    bird=0
+
                 var EarlyDisType=document.Form1.tempEarlyDisType.value;
-                if(EarlyDisType!="%")
+                if(!document.Form1.chkfoc<%=i%>.checked)
                 {
-                    birdperProd=(eval(document.Form1.txtqPack<%=i%>.value)*eval(document.Form1.txtQty<%=i%>.value))*document.Form1.txtebird.value;
-                }
-                else
-                {
-                    var early=document.Form1.txtAmount<%=i%>.value*document.Form1.txtebird.value;
-                    birdperProd=early/100;
+                    if(EarlyDisType!="%")
+                    {
+                        birdperProd=(eval(document.Form1.txtqPack<%=i%>.value)*eval(document.Form1.txtQty<%=i%>.value))*document.Form1.txtebird.value;
+                    }
+                    else
+                    {
+                        var early=document.Form1.txtAmount<%=i%>.value*document.Form1.txtebird.value;
+                        birdperProd=early/100;
+                    }
                 }
 
                 var birdless=document.Form1.txtbirdless.value
@@ -1044,24 +1157,59 @@
                 //servo stock discount
                 stktdis = stckDisc.split(":")
 
-
-                if(document.Form1.tempStktSchDis<%=i%>.value!="")
+                if(prodUnit=="Barrel"||prodUnit=="Drum")
                 {
-                    var stkt = document.Form1.tempStktSchDis<%=i%>.value
-                    stktdis = stkt.split(":")
-                    if(!document.Form1.chkfoc<%=i%>.checked)
+                    if(document.Form1.tempStktSchDis<%=i%>.value!="")
                     {
-                        if(stktdis[1]=="%")
+                        var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                        stktdis = stkt.split(":")
+                        if(!document.Form1.chkfoc<%=i%>.checked)
                         {
-                            stktdistot=(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
-                        }
-                        else
-                        {
-                            stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            if(stktdis[1]=="%")
+                            {
+                                stktdistot=stktdistot+(eval(document.Form1.txtAmount<%=i%>.value)*eval(stktdis[0]))/100;
+                            }
+                            else
+                            {
+                                stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            }
                         }
                     }
                 }
-
+                else
+                {
+                    if(document.Form1.tempStktSchDis<%=i%>.value!="")
+                    {
+                        var cgst=0;
+                        var sgst=0;
+                        for(i=0;i<mainarr.length-1;i++)
+                        {
+                            taxarr = mainarr[i].split("|")
+                            if(taxarr[0]==selproduct[0])
+                            {
+                                cgst=taxarr[4];
+                                sgst=taxarr[5];
+                            }
+                        }
+                        var stkt = document.Form1.tempStktSchDis<%=i%>.value
+                        stktdis = stkt.split(":")
+                        if(!document.Form1.chkfoc<%=i%>.checked)
+                        {
+                            if(stktdis[1]=="%")
+                            {
+                                var stckDis=(eval(document.Form1.txtAmount<%=i%>.value)*(eval(cgst)+eval(sgst)))/100;
+                                var stckTot=eval(stckDis)+eval(document.Form1.txtAmount<%=i%>.value)
+                                stktdistot=stktdistot+(eval(stckTot)*eval(stktdis[0]))/100;
+                            }
+                            else
+                            {
+                                stktdistot=stktdistot+document.Form1.txtqPack<%=i%>.value*document.Form1.txtQty<%=i%>.value*stktdis[0];
+                            }
+                        }
+                    }
+                }
+                
+                
                 if(document.Form1.tempFixedDisc<%=i%>.value!="")
                 {
                     var stkt = document.Form1.tempFixedDisc<%=i%>.value
@@ -1109,7 +1257,7 @@
                 //cashdiscount
                 if(document.Form1.DropCashDiscType.value=="Per")
                 {  		
-                    GT=eval(document.Form1.txtAmount<%=i%>.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc))+ETFOC)   // Add by vikas 22.12.2012
+                    GT=eval(document.Form1.txtAmount<%=i%>.value)-eval(tot_fixdisc)-eval(fixedDisc_Add)-((eval(tradeDisc)-eval(tradeless))+eval(focDisc<%=i%>)+eval(Disc)+eval(schdistot)+(eval(birdperProd)-eval(birdless)+eval(Sch_Disc)))   // Add by vikas 22.12.2012
                     var cashdiscount=(GT*CashDisc)/100
                     //document.Form1.txtTotalCashDisc.value=eval(CashDisc)
                     makeRound(cashdiscount,2)
@@ -1790,7 +1938,27 @@
 				type="hidden" size="1" name="tempTotalSgst" runat="server"/>
             <INPUT id="tempTotalIgst" style="Z-INDEX: 126; LEFT: 432px; WIDTH: 8px; POSITION: absolute; TOP: 0px; HEIGHT: 20px"
 				type="hidden" size="1" name="tempTotalIgst" runat="server"/>
-
+        <input id="tempUnit" style="width: 1px" type="hidden" name="tempUnit" runat="server">
+        <input id="tempUnit1" style="width: 1px" type="hidden" name="tempUnit1" runat="server">
+        <input id="tempUnit2" style="width: 1px" type="hidden" name="tempUnit2" runat="server">
+        <input id="tempUnit3" style="width: 1px" type="hidden" name="tempUnit3" runat="server">
+        <input id="tempUnit4" style="width: 1px" type="hidden" name="tempUnit4" runat="server">
+        <input id="tempUnit5" style="width: 1px" type="hidden" name="tempUnit5" runat="server">
+        <input id="tempUnit6" style="width: 1px" type="hidden" name="tempUnit6" runat="server">
+        <input id="tempUnit7" style="width: 1px" type="hidden" name="tempUnit7" runat="server">
+        <input id="tempUnit8" style="width: 1px" type="hidden" name="tempUnit8" runat="server">
+        <input id="tempUnit9" style="width: 1px" type="hidden" name="tempUnit9" runat="server">
+        <input id="tempUnit10" style="width: 1px" type="hidden" name="tempUnit10" runat="server">
+        <input id="tempUnit11" style="width: 1px" type="hidden" name="tempUnit11" runat="server">
+        <input id="tempUnit12" style="width: 1px" type="hidden" name="tempUnit12" runat="server">
+        <input id="tempUnit13" style="width: 1px" type="hidden" name="tempUnit13" runat="server">
+        <input id="tempUnit14" style="width: 1px" type="hidden" name="tempUnit14" runat="server">
+        <input id="tempUnit15" style="width: 1px" type="hidden" name="tempUnit15" runat="server">
+        <input id="tempUnit16" style="width: 1px" type="hidden" name="tempUnit16" runat="server">
+        <input id="tempUnit17" style="width: 1px" type="hidden" name="tempUnit17" runat="server">
+        <input id="tempUnit18" style="width: 1px" type="hidden" name="tempUnit18" runat="server">
+        <input id="tempUnit19" style="width: 1px" type="hidden" name="tempUnit19" runat="server">
+        <input id="tempUnit20" style="width: 1px" type="hidden" name="tempUnit20" runat="server">
         <table style="width: 778px" align="center">
             <tr>
                 <th align="center" colspan="3">
