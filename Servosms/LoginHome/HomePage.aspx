@@ -190,7 +190,7 @@
 				</TR>
 				<TR>
 					<TD></TD>
-					<TD></TD>
+					<TD><asp:hyperlink id="Hyperlink61" runat="server" NavigateUrl="../Module/Admin/ExcelToDB.aspx">Excel To DB</asp:hyperlink></TD>
 					<TD></TD>
 					<TD><asp:hyperlink id="Hyperlink57" runat="server" NavigateUrl="../Module/Logistics/Vechile_entryform.aspx"> Vehicle Entry</asp:hyperlink></TD>
 					<TD></TD>
