@@ -103,8 +103,18 @@ namespace Servosms.Sysitem.Classes
 			else
 				return "";
 		}
+        public static string str2DDMMYYYYExcel(string str)
+        {
+            if (!str.Trim().Equals(""))
+            {
+                string[] strTokens = str.IndexOf(".") > 0 ? str.Split(new char[] { '.' }, str.Length) : str.Split(new char[] { '/' }, str.Length);
+                return strTokens[0] + "/" + strTokens[1] + "/" + strTokens[2];
+            }
+            else
+                return "";
+        }
 
-		public static string str2DDMMYYYYNew(string  str)
+        public static string str2DDMMYYYYNew(string  str)
 		{
 			if(!str.Trim().Equals(""))  
 			{

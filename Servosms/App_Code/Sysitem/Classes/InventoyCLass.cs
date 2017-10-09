@@ -4172,14 +4172,434 @@ namespace Servosms.Sysitem.Classes
 			set
 			{
 				_prod_id=value;
-			}
-		}
-		
-		//*************************************
-		#endregion	
+			}            
+        }
+        string _SSA_OR_SSI_NAME = "";
+        public string SSA_OR_SSI_NAME
+        {
+            get
+            {
+                return _SSA_OR_SSI_NAME;
+            }
+            set
+            {
+                _SSA_OR_SSI_NAME = value;
+            }
+        }
+        string _SALES_RETURN_NUMBER = "";
+        public string SALES_RETURN_NUMBER
+        {
+            get
+            {
+                return _SALES_RETURN_NUMBER;
+            }
+            set
+            {
+                _SALES_RETURN_NUMBER = value;
+            }            
+        }
+        string _SALES_RETURN_GR_DATE = "";
+        public string SALES_RETURN_GR_DATE
+        {
+            get
+            {
+                return _SALES_RETURN_GR_DATE;
+            }
+            set
+            {
+                _SALES_RETURN_GR_DATE = value;
+            }            
+        }        
+        string _SECONDARY_CUSTOMER_NUMBER = "";
+        public string SECONDARY_CUSTOMER_NUMBER
+        {
+            get
+            {
+                return _SECONDARY_CUSTOMER_NUMBER;
+            }
+            set
+            {
+                _SECONDARY_CUSTOMER_NUMBER = value;
+            }
+        }
+        string _SEC_CUSTOMER_NAME = "";
+        public string SEC_CUSTOMER_NAME
+        {
+            get
+            {
+                return _SEC_CUSTOMER_NAME;
+            }
+            set
+            {
+                _SEC_CUSTOMER_NAME = value;
+            }
+        }
+        string _STOCKIST_GST_NUM = "";
+        public string STOCKIST_GST_NUM
+        {
+            get
+            {
+                return _STOCKIST_GST_NUM;
+            }
+            set
+            {
+                _STOCKIST_GST_NUM = value;
+            }
+        }
+        string _CUSTOMER_GST_NUM = "";
+        public string CUSTOMER_GST_NUM
+        {
+            get
+            {
+                return _CUSTOMER_GST_NUM;
+            }
+            set
+            {
+                _CUSTOMER_GST_NUM = value;
+            }
+        }
+        string _SEC_CUSTOMER_HIERARCHY = "";
+        public string SEC_CUSTOMER_HIERARCHY
+        {
+            get
+            {
+                return _SEC_CUSTOMER_HIERARCHY;
+            }
+            set
+            {
+                _SEC_CUSTOMER_HIERARCHY = value;
+            }
+        }
+        string _SECONDARY_CUSTOMER_CITY = "";
+        public string SECONDARY_CUSTOMER_CITY
+        {
+            get
+            {
+                return _SECONDARY_CUSTOMER_CITY;
+            }
+            set
+            {
+                _SECONDARY_CUSTOMER_CITY = value;
+            }
+        }
+        string _INVOICE_TYPE = "";
+        public string INVOICE_TYPE
+        {
+            get
+            {
+                return _INVOICE_TYPE;
+            }
+            set
+            {
+                _INVOICE_TYPE = value;
+            }
+        }
+        string _SGST_AMOUNT = "";
+        public string SGST_AMOUNT
+        {
+            get
+            {
+                return _SGST_AMOUNT;
+            }
+            set
+            {
+                _SGST_AMOUNT = value;
+            }
+        }
+        string _CGST_AMOUNT = "";
+        public string CGST_AMOUNT
+        {
+            get
+            {
+                return _CGST_AMOUNT;
+            }
+            set
+            {
+                _CGST_AMOUNT = value;
+            }
+        }
+        string _IGST_AMOUNT = "";
+        public string IGST_AMOUNT
+        {
+            get
+            {
+                return _IGST_AMOUNT;
+            }
+            set
+            {
+                _IGST_AMOUNT = value;
+            }
+        }
+        string _TOTAL_TAX_AMOUNT = "";
+        public string TOTAL_TAX_AMOUNT
+        {
+            get
+            {
+                return _TOTAL_TAX_AMOUNT;
+            }
+            set
+            {
+                _TOTAL_TAX_AMOUNT = value;
+            }
+        }
+        string _NET_AMOUNT = "";
+        public string NET_AMOUNT
+        {
+            get
+            {
+                return _NET_AMOUNT;
+            }
+            set
+            {
+                _NET_AMOUNT = value;
+            }
+        }
+        string _ADHOC_DISCOUNT = "";
+        public string ADHOC_DISCOUNT
+        {
+            get
+            {
+                return _ADHOC_DISCOUNT;
+            }
+            set
+            {
+                _ADHOC_DISCOUNT = value;
+            }
+        }
+        string _HO_AI_DISC_JULY17 = "";
+        public string HO_AI_DISC_JULY17
+        {
+            get
+            {
+                return _HO_AI_DISC_JULY17;
+            }
+            set
+            {
+                _HO_AI_DISC_JULY17 = value;
+            }
+        }
+        string _HYUNDAI_DIS_17_18 = "";
+        public string HYUNDAI_DIS_17_18
+        {
+            get
+            {
+                return _HYUNDAI_DIS_17_18;
+            }
+            set
+            {
+                _HYUNDAI_DIS_17_18 = value;
+            }
+        }
+        string _MGO_VC_DIS_16_17 = "";
+        public string MGO_VC_DIS_16_17
+        {
+            get
+            {
+                return _MGO_VC_DIS_16_17;
+            }
+            set
+            {
+                _MGO_VC_DIS_16_17 = value;
+            }
+        }
+        int _PRODUCT_CODE;
+        public int PRODUCT_CODE
+        {
+            get
+            {
+                return _PRODUCT_CODE;
+            }
+            set
+            {
+                _PRODUCT_CODE = value;
+            }
+        }
+        string _PRODUCT_NAME = "";
+        public string PRODUCT_NAME
+        {
+            get
+            {
+                return _PRODUCT_NAME;
+            }
+            set
+            {
+                _PRODUCT_NAME = value;
+            }
+        }
+        int _HSN_NO;
+        public int HSN_NO
+        {
+            get
+            {
+                return _HSN_NO;
+            }
+            set
+            {
+                _HSN_NO = value;
+            }
+        }
+        int _PACK_CODE;
+        public int PACK_CODE
+        {
+            get
+            {
+                return _PACK_CODE;
+            }
+            set
+            {
+                _PACK_CODE = value;
+            }
+        }
+        string _PACK_NAME = "";
+        public string PACK_NAME
+        {
+            get
+            {
+                return _PACK_NAME;
+            }
+            set
+            {
+                _PACK_NAME = value;
+            }
+        }
+        int _SKU_CODE;
+        public int SKU_CODE
+        {
+            get
+            {
+                return _SKU_CODE;
+            }
+            set
+            {
+                _SKU_CODE = value;
+            }
+        }
+        string _SALEABLE_QTY = "";
+        public string SALEABLE_QTY
+        {
+            get
+            {
+                return _SALEABLE_QTY;
+            }
+            set
+            {
+                _SALEABLE_QTY = value;
+            }
+        }
+        string _FREE_QTY = "";
+        public string FREE_QTY
+        {
+            get
+            {
+                return _FREE_QTY;
+            }
+            set
+            {
+                _FREE_QTY = value;
+            }
+        }
+        string _SAMPLE_QTY = "";
+        public string SAMPLE_QTY
+        {
+            get
+            {
+                return _SAMPLE_QTY;
+            }
+            set
+            {
+                _SAMPLE_QTY = value;
+            }
+        }
+        string _SALEABLE_QTY_IN_LTR_OR_KG = "";
+        public string SALEABLE_QTY_IN_LTR_OR_KG
+        {
+            get
+            {
+                return _SALEABLE_QTY_IN_LTR_OR_KG;
+            }
+            set
+            {
+                _SALEABLE_QTY_IN_LTR_OR_KG = value;
+            }
+        }
+        string _FREE_QTY_IN_LTR_OR_KG = "";
+        public string FREE_QTY_IN_LTR_OR_KG
+        {
+            get
+            {
+                return _FREE_QTY_IN_LTR_OR_KG;
+            }
+            set
+            {
+                _FREE_QTY_IN_LTR_OR_KG = value;
+            }
+        }
+        string _SAMPLE_QTY_IN_LTR_OR_KG = "";
+        public string SAMPLE_QTY_IN_LTR_OR_KG
+        {
+            get
+            {
+                return _SAMPLE_QTY_IN_LTR_OR_KG;
+            }
+            set
+            {
+                _SAMPLE_QTY_IN_LTR_OR_KG = value;
+            }
+        }
+        string _SecInvoiceNo = "";
+        public string SecInvoiceNo
+        {
+            get
+            {
+                return _SecInvoiceNo;
+            }
+            set
+            {
+                _SecInvoiceNo = value;
+            }
+        }
+        string _SALES_TYPE = "";
+        public string SALES_TYPE
+        {
+            get
+            {
+                return _SALES_TYPE;
+            }
+            set
+            {
+                _SALES_TYPE = value;
+            }
+        }
+        string _VEHICLE_NO = "";
+        public string VEHICLE_NO
+        {
+            get
+            {
+                return _VEHICLE_NO;
+            }
+            set
+            {
+                _VEHICLE_NO = value;
+            }
+        }
+        int _CHALLAN_NO;
+        public int CHALLAN_NO
+        {
+            get
+            {
+                return _CHALLAN_NO;
+            }
+            set
+            {
+                _CHALLAN_NO = value;
+            }
+        }
 
-		#region Constructor : Opens the connection with Database Server.
-		public InventoryClass()
+        //*************************************
+        #endregion
+
+        #region Constructor : Opens the connection with Database Server.
+        public InventoryClass()
 		{
 			SqlCon =new SqlConnection(System .Configuration.ConfigurationSettings.AppSettings["Servosms"]);
 			SqlCon.Open();	
@@ -4363,13 +4783,85 @@ namespace Servosms.Sysitem.Classes
 			SqlCmd.ExecuteNonQuery();
 		}
 
-		/// <summary>
-		/// Calls the Procedure ProSalesMasterEntry to insert the Sales Invoice Details in Sales_Master.
-		/// after that update the customer credit limit, update the status of Order_Col_Master table 
-		/// and also insert the value in CustomerLedgerTable and AccountsLedgerTable with the help of
-		/// ProInsertAccountsLedger procedure.
-		/// </summary>
-		public void InsertSalesMaster()
+        /// <summary>
+        /// Calls the Procedure ProSalesMasterEntry to insert the Sales Invoice Details in Sales_Master.
+        /// after that update the customer credit limit, update the status of Order_Col_Master table 
+        /// and also insert the value in CustomerLedgerTable and AccountsLedgerTable with the help of
+        /// ProInsertAccountsLedger procedure.
+        /// </summary>
+        public void InsertSalesTemp()
+        {
+            SqlCmd = new SqlCommand("ProSalesTempEntry", SqlCon);
+            SqlCmd.CommandType = CommandType.StoredProcedure;
+            SqlCmd.Parameters.Add("@SALES_INVOICE_NUMBER",Invoice_No);
+            SqlCmd.Parameters.Add("@INVOICE_DATE", Invoice_Date);
+            SqlCmd.Parameters.Add("@SSA_OR_SSI_NAME", SSA_OR_SSI_NAME);
+            SqlCmd.Parameters.Add("@SALES_RETURN_NUMBER", SALES_RETURN_NUMBER);
+            SqlCmd.Parameters.Add("@SALES_RETURN_GR_DATE", SALES_RETURN_GR_DATE);
+            SqlCmd.Parameters.Add("@SECONDARY_CUSTOMER_NUMBER", SECONDARY_CUSTOMER_NUMBER);
+            SqlCmd.Parameters.Add("@SEC_CUSTOMER_NAME", SEC_CUSTOMER_NAME);
+            SqlCmd.Parameters.Add("@STOCKIST_GST_NUM", STOCKIST_GST_NUM);
+            SqlCmd.Parameters.Add("@CUSTOMER_GST_NUM", CUSTOMER_GST_NUM);
+            SqlCmd.Parameters.Add("@SEC_CUSTOMER_HIERARCHY", SEC_CUSTOMER_HIERARCHY);
+            SqlCmd.Parameters.Add("@SECONDARY_CUSTOMER_CITY", SECONDARY_CUSTOMER_CITY);
+            SqlCmd.Parameters.Add("@INVOICE_TYPE", INVOICE_TYPE);
+            SqlCmd.Parameters.Add("@SGST_AMOUNT", SGST_AMOUNT);
+            SqlCmd.Parameters.Add("@CGST_AMOUNT", CGST_AMOUNT);
+            SqlCmd.Parameters.Add("@IGST_AMOUNT", IGST_AMOUNT);
+            SqlCmd.Parameters.Add("@TOTAL_TAX_AMOUNT", TOTAL_TAX_AMOUNT);
+            SqlCmd.Parameters.Add("@NET_AMOUNT", NET_AMOUNT);
+            SqlCmd.Parameters.Add("@ADHOC_DISCOUNT", ADHOC_DISCOUNT);
+            SqlCmd.Parameters.Add("@HO_AI_DISC_JULY17", HO_AI_DISC_JULY17);
+            SqlCmd.Parameters.Add("@HYUNDAI_DIS_17_18", HYUNDAI_DIS_17_18);
+            SqlCmd.Parameters.Add("@MGO_VC_DIS_16_17", MGO_VC_DIS_16_17);
+            SqlCmd.Parameters.Add("@SALES_TYPE", SALES_TYPE);
+            SqlCmd.Parameters.Add("@CHALLAN_NO", Convert.ToInt32(CHALLAN_NO));
+            SqlCmd.Parameters.Add("@VEHICLE_NO", VEHICLE_NO);
+            SqlCmd.Parameters.Add("@Grand_Total", Grand_Total);
+            SqlCmd.Parameters.Add("@Discount", Discount);
+            SqlCmd.Parameters.Add("@Discount_Type", Discount_Type);
+            SqlCmd.Parameters.Add("@Promo_Scheme", Promo_Scheme);
+            SqlCmd.Parameters.Add("@Slip_No", Slip_No);
+            SqlCmd.Parameters.Add("@Cash_Discount", Cash_Discount);
+            SqlCmd.Parameters.Add("@Cash_Disc_Type", Cash_Disc_Type);
+            SqlCmd.Parameters.Add("@schdiscount", schdiscount);
+            SqlCmd.Parameters.Add("@foediscount", foediscount);
+            SqlCmd.Parameters.Add("@foediscounttype", foediscounttype);
+            SqlCmd.Parameters.Add("@foediscountrs", foediscountrs);
+            SqlCmd.Parameters.Add("@SecSPDisc", SecSPDisc);
+            SqlCmd.Parameters.Add("@SALEABLE_QTY_IN_LTR_OR_KG", float.Parse(SALEABLE_QTY_IN_LTR_OR_KG));
+            SqlCmd.ExecuteNonQuery();
+        }
+        public void InsertSalesTempProd()
+        {
+            SqlCmd = new SqlCommand("ProSalesTempProdEntry", SqlCon);
+            SqlCmd.CommandType = CommandType.StoredProcedure;
+            SqlCmd.Parameters.Add("@SALES_INVOICE_NUMBER", Invoice_No);
+            SqlCmd.Parameters.Add("@PRODUCT_CODE",PRODUCT_CODE);
+            SqlCmd.Parameters.Add("@PRODUCT_NAME", PRODUCT_NAME);
+            SqlCmd.Parameters.Add("@HSN_NO", Convert.ToInt32(HSN_NO));
+            SqlCmd.Parameters.Add("@PACK_CODE", Convert.ToInt32(PACK_CODE));
+            SqlCmd.Parameters.Add("@PACK_NAME", PACK_NAME);
+            SqlCmd.Parameters.Add("@SKU_CODE", Convert.ToInt32(SKU_CODE));
+            SqlCmd.Parameters.Add("@SALEABLE_QTY",float.Parse(SALEABLE_QTY));
+            SqlCmd.Parameters.Add("@FREE_QTY", float.Parse(FREE_QTY));
+            SqlCmd.Parameters.Add("@SAMPLE_QTY", float.Parse(SAMPLE_QTY));
+            SqlCmd.Parameters.Add("@SALEABLE_QTY_IN_LTR_OR_KG", SALEABLE_QTY_IN_LTR_OR_KG);
+            SqlCmd.Parameters.Add("@FREE_QTY_IN_LTR_OR_KG", float.Parse(FREE_QTY_IN_LTR_OR_KG));
+            SqlCmd.Parameters.Add("@SAMPLE_QTY_IN_LTR_OR_KG", float.Parse(SAMPLE_QTY_IN_LTR_OR_KG));
+            SqlCmd.Parameters.Add("@SecInvoiceNo", SecInvoiceNo);
+            SqlCmd.Parameters.Add("@sno", sno);
+            SqlCmd.Parameters.Add("@INVOICE_DATE", Invoice_Date);
+            SqlCmd.Parameters.Add("@scheme1", sch);            
+            SqlCmd.Parameters.Add("@foe", foe);
+            SqlCmd.Parameters.Add("@SchType", schtype);
+            SqlCmd.Parameters.Add("@SecSPDisc", SecSPDisc);
+            SqlCmd.Parameters.Add("@SecSPDiscType", SecSPDiscType);
+            SqlCmd.Parameters.Add("@FoeType", foediscounttype);
+            SqlCmd.ExecuteNonQuery();
+        }
+
+        public void InsertSalesMaster()
 		{ 				
 			SqlCmd=new SqlCommand("ProSalesMasterEntry",SqlCon);
 			SqlCmd.CommandType = CommandType.StoredProcedure;
