@@ -162,55 +162,55 @@ public partial class Module_Admin_ExcelToDB : System.Web.UI.Page
                             obj1.InsertSalesTempProd(); //Save Product Details
                         }
                     }
-                    MessageBox.Show("Data Inserted Successfully");
+                    MessageBox.Show("Data Inserted for sheet " + SheetName + " Successfully") ;
                 }
                 #region Purchase Invoice
                 else if (btnPurchaseInvoice.Checked == true)  //Purchase Invoice
-                {                    
-                        //string str = "";
-                        //for (int i = 1; i < dt.Rows.Count; i++)
-                        //{
+                {
+                    string str = "";
+                    for (int i = 1; i < dt.Rows.Count; i++)
+                    {
 
-                        //    string CurrStr = dt.Rows[i][0].ToString();
-                        //    if (str != CurrStr)
-                        //    {
-                        //        str = CurrStr;
-                        //        obj1.Invoice_No = CurrStr;
-                        //        obj1.Invoice_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(dt.Rows[i][1].ToString()));
-                        //        obj1.Challan_Id = Int32.Parse(dt.Rows[i][3].ToString());
-                        //        obj1.City_Name = dt.Rows[i][7].ToString();
-                        //        obj1.Geopgrophical_State = dt.Rows[i][8].ToString();
-                        //        obj1.Stockist_SAP_Code = dt.Rows[i][9].ToString();
-                        //        obj1.Stockist_Name = dt.Rows[i][10].ToString();
-                        //        obj1.Source_Of_Supply = dt.Rows[i][11].ToString();
-                        //        obj1.GSTIN = dt.Rows[i][12].ToString();
-                        //        obj1.HSN_Code = dt.Rows[i][13].ToString();
-                        //        obj1.Bill_Type = dt.Rows[i][24].ToString();
+                        string CurrStr = dt.Rows[i][0].ToString();
+                        if (str != CurrStr)
+                        {
+                            str = CurrStr;
+                            obj1.Invoice_No = CurrStr;
+                            obj1.Invoice_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(dt.Rows[i][1].ToString()));
+                            obj1.Challan_Id = Int32.Parse(dt.Rows[i][3].ToString());
+                            obj1.City_Name = dt.Rows[i][7].ToString();
+                            obj1.Geopgrophical_State = dt.Rows[i][8].ToString();
+                            obj1.Stockist_SAP_Code = dt.Rows[i][9].ToString();
+                            obj1.Stockist_Name = dt.Rows[i][10].ToString();
+                            obj1.Source_Of_Supply = dt.Rows[i][11].ToString();
+                            obj1.GSTIN = dt.Rows[i][12].ToString();
+                            obj1.HSN_Code = dt.Rows[i][13].ToString();
+                            obj1.Bill_Type = dt.Rows[i][24].ToString();
 
-                        //        obj1.InsertPurchaseMasterTemp();  //Save Purchase invoice info
-                        //    }
-                        //    if (str == CurrStr)
-                        //    {
-                        //        obj1.Invoice_No = CurrStr;
-                        //        obj1.Item_Qty = Int32.Parse(dt.Rows[i][2].ToString());
-                        //        obj1.Qty_Ltr_Kg = dt.Rows[i][3].ToString();
-                        //        obj1.SKU_Code = Int32.Parse(dt.Rows[i][5].ToString());
-                        //        obj1.SKU_Name = dt.Rows[i][6].ToString();
-                        //        obj1.RSP_CDP = dt.Rows[i][14].ToString();
-                        //        obj1.SGST_Tax = dt.Rows[i][15].ToString();
-                        //        obj1.CGST_Tax = dt.Rows[i][16].ToString();
-                        //        obj1.IGST_Tax = dt.Rows[i][17].ToString();
-                        //        obj1.Total_Tax = dt.Rows[i][18].ToString();
-                        //        obj1.ZSSD = dt.Rows[i][19].ToString();
-                        //        obj1.ZCON = dt.Rows[i][20].ToString();
-                        //        obj1.ZDFI = dt.Rows[i][21].ToString();
-                        //        obj1.ZDCB = dt.Rows[i][22].ToString();
-                        //        obj1.NET_AMT_IN_PAISE = dt.Rows[i][23].ToString();
-                        //        obj1.InsertPurchaseDetailsTemp(); //Save Purchase invoice Details
-                        //    }
-                        //}
-                        //MessageBox.Show("Data Inserted for sheet " + SheetName + " Successfully");
-                    
+                            obj1.InsertPurchaseMasterTemp();  //Save Purchase invoice info
+                        }
+                        if (str == CurrStr)
+                        {
+                            obj1.Invoice_No = CurrStr;
+                            obj1.Item_Qty = Int32.Parse(dt.Rows[i][2].ToString());
+                            obj1.Qty_Ltr_Kg = dt.Rows[i][3].ToString();
+                            obj1.SKU_Code = Int32.Parse(dt.Rows[i][5].ToString());
+                            obj1.SKU_Name = dt.Rows[i][6].ToString();
+                            obj1.RSP_CDP = dt.Rows[i][14].ToString();
+                            obj1.SGST_Tax = dt.Rows[i][15].ToString();
+                            obj1.CGST_Tax = dt.Rows[i][16].ToString();
+                            obj1.IGST_Tax = dt.Rows[i][17].ToString();
+                            obj1.Total_Tax = dt.Rows[i][18].ToString();
+                            obj1.ZSSD = dt.Rows[i][19].ToString();
+                            obj1.ZCON = dt.Rows[i][20].ToString();
+                            obj1.ZDFI = dt.Rows[i][21].ToString();
+                            obj1.ZDCB = dt.Rows[i][22].ToString();
+                            obj1.NET_AMT_IN_PAISE = dt.Rows[i][23].ToString();
+                            obj1.InsertPurchaseDetailsTemp(); //Save Purchase invoice Details
+                        }
+                    }
+                    MessageBox.Show("Data Inserted for sheet " + SheetName + " Successfully");
+
                 }
                 #endregion
                 else

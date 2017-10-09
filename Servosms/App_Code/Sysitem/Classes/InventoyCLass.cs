@@ -4594,6 +4594,287 @@ namespace Servosms.Sysitem.Classes
                 _CHALLAN_NO = value;
             }
         }
+        int _Challan_Id;
+        public int Challan_Id
+        {
+            get
+            {
+                return _Challan_Id;
+            }
+            set
+            {
+                _Challan_Id = value;
+            }
+        }
+        string _City_Name;
+        public string City_Name
+        {
+            get
+            {
+                return _City_Name;
+            }
+            set
+            {
+                _City_Name = value;
+            }
+        }
+        string _Geopgrophical_State;
+        string _Stockist_SAP_Code;
+        string _Stockist_Name;
+        string _Source_Of_Supply;
+        string _Bill_Type;
+        string _HSN_Code;
+        string _GSTIN;
+
+        int _Item_Qty;
+        string _Qty_Ltr_Kg;
+        int _SKU_Code;
+
+        string _SKU_Name;
+        string _RSP_CDP;
+        string _SGST_Tax;
+        string _CGST_Tax;
+        string _IGST_Tax;
+        string _ZSSD;
+        string _ZCON;
+        string _ZDFI;
+        string _ZDCB;
+        string _NET_AMT_IN_PAISE;
+        public string GSTIN
+        {
+            get
+            {
+                return _GSTIN;
+            }
+            set
+            {
+                _GSTIN = value;
+            }
+        }
+
+        public string HSN_Code
+        {
+            get
+            {
+                return _HSN_Code;
+            }
+            set
+            {
+                _HSN_Code = value;
+            }
+        }
+        public string Geopgrophical_State
+        {
+            get
+            {
+                return _Geopgrophical_State;
+            }
+            set
+            {
+                _Geopgrophical_State = value;
+            }
+        }
+
+        public string Stockist_SAP_Code
+        {
+            get
+            {
+                return _Stockist_SAP_Code;
+            }
+            set
+            {
+                _Stockist_SAP_Code = value;
+            }
+        }
+
+        public string Stockist_Name
+        {
+            get
+            {
+                return _Stockist_Name;
+            }
+            set
+            {
+                _Stockist_Name = value;
+            }
+        }
+
+        public string Source_Of_Supply
+        {
+            get
+            {
+                return _Source_Of_Supply;
+            }
+            set
+            {
+                _Source_Of_Supply = value;
+            }
+        }
+
+        public string Bill_Type
+        {
+            get
+            {
+                return _Bill_Type;
+            }
+            set
+            {
+                _Bill_Type = value;
+            }
+        }
+        public int Item_Qty
+        {
+            get
+            {
+                return _Item_Qty;
+            }
+            set
+            {
+                _Item_Qty = value;
+            }
+        }
+
+        public string Qty_Ltr_Kg
+        {
+            get
+            {
+                return _Qty_Ltr_Kg;
+            }
+            set
+            {
+                _Qty_Ltr_Kg = value;
+            }
+        }
+
+        public int SKU_Code
+        {
+            get
+            {
+                return _SKU_Code;
+            }
+            set
+            {
+                _SKU_Code = value;
+            }
+        }
+        public string NET_AMT_IN_PAISE
+        {
+            get
+            {
+                return _NET_AMT_IN_PAISE;
+            }
+            set
+            {
+                _NET_AMT_IN_PAISE = value;
+            }
+        }
+
+        public string ZDFI
+        {
+            get
+            {
+                return _ZDFI;
+            }
+            set
+            {
+                _ZDFI = value;
+            }
+        }
+
+        public string ZCON
+        {
+            get
+            {
+                return _ZCON;
+            }
+            set
+            {
+                _ZCON = value;
+            }
+        }
+
+        public string ZSSD
+        {
+            get
+            {
+                return _ZSSD;
+            }
+            set
+            {
+                _ZSSD = value;
+            }
+        }
+
+        public string IGST_Tax
+        {
+            get
+            {
+                return _IGST_Tax;
+            }
+            set
+            {
+                _IGST_Tax = value;
+            }
+        }
+
+        public string SGST_Tax
+        {
+            get
+            {
+                return _SGST_Tax;
+            }
+            set
+            {
+                _SGST_Tax = value;
+            }
+        }
+
+        public string CGST_Tax
+        {
+            get
+            {
+                return _CGST_Tax;
+            }
+            set
+            {
+                _CGST_Tax = value;
+            }
+        }
+
+        public string SKU_Name
+        {
+            get
+            {
+                return _SKU_Name;
+            }
+            set
+            {
+                _SKU_Name = value;
+            }
+        }
+
+        public string RSP_CDP
+        {
+            get
+            {
+                return _RSP_CDP;
+            }
+            set
+            {
+                _RSP_CDP = value;
+            }
+        }
+        public string ZDCB
+        {
+            get
+            {
+                return _ZDCB;
+            }
+            set
+            {
+                _ZDCB = value;
+            }
+        }
 
         //*************************************
         #endregion
@@ -4858,6 +5139,48 @@ namespace Servosms.Sysitem.Classes
             SqlCmd.Parameters.Add("@SecSPDisc", SecSPDisc);
             SqlCmd.Parameters.Add("@SecSPDiscType", SecSPDiscType);
             SqlCmd.Parameters.Add("@FoeType", foediscounttype);
+            SqlCmd.ExecuteNonQuery();
+        }
+        public void InsertPurchaseMasterTemp()
+        {
+            SqlCmd = new SqlCommand("ProPurchaseMasterTemp", SqlCon);
+            SqlCmd.CommandType = CommandType.StoredProcedure;
+            SqlCmd.Parameters.Add("@INVOICE_NUM", Int32.Parse(Invoice_No));
+            SqlCmd.Parameters.Add("@INVOICE_DATE", Invoice_Date);
+            SqlCmd.Parameters.Add("@CHALLAN_ID", Challan_Id);
+            SqlCmd.Parameters.Add("@CITY_NAME", City_Name);
+            SqlCmd.Parameters.Add("@GEOGRAPHICAL_STATE", Geopgrophical_State);
+            SqlCmd.Parameters.Add("@STOCKIST_SAP_CODE", Int32.Parse(Stockist_SAP_Code));
+            SqlCmd.Parameters.Add("@STOCKIST_NAME", Stockist_Name);
+            SqlCmd.Parameters.Add("@SOURCE_OF_SUPPLY", Source_Of_Supply);
+            //SqlCmd.Parameters .Add("@Grand_Total",float.Parse(Grand_Total) );
+            SqlCmd.Parameters.Add("@GST_IDENTIFICATION_NUM", GSTIN);
+            //SqlCmd.Parameters .Add("@Discount",float.Parse(Discount));
+            SqlCmd.Parameters.Add("@HSN_CODE", HSN_Code);
+            SqlCmd.Parameters.Add("@BILLTYPE", Bill_Type);
+
+            SqlCmd.ExecuteNonQuery();
+        }
+        public void InsertPurchaseDetailsTemp()
+        {
+            SqlCmd = new SqlCommand("ProPurchaseDetailsTemp", SqlCon);
+            SqlCmd.CommandType = CommandType.StoredProcedure;
+            SqlCmd.Parameters.Add("@INVOICE_NUM", Int32.Parse(Invoice_No));
+            SqlCmd.Parameters.Add("@ITEM_QTY", Item_Qty);
+            SqlCmd.Parameters.Add("@QTY_LTR_KG", float.Parse(Qty_Ltr_Kg));
+            SqlCmd.Parameters.Add("@SKU_CODE", SKU_Code);
+            SqlCmd.Parameters.Add("@SKU_NAME", SKU_Name);
+            SqlCmd.Parameters.Add("@RSP_CDP", float.Parse(RSP_CDP));
+            SqlCmd.Parameters.Add("@SGST_TAX", float.Parse(SGST_Tax));
+            SqlCmd.Parameters.Add("@CGST_TAX", float.Parse(CGST_Tax));
+            SqlCmd.Parameters.Add("@IGST_TAX", float.Parse(IGST_Tax));
+            SqlCmd.Parameters.Add("@TOTAL_TAX", float.Parse(Total_Tax));
+            SqlCmd.Parameters.Add("@ZSSD", float.Parse(ZSSD));
+            SqlCmd.Parameters.Add("@ZCON", float.Parse(ZCON));
+            SqlCmd.Parameters.Add("@ZDFI", float.Parse(ZDFI));
+            SqlCmd.Parameters.Add("@ZDCB", float.Parse(ZDCB));
+            SqlCmd.Parameters.Add("@NET_AMT_IN_PAISE", float.Parse(NET_AMT_IN_PAISE));
+
             SqlCmd.ExecuteNonQuery();
         }
 
