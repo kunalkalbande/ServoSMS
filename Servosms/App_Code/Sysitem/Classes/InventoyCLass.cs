@@ -5159,6 +5159,32 @@ namespace Servosms.Sysitem.Classes
             SqlCmd.Parameters.Add("@HSN_CODE", HSN_Code);
             SqlCmd.Parameters.Add("@BILLTYPE", Bill_Type);
 
+            SqlCmd.Parameters.Add("@Mode_of_Payment", Mode_of_Payment);
+            SqlCmd.Parameters.Add("@VehicleNo", VehicleNo);
+            SqlCmd.Parameters.Add("@Grand_Total", Grand_Total);
+            SqlCmd.Parameters.Add("@discount", discount);
+            SqlCmd.Parameters.Add("@Discount_Type", Discount_Type);
+            SqlCmd.Parameters.Add("@NET_AMT_IN_PAISE", NET_AMT_IN_PAISE);
+            SqlCmd.Parameters.Add("@Promo_Scheme", Promo_Scheme);
+            SqlCmd.Parameters.Add("@Cash_Discount", Cash_Discount);
+            SqlCmd.Parameters.Add("@Cash_Disc_Type", Cash_Disc_Type);
+            SqlCmd.Parameters.Add("@IGST_Tax", IGST_Tax);
+            SqlCmd.Parameters.Add("@Tradeval", Tradeval);
+            SqlCmd.Parameters.Add("@Trade_Discount", Trade_Discount);
+            SqlCmd.Parameters.Add("@Ebird", Ebird);
+            SqlCmd.Parameters.Add("@Ebird_Discount", Ebird_Discount);
+            SqlCmd.Parameters.Add("@Foc_Discount", Foc_Discount);
+            SqlCmd.Parameters.Add("@Foc_Discount_Type", Foc_Discount_Type);
+            SqlCmd.Parameters.Add("@fixed_Discount", fixed_Discount);
+            SqlCmd.Parameters.Add("@fixed_Discount_Type", fixed_Discount_Type);
+            SqlCmd.Parameters.Add("@Qty_Ltr_Kg", Qty_Ltr_Kg);
+            SqlCmd.Parameters.Add("@New_fixeddisc", New_fixeddisc);
+            SqlCmd.Parameters.Add("@New_fixeddiscAmount", New_fixeddiscAmount);
+            SqlCmd.Parameters.Add("@CGST_Tax", CGST_Tax);
+            SqlCmd.Parameters.Add("@SGST_Tax", SGST_Tax);
+            SqlCmd.Parameters.Add("@Birdless", Birdless);
+            SqlCmd.Parameters.Add("@Tradeless", Tradeless);            
+
             SqlCmd.ExecuteNonQuery();
         }
         public void InsertPurchaseDetailsTemp()
@@ -5180,6 +5206,12 @@ namespace Servosms.Sysitem.Classes
             SqlCmd.Parameters.Add("@ZDFI", float.Parse(ZDFI));
             SqlCmd.Parameters.Add("@ZDCB", float.Parse(ZDCB));
             SqlCmd.Parameters.Add("@NET_AMT_IN_PAISE", float.Parse(NET_AMT_IN_PAISE));
+
+            SqlCmd.Parameters.Add("@SecInvoiceNo", SecInvoiceNo);
+            SqlCmd.Parameters.Add("@INVOICE_DATE", Invoice_Date);
+            SqlCmd.Parameters.Add("@PACK_NAME", PACK_NAME);
+            SqlCmd.Parameters.Add("@foc", foc);
+            SqlCmd.Parameters.Add("@SNo", sno);
 
             SqlCmd.ExecuteNonQuery();
         }

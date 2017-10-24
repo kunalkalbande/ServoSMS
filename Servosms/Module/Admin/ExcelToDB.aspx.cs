@@ -187,6 +187,33 @@ public partial class Module_Admin_ExcelToDB : System.Web.UI.Page
                             obj1.HSN_Code = dt.Rows[i][13].ToString();
                             obj1.Bill_Type = dt.Rows[i][24].ToString();
 
+                            obj1.Mode_of_Payment = dt.Rows[i][25].ToString();
+                            obj1.VehicleNo = dt.Rows[i][26].ToString();
+                            obj1.Grand_Total = dt.Rows[i][47].ToString();
+                            obj1.discount = dt.Rows[i][40].ToString();
+                            obj1.Discount_Type = dt.Rows[i][41].ToString();
+                            obj1.NET_AMT_IN_PAISE = dt.Rows[i][23].ToString();
+                            obj1.Promo_Scheme = dt.Rows[i][46].ToString();
+                            obj1.Cash_Discount = dt.Rows[i][39].ToString();
+                            obj1.Cash_Disc_Type = dt.Rows[i][38].ToString();
+                            obj1.IGST_Tax = dt.Rows[i][17].ToString();
+                            obj1.Tradeval = dt.Rows[i][35].ToString();
+                            obj1.Trade_Discount = dt.Rows[i][36].ToString();
+                            obj1.Ebird = dt.Rows[i][30].ToString();
+                            obj1.Ebird_Discount = dt.Rows[i][31].ToString();
+                            obj1.Foc_Discount = dt.Rows[i][28].ToString();
+                            obj1.Foc_Discount_Type = dt.Rows[i][29].ToString();
+                            obj1.fixed_Discount = dt.Rows[i][37].ToString();
+                            obj1.fixed_Discount_Type = dt.Rows[i][33].ToString();
+                            obj1.Qty_Ltr_Kg = dt.Rows[i][3].ToString();//total qty ltr
+                            obj1.New_fixeddisc = dt.Rows[i][43].ToString();
+                            obj1.New_fixeddiscAmount = dt.Rows[i][44].ToString();
+                            obj1.CGST_Tax = dt.Rows[i][16].ToString();
+                            obj1.SGST_Tax = dt.Rows[i][15].ToString();
+                            obj1.Birdless = dt.Rows[i][32].ToString();
+                            obj1.Tradeless = dt.Rows[i][34].ToString();
+
+
                             obj1.InsertPurchaseMasterTemp();  //Save Purchase invoice info
                         }
                         if (str == CurrStr)
@@ -206,6 +233,13 @@ public partial class Module_Admin_ExcelToDB : System.Web.UI.Page
                             obj1.ZDFI = dt.Rows[i][21].ToString();
                             obj1.ZDCB = dt.Rows[i][22].ToString();
                             obj1.NET_AMT_IN_PAISE = dt.Rows[i][23].ToString();
+
+                            obj1.SecInvoiceNo = GetInvoiceNo1();
+                            obj1.Invoice_Date = System.Convert.ToDateTime(GenUtil.str2DDMMYYYY(dt.Rows[i][1].ToString()));
+                            obj1.PACK_NAME= dt.Rows[i][48].ToString();
+                            obj1.foc = dt.Rows[i][51].ToString();
+                            int m = 0;
+                            obj1.sno = m += 1;
                             obj1.InsertPurchaseDetailsTemp(); //Save Purchase invoice Details
                         }
                     }
@@ -273,7 +307,7 @@ public partial class Module_Admin_ExcelToDB : System.Web.UI.Page
     }
     public string GetInvoiceNo1()
     {
-        int no = 0;
+        //int no = 0;
         string InNo = "";
         try
         {
@@ -285,11 +319,11 @@ public partial class Module_Admin_ExcelToDB : System.Web.UI.Page
             while (SqlDtr.Read())
             {
                 InNo = SqlDtr.GetValue(0).ToString();
-                no = Int32.Parse(InNo);
-                no = no + 1;
+                //no = Int32.Parse(InNo);
+                //no = no + 1;
             }
             SqlDtr.Close();
-            InNo = no.ToString();
+            //InNo = no.ToString();
             return InNo;
         }
         catch (Exception)
